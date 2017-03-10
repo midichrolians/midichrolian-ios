@@ -14,6 +14,6 @@ class GridCollectionViewCell: UICollectionViewCell {
     var columnNumber = 0
 
     func setAppearance() {
-        self.backgroundColor = UIColor.lightGray
+        self.backgroundColor = UIColor.darkGray
     }
 }

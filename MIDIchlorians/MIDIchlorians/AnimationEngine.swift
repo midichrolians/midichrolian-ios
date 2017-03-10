@@ -25,7 +25,7 @@ class AnimationEngine: NSObject {
 
     static func start() {
         updater = CADisplayLink(target: self, selector: #selector(animationLoop))
-        updater.preferredFramesPerSecond = 8
+        updater.preferredFramesPerSecond = Config.animationFrequency
         updater.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
 
@@ -41,7 +41,13 @@ class AnimationEngine: NSObject {
         guard let animationCollectionView = animationArea else {
             return
         }
-        animationCollectionView.reloadItems(at: previousAnimatedIndexPaths)
+        for indexPath in previousAnimatedIndexPaths {
+            print(indexPath)
+            guard let cell = animationCollectionView.cellForItem(at: indexPath) as? GridCollectionViewCell else {
+                continue
+            }
+            cell.setAppearance()
+        }
         previousAnimatedIndexPaths = [IndexPath]()
         for index in 0..<animationSequences.count {
             let animationSequence = animationSequences[index]
@@ -53,6 +59,7 @@ class AnimationEngine: NSObject {
         }
         for animationBit in animationBits {
             let indexPath = IndexPath(item: animationBit.column, section: animationBit.row)
+            print("attempting to animate ", indexPath)
             guard let cell = animationCollectionView.cellForItem(at: indexPath) else {
                 continue
             }

@@ -21,11 +21,11 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
     private let reuseIdentifier = "cell"
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return Config.numberOfColumns
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 6
+        return Config.numberOfRows
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
@@ -59,5 +59,28 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8.0, left: 0.0, bottom: 0.0, right: 0.0)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let touchLocation = touch.location(in: self)
+            gridTapped(location: touchLocation)
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    }
+
+    func gridTapped(location: CGPoint) {
+        guard let indexPath = self.indexPathForItem(at: location) else {
+            return
+        }
+        if indexPath.section > 1 && indexPath.item > 2 && indexPath.section < 4 && indexPath.item < 5 {
+            let animationSequence = PredefinedAnimationSchemes.spreadOut(indexPath: indexPath)
+            AnimationEngine.register(animationSequence: animationSequence)
+            return
+        }
+        let animationSequence = PredefinedAnimationSchemes.rainbow(indexPath: indexPath)
+        AnimationEngine.register(animationSequence: animationSequence)
     }
 }

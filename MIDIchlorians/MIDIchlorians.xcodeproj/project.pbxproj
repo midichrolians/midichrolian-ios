@@ -13,6 +13,9 @@
 		33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33120E241E6FD30A007E7717 /* Assets.xcassets */; };
 		33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */; };
 		33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */; };
+		334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */; };
+		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
+		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
 		33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */; };
 		33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */; };
 		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
@@ -45,6 +48,9 @@
 		33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIchloriansUITests.swift; sourceTree = "<group>"; };
 		33120E341E6FD30A007E7717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredefinedAnimationSchemes.swift; sourceTree = "<group>"; };
+		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
 		33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
 		33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
@@ -110,6 +116,9 @@
 				33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */,
 				33EC0A411E6FE55000229A92 /* AnimationBit.swift */,
 				33EC0A431E6FE67700229A92 /* AnimationSequence.swift */,
+				334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */,
+				334970C01E72583F009C78DF /* Config.swift */,
+				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -363,9 +372,12 @@
 			files = (
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
+				334970C11E72583F009C78DF /* Config.swift in Sources */,
+				334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
+				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
 				33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */,
 			);
