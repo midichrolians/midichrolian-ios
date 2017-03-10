@@ -17,7 +17,7 @@ class ViewController: UIViewController,
 
     var DEFAULT_BUTTON_SIZE = CGSize(width: 0, height: 0)
     let ITEMS_PER_ROW = 8
-    let NUMBER_OF_SECTIONS = 8
+    let NUMBER_OF_SECTIONS = 6
     let SECTION_INSETS = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
     let ITEM_INSETS = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
