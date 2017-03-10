@@ -17,23 +17,25 @@ struct AudioManager {
         for i in 0 ... Config.sound.count - 1 {
             for j in 0 ... Config.sound[i].count - 1 {
                 if let soundURL = Bundle.main.url(forResource: Config.sound[i][j], withExtension: "wav") {
-                    print("found the sound ", Config.sound[i][j])
                     var soundID = SystemSoundID(0)
                     AudioServicesCreateSystemSoundID(soundURL as CFURL, &soundID)
                     //send completed ID to notification center for UI update
-                    AudioServicesAddSystemSoundCompletion(soundID,
-                                                          nil,
-                                                          nil,
-                                                          { (soundID, _) -> Void in
-                                                            let nc = NotificationCenter.default
-                                                            nc.post(name:Notification.Name(rawValue:"Sound"),
-                                                                    object: nil,
-                                                                    userInfo: ["completed": soundID])},
-                                                          nil)
+                    AudioServicesAddSystemSoundCompletion(
+                        soundID,
+                        nil,
+                        nil,
+                        { (soundID, _) -> Void in
+                            let nc = NotificationCenter.default
+                            nc.post(
+                                name:Notification.Name(rawValue:"Sound"),
+                                object: nil,
+                                userInfo: ["completed": soundID]
+                            )
+                        },
+                        nil
+                    )
                     soundIDs[i][j] = soundID
                     validArray[i][j] = true
-                } else {
-                    print("could not find the sound")
                 }
             }
         }

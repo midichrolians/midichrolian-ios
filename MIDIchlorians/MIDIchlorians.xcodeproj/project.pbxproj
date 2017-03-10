@@ -176,10 +176,7 @@
 				33120E291E6FD30A007E7717 /* Info.plist */,
 				33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */,
 				33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */,
-				33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */,
-				33EC0A411E6FE55000229A92 /* AnimationBit.swift */,
-				33EC0A431E6FE67700229A92 /* AnimationSequence.swift */,
-				334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */,
+				33DAAAC31E72C38100987E86 /* Animation */,
 				334970C01E72583F009C78DF /* Config.swift */,
 				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
 				334970C61E72B83D009C78DF /* AudioManager.swift */,
@@ -231,6 +228,17 @@
 				33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */,
 			);
 			name = SailSample;
+			sourceTree = "<group>";
+		};
+		33DAAAC31E72C38100987E86 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */,
+				33EC0A411E6FE55000229A92 /* AnimationBit.swift */,
+				33EC0A431E6FE67700229A92 /* AnimationSequence.swift */,
+				334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 		60B66068E7BF0F51F317B789 /* Frameworks */ = {
