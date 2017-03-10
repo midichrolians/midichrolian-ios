@@ -10,7 +10,7 @@ import UIKit
 
 class UICollectionViewExtension: UICollectionView {
     let audioManager = AudioManager()
-    
+
     func startListenAudio() {
         let ncdefault = NotificationCenter.default
         ncdefault.addObserver(forName: Notification.Name(rawValue:"Sound"), object: nil, queue: nil) {

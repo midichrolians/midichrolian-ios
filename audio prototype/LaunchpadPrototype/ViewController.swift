@@ -26,7 +26,9 @@ class ViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = Constants.BackgroundColor
+        // set the collection view background to transparent
+        buttonCollectionView.backgroundColor = nil
         buttonCollectionView.isUserInteractionEnabled = true
         buttonCollectionView.isMultipleTouchEnabled = true
         calculateWidthPerItem()
