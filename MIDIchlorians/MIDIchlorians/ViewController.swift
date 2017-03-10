@@ -17,5 +17,6 @@ class ViewController: UIViewController {
         gridCollection.delegate = gridCollection
         AnimationEngine.set(animationCollectionView: gridCollection)
         AnimationEngine.start()
+        gridCollection.startListenAudio()
     }
 }

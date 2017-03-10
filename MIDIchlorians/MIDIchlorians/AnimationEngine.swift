@@ -42,7 +42,6 @@ class AnimationEngine: NSObject {
             return
         }
         for indexPath in previousAnimatedIndexPaths {
-            print(indexPath)
             guard let cell = animationCollectionView.cellForItem(at: indexPath) as? GridCollectionViewCell else {
                 continue
             }
@@ -59,7 +58,6 @@ class AnimationEngine: NSObject {
         }
         for animationBit in animationBits {
             let indexPath = IndexPath(item: animationBit.column, section: animationBit.row)
-            print("attempting to animate ", indexPath)
             guard let cell = animationCollectionView.cellForItem(at: indexPath) else {
                 continue
             }

@@ -19,6 +19,7 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
     */
 
     private let reuseIdentifier = "cell"
+    private let audioManager = AudioManager()
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Config.numberOfColumns
@@ -75,6 +76,12 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
         guard let indexPath = self.indexPathForItem(at: location) else {
             return
         }
+        if (indexPath.section == 0 || indexPath.section == Config.numberOfRows - 1) &&
+            (indexPath.item == 0 || indexPath.item == Config.numberOfColumns - 1) {
+            let animationSequence = PredefinedAnimationSchemes.spreadFromCenter()
+            AnimationEngine.register(animationSequence: animationSequence)
+            return
+        }
         if indexPath.section > 1 && indexPath.item > 2 && indexPath.section < 4 && indexPath.item < 5 {
             let animationSequence = PredefinedAnimationSchemes.spreadOut(indexPath: indexPath)
             AnimationEngine.register(animationSequence: animationSequence)
@@ -82,5 +89,20 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
         }
         let animationSequence = PredefinedAnimationSchemes.rainbow(indexPath: indexPath)
         AnimationEngine.register(animationSequence: animationSequence)
+        _ = audioManager.play(indexPath: indexPath)
+    }
+
+    func startListenAudio() {
+        let ncdefault = NotificationCenter.default
+        ncdefault.addObserver(forName: Notification.Name(rawValue:"Sound"), object: nil, queue: nil) { notification in
+            //handle notification
+            guard let completedID = notification.userInfo?["completed"] as? UInt32 else {
+                return
+            }
+            let cellPath = self.audioManager.getIndexPath(of: completedID)
+            guard let _ = self.cellForItem(at: cellPath) else {
+                return
+            }
+        }
     }
 }

@@ -16,6 +16,37 @@
 		334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */; };
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
 		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
+		334970C71E72B83D009C78DF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C61E72B83D009C78DF /* AudioManager.swift */; };
+		334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C81E72B86B009C78DF /* LowLatencyAudio.swift */; };
+		33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */; };
+		33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */; };
+		33DAAAA71E72BEA300987E86 /* AWOLNATION - Sail-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */; };
+		33DAAAA81E72BEA300987E86 /* AWOLNATION - Sail-4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */; };
+		33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */; };
+		33DAAAAA1E72BEA300987E86 /* AWOLNATION - Sail-6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */; };
+		33DAAAAB1E72BEA300987E86 /* AWOLNATION - Sail-7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */; };
+		33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */; };
+		33DAAAAD1E72BEA300987E86 /* AWOLNATION - Sail-9.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */; };
+		33DAAAAE1E72BEA300987E86 /* AWOLNATION - Sail-10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */; };
+		33DAAAAF1E72BEA300987E86 /* AWOLNATION - Sail-11.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */; };
+		33DAAAB01E72BEA300987E86 /* AWOLNATION - Sail-12.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */; };
+		33DAAAB11E72BEA300987E86 /* AWOLNATION - Sail-13.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */; };
+		33DAAAB21E72BEA300987E86 /* AWOLNATION - Sail-14.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */; };
+		33DAAAB31E72BEA300987E86 /* AWOLNATION - Sail-15.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */; };
+		33DAAAB41E72BEA300987E86 /* AWOLNATION - Sail-16.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */; };
+		33DAAAB51E72BEA300987E86 /* AWOLNATION - Sail-17.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */; };
+		33DAAAB61E72BEA300987E86 /* AWOLNATION - Sail-18.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */; };
+		33DAAAB71E72BEA300987E86 /* AWOLNATION - Sail-19.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */; };
+		33DAAAB81E72BEA300987E86 /* AWOLNATION - Sail-20.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */; };
+		33DAAAB91E72BEA300987E86 /* AWOLNATION - Sail-21.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */; };
+		33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */; };
+		33DAAABB1E72BEA300987E86 /* AWOLNATION - Sail-23.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */; };
+		33DAAABC1E72BEA300987E86 /* AWOLNATION - Sail-24.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */; };
+		33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */; };
+		33DAAABE1E72BEA300987E86 /* AWOLNATION - Sail-26.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */; };
+		33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */; };
+		33DAAAC01E72BEA300987E86 /* AWOLNATION - Sail-28.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */; };
+		33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */; };
 		33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */; };
 		33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */; };
 		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
@@ -51,6 +82,37 @@
 		334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredefinedAnimationSchemes.swift; sourceTree = "<group>"; };
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		334970C61E72B83D009C78DF /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		334970C81E72B86B009C78DF /* LowLatencyAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowLatencyAudio.swift; sourceTree = "<group>"; };
+		33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-1.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-1.wav"; sourceTree = "<group>"; };
+		33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-2.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-2.wav"; sourceTree = "<group>"; };
+		33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-3.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-3.wav"; sourceTree = "<group>"; };
+		33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-4.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-4.wav"; sourceTree = "<group>"; };
+		33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-5.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-5.wav"; sourceTree = "<group>"; };
+		33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-6.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-6.wav"; sourceTree = "<group>"; };
+		33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-7.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-7.wav"; sourceTree = "<group>"; };
+		33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-8.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-8.wav"; sourceTree = "<group>"; };
+		33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-9.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-9.wav"; sourceTree = "<group>"; };
+		33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-10.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-10.wav"; sourceTree = "<group>"; };
+		33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-11.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-11.wav"; sourceTree = "<group>"; };
+		33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-12.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-12.wav"; sourceTree = "<group>"; };
+		33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-13.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-13.wav"; sourceTree = "<group>"; };
+		33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-14.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-14.wav"; sourceTree = "<group>"; };
+		33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-15.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-15.wav"; sourceTree = "<group>"; };
+		33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-16.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-16.wav"; sourceTree = "<group>"; };
+		33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-17.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-17.wav"; sourceTree = "<group>"; };
+		33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-18.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-18.wav"; sourceTree = "<group>"; };
+		33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-19.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-19.wav"; sourceTree = "<group>"; };
+		33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-20.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-20.wav"; sourceTree = "<group>"; };
+		33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-21.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-21.wav"; sourceTree = "<group>"; };
+		33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-22.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-22.wav"; sourceTree = "<group>"; };
+		33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-23.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-23.wav"; sourceTree = "<group>"; };
+		33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-24.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-24.wav"; sourceTree = "<group>"; };
+		33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-25.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-25.wav"; sourceTree = "<group>"; };
+		33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-26.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-26.wav"; sourceTree = "<group>"; };
+		33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-27.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-27.wav"; sourceTree = "<group>"; };
+		33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-28.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-28.wav"; sourceTree = "<group>"; };
+		33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail.wav"; sourceTree = "<group>"; };
 		33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
 		33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
 		33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
@@ -85,6 +147,7 @@
 		33120E111E6FD30A007E7717 = {
 			isa = PBXGroup;
 			children = (
+				33DAAAC21E72BEAE00987E86 /* SailSample */,
 				33120E1C1E6FD30A007E7717 /* MIDIchlorians */,
 				33120E311E6FD30A007E7717 /* MIDIchloriansUITests */,
 				33120E1B1E6FD30A007E7717 /* Products */,
@@ -119,6 +182,8 @@
 				334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */,
 				334970C01E72583F009C78DF /* Config.swift */,
 				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
+				334970C61E72B83D009C78DF /* AudioManager.swift */,
+				334970C81E72B86B009C78DF /* LowLatencyAudio.swift */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -130,6 +195,42 @@
 				33120E341E6FD30A007E7717 /* Info.plist */,
 			);
 			path = MIDIchloriansUITests;
+			sourceTree = "<group>";
+		};
+		33DAAAC21E72BEAE00987E86 /* SailSample */ = {
+			isa = PBXGroup;
+			children = (
+				33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */,
+				33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */,
+				33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */,
+				33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */,
+				33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */,
+				33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */,
+				33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */,
+				33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */,
+				33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */,
+				33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */,
+				33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */,
+				33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */,
+				33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */,
+				33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */,
+				33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */,
+				33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */,
+				33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */,
+				33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */,
+				33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */,
+				33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */,
+				33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */,
+				33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */,
+				33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */,
+				33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */,
+				33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */,
+				33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */,
+				33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */,
+				33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */,
+				33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */,
+			);
+			name = SailSample;
 			sourceTree = "<group>";
 		};
 		60B66068E7BF0F51F317B789 /* Frameworks */ = {
@@ -244,9 +345,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33DAAAA81E72BEA300987E86 /* AWOLNATION - Sail-4.wav in Resources */,
+				33DAAAB31E72BEA300987E86 /* AWOLNATION - Sail-15.wav in Resources */,
 				33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */,
+				33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */,
 				33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */,
+				33DAAAAD1E72BEA300987E86 /* AWOLNATION - Sail-9.wav in Resources */,
+				33DAAAAA1E72BEA300987E86 /* AWOLNATION - Sail-6.wav in Resources */,
 				33120E231E6FD30A007E7717 /* Main.storyboard in Resources */,
+				33DAAAB71E72BEA300987E86 /* AWOLNATION - Sail-19.wav in Resources */,
+				33DAAAB51E72BEA300987E86 /* AWOLNATION - Sail-17.wav in Resources */,
+				33DAAAA71E72BEA300987E86 /* AWOLNATION - Sail-3.wav in Resources */,
+				33DAAABC1E72BEA300987E86 /* AWOLNATION - Sail-24.wav in Resources */,
+				33DAAAB41E72BEA300987E86 /* AWOLNATION - Sail-16.wav in Resources */,
+				33DAAAB11E72BEA300987E86 /* AWOLNATION - Sail-13.wav in Resources */,
+				33DAAAB01E72BEA300987E86 /* AWOLNATION - Sail-12.wav in Resources */,
+				33DAAAB81E72BEA300987E86 /* AWOLNATION - Sail-20.wav in Resources */,
+				33DAAAC01E72BEA300987E86 /* AWOLNATION - Sail-28.wav in Resources */,
+				33DAAABE1E72BEA300987E86 /* AWOLNATION - Sail-26.wav in Resources */,
+				33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */,
+				33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */,
+				33DAAAAF1E72BEA300987E86 /* AWOLNATION - Sail-11.wav in Resources */,
+				33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */,
+				33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */,
+				33DAAAB61E72BEA300987E86 /* AWOLNATION - Sail-18.wav in Resources */,
+				33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */,
+				33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */,
+				33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */,
+				33DAAAB21E72BEA300987E86 /* AWOLNATION - Sail-14.wav in Resources */,
+				33DAAAAE1E72BEA300987E86 /* AWOLNATION - Sail-10.wav in Resources */,
+				33DAAAB91E72BEA300987E86 /* AWOLNATION - Sail-21.wav in Resources */,
+				33DAAABB1E72BEA300987E86 /* AWOLNATION - Sail-23.wav in Resources */,
+				33DAAAAB1E72BEA300987E86 /* AWOLNATION - Sail-7.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +505,8 @@
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
 				334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
+				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
+				334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
