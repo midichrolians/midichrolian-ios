@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,10 +22,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ej9-fu-KWc" customClass="UICollectionViewExtension" customModule="LaunchpadPrototype" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="790" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ej9-fu-KWc" customClass="UICollectionViewExtension" customModule="LaunchpadPrototype" customModuleProvider="target">
+                                <rect key="frame" x="20" y="91" width="840" height="657"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="840" id="9Rj-oY-Ok8"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P2R-Gj-Nps">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -48,6 +51,11 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ej9-fu-KWc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="29T-Am-nSU"/>
+                            <constraint firstAttribute="bottom" secondItem="ej9-fu-KWc" secondAttribute="bottom" constant="20" symbolic="YES" id="GtY-M3-utR"/>
+                            <constraint firstItem="ej9-fu-KWc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="71" id="jOx-tZ-qR3"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonCollectionView" destination="ej9-fu-KWc" id="p4H-eW-71I"/>
@@ -55,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33.3984375" y="64.0625"/>
+            <point key="canvasLocation" x="32.8125" y="63.28125"/>
         </scene>
     </scenes>
 </document>
