@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Controller for the side panel when in editing mode.
 class SidePaneTabBarController: UITabBarController {
 
     override func viewDidLoad() {

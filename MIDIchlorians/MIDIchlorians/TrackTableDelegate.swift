@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
+// Adopt this protocol to react to selection of a track in TrackTableViewController.
 protocol TrackTableDelegate: class {
-    func track(selected track: String)
+    func trackTable(_: UITableView, didSelect track: String)
 }

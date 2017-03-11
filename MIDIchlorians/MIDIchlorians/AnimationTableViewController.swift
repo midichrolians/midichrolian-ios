@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Controller to manage the list of animations in editing mode.
 class AnimationTableViewController: UITableViewController {
     let data = ["Spread", "Row", "Column"]
 

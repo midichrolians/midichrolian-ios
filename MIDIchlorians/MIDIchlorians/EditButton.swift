@@ -9,11 +9,13 @@
 import UIKit
 import Foundation
 
+// Adopt this protocol to react when entering or exiting edit mode.
 protocol EditButtonDelegate: class {
     func editStart()
     func editEnd()
 }
 
+// Button used to enter/exit editing mode.
 class EditButton: NSObject {
     private weak var superview: UIView?
     private var view: UIButton

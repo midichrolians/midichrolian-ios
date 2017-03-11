@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Controller to manage the list of tracks in editing mode.
 class TrackTableViewController: UITableViewController {
     weak var delegate: TrackTableDelegate?
 
@@ -59,7 +60,7 @@ class TrackTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.track(selected: sound(for: indexPath))
+        delegate?.trackTable(tableView, didSelect: sound(for: indexPath))
     }
 
     private func sound(for indexPath: IndexPath) -> String {

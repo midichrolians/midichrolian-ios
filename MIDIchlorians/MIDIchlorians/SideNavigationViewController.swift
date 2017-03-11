@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Parent class for all navigation view controllers to be added to the side pane.
+// This sets common styles for these view controllers, such as the background colour and tint.
 class SideNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
