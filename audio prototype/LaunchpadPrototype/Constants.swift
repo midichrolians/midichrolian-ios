@@ -21,4 +21,6 @@ let sound = [["../SailSample/AWOLNATION - Sail", "../SailSample/AWOLNATION - Sai
 
 enum Constants {
     static let BackgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
+    static let PadAreaResizeFactorWhenEditStart: CGFloat = 0.8
+    static let PadAreaResizeFactorWhenEditEnd: CGFloat  = 1 / PadAreaResizeFactorWhenEditStart
 }

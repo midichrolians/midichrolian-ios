@@ -20,6 +20,8 @@
 		80CDD1FE1E65AE5900FD2443 /* LaunchpadPrototypeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDD1FD1E65AE5900FD2443 /* LaunchpadPrototypeUITests.swift */; };
 		80CDD2091E65C5A400FD2443 /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 80CDD2081E65C5A400FD2443 /* Samples */; };
 		80CDD20B1E65C64E00FD2443 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDD20A1E65C64E00FD2443 /* AudioPlayer.swift */; };
+		E93A02AE1E727F6D00DFB2B7 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02AD1E727F6D00DFB2B7 /* CGSize+Extensions.swift */; };
+		E93A02B01E7283C300DFB2B7 /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02AF1E7283C300DFB2B7 /* EditButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		80CDD1FF1E65AE5900FD2443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80CDD2081E65C5A400FD2443 /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Samples; sourceTree = "<group>"; };
 		80CDD20A1E65C64E00FD2443 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		E93A02AD1E727F6D00DFB2B7 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
+		E93A02AF1E7283C300DFB2B7 /* EditButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 			children = (
 				80CDD1E81E65AE5900FD2443 /* AppDelegate.swift */,
 				80CDD1EA1E65AE5900FD2443 /* ViewController.swift */,
+				E93A02AD1E727F6D00DFB2B7 /* CGSize+Extensions.swift */,
+				E93A02AF1E7283C300DFB2B7 /* EditButton.swift */,
 				80CDD1EC1E65AE5900FD2443 /* Main.storyboard */,
 				80CDD1EF1E65AE5900FD2443 /* Assets.xcassets */,
 				80CDD1F11E65AE5900FD2443 /* LaunchScreen.storyboard */,
@@ -225,7 +231,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				80CDD1EB1E65AE5900FD2443 /* ViewController.swift in Sources */,
+				E93A02B01E7283C300DFB2B7 /* EditButton.swift in Sources */,
 				8003A57E1E6AA58F0004B009 /* ElegantPairer.swift in Sources */,
+				E93A02AE1E727F6D00DFB2B7 /* CGSize+Extensions.swift in Sources */,
 				80CDD1E91E65AE5900FD2443 /* AppDelegate.swift in Sources */,
 				8003A53D1E69AA930004B009 /* UICollectionView.swift in Sources */,
 				8003A5801E6ABDA50004B009 /* Constants.swift in Sources */,
