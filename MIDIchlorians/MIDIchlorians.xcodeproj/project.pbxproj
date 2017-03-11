@@ -54,6 +54,9 @@
 		33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A431E6FE67700229A92 /* AnimationSequence.swift */; };
 		41DEAA7D8E2BF9986D0B17D2 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5213C39D1628CE8E243E676 /* Pods_MIDIchloriansUITests.framework */; };
 		5646D78FCC57EE5310CA8E95 /* Pods_MIDIchlorians.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72C314505CE9E7C16C537B1 /* Pods_MIDIchlorians.framework */; };
+		E93A02B21E738C0400DFB2B7 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */; };
+		E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* EditButton.swift */; };
+		E93A02B81E73917800DFB2B7 /* EditPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B71E73917800DFB2B7 /* EditPaneController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		B72C314505CE9E7C16C537B1 /* Pods_MIDIchlorians.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchlorians.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC317A782F4A1692210C32F /* Pods-MIDIchloriansUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E5213C39D1628CE8E243E676 /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
+		E93A02B51E7390DD00DFB2B7 /* EditButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		E93A02B71E73917800DFB2B7 /* EditPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPaneController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +176,8 @@
 			children = (
 				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
 				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
+				E93A02B71E73917800DFB2B7 /* EditPaneController.swift */,
+				E93A02B51E7390DD00DFB2B7 /* EditButton.swift */,
 				33120E211E6FD30A007E7717 /* Main.storyboard */,
 				33120E241E6FD30A007E7717 /* Assets.xcassets */,
 				33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */,
@@ -179,6 +187,7 @@
 				33DAAAC31E72C38100987E86 /* Animation */,
 				334970C01E72583F009C78DF /* Config.swift */,
 				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
+				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
 				334970C61E72B83D009C78DF /* AudioManager.swift */,
 				334970C81E72B86B009C78DF /* LowLatencyAudio.swift */,
 			);
@@ -510,12 +519,15 @@
 			files = (
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
+				E93A02B81E73917800DFB2B7 /* EditPaneController.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
 				334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
+				E93A02B21E738C0400DFB2B7 /* CGSize+Extensions.swift in Sources */,
 				334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
+				E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,

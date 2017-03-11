@@ -10,14 +10,6 @@ import UIKit
 
 class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
     private let reuseIdentifier = "cell"
     private let audioManager = AudioManager()
 
@@ -45,21 +37,30 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let totalLength = self.frame.width
         let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section))
-        let cellSize = collectionView.frame.size.width/itemsPerRow - 8.0
-        return CGSize(width: cellSize, height: cellSize)
+        let insetLength = Config.ItemInsets.left * (itemsPerRow + 1)
+        let availableLength = totalLength - insetLength
+        let itemLength = availableLength / itemsPerRow
+        return CGSize(width: itemLength, height: itemLength)
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8.0
+        return Config.ItemInsets.left
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Config.ItemInsets.top
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8.0, left: 0.0, bottom: 0.0, right: 0.0)
+        return Config.SectionInsets
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

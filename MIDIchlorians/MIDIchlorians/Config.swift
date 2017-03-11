@@ -6,7 +6,9 @@
 //  Copyright © 2017 nus.cs3217.a0118897. All rights reserved.
 //
 
+import CoreGraphics
 import Foundation
+import UIKit
 
 struct Config {
     static let numberOfRows = 6
@@ -35,4 +37,11 @@ struct Config {
             "AWOLNATION - Sail-28", "AWOLNATION - Sail"
         ]
     ]
+
+    static let BackgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
+    static let PadAreaResizeFactorWhenEditStart: CGFloat = 0.8
+    static let PadAreaResizeFactorWhenEditEnd: CGFloat  = 1 / PadAreaResizeFactorWhenEditStart
+
+    static let SectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+    static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 }
