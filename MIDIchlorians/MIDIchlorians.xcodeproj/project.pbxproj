@@ -56,7 +56,13 @@
 		5646D78FCC57EE5310CA8E95 /* Pods_MIDIchlorians.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72C314505CE9E7C16C537B1 /* Pods_MIDIchlorians.framework */; };
 		E93A02B21E738C0400DFB2B7 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */; };
 		E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* EditButton.swift */; };
-		E93A02B81E73917800DFB2B7 /* EditPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B71E73917800DFB2B7 /* EditPaneController.swift */; };
+		E93A02BC1E73B9CE00DFB2B7 /* TrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BB1E73B9CE00DFB2B7 /* TrackTableViewController.swift */; };
+		E93A02C01E73BBA000DFB2B7 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BF1E73BBA000DFB2B7 /* TrackTableViewCell.swift */; };
+		E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */; };
+		E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C31E73F5E700DFB2B7 /* AnimationTableViewController.swift */; };
+		E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C51E73F5FA00DFB2B7 /* AnimationTableViewCell.swift */; };
+		E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */; };
+		E93A02CA1E74017000DFB2B7 /* TrackTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* TrackTableDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,7 +133,13 @@
 		E5213C39D1628CE8E243E676 /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
 		E93A02B51E7390DD00DFB2B7 /* EditButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
-		E93A02B71E73917800DFB2B7 /* EditPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPaneController.swift; sourceTree = "<group>"; };
+		E93A02BB1E73B9CE00DFB2B7 /* TrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewController.swift; sourceTree = "<group>"; };
+		E93A02BF1E73BBA000DFB2B7 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneTabBarController.swift; sourceTree = "<group>"; };
+		E93A02C31E73F5E700DFB2B7 /* AnimationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableViewController.swift; sourceTree = "<group>"; };
+		E93A02C51E73F5FA00DFB2B7 /* AnimationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableViewCell.swift; sourceTree = "<group>"; };
+		E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
+		E93A02C91E74017000DFB2B7 /* TrackTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +188,13 @@
 			children = (
 				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
 				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
-				E93A02B71E73917800DFB2B7 /* EditPaneController.swift */,
+				E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */,
+				E93A02BB1E73B9CE00DFB2B7 /* TrackTableViewController.swift */,
+				E93A02BF1E73BBA000DFB2B7 /* TrackTableViewCell.swift */,
+				E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */,
+				E93A02C31E73F5E700DFB2B7 /* AnimationTableViewController.swift */,
+				E93A02C91E74017000DFB2B7 /* TrackTableDelegate.swift */,
+				E93A02C51E73F5FA00DFB2B7 /* AnimationTableViewCell.swift */,
 				E93A02B51E7390DD00DFB2B7 /* EditButton.swift */,
 				33120E211E6FD30A007E7717 /* Main.storyboard */,
 				33120E241E6FD30A007E7717 /* Assets.xcassets */,
@@ -518,18 +536,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
+				E93A02CA1E74017000DFB2B7 /* TrackTableDelegate.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
-				E93A02B81E73917800DFB2B7 /* EditPaneController.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
+				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
 				334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */,
+				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
+				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
+				E93A02BC1E73B9CE00DFB2B7 /* TrackTableViewController.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
 				E93A02B21E738C0400DFB2B7 /* CGSize+Extensions.swift in Sources */,
 				334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
+				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
 				E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
+				E93A02C01E73BBA000DFB2B7 /* TrackTableViewCell.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
 				33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */,
 			);

@@ -11,12 +11,14 @@ import UIKit
 extension ViewController: EditButtonDelegate {
     func editStart() {
         resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
-        self.editPaneController?.view.isHidden = false
+        sidePaneViewController.view.frame = CGRect(
+            x: 774, y: self.gridCollection.frame.minY, width: 250, height: self.gridCollection.frame.height)
+        self.view.addSubview(sidePaneViewController.view)
     }
 
     func editEnd() {
-        self.editPaneController?.view.isHidden = true
         resizePads(by: Config.PadAreaResizeFactorWhenEditEnd)
+        sidePaneViewController.view.removeFromSuperview()
     }
 
     private func resizePads(by factor: CGFloat) {
@@ -33,11 +35,41 @@ extension ViewController: EditButtonDelegate {
 class ViewController: UIViewController {
     @IBOutlet var gridCollection: GridCollectionView!
     var editButtonController: EditButton!
-    var editPaneController: EditPane!
+    var trackTableViewController: TrackTableViewController!
+    // for testing purposes
+    var animationTableViewController: AnimationTableViewController!
+    var trackNavigationController: UINavigationController!
+    var animationNavigationController: UINavigationController!
+
+    var sidePaneViewController: SidePaneTabBarController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fixGridDimensions()
+
+        editButtonController = EditButton(superview: self.view, delegate: self)
+
+        gridCollection.dataSource = gridCollection
+        gridCollection.delegate = gridCollection
+        AnimationEngine.set(animationCollectionView: gridCollection)
+        AnimationEngine.start()
+        gridCollection.startListenAudio()
+
+        trackTableViewController = TrackTableViewController(style: .plain)
+        trackNavigationController = SideNavigationViewController(rootViewController: trackTableViewController)
+        animationTableViewController = AnimationTableViewController(style: .plain)
+        animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
+        sidePaneViewController = SidePaneTabBarController()
+        sidePaneViewController.viewControllers = [trackNavigationController, animationNavigationController]
+        sidePaneViewController.selectedViewController = trackNavigationController
+
+        // proxy to make all table views have the same background color
+        UITableView.appearance().backgroundColor = Config.BackgroundColor
+        UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
+    }
+
+    func fixGridDimensions() {
         // fix the width of the button collection view
         let totalWidth = self.view.frame.width - 20 - 20 // padding left and right
         // left with 9 columns of buttons with 8 insets in between
@@ -48,14 +80,5 @@ class ViewController: UIViewController {
         gridCollection.frame = CGRect(
             origin: gridCollection.frame.origin,
             size: CGSize(width: padWidth, height: padHeight))
-
-        editButtonController = EditButton(superview: self.view, delegate: self)
-        editPaneController = EditPane(superview: self.view)
-
-        gridCollection.dataSource = gridCollection
-        gridCollection.delegate = gridCollection
-        AnimationEngine.set(animationCollectionView: gridCollection)
-        AnimationEngine.start()
-        gridCollection.startListenAudio()
     }
 }
