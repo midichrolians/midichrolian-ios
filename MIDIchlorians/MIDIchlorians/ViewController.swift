@@ -61,6 +61,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Config.BackgroundColor
 
         fixGridDimensions()
 
@@ -71,6 +72,7 @@ class ViewController: UIViewController {
         AnimationEngine.set(animationCollectionView: gridCollection)
         AnimationEngine.start()
         gridCollection.startListenAudio()
+        gridCollection.backgroundColor = Config.BackgroundColor
 
         setUpSidePane()
 
