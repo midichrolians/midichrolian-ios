@@ -1,24 +1,24 @@
 //
-//  TrackTableViewController.swift
+//  SessionTableViewController.swift
 //  MIDIchlorians
 //
-//  Created by Zhi An Ng on 11/3/17.
+//  Created by Zhi An Ng on 12/3/17.
 //  Copyright © 2017 nus.cs3217.a0118897. All rights reserved.
 //
 
 import UIKit
 
-// Controller to manage the list of tracks in editing mode.
-class TrackTableViewController: UITableViewController {
-    weak var delegate: TrackTableDelegate?
+class SessionTableViewController: UITableViewController {
+    weak var delegate: SessionTableDelegate?
 
-    private let reuseIdentifier = Config.TrackTableReuseIdentifier
+    private let data = ["Session 1", "Session 2"]
+    private let reuseIdentifier = Config.SessionTableReuseIdentifier
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
 
-        self.title = "Tracks"
-        self.tabBarItem = UITabBarItem(title: "Tracks",
+        self.title = "Sessions"
+        self.tabBarItem = UITabBarItem(title: "Sessions",
                                        image: UIImage(named: Config.SidePaneTabBarTrackIcon),
                                        selectedImage: UIImage(named: Config.SidePaneTabBarTrackIcon))
     }
@@ -30,11 +30,14 @@ class TrackTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorStyle = .none
 
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,36 +52,24 @@ class TrackTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return Config.sound.reduce(0, { (r, s) in r + s.count })
+        return data.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: reuseIdentifier,
-            for: indexPath) as? TrackTableViewCell else {
-                return TrackTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+            as? SessionTableViewCell else {
+                return SessionTableViewCell()
         }
 
-        cell.set(track: sound(for: indexPath))
+        cell.textLabel?.text = data[indexPath.row]
 
         return cell
     }
 
-    // MARK: - Table view delegate
-
     override func tableView(_ tableView: UITableView,
                             willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
-        cell.textLabel?.textColor = Config.TrackTableViewCellColor
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.trackTable(tableView, didSelect: sound(for: indexPath))
-    }
-
-    private func sound(for indexPath: IndexPath) -> String {
-        return Config.sound[indexPath.row / Config.sound[0].count][indexPath.row % Config.sound[0].count]
+        cell.textLabel?.textColor = Config.SessionTableViewCellColor
     }
 
 }

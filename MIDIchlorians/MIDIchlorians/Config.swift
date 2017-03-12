@@ -40,12 +40,21 @@ struct Config {
 
     static let FontPrimaryColor = UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1)
     static let BackgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
+
     static let TrackTableViewCellColor = UIColor(red: 110/255, green: 110/255, blue: 116/255, alpha: 1)
     static let AnimationTableViewCellColor = UIColor(red: 110/255, green: 110/255, blue: 116/255, alpha: 1)
+    static let SessionTableViewCellColor = UIColor(red: 110/255, green: 110/255, blue: 116/255, alpha: 1)
 
     static let PadAreaResizeFactorWhenEditStart: CGFloat = 0.8
     static let PadAreaResizeFactorWhenEditEnd: CGFloat  = 1 / PadAreaResizeFactorWhenEditStart
 
     static let SectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+    static let SidePaneTabBarTrackIcon = "sound.png"
+    static let SidePaneTabBarAnimationIcon = "params.png"
+
+    static let TrackTableReuseIdentifier = "trackCell"
+    static let AnimationTableReuseIdentifier = "animationCell"
+    static let SessionTableReuseIdentifier = "sessionCell"
 }

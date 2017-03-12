@@ -35,11 +35,15 @@ extension ViewController: EditButtonDelegate {
 class ViewController: UIViewController {
     @IBOutlet var gridCollection: GridCollectionView!
     var editButtonController: EditButton!
+
     var trackTableViewController: TrackTableViewController!
-    // for testing purposes
-    var animationTableViewController: AnimationTableViewController!
     var trackNavigationController: UINavigationController!
+
+    var animationTableViewController: AnimationTableViewController!
     var animationNavigationController: UINavigationController!
+
+    var sessionTableViewController: SessionTableViewController!
+    var sessionNavigationController: UINavigationController!
 
     var sidePaneViewController: SidePaneTabBarController!
 
@@ -56,17 +60,36 @@ class ViewController: UIViewController {
         AnimationEngine.start()
         gridCollection.startListenAudio()
 
-        trackTableViewController = TrackTableViewController(style: .plain)
-        trackNavigationController = SideNavigationViewController(rootViewController: trackTableViewController)
-        animationTableViewController = AnimationTableViewController(style: .plain)
-        animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
-        sidePaneViewController = SidePaneTabBarController()
-        sidePaneViewController.viewControllers = [trackNavigationController, animationNavigationController]
-        sidePaneViewController.selectedViewController = trackNavigationController
+        setUpSidePane()
 
         // proxy to make all table views have the same background color
         UITableView.appearance().backgroundColor = Config.BackgroundColor
         UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
+    }
+
+    // Sets up the side pane that comes into view when user enters editing mode.
+    // The side pane is made up of
+    // - a TabBarController which manages a list of
+    //   - UINavigationControllers, each of which
+    //     - wraps a TableViewController
+    // these system view controllers are all subclassed to provide default styles
+    func setUpSidePane() {
+        trackTableViewController = TrackTableViewController(style: .plain)
+        trackNavigationController = SideNavigationViewController(rootViewController: trackTableViewController)
+
+        animationTableViewController = AnimationTableViewController(style: .plain)
+        animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
+
+        sessionTableViewController = SessionTableViewController(style: .plain)
+        sessionNavigationController = SideNavigationViewController(rootViewController: sessionTableViewController)
+
+        sidePaneViewController = SidePaneTabBarController()
+        sidePaneViewController.viewControllers = [
+            trackNavigationController,
+            animationNavigationController,
+            sessionNavigationController
+        ]
+        sidePaneViewController.selectedIndex = 0
     }
 
     func fixGridDimensions() {

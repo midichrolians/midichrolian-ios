@@ -10,15 +10,29 @@ import UIKit
 
 // Controller to manage the list of animations in editing mode.
 class AnimationTableViewController: UITableViewController {
-    let data = ["Spread", "Row", "Column"]
+    weak var delegate: AnimationTableDelegate?
+
+    private let data = ["Spread", "Row", "Column"]
+    private let reuseIdentifier = Config.AnimationTableReuseIdentifier
+
+    override init(style: UITableViewStyle) {
+        super.init(style: style)
+        self.title = "Animations"
+        self.tabBarItem = UITabBarItem(title: "Animations",
+                                       image: UIImage(named: Config.SidePaneTabBarAnimationIcon),
+                                       selectedImage: UIImage(named: Config.SidePaneTabBarAnimationIcon))
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Animations"
         self.tableView.separatorStyle = .none
 
-        self.tableView.register(AnimationTableViewCell.self, forCellReuseIdentifier: "animationCell")
+        self.tableView.register(AnimationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +51,7 @@ class AnimationTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "animationCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
             as? AnimationTableViewCell else {
                 return AnimationTableViewCell()
         }
