@@ -31,7 +31,7 @@ class TrackTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.separatorStyle = .none
+        self.tableView.separatorColor = Config.TableViewSeparatorColor
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem

@@ -9,9 +9,17 @@
 import UIKit
 
 class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var mode: Mode = .Playing {
+        didSet {
+            if mode == .Playing, let selectedPad = selectedPad {
+                unselectCell(at: selectedPad)
+            }
+        }
+    }
 
     private let reuseIdentifier = "cell"
     private let audioManager = AudioManager()
+    private var selectedPad: IndexPath?
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Config.numberOfColumns
@@ -73,10 +81,41 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
 
+    func selectCell(at indexPath: IndexPath) {
+        self.selectedPad = indexPath
+        let cell = self.cellForItem(at: indexPath)
+        cell?.layer.borderColor = UIColor.red.cgColor
+        cell?.layer.borderWidth = 3.0
+    }
+
+    func unselectCell(at indexPath: IndexPath) {
+        let cell = self.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+    }
+
     func gridTapped(location: CGPoint) {
         guard let indexPath = self.indexPathForItem(at: location) else {
             return
         }
+
+        // if in editing mode, highlight the tapped grid
+        switch mode {
+        case .Editing:
+            // this is the second tap on a grid, first tap to select, second tap will play
+            if self.selectedPad == indexPath {
+                // play music
+            } else {
+                if let selectedPad = selectedPad {
+                    self.unselectCell(at: selectedPad)
+                }
+                self.selectCell(at: indexPath)
+                return
+            }
+        case .Playing:
+            break
+        }
+
+        // hardcoded animations for demo
         if (indexPath.section == 0 || indexPath.section == Config.numberOfRows - 1) &&
             (indexPath.item == 0 || indexPath.item == Config.numberOfColumns - 1) {
             let animationSequence = PredefinedAnimationSchemes.spreadFromCenter()
@@ -90,6 +129,8 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
         }
         let animationSequence = PredefinedAnimationSchemes.rainbow(indexPath: indexPath)
         AnimationEngine.register(animationSequence: animationSequence)
+        // end
+
         _ = audioManager.play(indexPath: indexPath)
     }
 

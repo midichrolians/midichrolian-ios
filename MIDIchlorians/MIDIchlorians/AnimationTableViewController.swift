@@ -30,7 +30,7 @@ class AnimationTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.separatorStyle = .none
+        self.tableView.separatorColor = Config.TableViewSeparatorColor
 
         self.tableView.register(AnimationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }

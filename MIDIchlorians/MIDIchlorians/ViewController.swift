@@ -10,15 +10,22 @@ import UIKit
 
 extension ViewController: EditButtonDelegate {
     func editStart() {
+        let fullHeight = self.gridCollection.frame.height
+
         resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
+
+        let minX = self.gridCollection.frame.maxX + Config.ItemInsets.right
+        let width = self.view.frame.width - self.gridCollection.frame.width - 20
         sidePaneViewController.view.frame = CGRect(
-            x: 774, y: self.gridCollection.frame.minY, width: 250, height: self.gridCollection.frame.height)
+            x: minX, y: self.gridCollection.frame.minY, width: width, height: fullHeight)
         self.view.addSubview(sidePaneViewController.view)
+        self.mode = .Editing
     }
 
     func editEnd() {
         resizePads(by: Config.PadAreaResizeFactorWhenEditEnd)
         sidePaneViewController.view.removeFromSuperview()
+        self.mode = .Playing
     }
 
     private func resizePads(by factor: CGFloat) {
@@ -34,6 +41,11 @@ extension ViewController: EditButtonDelegate {
 
 class ViewController: UIViewController {
     @IBOutlet var gridCollection: GridCollectionView!
+    var mode: Mode = .Playing {
+        didSet {
+            self.gridCollection.mode = mode
+        }
+    }
     var editButtonController: EditButton!
 
     var trackTableViewController: TrackTableViewController!
