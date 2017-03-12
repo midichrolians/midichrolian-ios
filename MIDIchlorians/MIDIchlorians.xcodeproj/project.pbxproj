@@ -60,13 +60,13 @@
 		E92F6C321E751EAE00F5A092 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C311E751EAE00F5A092 /* Mode.swift */; };
 		E93A02B21E738C0400DFB2B7 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */; };
 		E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* EditButton.swift */; };
-		E93A02BC1E73B9CE00DFB2B7 /* TrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BB1E73B9CE00DFB2B7 /* TrackTableViewController.swift */; };
-		E93A02C01E73BBA000DFB2B7 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BF1E73BBA000DFB2B7 /* TrackTableViewCell.swift */; };
+		E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BB1E73B9CE00DFB2B7 /* SampleTableViewController.swift */; };
+		E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BF1E73BBA000DFB2B7 /* SampleTableViewCell.swift */; };
 		E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */; };
 		E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C31E73F5E700DFB2B7 /* AnimationTableViewController.swift */; };
 		E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C51E73F5FA00DFB2B7 /* AnimationTableViewCell.swift */; };
 		E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */; };
-		E93A02CA1E74017000DFB2B7 /* TrackTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* TrackTableDelegate.swift */; };
+		E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */; };
 		E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -142,13 +142,13 @@
 		E92F6C311E751EAE00F5A092 /* Mode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
 		E93A02B51E7390DD00DFB2B7 /* EditButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
-		E93A02BB1E73B9CE00DFB2B7 /* TrackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewController.swift; sourceTree = "<group>"; };
-		E93A02BF1E73BBA000DFB2B7 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		E93A02BB1E73B9CE00DFB2B7 /* SampleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableViewController.swift; sourceTree = "<group>"; };
+		E93A02BF1E73BBA000DFB2B7 /* SampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableViewCell.swift; sourceTree = "<group>"; };
 		E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneTabBarController.swift; sourceTree = "<group>"; };
 		E93A02C31E73F5E700DFB2B7 /* AnimationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableViewController.swift; sourceTree = "<group>"; };
 		E93A02C51E73F5FA00DFB2B7 /* AnimationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableViewCell.swift; sourceTree = "<group>"; };
 		E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
-		E93A02C91E74017000DFB2B7 /* TrackTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableDelegate.swift; sourceTree = "<group>"; };
+		E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableDelegate.swift; sourceTree = "<group>"; };
 		E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,14 +303,14 @@
 			name = Session;
 			sourceTree = "<group>";
 		};
-		E92F6C341E7522FD00F5A092 /* Track */ = {
+		E92F6C341E7522FD00F5A092 /* Sample */ = {
 			isa = PBXGroup;
 			children = (
-				E93A02BB1E73B9CE00DFB2B7 /* TrackTableViewController.swift */,
-				E93A02BF1E73BBA000DFB2B7 /* TrackTableViewCell.swift */,
-				E93A02C91E74017000DFB2B7 /* TrackTableDelegate.swift */,
+				E93A02BB1E73B9CE00DFB2B7 /* SampleTableViewController.swift */,
+				E93A02BF1E73BBA000DFB2B7 /* SampleTableViewCell.swift */,
+				E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */,
 			);
-			name = Track;
+			name = Sample;
 			sourceTree = "<group>";
 		};
 		E92F6C351E75230400F5A092 /* Animation */ = {
@@ -329,7 +329,7 @@
 				E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */,
 				E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */,
 				E92F6C331E7522F700F5A092 /* Session */,
-				E92F6C341E7522FD00F5A092 /* Track */,
+				E92F6C341E7522FD00F5A092 /* Sample */,
 				E92F6C351E75230400F5A092 /* Animation */,
 			);
 			name = "Side Pane";
@@ -583,7 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
-				E93A02CA1E74017000DFB2B7 /* TrackTableDelegate.swift in Sources */,
+				E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
 				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
@@ -591,7 +591,7 @@
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
 				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
 				E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */,
-				E93A02BC1E73B9CE00DFB2B7 /* TrackTableViewController.swift in Sources */,
+				E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
 				E92F6C2E1E74FA3400F5A092 /* SessionTableViewCell.swift in Sources */,
@@ -605,7 +605,7 @@
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
 				E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */,
-				E93A02C01E73BBA000DFB2B7 /* TrackTableViewCell.swift in Sources */,
+				E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
 				33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */,
 			);

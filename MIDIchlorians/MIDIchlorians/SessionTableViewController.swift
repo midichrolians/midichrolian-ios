@@ -19,8 +19,8 @@ class SessionTableViewController: UITableViewController {
 
         self.title = "Sessions"
         self.tabBarItem = UITabBarItem(title: "Sessions",
-                                       image: UIImage(named: Config.SidePaneTabBarTrackIcon),
-                                       selectedImage: UIImage(named: Config.SidePaneTabBarTrackIcon))
+                                       image: UIImage(named: Config.SidePaneTabBarSampleIcon),
+                                       selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -1,5 +1,5 @@
 //
-//  TrackTableViewCell.swift
+//  SampleTableViewCell.swift
 //  MIDIchlorians
 //
 //  Created by Zhi An Ng on 11/3/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrackTableViewCell: UITableViewCell {
+class SampleTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,8 +21,8 @@ class TrackTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func set(track: String) {
-        self.textLabel?.text = track
+    func set(sample: String) {
+        self.textLabel?.text = sample
     }
 
 }

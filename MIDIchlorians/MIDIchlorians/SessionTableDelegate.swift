@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// Adopt this protocol to react to selection of a track in SessionTableViewController
+// Adopt this protocol to react to selection of a session in SessionTableViewController
 protocol SessionTableDelegate: class {
     func sessionTable(_: UITableView, didSelect session: String)
 }

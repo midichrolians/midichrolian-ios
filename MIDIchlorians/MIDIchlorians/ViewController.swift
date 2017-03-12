@@ -15,9 +15,9 @@ extension ViewController: EditButtonDelegate {
         resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
 
         let minX = self.gridCollection.frame.maxX + Config.ItemInsets.right
-        let width = self.view.frame.width - self.gridCollection.frame.width - 20
-        sidePaneViewController.view.frame = CGRect(
-            x: minX, y: self.gridCollection.frame.minY, width: width, height: fullHeight)
+        let minY = self.gridCollection.frame.minY - 20
+        let width = self.view.frame.width - self.gridCollection.frame.width - 20 - 20
+        sidePaneViewController.view.frame = CGRect(x: minX, y: minY, width: width, height: fullHeight)
         self.view.addSubview(sidePaneViewController.view)
         self.mode = .Editing
     }
@@ -48,8 +48,8 @@ class ViewController: UIViewController {
     }
     var editButtonController: EditButton!
 
-    var trackTableViewController: TrackTableViewController!
-    var trackNavigationController: UINavigationController!
+    var sampleTableViewController: SampleTableViewController!
+    var sampleNavigationController: UINavigationController!
 
     var animationTableViewController: AnimationTableViewController!
     var animationNavigationController: UINavigationController!
@@ -88,8 +88,8 @@ class ViewController: UIViewController {
     //     - wraps a TableViewController
     // these system view controllers are all subclassed to provide default styles
     func setUpSidePane() {
-        trackTableViewController = TrackTableViewController(style: .plain)
-        trackNavigationController = SideNavigationViewController(rootViewController: trackTableViewController)
+        sampleTableViewController = SampleTableViewController(style: .plain)
+        sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
 
         animationTableViewController = AnimationTableViewController(style: .plain)
         animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
 
         sidePaneViewController = SidePaneTabBarController()
         sidePaneViewController.viewControllers = [
-            trackNavigationController,
+            sampleNavigationController,
             animationNavigationController,
             sessionNavigationController
         ]

@@ -1,5 +1,5 @@
 //
-//  TrackTableViewController.swift
+//  SampleTableViewController.swift
 //  MIDIchlorians
 //
 //  Created by Zhi An Ng on 11/3/17.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-// Controller to manage the list of tracks in editing mode.
-class TrackTableViewController: UITableViewController {
-    weak var delegate: TrackTableDelegate?
+// Controller to manage the list of samples in editing mode.
+class SampleTableViewController: UITableViewController {
+    weak var delegate: SampleTableDelegate?
 
-    private let reuseIdentifier = Config.TrackTableReuseIdentifier
+    private let reuseIdentifier = Config.SampleTableReuseIdentifier
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
 
-        self.title = "Tracks"
-        self.tabBarItem = UITabBarItem(title: "Tracks",
-                                       image: UIImage(named: Config.SidePaneTabBarTrackIcon),
-                                       selectedImage: UIImage(named: Config.SidePaneTabBarTrackIcon))
+        self.title = "Samples"
+        self.tabBarItem = UITabBarItem(title: "Samples",
+                                       image: UIImage(named: Config.SidePaneTabBarSampleIcon),
+                                       selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -30,7 +30,7 @@ class TrackTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        self.tableView.register(SampleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -56,11 +56,11 @@ class TrackTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: reuseIdentifier,
-            for: indexPath) as? TrackTableViewCell else {
-                return TrackTableViewCell()
+            for: indexPath) as? SampleTableViewCell else {
+                return SampleTableViewCell()
         }
 
-        cell.set(track: sound(for: indexPath))
+        cell.set(sample: sound(for: indexPath))
 
         return cell
     }
@@ -70,11 +70,11 @@ class TrackTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
-        cell.textLabel?.textColor = Config.TrackTableViewCellColor
+        cell.textLabel?.textColor = Config.SampleTableViewCellColor
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.trackTable(tableView, didSelect: sound(for: indexPath))
+        delegate?.sampleTable(tableView, didSelect: sound(for: indexPath))
     }
 
     private func sound(for indexPath: IndexPath) -> String {
