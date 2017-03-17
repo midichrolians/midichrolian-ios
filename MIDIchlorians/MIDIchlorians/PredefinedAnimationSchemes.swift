@@ -42,10 +42,7 @@ class PredefinedAnimationSchemes {
                 )
             }
         }
-        print(animationSequence.getJSON() ?? "cannot")
-        let string = animationSequence.getJSON()!
-        let newAnimationSequence = AnimationSequence.getAnimationSequenceFromJSON(fromJSON: string)
-        return newAnimationSequence!
+        return animationSequence
     }
 
     static func rainbow(indexPath: IndexPath) -> AnimationSequence {
