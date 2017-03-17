@@ -62,7 +62,7 @@ class AnimationEngine: NSObject {
                 continue
             }
             previousAnimatedIndexPaths.append(indexPath)
-            cell.backgroundColor = animationBit.colour
+            cell.backgroundColor = animationBit.colour.uiColor
         }
     }
 }
