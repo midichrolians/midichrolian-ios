@@ -19,6 +19,7 @@ class Session: Object {
     dynamic private var numPages = 0
     dynamic private var numRows = 0
     dynamic private var numCols = 0
+    dynamic private var sessionName = ""
     private let padList = List<Pad>()
     
     private var pads = [[[Pad]]]()
@@ -88,12 +89,19 @@ class Session: Object {
             col < numCols && col >= 0
     }
     
+    func setBPM(bpm: Int) {
+        self.BPM = bpm
+    }
+    
     //Initalises the list, as that is what is saved. The pads matrix is not saved.
-    func prepareForSave() {
+    func prepareForSave(sessionName: String) {
+        self.sessionName = sessionName
         for page in 0..<numPages {
             for row in 0..<numRows {
                 for col in 0..<numCols {
-                    padList.append(pads[page][row][col])
+                    let pad = pads[page][row][col]
+                    pad.prepareForSave()
+                    padList.append(pad)
                 }
             }
         }
@@ -107,7 +115,9 @@ class Session: Object {
                 pads[page].append([])
                 for col in 0..<numCols {
                     let listIndex = (page * numRows * numCols) + (row * numCols) + col
-                    pads[page][row].append(padList[listIndex])
+                    let pad = padList[listIndex]
+                    pad.load()
+                    pads[page][row].append(pad)
                 }
             }
         }
