@@ -6,29 +6,16 @@
 //  Copyright © 2017 nus.cs3217.a0118897. All rights reserved.
 //
 
-
-//Model should have reference to this?
-import RealmSwift
-
-class Pad: Object {
-    //Realm needs dynamic var type to persist data
-    dynamic var row: Int = 0
-    dynamic var col: Int = 0
-    //Need to Store animation in some form
-    dynamic var audioFile: String?
+struct Pad {
     
-    convenience init(row: Int, col: Int) {
-        self.init()
-        self.row = row
-        self.col = col
-    }
+    private var audioFile: String?
     
-    //TODO: Replace audio with struct
-    func addAudio(audioFile: String) {
+    //TODO: Replace audioFile with struct
+    mutating func addAudio(audioFile: String) {
         self.audioFile = audioFile
     }
     
-    func addAnimation(animation: AnimationSequence) {
+    mutating func addAnimation(animation: AnimationSequence) {
         
     }
     
@@ -39,5 +26,20 @@ class Pad: Object {
     
     func getAnimation() -> AnimationSequence? {
         return nil
+    }
+    
+    mutating func clearAudio() {
+        self.audioFile = nil
+    }
+    
+    mutating func clearAnimation() {
+    }
+    
+    func savePad() {
+        
+    }
+    
+    func loadPad() {
+        
     }
 }
