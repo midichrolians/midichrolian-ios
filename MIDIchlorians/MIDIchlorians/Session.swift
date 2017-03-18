@@ -5,27 +5,24 @@
 //  Created by Advay Pal on 16/03/17.
 //  Copyright © 2017 nus.cs3217.a0118897. All rights reserved.
 //
+import RealmSwift
 
-struct Session {
+class Session: Object {
     
-    private let BPM: Int
-    private let numPages: Int
-    private let numRows: Int
-    private let numCols: Int
-    private var pads: [[[Pad]]]
+    dynamic private var BPM = 0 // Need to agree on a default value
+    dynamic private var numPages = Config.numberOfPages
+    dynamic private var numRows = Config.numberOfRows
+    dynamic private var numCols = Config.numberOfColumns
+    private let padList = List<Pad>()
     
-    //ONLY NEED TO SAVE PADS WITH AUDIO/ANIMATION
+    private var pads: [[[Pad]]] = []
     
-    init(bpm: Int, numPages: Int, numRows: Int, numCols: Int) {
-        self.BPM = bpm
-        self.numPages = numPages
-        self.numRows = numRows
-        self.numCols = numCols
-        self.pads = [[[Pad]]]()
-        initalisePadGrid()
+    //Tells Realm that thse properties should not be persisted
+    override static func ignoredProperties() -> [String] {
+        return ["pads"]
     }
     
-    private mutating func initalisePadGrid() {
+    private func initialisePadGrid() {
         for page in 0..<numPages {
             pads.append([])
             for row in 0..<numRows {
@@ -36,10 +33,10 @@ struct Session {
                 }
             }
         }
-        
     }
     
-    mutating func addAudio(page: Int, row: Int, col: Int, audioFile: String) {
+    //Should take audio struct
+    func addAudio(page: Int, row: Int, col: Int, audioFile: String) {
         guard isValidPosition(page, row, col) else {
             return
         }
@@ -47,24 +44,26 @@ struct Session {
         
     }
     
-    mutating func clearAudio(page: Int, row: Int, col: Int) {
+    func clearAudio(page: Int, row: Int, col: Int) {
         guard isValidPosition(page, row, col) else {
             return
         }
         pads[page][row][col].clearAudio()
     }
     
-    mutating func addAnimation(page: Int, row: Int, col: Int) {
+    func addAnimation(page: Int, row: Int, col: Int, animation: AnimationSequence) {
         guard isValidPosition(page, row, col) else {
             return
         }
+        pads[page][row][col].addAnimation(animation: animation)
         
     }
     
-    mutating func clearAnimation(page: Int, row: Int, col: Int) {
+    func clearAnimation(page: Int, row: Int, col: Int) {
         guard isValidPosition(page, row, col) else {
             return
         }
+        pads[page][row][col].clearAnimation()
         
     }
     
@@ -72,14 +71,6 @@ struct Session {
         return page < numPages && page >= 0 &&
             row < numRows && row >= 0 &&
             col < numCols && col >= 0
-    }
-    
-    func saveSession() {
-        
-    }
-    
-    func loadSession() {
-        
     }
     
 }
