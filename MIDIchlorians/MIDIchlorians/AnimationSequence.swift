@@ -46,7 +46,7 @@ class AnimationSequence {
         return array
     }
 
-    func getJSON() -> String? {
+    func getJSONforAnimationSequence() -> String? {
         var arrayOfStrings = [[String]?]()
 
         for animationBitArray in self.animationBitsArray {

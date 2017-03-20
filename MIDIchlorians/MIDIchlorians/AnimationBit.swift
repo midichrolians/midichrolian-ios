@@ -13,10 +13,6 @@ struct AnimationBit {
     var row: Int
     var column: Int
 
-    static private let colourKey = "colour"
-    static private let rowKey = "row"
-    static private let columnKey = "column"
-
     init(colour: Colour, row: Int, column: Int) {
         self.colour = colour
         self.row = row
@@ -25,9 +21,9 @@ struct AnimationBit {
 
     func getJSON() -> String? {
         var dictionary = [String: Any]()
-        dictionary[AnimationBit.colourKey] = colour.getJSON()
-        dictionary[AnimationBit.rowKey] = row
-        dictionary[AnimationBit.columnKey] = column
+        dictionary[Config.animationBitColourKey] = colour.getJSON()
+        dictionary[Config.animationBitRowKey] = row
+        dictionary[Config.animationBitColumnKey] = column
         guard let jsonData = try? JSONSerialization.data(
             withJSONObject: dictionary,
             options: JSONSerialization.WritingOptions.prettyPrinted
@@ -44,13 +40,13 @@ struct AnimationBit {
         guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
             return nil
         }
-        guard let colour = dictionary[colourKey] as? String else {
+        guard let colour = dictionary[Config.animationBitColourKey] as? String else {
             return nil
         }
-        guard let row = dictionary[rowKey] as? Int else {
+        guard let row = dictionary[Config.animationBitRowKey] as? Int else {
             return nil
         }
-        guard let column = dictionary[columnKey] as? Int else {
+        guard let column = dictionary[Config.animationBitColumnKey] as? Int else {
             return nil
         }
         let animationBit = AnimationBit(colour: Colour(colourName: colour), row: row, column: column)
