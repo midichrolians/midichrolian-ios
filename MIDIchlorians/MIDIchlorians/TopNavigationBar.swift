@@ -18,7 +18,7 @@ class TopNavigationBar: UINavigationBar {
     // always only have 1 UINavigationItem because we are not using this in a navigation controller
     private var baseNavigationItem = UINavigationItem(title: Config.TopNavTitle)
     // control to switch between modes
-    private var modeSegmentControl = UISegmentedControl(items: Config.ModeSegmentTitles)
+    private var modeSegmentedControl = UISegmentedControl(items: Config.ModeSegmentTitles)
     // control to show table of sessions
     private var sessionSelector =
         UIBarButtonItem(title: Config.TopNavSessionTitle, style: .plain, target: nil, action: nil)
@@ -29,13 +29,13 @@ class TopNavigationBar: UINavigationBar {
         // set up session selector on the left of navigation bar
         baseNavigationItem.leftBarButtonItem = sessionSelector
 
-        // set up segment control for mode selection
-        modeSegmentControl.selectedSegmentIndex = 0
-        modeSegmentControl.addTarget(self, action: #selector(onModeChange), for: .valueChanged)
-        modeSegmentControl.tintColor = Config.FontPrimaryColor
+        // set up segmented control for mode selection
+        modeSegmentedControl.selectedSegmentIndex = 0
+        modeSegmentedControl.addTarget(self, action: #selector(onModeChange), for: .valueChanged)
+        modeSegmentedControl.tintColor = Config.FontPrimaryColor
 
-        // set segment control on right of navigation bar
-        baseNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: modeSegmentControl)
+        // set segmented control on right of navigation bar
+        baseNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: modeSegmentedControl)
 
         // set navigation item on bar stack
         self.setItems([baseNavigationItem], animated: true)
@@ -49,9 +49,9 @@ class TopNavigationBar: UINavigationBar {
         super.init(coder: aDecoder)
     }
 
-    // Called when mode is changed via interaction with mode segment control
+    // Called when mode is changed via interaction with mode segmented control
     func onModeChange() {
-        if self.modeSegmentControl.selectedSegmentIndex == 0 {
+        if self.modeSegmentedControl.selectedSegmentIndex == 0 {
             modeSwitchDelegate?.enterPlay()
         } else {
             modeSwitchDelegate?.enterEdit()
