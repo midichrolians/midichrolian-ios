@@ -8,18 +8,18 @@
 
 import UIKit
 
-// Top navigation bar shown at the top of the app.
-// Has controls to show table of sessions, and switch between Play and Edit mode
+// Navigation bar shown at the top of the app.
+// Contains controls to show table of sessions, and switch between modes
 class TopNavigationBar: UINavigationBar {
-    // delegate to be notified when the mode switches
+    // delegate that will be notified when the mode switches
     weak var modeSwitchDelegate: ModeSwitchDelegate?
 
     // UI controls in nav bar
-    // We always only have 1 navigationItem because we are not using this in a navigation controller
+    // always only have 1 UINavigationItem because we are not using this in a navigation controller
     private var baseNavigationItem = UINavigationItem(title: Config.TopNavTitle)
-    // Control to switch between Play and Edit mode
+    // control to switch between modes
     private var modeSegmentControl = UISegmentedControl(items: Config.ModeSegmentTitles)
-    // Control to show table of sessions
+    // control to show table of sessions
     private var sessionSelector =
         UIBarButtonItem(title: Config.TopNavSessionTitle, style: .plain, target: nil, action: nil)
 
