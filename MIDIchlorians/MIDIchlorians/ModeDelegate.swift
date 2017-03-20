@@ -1,5 +1,5 @@
 //
-//  EditButton.swift
+//  ModeDelegate.swift
 //  MIDIchlorians
 //
 //  Created by Zhi An Ng on 11/3/17.
