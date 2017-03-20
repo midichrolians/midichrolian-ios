@@ -46,17 +46,18 @@ class ViewController: UIViewController {
             self.gridCollection.mode = mode
         }
     }
-    var topNavigationBar: TopNavigationBar!
+    private var topNavigationBar: TopNavigationBar!
 
-    var sampleTableViewController: SampleTableViewController!
-    var sampleNavigationController: UINavigationController!
+    private var sampleTableViewController: SampleTableViewController!
+    private var sampleNavigationController: UINavigationController!
 
-    var animationTableViewController: AnimationTableViewController!
-    var animationNavigationController: UINavigationController!
+    private var animationTableViewController: AnimationTableViewController!
+    private var animationNavigationController: UINavigationController!
 
-    var sessionTableViewController: SessionTableViewController!
+    private var sessionTableViewController: SessionTableViewController!
+    private var sessionNavigationController: UINavigationController!
 
-    var sidePaneViewController: SidePaneTabBarController!
+    internal var sidePaneViewController: SidePaneTabBarController!
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -83,21 +84,11 @@ class ViewController: UIViewController {
         UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
     }
 
-    // Called when the session button on the top nav is pressed
-    func sessionSelect(sender: UIBarButtonItem) {
-        // present the session table as a popover
-        sessionTableViewController.modalPresentationStyle = .popover
-        self.present(sessionTableViewController, animated: false, completion: nil)
-
-        // configure styles and anchor of popover
-        let popoverPresentationController = sessionTableViewController.popoverPresentationController
-        popoverPresentationController?.permittedArrowDirections = [.up]
-        popoverPresentationController?.barButtonItem = sender
-        popoverPresentationController?.backgroundColor = Config.BackgroundColor
-    }
-
-    func setUpTopNav() {
+    // Sets up the top navigation.
+    // The top navigation has controls to show the session table, so we set that up here as well.
+    private func setUpTopNav() {
         sessionTableViewController = SessionTableViewController(style: .plain)
+        sessionNavigationController = UINavigationController(rootViewController: sessionTableViewController)
         topNavigationBar = TopNavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
         self.view.addSubview(topNavigationBar)
         topNavigationBar.modeSwitchDelegate = self
@@ -110,7 +101,7 @@ class ViewController: UIViewController {
     //   - UINavigationControllers, each of which
     //     - wraps a TableViewController
     // these system view controllers are all subclassed to provide default styles
-    func setUpSidePane() {
+    private func setUpSidePane() {
         sampleTableViewController = SampleTableViewController(style: .plain)
         sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
 
@@ -125,7 +116,20 @@ class ViewController: UIViewController {
         sidePaneViewController.selectedIndex = 0
     }
 
-    func fixGridDimensions() {
+    // Called when the session button on the top nav is pressed
+    func sessionSelect(sender: UIBarButtonItem) {
+        // present the session table as a popover
+        sessionNavigationController.modalPresentationStyle = .popover
+        self.present(sessionNavigationController, animated: false, completion: nil)
+
+        // configure styles and anchor of popover
+        let popoverPresentationController = sessionNavigationController.popoverPresentationController
+        popoverPresentationController?.permittedArrowDirections = [.up]
+        popoverPresentationController?.barButtonItem = sender
+        popoverPresentationController?.backgroundColor = Config.BackgroundColor
+    }
+
+    private func fixGridDimensions() {
         // fix the width of the button collection view
         let totalWidth = self.view.frame.width - 20 - 20 // padding left and right
         // left with 9 columns of buttons with 8 insets in between
