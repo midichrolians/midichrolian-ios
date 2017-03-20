@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension ViewController: EditButtonDelegate {
-    func editStart() {
+extension ViewController: ModeSwitchDelegate {
+    func enterEdit() {
         let fullHeight = self.gridCollection.frame.height
 
         resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
@@ -22,7 +22,7 @@ extension ViewController: EditButtonDelegate {
         self.mode = .Editing
     }
 
-    func editEnd() {
+    func enterPlay() {
         resizePads(by: Config.PadAreaResizeFactorWhenEditEnd)
         sidePaneViewController.view.removeFromSuperview()
         self.mode = .Playing
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
             self.gridCollection.mode = mode
         }
     }
-    var editButtonController: EditButton!
+    var topNavigationBar: TopNavigationBar!
 
     var sampleTableViewController: SampleTableViewController!
     var sampleNavigationController: UINavigationController!
@@ -55,17 +55,18 @@ class ViewController: UIViewController {
     var animationNavigationController: UINavigationController!
 
     var sessionTableViewController: SessionTableViewController!
-    var sessionNavigationController: UINavigationController!
 
     var sidePaneViewController: SidePaneTabBarController!
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Config.BackgroundColor
 
         fixGridDimensions()
-
-        editButtonController = EditButton(superview: self.view, delegate: self)
 
         gridCollection.dataSource = gridCollection
         gridCollection.delegate = gridCollection
@@ -74,11 +75,33 @@ class ViewController: UIViewController {
         gridCollection.startListenAudio()
         gridCollection.backgroundColor = Config.BackgroundColor
 
+        setUpTopNav()
         setUpSidePane()
 
         // proxy to make all table views have the same background color
         UITableView.appearance().backgroundColor = Config.BackgroundColor
         UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
+    }
+
+    // Called when the session button on the top nav is pressed
+    func sessionSelect(sender: UIBarButtonItem) {
+        // present the session table as a popover
+        sessionTableViewController.modalPresentationStyle = .popover
+        self.present(sessionTableViewController, animated: false, completion: nil)
+
+        // configure styles and anchor of popover
+        let popoverPresentationController = sessionTableViewController.popoverPresentationController
+        popoverPresentationController?.permittedArrowDirections = [.up]
+        popoverPresentationController?.barButtonItem = sender
+        popoverPresentationController?.backgroundColor = Config.BackgroundColor
+    }
+
+    func setUpTopNav() {
+        sessionTableViewController = SessionTableViewController(style: .plain)
+        topNavigationBar = TopNavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        self.view.addSubview(topNavigationBar)
+        topNavigationBar.modeSwitchDelegate = self
+        topNavigationBar.addTargetToSessionSelector(self, action: #selector(sessionSelect(sender:)))
     }
 
     // Sets up the side pane that comes into view when user enters editing mode.
@@ -94,14 +117,10 @@ class ViewController: UIViewController {
         animationTableViewController = AnimationTableViewController(style: .plain)
         animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
 
-        sessionTableViewController = SessionTableViewController(style: .plain)
-        sessionNavigationController = SideNavigationViewController(rootViewController: sessionTableViewController)
-
         sidePaneViewController = SidePaneTabBarController()
         sidePaneViewController.viewControllers = [
             sampleNavigationController,
-            animationNavigationController,
-            sessionNavigationController
+            animationNavigationController
         ]
         sidePaneViewController.selectedIndex = 0
     }
