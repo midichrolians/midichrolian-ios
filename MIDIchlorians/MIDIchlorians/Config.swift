@@ -59,4 +59,8 @@ struct Config {
     static let SampleTableReuseIdentifier = "sampleCell"
     static let AnimationTableReuseIdentifier = "animationCell"
     static let SessionTableReuseIdentifier = "sessionCell"
+
+    static let animationBitColourKey = "colour"
+    static let animationBitRowKey = "row"
+    static let animationBitColumnKey = "column"
 }
