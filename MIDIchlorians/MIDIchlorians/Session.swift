@@ -15,21 +15,18 @@ import RealmSwift
  **/
 class Session: Object {
     
-    dynamic private var BPM = 0 // Need to agree on a default value
-    dynamic private var numPages = 0
-    dynamic private var numRows = 0
-    dynamic private var numCols = 0
+    dynamic private var BPM = Config.defaultBPM
+    dynamic private var numPages = Config.numberOfPages
+    dynamic private var numRows = Config.numberOfRows
+    dynamic private var numCols = Config.numberOfColumns
     dynamic private var sessionName = ""
-    private let padList = List<Pad>()
+    private var padList = List<Pad>()
     
     private var pads = [[[Pad]]]()
     
-    convenience init(bpm: Int, numPages: Int, numRows: Int, numCols: Int) {
+    convenience init(bpm: Int) {
         self.init()
         self.BPM = bpm
-        self.numPages = numPages
-        self.numRows = numRows
-        self.numCols = numCols
         initialisePadGrid()
     }
     
@@ -95,6 +92,7 @@ class Session: Object {
     
     //Initalises the list, as that is what is saved. The pads matrix is not saved.
     func prepareForSave(sessionName: String) {
+        padList = List<Pad>()
         self.sessionName = sessionName
         for page in 0..<numPages {
             for row in 0..<numRows {
@@ -109,6 +107,7 @@ class Session: Object {
     
     //Loads from List into Matrix. Realm guarantees that order of insertion is maintained.
     func load() {
+        pads = []
         for page in 0..<numPages {
             pads.append([])
             for row in 0..<numRows {

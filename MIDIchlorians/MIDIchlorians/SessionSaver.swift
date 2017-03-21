@@ -11,6 +11,7 @@ import RealmSwift
 
 class SessionSaver {
     static let realm = try! Realm()
+    static let sessionNameQueryString = "sessionName = %@"
     
     static func saveSession(_ sessionName: String, _ session: Session) -> Bool {
         session.prepareForSave(sessionName: sessionName)
@@ -21,7 +22,7 @@ class SessionSaver {
     }
     
     static func loadSession(_ sessionName: String) -> Session {
-        let session = realm.objects(Session.self).filter("sessionName = %@", sessionName)[0]
+        let session = realm.objects(Session.self).filter(sessionNameQueryString, sessionName).first
         session.load()
         return session
     }
