@@ -11,10 +11,10 @@ import AVFoundation
 
 struct AudioManager {
 
-    private var audioDict: [String:Int]
+    private var audioDict: [String:UInt32]
     
     init() {
-        audioDict = [String:Int]()
+        audioDict = [String:UInt32]()
     }
 
     //initialize single audio file
