@@ -7,24 +7,34 @@
 //
 
 import RealmSwift
-//TODO: Take care of unwrapped optionals
 
 class DataManager {
-    static let realm = try! Realm()
-    static let sessionNameQueryString = "sessionName = %@"
     
-    static func saveSession(_ sessionName: String, _ session: Session) -> Bool {
+    private let realm: Realm?
+    
+    init() {
+        do {
+            self.realm = try Realm()
+        } catch {
+            //Need to Handle error
+            self.realm = nil
+        }
+    }
+    
+    func saveSession(_ sessionName: String, _ session: Session) -> Bool {
         session.prepareForSave(sessionName: sessionName)
-        try! realm.write {
-            realm.add(session)
+        do {
+            try realm?.write { realm?.add(session) }
+        } catch {
+            return false
         }
         return true
     }
     
-    static func loadSession(_ sessionName: String) -> Session? {
-        guard let session = realm.objects(Session.self)
-            .filter(sessionNameQueryString, sessionName)
-            .first else {
+    func loadSession(_ sessionName: String) -> Session? {
+        guard let session = realm?.objects(Session.self)
+                                  .filter("sessionName = %@", sessionName)
+                                  .first else {
                 //handle error
                 return nil
         }
@@ -32,24 +42,24 @@ class DataManager {
         return session
     }
     
-    static func loadAllSessionNames() -> [Session] {
+    func loadAllSessionNames() -> [Session] {
         return []
 
     }
     
-    static func saveAnimation(_ animation: AnimationSequence) -> Bool {
+    func saveAnimation(_ animation: AnimationSequence) -> Bool {
         return false
     }
     
-    static func loadAllAnimations() -> [AnimationSequence] {
+    func loadAllAnimations() -> [AnimationSequence] {
         return []
     }
     
-    static func saveAudio(_ audioFile: String) -> Bool {
+    func saveAudio(_ audioFile: String) -> Bool {
         return false
     }
     
-    static func loadAllAudioStrings() -> [String] {
+    func loadAllAudioStrings() -> [String] {
         return []
     }
     
