@@ -32,20 +32,25 @@ class DataManager {
         return session
     }
     
-    static func saveAnimation(_ animation: AnimationSequence) -> Bool {
-        
+    static func loadAllSessionNames() -> [Session] {
+        return []
+
     }
     
-    static func loadAllAnimations() -> [AnimationSequence]? {
-        
+    static func saveAnimation(_ animation: AnimationSequence) -> Bool {
+        return false
+    }
+    
+    static func loadAllAnimations() -> [AnimationSequence] {
+        return []
     }
     
     static func saveAudio(_ audioFile: String) -> Bool {
-        
+        return false
     }
     
-    static func loadAllAudioStrings() -> [String]? {
-        
+    static func loadAllAudioStrings() -> [String] {
+        return []
     }
     
 }
