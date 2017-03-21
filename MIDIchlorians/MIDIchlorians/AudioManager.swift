@@ -17,14 +17,17 @@ struct AudioManager {
         audioDict = [String:Int]()
     }
 
+    //initialize single audio file
     func initAudio(audioDir: String) {
         
     }
     
+    //initialize array of audio files
     func initAudios(audioDirs: [String]){
         
     }
     
+    //call this to play audio with single directory
     func play(audioDir: String) {
         
     }
