@@ -18,20 +18,26 @@ struct AudioManager {
     }
 
     //initialize single audio file
-    func initAudio(audioDir: String) {
-        
-    }
-    
-    //initialize array of audio files
-    func initAudios(audioDirs: [String]){
-        
+    //returns successs
+    func initAudio(audioDir: String) -> Bool {
+        guard let audioID = AudioClipPlayer.initAudioClip(audioDir: audioDir) else {
+            return false
+        }
+        audioDict[audioDir] = audioID
+        return true
     }
     
     //call this to play audio with single directory
-    func play(audioDir: String) {
-        
+    //returns success
+    func play(audioDir: String) -> Bool {
+        guard let audioID = audioDict[audioDir] else {
+            return false
+        }
+        AudioClipPlayer.playAudioClip(soundID: audioID)
+        return true
     }
     
+    //ideally should stop a looping track
     func stop(audioDir: String) {
         
     }
