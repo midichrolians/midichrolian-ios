@@ -45,4 +45,65 @@ class AnimationSequence {
         tickCounter += 1
         return array
     }
+
+    func getJSONforAnimationSequence() -> String? {
+        var arrayOfStrings = [[String]?]()
+
+        for animationBitArray in self.animationBitsArray {
+            var arrayForTick = [String]()
+            guard let array = animationBitArray else {
+                arrayOfStrings.append(nil)
+                continue
+            }
+
+            for animationBit in array {
+                guard let animationBitString = animationBit.getJSON() else {
+                    continue
+                }
+                arrayForTick.append(animationBitString)
+            }
+            arrayOfStrings.append(arrayForTick)
+        }
+
+        guard let jsonData = try? JSONSerialization.data(
+            withJSONObject: arrayOfStrings,
+            options: JSONSerialization.WritingOptions.prettyPrinted
+            ) else {
+                return nil
+        }
+
+        return String(data: jsonData, encoding: .utf8)
+    }
+
+    static func getAnimationSequenceFromJSON(fromJSON: String) -> AnimationSequence? {
+        guard let data = fromJSON.data(using: .utf8) else {
+            return nil
+        }
+
+        guard let array = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [[String]?] else {
+            return nil
+        }
+
+        let animationSequence = AnimationSequence()
+        var animationBitsArrayForSequence = [[AnimationBit]]()
+
+        for stringArray in array {
+            var arrayForTick = [AnimationBit]()
+            guard let arrayOfStrings = stringArray else {
+                animationBitsArrayForSequence.append(arrayForTick)
+                continue
+            }
+
+            for string in arrayOfStrings {
+                guard let animationBit = AnimationBit.getAnimationBitFromJSON(fromJSON: string) else {
+                    continue
+                }
+                arrayForTick.append(animationBit)
+            }
+            animationBitsArrayForSequence.append(arrayForTick)
+        }
+
+        animationSequence.animationBitsArray = animationBitsArrayForSequence
+        return animationSequence
+    }
 }

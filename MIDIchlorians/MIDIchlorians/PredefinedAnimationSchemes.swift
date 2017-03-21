@@ -13,7 +13,7 @@ class PredefinedAnimationSchemes {
         let animationSequence = AnimationSequence()
         animationSequence.addAnimationBit(
             atTick: 0,
-            animationBit: AnimationBit(colour: UIColor.green, row: indexPath.section, column: indexPath.item)
+            animationBit: AnimationBit(colour: Colour.green, row: indexPath.section, column: indexPath.item)
         )
         let indexDifferenceArray = [1, 2]
         for indexDifference in indexDifferenceArray {
@@ -35,7 +35,7 @@ class PredefinedAnimationSchemes {
                 animationSequence.addAnimationBit(
                     atTick: indexDifference,
                     animationBit: AnimationBit(
-                        colour: UIColor.green,
+                        colour: Colour.green,
                         row: animationRowNumber,
                         column: animationColumnNumber
                     )
@@ -47,15 +47,7 @@ class PredefinedAnimationSchemes {
 
     static func rainbow(indexPath: IndexPath) -> AnimationSequence {
         let animationSequence = AnimationSequence()
-        let arrayOfColours = [
-            UIColor.violet,
-            UIColor.indigo,
-            UIColor.blue,
-            UIColor.green,
-            UIColor.yellow,
-            UIColor.orange,
-            UIColor.red
-        ]
+        let arrayOfColours = Colour.allColours
         for count in 0..<arrayOfColours.count {
             let animationRowNumber = (indexPath.section + count) % Config.numberOfRows
             animationSequence.addAnimationBit(
@@ -129,44 +121,44 @@ class PredefinedAnimationSchemes {
         ]
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples, tick: 0,
-                                      colour: UIColor.red, animationSequence: animationSequence)
+                                      colour: Colour.red, animationSequence: animationSequence)
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfMiddleTuples, tick: 0,
-                                      colour: UIColor.yellow, animationSequence: animationSequence)
+                                      colour: Colour.yellow, animationSequence: animationSequence)
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfOuterTuples, tick: 0,
-                                      colour: UIColor.green, animationSequence: animationSequence)
+                                      colour: Colour.green, animationSequence: animationSequence)
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples + arrayOfMiddleTuples, tick: 1,
-                                      colour: UIColor.red, animationSequence: animationSequence)
+                                      colour: Colour.red, animationSequence: animationSequence)
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfOuterTuples, tick: 1,
-                                      colour: UIColor.yellow, animationSequence: animationSequence)
+                                      colour: Colour.yellow, animationSequence: animationSequence)
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples + arrayOfMiddleTuples + arrayOfOuterTuples,
-                                      tick: 2, colour: UIColor.red, animationSequence: animationSequence)
+                                      tick: 2, colour: Colour.red, animationSequence: animationSequence)
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples + arrayOfMiddleTuples, tick: 3,
-                                      colour: UIColor.red, animationSequence: animationSequence)
+                                      colour: Colour.red, animationSequence: animationSequence)
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfOuterTuples, tick: 3,
-                                      colour: UIColor.yellow, animationSequence: animationSequence)
+                                      colour: Colour.yellow, animationSequence: animationSequence)
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples, tick: 4,
-                                      colour: UIColor.red, animationSequence: animationSequence)
+                                      colour: Colour.red, animationSequence: animationSequence)
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfMiddleTuples, tick: 4,
-                                      colour: UIColor.yellow, animationSequence: animationSequence)
+                                      colour: Colour.yellow, animationSequence: animationSequence)
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfOuterTuples, tick: 4,
-                                      colour: UIColor.green, animationSequence: animationSequence)
+                                      colour: Colour.green, animationSequence: animationSequence)
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples, tick: 5,
-                                      colour: UIColor.yellow, animationSequence: animationSequence)
+                                      colour: Colour.yellow, animationSequence: animationSequence)
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfMiddleTuples + arrayOfOuterTuples, tick: 5,
-                                      colour: UIColor.green, animationSequence: animationSequence)
+                                      colour: Colour.green, animationSequence: animationSequence)
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples + arrayOfMiddleTuples + arrayOfOuterTuples,
-                                      tick: 6, colour: UIColor.green, animationSequence: animationSequence)
+                                      tick: 6, colour: Colour.green, animationSequence: animationSequence)
         return animationSequence
     }
 
     private static func addAnimationBitToSequenceFrom(arrayOfTuples: [(Int, Int)], tick: Int,
-                                                      colour: UIColor, animationSequence: AnimationSequence) {
+                                                      colour: Colour, animationSequence: AnimationSequence) {
         for tuple in arrayOfTuples {
             animationSequence.addAnimationBit(
                 atTick: tick,
