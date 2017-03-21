@@ -20,11 +20,10 @@ class Pad: Object {
     
     //Persisted properties. Dynamic is a realm requirement
     private dynamic var audioFile: String?
-    //private dynamic var animationString: String?
+    private dynamic var animationString: String?
     
     //Properties for normal manipulation
     private var animation: AnimationSequence?
-    //private var audio: Audio
     
     
     //Tells Realm that thse properties should not be persisted
@@ -42,8 +41,7 @@ class Pad: Object {
         self.animation = animation
     }
     
-    //Should ideally return audio struct
-    func getAudio() -> String? {
+    func getAudioFile() -> String? {
         return audioFile
     }
     
@@ -52,23 +50,27 @@ class Pad: Object {
     }
     
     func clearAudio() {
-        //self.audio = nil
         self.audioFile = nil
     }
     
     func clearAnimation() {
         self.animation = nil
-        //self.animationString = nil
+        self.animationString = nil
     }
     
     //Deserialise animation and object into strings and store in persisted properties
     func prepareForSave() {
+        animationString = animation?.getJSONforAnimationSequence()
         
     }
     
     //Use persisted properties to deserialise the audio and animation
     func load() {
-        
+        guard let animationJSON = animationString else {
+            //Handle error
+            return 
+        }
+        self.animation = AnimationSequence.getAnimationSequenceFromJSON(fromJSON: animationJSON)
     }
 
 }
