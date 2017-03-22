@@ -1,12 +1,41 @@
 PODS:
+  - Realm (2.4.4):
+    - Realm/Headers (= 2.4.4)
+  - Realm/Headers (2.4.4)
+  - RealmSwift (2.4.4):
+    - Realm (= 2.4.4)
   - SwiftLint (0.16.1)
 
 DEPENDENCIES:
+  - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
+  - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - SwiftLint
 
+EXTERNAL SOURCES:
+  Realm:
+    :branch: master
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+  RealmSwift:
+    :branch: master
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+
+CHECKOUT OPTIONS:
+  Realm:
+    :commit: 1d739978d70d3153ebae2590fbc502dc578374dd
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+  RealmSwift:
+    :commit: 1d739978d70d3153ebae2590fbc502dc578374dd
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+
 SPEC CHECKSUMS:
+  Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
+  RealmSwift: e45530b4eb17dcc244a2f187d2e2338a48d2f8c2
   SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
 
-PODFILE CHECKSUM: 76646ff982e313a6784e30cf8d9e8f1a1fecca38
+PODFILE CHECKSUM: 986c18c520b02b19b63a7894aaf4b6bbf37725f3
 
-COCOAPODS: 1.2.0.rc.1
+COCOAPODS: 1.2.0

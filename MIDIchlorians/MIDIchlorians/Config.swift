@@ -13,7 +13,9 @@ import UIKit
 struct Config {
     static let numberOfRows = 6
     static let numberOfColumns = 8
+    static let numberOfPages = 6
     static let animationFrequency = 16
+    static let defaultBPM = 120
     static let sound = [
         [
             "AWOLNATION - Sail", "AWOLNATION - Sail-1",
