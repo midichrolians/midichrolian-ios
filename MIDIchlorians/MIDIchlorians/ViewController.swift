@@ -15,8 +15,9 @@ extension ViewController: ModeSwitchDelegate {
         resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
 
         let minX = self.gridCollection.frame.maxX + Config.ItemInsets.right
-        let minY = self.gridCollection.frame.minY - 20
-        let width = self.view.frame.width - self.gridCollection.frame.width - 20 - 20
+        let minY = self.gridCollection.frame.minY
+        let width = self.view.frame.width - self.gridCollection.frame.width
+            - Config.AppLeftPadding - Config.AppRightPadding
         sidePaneViewController.view.frame = CGRect(x: minX, y: minY, width: width, height: fullHeight)
         self.view.addSubview(sidePaneViewController.view)
         self.mode = .Editing
@@ -29,7 +30,6 @@ extension ViewController: ModeSwitchDelegate {
     }
 
     private func resizePads(by factor: CGFloat) {
-        // TODO extend UIView to add methods for updating size?
         // and to animate the changes refer to
         // http://stackoverflow.com/questions/13780153/uicollectionview-animate-cell-size-change-on-selection
         self.gridCollection.frame = CGRect(
@@ -89,7 +89,9 @@ class ViewController: UIViewController {
     private func setUpTopNav() {
         sessionTableViewController = SessionTableViewController(style: .plain)
         sessionNavigationController = UINavigationController(rootViewController: sessionTableViewController)
-        topNavigationBar = TopNavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        topNavigationBar = TopNavigationBar(
+            frame: CGRect(origin: CGPoint.zero,
+                          size: CGSize(width: self.view.frame.width, height: Config.TopNavHeight)))
         self.view.addSubview(topNavigationBar)
         topNavigationBar.modeSwitchDelegate = self
         topNavigationBar.addTargetToSessionSelector(self, action: #selector(sessionSelect(sender:)))
@@ -131,7 +133,7 @@ class ViewController: UIViewController {
 
     private func fixGridDimensions() {
         // fix the width of the button collection view
-        let totalWidth = self.view.frame.width - 20 - 20 // padding left and right
+        let totalWidth = self.view.frame.width - Config.AppLeftPadding - Config.AppRightPadding
         // left with 9 columns of buttons with 8 insets in between
         // so to get width for the pads we add 1 inset and times 8/9
         let padWidth = (totalWidth + Config.ItemInsets.right) *
