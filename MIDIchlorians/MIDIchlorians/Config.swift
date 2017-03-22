@@ -65,4 +65,8 @@ struct Config {
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
     static let animationBitColumnKey = "column"
+
+    static let animationTypeSpreadName = "Spread"
+    static let animationTypeSparkName = "Spark"
+    static let animationTypeRainbowName = "Rainbow"
 }
