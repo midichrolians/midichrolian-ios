@@ -17,58 +17,56 @@ import RealmSwift
  Using a class because Realm can't deal with structs.
  */
 class Pad: Object {
-    
+
     //Persisted properties. Dynamic is a realm requirement
     private dynamic var audioFile: String?
     private dynamic var animationString: String?
-    
+
     //Properties for normal manipulation
     private var animation: AnimationSequence?
-    
-    
+
     //Tells Realm that thse properties should not be persisted
     override static func ignoredProperties() -> [String] {
         //add audio here
         return ["animation"]
     }
-    
+
     //Currently here for testing, ideally this method should take an audio struct
     func addAudio(audioFile: String) {
         self.audioFile = audioFile
     }
-    
+
     func addAnimation(animation: AnimationSequence) {
         self.animation = animation
     }
-    
+
     func getAudioFile() -> String? {
         return audioFile
     }
-    
+
     func getAnimation() -> AnimationSequence? {
         return animation
     }
-    
+
     func clearAudio() {
         self.audioFile = nil
     }
-    
+
     func clearAnimation() {
         self.animation = nil
         self.animationString = nil
     }
-    
+
     //Deserialise animation and object into strings and store in persisted properties
     func prepareForSave() {
         animationString = animation?.getJSONforAnimationSequence()
-        
     }
-    
+
     //Use persisted properties to deserialise the audio and animation
     func load() {
         guard let animationJSON = animationString else {
             //Handle error
-            return 
+            return
         }
         self.animation = AnimationSequence.getAnimationSequenceFromJSON(fromJSON: animationJSON)
     }

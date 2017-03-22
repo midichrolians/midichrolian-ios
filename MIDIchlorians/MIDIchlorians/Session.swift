@@ -14,27 +14,27 @@ import RealmSwift
  For correct results, use the convenience initialiser defined below.
  **/
 class Session: Object {
-    
+
     dynamic private var BPM = Config.defaultBPM
     dynamic private var numPages = Config.numberOfPages
     dynamic private var numRows = Config.numberOfRows
     dynamic private var numCols = Config.numberOfColumns
     dynamic private var sessionName = ""
     private var padList = List<Pad>()
-    
+
     private var pads = [[[Pad]]]()
-    
+
     convenience init(bpm: Int) {
         self.init()
         self.BPM = bpm
         initialisePadGrid()
     }
-    
+
     //Tells Realm that thse properties should not be persisted
     override static func ignoredProperties() -> [String] {
         return ["pads"]
     }
-    
+
     private func initialisePadGrid() {
         for page in 0..<numPages {
             pads.append([])
@@ -47,49 +47,46 @@ class Session: Object {
             }
         }
     }
-    
+
     //Should take audio struct
     func addAudio(page: Int, row: Int, col: Int, audioFile: String) {
         guard isValidPosition(page, row, col) else {
             return
         }
         pads[page][row][col].addAudio(audioFile: audioFile)
-        
     }
-    
+
     func clearAudio(page: Int, row: Int, col: Int) {
         guard isValidPosition(page, row, col) else {
             return
         }
         pads[page][row][col].clearAudio()
     }
-    
+
     func addAnimation(page: Int, row: Int, col: Int, animation: AnimationSequence) {
         guard isValidPosition(page, row, col) else {
             return
         }
         pads[page][row][col].addAnimation(animation: animation)
-        
     }
-    
+
     func clearAnimation(page: Int, row: Int, col: Int) {
         guard isValidPosition(page, row, col) else {
             return
         }
         pads[page][row][col].clearAnimation()
-        
     }
-    
+
     private func isValidPosition(_ page: Int, _ row: Int, _ col: Int) -> Bool {
         return page < numPages && page >= 0 &&
             row < numRows && row >= 0 &&
             col < numCols && col >= 0
     }
-    
+
     func setBPM(bpm: Int) {
         self.BPM = bpm
     }
-    
+
     //Initalises the list, as that is what is saved. The pads matrix is not saved.
     func prepareForSave(sessionName: String) {
         padList = List<Pad>()
@@ -104,7 +101,6 @@ class Session: Object {
             }
         }
     }
-    
     //Loads from List into Matrix. Realm guarantees that order of insertion is maintained.
     func load() {
         pads = []

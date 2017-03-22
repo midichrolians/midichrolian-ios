@@ -9,9 +9,9 @@
 import RealmSwift
 
 class DataManager {
-    
+
     private let realm: Realm?
-    
+
     init() {
         do {
             self.realm = try Realm()
@@ -20,7 +20,7 @@ class DataManager {
             self.realm = nil
         }
     }
-    
+
     func saveSession(_ sessionName: String, _ session: Session) -> Bool {
         session.prepareForSave(sessionName: sessionName)
         do {
@@ -30,7 +30,7 @@ class DataManager {
         }
         return true
     }
-    
+
     func loadSession(_ sessionName: String) -> Session? {
         guard let session = realm?.objects(Session.self)
                                   .filter("sessionName = %@", sessionName)
@@ -41,26 +41,25 @@ class DataManager {
         session.load()
         return session
     }
-    
+
     func loadAllSessionNames() -> [Session] {
         return []
 
     }
-    
+
     func saveAnimation(_ animation: AnimationSequence) -> Bool {
         return false
     }
-    
+
     func loadAllAnimations() -> [AnimationSequence] {
         return []
     }
-    
+
     func saveAudio(_ audioFile: String) -> Bool {
         return false
     }
-    
+
     func loadAllAudioStrings() -> [String] {
         return []
     }
-    
 }
