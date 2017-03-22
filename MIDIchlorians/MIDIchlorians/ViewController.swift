@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension ViewController: EditButtonDelegate {
-    func editStart() {
+extension ViewController: ModeSwitchDelegate {
+    func enterEdit() {
         let fullHeight = self.gridCollection.frame.height
 
         resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
@@ -22,7 +22,7 @@ extension ViewController: EditButtonDelegate {
         self.mode = .Editing
     }
 
-    func editEnd() {
+    func enterPlay() {
         resizePads(by: Config.PadAreaResizeFactorWhenEditEnd)
         sidePaneViewController.view.removeFromSuperview()
         self.mode = .Playing
@@ -46,26 +46,28 @@ class ViewController: UIViewController {
             self.gridCollection.mode = mode
         }
     }
-    var editButtonController: EditButton!
+    private var topNavigationBar: TopNavigationBar!
 
-    var sampleTableViewController: SampleTableViewController!
-    var sampleNavigationController: UINavigationController!
+    private var sampleTableViewController: SampleTableViewController!
+    private var sampleNavigationController: UINavigationController!
 
-    var animationTableViewController: AnimationTableViewController!
-    var animationNavigationController: UINavigationController!
+    private var animationTableViewController: AnimationTableViewController!
+    private var animationNavigationController: UINavigationController!
 
-    var sessionTableViewController: SessionTableViewController!
-    var sessionNavigationController: UINavigationController!
+    private var sessionTableViewController: SessionTableViewController!
+    private var sessionNavigationController: UINavigationController!
 
-    var sidePaneViewController: SidePaneTabBarController!
+    internal var sidePaneViewController: SidePaneTabBarController!
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Config.BackgroundColor
 
         fixGridDimensions()
-
-        editButtonController = EditButton(superview: self.view, delegate: self)
 
         gridCollection.dataSource = gridCollection
         gridCollection.delegate = gridCollection
@@ -74,11 +76,23 @@ class ViewController: UIViewController {
         gridCollection.startListenAudio()
         gridCollection.backgroundColor = Config.BackgroundColor
 
+        setUpTopNav()
         setUpSidePane()
 
         // proxy to make all table views have the same background color
         UITableView.appearance().backgroundColor = Config.BackgroundColor
         UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
+    }
+
+    // Sets up the top navigation.
+    // The top navigation has controls to show the session table, so we set that up here as well.
+    private func setUpTopNav() {
+        sessionTableViewController = SessionTableViewController(style: .plain)
+        sessionNavigationController = UINavigationController(rootViewController: sessionTableViewController)
+        topNavigationBar = TopNavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        self.view.addSubview(topNavigationBar)
+        topNavigationBar.modeSwitchDelegate = self
+        topNavigationBar.addTargetToSessionSelector(self, action: #selector(sessionSelect(sender:)))
     }
 
     // Sets up the side pane that comes into view when user enters editing mode.
@@ -87,26 +101,35 @@ class ViewController: UIViewController {
     //   - UINavigationControllers, each of which
     //     - wraps a TableViewController
     // these system view controllers are all subclassed to provide default styles
-    func setUpSidePane() {
+    private func setUpSidePane() {
         sampleTableViewController = SampleTableViewController(style: .plain)
         sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
 
         animationTableViewController = AnimationTableViewController(style: .plain)
         animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
 
-        sessionTableViewController = SessionTableViewController(style: .plain)
-        sessionNavigationController = SideNavigationViewController(rootViewController: sessionTableViewController)
-
         sidePaneViewController = SidePaneTabBarController()
         sidePaneViewController.viewControllers = [
             sampleNavigationController,
-            animationNavigationController,
-            sessionNavigationController
+            animationNavigationController
         ]
         sidePaneViewController.selectedIndex = 0
     }
 
-    func fixGridDimensions() {
+    // Called when the session button on the top nav is pressed
+    func sessionSelect(sender: UIBarButtonItem) {
+        // present the session table as a popover
+        sessionNavigationController.modalPresentationStyle = .popover
+        self.present(sessionNavigationController, animated: false, completion: nil)
+
+        // configure styles and anchor of popover
+        let popoverPresentationController = sessionNavigationController.popoverPresentationController
+        popoverPresentationController?.permittedArrowDirections = [.up]
+        popoverPresentationController?.barButtonItem = sender
+        popoverPresentationController?.backgroundColor = Config.BackgroundColor
+    }
+
+    private func fixGridDimensions() {
         // fix the width of the button collection view
         let totalWidth = self.view.frame.width - 20 - 20 // padding left and right
         // left with 9 columns of buttons with 8 insets in between
