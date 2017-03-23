@@ -11,6 +11,7 @@ import UIKit
 // Controller to manage the list of samples in editing mode.
 class SampleTableViewController: UITableViewController {
     weak var delegate: SampleTableDelegate?
+    private let newSampleButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
     private let reuseIdentifier = Config.SampleTableReuseIdentifier
 
@@ -33,8 +34,8 @@ class SampleTableViewController: UITableViewController {
         self.tableView.register(SampleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.newSampleButton
     }
 
     override func didReceiveMemoryWarning() {

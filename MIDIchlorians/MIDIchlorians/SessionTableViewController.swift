@@ -13,23 +13,14 @@ class SessionTableViewController: UITableViewController {
 
     private let data = ["Session 1", "Session 2"]
     private let reuseIdentifier = Config.SessionTableReuseIdentifier
-
-    override init(style: UITableViewStyle) {
-        super.init(style: style)
-
-        self.title = "Sessions"
-        self.tabBarItem = UITabBarItem(title: "Sessions",
-                                       image: UIImage(named: Config.SidePaneTabBarSampleIcon),
-                                       selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    private let newSessionButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Sessions"
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.newSessionButton
         self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
     }

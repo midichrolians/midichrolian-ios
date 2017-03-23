@@ -14,6 +14,7 @@ class AnimationTableViewController: UITableViewController {
 
     private let data = ["Spread", "Row", "Column"]
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
+    private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
@@ -31,8 +32,10 @@ class AnimationTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.separatorColor = Config.TableViewSeparatorColor
-
         self.tableView.register(AnimationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.newAnimationButton
     }
 
     override func didReceiveMemoryWarning() {
