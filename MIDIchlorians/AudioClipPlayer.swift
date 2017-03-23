@@ -19,7 +19,7 @@ struct AudioClipPlayer {
             return nil
         }
         var sysID: SystemSoundID = 0
-        AudioServicesCreateSystemSoundID(souldURL as CFURL, &testSound)
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &sysID)
         return sysID
     }
     
