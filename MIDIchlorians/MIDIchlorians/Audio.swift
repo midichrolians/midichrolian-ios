@@ -10,7 +10,6 @@ import RealmSwift
 
 class Audio: Object {
     private dynamic var audioFile: String?
-    
     func addAudio(_ audioFile: String) {
         self.audioFile = audioFile
     }
@@ -18,5 +17,4 @@ class Audio: Object {
     func getAudioFile() -> String? {
         return audioFile
     }
-
 }

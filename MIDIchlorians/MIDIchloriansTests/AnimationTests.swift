@@ -11,4 +11,11 @@ import XCTest
 
 class AnimationTests: XCTestCase {
 
+    func testGetAnimationSequence() {
+
+    }
+
+    func testAddAnimation() {
+
+    }
 }

@@ -11,4 +11,31 @@ import XCTest
 
 class DataManagerTests: XCTestCase {
 
+    func testSaveSession() {
+
+    }
+
+    func testLoadSession() {
+
+    }
+
+    func testLoadAllSessionNames() {
+
+    }
+
+    func testSaveAnimation() {
+
+    }
+
+    func testLoadAllAnimations() {
+
+    }
+
+    func testSaveAudio() {
+
+    }
+
+    func testLoadAllAudioStrings() {
+    }
+
 }

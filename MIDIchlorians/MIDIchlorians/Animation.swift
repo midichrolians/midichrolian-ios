@@ -9,7 +9,7 @@
 import RealmSwift
 
 class Animation: Object {
-    
+
     private dynamic var animationString: String?
 
     func getAnimationSequence() -> AnimationSequence? {

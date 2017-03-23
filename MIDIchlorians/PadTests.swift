@@ -10,5 +10,28 @@ import XCTest
 @testable import MIDIchlorians
 
 class PadTests: XCTestCase {
-    
+
+    func testAddAudio() {
+
+    }
+
+    func testAddAnimation() {
+
+    }
+
+    func testGetAudio() {
+
+    }
+
+    func testGetAnimation() {
+
+    }
+
+    func testClearAudio() {
+
+    }
+
+    func testClearAnimation() {
+
+    }
 }

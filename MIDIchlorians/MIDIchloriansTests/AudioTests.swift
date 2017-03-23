@@ -11,4 +11,11 @@ import XCTest
 
 class AudioTests: XCTestCase {
 
+    func testAddAudio() {
+
+    }
+
+    func testGetAudioFile() {
+    }
+
 }

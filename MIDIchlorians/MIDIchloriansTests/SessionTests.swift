@@ -11,4 +11,31 @@ import XCTest
 
 class SessionTests: XCTestCase {
 
+    func testGetSessionName() {
+
+    }
+
+    func testAddAudio() {
+
+    }
+
+    func testClearAudio() {
+
+    }
+
+    func testClearAnimation() {
+
+    }
+
+    func testSetBPM() {
+
+    }
+
+    func testPrepareForSave() {
+
+    }
+
+    func testLoad() {
+    }
+
 }

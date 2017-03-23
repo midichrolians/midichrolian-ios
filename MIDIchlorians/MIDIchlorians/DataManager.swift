@@ -42,13 +42,13 @@ class DataManager {
     }
 
     func loadAllSessionNames() -> [String] {
-        guard let sessionNames = realm?.objects(Session.self).map({ (session) -> String in
-            return session.getSessionName()
-        }) else {
-            return []
-        }
+//        guard let sessionNames = realm?.objects(Session.self).map({ (session) -> String in
+//            return session.getSessionName()
+//        }) else {
+//            return []
+//        }
 
-        return sessionNames
+        return []
     }
 
     func saveAnimation(_ animation: AnimationSequence) -> Bool {
@@ -63,7 +63,7 @@ class DataManager {
     }
 
     func loadAllAnimations() -> [AnimationSequence] {
-
+        return []
     }
 
     func saveAudio(_ audioFile: String) -> Bool {
@@ -77,6 +77,6 @@ class DataManager {
     }
 
     func loadAllAudioStrings() -> [String] {
-
+        return []
     }
 }
