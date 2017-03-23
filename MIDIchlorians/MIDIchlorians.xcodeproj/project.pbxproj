@@ -14,7 +14,7 @@
 		33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33120E241E6FD30A007E7717 /* Assets.xcassets */; };
 		33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */; };
 		33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */; };
-		334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */; };
+		334970BF1E72557D009C78DF /* AnimationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationTypes.swift */; };
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
 		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
 		334970C71E72B83D009C78DF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C61E72B83D009C78DF /* AudioManager.swift */; };
@@ -97,7 +97,7 @@
 		33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIchloriansUITests.swift; sourceTree = "<group>"; };
 		33120E341E6FD30A007E7717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredefinedAnimationSchemes.swift; sourceTree = "<group>"; };
+		334970BE1E72557D009C78DF /* AnimationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypes.swift; sourceTree = "<group>"; };
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		334970C61E72B83D009C78DF /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 				33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */,
 				33EC0A411E6FE55000229A92 /* AnimationBit.swift */,
 				33EC0A431E6FE67700229A92 /* AnimationSequence.swift */,
-				334970BE1E72557D009C78DF /* PredefinedAnimationSchemes.swift */,
+				334970BE1E72557D009C78DF /* AnimationTypes.swift */,
 				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
 				33A2754C1E7BEF56000B1B15 /* Colour.swift */,
 			);
@@ -619,7 +619,7 @@
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
 				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
-				334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */,
+				334970BF1E72557D009C78DF /* AnimationTypes.swift in Sources */,
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
 				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
 				E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */,

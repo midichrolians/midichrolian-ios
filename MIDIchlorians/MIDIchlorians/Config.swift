@@ -66,7 +66,12 @@ struct Config {
     static let animationBitRowKey = "row"
     static let animationBitColumnKey = "column"
 
+    static let animationTypeSpreadName = "Spread"
+    static let animationTypeSparkName = "Spark"
+    static let animationTypeRainbowName = "Rainbow"
+
     static let TopNavTitle = "MIDIchlorians"
     static let TopNavSessionTitle = "Sessions"
     static let ModeSegmentTitles = ["PLAY", "EDIT"]
+
 }
