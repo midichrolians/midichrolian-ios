@@ -174,6 +174,16 @@ extension GridCollectionView: SampleTableDelegate {
 
 extension GridCollectionView: AnimationTableDelegate {
     func animationTable(_: UITableView, didSelect animation: String) {
-        // doesn't do anything out, will be updated once #10 is merged
+        guard let indexPath = self.selectedPad else {
+            return
+        }
+
+        guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+            animationTypeName: animation, indexPath: indexPath) else {
+                return
+        }
+
+        self.currentSession?.addAnimation(
+            page: self.currentPage, row: indexPath.section, col: indexPath.row, animation: animationSequence)
     }
 }
