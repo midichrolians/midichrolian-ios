@@ -69,6 +69,8 @@
 		E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */; };
 		E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */; };
 		E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */; };
+		F3173AA61E8306C30095F76A /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA51E8306C30095F76A /* Animation.swift */; };
+		F3173AA81E8306D20095F76A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA71E8306D20095F76A /* Audio.swift */; };
 		F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B2A511E7A84AC00FD2C61 /* Pad.swift */; };
 		F36B995E1E8148260026721A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B995D1E8148260026721A /* DataManager.swift */; };
 		F3710A8F1E7D280D0031A754 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3710A8E1E7D280C0031A754 /* Session.swift */; };
@@ -154,6 +156,8 @@
 		E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
 		E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableDelegate.swift; sourceTree = "<group>"; };
 		E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableDelegate.swift; sourceTree = "<group>"; };
+		F3173AA51E8306C30095F76A /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		F3173AA71E8306D20095F76A /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F34B2A511E7A84AC00FD2C61 /* Pad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pad.swift; sourceTree = "<group>"; };
 		F36B995D1E8148260026721A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F3710A8E1E7D280C0031A754 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 			children = (
 				F34B2A511E7A84AC00FD2C61 /* Pad.swift */,
 				F3710A8E1E7D280C0031A754 /* Session.swift */,
+				F3173AA51E8306C30095F76A /* Animation.swift */,
+				F3173AA71E8306D20095F76A /* Audio.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -607,6 +613,7 @@
 				E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
+				F3173AA61E8306C30095F76A /* Animation.swift in Sources */,
 				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
 				334970BF1E72557D009C78DF /* PredefinedAnimationSchemes.swift in Sources */,
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
@@ -625,6 +632,7 @@
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
 				E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */,
+				F3173AA81E8306D20095F76A /* Audio.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,

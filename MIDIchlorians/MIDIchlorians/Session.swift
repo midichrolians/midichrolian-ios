@@ -15,11 +15,11 @@ import RealmSwift
  **/
 class Session: Object {
 
-    dynamic private var BPM = Config.defaultBPM
-    dynamic private var numPages = Config.numberOfPages
-    dynamic private var numRows = Config.numberOfRows
-    dynamic private var numCols = Config.numberOfColumns
-    dynamic private var sessionName = ""
+    private dynamic var BPM = Config.defaultBPM
+    private dynamic var numPages = Config.numberOfPages
+    private dynamic var numRows = Config.numberOfRows
+    private dynamic var numCols = Config.numberOfColumns
+    private dynamic var sessionName = ""
     private var padList = List<Pad>()
 
     private var pads = [[[Pad]]]()
@@ -95,7 +95,6 @@ class Session: Object {
             for row in 0..<numRows {
                 for col in 0..<numCols {
                     let pad = pads[page][row][col]
-                    pad.prepareForSave()
                     padList.append(pad)
                 }
             }
@@ -111,7 +110,6 @@ class Session: Object {
                 for col in 0..<numCols {
                     let listIndex = (page * numRows * numCols) + (row * numCols) + col
                     let pad = padList[listIndex]
-                    pad.load()
                     pads[page][row].append(pad)
                 }
             }
