@@ -48,6 +48,10 @@ class Session: Object {
         }
     }
 
+    func getSessionName() -> String {
+        return sessionName
+    }
+
     //Should take audio struct
     func addAudio(page: Int, row: Int, col: Int, audioFile: String) {
         guard isValidPosition(page, row, col) else {

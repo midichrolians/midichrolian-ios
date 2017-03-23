@@ -12,12 +12,11 @@ class DataManager {
 
     private let realm: Realm?
 
-    init() {
+    init?() {
         do {
             self.realm = try Realm()
         } catch {
-            //Need to Handle error
-            self.realm = nil
+            return nil
         }
     }
 
@@ -42,25 +41,42 @@ class DataManager {
         return session
     }
 
-    func loadAllSessionNames() -> [Session] {
-        return []
+    func loadAllSessionNames() -> [String] {
+        guard let sessionNames = realm?.objects(Session.self).map({ (session) -> String in
+            return session.getSessionName()
+        }) else {
+            return []
+        }
 
+        return sessionNames
     }
 
     func saveAnimation(_ animation: AnimationSequence) -> Bool {
-        
-        return false
+        //Check if database already has the post in it
+        //What if it already exists?
+        do {
+            try realm?.write { realm?.add(Animation(value: animation)) }
+        } catch {
+            return false
+        }
+        return true
     }
 
     func loadAllAnimations() -> [AnimationSequence] {
-        return []
+
     }
 
     func saveAudio(_ audioFile: String) -> Bool {
-        return false
+        //What if it already exists?
+        do {
+            try realm?.write { realm?.add(Audio(value: audioFile)) }
+        } catch {
+            return false
+        }
+        return true
     }
 
     func loadAllAudioStrings() -> [String] {
-        return []
+
     }
 }
