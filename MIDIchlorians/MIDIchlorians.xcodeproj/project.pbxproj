@@ -72,6 +72,13 @@
 		E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */; };
 		E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
+		F3173AA61E8306C30095F76A /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA51E8306C30095F76A /* Animation.swift */; };
+		F3173AA81E8306D20095F76A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA71E8306D20095F76A /* Audio.swift */; };
+		F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AB81E83B1A10095F76A /* PadTests.swift */; };
+		F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABA1E83B2A90095F76A /* SessionTests.swift */; };
+		F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABC1E83B2B50095F76A /* AnimationTests.swift */; };
+		F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABE1E83B2D50095F76A /* AudioTests.swift */; };
+		F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */; };
 		F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B2A511E7A84AC00FD2C61 /* Pad.swift */; };
 		F36B995E1E8148260026721A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B995D1E8148260026721A /* DataManager.swift */; };
 		F3710A8F1E7D280D0031A754 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3710A8E1E7D280C0031A754 /* Session.swift */; };
@@ -79,6 +86,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		33120E2F1E6FD30A007E7717 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33120E121E6FD30A007E7717 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33120E191E6FD30A007E7717;
+			remoteInfo = MIDIchlorians;
+		};
+		F3173AB21E83B1550095F76A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 33120E121E6FD30A007E7717 /* Project object */;
 			proxyType = 1;
@@ -160,6 +174,15 @@
 		E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableDelegate.swift; sourceTree = "<group>"; };
 		E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopNavigationBar.swift; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
+		F3173AA51E8306C30095F76A /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		F3173AA71E8306D20095F76A /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		F3173AAD1E83B1550095F76A /* MIDIchloriansTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3173AB11E83B1550095F76A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3173AB81E83B1A10095F76A /* PadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadTests.swift; sourceTree = SOURCE_ROOT; };
+		F3173ABA1E83B2A90095F76A /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
+		F3173ABC1E83B2B50095F76A /* AnimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
+		F3173ABE1E83B2D50095F76A /* AudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTests.swift; sourceTree = "<group>"; };
+		F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		F34B2A511E7A84AC00FD2C61 /* Pad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pad.swift; sourceTree = "<group>"; };
 		F36B995D1E8148260026721A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F3710A8E1E7D280C0031A754 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -183,6 +206,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3173AAA1E83B1550095F76A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -192,6 +222,7 @@
 				33DAAAC21E72BEAE00987E86 /* SailSample */,
 				33120E1C1E6FD30A007E7717 /* MIDIchlorians */,
 				33120E311E6FD30A007E7717 /* MIDIchloriansUITests */,
+				F3173AAE1E83B1550095F76A /* MIDIchloriansTests */,
 				33120E1B1E6FD30A007E7717 /* Products */,
 				43E957C410DC5BA6DE0E7CF6 /* Pods */,
 				4B368D3F764D7F7BDE762B31 /* Frameworks */,
@@ -203,6 +234,7 @@
 			children = (
 				33120E1A1E6FD30A007E7717 /* MIDIchlorians.app */,
 				33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */,
+				F3173AAD1E83B1550095F76A /* MIDIchloriansTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,11 +404,34 @@
 			name = "Top Nav";
 			sourceTree = "<group>";
 		};
+		F3173AAE1E83B1550095F76A /* MIDIchloriansTests */ = {
+			isa = PBXGroup;
+			children = (
+				F3173AB71E83B17F0095F76A /* ModelTests */,
+				F3173AB11E83B1550095F76A /* Info.plist */,
+				F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */,
+			);
+			path = MIDIchloriansTests;
+			sourceTree = "<group>";
+		};
+		F3173AB71E83B17F0095F76A /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				F3173AB81E83B1A10095F76A /* PadTests.swift */,
+				F3173ABA1E83B2A90095F76A /* SessionTests.swift */,
+				F3173ABC1E83B2B50095F76A /* AnimationTests.swift */,
+				F3173ABE1E83B2D50095F76A /* AudioTests.swift */,
+			);
+			name = ModelTests;
+			sourceTree = "<group>";
+		};
 		F34B2A501E7A721500FD2C61 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F34B2A511E7A84AC00FD2C61 /* Pad.swift */,
 				F3710A8E1E7D280C0031A754 /* Session.swift */,
+				F3173AA51E8306C30095F76A /* Animation.swift */,
+				F3173AA71E8306D20095F76A /* Audio.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -426,6 +481,24 @@
 			productReference = 33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		F3173AAC1E83B1550095F76A /* MIDIchloriansTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3173AB61E83B1550095F76A /* Build configuration list for PBXNativeTarget "MIDIchloriansTests" */;
+			buildPhases = (
+				F3173AA91E83B1550095F76A /* Sources */,
+				F3173AAA1E83B1550095F76A /* Frameworks */,
+				F3173AAB1E83B1550095F76A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3173AB31E83B1550095F76A /* PBXTargetDependency */,
+			);
+			name = MIDIchloriansTests;
+			productName = MIDIchloriansTests;
+			productReference = F3173AAD1E83B1550095F76A /* MIDIchloriansTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -447,6 +520,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 33120E191E6FD30A007E7717;
 					};
+					F3173AAC1E83B1550095F76A = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 33120E191E6FD30A007E7717;
+					};
 				};
 			};
 			buildConfigurationList = 33120E151E6FD30A007E7717 /* Build configuration list for PBXProject "MIDIchlorians" */;
@@ -464,6 +542,7 @@
 			targets = (
 				33120E191E6FD30A007E7717 /* MIDIchlorians */,
 				33120E2D1E6FD30A007E7717 /* MIDIchloriansUITests */,
+				F3173AAC1E83B1550095F76A /* MIDIchloriansTests */,
 			);
 		};
 /* End PBXProject section */
@@ -509,6 +588,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		33120E2C1E6FD30A007E7717 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3173AAB1E83B1550095F76A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -633,6 +719,7 @@
 				E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
+				F3173AA61E8306C30095F76A /* Animation.swift in Sources */,
 				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
 				334970BF1E72557D009C78DF /* AnimationTypes.swift in Sources */,
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
@@ -654,6 +741,8 @@
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
 				E93A02B61E7390DD00DFB2B7 /* ModeDelegate.swift in Sources */,
+				E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */,
+				F3173AA81E8306D20095F76A /* Audio.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
@@ -672,6 +761,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3173AA91E83B1550095F76A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */,
+				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
+				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
+				F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */,
+				F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -679,6 +780,11 @@
 			isa = PBXTargetDependency;
 			target = 33120E191E6FD30A007E7717 /* MIDIchlorians */;
 			targetProxy = 33120E2F1E6FD30A007E7717 /* PBXContainerItemProxy */;
+		};
+		F3173AB31E83B1550095F76A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33120E191E6FD30A007E7717 /* MIDIchlorians */;
+			targetProxy = F3173AB21E83B1550095F76A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -853,6 +959,32 @@
 			};
 			name = Release;
 		};
+		F3173AB41E83B1550095F76A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MIDIchloriansTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0144939r.MIDIchloriansTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MIDIchlorians.app/MIDIchlorians";
+			};
+			name = Debug;
+		};
+		F3173AB51E83B1550095F76A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MIDIchloriansTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0144939r.MIDIchloriansTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MIDIchlorians.app/MIDIchlorians";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -882,6 +1014,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F3173AB61E83B1550095F76A /* Build configuration list for PBXNativeTarget "MIDIchloriansTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3173AB41E83B1550095F76A /* Debug */,
+				F3173AB51E83B1550095F76A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
