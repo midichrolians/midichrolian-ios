@@ -12,7 +12,7 @@ import AVFoundation
 struct AudioManager {
 
     private var audioDict: [String:UInt32]
-    
+
     init() {
         audioDict = [String:UInt32]()
     }
@@ -26,7 +26,7 @@ struct AudioManager {
         audioDict[audioDir] = audioID
         return true
     }
-    
+
     //call this to play audio with single directory
     //returns success
     func play(audioDir: String) -> Bool {
@@ -36,9 +36,9 @@ struct AudioManager {
         AudioClipPlayer.playAudioClip(soundID: audioID)
         return true
     }
-    
+
     //ideally should stop a looping track
     func stop(audioDir: String) {
-        
+
     }
 }
