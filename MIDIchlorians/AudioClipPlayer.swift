@@ -12,17 +12,18 @@ import AudioToolbox
 //need to check if have problems with longer clips
 
 struct AudioClipPlayer {
-    
+
     //creates ID and returns it to be mapped
     static func initAudioClip(audioDir: String, ext: String = "wav") -> UInt32? {
         guard let soundURL = Bundle.main.url(forResource: audioDir, withExtension: ext) else {
             return nil
         }
-        var sysID: SystemSoundID = 0
-        AudioServicesCreateSystemSoundID(souldURL as CFURL, &testSound)
+        let sysID: SystemSoundID = 0
+        var testSound: SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &testSound)
         return sysID
     }
-    
+
     //plays based on ID
     static func playAudioClip(soundID: UInt32) {
         AudioServicesPlaySystemSound(soundID)

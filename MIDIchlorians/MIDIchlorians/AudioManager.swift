@@ -14,12 +14,12 @@ struct AudioManager {
     private var audioDict: [String:UInt32]
 
     init() {
-        audioDict = [String:UInt32]()
+        audioDict = [String: UInt32]()
     }
 
     //initialize single audio file
     //returns successs
-    func initAudio(audioDir: String) -> Bool {
+    mutating func initAudio(audioDir: String) -> Bool {
         guard let audioID = AudioClipPlayer.initAudioClip(audioDir: audioDir) else {
             return false
         }

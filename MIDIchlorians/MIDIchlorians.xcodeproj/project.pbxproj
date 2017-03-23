@@ -61,7 +61,6 @@
 		E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2F1E74FEBB00F5A092 /* SessionTableDelegate.swift */; };
 		E92F6C321E751EAE00F5A092 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C311E751EAE00F5A092 /* Mode.swift */; };
 		E93A02B21E738C0400DFB2B7 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */; };
-		E93A02B61E7390DD00DFB2B7 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BB1E73B9CE00DFB2B7 /* SampleTableViewController.swift */; };
 		E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BF1E73BBA000DFB2B7 /* SampleTableViewCell.swift */; };
 		E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */; };
@@ -70,6 +69,7 @@
 		E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */; };
 		E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */; };
 		E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */; };
+		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
 		F3173AA61E8306C30095F76A /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA51E8306C30095F76A /* Animation.swift */; };
@@ -740,8 +740,7 @@
 				E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
-				E93A02B61E7390DD00DFB2B7 /* ModeDelegate.swift in Sources */,
-				E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */,
+				E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */,
 				F3173AA81E8306D20095F76A /* Audio.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
@@ -1022,6 +1021,7 @@
 				F3173AB51E83B1550095F76A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

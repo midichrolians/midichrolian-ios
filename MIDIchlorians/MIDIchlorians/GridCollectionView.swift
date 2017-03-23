@@ -145,21 +145,21 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
         AnimationEngine.register(animationSequence: animationSequence)
         // end
 
-        _ = audioManager.play(indexPath: indexPath)
+        // need session to return a pad from an indexPath
     }
 
     func startListenAudio() {
-        let ncdefault = NotificationCenter.default
-        ncdefault.addObserver(forName: Notification.Name(rawValue:"Sound"), object: nil, queue: nil) { notification in
+//        let ncdefault = NotificationCenter.default
+//        ncdefault.addObserver(forName: Notification.Name(rawValue:"Sound"), object: nil, queue: nil) { notification in
             //handle notification
-            guard let completedID = notification.userInfo?["completed"] as? UInt32 else {
-                return
-            }
-            let cellPath = self.audioManager.getIndexPath(of: completedID)
-            guard let _ = self.cellForItem(at: cellPath) else {
-                return
-            }
-        }
+//            guard let completedID = notification.userInfo?["completed"] as? UInt32 else {
+//                return
+//            }
+//            let cellPath = self.audioManager.getIndexPath(of: completedID)
+//            guard let _ = self.cellForItem(at: cellPath) else {
+//                return
+//            }
+//        }
     }
 }
 
