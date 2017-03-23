@@ -16,10 +16,12 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
             }
         }
     }
+    internal var currentSession: Session?
+    internal var currentPage = 0
 
     private let reuseIdentifier = "cell"
     private let audioManager = AudioManager()
-    private var selectedPad: IndexPath?
+    internal var selectedPad: IndexPath?
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Config.numberOfColumns
@@ -118,16 +120,28 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
         // hardcoded animations for demo
         if (indexPath.section == 0 || indexPath.section == Config.numberOfRows - 1) &&
             (indexPath.item == 0 || indexPath.item == Config.numberOfColumns - 1) {
-            let animationSequence = PredefinedAnimationSchemes.spreadFromCenter()
+            guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+                animationTypeName: Config.animationTypeSpreadName,
+                indexPath: indexPath) else {
+                    return
+            }
             AnimationEngine.register(animationSequence: animationSequence)
             return
         }
         if indexPath.section > 1 && indexPath.item > 2 && indexPath.section < 4 && indexPath.item < 5 {
-            let animationSequence = PredefinedAnimationSchemes.spreadOut(indexPath: indexPath)
+            guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+                animationTypeName: Config.animationTypeSparkName,
+                indexPath: indexPath) else {
+                    return
+            }
             AnimationEngine.register(animationSequence: animationSequence)
             return
         }
-        let animationSequence = PredefinedAnimationSchemes.rainbow(indexPath: indexPath)
+        guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+            animationTypeName: Config.animationTypeRainbowName,
+            indexPath: indexPath) else {
+                return
+        }
         AnimationEngine.register(animationSequence: animationSequence)
         // end
 
@@ -146,5 +160,30 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
                 return
             }
         }
+    }
+}
+
+extension GridCollectionView: SampleTableDelegate {
+    func sampleTable(_: UITableView, didSelect sample: String) {
+        guard let row = self.selectedPad?.section, let col = self.selectedPad?.row else {
+            return
+        }
+        self.currentSession?.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
+    }
+}
+
+extension GridCollectionView: AnimationTableDelegate {
+    func animationTable(_: UITableView, didSelect animation: String) {
+        guard let indexPath = self.selectedPad else {
+            return
+        }
+
+        guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+            animationTypeName: animation, indexPath: indexPath) else {
+                return
+        }
+
+        self.currentSession?.addAnimation(
+            page: self.currentPage, row: indexPath.section, col: indexPath.row, animation: animationSequence)
     }
 }
