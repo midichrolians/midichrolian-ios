@@ -16,10 +16,12 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
             }
         }
     }
+    internal var currentSession: Session?
+    internal var currentPage = 0
 
     private let reuseIdentifier = "cell"
     private let audioManager = AudioManager()
-    private var selectedPad: IndexPath?
+    internal var selectedPad: IndexPath?
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Config.numberOfColumns
@@ -146,5 +148,20 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
                 return
             }
         }
+    }
+}
+
+extension GridCollectionView: SampleTableDelegate {
+    func sampleTable(_: UITableView, didSelect sample: String) {
+        guard let row = self.selectedPad?.section, let col = self.selectedPad?.row else {
+            return
+        }
+        self.currentSession?.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
+    }
+}
+
+extension GridCollectionView: AnimationTableDelegate {
+    func animationTable(_: UITableView, didSelect animation: String) {
+        // doesn't do anything out, will be updated once #10 is merged
     }
 }

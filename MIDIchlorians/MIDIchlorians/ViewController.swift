@@ -71,6 +71,8 @@ class ViewController: UIViewController {
 
         gridCollection.dataSource = gridCollection
         gridCollection.delegate = gridCollection
+        // tentatively for prototyping purpose
+        gridCollection.currentSession = Session(bpm: Config.defaultBPM)
         AnimationEngine.set(animationCollectionView: gridCollection)
         AnimationEngine.start()
         gridCollection.startListenAudio()
@@ -104,6 +106,7 @@ class ViewController: UIViewController {
     private func setUpSidePane() {
         sampleTableViewController = SampleTableViewController(style: .plain)
         sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
+        sampleTableViewController.delegate = self.gridCollection
 
         animationTableViewController = AnimationTableViewController(style: .plain)
         animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
