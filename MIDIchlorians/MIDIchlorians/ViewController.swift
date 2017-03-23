@@ -47,17 +47,11 @@ class ViewController: UIViewController {
         }
     }
     private var topNavigationBar: TopNavigationBar!
-
-    private var sampleTableViewController: SampleTableViewController!
-    private var sampleNavigationController: UINavigationController!
-
-    private var animationTableViewController: AnimationTableViewController!
-    private var animationNavigationController: UINavigationController!
-
     private var sessionTableViewController: SessionTableViewController!
     private var sessionNavigationController: UINavigationController!
 
     internal var sidePaneViewController: SidePaneTabBarController!
+    private var sideBarController: SidePaneController!
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -106,19 +100,8 @@ class ViewController: UIViewController {
     //     - wraps a TableViewController
     // these system view controllers are all subclassed to provide default styles
     private func setUpSidePane() {
-        sampleTableViewController = SampleTableViewController(style: .plain)
-        sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
-        sampleTableViewController.delegate = self.gridCollection
-
-        animationTableViewController = AnimationTableViewController(style: .plain)
-        animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
-
-        sidePaneViewController = SidePaneTabBarController()
-        sidePaneViewController.viewControllers = [
-            sampleNavigationController,
-            animationNavigationController
-        ]
-        sidePaneViewController.selectedIndex = 0
+        sideBarController = SidePaneController()
+        self.sidePaneViewController = sideBarController.sidePaneViewController
     }
 
     // Called when the session button on the top nav is pressed
