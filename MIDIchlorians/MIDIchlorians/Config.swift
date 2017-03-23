@@ -55,6 +55,11 @@ struct Config {
     static let SectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
+    // will be removed once we move to constraints
+    static let AppLeftPadding: CGFloat = 20
+    static let AppRightPadding: CGFloat = 20
+    static let TopNavHeight: CGFloat = 60
+
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
@@ -65,4 +70,13 @@ struct Config {
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
     static let animationBitColumnKey = "column"
+
+    static let animationTypeSpreadName = "Spread"
+    static let animationTypeSparkName = "Spark"
+    static let animationTypeRainbowName = "Rainbow"
+
+    static let TopNavTitle = "MIDIchlorians"
+    static let TopNavSessionTitle = "Sessions"
+    static let ModeSegmentTitles = ["PLAY", "EDIT"]
+
 }

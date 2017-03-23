@@ -1,5 +1,5 @@
 //
-//  PredefinedAnimationSchemes.swift
+//  AnimationTypes.swift
 //  MIDIchlorians
 //
 //  Created by anands on 10/3/17.
@@ -8,8 +8,44 @@
 
 import UIKit
 
-class PredefinedAnimationSchemes {
-    static func spreadOut(indexPath: IndexPath) -> AnimationSequence {
+class AnimationTypes {
+
+    private static var animationTypes = [String: AnimationSequence]()
+
+    // returns the names of all the animation types including the predefined ones
+    static func getAllAnimationTypesNames() -> [String] {
+        var arrayOfNames = Array(animationTypes.keys)
+        arrayOfNames.append(contentsOf: getPredefinedAnimationTypesNames())
+        return arrayOfNames
+    }
+
+    private static func getPredefinedAnimationTypesNames() -> [String] {
+        return [
+            Config.animationTypeSparkName,
+            Config.animationTypeSpreadName,
+            Config.animationTypeRainbowName
+        ]
+    }
+
+    static func getAnimationSequenceForAnimationType(animationTypeName: String,
+                                                     indexPath: IndexPath) -> AnimationSequence? {
+        switch animationTypeName {
+        case Config.animationTypeSpreadName:
+            return spreadFromCenter()
+        case Config.animationTypeSparkName:
+            return spark(indexPath: indexPath)
+        case Config.animationTypeRainbowName:
+            return rainbow(indexPath: indexPath)
+        default:
+            return animationTypes[animationTypeName]
+        }
+    }
+
+    static func addNewAnimationType(name: String, animationSequence: AnimationSequence) {
+        animationTypes[name] = animationSequence
+    }
+
+    static func spark(indexPath: IndexPath) -> AnimationSequence {
         let animationSequence = AnimationSequence()
         animationSequence.addAnimationBit(
             atTick: 0,
@@ -64,61 +100,6 @@ class PredefinedAnimationSchemes {
 
     static func spreadFromCenter() -> AnimationSequence {
         let animationSequence = AnimationSequence()
-        let arrayOfInnerTuples = [
-            (2, 3),
-            (3, 3),
-            (2, 4),
-            (3, 4)
-        ]
-        let arrayOfMiddleTuples = [
-            (1, 2),
-            (1, 3),
-            (1, 4),
-            (1, 5),
-            (2, 2),
-            (2, 5),
-            (3, 2),
-            (3, 5),
-            (4, 2),
-            (4, 3),
-            (4, 4),
-            (4, 5)
-        ]
-        let arrayOfOuterTuples = [
-            (0, 0),
-            (0, 1),
-            (0, 2),
-            (0, 3),
-            (0, 4),
-            (0, 5),
-            (0, 6),
-            (0, 7),
-            (1, 0),
-            (1, 1),
-            (1, 6),
-            (1, 7),
-            (2, 0),
-            (2, 1),
-            (2, 6),
-            (2, 7),
-            (3, 0),
-            (3, 1),
-            (3, 6),
-            (3, 7),
-            (4, 0),
-            (4, 1),
-            (4, 6),
-            (4, 7),
-            (0, 0),
-            (5, 0),
-            (5, 1),
-            (5, 2),
-            (5, 3),
-            (5, 4),
-            (5, 5),
-            (5, 6),
-            (5, 7)
-        ]
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples, tick: 0,
                                       colour: Colour.red, animationSequence: animationSequence)
@@ -170,4 +151,60 @@ class PredefinedAnimationSchemes {
             )
         }
     }
+
+    private static let arrayOfInnerTuples = [
+        (2, 3),
+        (3, 3),
+        (2, 4),
+        (3, 4)
+    ]
+    private static let arrayOfMiddleTuples = [
+        (1, 2),
+        (1, 3),
+        (1, 4),
+        (1, 5),
+        (2, 2),
+        (2, 5),
+        (3, 2),
+        (3, 5),
+        (4, 2),
+        (4, 3),
+        (4, 4),
+        (4, 5)
+    ]
+    private static let arrayOfOuterTuples = [
+        (0, 0),
+        (0, 1),
+        (0, 2),
+        (0, 3),
+        (0, 4),
+        (0, 5),
+        (0, 6),
+        (0, 7),
+        (1, 0),
+        (1, 1),
+        (1, 6),
+        (1, 7),
+        (2, 0),
+        (2, 1),
+        (2, 6),
+        (2, 7),
+        (3, 0),
+        (3, 1),
+        (3, 6),
+        (3, 7),
+        (4, 0),
+        (4, 1),
+        (4, 6),
+        (4, 7),
+        (0, 0),
+        (5, 0),
+        (5, 1),
+        (5, 2),
+        (5, 3),
+        (5, 4),
+        (5, 5),
+        (5, 6),
+        (5, 7)
+    ]
 }
