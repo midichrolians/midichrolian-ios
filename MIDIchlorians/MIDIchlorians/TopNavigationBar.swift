@@ -13,6 +13,7 @@ import UIKit
 class TopNavigationBar: UINavigationBar {
     // delegate that will be notified when the mode switches
     weak var modeSwitchDelegate: ModeSwitchDelegate?
+    weak var sessionSelectorDelegate: SessionSelectorDelegate?
 
     // UI controls in nav bar
     // always only have 1 UINavigationItem because we are not using this in a navigation controller
@@ -21,7 +22,11 @@ class TopNavigationBar: UINavigationBar {
     private var modeSegmentedControl = UISegmentedControl(items: Config.ModeSegmentTitles)
     // control to show table of sessions
     private var sessionSelector =
-        UIBarButtonItem(title: Config.TopNavSessionTitle, style: .plain, target: nil, action: nil)
+        UIBarButtonItem(
+            title: Config.TopNavSessionTitle,
+            style: .plain,
+            target: self,
+            action: #selector(sessionSelect(sender:)))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,10 +63,9 @@ class TopNavigationBar: UINavigationBar {
         }
     }
 
-    // Set target and selector to be call when session control has been interacted with
-    func addTargetToSessionSelector(_ target: Any?, action selector: Selector) {
-        sessionSelector.target = target as AnyObject?
-        sessionSelector.action = selector
+    // Called when the session selector is tapped
+    func sessionSelect(sender: UIBarButtonItem) {
+        sessionSelectorDelegate?.sessionSelector(sender: sender)
     }
 
 }
