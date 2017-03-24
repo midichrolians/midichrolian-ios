@@ -46,12 +46,13 @@ class ViewController: UIViewController {
             self.gridCollection.mode = mode
         }
     }
-    private var topNavigationBar: TopNavigationBar!
     private var sessionTableViewController: SessionTableViewController!
     private var sessionNavigationController: UINavigationController!
 
     internal var sidePaneViewController: SidePaneTabBarController!
     private var sideBarController: SidePaneController!
+
+    private var topBarController: TopBarController!
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -85,12 +86,14 @@ class ViewController: UIViewController {
     private func setUpTopNav() {
         sessionTableViewController = SessionTableViewController(style: .plain)
         sessionNavigationController = UINavigationController(rootViewController: sessionTableViewController)
-        topNavigationBar = TopNavigationBar(
-            frame: CGRect(origin: CGPoint.zero,
-                          size: CGSize(width: self.view.frame.width, height: Config.TopNavHeight)))
-        self.view.addSubview(topNavigationBar)
-        topNavigationBar.modeSwitchDelegate = self
-        topNavigationBar.addTargetToSessionSelector(self, action: #selector(sessionSelect(sender:)))
+
+        topBarController = TopBarController()
+
+        topBarController.configureWidth(width: self.view.frame.width)
+        topBarController.addTargetToSessionSelector(self, action: #selector(sessionSelect(sender:)))
+        topBarController.modeSwitchDelegate = self
+
+        self.view.addSubview(topBarController.view)
     }
 
     // Sets up the side pane that comes into view when user enters editing mode.
