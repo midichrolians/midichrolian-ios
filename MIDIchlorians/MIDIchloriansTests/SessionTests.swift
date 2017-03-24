@@ -38,4 +38,8 @@ class SessionTests: XCTestCase {
     func testLoad() {
     }
 
+    func testGetPad() {
+        
+    }
+
 }
