@@ -119,4 +119,11 @@ class Session: Object {
             }
         }
     }
+
+    func getPad(page: Int, row: Int, col: Int) -> Pad? {
+        guard isValidPosition(page, row, col) else {
+            return nil
+        }
+        return pads[page][row][col]
+    }
 }

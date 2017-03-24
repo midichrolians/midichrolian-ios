@@ -1,0 +1,1039 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		057E6F18E799DC4FD2679773 /* Pods_MIDIchlorians.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 147FBE44258E6CD194302951 /* Pods_MIDIchlorians.framework */; };
+		33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E1D1E6FD30A007E7717 /* AppDelegate.swift */; };
+		33120E201E6FD30A007E7717 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E1F1E6FD30A007E7717 /* ViewController.swift */; };
+		33120E231E6FD30A007E7717 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E211E6FD30A007E7717 /* Main.storyboard */; };
+		33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33120E241E6FD30A007E7717 /* Assets.xcassets */; };
+		33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */; };
+		33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */; };
+		334970BF1E72557D009C78DF /* AnimationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationTypes.swift */; };
+		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
+		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
+		334970C71E72B83D009C78DF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C61E72B83D009C78DF /* AudioManager.swift */; };
+		334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C81E72B86B009C78DF /* LowLatencyAudio.swift */; };
+		33A2754D1E7BEF56000B1B15 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2754C1E7BEF56000B1B15 /* Colour.swift */; };
+		33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */; };
+		33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */; };
+		33DAAAA71E72BEA300987E86 /* AWOLNATION - Sail-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */; };
+		33DAAAA81E72BEA300987E86 /* AWOLNATION - Sail-4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */; };
+		33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */; };
+		33DAAAAA1E72BEA300987E86 /* AWOLNATION - Sail-6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */; };
+		33DAAAAB1E72BEA300987E86 /* AWOLNATION - Sail-7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */; };
+		33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */; };
+		33DAAAAD1E72BEA300987E86 /* AWOLNATION - Sail-9.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */; };
+		33DAAAAE1E72BEA300987E86 /* AWOLNATION - Sail-10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */; };
+		33DAAAAF1E72BEA300987E86 /* AWOLNATION - Sail-11.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */; };
+		33DAAAB01E72BEA300987E86 /* AWOLNATION - Sail-12.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */; };
+		33DAAAB11E72BEA300987E86 /* AWOLNATION - Sail-13.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */; };
+		33DAAAB21E72BEA300987E86 /* AWOLNATION - Sail-14.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */; };
+		33DAAAB31E72BEA300987E86 /* AWOLNATION - Sail-15.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */; };
+		33DAAAB41E72BEA300987E86 /* AWOLNATION - Sail-16.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */; };
+		33DAAAB51E72BEA300987E86 /* AWOLNATION - Sail-17.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */; };
+		33DAAAB61E72BEA300987E86 /* AWOLNATION - Sail-18.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */; };
+		33DAAAB71E72BEA300987E86 /* AWOLNATION - Sail-19.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */; };
+		33DAAAB81E72BEA300987E86 /* AWOLNATION - Sail-20.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */; };
+		33DAAAB91E72BEA300987E86 /* AWOLNATION - Sail-21.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */; };
+		33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */; };
+		33DAAABB1E72BEA300987E86 /* AWOLNATION - Sail-23.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */; };
+		33DAAABC1E72BEA300987E86 /* AWOLNATION - Sail-24.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */; };
+		33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */; };
+		33DAAABE1E72BEA300987E86 /* AWOLNATION - Sail-26.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */; };
+		33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */; };
+		33DAAAC01E72BEA300987E86 /* AWOLNATION - Sail-28.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */; };
+		33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */; };
+		33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */; };
+		33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */; };
+		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
+		33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A411E6FE55000229A92 /* AnimationBit.swift */; };
+		33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A431E6FE67700229A92 /* AnimationSequence.swift */; };
+		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
+		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
+		E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2B1E74F9FC00F5A092 /* SessionTableViewController.swift */; };
+		E92F6C2E1E74FA3400F5A092 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2D1E74FA3400F5A092 /* SessionTableViewCell.swift */; };
+		E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2F1E74FEBB00F5A092 /* SessionTableDelegate.swift */; };
+		E92F6C321E751EAE00F5A092 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C311E751EAE00F5A092 /* Mode.swift */; };
+		E93A02B21E738C0400DFB2B7 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */; };
+		E93A02B61E7390DD00DFB2B7 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
+		E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BB1E73B9CE00DFB2B7 /* SampleTableViewController.swift */; };
+		E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02BF1E73BBA000DFB2B7 /* SampleTableViewCell.swift */; };
+		E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */; };
+		E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C31E73F5E700DFB2B7 /* AnimationTableViewController.swift */; };
+		E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C51E73F5FA00DFB2B7 /* AnimationTableViewCell.swift */; };
+		E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */; };
+		E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */; };
+		E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */; };
+<<<<<<< HEAD
+		F3173AA61E8306C30095F76A /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA51E8306C30095F76A /* Animation.swift */; };
+		F3173AA81E8306D20095F76A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA71E8306D20095F76A /* Audio.swift */; };
+		F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AB81E83B1A10095F76A /* PadTests.swift */; };
+		F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABA1E83B2A90095F76A /* SessionTests.swift */; };
+		F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABC1E83B2B50095F76A /* AnimationTests.swift */; };
+		F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABE1E83B2D50095F76A /* AudioTests.swift */; };
+		F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */; };
+=======
+		E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */; };
+		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
+>>>>>>> master
+		F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B2A511E7A84AC00FD2C61 /* Pad.swift */; };
+		F36B995E1E8148260026721A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B995D1E8148260026721A /* DataManager.swift */; };
+		F3710A8F1E7D280D0031A754 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3710A8E1E7D280C0031A754 /* Session.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		33120E2F1E6FD30A007E7717 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33120E121E6FD30A007E7717 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33120E191E6FD30A007E7717;
+			remoteInfo = MIDIchlorians;
+		};
+		F3173AB21E83B1550095F76A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33120E121E6FD30A007E7717 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33120E191E6FD30A007E7717;
+			remoteInfo = MIDIchlorians;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		147FBE44258E6CD194302951 /* Pods_MIDIchlorians.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchlorians.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33120E1A1E6FD30A007E7717 /* MIDIchlorians.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIDIchlorians.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33120E1D1E6FD30A007E7717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		33120E1F1E6FD30A007E7717 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		33120E221E6FD30A007E7717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		33120E241E6FD30A007E7717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		33120E271E6FD30A007E7717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		33120E291E6FD30A007E7717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIchloriansUITests.swift; sourceTree = "<group>"; };
+		33120E341E6FD30A007E7717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		334970BE1E72557D009C78DF /* AnimationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypes.swift; sourceTree = "<group>"; };
+		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		334970C61E72B83D009C78DF /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = MIDIchlorians/AudioManager.swift; sourceTree = "<group>"; };
+		334970C81E72B86B009C78DF /* LowLatencyAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowLatencyAudio.swift; sourceTree = "<group>"; };
+		33A2754C1E7BEF56000B1B15 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
+		33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-1.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-1.wav"; sourceTree = "<group>"; };
+		33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-2.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-2.wav"; sourceTree = "<group>"; };
+		33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-3.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-3.wav"; sourceTree = "<group>"; };
+		33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-4.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-4.wav"; sourceTree = "<group>"; };
+		33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-5.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-5.wav"; sourceTree = "<group>"; };
+		33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-6.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-6.wav"; sourceTree = "<group>"; };
+		33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-7.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-7.wav"; sourceTree = "<group>"; };
+		33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-8.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-8.wav"; sourceTree = "<group>"; };
+		33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-9.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-9.wav"; sourceTree = "<group>"; };
+		33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-10.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-10.wav"; sourceTree = "<group>"; };
+		33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-11.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-11.wav"; sourceTree = "<group>"; };
+		33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-12.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-12.wav"; sourceTree = "<group>"; };
+		33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-13.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-13.wav"; sourceTree = "<group>"; };
+		33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-14.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-14.wav"; sourceTree = "<group>"; };
+		33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-15.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-15.wav"; sourceTree = "<group>"; };
+		33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-16.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-16.wav"; sourceTree = "<group>"; };
+		33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-17.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-17.wav"; sourceTree = "<group>"; };
+		33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-18.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-18.wav"; sourceTree = "<group>"; };
+		33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-19.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-19.wav"; sourceTree = "<group>"; };
+		33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-20.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-20.wav"; sourceTree = "<group>"; };
+		33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-21.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-21.wav"; sourceTree = "<group>"; };
+		33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-22.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-22.wav"; sourceTree = "<group>"; };
+		33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-23.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-23.wav"; sourceTree = "<group>"; };
+		33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-24.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-24.wav"; sourceTree = "<group>"; };
+		33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-25.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-25.wav"; sourceTree = "<group>"; };
+		33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-26.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-26.wav"; sourceTree = "<group>"; };
+		33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-27.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-27.wav"; sourceTree = "<group>"; };
+		33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-28.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-28.wav"; sourceTree = "<group>"; };
+		33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail.wav"; sourceTree = "<group>"; };
+		33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
+		33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
+		33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
+		33EC0A411E6FE55000229A92 /* AnimationBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationBit.swift; sourceTree = "<group>"; };
+		33EC0A431E6FE67700229A92 /* AnimationSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequence.swift; sourceTree = "<group>"; };
+		68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.debug.xcconfig"; sourceTree = "<group>"; };
+		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
+		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
+		CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E92F6C2B1E74F9FC00F5A092 /* SessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
+		E92F6C2D1E74FA3400F5A092 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		E92F6C2F1E74FEBB00F5A092 /* SessionTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableDelegate.swift; sourceTree = "<group>"; };
+		E92F6C311E751EAE00F5A092 /* Mode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
+		E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
+		E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeDelegate.swift; sourceTree = "<group>"; };
+		E93A02BB1E73B9CE00DFB2B7 /* SampleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableViewController.swift; sourceTree = "<group>"; };
+		E93A02BF1E73BBA000DFB2B7 /* SampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableViewCell.swift; sourceTree = "<group>"; };
+		E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneTabBarController.swift; sourceTree = "<group>"; };
+		E93A02C31E73F5E700DFB2B7 /* AnimationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableViewController.swift; sourceTree = "<group>"; };
+		E93A02C51E73F5FA00DFB2B7 /* AnimationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableViewCell.swift; sourceTree = "<group>"; };
+		E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
+		E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableDelegate.swift; sourceTree = "<group>"; };
+		E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableDelegate.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		F3173AA51E8306C30095F76A /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		F3173AA71E8306D20095F76A /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		F3173AAD1E83B1550095F76A /* MIDIchloriansTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3173AB11E83B1550095F76A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3173AB81E83B1A10095F76A /* PadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadTests.swift; sourceTree = SOURCE_ROOT; };
+		F3173ABA1E83B2A90095F76A /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
+		F3173ABC1E83B2B50095F76A /* AnimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
+		F3173ABE1E83B2D50095F76A /* AudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTests.swift; sourceTree = "<group>"; };
+		F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+=======
+		E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopNavigationBar.swift; sourceTree = "<group>"; };
+		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
+>>>>>>> master
+		F34B2A511E7A84AC00FD2C61 /* Pad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pad.swift; sourceTree = "<group>"; };
+		F36B995D1E8148260026721A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		F3710A8E1E7D280C0031A754 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		33120E171E6FD30A007E7717 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057E6F18E799DC4FD2679773 /* Pods_MIDIchlorians.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33120E2B1E6FD30A007E7717 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3173AAA1E83B1550095F76A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		33120E111E6FD30A007E7717 = {
+			isa = PBXGroup;
+			children = (
+				33DAAAC21E72BEAE00987E86 /* SailSample */,
+				33120E1C1E6FD30A007E7717 /* MIDIchlorians */,
+				33120E311E6FD30A007E7717 /* MIDIchloriansUITests */,
+				F3173AAE1E83B1550095F76A /* MIDIchloriansTests */,
+				33120E1B1E6FD30A007E7717 /* Products */,
+				43E957C410DC5BA6DE0E7CF6 /* Pods */,
+				4B368D3F764D7F7BDE762B31 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		33120E1B1E6FD30A007E7717 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				33120E1A1E6FD30A007E7717 /* MIDIchlorians.app */,
+				33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */,
+				F3173AAD1E83B1550095F76A /* MIDIchloriansTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		33120E1C1E6FD30A007E7717 /* MIDIchlorians */ = {
+			isa = PBXGroup;
+			children = (
+				805946D01E816CEC00EF7A2B /* Audio */,
+				F34B2A501E7A721500FD2C61 /* Models */,
+				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
+				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
+				E99E8A4A1E8016BF001F9351 /* Top Nav */,
+				E93A02CB1E7403B900DFB2B7 /* Side Pane */,
+				E92F6C311E751EAE00F5A092 /* Mode.swift */,
+				E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */,
+				33120E211E6FD30A007E7717 /* Main.storyboard */,
+				33120E241E6FD30A007E7717 /* Assets.xcassets */,
+				33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */,
+				33120E291E6FD30A007E7717 /* Info.plist */,
+				33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */,
+				33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */,
+				33DAAAC31E72C38100987E86 /* Animation */,
+				334970C01E72583F009C78DF /* Config.swift */,
+				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
+				334970C81E72B86B009C78DF /* LowLatencyAudio.swift */,
+				F36B995D1E8148260026721A /* DataManager.swift */,
+			);
+			path = MIDIchlorians;
+			sourceTree = "<group>";
+		};
+		33120E311E6FD30A007E7717 /* MIDIchloriansUITests */ = {
+			isa = PBXGroup;
+			children = (
+				33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */,
+				33120E341E6FD30A007E7717 /* Info.plist */,
+			);
+			path = MIDIchloriansUITests;
+			sourceTree = "<group>";
+		};
+		33DAAAC21E72BEAE00987E86 /* SailSample */ = {
+			isa = PBXGroup;
+			children = (
+				33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */,
+				33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */,
+				33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */,
+				33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */,
+				33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */,
+				33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */,
+				33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */,
+				33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */,
+				33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */,
+				33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */,
+				33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */,
+				33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */,
+				33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */,
+				33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */,
+				33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */,
+				33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */,
+				33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */,
+				33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */,
+				33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */,
+				33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */,
+				33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */,
+				33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */,
+				33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */,
+				33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */,
+				33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */,
+				33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */,
+				33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */,
+				33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */,
+				33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */,
+			);
+			name = SailSample;
+			sourceTree = "<group>";
+		};
+		33DAAAC31E72C38100987E86 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */,
+				33EC0A411E6FE55000229A92 /* AnimationBit.swift */,
+				33EC0A431E6FE67700229A92 /* AnimationSequence.swift */,
+				334970BE1E72557D009C78DF /* AnimationTypes.swift */,
+				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
+				33A2754C1E7BEF56000B1B15 /* Colour.swift */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		43E957C410DC5BA6DE0E7CF6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */,
+				A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */,
+				F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */,
+				E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4B368D3F764D7F7BDE762B31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				147FBE44258E6CD194302951 /* Pods_MIDIchlorians.framework */,
+				CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		805946D01E816CEC00EF7A2B /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				334970C61E72B83D009C78DF /* AudioManager.swift */,
+				805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */,
+			);
+			name = Audio;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		E92F6C331E7522F700F5A092 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				E92F6C2B1E74F9FC00F5A092 /* SessionTableViewController.swift */,
+				E92F6C2D1E74FA3400F5A092 /* SessionTableViewCell.swift */,
+				E92F6C2F1E74FEBB00F5A092 /* SessionTableDelegate.swift */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
+		E92F6C341E7522FD00F5A092 /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				E93A02BB1E73B9CE00DFB2B7 /* SampleTableViewController.swift */,
+				E93A02BF1E73BBA000DFB2B7 /* SampleTableViewCell.swift */,
+				E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */,
+			);
+			name = Sample;
+			sourceTree = "<group>";
+		};
+		E92F6C351E75230400F5A092 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				E93A02C31E73F5E700DFB2B7 /* AnimationTableViewController.swift */,
+				E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */,
+				E93A02C51E73F5FA00DFB2B7 /* AnimationTableViewCell.swift */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		E93A02CB1E7403B900DFB2B7 /* Side Pane */ = {
+			isa = PBXGroup;
+			children = (
+				E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */,
+				E9EC7C461E8395AC00769A8F /* SidePaneController.swift */,
+				E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */,
+				E92F6C341E7522FD00F5A092 /* Sample */,
+				E92F6C351E75230400F5A092 /* Animation */,
+			);
+			name = "Side Pane";
+			sourceTree = "<group>";
+		};
+<<<<<<< HEAD
+		F3173AAE1E83B1550095F76A /* MIDIchloriansTests */ = {
+			isa = PBXGroup;
+			children = (
+				F3173AB71E83B17F0095F76A /* ModelTests */,
+				F3173AB11E83B1550095F76A /* Info.plist */,
+				F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */,
+			);
+			path = MIDIchloriansTests;
+			sourceTree = "<group>";
+		};
+		F3173AB71E83B17F0095F76A /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				F3173AB81E83B1A10095F76A /* PadTests.swift */,
+				F3173ABA1E83B2A90095F76A /* SessionTests.swift */,
+				F3173ABC1E83B2B50095F76A /* AnimationTests.swift */,
+				F3173ABE1E83B2D50095F76A /* AudioTests.swift */,
+			);
+			name = ModelTests;
+=======
+		E99E8A4A1E8016BF001F9351 /* Top Nav */ = {
+			isa = PBXGroup;
+			children = (
+				E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */,
+				E92F6C331E7522F700F5A092 /* Session */,
+			);
+			name = "Top Nav";
+>>>>>>> master
+			sourceTree = "<group>";
+		};
+		F34B2A501E7A721500FD2C61 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F34B2A511E7A84AC00FD2C61 /* Pad.swift */,
+				F3710A8E1E7D280C0031A754 /* Session.swift */,
+				F3173AA51E8306C30095F76A /* Animation.swift */,
+				F3173AA71E8306D20095F76A /* Audio.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		33120E191E6FD30A007E7717 /* MIDIchlorians */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33120E371E6FD30A007E7717 /* Build configuration list for PBXNativeTarget "MIDIchlorians" */;
+			buildPhases = (
+				D6D7410A30634D182BAA1312 /* [CP] Check Pods Manifest.lock */,
+				33120E161E6FD30A007E7717 /* Sources */,
+				33120E171E6FD30A007E7717 /* Frameworks */,
+				33120E181E6FD30A007E7717 /* Resources */,
+				33EC0A3A1E6FD46600229A92 /* ShellScript */,
+				85207170A186EACFF6F15CFB /* [CP] Embed Pods Frameworks */,
+				21E11D3C90BBD9712CE7AC97 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIDIchlorians;
+			productName = MIDIchlorians;
+			productReference = 33120E1A1E6FD30A007E7717 /* MIDIchlorians.app */;
+			productType = "com.apple.product-type.application";
+		};
+		33120E2D1E6FD30A007E7717 /* MIDIchloriansUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33120E3A1E6FD30A007E7717 /* Build configuration list for PBXNativeTarget "MIDIchloriansUITests" */;
+			buildPhases = (
+				35BC5EB78E73CB9FA3301513 /* [CP] Check Pods Manifest.lock */,
+				33120E2A1E6FD30A007E7717 /* Sources */,
+				33120E2B1E6FD30A007E7717 /* Frameworks */,
+				33120E2C1E6FD30A007E7717 /* Resources */,
+				7A48CCA24FE94E2855835A7E /* [CP] Embed Pods Frameworks */,
+				E41592DAF7845B3168E4D69E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33120E301E6FD30A007E7717 /* PBXTargetDependency */,
+			);
+			name = MIDIchloriansUITests;
+			productName = MIDIchloriansUITests;
+			productReference = 33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F3173AAC1E83B1550095F76A /* MIDIchloriansTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3173AB61E83B1550095F76A /* Build configuration list for PBXNativeTarget "MIDIchloriansTests" */;
+			buildPhases = (
+				F3173AA91E83B1550095F76A /* Sources */,
+				F3173AAA1E83B1550095F76A /* Frameworks */,
+				F3173AAB1E83B1550095F76A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3173AB31E83B1550095F76A /* PBXTargetDependency */,
+			);
+			name = MIDIchloriansTests;
+			productName = MIDIchloriansTests;
+			productReference = F3173AAD1E83B1550095F76A /* MIDIchloriansTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33120E121E6FD30A007E7717 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = nus.cs3217.a0118897;
+				TargetAttributes = {
+					33120E191E6FD30A007E7717 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 473WNZW6EJ;
+						ProvisioningStyle = Automatic;
+					};
+					33120E2D1E6FD30A007E7717 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 473WNZW6EJ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 33120E191E6FD30A007E7717;
+					};
+					F3173AAC1E83B1550095F76A = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 33120E191E6FD30A007E7717;
+					};
+				};
+			};
+			buildConfigurationList = 33120E151E6FD30A007E7717 /* Build configuration list for PBXProject "MIDIchlorians" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 33120E111E6FD30A007E7717;
+			productRefGroup = 33120E1B1E6FD30A007E7717 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				33120E191E6FD30A007E7717 /* MIDIchlorians */,
+				33120E2D1E6FD30A007E7717 /* MIDIchloriansUITests */,
+				F3173AAC1E83B1550095F76A /* MIDIchloriansTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		33120E181E6FD30A007E7717 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33DAAAA81E72BEA300987E86 /* AWOLNATION - Sail-4.wav in Resources */,
+				33DAAAB31E72BEA300987E86 /* AWOLNATION - Sail-15.wav in Resources */,
+				33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */,
+				33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */,
+				33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */,
+				33DAAAAD1E72BEA300987E86 /* AWOLNATION - Sail-9.wav in Resources */,
+				33DAAAAA1E72BEA300987E86 /* AWOLNATION - Sail-6.wav in Resources */,
+				33120E231E6FD30A007E7717 /* Main.storyboard in Resources */,
+				33DAAAB71E72BEA300987E86 /* AWOLNATION - Sail-19.wav in Resources */,
+				33DAAAB51E72BEA300987E86 /* AWOLNATION - Sail-17.wav in Resources */,
+				33DAAAA71E72BEA300987E86 /* AWOLNATION - Sail-3.wav in Resources */,
+				33DAAABC1E72BEA300987E86 /* AWOLNATION - Sail-24.wav in Resources */,
+				33DAAAB41E72BEA300987E86 /* AWOLNATION - Sail-16.wav in Resources */,
+				33DAAAB11E72BEA300987E86 /* AWOLNATION - Sail-13.wav in Resources */,
+				33DAAAB01E72BEA300987E86 /* AWOLNATION - Sail-12.wav in Resources */,
+				33DAAAB81E72BEA300987E86 /* AWOLNATION - Sail-20.wav in Resources */,
+				33DAAAC01E72BEA300987E86 /* AWOLNATION - Sail-28.wav in Resources */,
+				33DAAABE1E72BEA300987E86 /* AWOLNATION - Sail-26.wav in Resources */,
+				33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */,
+				33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */,
+				33DAAAAF1E72BEA300987E86 /* AWOLNATION - Sail-11.wav in Resources */,
+				33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */,
+				33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */,
+				33DAAAB61E72BEA300987E86 /* AWOLNATION - Sail-18.wav in Resources */,
+				33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */,
+				33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */,
+				33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */,
+				33DAAAB21E72BEA300987E86 /* AWOLNATION - Sail-14.wav in Resources */,
+				33DAAAAE1E72BEA300987E86 /* AWOLNATION - Sail-10.wav in Resources */,
+				33DAAAB91E72BEA300987E86 /* AWOLNATION - Sail-21.wav in Resources */,
+				33DAAABB1E72BEA300987E86 /* AWOLNATION - Sail-23.wav in Resources */,
+				33DAAAAB1E72BEA300987E86 /* AWOLNATION - Sail-7.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33120E2C1E6FD30A007E7717 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3173AAB1E83B1550095F76A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21E11D3C90BBD9712CE7AC97 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33EC0A3A1E6FD46600229A92 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint";
+		};
+		35BC5EB78E73CB9FA3301513 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7A48CCA24FE94E2855835A7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85207170A186EACFF6F15CFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6D7410A30634D182BAA1312 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E41592DAF7845B3168E4D69E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		33120E161E6FD30A007E7717 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
+				F3710A8F1E7D280D0031A754 /* Session.swift in Sources */,
+				E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */,
+				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
+				334970C11E72583F009C78DF /* Config.swift in Sources */,
+				F3173AA61E8306C30095F76A /* Animation.swift in Sources */,
+				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
+				334970BF1E72557D009C78DF /* AnimationTypes.swift in Sources */,
+				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
+				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
+				E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */,
+				E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */,
+				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
+				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
+				F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */,
+				33A2754D1E7BEF56000B1B15 /* Colour.swift in Sources */,
+				E92F6C2E1E74FA3400F5A092 /* SessionTableViewCell.swift in Sources */,
+				E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */,
+				E93A02B21E738C0400DFB2B7 /* CGSize+Extensions.swift in Sources */,
+				F36B995E1E8148260026721A /* DataManager.swift in Sources */,
+				E92F6C321E751EAE00F5A092 /* Mode.swift in Sources */,
+				805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */,
+				334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */,
+				E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */,
+				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
+				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
+<<<<<<< HEAD
+				E93A02B61E7390DD00DFB2B7 /* EditButton.swift in Sources */,
+				F3173AA81E8306D20095F76A /* Audio.swift in Sources */,
+=======
+				E93A02B61E7390DD00DFB2B7 /* ModeDelegate.swift in Sources */,
+>>>>>>> master
+				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
+				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
+				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
+				E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */,
+				E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */,
+				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
+				33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33120E2A1E6FD30A007E7717 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3173AA91E83B1550095F76A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */,
+				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
+				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
+				F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */,
+				F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		33120E301E6FD30A007E7717 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33120E191E6FD30A007E7717 /* MIDIchlorians */;
+			targetProxy = 33120E2F1E6FD30A007E7717 /* PBXContainerItemProxy */;
+		};
+		F3173AB31E83B1550095F76A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33120E191E6FD30A007E7717 /* MIDIchlorians */;
+			targetProxy = F3173AB21E83B1550095F76A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		33120E211E6FD30A007E7717 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33120E221E6FD30A007E7717 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33120E271E6FD30A007E7717 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		33120E351E6FD30A007E7717 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		33120E361E6FD30A007E7717 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		33120E381E6FD30A007E7717 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 473WNZW6EJ;
+				INFOPLIST_FILE = MIDIchlorians/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0118897.MIDIchlorians;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		33120E391E6FD30A007E7717 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 473WNZW6EJ;
+				INFOPLIST_FILE = MIDIchlorians/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0118897.MIDIchlorians;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		33120E3B1E6FD30A007E7717 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 473WNZW6EJ;
+				INFOPLIST_FILE = MIDIchloriansUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0118897.MIDIchloriansUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = MIDIchlorians;
+			};
+			name = Debug;
+		};
+		33120E3C1E6FD30A007E7717 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 473WNZW6EJ;
+				INFOPLIST_FILE = MIDIchloriansUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0118897.MIDIchloriansUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = MIDIchlorians;
+			};
+			name = Release;
+		};
+		F3173AB41E83B1550095F76A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MIDIchloriansTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0144939r.MIDIchloriansTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MIDIchlorians.app/MIDIchlorians";
+			};
+			name = Debug;
+		};
+		F3173AB51E83B1550095F76A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MIDIchloriansTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0144939r.MIDIchloriansTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MIDIchlorians.app/MIDIchlorians";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		33120E151E6FD30A007E7717 /* Build configuration list for PBXProject "MIDIchlorians" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33120E351E6FD30A007E7717 /* Debug */,
+				33120E361E6FD30A007E7717 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33120E371E6FD30A007E7717 /* Build configuration list for PBXNativeTarget "MIDIchlorians" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33120E381E6FD30A007E7717 /* Debug */,
+				33120E391E6FD30A007E7717 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33120E3A1E6FD30A007E7717 /* Build configuration list for PBXNativeTarget "MIDIchloriansUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33120E3B1E6FD30A007E7717 /* Debug */,
+				33120E3C1E6FD30A007E7717 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3173AB61E83B1550095F76A /* Build configuration list for PBXNativeTarget "MIDIchloriansTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3173AB41E83B1550095F76A /* Debug */,
+				F3173AB51E83B1550095F76A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 33120E121E6FD30A007E7717 /* Project object */;
+}
