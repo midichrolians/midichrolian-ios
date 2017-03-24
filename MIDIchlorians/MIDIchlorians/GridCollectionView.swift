@@ -40,7 +40,7 @@ class GridCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
             }
             cell.rowNumber = indexPath.section
             cell.columnNumber = indexPath.item
-            cell.setAppearance()
+            cell.setDefaultAppearance()
             return cell
     }
 
@@ -185,5 +185,11 @@ extension GridCollectionView: AnimationTableDelegate {
 
         self.currentSession?.addAnimation(
             page: self.currentPage, row: indexPath.section, col: indexPath.row, animation: animationSequence)
+    }
+}
+
+extension GridCollectionView: AnimatableGrid {
+    func getAnimatablePad(forIndex: IndexPath) -> AnimatablePad? {
+        return cellForItem(at: forIndex) as? GridCollectionViewCell
     }
 }

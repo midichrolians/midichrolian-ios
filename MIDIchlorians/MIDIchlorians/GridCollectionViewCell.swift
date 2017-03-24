@@ -13,8 +13,25 @@ class GridCollectionViewCell: UICollectionViewCell {
     var rowNumber = 0
     var columnNumber = 0
 
-    func setAppearance() {
+    func setDefaultAppearance() {
         self.backgroundColor = UIColor.darkGray
+    }
+}
+
+extension GridCollectionViewCell: AnimatablePad {
+
+    func animate(image: UIImage) {
+        let imageView = UIImageView(image: image)
+        imageView.frame.size = self.frame.size
+        self.contentView.addSubview(imageView)
+    }
+
+    func animate(backgroundColour: UIColor) {
+        self.backgroundColor = backgroundColour
+    }
+
+    func clearAnimation() {
         self.contentView.subviews.forEach { $0.removeFromSuperview() }
+        setDefaultAppearance()
     }
 }

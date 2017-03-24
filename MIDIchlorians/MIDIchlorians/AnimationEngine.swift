@@ -3,16 +3,16 @@ import UIKit
 class AnimationEngine: NSObject {
 
     static var updater: CADisplayLink!
-    private static var temporaryVariableForAnimationArea: UICollectionView?
-    static var animationArea: UICollectionView? {
+    private static var temporaryVariableForAnimationArea: AnimatableGrid?
+    static var animationArea: AnimatableGrid? {
         get { return temporaryVariableForAnimationArea }
         set { temporaryVariableForAnimationArea = newValue }
     }
     static var animationSequences = [AnimationSequence]()
     static var previousAnimatedIndexPaths = [IndexPath]()
 
-    static func set(animationCollectionView: UICollectionView) {
-        animationArea = animationCollectionView
+    static func set(animationGrid: AnimatableGrid) {
+        animationArea = animationGrid
     }
 
     static func register(animationSequence: AnimationSequence) {
@@ -38,14 +38,14 @@ class AnimationEngine: NSObject {
     static func animationLoop() {
         clearAnimationSequenceToBeRemoved()
         var animationBits = [AnimationBit]()
-        guard let animationCollectionView = animationArea else {
+        guard let animationGrid = animationArea else {
             return
         }
         for indexPath in previousAnimatedIndexPaths {
-            guard let cell = animationCollectionView.cellForItem(at: indexPath) as? GridCollectionViewCell else {
+            guard let pad = animationGrid.getAnimatablePad(forIndex: indexPath) else {
                 continue
             }
-            cell.setAppearance()
+            pad.clearAnimation()
         }
         previousAnimatedIndexPaths = [IndexPath]()
         for index in 0..<animationSequences.count {
@@ -58,14 +58,12 @@ class AnimationEngine: NSObject {
         }
         for animationBit in animationBits {
             let indexPath = IndexPath(item: animationBit.column, section: animationBit.row)
-            guard let cell = animationCollectionView.cellForItem(at: indexPath) else {
+            guard let pad = animationGrid.getAnimatablePad(forIndex: indexPath) else {
                 continue
             }
             previousAnimatedIndexPaths.append(indexPath)
-            cell.backgroundColor = animationBit.colour.uiColor
-            let imageView = animationBit.colour.image
-            imageView.frame.size = cell.frame.size
-            cell.contentView.addSubview(imageView)
+            pad.animate(backgroundColour: animationBit.colour.uiColor)
+            pad.animate(image: animationBit.colour.image)
         }
     }
 }

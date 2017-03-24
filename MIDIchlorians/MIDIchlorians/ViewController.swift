@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         gridCollection.delegate = gridCollection
         // tentatively for prototyping purpose
         gridCollection.currentSession = Session(bpm: Config.defaultBPM)
-        AnimationEngine.set(animationCollectionView: gridCollection)
+        AnimationEngine.set(animationGrid: gridCollection)
         AnimationEngine.start()
         gridCollection.startListenAudio()
         gridCollection.backgroundColor = Config.BackgroundColor
