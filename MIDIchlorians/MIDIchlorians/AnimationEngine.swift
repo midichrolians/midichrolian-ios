@@ -63,6 +63,9 @@ class AnimationEngine: NSObject {
             }
             previousAnimatedIndexPaths.append(indexPath)
             cell.backgroundColor = animationBit.colour.uiColor
+            let imageView = animationBit.colour.image
+            imageView.frame.size = cell.frame.size
+            cell.contentView.addSubview(imageView)
         }
     }
 }

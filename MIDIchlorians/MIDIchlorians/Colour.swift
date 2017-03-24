@@ -44,6 +44,28 @@ enum Colour: String {
         }
     }
 
+    var image: UIImageView {
+        var imageView = UIImageView()
+        switch self {
+            case .violet:
+                imageView = UIImageView(image: UIImage(named: "cesiousButton"))
+            case .indigo:
+                imageView = UIImageView(image: UIImage(named: "cyanButton"))
+            case .blue:
+                imageView = UIImageView(image: UIImage(named: "blueButton"))
+            case .green:
+                imageView = UIImageView(image: UIImage(named: "greenButton"))
+            case .yellow:
+                imageView = UIImageView(image: UIImage(named: "yellowButton"))
+            case .orange:
+                imageView = UIImageView(image: UIImage(named: "pinkButton"))
+            case .red:
+                imageView = UIImageView(image: UIImage(named: "redButton"))
+        }
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }
+
     func getJSON() -> String {
         return rawValue
     }
