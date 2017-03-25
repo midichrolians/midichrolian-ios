@@ -49,8 +49,17 @@ struct Config {
 
     static let TableViewSeparatorColor = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
 
-    static let PadAreaResizeFactorWhenEditStart: CGFloat = 0.8
+    static let PadAreaResizeFactorWhenEditStart: CGFloat = 0.67
     static let PadAreaResizeFactorWhenEditEnd: CGFloat  = 1 / PadAreaResizeFactorWhenEditStart
+
+//    static let MainViewWidthToGridWidthRatio: CGFloat = 2 / 3
+    static let MainViewHeightToGridMinYRatio: CGFloat = 1 / 8
+    static let MainViewHeightToGridHeightRatio: CGFloat = 7 / 8
+
+    static let MainViewWidthToSideMinXRatio: CGFloat = 2 / 3
+    static let MainViewHeightToSideMinYRatio: CGFloat = 1 / 8
+    static let MainViewWidthToSideWidthRatio: CGFloat = 1 / 3
+    static let MainViewHeightToSideHeightRatio: CGFloat = 7 / 8
 
     static let SectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -79,4 +88,5 @@ struct Config {
     static let TopNavSessionTitle = "Sessions"
     static let ModeSegmentTitles = ["PLAY", "EDIT"]
 
+    static let GridCollectionViewCellIdentifier = "cell"
 }

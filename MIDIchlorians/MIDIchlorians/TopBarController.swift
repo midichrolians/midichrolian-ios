@@ -14,21 +14,20 @@ class TopBarController {
         return topNavigationBar as UIView
     }
 
-    private var topNavigationBar = TopNavigationBar()
+    private var topNavigationBar: TopNavigationBar
     weak var modeSwitchDelegate: ModeSwitchDelegate? {
         didSet {
             topNavigationBar.modeSwitchDelegate = modeSwitchDelegate
         }
     }
-
-    func configureWidth(width: CGFloat) {
-        topNavigationBar = TopNavigationBar(
-            frame: CGRect(origin: CGPoint.zero,
-                          size: CGSize(width: width, height: Config.TopNavHeight)))
+    weak var sessionSelectorDelegate: SessionSelectorDelegate? {
+        didSet {
+            topNavigationBar.sessionSelectorDelegate = sessionSelectorDelegate
+        }
     }
 
-    // Set target and selector to be call when session control has been interacted with
-    func addTargetToSessionSelector(_ target: Any?, action selector: Selector) {
-        topNavigationBar.addTargetToSessionSelector(target, action: selector)
+    init(frame: CGRect) {
+        self.topNavigationBar = TopNavigationBar(frame: frame)
     }
+
 }
