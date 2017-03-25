@@ -15,5 +15,6 @@ class GridCollectionViewCell: UICollectionViewCell {
 
     func setAppearance() {
         self.backgroundColor = UIColor.darkGray
+        self.contentView.subviews.forEach { $0.removeFromSuperview() }
     }
 }
