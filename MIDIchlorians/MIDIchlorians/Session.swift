@@ -52,6 +52,14 @@ class Session: Object {
         return sessionName
     }
 
+    func getPad(page: Int, indexPath: IndexPath) -> Pad {
+        return self.pads[page][indexPath.section][indexPath.row]
+    }
+
+    func getGrid(page: Int) -> [[Pad]] {
+        return self.pads[page]
+    }
+
     //Should take audio struct
     func addAudio(page: Int, row: Int, col: Int, audioFile: String) {
         guard isValidPosition(page, row, col) else {
