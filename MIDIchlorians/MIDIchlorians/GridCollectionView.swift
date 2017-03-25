@@ -9,9 +9,9 @@
 import UIKit
 
 class GridCollectionView: UICollectionView {
-    var mode: Mode = .Playing {
+    var mode: Mode = .playing {
         didSet {
-            if mode == .Playing, let selectedPad = selectedPad {
+            if mode == .playing, let selectedPad = selectedPad {
                 unselectCell(at: selectedPad)
             }
         }
@@ -52,7 +52,7 @@ class GridCollectionView: UICollectionView {
 
         // if in editing mode, highlight the tapped grid
         switch mode {
-        case .Editing:
+        case .editing:
             // this is the second tap on a grid, first tap to select, second tap will play
             if self.selectedPad == indexPath {
                 // play music
@@ -63,7 +63,7 @@ class GridCollectionView: UICollectionView {
                 self.selectCell(at: indexPath)
                 return
             }
-        case .Playing:
+        case .playing:
             break
         }
 

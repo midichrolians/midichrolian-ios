@@ -19,7 +19,7 @@ class GridController: NSObject {
     var gridView: UICollectionView {
         return gridCollectionView
     }
-    var mode: Mode = .Playing {
+    var mode: Mode = .playing {
         didSet {
             gridCollectionView.mode = mode
         }
@@ -66,7 +66,7 @@ extension GridController: PadDelegate {
         guard let audioFile = pad.getAudioFile() else {
             return
         }
-        let _ = audioManager.play(audioDir: audioFile)
+        _ = audioManager.play(audioDir: audioFile)
     }
 }
 
@@ -103,12 +103,12 @@ extension GridController: AnimationTableDelegate {
 extension GridController: ModeSwitchDelegate {
     func enterEdit() {
         resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
-        self.mode = .Editing
+        self.mode = .editing
     }
 
     func enterPlay() {
         resizePads(by: Config.PadAreaResizeFactorWhenEditEnd)
-        self.mode = .Playing
+        self.mode = .playing
     }
 
     private func resizePads(by factor: CGFloat) {
