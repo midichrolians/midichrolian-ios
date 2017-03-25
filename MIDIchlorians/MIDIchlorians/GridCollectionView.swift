@@ -16,6 +16,7 @@ class GridCollectionView: UICollectionView {
             }
         }
     }
+    weak var padDelegate: PadDelegate?
 
     private let audioManager = AudioManager()
     internal var selectedPad: IndexPath?
@@ -46,6 +47,8 @@ class GridCollectionView: UICollectionView {
         guard let indexPath = self.indexPathForItem(at: location) else {
             return
         }
+
+        padDelegate?.padTapped(indexPath: indexPath)
 
         // if in editing mode, highlight the tapped grid
         switch mode {
@@ -90,22 +93,6 @@ class GridCollectionView: UICollectionView {
                 return
         }
         AnimationEngine.register(animationSequence: animationSequence)
-        // end
-
-        // need session to return a pad from an indexPath
     }
 
-    func startListenAudio() {
-//        let ncdefault = NotificationCenter.default
-//        ncdefault.addObserver(forName: Notification.Name(rawValue:"Sound"), object: nil, queue: nil) { notification in
-            //handle notification
-//            guard let completedID = notification.userInfo?["completed"] as? UInt32 else {
-//                return
-//            }
-//            let cellPath = self.audioManager.getIndexPath(of: completedID)
-//            guard let _ = self.cellForItem(at: cellPath) else {
-//                return
-//            }
-//        }
-    }
 }

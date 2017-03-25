@@ -14,7 +14,7 @@ class TopBarController {
         return topNavigationBar as UIView
     }
 
-    private var topNavigationBar = TopNavigationBar()
+    private var topNavigationBar: TopNavigationBar
     weak var modeSwitchDelegate: ModeSwitchDelegate? {
         didSet {
             topNavigationBar.modeSwitchDelegate = modeSwitchDelegate
@@ -26,10 +26,8 @@ class TopBarController {
         }
     }
 
-    func configureWidth(width: CGFloat) {
-        topNavigationBar = TopNavigationBar(
-            frame: CGRect(origin: CGPoint.zero,
-                          size: CGSize(width: width, height: Config.TopNavHeight)))
+    init(frame: CGRect) {
+        self.topNavigationBar = TopNavigationBar(frame: frame)
     }
 
 }

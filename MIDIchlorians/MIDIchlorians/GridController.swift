@@ -9,41 +9,42 @@
 import Foundation
 import UIKit
 
+protocol PadDelegate: class {
+    func padTapped(indexPath: IndexPath)
+}
+
+// Manages the currently visible grid of pads using a GridCollectionView
 class GridController: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    // will make this internal soon
     var view: UICollectionView {
         return gridCollectionView
     }
-    var gridCollectionView: GridCollectionView
+    var mode: Mode = .Playing {
+        didSet {
+            self.gridCollectionView.mode = mode
+        }
+    }
+
     internal var currentSession: Session?
     internal var currentPage = 0
-    private let reuseIdentifier = "cell"
     internal var selectedPad: IndexPath?
-    var mode: Mode = .Playing
+    internal let audioManager = AudioManager()
+    internal var gridCollectionView: GridCollectionView
 
-    init(gridCollectionView: GridCollectionView) {
-        self.gridCollectionView = gridCollectionView
+    private let reuseIdentifier = "cell"
+
+    init(frame: CGRect) {
+        let layout = UICollectionViewFlowLayout()
+        self.gridCollectionView = GridCollectionView(frame: frame, collectionViewLayout: layout)
         self.gridCollectionView.backgroundColor = Config.BackgroundColor
         self.currentSession = Session(bpm: Config.defaultBPM)
+        gridCollectionView.register(GridCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         super.init()
 
         self.gridCollectionView.dataSource = self
         self.gridCollectionView.delegate = self
-        self.gridCollectionView.startListenAudio()
-    }
+        self.gridCollectionView.padDelegate = self
 
-    func setGridDimensions(superWidth: CGFloat) {
-        // fix the width of the button collection view
-        let totalWidth = superWidth - Config.AppLeftPadding - Config.AppRightPadding
-        // left with 9 columns of buttons with 8 insets in between
-        // so to get width for the pads we add 1 inset and times 8/9
-        let padWidth = (totalWidth + Config.ItemInsets.right) *
-            (CGFloat(Config.numberOfColumns) / CGFloat(Config.numberOfColumns + 1))
-        let padHeight = padWidth / CGFloat(Config.numberOfColumns) * CGFloat(Config.numberOfRows)
-        self.gridCollectionView.frame = CGRect(
-            origin: self.gridCollectionView.frame.origin,
-            size: CGSize(width: padWidth, height: padHeight))
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,7 +72,8 @@ class GridController: NSObject, UICollectionViewDataSource, UICollectionViewDele
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let totalLength = self.gridCollectionView.frame.width
-        let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section))
+        // need to + 1 cos of the page buttons, this will be changed soon
+        let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section)) + 1
         let insetLength = Config.ItemInsets.left * (itemsPerRow + 1)
         let availableLength = totalLength - insetLength
         let itemLength = availableLength / itemsPerRow
@@ -94,6 +96,19 @@ class GridController: NSObject, UICollectionViewDataSource, UICollectionViewDele
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return Config.SectionInsets
+    }
+}
+
+extension GridController: PadDelegate {
+    func padTapped(indexPath: IndexPath) {
+        guard let pad = self.currentSession?.getPad(page: currentPage, indexPath: indexPath) else {
+            return
+        }
+        self.selectedPad = indexPath
+        guard let audioFile = pad.getAudioFile() else {
+            return
+        }
+        let _ = audioManager.play(audioDir: audioFile)
     }
 }
 
