@@ -10,32 +10,24 @@ import UIKit
 
 extension ViewController: ModeSwitchDelegate {
     func enterEdit() {
-        let fullHeight = self.gridCollection.frame.height
+        let gridCollection = self.gridController.view
+        let fullHeight = gridCollection.frame.height
 
-        resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
+        gridController.enterEdit()
+        // set the dimensions, replace with constraints soon
 
-        let minX = self.gridCollection.frame.maxX + Config.ItemInsets.right
-        let minY = self.gridCollection.frame.minY
-        let width = self.view.frame.width - self.gridCollection.frame.width
+        let minX = gridCollection.frame.maxX + Config.ItemInsets.right
+        let minY = gridCollection.frame.minY
+        let width = self.view.frame.width - gridCollection.frame.width
             - Config.AppLeftPadding - Config.AppRightPadding
-        sidePaneController.view.frame = CGRect(x: minX, y: minY, width: width, height: fullHeight)
+        sidePaneController.setDimension(frame:
+            CGRect(x: minX, y: minY, width: width, height: fullHeight))
         self.view.addSubview(sidePaneController.view)
-        self.mode = .Editing
     }
 
     func enterPlay() {
-        resizePads(by: Config.PadAreaResizeFactorWhenEditEnd)
+        gridController.enterPlay()
         sidePaneController.view.removeFromSuperview()
-        self.mode = .Playing
-    }
-
-    private func resizePads(by factor: CGFloat) {
-        // and to animate the changes refer to
-        // http://stackoverflow.com/questions/13780153/uicollectionview-animate-cell-size-change-on-selection
-        self.gridCollection.frame = CGRect(
-            origin: self.gridCollection.frame.origin,
-            size: self.gridCollection.frame.size.scale(by: factor))
-        self.gridCollection.collectionViewLayout.invalidateLayout()
     }
 }
 
@@ -53,14 +45,10 @@ extension ViewController: SessionSelectorDelegate {
 
 class ViewController: UIViewController {
     @IBOutlet var gridCollection: GridCollectionView!
-    var mode: Mode = .Playing {
-        didSet {
-            self.gridCollection.mode = mode
-        }
-    }
     private var topBarController: TopBarController!
     internal var sessionNavigationController: UINavigationController!
     internal var sidePaneController: SidePaneController!
+    internal var gridController: GridController!
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -70,16 +58,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = Config.BackgroundColor
 
-        fixGridDimensions()
+        self.gridController = GridController(gridCollectionView: self.gridCollection)
 
-        gridCollection.dataSource = gridCollection
-        gridCollection.delegate = gridCollection
-        // tentatively for prototyping purpose
-        gridCollection.currentSession = Session(bpm: Config.defaultBPM)
-        gridCollection.startListenAudio()
-        gridCollection.backgroundColor = Config.BackgroundColor
+        self.gridController.setGridDimensions(superWidth: self.view.frame.width)
 
-        AnimationEngine.set(animationCollectionView: gridCollection)
+        AnimationEngine.set(animationCollectionView: self.gridController.view)
         AnimationEngine.start()
 
         setUpTopNav()
@@ -114,16 +97,4 @@ class ViewController: UIViewController {
         UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
     }
 
-    private func fixGridDimensions() {
-        // fix the width of the button collection view
-        let totalWidth = self.view.frame.width - Config.AppLeftPadding - Config.AppRightPadding
-        // left with 9 columns of buttons with 8 insets in between
-        // so to get width for the pads we add 1 inset and times 8/9
-        let padWidth = (totalWidth + Config.ItemInsets.right) *
-            (CGFloat(Config.numberOfColumns) / CGFloat(Config.numberOfColumns + 1))
-        let padHeight = padWidth / CGFloat(Config.numberOfColumns) * CGFloat(Config.numberOfRows)
-        gridCollection.frame = CGRect(
-            origin: gridCollection.frame.origin,
-            size: CGSize(width: padWidth, height: padHeight))
-    }
 }

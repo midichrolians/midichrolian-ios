@@ -50,4 +50,8 @@ class SidePaneController {
         sidePaneViewController.selectedIndex = 0
     }
 
+    func setDimension(frame: CGRect) {
+        self.view.frame = frame
+    }
+
 }
