@@ -20,6 +20,11 @@ class TopBarController {
             topNavigationBar.modeSwitchDelegate = modeSwitchDelegate
         }
     }
+    weak var sessionSelectorDelegate: SessionSelectorDelegate? {
+        didSet {
+            topNavigationBar.sessionSelectorDelegate = sessionSelectorDelegate
+        }
+    }
 
     func configureWidth(width: CGFloat) {
         topNavigationBar = TopNavigationBar(
@@ -27,8 +32,4 @@ class TopBarController {
                           size: CGSize(width: width, height: Config.TopNavHeight)))
     }
 
-    // Set target and selector to be call when session control has been interacted with
-    func addTargetToSessionSelector(_ target: Any?, action selector: Selector) {
-        topNavigationBar.addTargetToSessionSelector(target, action: selector)
-    }
 }
