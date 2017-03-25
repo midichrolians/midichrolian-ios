@@ -23,13 +23,11 @@ class Pad: Object {
     private dynamic var animationString: Animation?
 
     func addAudio(audioFile: String) {
-        self.audioFile = Audio()
-        self.audioFile?.addAudio(audioFile)
+        self.audioFile = Audio(audioFile)
     }
 
     func addAnimation(animation: AnimationSequence) {
-        animationString = Animation()
-        animationString?.addAnimation(animation)
+        animationString = Animation(animation)
     }
 
     func getAudioFile() -> String? {

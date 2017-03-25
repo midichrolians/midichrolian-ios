@@ -19,7 +19,7 @@ class Session: Object {
     private dynamic var numPages = Config.numberOfPages
     private dynamic var numRows = Config.numberOfRows
     private dynamic var numCols = Config.numberOfColumns
-    private dynamic var sessionName = ""
+    private dynamic var sessionName: SessionName?
     private var padList = List<Pad>()
 
     private var pads = [[[Pad]]]()
@@ -44,15 +44,15 @@ class Session: Object {
                     let emptyPad = Pad()
                     pads[page][row].append(emptyPad)
                 }
+
             }
         }
     }
 
-    func getSessionName() -> String {
-        return sessionName
+    func getSessionName() -> String? {
+        return sessionName?.getSessionName()
     }
-
-    //Should take audio struct
+    
     func addAudio(page: Int, row: Int, col: Int, audioFile: String) {
         guard isValidPosition(page, row, col) else {
             return
@@ -91,10 +91,17 @@ class Session: Object {
         self.BPM = bpm
     }
 
+    func getPad(page: Int, row: Int, col: Int) -> Pad? {
+        guard isValidPosition(page, row, col) else {
+            return nil
+        }
+        return pads[page][row][col]
+    }
+
     //Initalises the list, as that is what is saved. The pads matrix is not saved.
     func prepareForSave(sessionName: String) {
         padList = List<Pad>()
-        self.sessionName = sessionName
+        self.sessionName = SessionName(sessionName)
         for page in 0..<numPages {
             for row in 0..<numRows {
                 for col in 0..<numCols {
@@ -120,10 +127,7 @@ class Session: Object {
         }
     }
 
-    func getPad(page: Int, row: Int, col: Int) -> Pad? {
-        guard isValidPosition(page, row, col) else {
-            return nil
-        }
-        return pads[page][row][col]
+    func getSessionNameObject() -> SessionName? {
+        return sessionName
     }
 }

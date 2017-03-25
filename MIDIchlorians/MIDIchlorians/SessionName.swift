@@ -16,4 +16,8 @@ class SessionName: Object {
         self.init()
         self.sessionName = sessionString
     }
+
+    func getSessionName() -> String? {
+        return sessionName
+    }
 }
