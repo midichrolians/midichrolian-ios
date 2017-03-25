@@ -88,4 +88,5 @@ struct Config {
     static let TopNavSessionTitle = "Sessions"
     static let ModeSegmentTitles = ["PLAY", "EDIT"]
 
+    static let GridCollectionViewCellIdentifier = "cell"
 }

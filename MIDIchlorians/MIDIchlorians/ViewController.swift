@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     internal var sessionNavigationController: UINavigationController!
     internal var sidePaneController: SidePaneController!
     internal var gridController: GridController!
+    internal var currentSession: Session!
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -58,7 +59,8 @@ class ViewController: UIViewController {
                            y: frame.height * Config.MainViewHeightToGridMinYRatio,
                            width: frame.width - Config.AppLeftPadding - Config.AppRightPadding,
                            height: frame.height * Config.MainViewHeightToGridHeightRatio)
-        gridController = GridController(frame: gridFrame)
+        currentSession = Session(bpm: Config.defaultBPM)
+        gridController = GridController(frame: gridFrame, session: currentSession)
 
         view.addSubview(gridController.view)
     }
@@ -88,7 +90,7 @@ class ViewController: UIViewController {
 
     // Sets up the animation engine
     private func setUpAnimation() {
-        AnimationEngine.set(animationCollectionView: gridController.view)
+        AnimationEngine.set(animationCollectionView: gridController.gridView)
         AnimationEngine.start()
     }
 
@@ -102,6 +104,7 @@ extension ViewController: ModeSwitchDelegate {
     }
 
     func enterPlay() {
+        // error handling
         gridController.enterPlay()
         sidePaneController.view.removeFromSuperview()
     }

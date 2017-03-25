@@ -14,96 +14,54 @@ protocol PadDelegate: class {
 }
 
 // Manages the currently visible grid of pads using a GridCollectionView
-class GridController: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var view: UICollectionView {
+class GridController: NSObject {
+    var view: UIView
+    var gridView: UICollectionView {
         return gridCollectionView
     }
     var mode: Mode = .Playing {
         didSet {
-            self.gridCollectionView.mode = mode
+            gridCollectionView.mode = mode
         }
     }
 
-    internal var currentSession: Session?
+    internal var currentSession: Session
     internal var currentPage = 0
     internal var selectedPad: IndexPath?
     internal let audioManager = AudioManager()
-    internal var gridCollectionView: GridCollectionView
+    internal var gridCollectionVC: GridCollectionViewController
 
-    private let reuseIdentifier = "cell"
+    private var gridCollectionView: GridCollectionView
 
-    init(frame: CGRect) {
+    init(frame: CGRect, session: Session) {
+        // base ui view for the grid
+        view = UIView(frame: frame)
+        currentSession = session
+
         let layout = UICollectionViewFlowLayout()
-        self.gridCollectionView = GridCollectionView(frame: frame, collectionViewLayout: layout)
-        self.gridCollectionView.backgroundColor = Config.BackgroundColor
-        self.currentSession = Session(bpm: Config.defaultBPM)
-        gridCollectionView.register(GridCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        gridCollectionVC = GridCollectionViewController(collectionViewLayout: layout)
+        gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
+
+        gridCollectionView = GridCollectionView(frame: frame, collectionViewLayout: layout)
+        gridCollectionView.register(GridCollectionViewCell.self,
+                                         forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
+
+        gridCollectionVC.collectionView = gridCollectionView
+
+        gridCollectionVC.collectionView!.backgroundColor = Config.BackgroundColor
 
         super.init()
 
-        self.gridCollectionView.dataSource = self
-        self.gridCollectionView.delegate = self
-        self.gridCollectionView.padDelegate = self
+        gridCollectionView.padDelegate = self
+        view.addSubview(gridCollectionVC.collectionView!)
 
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Config.numberOfColumns
-    }
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return Config.numberOfRows
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
-        -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: reuseIdentifier,
-                for: indexPath as IndexPath) as? GridCollectionViewCell else {
-                    return GridCollectionViewCell()
-            }
-            cell.rowNumber = indexPath.section
-            cell.columnNumber = indexPath.item
-            cell.setAppearance()
-            return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let totalLength = self.gridCollectionView.frame.width
-        // need to + 1 cos of the page buttons, this will be changed soon
-        let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section)) + 1
-        let insetLength = Config.ItemInsets.left * (itemsPerRow + 1)
-        let availableLength = totalLength - insetLength
-        let itemLength = availableLength / itemsPerRow
-        return CGSize(width: itemLength, height: itemLength)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return Config.ItemInsets.left
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Config.ItemInsets.top
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return Config.SectionInsets
-    }
 }
 
 extension GridController: PadDelegate {
     func padTapped(indexPath: IndexPath) {
-        guard let pad = self.currentSession?.getPad(page: currentPage, indexPath: indexPath) else {
-            return
-        }
+        let pad = self.currentSession.getPad(page: currentPage, indexPath: indexPath)
         self.selectedPad = indexPath
         guard let audioFile = pad.getAudioFile() else {
             return
@@ -114,10 +72,14 @@ extension GridController: PadDelegate {
 
 extension GridController: SampleTableDelegate {
     func sampleTable(_: UITableView, didSelect sample: String) {
+        guard let indexPath = self.selectedPad else {
+            return
+        }
         guard let row = self.selectedPad?.section, let col = self.selectedPad?.row else {
             return
         }
-        self.currentSession?.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
+        self.currentSession.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
+        self.gridCollectionVC.collectionView!.reloadItems(at: [indexPath])
     }
 }
 
@@ -132,8 +94,9 @@ extension GridController: AnimationTableDelegate {
                 return
         }
 
-        self.currentSession?.addAnimation(
+        self.currentSession.addAnimation(
             page: self.currentPage, row: indexPath.section, col: indexPath.row, animation: animationSequence)
+        self.gridCollectionVC.collectionView!.reloadItems(at: [indexPath])
     }
 }
 
@@ -151,9 +114,10 @@ extension GridController: ModeSwitchDelegate {
     private func resizePads(by factor: CGFloat) {
         // and to animate the changes refer to
         // http://stackoverflow.com/questions/13780153/uicollectionview-animate-cell-size-change-on-selection
-        self.gridCollectionView.frame = CGRect(
-            origin: self.gridCollectionView.frame.origin,
-            size: self.gridCollectionView.frame.size.scale(by: factor))
-        self.gridCollectionView.collectionViewLayout.invalidateLayout()
+        let collectionView = gridCollectionVC.collectionView!
+        collectionView.frame = CGRect(
+            origin: collectionView.frame.origin,
+            size: collectionView.frame.size.scale(by: factor))
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
