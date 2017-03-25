@@ -55,6 +55,7 @@
 		33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A411E6FE55000229A92 /* AnimationBit.swift */; };
 		33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A431E6FE67700229A92 /* AnimationSequence.swift */; };
 		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
+		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
 		E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2B1E74F9FC00F5A092 /* SessionTableViewController.swift */; };
 		E92F6C2E1E74FA3400F5A092 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2D1E74FA3400F5A092 /* SessionTableViewCell.swift */; };
@@ -103,6 +104,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		018206302E262402CC884AA2 /* Pods-MIDIchloriansTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansTests/Pods-MIDIchloriansTests.debug.xcconfig"; sourceTree = "<group>"; };
 		147FBE44258E6CD194302951 /* Pods_MIDIchlorians.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchlorians.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33120E1A1E6FD30A007E7717 /* MIDIchlorians.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIDIchlorians.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33120E1D1E6FD30A007E7717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
 		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
 		CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansTests/Pods-MIDIchloriansTests.release.xcconfig"; sourceTree = "<group>"; };
 		E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E92F6C2B1E74F9FC00F5A092 /* SessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
 		E92F6C2D1E74FA3400F5A092 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,6 +178,7 @@
 		E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableDelegate.swift; sourceTree = "<group>"; };
 		E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopNavigationBar.swift; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
+		F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3173AA51E8306C30095F76A /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		F3173AA71E8306D20095F76A /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F3173AAD1E83B1550095F76A /* MIDIchloriansTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +337,8 @@
 				A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */,
 				F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */,
 				E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */,
+				018206302E262402CC884AA2 /* Pods-MIDIchloriansTests.debug.xcconfig */,
+				D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -341,6 +348,7 @@
 			children = (
 				147FBE44258E6CD194302951 /* Pods_MIDIchlorians.framework */,
 				CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */,
+				F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -488,9 +496,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3173AB61E83B1550095F76A /* Build configuration list for PBXNativeTarget "MIDIchloriansTests" */;
 			buildPhases = (
+				15A740C846C8654FCB374D2F /* [CP] Check Pods Manifest.lock */,
 				F3173AA91E83B1550095F76A /* Sources */,
 				F3173AAA1E83B1550095F76A /* Frameworks */,
 				F3173AAB1E83B1550095F76A /* Resources */,
+				9EBF86A1144AFE7810858FCB /* [CP] Embed Pods Frameworks */,
+				D7C821AA8E40FEDC5E64F416 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -607,6 +618,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		15A740C846C8654FCB374D2F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		21E11D3C90BBD9712CE7AC97 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -680,6 +706,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9EBF86A1144AFE7810858FCB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchloriansTests/Pods-MIDIchloriansTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D6D7410A30634D182BAA1312 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -693,6 +734,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D7C821AA8E40FEDC5E64F416 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchloriansTests/Pods-MIDIchloriansTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E41592DAF7845B3168E4D69E /* [CP] Copy Pods Resources */ = {
@@ -964,6 +1020,7 @@
 		};
 		F3173AB41E83B1550095F76A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 018206302E262402CC884AA2 /* Pods-MIDIchloriansTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MIDIchloriansTests/Info.plist;
@@ -977,6 +1034,7 @@
 		};
 		F3173AB51E83B1550095F76A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MIDIchloriansTests/Info.plist;
