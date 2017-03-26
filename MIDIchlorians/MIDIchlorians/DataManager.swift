@@ -11,7 +11,7 @@ import RealmSwift
 class DataManager {
 
     private let realm: Realm?
-    static let dataManagerInstance = DataManager()
+    static let instance = DataManager()
     private var sessionNames: Set<String>
     private var animationStrings: Set<String>
     private var audioStrings: Set<String>
@@ -69,11 +69,12 @@ class DataManager {
         if sessionNames.contains(sessionName) {
             _ = removeSession(sessionName)
         }
-
         session.prepareForSave(sessionName: sessionName)
 
         do {
+            try realm?.write { realm?.add(SessionName(sessionName)) }
             try realm?.write { realm?.add(session) }
+
         } catch {
             return false
         }
@@ -95,7 +96,8 @@ class DataManager {
                 return false
             }
 
-            if let sessionNameObject = session.getSessionNameObject() {
+            if let sessionNameObject = realm?.objects(SessionName.self)
+                                             .filter("sessionName = %@", sessionName).first {
                 try realm?.write { realm?.delete(sessionNameObject) }
             }
 
