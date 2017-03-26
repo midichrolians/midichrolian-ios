@@ -23,11 +23,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Realm:
-    :commit: 1d739978d70d3153ebae2590fbc502dc578374dd
+    :commit: e8b08227535f3f734f43b2327366c604d097902f
     :git: https://github.com/realm/realm-cocoa.git
     :submodules: true
   RealmSwift:
-    :commit: 1d739978d70d3153ebae2590fbc502dc578374dd
+    :commit: e8b08227535f3f734f43b2327366c604d097902f
     :git: https://github.com/realm/realm-cocoa.git
     :submodules: true
 
