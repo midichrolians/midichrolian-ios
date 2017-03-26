@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		091126EC087532ABB10624FE /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0498BD74ED2E9668837575 /* Pods_MIDIchloriansUITests.framework */; };
+		057E6F18E799DC4FD2679773 /* Pods_MIDIchlorians.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 147FBE44258E6CD194302951 /* Pods_MIDIchlorians.framework */; };
 		33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E1D1E6FD30A007E7717 /* AppDelegate.swift */; };
 		33120E201E6FD30A007E7717 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E1F1E6FD30A007E7717 /* ViewController.swift */; };
 		33120E231E6FD30A007E7717 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E211E6FD30A007E7717 /* Main.storyboard */; };
@@ -54,7 +54,6 @@
 		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
 		33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A411E6FE55000229A92 /* AnimationBit.swift */; };
 		33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A431E6FE67700229A92 /* AnimationSequence.swift */; };
-		7A6D5A70DDF908FCB6318629 /* Pods_MIDIchlorians.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9D3812050E89A96B654037 /* Pods_MIDIchlorians.framework */; };
 		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
 		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
@@ -163,9 +162,7 @@
 		33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
 		33EC0A411E6FE55000229A92 /* AnimationBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationBit.swift; sourceTree = "<group>"; };
 		33EC0A431E6FE67700229A92 /* AnimationSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequence.swift; sourceTree = "<group>"; };
-		3B2A96A7E2F93F5485F686BB /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
-		48C95CD0D27421A8C65569EA /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
-		6C32FA35BCC0F0D069E13515 /* Pods-MIDIchloriansUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.debug.xcconfig"; sourceTree = "<group>"; };
 		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
 		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
 		CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,7 +204,7 @@
 		F34B2A511E7A84AC00FD2C61 /* Pad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pad.swift; sourceTree = "<group>"; };
 		F36B995D1E8148260026721A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F3710A8E1E7D280C0031A754 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		F8B988067707FFD6E9D22773 /* Pods-MIDIchlorians.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.debug.xcconfig"; sourceTree = "<group>"; };
+		F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A6D5A70DDF908FCB6318629 /* Pods_MIDIchlorians.framework in Frameworks */,
+				057E6F18E799DC4FD2679773 /* Pods_MIDIchlorians.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				091126EC087532ABB10624FE /* Pods_MIDIchloriansUITests.framework in Frameworks */,
+				B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,15 +235,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2B88DCE7991F0CD0D279D18B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1C9D3812050E89A96B654037 /* Pods_MIDIchlorians.framework */,
-				2C0498BD74ED2E9668837575 /* Pods_MIDIchloriansUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		33120E111E6FD30A007E7717 = {
 			isa = PBXGroup;
 			children = (
@@ -255,9 +243,8 @@
 				33120E311E6FD30A007E7717 /* MIDIchloriansUITests */,
 				F3173AAE1E83B1550095F76A /* MIDIchloriansTests */,
 				33120E1B1E6FD30A007E7717 /* Products */,
-				2B88DCE7991F0CD0D279D18B /* Frameworks */,
-				802F16981E868D0D00D1C628 /* Recovered References */,
-				630F17FBB1327A5D9FC68BB4 /* Pods */,
+				43E957C410DC5BA6DE0E7CF6 /* Pods */,
+				4B368D3F764D7F7BDE762B31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -353,7 +340,7 @@
 			name = Animation;
 			sourceTree = "<group>";
 		};
-		630F17FBB1327A5D9FC68BB4 /* Pods */ = {
+		43E957C410DC5BA6DE0E7CF6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */,
@@ -361,19 +348,19 @@
 				F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */,
 				E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */,
 				018206302E262402CC884AA2 /* Pods-MIDIchloriansTests.debug.xcconfig */,
-				D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */,]
+				D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		802F16981E868D0D00D1C628 /* Recovered References */ = {
+		4B368D3F764D7F7BDE762B31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				147FBE44258E6CD194302951 /* Pods_MIDIchlorians.framework */,
 				CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */,
 				F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */,
 			);
-			name = "Recovered References";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		805946D01E816CEC00EF7A2B /* Audio */ = {
@@ -492,13 +479,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33120E371E6FD30A007E7717 /* Build configuration list for PBXNativeTarget "MIDIchlorians" */;
 			buildPhases = (
-				1E6F1920C75FF6EBE1BA354D /* [CP] Check Pods Manifest.lock */,
+				D6D7410A30634D182BAA1312 /* [CP] Check Pods Manifest.lock */,
 				33120E161E6FD30A007E7717 /* Sources */,
 				33120E171E6FD30A007E7717 /* Frameworks */,
 				33120E181E6FD30A007E7717 /* Resources */,
 				33EC0A3A1E6FD46600229A92 /* ShellScript */,
-				9E0E486568D4DB222FDDCA14 /* [CP] Embed Pods Frameworks */,
-				B7CD1983BA46DBB5AA5AA770 /* [CP] Copy Pods Resources */,
+				85207170A186EACFF6F15CFB /* [CP] Embed Pods Frameworks */,
+				21E11D3C90BBD9712CE7AC97 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -513,12 +500,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33120E3A1E6FD30A007E7717 /* Build configuration list for PBXNativeTarget "MIDIchloriansUITests" */;
 			buildPhases = (
-				4CC625070541DBC6CF970AD4 /* [CP] Check Pods Manifest.lock */,
+				35BC5EB78E73CB9FA3301513 /* [CP] Check Pods Manifest.lock */,
 				33120E2A1E6FD30A007E7717 /* Sources */,
 				33120E2B1E6FD30A007E7717 /* Frameworks */,
 				33120E2C1E6FD30A007E7717 /* Resources */,
-				682519047F252467FD1B56E2 /* [CP] Embed Pods Frameworks */,
-				0F494F8FBE98FF9D32F0A5BD /* [CP] Copy Pods Resources */,
+				7A48CCA24FE94E2855835A7E /* [CP] Embed Pods Frameworks */,
+				E41592DAF7845B3168E4D69E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -683,22 +670,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1E6F1920C75FF6EBE1BA354D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		33EC0A3A1E6FD46600229A92 /* ShellScript */ = {
@@ -714,7 +686,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint";
 		};
-		4CC625070541DBC6CF970AD4 /* [CP] Check Pods Manifest.lock */ = {
+		35BC5EB78E73CB9FA3301513 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -729,7 +701,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		682519047F252467FD1B56E2 /* [CP] Embed Pods Frameworks */ = {
+		7A48CCA24FE94E2855835A7E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -742,6 +714,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85207170A186EACFF6F15CFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9EBF86A1144AFE7810858FCB /* [CP] Embed Pods Frameworks */ = {
@@ -766,12 +753,12 @@
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D7C821AA8E40FEDC5E64F416 /* [CP] Copy Pods Resources */ = {
@@ -801,7 +788,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1005,7 +992,7 @@
 		};
 		33120E381E6FD30A007E7717 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8B988067707FFD6E9D22773 /* Pods-MIDIchlorians.debug.xcconfig */;
+			baseConfigurationReference = 68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 473WNZW6EJ;
@@ -1019,7 +1006,7 @@
 		};
 		33120E391E6FD30A007E7717 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 209401757D784D02FF52CBAD /* Pods-MIDIchlorians.release.xcconfig */;
+			baseConfigurationReference = A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 473WNZW6EJ;
@@ -1033,7 +1020,7 @@
 		};
 		33120E3B1E6FD30A007E7717 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C32FA35BCC0F0D069E13515 /* Pods-MIDIchloriansUITests.debug.xcconfig */;
+			baseConfigurationReference = F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 473WNZW6EJ;
@@ -1048,7 +1035,7 @@
 		};
 		33120E3C1E6FD30A007E7717 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 48C95CD0D27421A8C65569EA /* Pods-MIDIchloriansUITests.release.xcconfig */;
+			baseConfigurationReference = E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 473WNZW6EJ;

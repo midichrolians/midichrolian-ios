@@ -18,9 +18,9 @@ struct AudioClipPlayer {
         guard let soundURL = Bundle.main.url(forResource: audioDir, withExtension: ext) else {
             return nil
         }
-
-        var sysID: SystemSoundID = 0
-        AudioServicesCreateSystemSoundID(soundURL as CFURL, &sysID)
+        let sysID: SystemSoundID = 0
+        var testSound: SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &testSound)
         return sysID
     }
 

@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 struct AudioManager {
-    static let instance = AudioManager()
+
     private var audioDict: [String:UInt32]
 
     init() {
@@ -19,7 +19,7 @@ struct AudioManager {
 
     //initialize single audio file
     //returns successs
-    private mutating func initAudio(audioDir: String) -> Bool {
+    mutating func initAudio(audioDir: String) -> Bool {
         guard let audioID = AudioClipPlayer.initAudioClip(audioDir: audioDir) else {
             return false
         }
@@ -27,15 +27,9 @@ struct AudioManager {
         return true
     }
 
-    //returns success
-    mutating func loadAllAudio() -> Bool {
-       //load all audio from DataManager
-        return true
-    }
-
     //call this to play audio with single directory
     //returns success
-    func play(audioDir: String, bpm: Int? = nil ) -> Bool {
+    func play(audioDir: String) -> Bool {
         guard let audioID = audioDict[audioDir] else {
             return false
         }
