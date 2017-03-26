@@ -12,7 +12,11 @@ import XCTest
 class PadTests: XCTestCase {
 
     func testAddAudio() {
-
+        let audioString = "AWOLNATION - Sail-1"
+        let pad = Pad()
+        XCTAssertNil(pad.getAudioFile())
+        pad.addAudio(audioFile: audioString)
+        XCTAssertEqual(pad.getAudioFile()!, audioString)
     }
 
     func testAddAnimation() {
@@ -20,6 +24,12 @@ class PadTests: XCTestCase {
     }
 
     func testGetAudio() {
+        let audioString = "AWOLNATION - Sail-1"
+        let pad = Pad()
+        pad.addAudio(audioFile: audioString)
+        XCTAssertEqual(pad.getAudioFile()!, audioString)
+        pad.clearAudio()
+        XCTAssertNil(pad.getAudioFile())
 
     }
 
@@ -28,6 +38,12 @@ class PadTests: XCTestCase {
     }
 
     func testClearAudio() {
+        let audioString = "AWOLNATION - Sail-1"
+        let pad = Pad()
+        pad.addAudio(audioFile: audioString)
+        XCTAssertEqual(pad.getAudioFile()!, audioString)
+        pad.clearAudio()
+        XCTAssertNil(pad.getAudioFile())
 
     }
 

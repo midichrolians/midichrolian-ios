@@ -19,25 +19,26 @@ import RealmSwift
 class Pad: Object {
 
     //Persisted properties. Dynamic is a realm requirement
-    private dynamic var audioFile: Audio?
-    private dynamic var animationString: Animation?
+    private dynamic var audioFile: String?
+    private dynamic var animationString: String?
 
     func addAudio(audioFile: String) {
-        self.audioFile = Audio()
-        self.audioFile?.addAudio(audioFile)
+        self.audioFile = audioFile
     }
 
     func addAnimation(animation: AnimationSequence) {
-        animationString = Animation()
-        animationString?.addAnimation(animation)
+        animationString = animation.getJSONforAnimationSequence()
     }
 
     func getAudioFile() -> String? {
-        return audioFile?.getAudioFile()
+        return audioFile
     }
 
     func getAnimation() -> AnimationSequence? {
-        return animationString?.getAnimationSequence()
+        guard let animationJSON = animationString else {
+            return nil
+        }
+        return AnimationSequence.getAnimationSequenceFromJSON(fromJSON: animationJSON)
     }
 
     func clearAudio() {
