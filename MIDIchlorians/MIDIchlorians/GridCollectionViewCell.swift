@@ -8,13 +8,18 @@
 
 import UIKit
 
-class GridCollectionViewCell: UICollectionViewCell {
-
+class GridCollectionViewCell: UICollectionViewCell, PadView {
     var rowNumber = 0
     var columnNumber = 0
 
     func setAppearance() {
         self.backgroundColor = UIColor.darkGray
         self.contentView.subviews.forEach { $0.removeFromSuperview() }
+    }
+
+    func assign(sample: String) {
+    }
+
+    func assign(animation: AnimationSequence) {
     }
 }
