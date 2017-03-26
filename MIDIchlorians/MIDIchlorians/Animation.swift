@@ -12,6 +12,11 @@ class Animation: Object {
 
     private dynamic var animationString: String?
 
+    convenience init(_ animation: AnimationSequence) {
+        self.init()
+        self.animationString = animation.getJSONforAnimationSequence()
+    }
+
     func getAnimationSequence() -> AnimationSequence? {
         guard let animationJSON = animationString else {
             return nil
@@ -19,8 +24,8 @@ class Animation: Object {
         return AnimationSequence.getAnimationSequenceFromJSON(fromJSON: animationJSON)
     }
 
-    func addAnimation(_ animation: AnimationSequence) {
-        self.animationString = animation.getJSONforAnimationSequence()
+    func getAnimationString() -> String? {
+        return animationString
     }
 
 }

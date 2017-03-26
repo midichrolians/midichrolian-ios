@@ -9,8 +9,11 @@
 import RealmSwift
 
 class Audio: Object {
+
     private dynamic var audioFile: String?
-    func addAudio(_ audioFile: String) {
+
+    convenience init(_ audioFile: String) {
+        self.init()
         self.audioFile = audioFile
     }
 
