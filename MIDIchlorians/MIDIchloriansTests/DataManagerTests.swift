@@ -21,6 +21,7 @@ class DataManagerTests: XCTestCase {
     func testSaveEmptySession() {
         let session = Session(bpm: 120)
         XCTAssertTrue(dataManager.saveSession("test", session))
+        XCTAssertEqual(session, dataManager.loadSession("test")!)
     }
 
     func testSaveSessionOverrwrite() {
