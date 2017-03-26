@@ -28,7 +28,6 @@ class GridController: NSObject {
     internal var currentSession: Session
     internal var currentPage = 0
     internal var selectedPad: IndexPath?
-    internal let audioManager = AudioManager()
     internal var gridCollectionVC: GridCollectionViewController
 
     private var gridCollectionView: GridCollectionView
@@ -44,7 +43,7 @@ class GridController: NSObject {
 
         gridCollectionView = GridCollectionView(frame: frame, collectionViewLayout: layout)
         gridCollectionView.register(GridCollectionViewCell.self,
-                                         forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
+                                    forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
 
         gridCollectionVC.collectionView = gridCollectionView
 
@@ -66,7 +65,7 @@ extension GridController: PadDelegate {
         guard let audioFile = pad.getAudioFile() else {
             return
         }
-        _ = audioManager.play(audioDir: audioFile)
+        _ = AudioManager.instance.play(audioDir: audioFile)
     }
 }
 

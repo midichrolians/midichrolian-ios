@@ -43,7 +43,7 @@ class SessionTests: XCTestCase {
     }
 
     func testGetPad() {
-        
+
     }
 
 }

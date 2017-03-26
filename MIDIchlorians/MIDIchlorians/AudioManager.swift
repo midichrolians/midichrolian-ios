@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 struct AudioManager {
-
+    static var instance = AudioManager()
     private var audioDict: [String:UInt32]
 
     init() {
@@ -29,12 +29,18 @@ struct AudioManager {
 
     //call this to play audio with single directory
     //returns success
-    func play(audioDir: String) -> Bool {
+    func play(audioDir: String, bpm: Int? = nil ) -> Bool {
         guard let audioID = audioDict[audioDir] else {
             return false
         }
         AudioClipPlayer.playAudioClip(soundID: audioID)
         return true
+    }
+
+    func hackCheckValidIndex(row: Int, col: Int) -> Bool {
+        let rowMax = Config.sound.count
+        let colMax = Config.sound[0].count
+        return row >= 0 && row < rowMax && col >= 0 && col < colMax
     }
 
     //ideally should stop a looping track
