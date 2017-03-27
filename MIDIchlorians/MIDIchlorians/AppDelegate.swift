@@ -13,9 +13,41 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    lazy private var preloadedSamples = Config.sound.joined()
+
+    func copyBundleSamples() {
+        // store the samples in the document directory
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
+            // if we cannot store, that's fine, the user just won't have any samples loaded
+            return
+        }
+
+        // for each of the song we have bundled, copy them into the directory
+        preloadedSamples.forEach { sampleName in
+            if let sampleInBundle = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt) {
+                let dest = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
+                if !FileManager.default.fileExists(atPath: dest.path) {
+                    try? FileManager.default.copyItem(at: sampleInBundle, to: dest)
+                }
+            }
+        }
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Try to find a session that was last loaded
+        // if not loaded should create an empty session
+
+        // Copy all samples into user directory
+        copyBundleSamples()
+
+        // Populate the samples in our database
+        preloadedSamples.forEach { sample in
+            // if saving fails, what are we gonna do?
+            let _ = DataManager.instance.saveAudio(sample)
+        }
+
+        // Do the same thing for animations as well
+
         return true
     }
 
