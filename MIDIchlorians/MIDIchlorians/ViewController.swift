@@ -34,6 +34,9 @@ class ViewController: UIViewController {
         setUpAnimationDesigner()
         setUpStyles()
         setUpAnimation()
+
+        // need assign delegates after everything is initialized
+        gridController.padDelegate = sidePaneController
     }
 
     // Sets up the top navigation.
@@ -133,11 +136,5 @@ extension ViewController: SessionSelectorDelegate {
         popoverPresentationController?.permittedArrowDirections = [.up]
         popoverPresentationController?.barButtonItem = sender
         popoverPresentationController?.backgroundColor = Config.BackgroundColor
-    }
-}
-
-extension ViewController: PadDelegate {
-    func pad(selected: Pad) {
-        sidePaneController.pad(selected: selected)
     }
 }
