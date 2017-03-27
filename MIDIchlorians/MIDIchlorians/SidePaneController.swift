@@ -51,3 +51,8 @@ class SidePaneController {
     }
 
 }
+
+extension SidePaneController: PadDelegate {
+    func pad(selected: Pad) {
+    }
+}
