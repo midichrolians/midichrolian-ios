@@ -90,7 +90,7 @@ class ViewController: UIViewController {
 
     // Sets up the animation engine
     private func setUpAnimation() {
-        AnimationEngine.set(animationCollectionView: gridController.gridView)
+        AnimationEngine.set(animationGrid: gridController.gridView)
         AnimationEngine.start()
     }
 

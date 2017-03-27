@@ -16,7 +16,7 @@ protocol PadDelegate: class {
 // Manages the currently visible grid of pads using a GridCollectionView
 class GridController: NSObject {
     var view: UIView
-    var gridView: UICollectionView {
+    var gridView: GridCollectionView {
         return gridCollectionView
     }
     var mode: Mode = .playing {

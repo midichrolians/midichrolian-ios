@@ -96,3 +96,9 @@ class GridCollectionView: UICollectionView {
     }
 
 }
+
+extension GridCollectionView: AnimatableGrid {
+    func getAnimatablePad(forIndex: IndexPath) -> AnimatablePad? {
+        return cellForItem(at: forIndex) as? GridCollectionViewCell
+    }
+}
