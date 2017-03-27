@@ -51,7 +51,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
 
             cell.rowNumber = indexPath.section
             cell.columnNumber = indexPath.item
-            cell.setAppearance()
+            cell.setDefaultAppearance()
             return cell
     }
 
