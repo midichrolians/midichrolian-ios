@@ -138,9 +138,3 @@ extension ViewController: SessionSelectorDelegate {
         popoverPresentationController?.backgroundColor = Config.BackgroundColor
     }
 }
-
-extension ViewController: PadDelegate {
-    func pad(selected: Pad) {
-        sidePaneController.pad(selected: selected)
-    }
-}
