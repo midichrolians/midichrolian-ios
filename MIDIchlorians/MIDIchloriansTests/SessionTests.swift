@@ -16,7 +16,11 @@ class SessionTests: XCTestCase {
     }
 
     func testAddAudio() {
-
+        let session = Session(bpm: 120)
+        let audioString = "AWOLNATION - Sail-1"
+        session.addAudio(page: 0, row: 0, col: 0, audioFile: audioString)
+        let pad = session.getPad(page: 0, row: 0, col: 0)!
+        XCTAssertEqual(pad.getAudioFile()!, audioString)
     }
 
     func testClearAudio() {
@@ -36,6 +40,10 @@ class SessionTests: XCTestCase {
     }
 
     func testLoad() {
+    }
+
+    func testGetPad() {
+
     }
 
 }

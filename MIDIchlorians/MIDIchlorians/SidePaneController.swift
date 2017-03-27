@@ -9,8 +9,19 @@
 import Foundation
 import UIKit
 
+// A side pane is used by the user to add/edit/browse samples and animations.
+// It appears view when user enters editing mode.
+// The side pane is made up of
+// - a TabBarController which manages a list of
+//   - UINavigationControllers, each of which
+//     - wraps a TableViewController
+// these system view controllers are all subclassed to provide default styles
 class SidePaneController {
+    var view: UIView {
+        return sidePaneViewController.view as UIView
+    }
     let sidePaneViewController = SidePaneTabBarController()
+
     private let sampleTableViewController = SampleTableViewController(style: .plain)
     private let animationTableViewController = AnimationTableViewController(style: .plain)
     private var sampleNavigationController: UINavigationController

@@ -9,6 +9,6 @@
 import Foundation
 
 enum Mode {
-    case Playing
-    case Editing
+    case playing
+    case editing
 }

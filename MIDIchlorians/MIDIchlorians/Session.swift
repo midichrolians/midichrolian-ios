@@ -10,7 +10,7 @@ import RealmSwift
 /**
  This class represents a Session, which is a collection of grids, each grid being a collection
  of pads. A session also has a BPM associated with it.
- Though a default initialiser is valid(because of Realm), it will lead to incorrect results. 
+ Though a default initialiser is valid(because of Realm), it will lead to incorrect results.
  For correct results, use the convenience initialiser defined below.
  **/
 class Session: Object {
@@ -19,7 +19,7 @@ class Session: Object {
     private dynamic var numPages = Config.numberOfPages
     private dynamic var numRows = Config.numberOfRows
     private dynamic var numCols = Config.numberOfColumns
-    private dynamic var sessionName = ""
+    private dynamic var sessionName: String?
     private var padList = List<Pad>()
 
     private var pads = [[[Pad]]]()
@@ -36,23 +36,39 @@ class Session: Object {
     }
 
     private func initialisePadGrid() {
+        //for demo
+        let demoSounds = Config.sound
         for page in 0..<numPages {
             pads.append([])
             for row in 0..<numRows {
                 pads[page].append([])
-                for _ in 0..<numCols {
+                for col in 0..<numCols {
                     let emptyPad = Pad()
+                    //for demo
+                    if AudioManager.instance.hackCheckValidIndex(row: row, col: col) {
+                        let demoSound = demoSounds[row][col]
+                        _ = AudioManager.instance.initAudio(audioDir: demoSound)
+                        emptyPad.addAudio(audioFile: demoSound)
+                    }
                     pads[page][row].append(emptyPad)
                 }
+
             }
         }
     }
 
-    func getSessionName() -> String {
+    func getSessionName() -> String? {
         return sessionName
     }
 
-    //Should take audio struct
+    func getPad(page: Int, indexPath: IndexPath) -> Pad {
+        return self.pads[page][indexPath.section][indexPath.row]
+    }
+
+    func getGrid(page: Int) -> [[Pad]] {
+        return self.pads[page]
+    }
+
     func addAudio(page: Int, row: Int, col: Int, audioFile: String) {
         guard isValidPosition(page, row, col) else {
             return
@@ -89,6 +105,13 @@ class Session: Object {
 
     func setBPM(bpm: Int) {
         self.BPM = bpm
+    }
+
+    func getPad(page: Int, row: Int, col: Int) -> Pad? {
+        guard isValidPosition(page, row, col) else {
+            return nil
+        }
+        return pads[page][row][col]
     }
 
     //Initalises the list, as that is what is saved. The pads matrix is not saved.

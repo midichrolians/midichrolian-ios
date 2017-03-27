@@ -8,8 +8,7 @@
 
 import UIKit
 
-class GridCollectionViewCell: UICollectionViewCell {
-
+class GridCollectionViewCell: UICollectionViewCell, PadView {
     var rowNumber = 0
     var columnNumber = 0
 
@@ -33,5 +32,11 @@ extension GridCollectionViewCell: AnimatablePad {
     func clearAnimation() {
         self.contentView.subviews.forEach { $0.removeFromSuperview() }
         setDefaultAppearance()
+    }
+
+    func assign(sample: String) {
+    }
+
+    func assign(animation: AnimationSequence) {
     }
 }

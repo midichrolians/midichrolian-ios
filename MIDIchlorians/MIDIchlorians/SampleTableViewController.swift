@@ -51,7 +51,7 @@ class SampleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Config.sound.reduce(0, { (r, s) in r + s.count })
+        return Config.sound.reduce(0, { (res, sounds) in res + sounds.count })
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
