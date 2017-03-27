@@ -73,6 +73,7 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
     static let AnimationTableReuseIdentifier = "animationCell"
     static let SessionTableReuseIdentifier = "sessionCell"
