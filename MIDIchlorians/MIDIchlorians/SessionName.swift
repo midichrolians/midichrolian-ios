@@ -17,6 +17,10 @@ class SessionName: Object {
         self.sessionName = sessionString
     }
 
+    override static func primaryKey() -> String? {
+        return "sessionName"
+    }
+
     func getSessionName() -> String? {
         return sessionName
     }

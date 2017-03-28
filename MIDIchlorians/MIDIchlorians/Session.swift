@@ -52,6 +52,10 @@ class Session: Object {
         }
     }
 
+    override static func primaryKey() -> String? {
+        return "sessionName"
+    }
+
     //Tells Realm that thse properties should not be persisted
     override static func ignoredProperties() -> [String] {
         return ["pads"]

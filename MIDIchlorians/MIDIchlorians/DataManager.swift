@@ -100,8 +100,7 @@ class DataManager {
                 return false
             }
 
-            if let sessionNameObject = realm?.objects(SessionName.self)
-                                             .filter("sessionName = %@", sessionName).first {
+            if let sessionNameObject = realm?.object(ofType: SessionName.self, forPrimaryKey: sessionName) {
                 try realm?.write { realm?.delete(sessionNameObject) }
             }
 
@@ -125,9 +124,7 @@ class DataManager {
             return nil
         }
 
-        guard let session = realm?.objects(Session.self)
-            .filter("sessionName = %@", sessionName)
-            .first else {
+        guard let session = realm?.object(ofType: Session.self, forPrimaryKey: sessionName) else {
                 //handle error
                 return nil
         }
@@ -140,9 +137,7 @@ class DataManager {
             return nil
         }
 
-        guard let session = realm?.objects(Session.self)
-                                  .filter("sessionName = %@", sessionName)
-                                  .first else {
+        guard let session = realm?.object(ofType: Session.self, forPrimaryKey: sessionName) else {
                 //handle error
                 return nil
         }
@@ -180,9 +175,7 @@ class DataManager {
         }
 
         do {
-            guard let animationObject = realm?.objects(Animation.self)
-                                              .filter("animationString = %@", animationString)
-                                              .first else {
+            guard let animationObject = realm?.object(ofType: Animation.self, forPrimaryKey: animationString) else {
 
                 return false
             }
@@ -225,9 +218,7 @@ class DataManager {
         }
 
         do {
-            guard let audioObject = realm?.objects(Audio.self)
-                .filter("audioFile = %@", audioFile)
-                .first else {
+            guard let audioObject = realm?.object(ofType: Audio.self, forPrimaryKey: audioFile) else {
 
                 return false
             }

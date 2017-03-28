@@ -17,6 +17,10 @@ class Animation: Object {
         self.animationString = animationType
     }
 
+    override static func primaryKey() -> String? {
+        return "animationString"
+    }
+
     func getAnimationType() -> String? {
         return animationString
     }
