@@ -90,7 +90,7 @@ class DataManager {
         }
 
         do {
-            guard let session = loadSession(sessionName) else {
+            guard let session = loadExactSession(sessionName) else {
                 return false
             }
 
@@ -99,7 +99,12 @@ class DataManager {
                 try realm?.write { realm?.delete(sessionNameObject) }
             }
 
-            try realm?.write { realm?.delete(session) }
+            try realm?.write {
+                for pad in session.getPadList() {
+                    realm?.delete(pad)
+                }
+                realm?.delete(session)
+            }
         } catch {
             return false
         }
@@ -107,6 +112,21 @@ class DataManager {
         sessionNames.remove(sessionName)
 
         return true
+    }
+
+    private func loadExactSession(_ sessionName: String) -> Session? {
+        guard sessionNames.contains(sessionName) else {
+            return nil
+        }
+
+        guard let session = realm?.objects(Session.self)
+            .filter("sessionName = %@", sessionName)
+            .first else {
+                //handle error
+                return nil
+        }
+        session.load()
+        return session
     }
 
     func loadSession(_ sessionName: String) -> Session? {
@@ -121,7 +141,8 @@ class DataManager {
                 return nil
         }
         session.load()
-        return session
+        let copiedSession = Session(session: session)
+        return copiedSession
     }
 
     func loadAllSessionNames() -> [String] {
