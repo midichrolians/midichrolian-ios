@@ -15,11 +15,14 @@ class DataManagerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
     }
 
     func testSaveEmptySession() {
         let session = Session(bpm: 120)
+        session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1")
+        let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(animationTypeName: Config.animationTypeSparkName,
+                                                                                    indexPath: IndexPath(row: 0, section: 0))
+        session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence!)
         XCTAssertTrue(dataManager.saveSession("test", session))
         XCTAssertEqual(session, dataManager.loadSession("test")!)
     }
@@ -31,40 +34,41 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(dataManager.saveSession("test", newSession))
         XCTAssertEqual(newSession, dataManager.loadSession("test")!)
     }
-
-    func testSaveSessionWithAudio() {
+    
+    func testRemoveSession() {
         let session = Session(bpm: 120)
         session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1")
-        XCTAssertTrue(dataManager.saveSession("test", session))
-        XCTAssertEqual(session, dataManager.loadSession("test")!)
-
-    }
-
-    func testSaveSessionWithAnimation() {
-        let session = Session(bpm: 120)
-        let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(animationTypeName: Config.animationTypeSparkName,
-                                                 indexPath: IndexPath(row: 0, section: 0))
+        let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(animationTypeName: Config.animationTypeSparkName, indexPath: IndexPath(row: 0, section: 0))
         session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence!)
-        XCTAssertTrue(dataManager.saveSession("test", session))
-        XCTAssertEqual(session, dataManager.loadSession("test")!)
+        _ = dataManager.saveSession("test", session)
+        XCTAssertTrue(dataManager.removeSession("test"))
+        XCTAssertNil(dataManager.loadSession("test"))
+    }
+    
+    func testRemoveNonExistingSession() {
+        let session = Session(bpm: 120)
+        _ = dataManager.saveSession("test", session)
+        XCTAssertTrue(dataManager.removeSession("test"))
+        XCTAssertFalse(dataManager.removeSession("test"))
     }
 
     func testLoadSession() {
-        XCTAssertNil(dataManager.loadSession("test1"))
         let session = Session(bpm: 120)
-        XCTAssertTrue(dataManager.saveSession("test1", session))
-        XCTAssertEqual(session, dataManager.loadSession("test1")!)
-
+        _ = dataManager.saveSession("test", session)
+        XCTAssertEqual(session, dataManager.loadSession("test")!)
     }
 
     func testLoadAllSessionNames() {
-
+        let session = Session(bpm: 120)
+        _ = dataManager.saveSession("test1", session)
+        _ = dataManager.saveSession("test2",session)
+        _ = dataManager.saveSession("test3", session)
+        XCTAssertEqual(dataManager.loadAllSessionNames().sorted(), ["test1", "test2", "test3"])
     }
 
     func testSaveAnimation() {
 
     }
-
     func testLoadAllAnimations() {
 
     }

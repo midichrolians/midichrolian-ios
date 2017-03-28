@@ -138,7 +138,7 @@ class DataManager {
         }
 
         do {
-            try realm?.write { realm?.add(Animation(value: animation)) }
+            try realm?.write { realm?.add(Animation(animation)) }
         } catch {
             return false
         }
