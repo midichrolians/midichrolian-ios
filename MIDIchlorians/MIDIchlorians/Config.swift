@@ -80,6 +80,10 @@ struct Config {
     static let animationBitRowKey = "row"
     static let animationBitColumnKey = "column"
 
+    static let animationTypeModeKey = "mode"
+    static let animationTypeAnimationSequenceKey = "animationSequence"
+    static let animationTypeNameKey = "name"
+
     static let animationTypeSpreadName = "Spread"
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
