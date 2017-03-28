@@ -17,7 +17,7 @@ class DataManager {
     private var audioStrings: Set<String>
 
     //TODO: REALM INIT CAN FAIL
-    private init() {
+    init() {
         // Not sure if this line should always be there
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
         self.realm = try? Realm()

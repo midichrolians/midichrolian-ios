@@ -11,10 +11,12 @@ import RealmSwift
 @testable import MIDIchlorians
 
 class DataManagerTests: XCTestCase {
-    let dataManager = DataManager.instance
+    var dataManager = DataManager()
 
     override func setUp() {
         super.setUp()
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
+        dataManager = DataManager()
     }
 
     func testSaveSession() {
