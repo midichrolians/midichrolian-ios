@@ -45,7 +45,7 @@ class DataManager {
             return
         }
         for animation in animations {
-            if let animationString = animation.getAnimationString() {
+            if let animationString = animation.getAnimationType() {
                 animationStrings.insert(animationString)
             }
         }
@@ -63,15 +63,20 @@ class DataManager {
     }
 
     func saveSession(_ sessionName: String, _ session: Session) -> Bool {
-
+        var savedSession = session
         if sessionNames.contains(sessionName) {
             _ = removeSession(sessionName)
         }
-        session.prepareForSave(sessionName: sessionName)
+
+        if session.getSessionName() != nil {
+            savedSession = Session(session: session)
+        } else {
+            savedSession.prepareForSave(sessionName: sessionName)
+        }
 
         do {
             try realm?.write { realm?.add(SessionName(sessionName)) }
-            try realm?.write { realm?.add(session) }
+            try realm?.write { realm?.add(savedSession) }
 
         } catch {
             return false
@@ -149,17 +154,13 @@ class DataManager {
         return Array(sessionNames)
     }
 
-    func saveAnimation(_ animation: AnimationSequence) -> Bool {
-        guard let animationString = animation.getJSONforAnimationSequence() else {
-            return false
-        }
-
+    func saveAnimation(_ animationString: String) -> Bool {
         if animationStrings.contains(animationString) {
-            _ = removeAnimation(animation)
+            _ = removeAnimation(animationString)
         }
 
         do {
-            try realm?.write { realm?.add(Animation(animation)) }
+            try realm?.write { realm?.add(Animation(animationString)) }
         } catch {
             return false
         }
@@ -171,10 +172,7 @@ class DataManager {
         return true
     }
 
-    func removeAnimation(_ animation: AnimationSequence) -> Bool {
-        guard let animationString = animation.getJSONforAnimationSequence() else {
-            return false
-        }
+    func removeAnimation(_ animationString: String) -> Bool {
 
         guard animationStrings.contains(animationString) else {
             return false
@@ -198,14 +196,8 @@ class DataManager {
 
     }
 
-    func loadAllAnimations() -> [AnimationSequence] {
-        var finalArray = [AnimationSequence]()
-        for animationString in Array(animationStrings) {
-            if let animation = AnimationSequence.getAnimationSequenceFromJSON(fromJSON: animationString) {
-                finalArray.append(animation)
-            }
-        }
-        return finalArray
+    func loadAllAnimationTypes() -> [String] {
+        return Array(animationStrings)
     }
 
     func saveAudio(_ audioFile: String) -> Bool {

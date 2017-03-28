@@ -69,10 +69,17 @@ class DataManagerTests: XCTestCase {
     }
 
     func testSaveAnimation() {
-        let session = Session(bpm: 120)
-        session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-2")
 
     }
+
+    func testSaveAnimationOverrwite() {
+
+    }
+
+    func testRemoveAnimation() {
+
+    }
+
     func testLoadAllAnimations() {
 
     }
@@ -81,7 +88,12 @@ class DataManagerTests: XCTestCase {
 
     }
 
+    func testRemoveAudio() {
+
+    }
+
     func testLoadAllAudioStrings() {
+
     }
 
 }
