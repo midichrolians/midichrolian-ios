@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 // The ViewController is the main (and only) for the entire app.
 // Management and hooking up all child view controllers are done in this class.
 // The responsibilities of this class includes
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         setUpGrid()
         setUpSidePane()
         setUpStyles()
-        setUpAnimation()
+        setUpAnimation()        
     }
 
     // Sets up the top navigation.

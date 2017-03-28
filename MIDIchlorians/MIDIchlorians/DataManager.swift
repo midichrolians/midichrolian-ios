@@ -18,11 +18,9 @@ class DataManager {
 
     //TODO: REALM INIT CAN FAIL
     private init() {
-        do {
-            self.realm = try Realm()
-        } catch {
-            self.realm = nil
-        }
+        // Not sure if this line should always be there
+        Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
+        self.realm = try? Realm()
         sessionNames = Set<String>()
         animationStrings = Set<String>()
         audioStrings = Set<String>()
@@ -195,7 +193,7 @@ class DataManager {
         }
 
         do {
-            try realm?.write { realm?.add(Audio(value: [audioFile])) }
+            try realm?.write { realm?.add(Audio(audioFile)) }
         } catch {
             return false
         }

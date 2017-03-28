@@ -36,6 +36,7 @@ class DataManagerTests: XCTestCase {
         let session = Session(bpm: 120)
         session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1")
         XCTAssertTrue(dataManager.saveSession("test", session))
+        XCTAssertEqual(session, dataManager.loadSession("test")!)
 
     }
 
@@ -45,13 +46,14 @@ class DataManagerTests: XCTestCase {
                                                  indexPath: IndexPath(row: 0, section: 0))
         session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence!)
         XCTAssertTrue(dataManager.saveSession("test", session))
+        XCTAssertEqual(session, dataManager.loadSession("test")!)
     }
 
     func testLoadSession() {
-        XCTAssertNil(dataManager.loadSession("test"))
+        XCTAssertNil(dataManager.loadSession("test1"))
         let session = Session(bpm: 120)
-        XCTAssertTrue(dataManager.saveSession("test", session))
-        XCTAssertEqual(session, dataManager.loadSession("test")!)
+        XCTAssertTrue(dataManager.saveSession("test1", session))
+        XCTAssertEqual(session, dataManager.loadSession("test1")!)
 
     }
 

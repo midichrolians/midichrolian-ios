@@ -37,20 +37,12 @@ class Session: Object {
 
     private func initialisePadGrid() {
         //for demo
-        let demoSounds = Config.sound
         for page in 0..<numPages {
             pads.append([])
             for row in 0..<numRows {
                 pads[page].append([])
-                for col in 0..<numCols {
-                    let emptyPad = Pad()
-                    //for demo
-                    if AudioManager.instance.hackCheckValidIndex(row: row, col: col) {
-                        let demoSound = demoSounds[row][col]
-                        _ = AudioManager.instance.initAudio(audioDir: demoSound)
-                        emptyPad.addAudio(audioFile: demoSound)
-                    }
-                    pads[page][row].append(emptyPad)
+                for _ in 0..<numCols {
+                    pads[page][row].append(Pad())
                 }
 
             }
