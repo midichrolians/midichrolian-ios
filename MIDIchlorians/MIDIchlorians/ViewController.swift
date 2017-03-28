@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         setUpGrid()
         setUpSidePane()
         setUpStyles()
-        setUpAnimation()        
+        setUpAnimation()
     }
 
     // Sets up the top navigation.
