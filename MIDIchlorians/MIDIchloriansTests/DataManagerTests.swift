@@ -57,43 +57,87 @@ class DataManagerTests: XCTestCase {
         _ = dataManager.saveSession("test", session)
         let x = dataManager.loadSession("test")!
         XCTAssertTrue(session.equals(x))
-        x.addAudio(page: 0, row: 0, col: 0, audioFile: "AAA")
     }
 
     func testLoadAllSessionNames() {
         let session = Session(bpm: 120)
-        _ = dataManager.saveSession("test1", session)
-        _ = dataManager.saveSession("test2", session)
-        _ = dataManager.saveSession("test3", session)
-        XCTAssertEqual(dataManager.loadAllSessionNames().sorted(), ["test1", "test2", "test3"])
+        let sessionNameArray = ["test1", "test2", "test3"]
+        for sessionName in sessionNameArray {
+            _ = dataManager.saveSession(sessionName, session)
+        }
+        XCTAssertEqual(dataManager.loadAllSessionNames().sorted(), sessionNameArray)
     }
 
     func testSaveAnimation() {
-
+        let animationType = "Spread"
+        XCTAssertTrue(dataManager.saveAnimation(animationType))
+        XCTAssertEqual(dataManager.loadAllAnimationTypes(), [animationType])
     }
 
-    func testSaveAnimationOverrwite() {
-
+    func testSaveAnimationOverwrite() {
+        let animationType = "Spread"
+        XCTAssertTrue(dataManager.saveAnimation(animationType))
+        XCTAssertTrue(dataManager.saveAnimation(animationType))
+        XCTAssertEqual(dataManager.loadAllAnimationTypes(), [animationType])
     }
 
     func testRemoveAnimation() {
+        let animationType = "Spread"
+        _ = dataManager.saveAnimation(animationType)
+        XCTAssertTrue(dataManager.removeAnimation(animationType))
+        XCTAssertEqual([], dataManager.loadAllAnimationTypes())
+    }
 
+    func testRemoveNonExistingAnimation() {
+        let animationType = "Spread"
+        _ = dataManager.saveAnimation(animationType)
+        XCTAssertTrue(dataManager.removeAnimation(animationType))
+        XCTAssertFalse(dataManager.removeAnimation(animationType))
     }
 
     func testLoadAllAnimations() {
+        let animationTypes = ["Rainbow", "Spark", "Spread"]
+        for animation in animationTypes {
+            _ = dataManager.saveAnimation(animation)
+        }
+        XCTAssertEqual(dataManager.loadAllAnimationTypes().sorted(), animationTypes)
 
     }
 
     func testSaveAudio() {
+        let audio = "AWOLNATION - Sail-1"
+        XCTAssertTrue(dataManager.saveAudio(audio))
+        XCTAssertEqual(dataManager.loadAllAudioStrings(), [audio])
+    }
 
+    func testSaveAudioOverwrite() {
+        let audio = "AWOLNATION - Sail-1"
+        XCTAssertTrue(dataManager.saveAudio(audio))
+        XCTAssertTrue(dataManager.saveAudio(audio))
+        XCTAssertEqual(dataManager.loadAllAudioStrings(), [audio])
     }
 
     func testRemoveAudio() {
+        let audio = "AWOLNATION - Sail-1"
+        _ = dataManager.saveAudio(audio)
+        XCTAssertTrue(dataManager.removeAudio(audio))
+        XCTAssertEqual([], dataManager.loadAllAudioStrings())
 
     }
 
-    func testLoadAllAudioStrings() {
+    func testRemoveNonExistingAudio() {
+        let audio = "AWOLNATION - Sail-1"
+        _ = dataManager.saveAudio(audio)
+        XCTAssertTrue(dataManager.removeAudio(audio))
+        XCTAssertFalse(dataManager.removeAudio(audio))
+    }
 
+    func testLoadAllAudioStrings() {
+        let audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
+        for audio in audios {
+            _ = dataManager.saveAudio(audio)
+        }
+        XCTAssertEqual(dataManager.loadAllAudioStrings().sorted(), audios)
     }
 
 }

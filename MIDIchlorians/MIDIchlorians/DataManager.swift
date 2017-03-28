@@ -70,6 +70,7 @@ class DataManager {
 
         if session.getSessionName() != nil {
             savedSession = Session(session: session)
+            savedSession.prepareForSave(sessionName: sessionName)
         } else {
             savedSession.prepareForSave(sessionName: sessionName)
         }
