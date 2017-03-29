@@ -39,4 +39,14 @@ extension GridCollectionViewCell: AnimatablePad {
 
     func assign(animation: AnimationSequence) {
     }
+
+    // This cell is selected in the edit mode
+    func setSelected() {
+        layer.borderColor = UIColor.red.cgColor
+        layer.borderWidth = 3.0
+    }
+
+    func unselect() {
+        layer.borderWidth = 0.0
+    }
 }

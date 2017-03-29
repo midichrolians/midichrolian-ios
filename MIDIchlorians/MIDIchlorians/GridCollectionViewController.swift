@@ -12,15 +12,24 @@ import UIKit
 // Events that happen on the collection view will be sent to the parent GridController, not this view controller.
 class GridCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     // the currently visible 6x8 grid of pads
-    var padGrid: [[Pad]] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var padGrid: [[Pad]] = [] {
+        didSet {
+            collectionView?.reloadData()
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // currently selected pad, only used for edit mode
+    var selectedIndexPath: IndexPath? {
+        didSet {
+            // reload previously selected pad to clear selection
+            if let prevIndexPath = oldValue {
+                collectionView?.reloadItems(at: [prevIndexPath])
+            }
+            // reload new selected pad to show selection
+            if let newIndexPath = selectedIndexPath {
+                collectionView?.reloadItems(at: [newIndexPath])
+            }
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -42,16 +51,25 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             }
 
             let pad = padGrid[indexPath.section][indexPath.row]
+
             if let sample = pad.getAudioFile() {
                 cell.assign(sample: sample)
             }
+
             if let animation = pad.getAnimation() {
                 cell.assign(animation: animation)
+            }
+
+            if selectedIndexPath == indexPath {
+                cell.setSelected()
+            } else {
+                cell.unselect()
             }
 
             cell.rowNumber = indexPath.section
             cell.columnNumber = indexPath.item
             cell.setDefaultAppearance()
+
             return cell
     }
 
