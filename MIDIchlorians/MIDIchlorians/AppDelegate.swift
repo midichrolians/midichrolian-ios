@@ -15,35 +15,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     lazy private var preloadedSamples = Config.sound.joined()
 
-    func copyBundleSamples() {
+    // Copy samples from the bundle onto user's document directory.
+    // A list of URLs of the copied samples.
+    func copyBundleSamples() -> [URL] {
         // store the samples in the document directory
         guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             // if we cannot store, that's fine, the user just won't have any samples loaded
-            return
+            return []
         }
 
-        // for each of the song we have bundled, copy them into the directory
-        preloadedSamples.forEach { sampleName in
-            if let sampleInBundle = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt) {
-                let dest = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
-                if !FileManager.default.fileExists(atPath: dest.path) {
-                    try? FileManager.default.copyItem(at: sampleInBundle, to: dest)
-                }
+        // Helper to copy form src to destination
+        func copy(src: URL, dest: URL) -> URL? {
+            do {
+                try FileManager.default.copyItem(at: src, to: dest)
+                return dest
+            } catch {
+                return nil
             }
         }
+
+        func copyToUserStorage(_ sampleName: String) -> URL? {
+            let sampleURL = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt)
+            guard let srcURL = sampleURL else {
+                return nil
+            }
+            let destURL = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
+            return copy(src: srcURL, dest: destURL)
+        }
+
+        return preloadedSamples.flatMap { copyToUserStorage($0) }
     }
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Try to find a session that was last loaded
         // if not loaded should create an empty session
 
         // Copy all samples into user directory
-        copyBundleSamples()
+        let copiedSamples = copyBundleSamples()
 
         // Populate the samples in our database
-        preloadedSamples.forEach { sample in
+        copiedSamples.forEach { sample in
             // if saving fails, what are we gonna do?
-            let _ = DataManager.instance.saveAudio(sample)
+            let _ = DataManager.instance.saveAudio(sample.absoluteString)
         }
 
         // Do the same thing for animations as well
