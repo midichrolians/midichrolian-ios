@@ -10,11 +10,21 @@ import Foundation
 import AVFoundation
 
 struct AudioManager {
-    static var instance = AudioManager()
-    private var audioDict: [String:UInt32]
+    private var audioDict: [String: UInt32]
+    private var audioPlayerType: AudioPlayerSetting
 
-    init() {
+    init(_ setting: AudioPlayerSetting) {
         audioDict = [String: UInt32]()
+        audioPlayerType = setting
+/*
+        do {
+            let sharedSessionIntance = AVAudioSession.sharedInstance() as AVAudioSession
+            try sharedSessionIntance.setActive(true)
+            try sharedSessionIntance.setPreferredIOBufferDuration(0.0002)
+        } catch {
+            print("audioSession error")
+        }
+ */
     }
 
     //initialize single audio file
@@ -23,6 +33,10 @@ struct AudioManager {
         guard let audioID = AudioClipPlayer.initAudioClip(audioDir: audioDir) else {
             return false
         }
+        /*
+        switch audioPlayerType {
+            
+        }*/
         audioDict[audioDir] = audioID
         return true
     }
