@@ -22,7 +22,7 @@ class DataManagerTests: XCTestCase {
     func testSaveSession() {
         let session = Session(bpm: 120)
         session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1")
-        let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+        let animationSequence = AnimationManager.instance.getAnimationSequenceForAnimationType(
             animationTypeName: Config.animationTypeSparkName, indexPath: IndexPath(row: 0, section: 0))
         session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence!)
         XCTAssertTrue(dataManager.saveSession("test", session))
@@ -40,7 +40,7 @@ class DataManagerTests: XCTestCase {
     func testRemoveSession() {
         let session = Session(bpm: 120)
         session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1")
-        let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+        let animationSequence = AnimationManager.instance.getAnimationSequenceForAnimationType(
             animationTypeName: Config.animationTypeSparkName, indexPath: IndexPath(row: 0, section: 0))
         session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence!)
         _ = dataManager.saveSession("test", session)
