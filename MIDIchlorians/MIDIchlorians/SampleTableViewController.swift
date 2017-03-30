@@ -16,6 +16,8 @@ class SampleTableViewController: UITableViewController {
     private let reuseIdentifier = Config.SampleTableReuseIdentifier
     private let sampleList = DataManager.instance.loadAllAudioStrings()
 
+    internal let sampleList = DataManager.instance.loadAllAudioStrings()
+
     override init(style: UITableViewStyle) {
         super.init(style: style)
 

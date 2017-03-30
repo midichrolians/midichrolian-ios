@@ -34,6 +34,9 @@ class ViewController: UIViewController {
         setUpAnimationDesigner()
         setUpStyles()
         setUpAnimation()
+
+        // need assign delegates after everything is initialized
+        gridController.padDelegate = sidePaneController
     }
 
     // Sets up the top navigation.
