@@ -30,6 +30,32 @@ class Session: Object {
         initialisePadGrid()
     }
 
+    convenience init(session: Session) {
+        self.init()
+        self.BPM = session.BPM
+        self.numPages = session.numPages
+        self.numRows = session.numRows
+        self.numCols = session.numCols
+        for page in 0..<numPages {
+            pads.append([])
+            for row in 0..<numRows {
+                pads[page].append([])
+                for col in 0..<numCols {
+                    if let pad = session.getPad(page: page, row: row, col: col) {
+                        pads[page][row].append(Pad(pad))
+                    } else {
+                        pads[page][row].append(Pad())
+                    }
+                }
+
+            }
+        }
+    }
+
+    override static func primaryKey() -> String? {
+        return "sessionName"
+    }
+
     //Tells Realm that thse properties should not be persisted
     override static func ignoredProperties() -> [String] {
         return ["pads"]
@@ -41,8 +67,7 @@ class Session: Object {
             for row in 0..<numRows {
                 pads[page].append([])
                 for _ in 0..<numCols {
-                    let emptyPad = Pad()
-                    pads[page][row].append(emptyPad)
+                    pads[page][row].append(Pad())
                 }
 
             }
@@ -133,5 +158,22 @@ class Session: Object {
                 }
             }
         }
+    }
+
+    func getPadList() -> List<Pad> {
+        return padList
+    }
+
+    func equals(_ session: Session) -> Bool {
+        guard self.BPM == session.BPM && self.numPages == session.numPages &&
+              self.numRows == session.numRows && self.numCols == session.numCols else {
+            return false
+        }
+        for (page, (row, col)) in zip(0..<numPages, zip(0..<numRows, 0..<numCols)) {
+            if !pads[page][row][col].equals(session.pads[page][row][col]) {
+                return false
+            }
+        }
+        return true
     }
 }

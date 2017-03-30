@@ -10,11 +10,15 @@ import RealmSwift
 
 class SessionName: Object {
 
-    private var sessionName: String = ""
+    private dynamic var sessionName: String = ""
 
     convenience init(_ sessionString: String) {
         self.init()
         self.sessionName = sessionString
+    }
+
+    override static func primaryKey() -> String? {
+        return "sessionName"
     }
 
     func getSessionName() -> String? {
