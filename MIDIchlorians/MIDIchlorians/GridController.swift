@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-protocol PadDelegate: class {
-    func padTapped(indexPath: IndexPath)
-}
-
 // Manages the currently visible grid of pads using a GridCollectionView
 class GridController: NSObject {
     var view: UIView
@@ -21,16 +17,24 @@ class GridController: NSObject {
     }
     var mode: Mode = .playing {
         didSet {
-            gridCollectionView.mode = mode
+            // when we enter playing mode, want to set unselect pads
+            if mode == .playing {
+                self.selectedIndexPath = nil
+            }
         }
     }
 
     internal var currentSession: Session
     internal var currentPage = 0
-    internal var selectedPad: IndexPath?
+    // Keep the selectedIndexPath of the view controller in sync
+    internal var selectedIndexPath: IndexPath? {
+        didSet {
+            gridCollectionVC.selectedIndexPath = selectedIndexPath
+        }
+    }
     internal var gridCollectionVC: GridCollectionViewController
 
-    private var gridCollectionView: GridCollectionView
+    internal var gridCollectionView: GridCollectionView
 
     init(frame: CGRect, session: Session) {
         // base ui view for the grid
@@ -61,20 +65,57 @@ class GridController: NSObject {
 extension GridController: PadDelegate {
     func padTapped(indexPath: IndexPath) {
         let pad = self.currentSession.getPad(page: currentPage, indexPath: indexPath)
-        self.selectedPad = indexPath
-        guard let audioFile = pad.getAudioFile() else {
+
+        // if in editing mode, highlight the tapped grid
+        if mode == .editing && selectedIndexPath != indexPath {
+            self.selectedIndexPath = indexPath
             return
         }
-        _ = AudioManager.instance.play(audioDir: audioFile)
+
+        playHardCodedAnimation(at: indexPath)
+
+        if let audioFile = pad.getAudioFile() {
+            _ = AudioManager.instance.play(audioDir: audioFile)
+        }
+    }
+
+    // Play animations, right now it's hardcoded for prototyping purpose.
+    private func playHardCodedAnimation(at indexPath: IndexPath) {
+        // hardcoded animations for demo
+        if (indexPath.section == 0 || indexPath.section == Config.numberOfRows - 1) &&
+            (indexPath.item == 0 || indexPath.item == Config.numberOfColumns - 1) {
+            guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+                animationTypeName: Config.animationTypeSpreadName,
+                indexPath: indexPath) else {
+                    return
+            }
+            AnimationEngine.register(animationSequence: animationSequence)
+            return
+        }
+        if indexPath.section > 1 && indexPath.item > 2 && indexPath.section < 4 && indexPath.item < 5 {
+            guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+                animationTypeName: Config.animationTypeSparkName,
+                indexPath: indexPath) else {
+                    return
+            }
+            AnimationEngine.register(animationSequence: animationSequence)
+            return
+        }
+        guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+            animationTypeName: Config.animationTypeRainbowName,
+            indexPath: indexPath) else {
+                return
+        }
+        AnimationEngine.register(animationSequence: animationSequence)
     }
 }
 
 extension GridController: SampleTableDelegate {
     func sampleTable(_: UITableView, didSelect sample: String) {
-        guard let indexPath = self.selectedPad else {
+        guard let indexPath = self.selectedIndexPath else {
             return
         }
-        guard let row = self.selectedPad?.section, let col = self.selectedPad?.row else {
+        guard let row = self.selectedIndexPath?.section, let col = self.selectedIndexPath?.row else {
             return
         }
         self.currentSession.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
@@ -84,7 +125,7 @@ extension GridController: SampleTableDelegate {
 
 extension GridController: AnimationTableDelegate {
     func animationTable(_: UITableView, didSelect animation: String) {
-        guard let indexPath = self.selectedPad else {
+        guard let indexPath = self.selectedIndexPath else {
             return
         }
 

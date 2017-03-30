@@ -195,7 +195,7 @@ class DataManager {
         }
 
         do {
-            try realm?.write { realm?.add(Audio(value: audioFile)) }
+            try realm?.write { realm?.add(Audio(value: [audioFile])) }
         } catch {
             return false
         }
