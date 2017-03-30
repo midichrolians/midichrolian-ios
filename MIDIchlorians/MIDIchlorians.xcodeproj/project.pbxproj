@@ -844,7 +844,7 @@
 				E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */,
 				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
 				E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */,
-				334970BF1E72557D009C78DF /* AnimationTypes.swift in Sources */,
+				334970BF1E72557D009C78DF /* AnimationType.swift in Sources */,
 				E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */,
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
 				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
