@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Copy samples from the bundle onto user's document directory.
     // A list of URLs of the copied samples.
-    func copyBundleSamples() -> [URL] {
+    func copyBundleSamples() -> [String] {
         // store the samples in the document directory
         guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             // if we cannot store, that's fine, the user just won't have any samples loaded
@@ -34,13 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        func copyToUserStorage(_ sampleName: String) -> URL? {
+        func copyToUserStorage(_ sampleName: String) -> String? {
             let sampleURL = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt)
             guard let srcURL = sampleURL else {
                 return nil
             }
             let destURL = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
-            return copy(src: srcURL, dest: destURL)
+            return copy(src: srcURL, dest: destURL) != nil ? sampleName : nil
         }
 
         return preloadedSamples.flatMap { copyToUserStorage($0) }
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Populate the samples in our database
         copiedSamples.forEach { sample in
             // if saving fails, what are we gonna do?
-            let _ = DataManager.instance.saveAudio(sample.absoluteString)
+            let _ = DataManager.instance.saveAudio(sample)
         }
 
         // Do the same thing for animations as well
