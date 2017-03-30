@@ -12,10 +12,13 @@ import UIKit
 import SnapKit
 
 class AnimationDesignerController: UIViewController {
+    weak var delegate: AnimationDesignerDelegate?
+
     // require animation data
-    var colourPicker: ColourPicker!
-    var timelineView: TimelineView!
-    var animationTypeSegmentedControl: UISegmentedControl!
+    private var colourPicker: ColourPicker!
+    private var timelineView: TimelineView!
+    private var animationTypeSegmentedControl: UISegmentedControl!
+    private var tapGesture: UITapGestureRecognizer?
 
     override func viewDidLoad() {
         animationTypeSegmentedControl = UISegmentedControl(items: ["absolute", "relative"])
@@ -32,9 +35,10 @@ class AnimationDesignerController: UIViewController {
         view.addSubview(timelineView)
 
         setConstraints()
+        addGestures()
     }
 
-    func setConstraints() {
+    private func setConstraints() {
         timelineView.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
@@ -53,6 +57,28 @@ class AnimationDesignerController: UIViewController {
         animationTypeSegmentedControl.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(view.snp.left)
             make.top.equalTo(colourPicker.snp.bottom).offset(10)
+        }
+    }
+
+    private func addGestures() {
+        timelineView.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(timelineTap(recognizer:))))
+
+        colourPicker.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(colourPickerTap(recognizer:))))
+    }
+
+    func timelineTap(recognizer: UITapGestureRecognizer) {
+        let loc = recognizer.location(in: timelineView)
+        if let frameIndex = timelineView.frameIndex(at: loc) {
+            delegate?.animationTimeline(selected: frameIndex)
+        }
+    }
+
+    func colourPickerTap(recognizer: UITapGestureRecognizer) {
+        let loc = recognizer.location(in: colourPicker)
+        if let colour = colourPicker.colour(at: loc) {
+            delegate?.animationColour(selected: colour)
         }
     }
 

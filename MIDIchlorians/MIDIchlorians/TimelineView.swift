@@ -10,7 +10,9 @@ import UIKit
 
 class TimelineView: UIView {
     // a data structure of animation frames
-    let fullCircle: CGFloat = CGFloat(2 * M_PI)
+    // keep track of which frame is selected currently and show it differently
+    private let fullCircle: CGFloat = CGFloat(2 * M_PI)
+    private var selectedFrameIndex: Int?
     let frames: [Bool] = [
         true, false,
         true, false,
@@ -23,11 +25,15 @@ class TimelineView: UIView {
         UIColor.blue, UIColor.red,
         UIColor.blue, UIColor.red
     ]
+    var height: CGFloat {
+        return self.bounds.height
+    }
+    var width: CGFloat {
+        return self.height
+    }
 
     override func draw(_ rect: CGRect) {
         // draw a row of colours
-        let height: CGFloat = self.bounds.height
-        let width: CGFloat = height
         for (i, c) in colours.enumerated() {
             let path = UIBezierPath()
             let start = CGPoint(x: CGFloat(i) * width, y: 0.0)
@@ -54,7 +60,18 @@ class TimelineView: UIView {
                 dot.fill()
                 dot.stroke()
             }
+
+            if i == selectedFrameIndex {
+                // highlight this frame
+            }
         }
+    }
+
+    // Returns index of timeline frame this point falls into.
+    // nil if the point falls outside of the timeline but is captured by this view
+    func frameIndex(at point: CGPoint) -> Int? {
+        let i = Int(point.x / width)
+        return i >= colours.count ? nil : i
     }
 
 }

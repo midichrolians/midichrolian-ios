@@ -10,19 +10,17 @@ import UIKit
 
 class ColourPicker: UIView {
     // colour palette that we support
-    let colours = [
-        UIColor.blue,
-        UIColor.red,
-        UIColor.cyan,
-        UIColor.green,
-        UIColor.purple,
-        UIColor.indigo
-    ]
+
+    let colours = Colour.allColours
+    private var height: CGFloat {
+        return bounds.height
+    }
+    private var width: CGFloat {
+        return height
+    }
 
     override func draw(_ rect: CGRect) {
         // draw a row of colours
-        let height: CGFloat = self.bounds.height
-        let width: CGFloat = height
         for (i, c) in colours.enumerated() {
             let path = UIBezierPath()
             let start = CGPoint(x: CGFloat(i) * width, y: 0.0)
@@ -34,11 +32,17 @@ class ColourPicker: UIView {
 
             path.lineWidth = 0.25
 
-            c.setFill()
-            c.setStroke()
+            c.uiColor.setFill()
+            c.uiColor.setStroke()
             path.fill()
             path.stroke()
         }
     }
 
+    // Returns index of UIColor frame this point falls into.
+    // nil if the point falls outside of the timeline but is captured by this view
+    func colour(at point: CGPoint) -> Colour? {
+        let i = Int(point.x / width)
+        return i >= colours.count ? nil : colours[i]
+    }
 }
