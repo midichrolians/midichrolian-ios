@@ -62,6 +62,10 @@ struct Config {
     static let MainViewWidthToSideWidthRatio: CGFloat = 1 / 3
     static let MainViewHeightToSideHeightRatio: CGFloat = 7 / 8
 
+    static let MainViewHeightToAnimMinYRatio: CGFloat = 6 / 8
+    static let MainViewHeightToAnimHeightRatio: CGFloat = 1 / 4
+    static let MainViewWidthToAnimWidthRatio: CGFloat = 7 / 12
+
     static let SectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
