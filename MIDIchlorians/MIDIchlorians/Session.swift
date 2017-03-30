@@ -62,7 +62,6 @@ class Session: Object {
     }
 
     private func initialisePadGrid() {
-        //for demo
         for page in 0..<numPages {
             pads.append([])
             for row in 0..<numRows {
