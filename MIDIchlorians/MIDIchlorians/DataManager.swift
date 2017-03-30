@@ -62,7 +62,7 @@ class DataManager {
         }
     }
 
-    func saveSession(_ sessionName: String, _ session: Session) -> Bool {
+    func saveSession(_ sessionName: String, _ session: Session) -> Session? {
         var savedSession = session
         if sessionNames.contains(sessionName) {
             _ = removeSession(sessionName)
@@ -80,14 +80,14 @@ class DataManager {
             try realm?.write { realm?.add(savedSession) }
 
         } catch {
-            return false
+            return nil
         }
 
         if !sessionNames.contains(sessionName) {
             self.sessionNames.insert(sessionName)
         }
 
-        return true
+        return Session(session: session)
     }
 
     func removeSession(_ sessionName: String) -> Bool {

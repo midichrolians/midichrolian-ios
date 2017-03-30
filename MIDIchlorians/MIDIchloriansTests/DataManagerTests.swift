@@ -25,16 +25,21 @@ class DataManagerTests: XCTestCase {
         let animationSequence = AnimationManager.instance.getAnimationSequenceForAnimationType(
             animationTypeName: Config.animationTypeSparkName, indexPath: IndexPath(row: 0, section: 0))
         session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence!)
-        XCTAssertTrue(dataManager.saveSession("test", session))
+        XCTAssertTrue(session.equals(dataManager.saveSession("test", session)!))
         XCTAssertTrue(session.equals(dataManager.loadSession("test")!))
     }
 
     func testSaveSessionOverrwrite() {
         let session = Session(bpm: 120)
-        XCTAssertTrue(dataManager.saveSession("test", session))
+        XCTAssertTrue(session.equals(dataManager.saveSession("test", session)!))
         let newSession = Session(bpm: 140)
-        XCTAssertTrue(dataManager.saveSession("test", newSession))
+        let newSession1 = dataManager.saveSession("test", newSession)!
+        XCTAssertTrue(newSession.equals(newSession1))
         XCTAssertTrue(newSession.equals(dataManager.loadSession("test")!))
+
+        newSession1.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-2")
+        XCTAssertTrue(newSession1.equals(dataManager.saveSession("test", newSession1)!))
+
     }
 
     func testRemoveSession() {
