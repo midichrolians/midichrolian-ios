@@ -129,7 +129,7 @@ extension GridController: AnimationTableDelegate {
             return
         }
 
-        guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+        guard let animationSequence = AnimationManager.instance.getAnimationSequenceForAnimationType(
             animationTypeName: animation, indexPath: indexPath) else {
                 return
         }
