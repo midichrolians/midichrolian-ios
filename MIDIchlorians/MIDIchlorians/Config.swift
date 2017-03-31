@@ -90,4 +90,8 @@ struct Config {
     static let ModeSegmentTitles = ["PLAY", "EDIT"]
 
     static let GridCollectionViewCellIdentifier = "cell"
+
+    static let SessionsFolderName = "sessions"
+    static let AnimationFolderName = "animation"
+    static let AudioFolderName = "audio"
 }

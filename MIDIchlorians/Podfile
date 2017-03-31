@@ -7,6 +7,7 @@ target 'MIDIchlorians' do
   pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', :submodules => true
   pod 'RealmSwift', :git => 'https://github.com/realm/realm-cocoa.git', :branch => 'master', :submodules => true  
   pod 'SwiftLint'
+  pod 'SwiftyDropbox'
   # Pods for MIDIchlorians
 
   target 'MIDIchloriansTests' do
@@ -14,6 +15,7 @@ target 'MIDIchlorians' do
     # Pods for testing
     pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', :submodules => true
     pod 'RealmSwift', :git => 'https://github.com/realm/realm-cocoa.git', :branch => 'master', :submodules => true
+    pod 'SwiftyDropbox'
   end
 
   target 'MIDIchloriansUITests' do

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyDropbox
 
 // The ViewController is the main (and only) for the entire app.
 // Management and hooking up all child view controllers are done in this class.
@@ -32,6 +33,11 @@ class ViewController: UIViewController {
         setUpSidePane()
         setUpStyles()
         setUpAnimation()
+    }
+
+    //FOR TESTING 
+    override func viewDidAppear(_ animated: Bool) {
+        loadDropBoxWebView()
     }
 
     // Sets up the top navigation.
@@ -92,6 +98,36 @@ class ViewController: UIViewController {
     private func setUpAnimation() {
         AnimationEngine.set(animationGrid: gridController.gridView)
         AnimationEngine.start()
+    }
+
+    func loadDropBoxWebView() {
+        print("AAAA")
+        DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                                                      controller: self,
+                                                      openURL: { (url: URL) -> Void in
+                                                      UIApplication.shared.openURL(url)
+        }, browserAuth: false)
+    }
+
+    func importFromDropbox() {
+        var audioFileNames = [String]()
+        guard let client = DropboxClientsManager.authorizedClient else {
+            return
+        }
+        _ = client.files.listFolder(path: "").response { response, error in
+            guard let result = response else {
+                return
+            }
+            for entry in result.entries {
+                if entry.name.hasSuffix(".wav") {
+                    audioFileNames.append(entry.name)
+                }
+            }
+        }
+    }
+
+    func saveToDropbox() {
+
     }
 
 }
