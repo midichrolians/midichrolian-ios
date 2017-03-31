@@ -21,7 +21,7 @@ class AnimationDesignerController: UIViewController {
     private var tapGesture: UITapGestureRecognizer?
     private var selectedColour: Colour? {
         didSet {
-            guard let colour = selectedColour {
+            if let colour = selectedColour {
                 delegate?.animationColour(selected: colour)
             }
         }
