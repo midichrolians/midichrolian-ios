@@ -74,7 +74,8 @@ class ViewController: UIViewController {
     private func setUpSidePane() {
         sidePaneController = SidePaneController()
         sidePaneController.sampleTableDelegate = gridController
-        sidePaneController.animationTableDelegate = gridController
+        sidePaneController.animationTableDelegate = self
+        sidePaneController.delegate = self
 
         let frame = view.frame
         sidePaneController.view.frame =
@@ -115,7 +116,6 @@ extension ViewController: ModeSwitchDelegate {
     func enterEdit() {
         gridController.enterEdit()
         view.addSubview(sidePaneController.view)
-        view.addSubview(animationDesignController.view)
     }
 
     func enterPlay() {
@@ -137,4 +137,21 @@ extension ViewController: SessionSelectorDelegate {
         popoverPresentationController?.barButtonItem = sender
         popoverPresentationController?.backgroundColor = Config.BackgroundColor
     }
+}
+
+extension ViewController: AnimationTableDelegate {
+    func animationTable(_ tableView: UITableView, didSelect animation: String) {
+        gridController.animationTable(tableView, didSelect: animation)
+    }
+
+    func addAnimation(_ tableView: UITableView) {
+        view.addSubview(animationDesignController.view)
+    }
+}
+
+extension ViewController: SidePaneDelegate {
+    func sidePaneSelectSample() {
+        animationDesignController.view.removeFromSuperview()
+    }
+
 }

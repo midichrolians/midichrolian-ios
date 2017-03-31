@@ -36,6 +36,8 @@ class AnimationTableViewController: UITableViewController {
 
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.leftBarButtonItem = self.newAnimationButton
+        newAnimationButton.target = self
+        newAnimationButton.action = #selector(newAnimation)
     }
 
     // MARK: - Table view data source
@@ -71,6 +73,10 @@ class AnimationTableViewController: UITableViewController {
 
     private func animationType(at indexPath: IndexPath) -> String {
         return animationTypeNames[indexPath.row]
+    }
+
+    func newAnimation() {
+        delegate?.addAnimation(tableView)
     }
 
 }
