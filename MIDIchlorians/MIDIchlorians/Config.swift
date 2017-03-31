@@ -90,6 +90,9 @@ struct Config {
     static let animationTypeAnimationSequenceKey = "animationSequence"
     static let animationTypeNameKey = "name"
 
+    static let animationSequenceArrayKey = "animationBitsArray"
+    static let animationSequenceNameKey = "name"
+
     static let animationTypeSpreadName = "Spread"
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
