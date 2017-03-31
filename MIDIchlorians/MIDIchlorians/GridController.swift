@@ -25,7 +25,11 @@ class GridController: NSObject {
     }
     weak var padDelegate: PadDelegate?
 
-    internal var currentSession: Session
+    internal var currentSession: Session {
+        didSet {
+            gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
+        }
+    }
     internal var currentPage = 0
     // Keep the selectedIndexPath of the view controller in sync
     internal var selectedIndexPath: IndexPath? {

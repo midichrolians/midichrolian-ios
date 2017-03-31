@@ -55,8 +55,8 @@ class SidePaneController {
 
 extension SidePaneController: PadDelegate {
     // Get index of sample assigned to selected pad in sample list
-    private func index(of selected: Pad) -> Int? {
-        return selected
+    private func indexOfSample(assignedTo pad: Pad) -> Int? {
+        return pad
             .getAudioFile()
             .flatMap { sample in sampleTableViewController.sampleList.index(of: sample) }
     }
@@ -73,7 +73,7 @@ extension SidePaneController: PadDelegate {
     // that is the sample assigned to the pad
     // If the pad has no sample assigned, deselect everything.
     func pad(selected: Pad) {
-        guard let index = index(of: selected) else {
+        guard let index = indexOfSample(assignedTo: selected) else {
             deselect()
             return
         }

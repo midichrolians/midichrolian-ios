@@ -27,12 +27,14 @@ class TopNavigationBar: UINavigationBar {
             style: .plain,
             target: self,
             action: #selector(sessionSelect(sender:)))
+    // temporary button to trigger save of session
+    var saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: nil)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         // set up session selector on the left of navigation bar
-        baseNavigationItem.leftBarButtonItem = sessionSelector
+        baseNavigationItem.leftBarButtonItems = [sessionSelector, saveButton]
 
         // set up segmented control for mode selection
         modeSegmentedControl.selectedSegmentIndex = 0
