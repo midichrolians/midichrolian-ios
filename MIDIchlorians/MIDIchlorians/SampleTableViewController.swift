@@ -14,7 +14,6 @@ class SampleTableViewController: UITableViewController {
 
     private let newSampleButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     private let reuseIdentifier = Config.SampleTableReuseIdentifier
-    private let sampleList = DataManager.instance.loadAllAudioStrings()
 
     internal let sampleList = DataManager.instance.loadAllAudioStrings()
 
