@@ -4,11 +4,13 @@ PODS:
   - Realm/Headers (2.4.4)
   - RealmSwift (2.4.4):
     - Realm (= 2.4.4)
+  - SnapKit (3.2.0)
   - SwiftLint (0.17.0)
 
 DEPENDENCIES:
   - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
+  - SnapKit (~> 3.2.0)
   - SwiftLint
 
 EXTERNAL SOURCES:
@@ -34,8 +36,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   RealmSwift: e45530b4eb17dcc244a2f187d2e2338a48d2f8c2
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
 
-PODFILE CHECKSUM: ef40c1f862877cf0401802aec6d630b546f0f398
+PODFILE CHECKSUM: f5a70886526b0f3d81bdb9fe32140d20946a0608
 
 COCOAPODS: 1.2.0

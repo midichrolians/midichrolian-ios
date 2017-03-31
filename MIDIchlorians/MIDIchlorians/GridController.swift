@@ -23,6 +23,7 @@ class GridController: NSObject {
             }
         }
     }
+    weak var padDelegate: PadDelegate?
 
     internal var currentSession: Session
     internal var currentPage = 0
@@ -69,8 +70,11 @@ extension GridController: PadDelegate {
         // if in editing mode, highlight the tapped grid
         if mode == .editing && selectedIndexPath != indexPath {
             self.selectedIndexPath = indexPath
+            padDelegate?.pad(selected: pad)
             return
         }
+
+        padDelegate?.pad(played: pad)
 
         if let animationSequence = pad.getAnimation() {
             AnimationEngine.register(animationSequence: animationSequence)

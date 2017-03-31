@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     internal var topBarController: TopBarController!
     internal var sessionNavigationController: UINavigationController!
     internal var sidePaneController: SidePaneController!
+    internal var animationDesignController: AnimationDesignerController!
     internal var gridController: GridController!
     internal var currentSession: Session!
 
@@ -30,8 +31,12 @@ class ViewController: UIViewController {
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
+        setUpAnimationDesigner()
         setUpStyles()
         setUpAnimation()
+
+        // need assign delegates after everything is initialized
+        gridController.padDelegate = sidePaneController
     }
 
     // Sets up the top navigation.
@@ -79,6 +84,15 @@ class ViewController: UIViewController {
                    height: frame.height * Config.MainViewHeightToSideHeightRatio)
     }
 
+    private func setUpAnimationDesigner() {
+        animationDesignController = AnimationDesignerController()
+        animationDesignController.view.frame =
+            CGRect(x: view.frame.minX + Config.AppLeftPadding,
+                   y: view.frame.height * Config.MainViewHeightToAnimMinYRatio,
+                   width: view.frame.width * Config.MainViewWidthToAnimWidthRatio,
+                   height: view.frame.height * Config.MainViewHeightToAnimHeightRatio)
+    }
+
     // Sets up application wide styles
     private func setUpStyles() {
         view.backgroundColor = Config.BackgroundColor
@@ -101,12 +115,14 @@ extension ViewController: ModeSwitchDelegate {
     func enterEdit() {
         gridController.enterEdit()
         view.addSubview(sidePaneController.view)
+        view.addSubview(animationDesignController.view)
     }
 
     func enterPlay() {
         // error handling
         gridController.enterPlay()
         sidePaneController.view.removeFromSuperview()
+        animationDesignController.view.removeFromSuperview()
     }
 }
 

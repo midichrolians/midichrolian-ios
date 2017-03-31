@@ -11,17 +11,20 @@ import UIKit
 // Controller to manage the list of samples in editing mode.
 class SampleTableViewController: UITableViewController {
     weak var delegate: SampleTableDelegate?
-    private let newSampleButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
+    private let newSampleButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     private let reuseIdentifier = Config.SampleTableReuseIdentifier
+    private let sampleList = DataManager.instance.loadAllAudioStrings()
+
+    internal let sampleList = DataManager.instance.loadAllAudioStrings()
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
 
-        self.title = "Samples"
-        self.tabBarItem = UITabBarItem(title: "Samples",
-                                       image: UIImage(named: Config.SidePaneTabBarSampleIcon),
-                                       selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
+        title = Config.SampleTableTitle
+        tabBarItem = UITabBarItem(title: Config.SampleTableTitle,
+                                  image: UIImage(named: Config.SidePaneTabBarSampleIcon),
+                                  selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -38,11 +41,6 @@ class SampleTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.newSampleButton
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,8 +48,7 @@ class SampleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return Config.sound.reduce(0, { (res, sounds) in res + sounds.count })
+        return sampleList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,7 +76,7 @@ class SampleTableViewController: UITableViewController {
     }
 
     private func sound(for indexPath: IndexPath) -> String {
-        return Config.sound[indexPath.row / Config.sound[0].count][indexPath.row % Config.sound[0].count]
+        return sampleList[indexPath.row]
     }
 
 }
