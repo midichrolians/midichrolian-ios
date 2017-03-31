@@ -31,6 +31,12 @@ class AnimationManagerTests: XCTestCase {
         "\\\\n}\\\",\\n      \\\"{\\\\n  \\\\\\\"column\\\\\\\" : 2,\\\\n  \\\\\\\"row\\\\\\\" : 3,\\\\n  \\\\\\\"" +
     "colour\\\\\\\" : \\\\\\\"orange\\\\\\\"\\\\n}\\\"\\n    ]\\n  ]\\n}\"\n}"
 
+    let animationSequenceRelativeString = "{\n  \"name\" : \"name\",\n  \"animationBitsArray\" : [\n    [\n" +
+        "      \"{\\n  \\\"column\\\" : 3,\\n  \\\"row\\\" : 4,\\n  \\\"colour\\\" : \\\"green\\\"\\n}\"\n" +
+        "    ],\n    [\n\n    ],\n    [\n      \"{\\n  \\\"column\\\" : 6,\\n  \\\"row\\\" : 8,\\n  \\\"" +
+        "colour\\\" : \\\"violet\\\"\\n}\",\n      \"{\\n  \\\"column\\\" : 4,\\n  \\\"row\\\" : 6,\\n" +
+        "  \\\"colour\\\" : \\\"orange\\\"\\n}\"\n    ]\n  ]\n}"
+
     override func setUp() {
         animationSequence = AnimationSequence()
         animationSequence.addAnimationBit(atTick: 0, animationBit: firstAnimationBit)
@@ -88,5 +94,21 @@ class AnimationManagerTests: XCTestCase {
         )
 
         XCTAssertEqual(animationSequenceFromType?.getJSONforAnimationSequence(), animationSequenceString)
+    }
+
+    func testRelativeAnimationType() {
+        _ = AnimationManager.instance.addNewAnimationType(
+            name: "name",
+            animationSequence: animationSequence,
+            mode: AnimationTypeCreationMode.relative,
+            anchor: IndexPath(item: 0, section: 0)
+        )
+        let animationSequenceFromType = AnimationManager.instance.getAnimationSequenceForAnimationType(
+            animationTypeName: "name",
+            indexPath: IndexPath(item: 2, section: 3)
+        )
+        print(animationSequenceFromType?.getJSONforAnimationSequence())
+
+        XCTAssertEqual(animationSequenceFromType?.getJSONforAnimationSequence(), animationSequenceRelativeString)
     }
 }
