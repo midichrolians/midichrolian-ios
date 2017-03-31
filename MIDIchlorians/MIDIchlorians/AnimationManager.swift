@@ -15,7 +15,7 @@ class AnimationManager {
 
     func getAllAnimationTypesNames() -> [String] {
         let storedAnimationTypes = DataManager.instance.loadAllAnimationTypes()
-        _ = storedAnimationTypes.forEach({(animationTypeString: String) in
+        storedAnimationTypes.forEach({(animationTypeString: String) in
             guard let animationType = AnimationType.getAnimationTypeFromJSON(fromJSON: animationTypeString) else {
                 return
             }
