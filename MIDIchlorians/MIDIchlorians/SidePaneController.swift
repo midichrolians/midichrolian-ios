@@ -16,17 +16,18 @@ import UIKit
 //   - UINavigationControllers, each of which
 //     - wraps a TableViewController
 // these system view controllers are all subclassed to provide default styles
-class SidePaneController {
+class SidePaneController: NSObject {
     var view: UIView {
         return sidePaneViewController.view as UIView
     }
+    weak var delegate: SidePaneDelegate?
 
     internal let sampleTableViewController = SampleTableViewController(style: .plain)
     internal let animationTableViewController = AnimationTableViewController(style: .plain)
+    internal var sampleNavigationController: UINavigationController
+    internal var animationNavigationController: UINavigationController
 
     private let sidePaneViewController = SidePaneTabBarController()
-    private var sampleNavigationController: UINavigationController
-    private var animationNavigationController: UINavigationController
 
     var sampleTableDelegate: SampleTableDelegate? {
         didSet {
@@ -39,16 +40,18 @@ class SidePaneController {
         }
     }
 
-    init() {
+    override init() {
         sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
-
         animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
+
+        super.init()
 
         sidePaneViewController.viewControllers = [
             sampleNavigationController,
             animationNavigationController
         ]
         sidePaneViewController.selectedIndex = 0
+        sidePaneViewController.delegate = self
     }
 
 }
@@ -82,4 +85,15 @@ extension SidePaneController: PadDelegate {
                                                       animated: true,
                                                       scrollPosition: .middle)
     }
+}
+
+extension SidePaneController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController == sampleNavigationController {
+            delegate?.sidePaneSelectSample()
+        } else if viewController == animationNavigationController {
+            delegate?.sidePaneSelectAnimation()
+        }
+    }
+
 }
