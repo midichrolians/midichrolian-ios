@@ -171,3 +171,32 @@ extension ViewController: SessionSelectorDelegate {
         popoverPresentationController?.backgroundColor = Config.BackgroundColor
     }
 }
+
+extension ViewController: SessionTableDelegate {
+    func sessionTable(_: UITableView, didSelect sessionName: String) {
+        // try to load session
+        let loadedSession = dataManager.loadSession(sessionName)
+        if loadedSession == nil {
+            // failed to load this session, which is weird since we got the session name from the data manager
+            // maybe we can show some error error
+        } else {
+            // session successfully loaded
+            self.currentSession = loadedSession
+        }
+        sessionNavigationController.dismiss(animated: true, completion: nil)
+    }
+
+    func sessionTable(_: UITableView) {
+        // create a new blank session
+        currentSession = Session(bpm: Config.defaultBPM)
+        // save it
+        saveCurrentSession()
+        // then we reload the session lists in sessionTableViewController
+        sessionTableViewController.sessions = dataManager.loadAllSessionNames()
+        sessionNavigationController.dismiss(animated: true, completion: nil)
+    }
+
+    func sessionTable(_: UITableView, didRemove sessionName: String) {
+        _ = dataManager.removeSession(sessionName)
+    }
+}
