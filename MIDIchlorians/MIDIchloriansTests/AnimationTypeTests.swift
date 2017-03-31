@@ -17,23 +17,26 @@ class AnimationTypeTests: XCTestCase {
     let secondAnimationBit = AnimationBit(colour: Colour.violet, row: 5, column: 4)
     let thirdAnimationBit = AnimationBit(colour: Colour.orange, row: 3, column: 2)
 
-    let animationSequenceString = "[\n  [\n    \"{\\n  \\\"column\\\" : 1,\\n  \\\"row\\\" : 1,\\n  \\\"colour\\\" :" +
-        " \\\"green\\\"\\n}\"\n  ],\n  [\n\n  ],\n  [\n    \"{\\n  \\\"column\\\" : 4,\\n" +
-        "  \\\"row\\\" : 5,\\n  \\\"colour\\\" : \\\"violet\\\"\\n}\",\n    \"{\\n  \\\"column\\\" " +
-        ": 2,\\n  \\\"row\\\" : 3,\\n  \\\"colour\\\" : \\\"orange\\\"\\n}\"\n  ]\n]"
+    let animationSequenceString = "{\n  \"name\" : \"name\",\n  \"animationBitsArray\" : [\n  " +
+        "  [\n      \"{\\n  \\\"column\\\" : 1,\\n  \\\"row\\\" : 1,\\n  \\\"colour\\\" : \\\"green" +
+        "\\\"\\n}\"\n    ],\n    [\n\n    ],\n    [\n      \"{\\n  \\\"column\\\" : 4,\\n  \\\"row\\\"" +
+        " : 5,\\n  \\\"colour\\\" : \\\"violet\\\"\\n}\",\n      \"{\\n  \\\"column\\\" : 2,\\n  " +
+    "\\\"row\\\" : 3,\\n  \\\"colour\\\" : \\\"orange\\\"\\n}\"\n    ]\n  ]\n}"
 
-    let animationTypeString = "{\n  \"name\" : \"name\",\n  \"mode\" : \"absolute\",\n  \"animationSequence\" " +
-        ": \"[\\n  [\\n    \\\"{\\\\n  \\\\\\\"column\\\\\\\" : 1,\\\\n  \\\\\\\"row\\\\\\\" : 1,\\\\n  \\\\\\\"" +
-        "colour\\\\\\\" : \\\\\\\"green\\\\\\\"\\\\n}\\\"\\n  ],\\n  [\\n\\n  ],\\n  [\\n    \\\"{\\\\n  \\\\\\\"" +
+    let animationTypeString = "{\n  \"name\" : \"name\",\n  \"mode\" : \"absolute\",\n  \"animationSequence\"" +
+        " : \"{\\n  \\\"name\\\" : \\\"name\\\",\\n  \\\"animationBitsArray\\\" : [\\n    [\\n      \\\"{\\\\n" +
+        "  \\\\\\\"column\\\\\\\" : 1,\\\\n  \\\\\\\"row\\\\\\\" : 1,\\\\n  \\\\\\\"colour\\\\\\\" :" +
+        " \\\\\\\"green\\\\\\\"\\\\n}\\\"\\n    ],\\n    [\\n\\n    ],\\n    [\\n      \\\"{\\\\n  \\\\\\\"" +
         "column\\\\\\\" : 4,\\\\n  \\\\\\\"row\\\\\\\" : 5,\\\\n  \\\\\\\"colour\\\\\\\" : \\\\\\\"violet\\\\\\\"" +
-        "\\\\n}\\\",\\n    \\\"{\\\\n  \\\\\\\"column\\\\\\\" : 2,\\\\n  \\\\\\\"row\\\\\\\" : 3,\\\\n  \\\\\\\"" +
-        "colour\\\\\\\" : \\\\\\\"orange\\\\\\\"\\\\n}\\\"\\n  ]\\n]\"\n}"
+        "\\\\n}\\\",\\n      \\\"{\\\\n  \\\\\\\"column\\\\\\\" : 2,\\\\n  \\\\\\\"row\\\\\\\" : 3,\\\\n  \\\\\\\"" +
+        "colour\\\\\\\" : \\\\\\\"orange\\\\\\\"\\\\n}\\\"\\n    ]\\n  ]\\n}\"\n}"
 
     override func setUp() {
         animationSequence = AnimationSequence()
         animationSequence.addAnimationBit(atTick: 0, animationBit: firstAnimationBit)
         animationSequence.addAnimationBit(atTick: 2, animationBit: secondAnimationBit)
         animationSequence.addAnimationBit(atTick: 2, animationBit: thirdAnimationBit)
+        animationSequence.name = "name"
     }
 
     func testGetJSONforAnimationType() {
