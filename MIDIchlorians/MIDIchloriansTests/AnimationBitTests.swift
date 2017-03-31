@@ -35,7 +35,7 @@ class AnimationBitTests: XCTestCase {
         )
     }
 
-    func testNilFromInvalidJSON() {
+    func testNilFromInvalidString() {
         let animationBit = AnimationBit.getAnimationBitFromJSON(
             fromJSON: "{\n  \"column\" : 0,\n  \"row\" : 0,\n  \"invalid\" : \"blue\"\n}"
         )
