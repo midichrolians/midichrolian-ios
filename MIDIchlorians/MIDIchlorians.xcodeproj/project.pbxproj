@@ -316,6 +316,16 @@
 			path = MIDIchloriansUITests;
 			sourceTree = "<group>";
 		};
+		334113951E8E6A4200F998E9 /* AnimationTests */ = {
+			isa = PBXGroup;
+			children = (
+				33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */,
+				334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */,
+				334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */,
+			);
+			name = AnimationTests;
+			sourceTree = "<group>";
+		};
 		33DAAAC21E72BEAE00987E86 /* SailSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,9 +497,7 @@
 				F3173AB71E83B17F0095F76A /* ModelTests */,
 				F3173AB11E83B1550095F76A /* Info.plist */,
 				F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */,
-				33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */,
-				334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */,
-				334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */,
+				334113951E8E6A4200F998E9 /* AnimationTests */,
 			);
 			path = MIDIchloriansTests;
 			sourceTree = "<group>";
