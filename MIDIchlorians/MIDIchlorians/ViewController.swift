@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     internal var currentSession: Session! {
         didSet {
             if currentSession != nil {
-            gridController?.currentSession = currentSession
+                gridController?.currentSession = currentSession
             }
         }
     }
