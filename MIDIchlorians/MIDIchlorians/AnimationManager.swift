@@ -36,25 +36,30 @@ class AnimationManager {
 
     func getAnimationSequenceForAnimationType(animationTypeName: String,
                                               indexPath: IndexPath) -> AnimationSequence? {
+        var animationSequence = AnimationSequence()
+
         switch animationTypeName {
         case Config.animationTypeSpreadName:
-            return spreadFromCenter()
+            animationSequence = spreadFromCenter()
         case Config.animationTypeSparkName:
-            return spark(indexPath: indexPath)
+            animationSequence = spark(indexPath: indexPath)
         case Config.animationTypeRainbowName:
-            return rainbow(indexPath: indexPath)
+            animationSequence = rainbow(indexPath: indexPath)
         default:
             guard let animationType = animationTypes[animationTypeName] else {
                 return nil
             }
             if animationType.mode == .relative {
-                return derelativiseAnimationSequence(
+                animationSequence = derelativiseAnimationSequence(
                     animationSequence: animationType.animationSequence,
                     clickedIndex: indexPath
                 )
+            } else {
+                animationSequence = animationType.animationSequence
             }
-            return animationType.animationSequence
         }
+        animationSequence.name = animationTypeName
+        return animationSequence
     }
 
     func addNewAnimationType(name: String, animationSequence: AnimationSequence,
