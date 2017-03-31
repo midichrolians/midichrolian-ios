@@ -39,6 +39,7 @@ struct Config {
             "AWOLNATION - Sail-28", "AWOLNATION - Sail"
         ]
     ]
+    static let SoundExt = "wav"
 
     static let FontPrimaryColor = UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1)
     static let BackgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
@@ -61,6 +62,10 @@ struct Config {
     static let MainViewWidthToSideWidthRatio: CGFloat = 1 / 3
     static let MainViewHeightToSideHeightRatio: CGFloat = 7 / 8
 
+    static let MainViewHeightToAnimMinYRatio: CGFloat = 6 / 8
+    static let MainViewHeightToAnimHeightRatio: CGFloat = 1 / 4
+    static let MainViewWidthToAnimWidthRatio: CGFloat = 7 / 12
+
     static let SectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
@@ -72,6 +77,7 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
     static let AnimationTableReuseIdentifier = "animationCell"
     static let SessionTableReuseIdentifier = "sessionCell"
@@ -80,6 +86,10 @@ struct Config {
     static let animationBitRowKey = "row"
     static let animationBitColumnKey = "column"
 
+    static let animationTypeModeKey = "mode"
+    static let animationTypeAnimationSequenceKey = "animationSequence"
+    static let animationTypeNameKey = "name"
+
     static let animationTypeSpreadName = "Spread"
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
@@ -87,6 +97,8 @@ struct Config {
     static let TopNavTitle = "MIDIchlorians"
     static let TopNavSessionTitle = "Sessions"
     static let ModeSegmentTitles = ["PLAY", "EDIT"]
+
+    static let AnimationTabTitle = "Animations"
 
     static let GridCollectionViewCellIdentifier = "cell"
 }

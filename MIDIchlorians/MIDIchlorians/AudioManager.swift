@@ -44,10 +44,13 @@ struct AudioManager {
     //call this to play audio with single directory
     //returns success
     func play(audioDir: String, bpm: Int? = nil ) -> Bool {
-        guard let audioID = audioDict[audioDir] else {
+        let audioID = audioDict[audioDir] ?? AudioClipPlayer.initAudioClip(audioDir: audioDir)
+
+        guard let audio = audioID else {
             return false
         }
-        AudioClipPlayer.playAudioClip(soundID: audioID)
+
+        AudioClipPlayer.playAudioClip(soundID: audio)
         return true
     }
 

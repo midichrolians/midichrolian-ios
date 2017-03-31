@@ -17,6 +17,10 @@ class Audio: Object {
         self.audioFile = audioFile
     }
 
+    override static func primaryKey() -> String? {
+        return "audioFile"
+    }
+
     func getAudioFile() -> String? {
         return audioFile
     }

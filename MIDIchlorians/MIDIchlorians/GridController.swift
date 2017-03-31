@@ -23,6 +23,7 @@ class GridController: NSObject {
             }
         }
     }
+    weak var padDelegate: PadDelegate?
 
     internal var currentSession: Session
     internal var currentPage = 0
@@ -69,44 +70,19 @@ extension GridController: PadDelegate {
         // if in editing mode, highlight the tapped grid
         if mode == .editing && selectedIndexPath != indexPath {
             self.selectedIndexPath = indexPath
+            padDelegate?.pad(selected: pad)
             return
         }
 
-        playHardCodedAnimation(at: indexPath)
+        padDelegate?.pad(played: pad)
+
+        if let animationSequence = pad.getAnimation() {
+            AnimationEngine.register(animationSequence: animationSequence)
+        }
 
         if let audioFile = pad.getAudioFile() {
             _ = AudioManager.instance.play(audioDir: audioFile)
         }
-    }
-
-    // Play animations, right now it's hardcoded for prototyping purpose.
-    private func playHardCodedAnimation(at indexPath: IndexPath) {
-        // hardcoded animations for demo
-        if (indexPath.section == 0 || indexPath.section == Config.numberOfRows - 1) &&
-            (indexPath.item == 0 || indexPath.item == Config.numberOfColumns - 1) {
-            guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
-                animationTypeName: Config.animationTypeSpreadName,
-                indexPath: indexPath) else {
-                    return
-            }
-            AnimationEngine.register(animationSequence: animationSequence)
-            return
-        }
-        if indexPath.section > 1 && indexPath.item > 2 && indexPath.section < 4 && indexPath.item < 5 {
-            guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
-                animationTypeName: Config.animationTypeSparkName,
-                indexPath: indexPath) else {
-                    return
-            }
-            AnimationEngine.register(animationSequence: animationSequence)
-            return
-        }
-        guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
-            animationTypeName: Config.animationTypeRainbowName,
-            indexPath: indexPath) else {
-                return
-        }
-        AnimationEngine.register(animationSequence: animationSequence)
     }
 }
 
@@ -129,7 +105,7 @@ extension GridController: AnimationTableDelegate {
             return
         }
 
-        guard let animationSequence = AnimationTypes.getAnimationSequenceForAnimationType(
+        guard let animationSequence = AnimationManager.instance.getAnimationSequenceForAnimationType(
             animationTypeName: animation, indexPath: indexPath) else {
                 return
         }

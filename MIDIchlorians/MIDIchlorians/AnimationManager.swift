@@ -1,25 +1,32 @@
 //
-//  AnimationTypes.swift
+//  AnimationManager.swift
 //  MIDIchlorians
 //
-//  Created by anands on 10/3/17.
+//  Created by anands on 27/3/17.
 //  Copyright © 2017 nus.cs3217.a0118897. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class AnimationTypes {
+class AnimationManager {
+    static var instance = AnimationManager()
 
-    private static var animationTypes = [String: AnimationSequence]()
+    private var animationTypes = [String: AnimationType]()
 
-    // returns the names of all the animation types including the predefined ones
-    static func getAllAnimationTypesNames() -> [String] {
+    func getAllAnimationTypesNames() -> [String] {
+        let storedAnimationTypes = DataManager.instance.loadAllAnimationTypes()
+        storedAnimationTypes.forEach({(animationTypeString: String) in
+            guard let animationType = AnimationType.getAnimationTypeFromJSON(fromJSON: animationTypeString) else {
+                return
+            }
+            animationTypes[animationType.name] = animationType
+        })
         var arrayOfNames = Array(animationTypes.keys)
         arrayOfNames.append(contentsOf: getPredefinedAnimationTypesNames())
         return arrayOfNames
     }
 
-    private static func getPredefinedAnimationTypesNames() -> [String] {
+    private func getPredefinedAnimationTypesNames() -> [String] {
         return [
             Config.animationTypeSparkName,
             Config.animationTypeSpreadName,
@@ -27,8 +34,8 @@ class AnimationTypes {
         ]
     }
 
-    static func getAnimationSequenceForAnimationType(animationTypeName: String,
-                                                     indexPath: IndexPath) -> AnimationSequence? {
+    func getAnimationSequenceForAnimationType(animationTypeName: String,
+                                              indexPath: IndexPath) -> AnimationSequence? {
         switch animationTypeName {
         case Config.animationTypeSpreadName:
             return spreadFromCenter()
@@ -37,15 +44,84 @@ class AnimationTypes {
         case Config.animationTypeRainbowName:
             return rainbow(indexPath: indexPath)
         default:
-            return animationTypes[animationTypeName]
+            guard let animationType = animationTypes[animationTypeName] else {
+                return nil
+            }
+            if animationType.mode == .relative {
+                return derelativiseAnimationSequence(
+                    animationSequence: animationType.animationSequence,
+                    clickedIndex: indexPath
+                )
+            }
+            return animationType.animationSequence
         }
     }
 
-    static func addNewAnimationType(name: String, animationSequence: AnimationSequence) {
-        animationTypes[name] = animationSequence
+    func addNewAnimationType(name: String, animationSequence: AnimationSequence,
+                             mode: AnimationTypeCreationMode, anchor: IndexPath) -> Bool {
+        var animationType: AnimationType
+        if mode == .relative {
+            animationType = AnimationType(
+                name: name,
+                animationSequence: relativiseAnimationSequence(animationSequence: animationSequence, anchor: anchor),
+                mode: mode
+            )
+        } else {
+            animationType = AnimationType(
+                name: name,
+                animationSequence: animationSequence,
+                mode: mode
+            )
+        }
+        animationTypes[name] = animationType
+        guard let animationString = animationType.getJSONforAnimationType() else {
+            return false
+        }
+        return DataManager.instance.saveAnimation(animationString)
     }
 
-    static func spark(indexPath: IndexPath) -> AnimationSequence {
+    private func relativiseAnimationSequence(animationSequence: AnimationSequence,
+                                             anchor: IndexPath) -> AnimationSequence {
+
+        return transformAnimationSequence(
+            animationSequence: animationSequence,
+            rowOffset: -anchor.section,
+            columnOffset: -anchor.item
+        )
+    }
+
+    private func derelativiseAnimationSequence(animationSequence: AnimationSequence,
+                                               clickedIndex: IndexPath) -> AnimationSequence {
+
+        return transformAnimationSequence(
+            animationSequence: animationSequence,
+            rowOffset: clickedIndex.section,
+            columnOffset: clickedIndex.item
+        )
+    }
+
+    private func transformAnimationSequence(animationSequence: AnimationSequence,
+                                            rowOffset: Int, columnOffset: Int) -> AnimationSequence {
+        let transformedAnimationSequence = AnimationSequence()
+        var tickCount = 0
+
+        while let animationBits = animationSequence.next() {
+            let transformedAnimationBits = animationBits.map({(animationBit: AnimationBit) -> AnimationBit in
+                return AnimationBit(
+                    colour: animationBit.colour,
+                    row: animationBit.row + rowOffset,
+                    column: animationBit.column + columnOffset
+                )
+            })
+            for animationBit in transformedAnimationBits {
+                transformedAnimationSequence.addAnimationBit(atTick: tickCount, animationBit: animationBit)
+            }
+            tickCount += 1
+        }
+        return transformedAnimationSequence
+    }
+
+    private func spark(indexPath: IndexPath) -> AnimationSequence {
         let animationSequence = AnimationSequence()
         animationSequence.addAnimationBit(
             atTick: 0,
@@ -81,7 +157,7 @@ class AnimationTypes {
         return animationSequence
     }
 
-    static func rainbow(indexPath: IndexPath) -> AnimationSequence {
+    private func rainbow(indexPath: IndexPath) -> AnimationSequence {
         let animationSequence = AnimationSequence()
         let arrayOfColours = Colour.allColours
         for count in 0..<arrayOfColours.count {
@@ -98,7 +174,7 @@ class AnimationTypes {
         return animationSequence
     }
 
-    static func spreadFromCenter() -> AnimationSequence {
+    private func spreadFromCenter() -> AnimationSequence {
         let animationSequence = AnimationSequence()
 
         addAnimationBitToSequenceFrom(arrayOfTuples: arrayOfInnerTuples, tick: 0,
@@ -138,8 +214,8 @@ class AnimationTypes {
         return animationSequence
     }
 
-    private static func addAnimationBitToSequenceFrom(arrayOfTuples: [(Int, Int)], tick: Int,
-                                                      colour: Colour, animationSequence: AnimationSequence) {
+    private func addAnimationBitToSequenceFrom(arrayOfTuples: [(Int, Int)], tick: Int,
+                                               colour: Colour, animationSequence: AnimationSequence) {
         for tuple in arrayOfTuples {
             animationSequence.addAnimationBit(
                 atTick: tick,
@@ -152,13 +228,13 @@ class AnimationTypes {
         }
     }
 
-    private static let arrayOfInnerTuples = [
+    private let arrayOfInnerTuples = [
         (2, 3),
         (3, 3),
         (2, 4),
         (3, 4)
     ]
-    private static let arrayOfMiddleTuples = [
+    private let arrayOfMiddleTuples = [
         (1, 2),
         (1, 3),
         (1, 4),
@@ -172,7 +248,7 @@ class AnimationTypes {
         (4, 4),
         (4, 5)
     ]
-    private static let arrayOfOuterTuples = [
+    private let arrayOfOuterTuples = [
         (0, 0),
         (0, 1),
         (0, 2),

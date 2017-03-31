@@ -22,6 +22,12 @@ class Pad: Object {
     private dynamic var audioFile: String?
     private dynamic var animationString: String?
 
+    convenience init(_ pad: Pad) {
+        self.init()
+        self.audioFile = pad.audioFile
+        self.animationString = pad.animationString
+    }
+
     func addAudio(audioFile: String) {
         self.audioFile = audioFile
     }
@@ -47,5 +53,9 @@ class Pad: Object {
 
     func clearAnimation() {
         self.animationString = nil
+    }
+
+    func equals(_ pad: Pad) -> Bool {
+        return self.audioFile == pad.audioFile && self.animationString == pad.animationString
     }
 }
