@@ -17,6 +17,8 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             collectionView?.reloadData()
         }
     }
+    // temp hack to get colours to show up on grid when designing
+    var colours: [Pad:Colour] = [:]
 
     // currently selected pad, only used for edit mode
     var selectedIndexPath: IndexPath? {
@@ -69,6 +71,10 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             cell.rowNumber = indexPath.section
             cell.columnNumber = indexPath.item
             cell.setDefaultAppearance()
+
+            if let colour = colours[pad] {
+                cell.animate(backgroundColour: colour.uiColor)
+            }
 
             return cell
     }
