@@ -14,6 +14,13 @@ class AnimationManager {
     private var animationTypes = [String: AnimationType]()
 
     func getAllAnimationTypesNames() -> [String] {
+        let storedAnimationTypes = DataManager.instance.loadAllAnimationTypes()
+        storedAnimationTypes.forEach({(animationTypeString: String) in
+            guard let animationType = AnimationType.getAnimationTypeFromJSON(fromJSON: animationTypeString) else {
+                return
+            }
+            animationTypes[animationType.name] = animationType
+        })
         var arrayOfNames = Array(animationTypes.keys)
         arrayOfNames.append(contentsOf: getPredefinedAnimationTypesNames())
         return arrayOfNames
@@ -51,7 +58,7 @@ class AnimationManager {
     }
 
     func addNewAnimationType(name: String, animationSequence: AnimationSequence,
-                             mode: AnimationTypeCreationMode, anchor: IndexPath) {
+                             mode: AnimationTypeCreationMode, anchor: IndexPath) -> Bool {
         var animationType: AnimationType
         if mode == .relative {
             animationType = AnimationType(
@@ -67,6 +74,10 @@ class AnimationManager {
             )
         }
         animationTypes[name] = animationType
+        guard let animationString = animationType.getJSONforAnimationType() else {
+            return false
+        }
+        return DataManager.instance.saveAnimation(animationString)
     }
 
     private func relativiseAnimationSequence(animationSequence: AnimationSequence,
