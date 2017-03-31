@@ -15,6 +15,7 @@
 		33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */; };
 		33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */; };
 		334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */; };
+		334113941E8E5E9500F998E9 /* AnimationTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */; };
 		334970BF1E72557D009C78DF /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationType.swift */; };
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
 		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
@@ -134,6 +135,7 @@
 		33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIchloriansUITests.swift; sourceTree = "<group>"; };
 		33120E341E6FD30A007E7717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequenceTests.swift; sourceTree = "<group>"; };
+		334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeTests.swift; sourceTree = "<group>"; };
 		334970BE1E72557D009C78DF /* AnimationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */,
 				33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */,
 				334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */,
+				334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */,
 			);
 			path = MIDIchloriansTests;
 			sourceTree = "<group>";
@@ -906,6 +909,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334113941E8E5E9500F998E9 /* AnimationTypeTests.swift in Sources */,
 				F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */,
 				334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */,
 				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
