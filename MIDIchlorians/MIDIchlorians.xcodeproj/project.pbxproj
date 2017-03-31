@@ -53,6 +53,7 @@
 		33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */; };
 		33DAAAC01E72BEA300987E86 /* AWOLNATION - Sail-28.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */; };
 		33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */; };
+		33DDEB021E8D1DA600380C30 /* AnimationBitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */; };
 		33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */; };
 		33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */; };
 		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
@@ -170,6 +171,7 @@
 		33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-27.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-27.wav"; sourceTree = "<group>"; };
 		33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-28.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-28.wav"; sourceTree = "<group>"; };
 		33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail.wav"; sourceTree = "<group>"; };
+		33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationBitTests.swift; sourceTree = "<group>"; };
 		33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
 		33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
 		33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				F3173AB71E83B17F0095F76A /* ModelTests */,
 				F3173AB11E83B1550095F76A /* Info.plist */,
 				F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */,
+				33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */,
 			);
 			path = MIDIchloriansTests;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
 				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
 				F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */,
+				33DDEB021E8D1DA600380C30 /* AnimationBitTests.swift in Sources */,
 				F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
