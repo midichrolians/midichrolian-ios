@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//not being used yet, for looping audio
 enum AudioType {
     case clip,
         loop

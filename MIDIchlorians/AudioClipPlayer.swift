@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import AudioToolbox
 import AVFoundation
 //perferbably 30 seconds or shorter only
 //need to check if have problems with longer clips
@@ -22,32 +21,11 @@ struct AudioClipPlayer {
         }
         var sysID: SystemSoundID = 0
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &sysID)
-/*
-        guard let audioURL = Bundle.main.url(forResource: audioDir, withExtension: ext) else {
-            return nil
-        }
-        do {
-            let player = try AVAudioPlayer(contentsOf: audioURL)
-            player.prepareToPlay()
-            return player
-        } catch {
-            print("AVAudioPlayer Error")
-        }
-
-        return nil
-  */
         return sysID
     }
 
     //plays based on ID
     static func playAudioClip(soundID: UInt32) {
         AudioServicesPlaySystemSound(soundID)
-        /*
-        if audioPlayer.isPlaying {
-            audioPlayer.currentTime = 0
-        } else {
-            audioPlayer.play()
-        }
- */
     }
 }
