@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         }
     }
     internal var dataManager = DataManager()
+    private let cloudManager = CloudManager.instance
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -48,10 +49,10 @@ class ViewController: UIViewController {
         // need assign delegates after everything is initialized
         gridController.padDelegate = sidePaneController
     }
-
-    //FOR TESTING 
+    
+    //FOR TESTING
     override func viewDidAppear(_ animated: Bool) {
-        loadDropBoxWebView()
+        saveToDropbox()
     }
 
     // Sets up the top navigation.
@@ -149,34 +150,33 @@ class ViewController: UIViewController {
         AnimationEngine.start()
     }
 
-    func loadDropBoxWebView() {
-        print("AAAA")
+    //Loads the dropbox webview for logging in
+    private func loadDropBoxWebView() {
         DropboxClientsManager.authorizeFromController(UIApplication.shared,
                                                       controller: self,
                                                       openURL: { (url: URL) -> Void in
                                                       UIApplication.shared.openURL(url)
         }, browserAuth: false)
     }
-
+    
     func importFromDropbox() {
-        var audioFileNames = [String]()
-        guard let client = DropboxClientsManager.authorizedClient else {
-            return
-        }
-        _ = client.files.listFolder(path: "").response { response, error in
-            guard let result = response else {
-                return
-            }
-            for entry in result.entries {
-                if entry.name.hasSuffix(".wav") {
-                    audioFileNames.append(entry.name)
-                }
-            }
+        if let client = DropboxClientsManager.authorizedClient {
+            cloudManager.loadFromDropbox(client: client)
+        } else {
+            loadDropBoxWebView()
+            importFromDropbox()
         }
     }
 
     func saveToDropbox() {
-
+        print("AAA")
+        if let client = DropboxClientsManager.authorizedClient {
+            cloudManager.saveToDropbox(client: client)
+        } else {
+            print("B")
+            loadDropBoxWebView()
+            saveToDropbox()
+        }
     }
 
 }

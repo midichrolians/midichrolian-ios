@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        //Initalise dropbx client
+        //Initalise dropbox client
         DropboxClientsManager.setupWithAppKey("8a5t7h2dpsfjunc")
 
         // Try to find a session that was last loaded
@@ -56,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Copy all samples into user directory
         let copiedSamples = copyBundleSamples()
-
         // Populate the samples in our database
         copiedSamples.forEach { sample in
             // if saving fails, what are we gonna do?
