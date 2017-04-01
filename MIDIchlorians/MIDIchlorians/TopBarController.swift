@@ -30,4 +30,9 @@ class TopBarController {
         self.topNavigationBar = TopNavigationBar(frame: frame)
     }
 
+    func setTargetActionOfSaveButton(target: AnyObject, selector: Selector) {
+        topNavigationBar.saveButton.target = target
+        topNavigationBar.saveButton.action = selector
+    }
+
 }

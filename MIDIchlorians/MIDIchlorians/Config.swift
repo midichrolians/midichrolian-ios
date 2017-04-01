@@ -92,6 +92,9 @@ struct Config {
     static let animationTypeAnimationSequenceKey = "animationSequence"
     static let animationTypeNameKey = "name"
 
+    static let animationSequenceArrayKey = "animationBitsArray"
+    static let animationSequenceNameKey = "name"
+
     static let animationTypeSpreadName = "Spread"
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
@@ -100,6 +103,9 @@ struct Config {
     static let TopNavSessionTitle = "Sessions"
     static let ModeSegmentTitles = ["PLAY", "EDIT"]
 
+    static let DefaultSessionName = "New Session"
+
+    static let SessionTableTitle = "Sessions"
     static let AnimationTabTitle = "Animations"
 
     static let GridCollectionViewCellIdentifier = "cell"

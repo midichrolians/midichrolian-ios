@@ -16,17 +16,18 @@ import UIKit
 //   - UINavigationControllers, each of which
 //     - wraps a TableViewController
 // these system view controllers are all subclassed to provide default styles
-class SidePaneController {
+class SidePaneController: NSObject {
     var view: UIView {
         return sidePaneViewController.view as UIView
     }
+    weak var delegate: SidePaneDelegate?
 
     internal let sampleTableViewController = SampleTableViewController(style: .plain)
     internal let animationTableViewController = AnimationTableViewController(style: .plain)
+    internal var sampleNavigationController: UINavigationController
+    internal var animationNavigationController: UINavigationController
 
     private let sidePaneViewController = SidePaneTabBarController()
-    private var sampleNavigationController: UINavigationController
-    private var animationNavigationController: UINavigationController
 
     var sampleTableDelegate: SampleTableDelegate? {
         didSet {
@@ -39,24 +40,26 @@ class SidePaneController {
         }
     }
 
-    init() {
+    override init() {
         sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
-
         animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
+
+        super.init()
 
         sidePaneViewController.viewControllers = [
             sampleNavigationController,
             animationNavigationController
         ]
         sidePaneViewController.selectedIndex = 0
+        sidePaneViewController.delegate = self
     }
 
 }
 
 extension SidePaneController: PadDelegate {
     // Get index of sample assigned to selected pad in sample list
-    private func index(of selected: Pad) -> Int? {
-        return selected
+    private func indexOfSample(assignedTo pad: Pad) -> Int? {
+        return pad
             .getAudioFile()
             .flatMap { sample in sampleTableViewController.sampleList.index(of: sample) }
     }
@@ -73,7 +76,7 @@ extension SidePaneController: PadDelegate {
     // that is the sample assigned to the pad
     // If the pad has no sample assigned, deselect everything.
     func pad(selected: Pad) {
-        guard let index = index(of: selected) else {
+        guard let index = indexOfSample(assignedTo: selected) else {
             deselect()
             return
         }
@@ -82,4 +85,15 @@ extension SidePaneController: PadDelegate {
                                                       animated: true,
                                                       scrollPosition: .middle)
     }
+}
+
+extension SidePaneController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController == sampleNavigationController {
+            delegate?.sidePaneSelectSample()
+        } else if viewController == animationNavigationController {
+            delegate?.sidePaneSelectAnimation()
+        }
+    }
+
 }

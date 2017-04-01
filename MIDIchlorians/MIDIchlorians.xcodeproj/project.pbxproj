@@ -84,6 +84,7 @@
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
+		E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */; };
 		E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301A1E88EBB300801A9F /* PadDelegate.swift */; };
 		E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */; };
 		E9AD30211E8BAB8C00801A9F /* ColourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */; };
@@ -206,6 +207,7 @@
 		E956AD761E8C0E8000CA60BF /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopNavigationBar.swift; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
+		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
 		E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerController.swift; sourceTree = "<group>"; };
 		E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourPicker.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 			children = (
 				E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */,
 				E9EC7C461E8395AC00769A8F /* SidePaneController.swift */,
+				E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */,
 				E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */,
 				E92F6C341E7522FD00F5A092 /* Sample */,
 				E92F6C351E75230400F5A092 /* Animation */,
@@ -859,6 +862,7 @@
 				F3173AA61E8306C30095F76A /* Animation.swift in Sources */,
 				E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */,
 				E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */,
+				E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */,
 				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
 				E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */,
 				334970BF1E72557D009C78DF /* AnimationType.swift in Sources */,
