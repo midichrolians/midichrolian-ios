@@ -9,27 +9,31 @@
 import Foundation
 
 struct TimeTracker {
-    private var timeIndexDict: [TimeInterval: IndexPath]
+    private var timeIndexDict: [TimeInterval: [IndexPath]]
     private let start: Date
     //the 'fps' at which we will play the recording
-    private let PLAYBACKACCURACY:TimeInterval = 1/60
+    private let PLAYBACKACCURACY: TimeInterval = 1/60
 
     //save the start time to compare to in setTimePadPair
     init () {
         start = Date()
-        timeIndexDict = [TimeInterval: IndexPath]()
+        timeIndexDict = [TimeInterval: [IndexPath]]()
     }
 
     //record pad at time since started
     mutating func setTimePadPair(forIndex indexPath: IndexPath) {
-        let timeInterval = start.timeIntervalSinceNow
+        var timeInterval = start.timeIntervalSinceNow
         //to make sure that the playback presses two buttons at the same time instead of slightly off synch
-        timeInterval -= timeInterval%PLAYBACKACCURACY
-        timeIndexDict[timeInterval] = indexPath
+        timeInterval -= timeInterval.truncatingRemainder(dividingBy: PLAYBACKACCURACY)
+        if var indices = timeIndexDict[timeInterval] {
+            indices.append(indexPath)
+        } else {
+            timeIndexDict[timeInterval] = [indexPath]
+        }
     }
 
     //to save or to replay
-    var timePathDict: [TimeInterval: IndexPath] {
+    var timePathDict: [TimeInterval: [IndexPath]] {
         return timeIndexDict
     }
 }
