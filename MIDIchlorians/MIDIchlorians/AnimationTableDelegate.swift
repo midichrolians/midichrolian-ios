@@ -11,5 +11,14 @@ import UIKit
 
 // Adopt this protocol to react to selection of an animation in AnimationTableViewController.
 protocol AnimationTableDelegate: class {
-    func animationTable(_: UITableView, didSelect animation: String)
+    func animationTable(_ tableView: UITableView, didSelect animation: String)
+    func addAnimation(_ tableView: UITableView)
+}
+
+extension AnimationTableDelegate {
+    func animationTable(_ tableView: UITableView, didSelect animation: String) {
+    }
+
+    func addAnimation(_ tableView: UITableView) {
+    }
 }

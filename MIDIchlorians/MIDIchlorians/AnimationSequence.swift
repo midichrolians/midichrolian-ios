@@ -12,11 +12,13 @@ class AnimationSequence {
     private var animationBitsArray: [[AnimationBit]?]
     private var tickCounter: Int
     var toBeRemoved: Bool
+    var name: String?
 
     init() {
         animationBitsArray = [[AnimationBit]]()
         tickCounter = 0
         toBeRemoved = false
+        name = nil
     }
 
     func addAnimationBit(atTick: Int, animationBit: AnimationBit) {
@@ -65,8 +67,12 @@ class AnimationSequence {
             arrayOfStrings.append(arrayForTick)
         }
 
+        var dictionary = [String: Any]()
+        dictionary[Config.animationSequenceArrayKey] = arrayOfStrings
+        dictionary[Config.animationSequenceNameKey] = name
+
         guard let jsonData = try? JSONSerialization.data(
-            withJSONObject: arrayOfStrings,
+            withJSONObject: dictionary,
             options: JSONSerialization.WritingOptions.prettyPrinted
             ) else {
                 return nil
@@ -80,7 +86,15 @@ class AnimationSequence {
             return nil
         }
 
-        guard let array = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [[String]?] else {
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
+            return nil
+        }
+
+        guard let array = dictionary[Config.animationSequenceArrayKey] as? [[String]?] else {
+            return nil
+        }
+
+        guard let name = dictionary[Config.animationSequenceNameKey] as? String else {
             return nil
         }
 
@@ -104,6 +118,7 @@ class AnimationSequence {
         }
 
         animationSequence.animationBitsArray = animationBitsArrayForSequence
+        animationSequence.name = name
         return animationSequence
     }
 }

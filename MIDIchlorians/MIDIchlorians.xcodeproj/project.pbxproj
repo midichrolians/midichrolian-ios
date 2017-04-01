@@ -14,14 +14,16 @@
 		33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33120E241E6FD30A007E7717 /* Assets.xcassets */; };
 		33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */; };
 		33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */; };
-		334970BF1E72557D009C78DF /* AnimationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationTypes.swift */; };
+		334970BF1E72557D009C78DF /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationType.swift */; };
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
 		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
 		334970C71E72B83D009C78DF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C61E72B83D009C78DF /* AudioManager.swift */; };
 		334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C81E72B86B009C78DF /* LowLatencyAudio.swift */; };
+		334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */; };
 		33A2754D1E7BEF56000B1B15 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2754C1E7BEF56000B1B15 /* Colour.swift */; };
 		33BCC5AA1E85064900D8489F /* AnimatableGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCC5A91E85064900D8489F /* AnimatableGrid.swift */; };
 		33BCC5AC1E85067A00D8489F /* AnimatablePad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */; };
+		33CC26C71E891E840077F0ED /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CC26C61E891E840077F0ED /* AnimationManager.swift */; };
 		33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */; };
 		33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */; };
 		33DAAAA71E72BEA300987E86 /* AWOLNATION - Sail-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */; };
@@ -75,9 +77,14 @@
 		E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */; };
 		E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */; };
 		E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */; };
+		E956AD771E8C0E8000CA60BF /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E956AD761E8C0E8000CA60BF /* TimelineView.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */; };
+		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
+		E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */; };
 		E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301A1E88EBB300801A9F /* PadDelegate.swift */; };
+		E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */; };
+		E9AD30211E8BAB8C00801A9F /* ColourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
 		E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4A1E83A81900769A8F /* TopBarController.swift */; };
 		E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */; };
@@ -124,14 +131,16 @@
 		33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIchloriansUITests.swift; sourceTree = "<group>"; };
 		33120E341E6FD30A007E7717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		334970BE1E72557D009C78DF /* AnimationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypes.swift; sourceTree = "<group>"; };
+		334970BE1E72557D009C78DF /* AnimationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		334970C61E72B83D009C78DF /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = MIDIchlorians/AudioManager.swift; sourceTree = "<group>"; };
 		334970C81E72B86B009C78DF /* LowLatencyAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowLatencyAudio.swift; sourceTree = "<group>"; };
+		334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeCreationMode.swift; sourceTree = "<group>"; };
 		33A2754C1E7BEF56000B1B15 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		33BCC5A91E85064900D8489F /* AnimatableGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableGrid.swift; sourceTree = "<group>"; };
 		33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatablePad.swift; sourceTree = "<group>"; };
+		33CC26C61E891E840077F0ED /* AnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-1.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-1.wav"; sourceTree = "<group>"; };
 		33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-2.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-2.wav"; sourceTree = "<group>"; };
 		33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-3.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-3.wav"; sourceTree = "<group>"; };
@@ -189,8 +198,13 @@
 		E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
 		E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableDelegate.swift; sourceTree = "<group>"; };
 		E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableDelegate.swift; sourceTree = "<group>"; };
+		E956AD761E8C0E8000CA60BF /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopNavigationBar.swift; sourceTree = "<group>"; };
+		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
+		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
+		E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerController.swift; sourceTree = "<group>"; };
+		E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourPicker.swift; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
 		E9EC7C4A1E83A81900769A8F /* TopBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarController.swift; sourceTree = "<group>"; };
 		E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectorDelegate.swift; sourceTree = "<group>"; };
@@ -269,6 +283,7 @@
 				F34B2A501E7A721500FD2C61 /* Models */,
 				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
 				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
+				E9AD30221E8BADF200801A9F /* Animation Designer */,
 				E99E8A4A1E8016BF001F9351 /* Top Nav */,
 				E92F6C331E7522F700F5A092 /* Session Table */,
 				E93A02CB1E7403B900DFB2B7 /* Side Pane */,
@@ -337,11 +352,13 @@
 				33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */,
 				33EC0A411E6FE55000229A92 /* AnimationBit.swift */,
 				33EC0A431E6FE67700229A92 /* AnimationSequence.swift */,
-				334970BE1E72557D009C78DF /* AnimationTypes.swift */,
+				334970BE1E72557D009C78DF /* AnimationType.swift */,
 				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
 				33A2754C1E7BEF56000B1B15 /* Colour.swift */,
 				33BCC5A91E85064900D8489F /* AnimatableGrid.swift */,
 				33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */,
+				33CC26C61E891E840077F0ED /* AnimationManager.swift */,
+				334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -427,6 +444,7 @@
 			children = (
 				E93A02C11E73C27200DFB2B7 /* SidePaneTabBarController.swift */,
 				E9EC7C461E8395AC00769A8F /* SidePaneController.swift */,
+				E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */,
 				E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */,
 				E92F6C341E7522FD00F5A092 /* Sample */,
 				E92F6C351E75230400F5A092 /* Animation */,
@@ -444,6 +462,17 @@
 				E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */,
 			);
 			name = "Top Nav";
+			sourceTree = "<group>";
+		};
+		E9AD30221E8BADF200801A9F /* Animation Designer */ = {
+			isa = PBXGroup;
+			children = (
+				E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */,
+				E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */,
+				E956AD761E8C0E8000CA60BF /* TimelineView.swift */,
+				E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */,
+			);
+			name = "Animation Designer";
 			sourceTree = "<group>";
 		};
 		F3173AAE1E83B1550095F76A /* MIDIchloriansTests */ = {
@@ -662,7 +691,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		21E11D3C90BBD9712CE7AC97 /* [CP] Copy Pods Resources */ = {
@@ -705,7 +734,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7A48CCA24FE94E2855835A7E /* [CP] Embed Pods Frameworks */ = {
@@ -765,7 +794,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D7C821AA8E40FEDC5E64F416 /* [CP] Copy Pods Resources */ = {
@@ -811,20 +840,25 @@
 				E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
+				E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */,
 				F32A4CE51E8595F700FF8F1F /* SessionName.swift in Sources */,
 				F3173AA61E8306C30095F76A /* Animation.swift in Sources */,
 				E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */,
 				E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */,
+				E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */,
 				E93A02C61E73F5FA00DFB2B7 /* AnimationTableViewCell.swift in Sources */,
 				E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */,
-				334970BF1E72557D009C78DF /* AnimationTypes.swift in Sources */,
+				334970BF1E72557D009C78DF /* AnimationType.swift in Sources */,
+				E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */,
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
 				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
 				33BCC5AC1E85067A00D8489F /* AnimatablePad.swift in Sources */,
+				E9AD30211E8BAB8C00801A9F /* ColourPicker.swift in Sources */,
 				E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */,
 				E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
+				33CC26C71E891E840077F0ED /* AnimationManager.swift in Sources */,
 				F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */,
 				33A2754D1E7BEF56000B1B15 /* Colour.swift in Sources */,
 				E92F6C2E1E74FA3400F5A092 /* SessionTableViewCell.swift in Sources */,
@@ -837,12 +871,14 @@
 				E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */,
+				E956AD771E8C0E8000CA60BF /* TimelineView.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
 				E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */,
 				E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */,
 				F3173AA81E8306D20095F76A /* Audio.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
+				334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */,
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
 				E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */,
 				33BCC5AA1E85064900D8489F /* AnimatableGrid.swift in Sources */,

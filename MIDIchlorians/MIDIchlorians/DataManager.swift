@@ -17,12 +17,10 @@ class DataManager {
     private var audioStrings: Set<String>
 
     //TODO: REALM INIT CAN FAIL
-    private init() {
-        do {
-            self.realm = try Realm()
-        } catch {
-            self.realm = nil
-        }
+    init() {
+        // Not sure if this line should always be there
+        Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
+        self.realm = try? Realm()
         sessionNames = Set<String>()
         animationStrings = Set<String>()
         audioStrings = Set<String>()
@@ -47,7 +45,7 @@ class DataManager {
             return
         }
         for animation in animations {
-            if let animationString = animation.getAnimationString() {
+            if let animationString = animation.getAnimationType() {
                 animationStrings.insert(animationString)
             }
         }
@@ -64,26 +62,30 @@ class DataManager {
         }
     }
 
-    func saveSession(_ sessionName: String, _ session: Session) -> Bool {
-
-        if sessionNames.contains(sessionName) {
-            _ = removeSession(sessionName)
+    func saveSession(_ sessionName: String, _ session: Session) -> Session? {
+        var savedSession = session
+        if session.getSessionName() != nil {
+            savedSession = Session(session: session)
+            savedSession.prepareForSave(sessionName: sessionName)
+        } else {
+            savedSession.prepareForSave(sessionName: sessionName)
         }
-        session.prepareForSave(sessionName: sessionName)
 
         do {
-            try realm?.write { realm?.add(SessionName(sessionName)) }
-            try realm?.write { realm?.add(session) }
+            if !sessionNames.contains(sessionName) {
+                try realm?.write { realm?.add(SessionName(sessionName)) }
+            }
+            try realm?.write { realm?.add(savedSession, update: true) }
 
         } catch {
-            return false
+            return nil
         }
 
         if !sessionNames.contains(sessionName) {
             self.sessionNames.insert(sessionName)
         }
 
-        return true
+        return Session(session: session)
     }
 
     func removeSession(_ sessionName: String) -> Bool {
@@ -92,16 +94,20 @@ class DataManager {
         }
 
         do {
-            guard let session = loadSession(sessionName) else {
+            guard let session = loadExactSession(sessionName) else {
                 return false
             }
 
-            if let sessionNameObject = realm?.objects(SessionName.self)
-                                             .filter("sessionName = %@", sessionName).first {
+            if let sessionNameObject = realm?.object(ofType: SessionName.self, forPrimaryKey: sessionName) {
                 try realm?.write { realm?.delete(sessionNameObject) }
             }
 
-            try realm?.write { realm?.delete(session) }
+            try realm?.write {
+                for pad in session.getPadList() {
+                    realm?.delete(pad)
+                }
+                realm?.delete(session)
+            }
         } catch {
             return false
         }
@@ -111,14 +117,12 @@ class DataManager {
         return true
     }
 
-    func loadSession(_ sessionName: String) -> Session? {
+    private func loadExactSession(_ sessionName: String) -> Session? {
         guard sessionNames.contains(sessionName) else {
             return nil
         }
 
-        guard let session = realm?.objects(Session.self)
-                                  .filter("sessionName = %@", sessionName)
-                                  .first else {
+        guard let session = realm?.object(ofType: Session.self, forPrimaryKey: sessionName) else {
                 //handle error
                 return nil
         }
@@ -126,21 +130,31 @@ class DataManager {
         return session
     }
 
+    func loadSession(_ sessionName: String) -> Session? {
+        guard sessionNames.contains(sessionName) else {
+            return nil
+        }
+
+        guard let session = realm?.object(ofType: Session.self, forPrimaryKey: sessionName) else {
+                //handle error
+                return nil
+        }
+        session.load()
+        let copiedSession = Session(session: session)
+        return copiedSession
+    }
+
     func loadAllSessionNames() -> [String] {
         return Array(sessionNames)
     }
 
-    func saveAnimation(_ animation: AnimationSequence) -> Bool {
-        guard let animationString = animation.getJSONforAnimationSequence() else {
-            return false
-        }
-
+    func saveAnimation(_ animationString: String) -> Bool {
         if animationStrings.contains(animationString) {
-            _ = removeAnimation(animation)
+            _ = removeAnimation(animationString)
         }
 
         do {
-            try realm?.write { realm?.add(Animation(value: animation)) }
+            try realm?.write { realm?.add(Animation(animationString)) }
         } catch {
             return false
         }
@@ -152,19 +166,14 @@ class DataManager {
         return true
     }
 
-    func removeAnimation(_ animation: AnimationSequence) -> Bool {
-        guard let animationString = animation.getJSONforAnimationSequence() else {
-            return false
-        }
+    func removeAnimation(_ animationString: String) -> Bool {
 
         guard animationStrings.contains(animationString) else {
             return false
         }
 
         do {
-            guard let animationObject = realm?.objects(Animation.self)
-                                              .filter("animationString = %@", animationString)
-                                              .first else {
+            guard let animationObject = realm?.object(ofType: Animation.self, forPrimaryKey: animationString) else {
 
                 return false
             }
@@ -179,14 +188,8 @@ class DataManager {
 
     }
 
-    func loadAllAnimations() -> [AnimationSequence] {
-        var finalArray = [AnimationSequence]()
-        for animationString in Array(animationStrings) {
-            if let animation = AnimationSequence.getAnimationSequenceFromJSON(fromJSON: animationString) {
-                finalArray.append(animation)
-            }
-        }
-        return finalArray
+    func loadAllAnimationTypes() -> [String] {
+        return Array(animationStrings)
     }
 
     func saveAudio(_ audioFile: String) -> Bool {
@@ -195,7 +198,7 @@ class DataManager {
         }
 
         do {
-            try realm?.write { realm?.add(Audio(value: [audioFile])) }
+            try realm?.write { realm?.add(Audio(audioFile)) }
         } catch {
             return false
         }
@@ -213,9 +216,7 @@ class DataManager {
         }
 
         do {
-            guard let audioObject = realm?.objects(Audio.self)
-                .filter("audioFile = %@", audioFile)
-                .first else {
+            guard let audioObject = realm?.object(ofType: Audio.self, forPrimaryKey: audioFile) else {
 
                 return false
             }

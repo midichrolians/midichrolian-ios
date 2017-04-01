@@ -16,16 +16,18 @@ import UIKit
 //   - UINavigationControllers, each of which
 //     - wraps a TableViewController
 // these system view controllers are all subclassed to provide default styles
-class SidePaneController {
+class SidePaneController: NSObject {
     var view: UIView {
         return sidePaneViewController.view as UIView
     }
-    let sidePaneViewController = SidePaneTabBarController()
+    weak var delegate: SidePaneDelegate?
 
-    private let sampleTableViewController = SampleTableViewController(style: .plain)
-    private let animationTableViewController = AnimationTableViewController(style: .plain)
-    private var sampleNavigationController: UINavigationController
-    private var animationNavigationController: UINavigationController
+    internal let sampleTableViewController = SampleTableViewController(style: .plain)
+    internal let animationTableViewController = AnimationTableViewController(style: .plain)
+    internal var sampleNavigationController: UINavigationController
+    internal var animationNavigationController: UINavigationController
+
+    private let sidePaneViewController = SidePaneTabBarController()
 
     var sampleTableDelegate: SampleTableDelegate? {
         didSet {
@@ -38,16 +40,60 @@ class SidePaneController {
         }
     }
 
-    init() {
+    override init() {
         sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
-
         animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
+
+        super.init()
 
         sidePaneViewController.viewControllers = [
             sampleNavigationController,
             animationNavigationController
         ]
         sidePaneViewController.selectedIndex = 0
+        sidePaneViewController.delegate = self
+    }
+
+}
+
+extension SidePaneController: PadDelegate {
+    // Get index of sample assigned to selected pad in sample list
+    private func indexOfSample(assignedTo pad: Pad) -> Int? {
+        return pad
+            .getAudioFile()
+            .flatMap { sample in sampleTableViewController.sampleList.index(of: sample) }
+    }
+
+    // Deselect currently selected row in table view
+    private func deselect() {
+        sampleTableViewController.tableView.indexPathForSelectedRow
+            .map { indexPath in
+                sampleTableViewController.tableView.deselectRow(at: indexPath, animated: true)
+            }
+    }
+
+    // When a pad is selected in edit mode, we want to highlight/select the row in the table view
+    // that is the sample assigned to the pad
+    // If the pad has no sample assigned, deselect everything.
+    func pad(selected: Pad) {
+        guard let index = indexOfSample(assignedTo: selected) else {
+            deselect()
+            return
+        }
+
+        sampleTableViewController.tableView.selectRow(at: IndexPath(row: index, section: 0),
+                                                      animated: true,
+                                                      scrollPosition: .middle)
+    }
+}
+
+extension SidePaneController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController == sampleNavigationController {
+            delegate?.sidePaneSelectSample()
+        } else if viewController == animationNavigationController {
+            delegate?.sidePaneSelectAnimation()
+        }
     }
 
 }

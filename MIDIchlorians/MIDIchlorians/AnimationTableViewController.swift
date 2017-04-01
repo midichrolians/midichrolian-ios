@@ -12,14 +12,14 @@ import UIKit
 class AnimationTableViewController: UITableViewController {
     weak var delegate: AnimationTableDelegate?
 
-    private let data = ["Spread", "Row", "Column"]
+    private let animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
-        self.title = "Animations"
-        self.tabBarItem = UITabBarItem(title: "Animations",
+        self.title = Config.AnimationTabTitle
+        self.tabBarItem = UITabBarItem(title: Config.AnimationTabTitle,
                                        image: UIImage(named: Config.SidePaneTabBarAnimationIcon),
                                        selectedImage: UIImage(named: Config.SidePaneTabBarAnimationIcon))
     }
@@ -36,11 +36,8 @@ class AnimationTableViewController: UITableViewController {
 
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.leftBarButtonItem = self.newAnimationButton
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        newAnimationButton.target = self
+        newAnimationButton.action = #selector(newAnimation)
     }
 
     // MARK: - Table view data source
@@ -50,7 +47,7 @@ class AnimationTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return animationTypeNames.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +56,7 @@ class AnimationTableViewController: UITableViewController {
                 return AnimationTableViewCell()
         }
 
-        cell.textLabel?.text = data[indexPath.row]
+        cell.textLabel?.text = animationTypeNames[indexPath.row]
 
         return cell
     }
@@ -68,6 +65,18 @@ class AnimationTableViewController: UITableViewController {
                             willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         cell.textLabel?.textColor = Config.AnimationTableViewCellColor
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.animationTable(tableView, didSelect: animationType(at: indexPath))
+    }
+
+    private func animationType(at indexPath: IndexPath) -> String {
+        return animationTypeNames[indexPath.row]
+    }
+
+    func newAnimation() {
+        delegate?.addAnimation(tableView)
     }
 
 }
