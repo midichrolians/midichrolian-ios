@@ -33,6 +33,8 @@ class AnimationDesignerController: UIViewController {
         animationTypeSegmentedControl.selectedSegmentIndex = 0
         animationTypeSegmentedControl.tintColor = Config.FontPrimaryColor
 
+        animationTypeSegmentedControl.addTarget(self, action: #selector(onAnimatedTypeChange), for: .valueChanged)
+
         view.addSubview(animationTypeSegmentedControl)
 
         colourPicker = ColourPicker()
@@ -87,5 +89,19 @@ class AnimationDesignerController: UIViewController {
         if let colour = colourPicker.colour(at: loc) {
             selectedColour = colour
         }
+    }
+
+    func onAnimatedTypeChange() {
+        guard let selectedAnimatedTypeName = self.animationTypeSegmentedControl.titleForSegment(
+            at: self.animationTypeSegmentedControl.selectedSegmentIndex
+            ) else {
+                return
+        }
+        guard let mode = AnimationTypeCreationMode(rawValue: selectedAnimatedTypeName) else {
+            return
+        }
+        delegate?.animationTypeCreationMode(
+            selected: mode
+        )
     }
 }
