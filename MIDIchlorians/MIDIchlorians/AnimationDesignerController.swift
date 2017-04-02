@@ -19,6 +19,13 @@ class AnimationDesignerController: UIViewController {
     private var timelineView: TimelineView!
     private var animationTypeSegmentedControl: UISegmentedControl!
     private var tapGesture: UITapGestureRecognizer?
+    private var selectedColour: Colour? {
+        didSet {
+            if let colour = selectedColour {
+                delegate?.animationColour(selected: colour)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         animationTypeSegmentedControl = UISegmentedControl(items: ["absolute", "relative"])
@@ -78,7 +85,7 @@ class AnimationDesignerController: UIViewController {
     func colourPickerTap(recognizer: UITapGestureRecognizer) {
         let loc = recognizer.location(in: colourPicker)
         if let colour = colourPicker.colour(at: loc) {
-            delegate?.animationColour(selected: colour)
+            selectedColour = colour
         }
     }
 
