@@ -88,5 +88,4 @@ class AnimationDesignerController: UIViewController {
             selectedColour = colour
         }
     }
-
 }

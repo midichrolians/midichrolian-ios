@@ -41,6 +41,9 @@ class GridController: NSObject {
 
     internal var gridCollectionView: GridCollectionView
     internal var colour: Colour?
+    internal var animationSequence: AnimationSequence
+    internal var animationName: String = "Default Animation"
+    internal var animationTypeCreationMode = AnimationTypeCreationMode.absolute
 
     init(frame: CGRect, session: Session) {
         // base ui view for the grid
@@ -58,6 +61,8 @@ class GridController: NSObject {
         gridCollectionVC.collectionView = gridCollectionView
 
         gridCollectionVC.collectionView!.backgroundColor = Config.BackgroundColor
+
+        self.animationSequence = AnimationSequence()
 
         super.init()
 
@@ -83,7 +88,16 @@ extension GridController: PadDelegate {
             if let colour = self.colour {
                 // in design mode and we have a colour selected, so change the colour
                 // temp heck to change colour, since Pad doesn't have a colour
-                gridCollectionVC.colours[pad] = colour
+                gridCollectionVC.colours[gridCollectionVC.selectedFrame][pad] = colour
+                self.animationSequence.addAnimationBit(
+                    atTick: gridCollectionVC.selectedFrame,
+                    animationBit: AnimationBit(
+                        colour: colour,
+                        row: indexPath.section,
+                        column: indexPath.item
+                    )
+                )
+
                 gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
             }
         }
@@ -163,5 +177,29 @@ extension GridController: ModeSwitchDelegate {
 extension GridController: AnimationDesignerDelegate {
     func animationColour(selected colour: Colour) {
         self.colour = colour
+    }
+
+    func animationTimeline(selected frame: Int) {
+        if self.gridCollectionVC.selectedFrame == frame {
+            return
+        }
+        self.gridCollectionVC.selectedFrame = frame
+        self.gridCollectionVC.collectionView?.reloadData()
+    }
+
+    func animationTypeCreationMode(selected mode: AnimationTypeCreationMode) {
+        self.animationTypeCreationMode = mode
+    }
+
+    func saveAnimation() {
+        guard let indexPath = selectedIndexPath else {
+            return
+        }
+        _ = AnimationManager.instance.addNewAnimationType(
+            name: self.animationName,
+            animationSequence: self.animationSequence,
+            mode: self.animationTypeCreationMode,
+            anchor: indexPath
+        )
     }
 }
