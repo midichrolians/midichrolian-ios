@@ -184,6 +184,9 @@ extension GridController: AnimationDesignerDelegate {
             return
         }
         self.gridCollectionVC.selectedFrame = frame
+        while gridCollectionVC.colours.count <= frame {
+            gridCollectionVC.colours.append([Pad: Colour]())
+        }
         self.gridCollectionVC.collectionView?.reloadData()
     }
 
