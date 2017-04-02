@@ -11,6 +11,11 @@ import UIKit
 // Provides the data source and layout information for the underying GridCollectionView
 // Events that happen on the collection view will be sent to the parent GridController, not this view controller.
 class GridCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    var mode: Mode = .playing {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
     // the currently visible 6x8 grid of pads
     var padGrid: [[Pad]] = [] {
         didSet {
@@ -54,26 +59,36 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
 
             let pad = padGrid[indexPath.section][indexPath.row]
 
-            if let sample = pad.getAudioFile() {
-                cell.assign(sample: sample)
-            }
-
-            if let animation = pad.getAnimation() {
-                cell.assign(animation: animation)
-            }
-
-            if selectedIndexPath == indexPath {
-                cell.setSelected()
-            } else {
-                cell.unselect()
-            }
-
             cell.rowNumber = indexPath.section
             cell.columnNumber = indexPath.item
-            cell.setDefaultAppearance()
 
-            if let colour = colours[pad] {
-                cell.animate(backgroundColour: colour.uiColor)
+            // reset the styles of the cell
+            cell.setDefaultAppearance()
+            cell.clearIndicators()
+
+            // and then assign styles based on the mode
+            switch mode {
+            case .playing:
+                break
+            case .editing:
+                if let sample = pad.getAudioFile() {
+                    cell.assign(sample: sample)
+                }
+
+                if let animation = pad.getAnimation() {
+                    cell.assign(animation: animation)
+                }
+
+                // if selected, highlight
+                if selectedIndexPath == indexPath {
+                    cell.setSelected()
+                } else {
+                    cell.unselect()
+                }
+            case .design:
+                if let colour = colours[pad] {
+                    cell.animate(backgroundColour: colour.uiColor)
+                }
             }
 
             return cell
