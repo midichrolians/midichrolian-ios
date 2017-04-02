@@ -15,6 +15,8 @@ struct AudioManager {
     private var audioTrackDict: [String: AVAudioPlayer]
     private var audioPlayerType: AudioPlayerSetting
     private let AUDIOCLIPLIMIT: Double = 30
+    //only needs to be a small enough number such that there's a low buffer (cant be zero)
+    private let LOWBUFFERDURATION = 0.0002
 
     init(_ setting: AudioPlayerSetting) {
         audioClipDict = [String: UInt32]()
@@ -23,7 +25,7 @@ struct AudioManager {
         do {
             let sharedSessionIntance = AVAudioSession.sharedInstance() as AVAudioSession
             try sharedSessionIntance.setActive(true)
-            try sharedSessionIntance.setPreferredIOBufferDuration(0.0002)
+            try sharedSessionIntance.setPreferredIOBufferDuration(LOWBUFFERDURATION)
         } catch {
             print("audioSession error")
         }
