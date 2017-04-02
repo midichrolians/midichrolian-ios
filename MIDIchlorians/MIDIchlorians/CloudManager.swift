@@ -23,7 +23,7 @@ class CloudManager {
     }
 
     private func loadAudios(_ client: DropboxClient) {
-
+        
     }
 
     private func loadAnimations(_ client: DropboxClient) {
@@ -43,11 +43,11 @@ class CloudManager {
             return
         }
         //Get a list of samples
-        let audioFiles = dataManager.loadAllAudioStrings()
+        let samples = dataManager.loadAllAudioStrings()
         //Upload each sample
-        for audio in audioFiles {
-            let url = docsURL.appendingPathComponent("\(audio).\(Config.SoundExt)")
-            client.files.upload(path: "/\(Config.AudioFolderName)/\(audio).\(Config.SoundExt)", input: url)
+        for sample in samples {
+            let url = docsURL.appendingPathComponent("\(sample).\(Config.SoundExt)")
+            client.files.upload(path: "/\(Config.AudioFolderName)/\(sample).\(Config.SoundExt)", input: url)
         }
     }
 
