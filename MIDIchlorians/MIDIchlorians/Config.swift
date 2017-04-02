@@ -40,6 +40,8 @@ struct Config {
         ]
     ]
     static let SoundExt = "wav"
+    static let AnimationExt = "json"
+    static let SessionExt = "json"
 
     static let FontPrimaryColor = UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1)
     static let BackgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
@@ -111,4 +113,8 @@ struct Config {
     static let AnimationTabTitle = "Animations"
 
     static let GridCollectionViewCellIdentifier = "cell"
+
+    static let SessionsFolderName = "sessions"
+    static let AnimationFolderName = "animations"
+    static let AudioFolderName = "samples"
 }

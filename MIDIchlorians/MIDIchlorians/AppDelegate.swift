@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyDropbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -47,12 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //Initalise dropbox client
+        DropboxClientsManager.setupWithAppKey("8a5t7h2dpsfjunc")
+
         // Try to find a session that was last loaded
         // if not loaded should create an empty session
 
         // Copy all samples into user directory
         let copiedSamples = copyBundleSamples()
-
         // Populate the samples in our database
         copiedSamples.forEach { sample in
             // if saving fails, what are we gonna do?
@@ -61,6 +64,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Do the same thing for animations as well
 
+        return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let authResult = DropboxClientsManager.handleRedirectURL(url) {
+            switch authResult {
+            case .success:
+                print("Success! User is logged into Dropbox.")
+            case .cancel:
+                print("Authorization flow was manually canceled by user!")
+            case .error(_, let description):
+                print("Error: \(description)")
+            }
+        }
         return true
     }
 

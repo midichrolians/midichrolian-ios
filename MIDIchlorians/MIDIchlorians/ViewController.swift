@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import SwiftyDropbox
+
 // The ViewController is the main (and only) for the entire app.
 // Management and hooking up all child view controllers are done in this class.
 // The responsibilities of this class includes
@@ -29,6 +31,7 @@ class ViewController: UIViewController {
         }
     }
     internal var dataManager = DataManager()
+    private let cloudManager = CloudManager.instance
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -141,6 +144,33 @@ class ViewController: UIViewController {
     private func setUpAnimation() {
         AnimationEngine.set(animationGrid: gridController.gridView)
         AnimationEngine.start()
+    }
+
+    //Loads the dropbox webview for logging in
+    private func loadDropBoxWebView() {
+        DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                                                      controller: self,
+                                                      openURL: { (url: URL) -> Void in
+                                                      UIApplication.shared.open(url) },
+                                                      browserAuth: false)
+    }
+
+    func importFromDropbox() {
+        if let client = DropboxClientsManager.authorizedClient {
+            cloudManager.loadFromDropbox(client: client)
+        } else {
+            loadDropBoxWebView()
+            importFromDropbox()
+        }
+    }
+
+    func saveToDropbox() {
+        if let client = DropboxClientsManager.authorizedClient {
+            cloudManager.saveToDropbox(client: client)
+        } else {
+            loadDropBoxWebView()
+            saveToDropbox()
+        }
     }
 
 }
