@@ -28,7 +28,7 @@ class AnimationDesignerController: UIViewController {
     }
 
     override func viewDidLoad() {
-        animationTypeSegmentedControl = UISegmentedControl(items: ["absolute", "relative"])
+        animationTypeSegmentedControl = UISegmentedControl(items: AnimationTypeCreationMode.allValues())
 
         animationTypeSegmentedControl.selectedSegmentIndex = 0
         animationTypeSegmentedControl.tintColor = Config.FontPrimaryColor
