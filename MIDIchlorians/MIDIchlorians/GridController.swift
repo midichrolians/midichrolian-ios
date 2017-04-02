@@ -100,6 +100,8 @@ extension GridController: PadDelegate {
 
                 gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
             }
+            // prevent the pad from being played in design mode
+            return
         }
 
         padDelegate?.pad(played: pad)
