@@ -23,6 +23,7 @@ class CloudManager {
     }
 
     private func loadAudios(_ client: DropboxClient) {
+
     }
 
     private func loadAnimations(_ client: DropboxClient) {
@@ -41,25 +42,20 @@ class CloudManager {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             return
         }
-
         //Get a list of samples
         let audioFiles = dataManager.loadAllAudioStrings()
         //Upload each sample
         for audio in audioFiles {
             let url = docsURL.appendingPathComponent("\(audio).\(Config.SoundExt)")
-            client.files.upload(path: "/samples/\(audio).\(Config.SoundExt)", input: url)
+            client.files.upload(path: "/\(Config.AudioFolderName)/\(audio).\(Config.SoundExt)", input: url)
         }
     }
 
     private func saveAnimations(_ client: DropboxClient) {
-        let animations = dataManager.loadAllAnimationTypes()
-        for animation in animations {
-            //client.files.upload(path: <#T##String#>, input: <#T##Data#>)
-            //client.files.upload(path: "/samples/\(animation).\(Config.AnimationExt)",)
-        }
+
     }
 
     private func saveSessions(_ client: DropboxClient) {
-        
+
     }
 }
