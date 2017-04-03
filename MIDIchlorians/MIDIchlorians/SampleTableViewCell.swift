@@ -7,22 +7,42 @@
 //
 
 import UIKit
+import SnapKit
 
 class SampleTableViewCell: UITableViewCell {
+    var sampleName: UILabel!
+    var playButton: UIButton!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+
+        playButton = UIButton(frame: CGRect.zero)
+        playButton.setImage(UIImage(named: "play.png"), for: .normal)
+        contentView.addSubview(playButton)
+
+        playButton.snp.makeConstraints {(make) -> Void in
+            make.left.equalTo(contentView)
+            make.height.equalTo(contentView)
+            make.width.equalTo(playButton.snp.height)
+        }
+
+        sampleName = UILabel(frame: CGRect.zero)
+        contentView.addSubview(sampleName)
+
+        sampleName.snp.makeConstraints {(make) -> Void in
+            make.left.equalTo(playButton.snp.right).offset(10)
+            make.right.equalTo(contentView)
+            make.height.equalTo(contentView)
+        }
+
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 
     func set(sample: String) {
-        self.textLabel?.text = sample
+        self.sampleName.text = sample
     }
 
 }

@@ -18,6 +18,7 @@ class SessionTableViewController: UITableViewController {
     }
     private let reuseIdentifier = Config.SessionTableReuseIdentifier
     private let newSessionButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+    private var longPress: UILongPressGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,11 @@ class SessionTableViewController: UITableViewController {
 
         self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
+
+        // this needs to be set up here instead of at class instantiation time
+        longPress = UILongPressGestureRecognizer(
+            target: self, action: #selector(longPressInTable(recognizer:)))
+        self.tableView.addGestureRecognizer(longPress)
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,6 +89,31 @@ class SessionTableViewController: UITableViewController {
 
     func newSession(barButton: UIBarButtonItem) {
         delegate?.sessionTable(tableView)
+    }
+
+    func longPressInTable(recognizer: UILongPressGestureRecognizer) {
+        guard recognizer.state == .ended else {
+            return
+        }
+
+        let point = recognizer.location(in: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: point) else {
+            return
+        }
+
+        let sessionName = sessions[indexPath.row]
+
+        let alert = UIAlertController(title: Config.SessionEditAlertTitle, message: nil, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: Config.SessionEditOkayTitle, style: .default, handler: { _ in
+                // need to save session here
+            }))
+        alert.addAction(
+            UIAlertAction(title: Config.SessionEditCancelTitle, style: .cancel, handler: nil))
+        alert.addTextField(configurationHandler: { textField in
+            textField.text = sessionName
+        })
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

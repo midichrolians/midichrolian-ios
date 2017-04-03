@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+
 // The ViewController is the main (and only) for the entire app.
 // Management and hooking up all child view controllers are done in this class.
 // The responsibilities of this class includes
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
 
         // need assign delegates after everything is initialized
         gridController.padDelegate = sidePaneController
+        animationDesignController.delegate = gridController
     }
 
     // Sets up the top navigation.
@@ -132,8 +134,8 @@ class ViewController: UIViewController {
         view.backgroundColor = Config.BackgroundColor
 
         // proxy to make all table views have the same background color
-        UITableView.appearance().backgroundColor = Config.BackgroundColor
-        UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
+        UITableView.appearance().backgroundColor = Config.SecondaryBackgroundColor
+        UITableViewCell.appearance().backgroundColor = Config.SecondaryBackgroundColor
     }
 
     // Sets up the animation engine
@@ -157,6 +159,10 @@ extension ViewController: ModeSwitchDelegate {
         sidePaneController.view.removeFromSuperview()
         animationDesignController.view.removeFromSuperview()
     }
+
+    func enterDesign() {
+        gridController.enterDesign()
+    }
 }
 
 // Called when session selector is tapped, shows the sessions as a popover
@@ -179,12 +185,15 @@ extension ViewController: AnimationTableDelegate {
 
     func addAnimation(_ tableView: UITableView) {
         view.addSubview(animationDesignController.view)
+        self.enterDesign()
     }
 }
 
 extension ViewController: SidePaneDelegate {
     func sidePaneSelectSample() {
         animationDesignController.view.removeFromSuperview()
+        // set the mode back to editing so the animation views and styles will be cleared
+        gridController.mode = .editing
     }
 }
 

@@ -12,7 +12,7 @@ import UIKit
 class AnimationTableViewController: UITableViewController {
     weak var delegate: AnimationTableDelegate?
 
-    private let animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+    internal let animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
@@ -22,6 +22,7 @@ class AnimationTableViewController: UITableViewController {
         self.tabBarItem = UITabBarItem(title: Config.AnimationTabTitle,
                                        image: UIImage(named: Config.SidePaneTabBarAnimationIcon),
                                        selectedImage: UIImage(named: Config.SidePaneTabBarAnimationIcon))
+        tableView.separatorStyle = .none
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -69,6 +70,10 @@ class AnimationTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.animationTable(tableView, didSelect: animationType(at: indexPath))
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Config.AnimationTableCellHeight
     }
 
     private func animationType(at indexPath: IndexPath) -> String {

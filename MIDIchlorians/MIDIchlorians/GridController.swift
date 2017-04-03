@@ -17,10 +17,12 @@ class GridController: NSObject {
     }
     var mode: Mode = .playing {
         didSet {
-            // when we enter playing mode, want to set unselect pads
+            // when entering playing or design, reset the selected index path
             if mode == .playing {
-                self.selectedIndexPath = nil
+                selectedIndexPath = nil
             }
+            gridCollectionVC.mode = mode
+            // when we enter playing mode, want to set unselect pads
         }
     }
     weak var padDelegate: PadDelegate?
@@ -40,6 +42,10 @@ class GridController: NSObject {
     internal var gridCollectionVC: GridCollectionViewController
 
     internal var gridCollectionView: GridCollectionView
+    internal var colour: Colour?
+    internal var animationSequence: AnimationSequence
+    internal var animationName: String = Config.NewAnimationTypeDefaultName
+    internal var animationTypeCreationMode = AnimationTypeCreationMode.absolute
 
     init(frame: CGRect, session: Session) {
         // base ui view for the grid
@@ -58,6 +64,8 @@ class GridController: NSObject {
 
         gridCollectionVC.collectionView!.backgroundColor = Config.BackgroundColor
 
+        self.animationSequence = AnimationSequence()
+
         super.init()
 
         gridCollectionView.padDelegate = self
@@ -75,6 +83,29 @@ extension GridController: PadDelegate {
         if mode == .editing && selectedIndexPath != indexPath {
             self.selectedIndexPath = indexPath
             padDelegate?.pad(selected: pad)
+            return
+        }
+
+        if mode == .design {
+            if let colour = self.colour {
+                // in design mode and we have a colour selected, so change the colour
+                // temp heck to change colour, since Pad doesn't have a colour
+                gridCollectionVC.colours[gridCollectionVC.selectedFrame][pad] = colour
+                self.animationSequence.addAnimationBit(
+                    atTick: gridCollectionVC.selectedFrame,
+                    animationBit: AnimationBit(
+                        colour: colour,
+                        row: indexPath.section,
+                        column: indexPath.item
+                    )
+                )
+
+                gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
+            } else {
+                gridCollectionVC.colours[gridCollectionVC.selectedFrame][pad] = nil
+                gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
+            }
+            // prevent the pad from being played in design mode
             return
         }
 
@@ -118,6 +149,10 @@ extension GridController: AnimationTableDelegate {
             page: self.currentPage, row: indexPath.section, col: indexPath.row, animation: animationSequence)
         self.gridCollectionVC.collectionView!.reloadItems(at: [indexPath])
     }
+
+    func addAnimation(_ tableView: UITableView) {
+        mode = .design
+    }
 }
 
 extension GridController: ModeSwitchDelegate {
@@ -131,6 +166,10 @@ extension GridController: ModeSwitchDelegate {
         self.mode = .playing
     }
 
+    func enterDesign() {
+        self.mode = .design
+    }
+
     private func resizePads(by factor: CGFloat) {
         // and to animate the changes refer to
         // http://stackoverflow.com/questions/13780153/uicollectionview-animate-cell-size-change-on-selection
@@ -139,5 +178,42 @@ extension GridController: ModeSwitchDelegate {
             origin: collectionView.frame.origin,
             size: collectionView.frame.size.scale(by: factor))
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+}
+
+extension GridController: AnimationDesignerDelegate {
+    func animationColour(selected colour: Colour) {
+        self.colour = colour
+    }
+
+    func animationClear() {
+        self.colour = nil
+    }
+
+    func animationTimeline(selected frame: Int) {
+        if self.gridCollectionVC.selectedFrame == frame {
+            return
+        }
+        self.gridCollectionVC.selectedFrame = frame
+        while gridCollectionVC.colours.count <= frame {
+            gridCollectionVC.colours.append([Pad: Colour]())
+        }
+        self.gridCollectionVC.collectionView?.reloadData()
+    }
+
+    func animationTypeCreationMode(selected mode: AnimationTypeCreationMode) {
+        self.animationTypeCreationMode = mode
+    }
+
+    func saveAnimation() {
+        guard let indexPath = selectedIndexPath else {
+            return
+        }
+        _ = AnimationManager.instance.addNewAnimationType(
+            name: self.animationName,
+            animationSequence: self.animationSequence,
+            mode: self.animationTypeCreationMode,
+            anchor: indexPath
+        )
     }
 }
