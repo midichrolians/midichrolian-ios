@@ -78,6 +78,7 @@ class AnimationManager {
                 mode: mode
             )
         }
+        animationType.animationSequence.name = name
         animationTypes[name] = animationType
         guard let animationString = animationType.getJSONforAnimationType() else {
             return false
