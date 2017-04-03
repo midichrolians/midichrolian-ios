@@ -19,7 +19,6 @@ class TopNavigationBar: UINavigationBar {
     // always only have 1 UINavigationItem because we are not using this in a navigation controller
     private var baseNavigationItem = UINavigationItem(title: Config.TopNavTitle)
     // control to switch between modes
-    private var modeSegmentedControl = UISegmentedControl(items: Config.ModeSegmentTitles)
     // control to show table of sessions
     private var sessionSelector =
         UIBarButtonItem(
@@ -29,6 +28,9 @@ class TopNavigationBar: UINavigationBar {
             action: #selector(sessionSelect(sender:)))
     // temporary button to trigger save of session
     var saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: nil)
+    // enter edit mode
+    var editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(onEdit))
+    var exitButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(onExit))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,33 +38,30 @@ class TopNavigationBar: UINavigationBar {
         // set up session selector on the left of navigation bar
         baseNavigationItem.leftBarButtonItems = [sessionSelector, saveButton]
 
-        // set up segmented control for mode selection
-        modeSegmentedControl.selectedSegmentIndex = 0
-        modeSegmentedControl.addTarget(self, action: #selector(onModeChange), for: .valueChanged)
-        modeSegmentedControl.tintColor = Config.FontPrimaryColor
-
-        // set segmented control on right of navigation bar
-        baseNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: modeSegmentedControl)
+        // set up buttons on the right for entering editing mode
+        baseNavigationItem.rightBarButtonItems = [editButton]
 
         // set navigation item on bar stack
         self.setItems([baseNavigationItem], animated: true)
 
         // style navigation bar
-        self.barStyle = .black
         self.isTranslucent = false
+        self.barTintColor = Config.SecondaryBackgroundColor
+        self.tintColor = UIColor.darkGray
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    // Called when mode is changed via interaction with mode segmented control
-    func onModeChange() {
-        if self.modeSegmentedControl.selectedSegmentIndex == 0 {
-            modeSwitchDelegate?.enterPlay()
-        } else {
-            modeSwitchDelegate?.enterEdit()
-        }
+    func onExit() {
+        modeSwitchDelegate?.enterPlay()
+        baseNavigationItem.rightBarButtonItems = [editButton]
+    }
+
+    func onEdit() {
+        modeSwitchDelegate?.enterEdit()
+        baseNavigationItem.rightBarButtonItems = [exitButton]
     }
 
     // Called when the session selector is tapped

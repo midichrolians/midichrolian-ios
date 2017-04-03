@@ -28,10 +28,12 @@ class AnimationDesignerController: UIViewController {
     }
 
     override func viewDidLoad() {
-        animationTypeSegmentedControl = UISegmentedControl(items: ["absolute", "relative"])
+        animationTypeSegmentedControl = UISegmentedControl(items: AnimationTypeCreationMode.allValues())
 
         animationTypeSegmentedControl.selectedSegmentIndex = 0
         animationTypeSegmentedControl.tintColor = Config.FontPrimaryColor
+
+        animationTypeSegmentedControl.addTarget(self, action: #selector(onAnimatedTypeChange), for: .valueChanged)
 
         view.addSubview(animationTypeSegmentedControl)
 
@@ -89,4 +91,17 @@ class AnimationDesignerController: UIViewController {
         }
     }
 
+    func onAnimatedTypeChange() {
+        guard let selectedAnimatedTypeName = self.animationTypeSegmentedControl.titleForSegment(
+            at: self.animationTypeSegmentedControl.selectedSegmentIndex
+            ) else {
+                return
+        }
+        guard let mode = AnimationTypeCreationMode(rawValue: selectedAnimatedTypeName) else {
+            return
+        }
+        delegate?.animationTypeCreationMode(
+            selected: mode
+        )
+    }
 }

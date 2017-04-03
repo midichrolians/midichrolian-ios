@@ -14,9 +14,9 @@ class SidePaneTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tabBar.barStyle = .black
-        self.tabBar.tintColor = Config.FontPrimaryColor
-        self.tabBar.barTintColor = Config.BackgroundColor
+        self.tabBar.barStyle = .default
+        self.tabBar.tintColor = Config.FontSecondaryColor
+        self.tabBar.barTintColor = Config.SecondaryBackgroundColor
     }
 
     override func didReceiveMemoryWarning() {
