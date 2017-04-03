@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     internal var sidePaneController: SidePaneController!
     internal var animationDesignController: AnimationDesignerController!
     internal var gridController: GridController!
+    internal var animationEngine: AnimationEngine!
     internal var currentSession: Session! {
         didSet {
             if currentSession != nil {
@@ -141,6 +142,7 @@ class ViewController: UIViewController {
     // Sets up the animation engine
     private func setUpAnimation() {
         AnimationEngine.set(animationGrid: gridController.gridView)
+        AnimationEngine.set(beatsPerMinute: Config.defaultBPM)
         AnimationEngine.start()
     }
 
