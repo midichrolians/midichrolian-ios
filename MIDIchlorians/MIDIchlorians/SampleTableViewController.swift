@@ -24,6 +24,7 @@ class SampleTableViewController: UITableViewController {
         tabBarItem = UITabBarItem(title: Config.SampleTableTitle,
                                   image: UIImage(named: Config.SidePaneTabBarSampleIcon),
                                   selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
+        tableView.separatorStyle = .none
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -76,6 +77,10 @@ class SampleTableViewController: UITableViewController {
 
     private func sound(for indexPath: IndexPath) -> String {
         return sampleList[indexPath.row]
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Config.SampleTableCellHeight
     }
 
 }

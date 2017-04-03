@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+
 // The ViewController is the main (and only) for the entire app.
 // Management and hooking up all child view controllers are done in this class.
 // The responsibilities of this class includes
@@ -133,8 +134,8 @@ class ViewController: UIViewController {
         view.backgroundColor = Config.BackgroundColor
 
         // proxy to make all table views have the same background color
-        UITableView.appearance().backgroundColor = Config.BackgroundColor
-        UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
+        UITableView.appearance().backgroundColor = Config.SecondaryBackgroundColor
+        UITableViewCell.appearance().backgroundColor = Config.SecondaryBackgroundColor
     }
 
     // Sets up the animation engine
