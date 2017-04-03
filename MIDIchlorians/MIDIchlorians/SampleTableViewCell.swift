@@ -7,13 +7,34 @@
 //
 
 import UIKit
+import SnapKit
 
 class SampleTableViewCell: UITableViewCell {
+    var sampleName: UILabel!
     var playButton: UIButton!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        imageView?.image = UIImage(named: "play.png")
+
+        playButton = UIButton(frame: CGRect.zero)
+        playButton.setImage(UIImage(named: "play.png"), for: .normal)
+        contentView.addSubview(playButton)
+
+        playButton.snp.makeConstraints {(make) -> Void in
+            make.left.equalTo(contentView)
+            make.height.equalTo(contentView)
+            make.width.equalTo(playButton.snp.height)
+        }
+
+        sampleName = UILabel(frame: CGRect.zero)
+        contentView.addSubview(sampleName)
+
+        sampleName.snp.makeConstraints {(make) -> Void in
+            make.left.equalTo(playButton.snp.right).offset(10)
+            make.right.equalTo(contentView)
+            make.height.equalTo(contentView)
+        }
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -21,7 +42,7 @@ class SampleTableViewCell: UITableViewCell {
     }
 
     func set(sample: String) {
-        self.textLabel?.text = sample
+        self.sampleName.text = sample
     }
 
 }

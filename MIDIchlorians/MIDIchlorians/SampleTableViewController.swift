@@ -59,8 +59,17 @@ class SampleTableViewController: UITableViewController {
         }
 
         cell.set(sample: sound(for: indexPath))
+        cell.playButton.addTarget(self, action: #selector(playButtonPressed(button:)), for: .touchDown)
+        // Save the row so we know which sample to play
+        cell.playButton.tag = indexPath.row
 
         return cell
+    }
+
+    // Play the sample sound
+    func playButtonPressed(button: UIButton) {
+        let row = button.tag
+        _ = AudioManager.instance.play(audioDir: sampleList[row])
     }
 
     // MARK: - Table view delegate

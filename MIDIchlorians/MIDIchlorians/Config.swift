@@ -79,6 +79,14 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    static let TimelineHeight: CGFloat = 60
+    static let ColourPickerHeight: CGFloat = 60
+    static let TimelineTopOffset: CGFloat = 10
+    static let ColourPickerTopOffset: CGFloat = 10
+    static let AnimationTypeControlTopOffset: CGFloat = 10
+    static let ClearSwitchLabelLeftOffset: CGFloat = 40
+    static let ClearSwitchLeftOffset: CGFloat = 10
+
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
     static let AnimationTableReuseIdentifier = "animationCell"
