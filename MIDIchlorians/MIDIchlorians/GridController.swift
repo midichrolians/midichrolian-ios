@@ -17,6 +17,7 @@ class GridController: NSObject {
     }
     var mode: Mode = .playing {
         didSet {
+            gridCollectionVC.mode = mode
             // when we enter playing mode, want to set unselect pads
             if mode == .playing {
                 self.selectedIndexPath = nil

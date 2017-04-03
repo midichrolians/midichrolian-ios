@@ -82,6 +82,10 @@ struct Config {
     static let AnimationTableReuseIdentifier = "animationCell"
     static let SessionTableReuseIdentifier = "sessionCell"
 
+    static let SessionEditAlertTitle = "Enter a new name"
+    static let SessionEditOkayTitle = "Save"
+    static let SessionEditCancelTitle = "Cancel"
+
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
     static let animationBitColumnKey = "column"

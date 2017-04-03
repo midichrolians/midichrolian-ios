@@ -7,37 +7,60 @@
 //
 
 import UIKit
+import SnapKit
 
 class GridCollectionViewCell: UICollectionViewCell, PadView {
     var rowNumber = 0
     var columnNumber = 0
+    var sampleLabel: UILabel!
+    var animationLabel: UILabel!
+    var imageView: UIImageView!
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        sampleLabel = UILabel(frame: CGRect.zero)
+        sampleLabel.textAlignment = .center
+        contentView.addSubview(sampleLabel)
+
+        animationLabel = UILabel(frame: CGRect.zero)
+        sampleLabel.textAlignment = .center
+        contentView.addSubview(animationLabel)
+
+        imageView = UIImageView(frame: CGRect.zero)
+        contentView.addSubview(imageView)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     func setDefaultAppearance() {
         self.backgroundColor = UIColor.darkGray
     }
-}
-
-extension GridCollectionViewCell: AnimatablePad {
-
-    func animate(image: UIImage) {
-        let imageView = UIImageView(image: image)
-        imageView.frame.size = self.frame.size
-        self.contentView.addSubview(imageView)
-    }
-
-    func animate(backgroundColour: UIColor) {
-        self.backgroundColor = backgroundColour
-    }
-
-    func clearAnimation() {
-        self.contentView.subviews.forEach { $0.removeFromSuperview() }
-        setDefaultAppearance()
-    }
 
     func assign(sample: String) {
+        sampleLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView)
+            make.bottom.equalTo(contentView)
+            make.left.equalTo(contentView)
+            make.width.equalTo(contentView).dividedBy(2)
+        }
+        sampleLabel.text = "S"
     }
 
     func assign(animation: AnimationSequence) {
+        animationLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView)
+            make.bottom.equalTo(contentView)
+            make.right.equalTo(contentView)
+            make.width.equalTo(contentView).dividedBy(2)
+        }
+        animationLabel.text = "A"
+    }
+
+    func clearIndicators() {
+        sampleLabel.text = nil
+        animationLabel.text = nil
     }
 
     // This cell is selected in the edit mode
@@ -48,5 +71,22 @@ extension GridCollectionViewCell: AnimatablePad {
 
     func unselect() {
         layer.borderWidth = 0.0
+    }
+}
+
+extension GridCollectionViewCell: AnimatablePad {
+
+    func animate(image: UIImage) {
+        imageView.frame = contentView.frame
+        imageView.image = image
+    }
+
+    func animate(backgroundColour: UIColor) {
+        self.backgroundColor = backgroundColour
+    }
+
+    func clearAnimation() {
+        imageView.image = nil
+        setDefaultAppearance()
     }
 }
