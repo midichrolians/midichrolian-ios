@@ -34,6 +34,10 @@ struct AudioManager {
     //initialize single audio file
     //returns successs
     mutating func initAudio(audioDir: String) -> Bool {
+        //want if nil means not initialized yet
+        guard audioClipDict[audioDir] == nil && audioTrackDict[audioDir] == nil else {
+            return true
+        }
         switch audioPlayerType {
             case AudioPlayerSetting.audioServices:
                 if audioDuration(for: audioDir) < AUDIOCLIPLIMIT {
@@ -63,13 +67,12 @@ struct AudioManager {
 
     //call this to play audio with single directory
     //returns success
-    func play(audioDir: String, bpm: Int? = nil) -> Bool {
+    mutating func play(audioDir: String, bpm: Int? = nil) -> Bool {
 
         switch audioPlayerType {
         case AudioPlayerSetting.audioServices:
-            let audioID = audioClipDict[audioDir] ?? AudioClipPlayer.initAudioClip(audioDir: audioDir)
-
-            guard let audio = audioID else {
+            guard let audio = audioClipDict[audioDir] else {
+                _ = initAudio(audioDir: audioDir)
                 return playAudioTrack(audioDir: audioDir, bpm: bpm)
             }
 
@@ -82,8 +85,7 @@ struct AudioManager {
     }
 
     func playAudioTrack(audioDir: String, bpm: Int?) -> Bool {
-        let avPlayer = audioTrackDict[audioDir] ?? AudioTrackPlayer.initAudioTrack(audioDir: audioDir)
-        guard let audio = avPlayer else {
+        guard let audio = audioTrackDict[audioDir] else {
             return false
         }
         AudioTrackPlayer.playAudioTrack(audioPlayer: audio)
