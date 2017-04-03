@@ -22,7 +22,7 @@ class AnimationType {
     func getJSONforAnimationType() -> String? {
         var dictionary = [String: Any]()
         dictionary[Config.animationTypeNameKey] = name
-        dictionary[Config.animationTypeModeKey] = mode
+        dictionary[Config.animationTypeModeKey] = mode.rawValue
         dictionary[Config.animationTypeAnimationSequenceKey] = animationSequence.getJSONforAnimationSequence()
 
         guard let jsonData = try? JSONSerialization.data(
@@ -44,12 +44,20 @@ class AnimationType {
         guard let name = dictionary[Config.animationTypeNameKey] as? String else {
             return nil
         }
-        guard let mode = dictionary[Config.animationTypeModeKey] as? AnimationTypeCreationMode else {
+        guard let modeString = dictionary[Config.animationTypeModeKey] as? String else {
             return nil
         }
-        guard let animationSequence = dictionary[Config.animationTypeAnimationSequenceKey] as? AnimationSequence else {
+        guard let animationSequenceString = dictionary[Config.animationTypeAnimationSequenceKey] as? String else {
             return nil
         }
+        guard let mode = AnimationTypeCreationMode(rawValue: modeString) else {
+            return nil
+        }
+        guard let animationSequence = AnimationSequence.getAnimationSequenceFromJSON(
+            fromJSON: animationSequenceString) else {
+            return nil
+        }
+
         let animationType = AnimationType(name: name, animationSequence: animationSequence, mode: mode)
         return animationType
     }

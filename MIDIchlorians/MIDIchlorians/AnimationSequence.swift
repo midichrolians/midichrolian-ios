@@ -67,7 +67,7 @@ class AnimationSequence {
             arrayOfStrings.append(arrayForTick)
         }
 
-        var dictionary = [String: Any]()
+        var dictionary = [String: Any?]()
         dictionary[Config.animationSequenceArrayKey] = arrayOfStrings
         dictionary[Config.animationSequenceNameKey] = name
 
@@ -86,18 +86,15 @@ class AnimationSequence {
             return nil
         }
 
-        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any?] else {
             return nil
         }
-
         guard let array = dictionary[Config.animationSequenceArrayKey] as? [[String]?] else {
             return nil
         }
-
         guard let name = dictionary[Config.animationSequenceNameKey] as? String else {
             return nil
         }
-
         let animationSequence = AnimationSequence()
         var animationBitsArrayForSequence = [[AnimationBit]]()
 

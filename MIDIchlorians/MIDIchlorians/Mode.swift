@@ -11,4 +11,5 @@ import Foundation
 enum Mode {
     case playing
     case editing
+    case design
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct AnimationBit {
+struct AnimationBit: Equatable {
     var colour: Colour
     var row: Int
     var column: Int
@@ -51,5 +51,9 @@ struct AnimationBit {
         }
         let animationBit = AnimationBit(colour: Colour(colourName: colour), row: row, column: column)
         return animationBit
+    }
+
+    static func == (lhs: AnimationBit, rhs: AnimationBit) -> Bool {
+        return lhs.colour == rhs.colour && lhs.row == rhs.row && lhs.column == rhs.column
     }
 }

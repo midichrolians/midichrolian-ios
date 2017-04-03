@@ -64,26 +64,59 @@ extension SidePaneController: PadDelegate {
             .flatMap { sample in sampleTableViewController.sampleList.index(of: sample) }
     }
 
-    // Deselect currently selected row in table view
-    private func deselect() {
+    // Get index of animation assigned to selected pad in animation list
+    private func indexOfAnimation(assignedTo pad: Pad) -> Int? {
+        return pad
+            .getAnimation()?
+            .name
+            .flatMap { animation in animationTableViewController.animationTypeNames.index(of: animation) }
+    }
+
+    // Deselect currently selected row in sample table view
+    private func deselectAllSamples() {
         sampleTableViewController.tableView.indexPathForSelectedRow
             .map { indexPath in
                 sampleTableViewController.tableView.deselectRow(at: indexPath, animated: true)
             }
     }
 
+    // Deselect currently selected row in animation table view
+    private func deselectAllAnimations() {
+        animationTableViewController.tableView.indexPathForSelectedRow
+            .map { indexPath in
+                animationTableViewController.tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+
     // When a pad is selected in edit mode, we want to highlight/select the row in the table view
     // that is the sample assigned to the pad
     // If the pad has no sample assigned, deselect everything.
-    func pad(selected: Pad) {
-        guard let index = indexOfSample(assignedTo: selected) else {
-            deselect()
+    private func highlightSample(assignedTo: Pad) {
+        guard let sampleIndex = indexOfSample(assignedTo: assignedTo) else {
+            deselectAllSamples()
             return
         }
-
-        sampleTableViewController.tableView.selectRow(at: IndexPath(row: index, section: 0),
+        sampleTableViewController.tableView.selectRow(at: IndexPath(row: sampleIndex, section: 0),
                                                       animated: true,
                                                       scrollPosition: .middle)
+    }
+
+    // When a pad is selected in edit mode, we want to highlight/select the row in the table view
+    // that is the animation assigned to the pad
+    // If the pad has no animation assigned, deselect everything.
+    private func highlightAnimation(assignedTo: Pad) {
+        guard let animationIndex = indexOfAnimation(assignedTo: assignedTo) else {
+            deselectAllAnimations()
+            return
+        }
+        animationTableViewController.tableView.selectRow(at: IndexPath(row: animationIndex, section: 0),
+                                                         animated: true,
+                                                         scrollPosition: .middle)
+    }
+
+    func pad(selected: Pad) {
+        highlightSample(assignedTo: selected)
+        highlightAnimation(assignedTo: selected)
     }
 }
 
