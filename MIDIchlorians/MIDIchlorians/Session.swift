@@ -36,6 +36,7 @@ class Session: Object {
         self.numPages = session.numPages
         self.numRows = session.numRows
         self.numCols = session.numCols
+        self.sessionName = session.sessionName
         for page in 0..<numPages {
             pads.append([])
             for row in 0..<numRows {
@@ -74,10 +75,14 @@ class Session: Object {
         }
     }
 
+    func setSessionName(sessionName: String) {
+        self.sessionName = sessionName
+    }
+
     func getSessionName() -> String? {
         return sessionName
     }
-
+    
     func getPad(page: Int, indexPath: IndexPath) -> Pad {
         return self.pads[page][indexPath.section][indexPath.row]
     }
