@@ -42,7 +42,7 @@ class GridController: NSObject {
     internal var gridCollectionView: GridCollectionView
     internal var colour: Colour?
     internal var animationSequence: AnimationSequence
-    internal var animationName: String = "Default Animation"
+    internal var animationName: String = Config.NewAnimationTypeDefaultName
     internal var animationTypeCreationMode = AnimationTypeCreationMode.absolute
 
     init(frame: CGRect, session: Session) {
