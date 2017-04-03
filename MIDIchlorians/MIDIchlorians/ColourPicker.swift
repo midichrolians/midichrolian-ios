@@ -12,6 +12,11 @@ class ColourPicker: UIView {
     // colour palette that we support
 
     let colours = Colour.allColours
+    var selectedColour: Colour? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     private var height: CGFloat {
         return bounds.height
     }
@@ -36,6 +41,19 @@ class ColourPicker: UIView {
             c.uiColor.setStroke()
             path.fill()
             path.stroke()
+
+            // highlight currently selected colour
+            if selectedColour == c {
+                let path = UIBezierPath()
+                path.move(to: start)
+                path.addLine(to: CGPoint(x: start.x + width, y: start.y))
+                path.addLine(to: CGPoint(x: start.x + width, y: start.y + height))
+                path.addLine(to: CGPoint(x: start.x, y: start.y + height))
+                path.addLine(to: start)
+                UIColor.black.setStroke()
+                path.lineWidth = 4.0
+                path.stroke()
+            }
         }
     }
 

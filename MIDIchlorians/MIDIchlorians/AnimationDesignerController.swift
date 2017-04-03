@@ -21,6 +21,7 @@ class AnimationDesignerController: UIViewController {
     private var tapGesture: UITapGestureRecognizer?
     private var selectedColour: Colour? {
         didSet {
+            colourPicker.selectedColour = selectedColour
             if let colour = selectedColour {
                 delegate?.animationColour(selected: colour)
             }
@@ -38,9 +39,11 @@ class AnimationDesignerController: UIViewController {
         view.addSubview(animationTypeSegmentedControl)
 
         colourPicker = ColourPicker()
+        colourPicker.backgroundColor = Config.BackgroundColor
         view.addSubview(colourPicker)
 
         timelineView = TimelineView()
+        timelineView.backgroundColor = Config.BackgroundColor
         view.addSubview(timelineView)
 
         setConstraints()
