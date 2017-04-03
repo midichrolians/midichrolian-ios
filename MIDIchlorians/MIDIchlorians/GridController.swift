@@ -101,6 +101,9 @@ extension GridController: PadDelegate {
                 )
 
                 gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
+            } else {
+                gridCollectionVC.colours[gridCollectionVC.selectedFrame][pad] = nil
+                gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
             }
             // prevent the pad from being played in design mode
             return
@@ -181,6 +184,10 @@ extension GridController: ModeSwitchDelegate {
 extension GridController: AnimationDesignerDelegate {
     func animationColour(selected colour: Colour) {
         self.colour = colour
+    }
+
+    func animationClear() {
+        self.colour = nil
     }
 
     func animationTimeline(selected frame: Int) {

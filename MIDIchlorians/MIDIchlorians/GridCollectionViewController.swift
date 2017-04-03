@@ -84,6 +84,8 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             case .design:
                 if let colour = colours[selectedFrame][pad] {
                     cell.animate(backgroundColour: colour.uiColor)
+                } else {
+                    cell.setDefaultAppearance()
                 }
                 if selectedIndexPath == indexPath {
                     cell.setSelected()
