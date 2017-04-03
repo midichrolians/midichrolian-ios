@@ -11,4 +11,9 @@ import Foundation
 enum AnimationTypeCreationMode: String {
     case relative
     case absolute
+
+    static func allValues() -> [String] {
+        return [relative, absolute]
+            .map({ $0.rawValue })
+    }
 }

@@ -111,4 +111,6 @@ struct Config {
     static let AnimationTabTitle = "Animations"
 
     static let GridCollectionViewCellIdentifier = "cell"
+
+    static let NewAnimationTypeDefaultName = "Default Animation"
 }
