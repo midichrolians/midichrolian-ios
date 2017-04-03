@@ -29,14 +29,8 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
     // currently selected pad, only used for edit mode
     var selectedIndexPath: IndexPath? {
         didSet {
-            // reload previously selected pad to clear selection
-            if let prevIndexPath = oldValue {
-                collectionView?.reloadItems(at: [prevIndexPath])
-            }
-            // reload new selected pad to show selection
-            if let newIndexPath = selectedIndexPath {
-                collectionView?.reloadItems(at: [newIndexPath])
-            }
+            // reload everything just to be safe (and it's easier too)
+            collectionView?.reloadData()
         }
     }
 
@@ -64,6 +58,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             cell.columnNumber = indexPath.item
 
             // reset the styles of the cell
+            cell.unselect()
             cell.setDefaultAppearance()
             cell.clearIndicators()
 
@@ -89,6 +84,11 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             case .design:
                 if let colour = colours[selectedFrame][pad] {
                     cell.animate(backgroundColour: colour.uiColor)
+                }
+                if selectedIndexPath == indexPath {
+                    cell.setSelected()
+                } else {
+                    cell.unselect()
                 }
             }
 

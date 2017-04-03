@@ -17,8 +17,10 @@ class GridController: NSObject {
     }
     var mode: Mode = .playing {
         didSet {
-            // always reset the selected path
-            selectedIndexPath = nil
+            // when entering playing or design, reset the selected index path
+            if mode == .playing {
+                selectedIndexPath = nil
+            }
             gridCollectionVC.mode = mode
             // when we enter playing mode, want to set unselect pads
         }
