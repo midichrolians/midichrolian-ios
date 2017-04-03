@@ -49,6 +49,11 @@ class ViewController: UIViewController {
         // need assign delegates after everything is initialized
         gridController.padDelegate = sidePaneController
     }
+    //Testing
+    override func viewDidAppear(_ animated: Bool) {
+        saveToDropbox()
+
+    }
 
     // Sets up the top navigation.
     // The top navigation has controls to show the session table, so we set that up here as well.
@@ -154,21 +159,19 @@ class ViewController: UIViewController {
                                                       browserAuth: false)
     }
 
-    func importFromDropbox() {
+    private func importFromDropbox() {
         if let client = DropboxClientsManager.authorizedClient {
-            cloudManager.loadFromDropbox(client: client)
+            cloudManager.loadFromDropbox()
         } else {
             loadDropBoxWebView()
-            importFromDropbox()
         }
     }
 
-    func saveToDropbox() {
+    private func saveToDropbox() {
         if let client = DropboxClientsManager.authorizedClient {
-            cloudManager.saveToDropbox(client: client)
+            cloudManager.saveToDropbox()
         } else {
             loadDropBoxWebView()
-            saveToDropbox()
         }
     }
 
