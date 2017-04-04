@@ -13,7 +13,7 @@ class AnimationSequence {
     private var tickCounter: Int
     var toBeRemoved: Bool
     var name: String?
-    private var frequencyPerBeat: BeatFrequency = BeatFrequency.eight
+    var frequencyPerBeat: BeatFrequency = BeatFrequency.eight
     private var frameCount: Int
 
     convenience init(beatFrequency: BeatFrequency) {

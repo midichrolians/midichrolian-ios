@@ -35,6 +35,7 @@ class AnimationManager {
     }
 
     func getAnimationSequenceForAnimationType(animationTypeName: String,
+                                              beatFrequency: BeatFrequency = BeatFrequency.eight,
                                               indexPath: IndexPath) -> AnimationSequence? {
         var animationSequence = AnimationSequence()
 
@@ -59,6 +60,7 @@ class AnimationManager {
             }
         }
         animationSequence.name = animationTypeName
+        animationSequence.frequencyPerBeat = beatFrequency
         return animationSequence
     }
 
