@@ -15,6 +15,7 @@ class GridController: NSObject {
     var gridView: GridCollectionView {
         return gridCollectionView
     }
+    private var removeSampleView: UIButton
     var mode: Mode = .playing {
         didSet {
             // when entering playing or design, reset the selected index path
@@ -37,6 +38,10 @@ class GridController: NSObject {
     internal var selectedIndexPath: IndexPath? {
         didSet {
             gridCollectionVC.selectedIndexPath = selectedIndexPath
+
+            if mode == .editing {
+                showRemoveSampleButton(forPadAt: selectedIndexPath)
+            }
         }
     }
     internal var gridCollectionVC: GridCollectionViewController
@@ -66,11 +71,53 @@ class GridController: NSObject {
 
         self.animationSequence = AnimationSequence()
 
+        removeSampleView = UIButton(frame: CGRect.zero)
+        removeSampleView.setTitle("X", for: .normal)
+        removeSampleView.backgroundColor = UIColor.blue
+
         super.init()
 
         gridCollectionView.padDelegate = self
         view.addSubview(gridCollectionVC.collectionView!)
 
+        view.addSubview(removeSampleView)
+    }
+
+    func getPad(at indexPath: IndexPath) -> Pad {
+        return self.currentSession.getPad(page: currentPage, indexPath: indexPath)
+    }
+
+    // Resets the position of the remove sample button
+    private func resetRemoveButton() {
+        removeSampleView.frame = CGRect.zero
+    }
+
+    func showRemoveSampleButton(forPadAt indexPath: IndexPath?) {
+        guard let indexPath = indexPath else {
+            resetRemoveButton()
+            return
+        }
+        let pad = getPad(at: indexPath)
+        guard pad.getAudioFile() != nil else {
+            resetRemoveButton()
+            return
+        }
+        // first see if the pad has a sample assinged
+        guard let cell = gridCollectionVC.collectionView(
+            gridCollectionVC.collectionView!, cellForItemAt: indexPath) as? GridCollectionViewCell else {
+                return
+        }
+
+        let cellFrame = cell.frame
+        removeSampleView.frame = CGRect(x: cellFrame.minX - 5,
+                                        y: cellFrame.minY - 5,
+                                        width: cellFrame.width / 3,
+                                        height: cellFrame.width / 3)
+        removeSampleView.addTarget(self, action: #selector(removeSample), for: .touchDown)
+    }
+
+    func removeSample() {
+        print("remove sample")
     }
 
 }
