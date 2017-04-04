@@ -62,6 +62,8 @@
 		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
 		33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A411E6FE55000229A92 /* AnimationBit.swift */; };
 		33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A431E6FE67700229A92 /* AnimationSequence.swift */; };
+		800362FE1E8FC08D007813EE /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800362FD1E8FC08D007813EE /* TimeTracker.swift */; };
+		800363001E925919007813EE /* PlayBackRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800362FF1E925919007813EE /* PlayBackRetriever.swift */; };
 		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
 		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
@@ -184,6 +186,8 @@
 		33EC0A411E6FE55000229A92 /* AnimationBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationBit.swift; sourceTree = "<group>"; };
 		33EC0A431E6FE67700229A92 /* AnimationSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequence.swift; sourceTree = "<group>"; };
 		68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.debug.xcconfig"; sourceTree = "<group>"; };
+		800362FD1E8FC08D007813EE /* TimeTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTracker.swift; sourceTree = "<group>"; };
+		800362FF1E925919007813EE /* PlayBackRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayBackRetriever.swift; sourceTree = "<group>"; };
 		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
 		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
 		CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +291,7 @@
 		33120E1C1E6FD30A007E7717 /* MIDIchlorians */ = {
 			isa = PBXGroup;
 			children = (
+				800362FC1E8FC065007813EE /* Recorder */,
 				805946D01E816CEC00EF7A2B /* Audio */,
 				F34B2A501E7A721500FD2C61 /* Models */,
 				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
@@ -403,6 +408,15 @@
 				F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		800362FC1E8FC065007813EE /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				800362FD1E8FC08D007813EE /* TimeTracker.swift */,
+				800362FF1E925919007813EE /* PlayBackRetriever.swift */,
+			);
+			name = Recorder;
 			sourceTree = "<group>";
 		};
 		805946D01E816CEC00EF7A2B /* Audio */ = {
@@ -859,6 +873,7 @@
 				F3710A8F1E7D280D0031A754 /* Session.swift in Sources */,
 				E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
+				800363001E925919007813EE /* PlayBackRetriever.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
 				E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */,
 				F32A4CE51E8595F700FF8F1F /* SessionName.swift in Sources */,
@@ -901,6 +916,7 @@
 				334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */,
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
 				E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */,
+				800362FE1E8FC08D007813EE /* TimeTracker.swift in Sources */,
 				33BCC5AA1E85064900D8489F /* AnimatableGrid.swift in Sources */,
 				E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
