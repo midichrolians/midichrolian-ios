@@ -110,7 +110,7 @@ struct Config {
 
     static let GridCollectionViewCellIdentifier = "cell"
 
-    static let SessionsFolderName = "sessions"
-    static let AnimationFolderName = "animations"
     static let AudioFolderName = "samples"
+    static let AnimationFileName = "animations"
+    static let SessionFileName = "sessions"
 }

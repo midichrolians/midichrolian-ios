@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     }
     //Testing
     override func viewDidAppear(_ animated: Bool) {
-        saveToDropbox()
+        importFromDropbox()
 
     }
 
