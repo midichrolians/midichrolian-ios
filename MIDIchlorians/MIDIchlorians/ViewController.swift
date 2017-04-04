@@ -94,15 +94,23 @@ class ViewController: UIViewController {
 
     // Sets up the main grid for play/edit
     private func setUpGrid() {
-        let frame = view.frame
-        let gridFrame = CGRect(x: frame.minX + Config.AppLeftPadding,
-                           y: frame.height * Config.MainViewHeightToGridMinYRatio,
-                           width: frame.width - Config.AppLeftPadding - Config.AppRightPadding,
-                           height: frame.height * Config.MainViewHeightToGridHeightRatio)
+//        let frame = view.frame
+//        let gridFrame = CGRect(x: frame.minX + Config.AppLeftPadding,
+//                           y: frame.height * Config.MainViewHeightToGridMinYRatio,
+//                           width: frame.width - Config.AppLeftPadding - Config.AppRightPadding,
+//                           height: frame.height * Config.MainViewHeightToGridHeightRatio)
         currentSession = loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM)
-        gridController = GridController(frame: gridFrame, session: currentSession)
+//        gridController = GridController(frame: gridFrame, session: currentSession)
+        gridController = GridController(frame: CGRect.zero, session: currentSession)
 
         view.addSubview(gridController.view)
+        gridController.view.snp.makeConstraints { make in
+            make.top.equalTo(topBarController.view.snp.bottom).offset(20)
+            make.left.equalTo(view).offset(20)
+            make.right.equalTo(view).offset(-20)
+            make.bottom.equalTo(view).offset(-20)
+        }
+//        gridController.view.frame = CGRect(x: 0, y: 100, width: 500, height: 300)
     }
 
     // Sets up the side pane with controls for samples and animations

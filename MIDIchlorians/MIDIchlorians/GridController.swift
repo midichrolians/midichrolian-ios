@@ -10,12 +10,11 @@ import Foundation
 import UIKit
 
 // Manages the currently visible grid of pads using a GridCollectionView
-class GridController: NSObject {
-    var view: UIView
+class GridController: UIViewController {
     var gridView: GridCollectionView {
         return gridCollectionView
     }
-    private var removeSampleView: UIButton
+    private var removeSampleView: UIButton = UIButton()
     var mode: Mode = .playing {
         didSet {
             // when entering playing or design, reset the selected index path
@@ -28,7 +27,7 @@ class GridController: NSObject {
     }
     weak var padDelegate: PadDelegate?
 
-    internal var currentSession: Session {
+    internal var currentSession: Session! {
         didSet {
             gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
         }
@@ -44,43 +43,47 @@ class GridController: NSObject {
             }
         }
     }
-    internal var gridCollectionVC: GridCollectionViewController
+    internal var gridCollectionVC: GridCollectionViewController! = GridCollectionViewController(
+        collectionViewLayout: UICollectionViewFlowLayout())
 
-    internal var gridCollectionView: GridCollectionView
+    internal var gridCollectionView: GridCollectionView!
     internal var colour: Colour?
-    internal var animationSequence: AnimationSequence
+    internal var animationSequence: AnimationSequence = AnimationSequence()
     internal var animationName: String = Config.NewAnimationTypeDefaultName
     internal var animationTypeCreationMode = AnimationTypeCreationMode.absolute
 
-    init(frame: CGRect, session: Session) {
-        // base ui view for the grid
-        view = UIView(frame: frame)
-        currentSession = session
-
-        let layout = UICollectionViewFlowLayout()
-        gridCollectionVC = GridCollectionViewController(collectionViewLayout: layout)
-        gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
-
-        gridCollectionView = GridCollectionView(frame: frame, collectionViewLayout: layout)
-        gridCollectionView.register(GridCollectionViewCell.self,
-                                    forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
-
+    override func loadView() {
+        view = UIView()
+        gridCollectionView = GridCollectionView(frame: CGRect.zero,
+                                                collectionViewLayout: gridCollectionVC.collectionViewLayout)
         gridCollectionVC.collectionView = gridCollectionView
 
         gridCollectionVC.collectionView!.backgroundColor = Config.BackgroundColor
 
-        self.animationSequence = AnimationSequence()
+        gridCollectionView.register(GridCollectionViewCell.self,
+                                    forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
 
-        removeSampleView = UIButton(frame: CGRect.zero)
         removeSampleView.setTitle("X", for: .normal)
         removeSampleView.backgroundColor = UIColor.blue
 
-        super.init()
-
         gridCollectionView.padDelegate = self
+        gridCollectionView.backgroundColor = UIColor.red
         view.addSubview(gridCollectionVC.collectionView!)
+        gridCollectionView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
 
         view.addSubview(removeSampleView)
+    }
+
+    init(frame: CGRect, session: Session) {
+        currentSession = session
+        gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(nibName: nil, bundle: nil)
     }
 
     func getPad(at indexPath: IndexPath) -> Pad {
