@@ -16,7 +16,7 @@ import RealmSwift
 class Session: Object {
 
     private dynamic var BPM = Config.defaultBPM
-    private dynamic var numPages = Config.numberOfPages
+    private(set) dynamic var numPages = Config.numberOfPages
     private dynamic var numRows = Config.numberOfRows
     private dynamic var numCols = Config.numberOfColumns
     private dynamic var sessionName: String?

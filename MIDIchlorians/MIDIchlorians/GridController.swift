@@ -59,6 +59,7 @@ class GridController: UIViewController {
     init(frame: CGRect, session: Session) {
         currentSession = session
         grid.padGrid = currentSession.getGrid(page: currentPage)
+        page.pages = currentSession.numPages
         super.init(nibName: nil, bundle: nil)
     }
 

@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class PageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    var pages = [1, 2, 3, 4]
+    var pages: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class PageCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pages.count
+        return pages
     }
 
     override func collectionView(
