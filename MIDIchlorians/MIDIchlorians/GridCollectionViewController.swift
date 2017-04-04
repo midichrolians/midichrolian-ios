@@ -101,8 +101,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let totalLength = collectionView.frame.width
-        // need to + 1 cos of the page buttons, this will be changed soon
-        let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section)) + 1
+        let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section))
         let insetLength = Config.ItemInsets.left * (itemsPerRow + 1)
         let availableLength = totalLength - insetLength
         let itemLength = availableLength / itemsPerRow

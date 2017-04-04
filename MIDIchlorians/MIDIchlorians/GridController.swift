@@ -27,7 +27,7 @@ class GridController: UIViewController {
 
     internal var currentSession: Session! {
         didSet {
-            gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
+            grid.padGrid = currentSession.getGrid(page: currentPage)
         }
     }
     internal var currentPage = 0
@@ -45,7 +45,9 @@ class GridController: UIViewController {
             }
         }
     }
-    internal var gridCollectionVC: GridCollectionViewController! = GridCollectionViewController(
+    internal var grid: GridCollectionViewController! = GridCollectionViewController(
+        collectionViewLayout: UICollectionViewFlowLayout())
+    internal var page: PageCollectionViewController! = PageCollectionViewController(
         collectionViewLayout: UICollectionViewFlowLayout())
 
     internal var gridCollectionView: GridCollectionView!
@@ -56,7 +58,7 @@ class GridController: UIViewController {
 
     init(frame: CGRect, session: Session) {
         currentSession = session
-        gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
+        grid.padGrid = currentSession.getGrid(page: currentPage)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -66,16 +68,17 @@ class GridController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         gridCollectionView.reloadData()
+        page.collectionView?.reloadData()
     }
 
     override func loadView() {
         view = UIView()
 
         gridCollectionView = GridCollectionView(frame: CGRect.zero,
-                                                collectionViewLayout: gridCollectionVC.collectionViewLayout)
-        gridCollectionVC.collectionView = gridCollectionView
+                                                collectionViewLayout: grid.collectionViewLayout)
+        grid.collectionView = gridCollectionView
 
-        gridCollectionVC.collectionView!.backgroundColor = Config.BackgroundColor
+        grid.collectionView!.backgroundColor = Config.BackgroundColor
 
         gridCollectionView.register(GridCollectionViewCell.self,
                                     forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
@@ -84,12 +87,20 @@ class GridController: UIViewController {
         removeSampleView.backgroundColor = UIColor.blue
 
         gridCollectionView.padDelegate = self
-        view.addSubview(gridCollectionVC.view!)
+        view.addSubview(grid.view)
 
-        gridCollectionVC.view.snp.makeConstraints { make in
-            make.edges.equalTo(view)
+        view.addSubview(page.view)
+        page.view.snp.makeConstraints { make in
+            make.top.right.bottom.equalTo(view)
+            make.width.equalTo(view).multipliedBy(1.0/9.0).offset(-Config.ItemInsets.right)
         }
-        gridCollectionVC.gridDisplayDelegate = self
+        page.collectionView!.backgroundColor = Config.BackgroundColor
+
+        grid.view.snp.makeConstraints { make in
+            make.top.left.bottom.equalTo(view)
+            make.right.equalTo(page.view.snp.left)
+        }
+        grid.gridDisplayDelegate = self
 
         view.addSubview(removeSampleView)
     }
@@ -114,8 +125,8 @@ class GridController: UIViewController {
             return
         }
         // first see if the pad has a sample assinged
-        guard let cell = gridCollectionVC.collectionView(
-            gridCollectionVC.collectionView!, cellForItemAt: indexPath) as? GridCollectionViewCell else {
+        guard let cell = grid.collectionView(
+            grid.collectionView!, cellForItemAt: indexPath) as? GridCollectionViewCell else {
                 return
         }
 
@@ -164,7 +175,7 @@ extension GridController: PadDelegate {
             if let colour = self.colour {
                 // in design mode and we have a colour selected, so change the colour
                 // temp heck to change colour, since Pad doesn't have a colour
-                gridCollectionVC.colours[selectedFrame][pad] = colour
+                grid.colours[selectedFrame][pad] = colour
                 self.animationSequence.addAnimationBit(
                     atTick: selectedFrame,
                     animationBit: AnimationBit(
@@ -174,10 +185,10 @@ extension GridController: PadDelegate {
                     )
                 )
 
-                gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
+                grid.collectionView?.reloadItems(at: [indexPath])
             } else {
-                gridCollectionVC.colours[selectedFrame][pad] = nil
-                gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
+                grid.colours[selectedFrame][pad] = nil
+                grid.collectionView?.reloadItems(at: [indexPath])
             }
             padDelegate?.pad(animationUpdated: animationSequence)
             // prevent the pad from being played in design mode
@@ -205,7 +216,7 @@ extension GridController: SampleTableDelegate {
             return
         }
         self.currentSession.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
-        self.gridCollectionVC.collectionView!.reloadItems(at: [indexPath])
+        self.grid.collectionView!.reloadItems(at: [indexPath])
         self.selectedIndexPath = indexPath
     }
 }
@@ -223,7 +234,7 @@ extension GridController: AnimationTableDelegate {
 
         self.currentSession.addAnimation(
             page: self.currentPage, row: indexPath.section, col: indexPath.row, animation: animationSequence)
-        self.gridCollectionVC.collectionView!.reloadItems(at: [indexPath])
+        self.grid.collectionView!.reloadItems(at: [indexPath])
         self.selectedIndexPath = indexPath
     }
 
@@ -261,10 +272,10 @@ extension GridController: AnimationDesignerDelegate {
             return
         }
         selectedFrame = frame
-        while gridCollectionVC.colours.count <= frame {
-            gridCollectionVC.colours.append([Pad: Colour]())
+        while grid.colours.count <= frame {
+            grid.colours.append([Pad: Colour]())
         }
-        self.gridCollectionVC.collectionView?.reloadData()
+        self.grid.collectionView?.reloadData()
     }
 
     func animationTypeCreationMode(selected mode: AnimationTypeCreationMode) {
