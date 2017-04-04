@@ -141,8 +141,8 @@ class ViewController: UIViewController {
         view.backgroundColor = Config.BackgroundColor
 
         // proxy to make all table views have the same background color
-        UITableView.appearance().backgroundColor = Config.BackgroundColor
-        UITableViewCell.appearance().backgroundColor = Config.BackgroundColor
+        UITableView.appearance().backgroundColor = Config.SecondaryBackgroundColor
+        UITableViewCell.appearance().backgroundColor = Config.SecondaryBackgroundColor
     }
 
     // Sets up the animation engine
@@ -224,6 +224,8 @@ extension ViewController: AnimationTableDelegate {
 extension ViewController: SidePaneDelegate {
     func sidePaneSelectSample() {
         animationDesignController.view.removeFromSuperview()
+        // set the mode back to editing so the animation views and styles will be cleared
+        gridController.mode = .editing
     }
 }
 

@@ -40,6 +40,9 @@ class DataManagerTests: XCTestCase {
         newSession1.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-2")
         XCTAssertTrue(newSession1.equals(dataManager.saveSession("test", newSession1)!))
 
+        newSession1.setSessionName(sessionName: "AD")
+        XCTAssertTrue(newSession1.equals(dataManager.saveSession(newSession1.getSessionName()!, newSession1)!))
+
     }
 
     func testRemoveSession() {
@@ -74,6 +77,19 @@ class DataManagerTests: XCTestCase {
             _ = dataManager.saveSession(sessionName, session)
         }
         XCTAssertEqual(dataManager.loadAllSessionNames().sorted(), sessionNameArray)
+    }
+
+    func testLoadLastSession() {
+        let session = Session(bpm: 120)
+        XCTAssertNil(dataManager.loadLastSession())
+        let sessionNameArray = ["test1", "test2", "test3"]
+        for sessionName in sessionNameArray {
+            _ = dataManager.saveSession(sessionName, session)
+        }
+        XCTAssertEqual("test3", dataManager.loadLastSession()!.getSessionName()!)
+        let session1 = Session(bpm: 140)
+        _ = dataManager.saveSession("test4", session1)
+        XCTAssertTrue(session1.equals(dataManager.loadLastSession()!))
     }
 
     func testSaveAnimation() {
@@ -146,6 +162,15 @@ class DataManagerTests: XCTestCase {
             _ = dataManager.saveAudio(audio)
         }
         XCTAssertEqual(dataManager.loadAllAudioStrings().sorted(), audios)
+    }
+
+    func testEditSessionName() {
+        let session = Session(bpm: 120)
+        let session1 = Session(bpm: 120)
+        _ = dataManager.saveSession("test", session)
+        XCTAssertFalse(dataManager.editSessionName(oldSessionName: "test1", newSessionName: "test12"))
+        XCTAssertTrue(dataManager.editSessionName(oldSessionName: "test", newSessionName: "test12"))
+        XCTAssertTrue(session1.equals(dataManager.loadSession("test12")!))
     }
 
 }

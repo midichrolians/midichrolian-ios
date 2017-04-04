@@ -15,12 +15,12 @@ class SideNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.barStyle = .black
+        self.navigationBar.barStyle = .default
         self.navigationBar.isTranslucent = false
-        self.navigationBar.barTintColor = Config.BackgroundColor
-        self.navigationBar.tintColor = Config.FontPrimaryColor
+        self.navigationBar.barTintColor = Config.SecondaryBackgroundColor
+        self.navigationBar.tintColor = Config.FontSecondaryColor
         self.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: Config.FontPrimaryColor
+            NSForegroundColorAttributeName: Config.FontSecondaryColor
         ]
     }
 

@@ -12,7 +12,12 @@ import UIKit
 class AnimationTableViewController: UITableViewController {
     weak var delegate: AnimationTableDelegate?
 
-    internal let animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+    internal var animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
@@ -22,6 +27,9 @@ class AnimationTableViewController: UITableViewController {
         self.tabBarItem = UITabBarItem(title: Config.AnimationTabTitle,
                                        image: UIImage(named: Config.SidePaneTabBarAnimationIcon),
                                        selectedImage: UIImage(named: Config.SidePaneTabBarAnimationIcon))
+        tableView.separatorStyle = .none
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -71,12 +79,21 @@ class AnimationTableViewController: UITableViewController {
         delegate?.animationTable(tableView, didSelect: animationType(at: indexPath))
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Config.AnimationTableCellHeight
+    }
+
     private func animationType(at indexPath: IndexPath) -> String {
         return animationTypeNames[indexPath.row]
     }
 
     func newAnimation() {
         delegate?.addAnimation(tableView)
+    }
+
+    func refresh() {
+        animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+        refreshControl?.endRefreshing()
     }
 
 }

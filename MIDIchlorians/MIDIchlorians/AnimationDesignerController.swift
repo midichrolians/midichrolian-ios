@@ -16,11 +16,16 @@ class AnimationDesignerController: UIViewController {
 
     // require animation data
     private var colourPicker: ColourPicker!
-    private var timelineView: TimelineView!
+    internal var timelineView: TimelineView!
     private var animationTypeSegmentedControl: UISegmentedControl!
+    private var clearLabel: UILabel!
+    private var clearSwitch: UISwitch!
+    private var saveButton: UIButton!
+
     private var tapGesture: UITapGestureRecognizer?
     private var selectedColour: Colour? {
         didSet {
+            colourPicker.selectedColour = selectedColour
             if let colour = selectedColour {
                 delegate?.animationColour(selected: colour)
             }
@@ -28,18 +33,36 @@ class AnimationDesignerController: UIViewController {
     }
 
     override func viewDidLoad() {
-        animationTypeSegmentedControl = UISegmentedControl(items: ["absolute", "relative"])
+        animationTypeSegmentedControl = UISegmentedControl(items: AnimationTypeCreationMode.allValues())
 
         animationTypeSegmentedControl.selectedSegmentIndex = 0
         animationTypeSegmentedControl.tintColor = Config.FontPrimaryColor
 
+        animationTypeSegmentedControl.addTarget(self, action: #selector(onAnimatedTypeChange), for: .valueChanged)
+
         view.addSubview(animationTypeSegmentedControl)
 
         colourPicker = ColourPicker()
+        colourPicker.backgroundColor = Config.BackgroundColor
         view.addSubview(colourPicker)
 
         timelineView = TimelineView()
+        timelineView.backgroundColor = Config.BackgroundColor
         view.addSubview(timelineView)
+
+        clearLabel = UILabel()
+        clearLabel.text = "Clear"
+        clearLabel.textColor = UIColor.white
+        view.addSubview(clearLabel)
+
+        clearSwitch = UISwitch()
+        clearSwitch.addTarget(self, action: #selector(clearSwitchToggle(clearSwitch:)), for: .valueChanged)
+        view.addSubview(clearSwitch)
+
+        saveButton = UIButton(type: .custom)
+        saveButton.setTitle("Save Animation", for: .normal)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchDown)
+        view.addSubview(saveButton)
 
         setConstraints()
         addGestures()
@@ -49,21 +72,37 @@ class AnimationDesignerController: UIViewController {
         timelineView.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
-            make.height.equalTo(60)
-            make.top.equalTo(view.snp.top).offset(10)
+            make.height.equalTo(Config.TimelineHeight)
+            make.top.equalTo(view.snp.top).offset(Config.TimelineTopOffset)
         }
 
         colourPicker.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
 
-            make.height.equalTo(60)
-            make.top.equalTo(timelineView.snp.bottom).offset(10)
+            make.height.equalTo(Config.ColourPickerHeight)
+            make.top.equalTo(timelineView.snp.bottom).offset(Config.ColourPickerTopOffset)
         }
 
         animationTypeSegmentedControl.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(view.snp.left)
-            make.top.equalTo(colourPicker.snp.bottom).offset(10)
+            make.top.equalTo(colourPicker.snp.bottom).offset(Config.AnimationTypeControlTopOffset)
+        }
+
+        clearLabel.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(animationTypeSegmentedControl.snp.right).offset(Config.ClearSwitchLabelLeftOffset)
+            make.centerY.equalTo(animationTypeSegmentedControl)
+        }
+
+        clearSwitch.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(clearLabel.snp.right).offset(Config.ClearSwitchLeftOffset)
+            make.centerY.equalTo(clearLabel)
+        }
+
+        saveButton.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(clearSwitch.snp.right).offset(20)
+            make.centerY.equalTo(clearSwitch)
+            make.height.equalTo(clearSwitch)
         }
     }
 
@@ -85,8 +124,33 @@ class AnimationDesignerController: UIViewController {
     func colourPickerTap(recognizer: UITapGestureRecognizer) {
         let loc = recognizer.location(in: colourPicker)
         if let colour = colourPicker.colour(at: loc) {
+            // reset the clear switch
+            clearSwitch.setOn(false, animated: true)
             selectedColour = colour
         }
     }
 
+    func onAnimatedTypeChange() {
+        guard let selectedAnimatedTypeName = self.animationTypeSegmentedControl.titleForSegment(
+            at: self.animationTypeSegmentedControl.selectedSegmentIndex
+            ) else {
+                return
+        }
+        guard let mode = AnimationTypeCreationMode(rawValue: selectedAnimatedTypeName) else {
+            return
+        }
+        delegate?.animationTypeCreationMode(
+            selected: mode
+        )
+    }
+
+    func clearSwitchToggle(clearSwitch: UISwitch) {
+        if clearSwitch.isOn {
+            delegate?.animationClear()
+        }
+    }
+
+    func saveButtonTapped() {
+        delegate?.saveAnimation()
+    }
 }

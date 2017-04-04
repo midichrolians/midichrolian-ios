@@ -16,6 +16,8 @@ struct Config {
     static let numberOfPages = 6
     static let animationFrequency = 16
     static let defaultBPM = 120
+
+    static let audioSetting = AudioPlayerSetting.audioServices
     static let sound = [
         [
             "AWOLNATION - Sail", "AWOLNATION - Sail-1",
@@ -45,6 +47,8 @@ struct Config {
 
     static let FontPrimaryColor = UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1)
     static let BackgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+    static let SecondaryBackgroundColor = UIColor.white
+    static let FontSecondaryColor = UIColor.darkGray
 
     static let SampleTableViewCellColor = UIColor(red: 110/255, green: 110/255, blue: 116/255, alpha: 1)
     static let AnimationTableViewCellColor = UIColor(red: 110/255, green: 110/255, blue: 116/255, alpha: 1)
@@ -79,10 +83,21 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    static let TimelineHeight: CGFloat = 60
+    static let ColourPickerHeight: CGFloat = 60
+    static let TimelineTopOffset: CGFloat = 10
+    static let ColourPickerTopOffset: CGFloat = 10
+    static let AnimationTypeControlTopOffset: CGFloat = 10
+    static let ClearSwitchLabelLeftOffset: CGFloat = 40
+    static let ClearSwitchLeftOffset: CGFloat = 10
+
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
     static let AnimationTableReuseIdentifier = "animationCell"
     static let SessionTableReuseIdentifier = "sessionCell"
+
+    static let SampleTableCellHeight: CGFloat = 60
+    static let AnimationTableCellHeight: CGFloat = Config.SampleTableCellHeight
 
     static let SessionEditAlertTitle = "Enter a new name"
     static let SessionEditOkayTitle = "Save"
@@ -117,4 +132,6 @@ struct Config {
     static let AudioFolderName = "samples"
     static let AnimationFileName = "animations"
     static let SessionFileName = "sessions"
+
+    static let NewAnimationTypeDefaultName = "Default Animation"
 }
