@@ -16,6 +16,8 @@ struct Config {
     static let numberOfPages = 6
     static let animationFrequency = 16
     static let defaultBPM = 120
+
+    static let audioSetting = AudioPlayerSetting.audioServices
     static let sound = [
         [
             "AWOLNATION - Sail", "AWOLNATION - Sail-1",

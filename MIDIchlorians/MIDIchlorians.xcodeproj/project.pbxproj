@@ -62,6 +62,9 @@
 		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
 		33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A411E6FE55000229A92 /* AnimationBit.swift */; };
 		33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A431E6FE67700229A92 /* AnimationSequence.swift */; };
+		800362FA1E8F6EF3007813EE /* AudioTrackPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800362F91E8F6EF3007813EE /* AudioTrackPlayer.swift */; };
+		80299E811E88F8DF00CEB465 /* AudioType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E801E88F8DF00CEB465 /* AudioType.swift */; };
+		80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
 		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
 		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
@@ -184,6 +187,9 @@
 		33EC0A411E6FE55000229A92 /* AnimationBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationBit.swift; sourceTree = "<group>"; };
 		33EC0A431E6FE67700229A92 /* AnimationSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequence.swift; sourceTree = "<group>"; };
 		68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.debug.xcconfig"; sourceTree = "<group>"; };
+		800362F91E8F6EF3007813EE /* AudioTrackPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrackPlayer.swift; sourceTree = "<group>"; };
+		80299E801E88F8DF00CEB465 /* AudioType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioType.swift; sourceTree = "<group>"; };
+		80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerSetting.swift; sourceTree = "<group>"; };
 		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
 		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
 		CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -405,11 +411,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		800362FB1E8F74E5007813EE /* AudioTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AudioTests;
+			sourceTree = "<group>";
+		};
 		805946D01E816CEC00EF7A2B /* Audio */ = {
 			isa = PBXGroup;
 			children = (
 				334970C61E72B83D009C78DF /* AudioManager.swift */,
 				805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */,
+				80299E801E88F8DF00CEB465 /* AudioType.swift */,
+				80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */,
+				800362F91E8F6EF3007813EE /* AudioTrackPlayer.swift */,
 			);
 			name = Audio;
 			path = ..;
@@ -497,6 +513,7 @@
 		F3173AAE1E83B1550095F76A /* MIDIchloriansTests */ = {
 			isa = PBXGroup;
 			children = (
+				800362FB1E8F74E5007813EE /* AudioTests */,
 				F3173AB71E83B17F0095F76A /* ModelTests */,
 				F3173AB11E83B1550095F76A /* Info.plist */,
 				F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */,
@@ -876,6 +893,7 @@
 				E9AD30211E8BAB8C00801A9F /* ColourPicker.swift in Sources */,
 				E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */,
 				E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */,
+				800362FA1E8F6EF3007813EE /* AudioTrackPlayer.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
 				33CC26C71E891E840077F0ED /* AnimationManager.swift in Sources */,
@@ -890,9 +908,11 @@
 				334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */,
 				E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
+				80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */,
 				E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */,
 				E956AD771E8C0E8000CA60BF /* TimelineView.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
+				80299E811E88F8DF00CEB465 /* AudioType.swift in Sources */,
 				E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */,
 				E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */,
 				F3173AA81E8306D20095F76A /* Audio.swift in Sources */,
