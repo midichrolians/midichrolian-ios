@@ -14,6 +14,7 @@ class GridController: UIViewController {
     var gridView: GridCollectionView {
         return gridCollectionView
     }
+    internal var selectedFrame: Int = 0
     private var removeSampleView: UIButton = UIButton()
     var mode: Mode = .playing {
         didSet {
@@ -21,8 +22,6 @@ class GridController: UIViewController {
             if mode == .playing {
                 selectedIndexPath = nil
             }
-            gridCollectionVC.mode = mode
-            // when we enter playing mode, want to set unselect pads
         }
     }
     weak var padDelegate: PadDelegate?
@@ -36,10 +35,14 @@ class GridController: UIViewController {
     // Keep the selectedIndexPath of the view controller in sync
     internal var selectedIndexPath: IndexPath? {
         didSet {
-            gridCollectionVC.selectedIndexPath = selectedIndexPath
-
             if mode == .editing {
                 showRemoveSampleButton(forPadAt: selectedIndexPath)
+            }
+            if let prev = oldValue {
+                gridCollectionView.reloadItems(at: [prev])
+            }
+            if let cur = selectedIndexPath {
+                gridCollectionView.reloadItems(at: [cur])
             }
         }
     }
@@ -52,8 +55,23 @@ class GridController: UIViewController {
     internal var animationName: String = Config.NewAnimationTypeDefaultName
     internal var animationTypeCreationMode = AnimationTypeCreationMode.absolute
 
+    init(frame: CGRect, session: Session) {
+        currentSession = session
+        gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    override func viewDidLayoutSubviews() {
+        gridCollectionView.reloadData()
+    }
+
     override func loadView() {
         view = UIView()
+
         gridCollectionView = GridCollectionView(frame: CGRect.zero,
                                                 collectionViewLayout: gridCollectionVC.collectionViewLayout)
         gridCollectionVC.collectionView = gridCollectionView
@@ -67,23 +85,14 @@ class GridController: UIViewController {
         removeSampleView.backgroundColor = UIColor.blue
 
         gridCollectionView.padDelegate = self
-        gridCollectionView.backgroundColor = UIColor.red
-        view.addSubview(gridCollectionVC.collectionView!)
-        gridCollectionView.snp.makeConstraints { make in
+        view.addSubview(gridCollectionVC.view!)
+
+        gridCollectionVC.view.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+        gridCollectionVC.gridDisplayDelegate = self
 
         view.addSubview(removeSampleView)
-    }
-
-    init(frame: CGRect, session: Session) {
-        currentSession = session
-        gridCollectionVC.padGrid = currentSession.getGrid(page: currentPage)
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(nibName: nil, bundle: nil)
     }
 
     func getPad(at indexPath: IndexPath) -> Pad {
@@ -125,9 +134,15 @@ class GridController: UIViewController {
 
 }
 
+extension GridController: GridDisplayDelegate {
+    var frame: Int {
+        return selectedFrame
+    }
+}
+
 extension GridController: PadDelegate {
     func padTapped(indexPath: IndexPath) {
-        let pad = self.currentSession.getPad(page: currentPage, indexPath: indexPath)
+        let pad = getPad(at: indexPath)
 
         // if in editing mode, highlight the tapped grid
         if mode == .editing && selectedIndexPath != indexPath {
@@ -140,9 +155,9 @@ extension GridController: PadDelegate {
             if let colour = self.colour {
                 // in design mode and we have a colour selected, so change the colour
                 // temp heck to change colour, since Pad doesn't have a colour
-                gridCollectionVC.colours[gridCollectionVC.selectedFrame][pad] = colour
+                gridCollectionVC.colours[selectedFrame][pad] = colour
                 self.animationSequence.addAnimationBit(
-                    atTick: gridCollectionVC.selectedFrame,
+                    atTick: selectedFrame,
                     animationBit: AnimationBit(
                         colour: colour,
                         row: indexPath.section,
@@ -152,7 +167,7 @@ extension GridController: PadDelegate {
 
                 gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
             } else {
-                gridCollectionVC.colours[gridCollectionVC.selectedFrame][pad] = nil
+                gridCollectionVC.colours[selectedFrame][pad] = nil
                 gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
             }
             // prevent the pad from being played in design mode
@@ -207,12 +222,10 @@ extension GridController: AnimationTableDelegate {
 
 extension GridController: ModeSwitchDelegate {
     func enterEdit() {
-        resizePads(by: Config.PadAreaResizeFactorWhenEditStart)
         self.mode = .editing
     }
 
     func enterPlay() {
-        resizePads(by: Config.PadAreaResizeFactorWhenEditEnd)
         self.mode = .playing
     }
 
@@ -220,15 +233,6 @@ extension GridController: ModeSwitchDelegate {
         self.mode = .design
     }
 
-    private func resizePads(by factor: CGFloat) {
-        // and to animate the changes refer to
-        // http://stackoverflow.com/questions/13780153/uicollectionview-animate-cell-size-change-on-selection
-        let collectionView = gridCollectionVC.collectionView!
-        collectionView.frame = CGRect(
-            origin: collectionView.frame.origin,
-            size: collectionView.frame.size.scale(by: factor))
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
 }
 
 extension GridController: AnimationDesignerDelegate {
@@ -241,10 +245,10 @@ extension GridController: AnimationDesignerDelegate {
     }
 
     func animationTimeline(selected frame: Int) {
-        if self.gridCollectionVC.selectedFrame == frame {
+        if selectedFrame == frame {
             return
         }
-        self.gridCollectionVC.selectedFrame = frame
+        selectedFrame = frame
         while gridCollectionVC.colours.count <= frame {
             gridCollectionVC.colours.append([Pad: Colour]())
         }

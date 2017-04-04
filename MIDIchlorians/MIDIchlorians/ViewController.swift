@@ -37,6 +37,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentSession = loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM)
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
@@ -94,23 +95,14 @@ class ViewController: UIViewController {
 
     // Sets up the main grid for play/edit
     private func setUpGrid() {
-//        let frame = view.frame
-//        let gridFrame = CGRect(x: frame.minX + Config.AppLeftPadding,
-//                           y: frame.height * Config.MainViewHeightToGridMinYRatio,
-//                           width: frame.width - Config.AppLeftPadding - Config.AppRightPadding,
-//                           height: frame.height * Config.MainViewHeightToGridHeightRatio)
-        currentSession = loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM)
-//        gridController = GridController(frame: gridFrame, session: currentSession)
         gridController = GridController(frame: CGRect.zero, session: currentSession)
 
         view.addSubview(gridController.view)
+
         gridController.view.snp.makeConstraints { make in
-            make.top.equalTo(topBarController.view.snp.bottom).offset(20)
-            make.left.equalTo(view).offset(20)
-            make.right.equalTo(view).offset(-20)
-            make.bottom.equalTo(view).offset(-20)
+            make.top.equalTo(topBarController.view.snp.bottom)
+            make.left.right.bottom.equalTo(view)
         }
-//        gridController.view.frame = CGRect(x: 0, y: 100, width: 500, height: 300)
     }
 
     // Sets up the side pane with controls for samples and animations
@@ -120,12 +112,13 @@ class ViewController: UIViewController {
         sidePaneController.animationTableDelegate = self
         sidePaneController.delegate = self
 
-        let frame = view.frame
-        sidePaneController.view.frame =
-            CGRect(x: frame.width * Config.MainViewWidthToSideMinXRatio,
-                   y: frame.height * Config.MainViewHeightToSideMinYRatio,
-                   width: frame.width * Config.MainViewWidthToSideWidthRatio,
-                   height: frame.height * Config.MainViewHeightToSideHeightRatio)
+        view.addSubview(sidePaneController.view)
+        sidePaneController.view.snp.makeConstraints { make in
+            make.width.equalTo(Config.SidePaneWidth)
+            make.left.equalTo(gridController.view.snp.right)
+            make.top.equalTo(topBarController.view.snp.bottom)
+            make.bottom.equalTo(view)
+        }
     }
 
     private func setUpAnimationDesigner() {
@@ -157,14 +150,18 @@ class ViewController: UIViewController {
 // Called when the mode is switch. Passes on the event to the grid and side pane
 extension ViewController: ModeSwitchDelegate {
     func enterEdit() {
+        gridController.view.snp.updateConstraints { make in
+            make.right.equalTo(view).offset(-Config.SidePaneWidth)
+        }
         gridController.enterEdit()
-        view.addSubview(sidePaneController.view)
     }
 
     func enterPlay() {
         // error handling
+        gridController.view.snp.updateConstraints { make in
+            make.right.equalTo(view).offset(0)
+        }
         gridController.enterPlay()
-        sidePaneController.view.removeFromSuperview()
         animationDesignController.view.removeFromSuperview()
     }
 
