@@ -14,6 +14,9 @@
 		33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33120E241E6FD30A007E7717 /* Assets.xcassets */; };
 		33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */; };
 		33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */; };
+		334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */; };
+		334113941E8E5E9500F998E9 /* AnimationTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */; };
+		334113971E8E6CE900F998E9 /* AnimationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334113961E8E6CE900F998E9 /* AnimationManagerTests.swift */; };
 		334970BF1E72557D009C78DF /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationType.swift */; };
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
 		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
@@ -53,6 +56,7 @@
 		33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */; };
 		33DAAAC01E72BEA300987E86 /* AWOLNATION - Sail-28.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */; };
 		33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */; };
+		33DDEB021E8D1DA600380C30 /* AnimationBitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */; };
 		33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */; };
 		33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */; };
 		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
@@ -132,6 +136,9 @@
 		33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIchloriansUITests.swift; sourceTree = "<group>"; };
 		33120E341E6FD30A007E7717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequenceTests.swift; sourceTree = "<group>"; };
+		334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeTests.swift; sourceTree = "<group>"; };
+		334113961E8E6CE900F998E9 /* AnimationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationManagerTests.swift; sourceTree = "<group>"; };
 		334970BE1E72557D009C78DF /* AnimationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -171,6 +178,7 @@
 		33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-27.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-27.wav"; sourceTree = "<group>"; };
 		33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-28.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-28.wav"; sourceTree = "<group>"; };
 		33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail.wav"; sourceTree = "<group>"; };
+		33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationBitTests.swift; sourceTree = "<group>"; };
 		33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
 		33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
 		33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
@@ -311,6 +319,17 @@
 				33120E341E6FD30A007E7717 /* Info.plist */,
 			);
 			path = MIDIchloriansUITests;
+			sourceTree = "<group>";
+		};
+		334113951E8E6A4200F998E9 /* AnimationTests */ = {
+			isa = PBXGroup;
+			children = (
+				33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */,
+				334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */,
+				334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */,
+				334113961E8E6CE900F998E9 /* AnimationManagerTests.swift */,
+			);
+			name = AnimationTests;
 			sourceTree = "<group>";
 		};
 		33DAAAC21E72BEAE00987E86 /* SailSample */ = {
@@ -484,6 +503,7 @@
 				F3173AB71E83B17F0095F76A /* ModelTests */,
 				F3173AB11E83B1550095F76A /* Info.plist */,
 				F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */,
+				334113951E8E6A4200F998E9 /* AnimationTests */,
 			);
 			path = MIDIchloriansTests;
 			sourceTree = "<group>";
@@ -904,10 +924,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334113941E8E5E9500F998E9 /* AnimationTypeTests.swift in Sources */,
 				F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */,
+				334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */,
 				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
 				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
+				334113971E8E6CE900F998E9 /* AnimationManagerTests.swift in Sources */,
 				F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */,
+				33DDEB021E8D1DA600380C30 /* AnimationBitTests.swift in Sources */,
 				F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

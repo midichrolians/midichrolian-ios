@@ -48,6 +48,7 @@ class ViewController: UIViewController {
 
         // need assign delegates after everything is initialized
         gridController.padDelegate = sidePaneController
+        animationDesignController.delegate = gridController
     }
     //Testing
     override func viewDidAppear(_ animated: Bool) {
@@ -190,6 +191,10 @@ extension ViewController: ModeSwitchDelegate {
         sidePaneController.view.removeFromSuperview()
         animationDesignController.view.removeFromSuperview()
     }
+
+    func enterDesign() {
+        gridController.enterDesign()
+    }
 }
 
 // Called when session selector is tapped, shows the sessions as a popover
@@ -212,6 +217,7 @@ extension ViewController: AnimationTableDelegate {
 
     func addAnimation(_ tableView: UITableView) {
         view.addSubview(animationDesignController.view)
+        self.enterDesign()
     }
 }
 

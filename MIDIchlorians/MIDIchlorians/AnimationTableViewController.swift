@@ -12,7 +12,7 @@ import UIKit
 class AnimationTableViewController: UITableViewController {
     weak var delegate: AnimationTableDelegate?
 
-    private let animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+    internal let animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 

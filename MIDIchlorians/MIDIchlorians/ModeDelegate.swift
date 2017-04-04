@@ -13,6 +13,7 @@ import Foundation
 protocol ModeSwitchDelegate: class {
     func enterEdit()
     func enterPlay()
+    func enterDesign()
 }
 
 // Default implementation of protocol, interested receivers can override specific methods.
@@ -21,6 +22,9 @@ extension ModeSwitchDelegate {
         return
     }
     func enterPlay() {
+        return
+    }
+    func enterDesign() {
         return
     }
 }
