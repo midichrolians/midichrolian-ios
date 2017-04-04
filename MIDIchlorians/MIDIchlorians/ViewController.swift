@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         setUpAnimation()
 
         // need assign delegates after everything is initialized
-        gridController.padDelegate = sidePaneController
+        gridController.padDelegate = self
         animationDesignController.delegate = gridController
     }
 
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
 
     // Sets up the animation engine
     private func setUpAnimation() {
-        AnimationEngine.set(animationGrid: gridController.gridView)
+        AnimationEngine.set(animationGrid: gridController.gridCollectionView)
         AnimationEngine.start()
     }
 
@@ -190,6 +190,7 @@ extension ViewController: AnimationTableDelegate {
 
     func addAnimation(_ tableView: UITableView) {
         view.addSubview(animationDesignController.view)
+        gridController.selectedIndexPath = gridController.selectedIndexPath ?? IndexPath(row: 0, section: 0)
         self.enterDesign()
     }
 }
@@ -229,4 +230,23 @@ extension ViewController: SessionTableDelegate {
     func sessionTable(_: UITableView, didRemove sessionName: String) {
         _ = dataManager.removeSession(sessionName)
     }
+}
+
+extension ViewController: PadDelegate {
+    func padTapped(indexPath: IndexPath) {
+        sidePaneController.padTapped(indexPath: indexPath)
+    }
+
+    func pad(selected: Pad) {
+        sidePaneController.pad(selected: selected)
+    }
+
+    func pad(played: Pad) {
+        sidePaneController.pad(played: played)
+    }
+
+    func pad(animationUpdated animation: AnimationSequence) {
+        animationDesignController.pad(animationUpdated: animation)
+    }
+
 }

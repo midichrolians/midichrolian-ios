@@ -11,9 +11,7 @@ import UIKit
 
 // Manages the currently visible grid of pads using a GridCollectionView
 class GridController: UIViewController {
-    var gridView: GridCollectionView {
-        return gridCollectionView
-    }
+    // used for animations
     internal var selectedFrame: Int = 0
     private var removeSampleView: UIButton = UIButton()
     var mode: Mode = .playing {
@@ -21,6 +19,7 @@ class GridController: UIViewController {
             // when entering playing or design, reset the selected index path
             if mode == .playing {
                 selectedIndexPath = nil
+                resetRemoveButton()
             }
         }
     }
@@ -129,7 +128,17 @@ class GridController: UIViewController {
     }
 
     func removeSample() {
-        print("remove sample")
+        let alert = UIAlertController(title: "Remove sample?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { _ in
+            if let indexPath = self.selectedIndexPath {
+                let pad = self.getPad(at: indexPath)
+                pad.clearAudio()
+                self.gridCollectionView.reloadItems(at: [indexPath])
+                self.selectedIndexPath = indexPath
+            }
+        }))
+        present(alert, animated: true, completion: nil)
     }
 
 }
@@ -170,6 +179,7 @@ extension GridController: PadDelegate {
                 gridCollectionVC.colours[selectedFrame][pad] = nil
                 gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
             }
+            padDelegate?.pad(animationUpdated: animationSequence)
             // prevent the pad from being played in design mode
             return
         }
@@ -196,6 +206,7 @@ extension GridController: SampleTableDelegate {
         }
         self.currentSession.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
         self.gridCollectionVC.collectionView!.reloadItems(at: [indexPath])
+        self.selectedIndexPath = indexPath
     }
 }
 
@@ -213,6 +224,7 @@ extension GridController: AnimationTableDelegate {
         self.currentSession.addAnimation(
             page: self.currentPage, row: indexPath.section, col: indexPath.row, animation: animationSequence)
         self.gridCollectionVC.collectionView!.reloadItems(at: [indexPath])
+        self.selectedIndexPath = indexPath
     }
 
     func addAnimation(_ tableView: UITableView) {

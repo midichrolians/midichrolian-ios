@@ -9,7 +9,7 @@
 import Foundation
 
 class AnimationSequence {
-    private var animationBitsArray: [[AnimationBit]?]
+    private(set) var animationBitsArray: [[AnimationBit]?]
     private var tickCounter: Int
     var toBeRemoved: Bool
     var name: String?

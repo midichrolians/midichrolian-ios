@@ -71,13 +71,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             case .playing:
                 break
             case .editing:
-                if let sample = pad.getAudioFile() {
-                    cell.assign(sample: sample)
-                }
-
-                if let animation = pad.getAnimation() {
-                    cell.assign(animation: animation)
-                }
+                cell.pad = pad
 
                 // if selected, highlight
                 if selectedIndexPath == indexPath {
