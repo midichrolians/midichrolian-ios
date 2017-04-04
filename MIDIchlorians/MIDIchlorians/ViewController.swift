@@ -192,6 +192,8 @@ extension ViewController: AnimationTableDelegate {
 extension ViewController: SidePaneDelegate {
     func sidePaneSelectSample() {
         animationDesignController.view.removeFromSuperview()
+        // set the mode back to editing so the animation views and styles will be cleared
+        gridController.mode = .editing
     }
 }
 

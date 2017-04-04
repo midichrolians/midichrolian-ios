@@ -17,11 +17,12 @@ class GridController: NSObject {
     }
     var mode: Mode = .playing {
         didSet {
+            // when entering playing or design, reset the selected index path
+            if mode == .playing {
+                selectedIndexPath = nil
+            }
             gridCollectionVC.mode = mode
             // when we enter playing mode, want to set unselect pads
-            if mode == .playing {
-                self.selectedIndexPath = nil
-            }
         }
     }
     weak var padDelegate: PadDelegate?
@@ -99,6 +100,9 @@ extension GridController: PadDelegate {
                     )
                 )
 
+                gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
+            } else {
+                gridCollectionVC.colours[gridCollectionVC.selectedFrame][pad] = nil
                 gridCollectionVC.collectionView?.reloadItems(at: [indexPath])
             }
             // prevent the pad from being played in design mode
@@ -180,6 +184,10 @@ extension GridController: ModeSwitchDelegate {
 extension GridController: AnimationDesignerDelegate {
     func animationColour(selected colour: Colour) {
         self.colour = colour
+    }
+
+    func animationClear() {
+        self.colour = nil
     }
 
     func animationTimeline(selected frame: Int) {
