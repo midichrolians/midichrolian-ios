@@ -57,7 +57,7 @@ struct AudioManager {
     }
 
     // for avAudioplayer (not system sounds)
-    mutating func initAudioTrack(audioDir: String) -> Bool {
+    private mutating func initAudioTrack(audioDir: String) -> Bool {
         guard let avTrackPlayer = AudioTrackPlayer.initAudioTrack(audioDir: audioDir) else {
             return false
         }
@@ -84,18 +84,12 @@ struct AudioManager {
 
     }
 
-    func playAudioTrack(audioDir: String, bpm: Int?) -> Bool {
+    private func playAudioTrack(audioDir: String, bpm: Int?) -> Bool {
         guard let audio = audioTrackDict[audioDir] else {
             return false
         }
         AudioTrackPlayer.playAudioTrack(audioPlayer: audio)
         return true
-    }
-
-    func hackCheckValidIndex(row: Int, col: Int) -> Bool {
-        let rowMax = Config.sound.count
-        let colMax = Config.sound[0].count
-        return row >= 0 && row < rowMax && col >= 0 && col < colMax
     }
 
     private func audioDuration(for resource: String) -> Double {
