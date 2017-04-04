@@ -10,8 +10,13 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+protocol PageDelegate: class {
+    func page(selected: Int)
+}
+
 class PageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var pages: Int = 0
+    weak var delegate: PageDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +67,10 @@ class PageCollectionViewController: UICollectionViewController, UICollectionView
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return Config.SectionInsets
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.page(selected: indexPath.row)
     }
 
 }

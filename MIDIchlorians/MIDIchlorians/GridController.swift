@@ -30,7 +30,13 @@ class GridController: UIViewController {
             grid.padGrid = currentSession.getGrid(page: currentPage)
         }
     }
-    internal var currentPage = 0
+    internal var currentPage = 0 {
+        didSet {
+            grid.padGrid = currentSession.getGrid(page: currentPage)
+            gridCollectionView.reloadData()
+            page.collectionView?.reloadData()
+        }
+    }
     // Keep the selectedIndexPath of the view controller in sync
     internal var selectedIndexPath: IndexPath? {
         didSet {
@@ -61,6 +67,7 @@ class GridController: UIViewController {
         grid.padGrid = currentSession.getGrid(page: currentPage)
         page.pages = currentSession.numPages
         super.init(nibName: nil, bundle: nil)
+        page.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -293,5 +300,11 @@ extension GridController: AnimationDesignerDelegate {
             mode: self.animationTypeCreationMode,
             anchor: indexPath
         )
+    }
+}
+
+extension GridController: PageDelegate {
+    func page(selected: Int) {
+        currentPage = selected
     }
 }
