@@ -43,6 +43,17 @@ class AnimationSequence {
         animationBitsArray[atTick] = array
     }
 
+    func removeAnimationBit(atTick: Int, animationBit: AnimationBit) {
+        guard var animationBits = animationBitsArray[atTick] else {
+            return
+        }
+        guard let indexOfAnimationBit = animationBits.index(of: animationBit) else {
+            return
+        }
+        animationBits.remove(at: indexOfAnimationBit)
+        animationBitsArray[atTick] = animationBits
+    }
+
     func next() -> [AnimationBit]? {
         if tickCounter >= animationBitsArray.count {
             return nil

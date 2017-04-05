@@ -183,6 +183,16 @@ extension GridController: PadDelegate {
             if let colour = self.colour {
                 // in design mode and we have a colour selected, so change the colour
                 // temp heck to change colour, since Pad doesn't have a colour
+                if let existingColour = grid.colours[selectedFrame][pad] {
+                    self.animationSequence.removeAnimationBit(
+                        atTick: selectedFrame,
+                        animationBit: AnimationBit(
+                            colour: existingColour,
+                            row: indexPath.section,
+                            column: indexPath.item
+                        )
+                    )
+                }
                 grid.colours[selectedFrame][pad] = colour
                 self.animationSequence.addAnimationBit(
                     atTick: selectedFrame,
@@ -192,9 +202,19 @@ extension GridController: PadDelegate {
                         column: indexPath.item
                     )
                 )
-
                 grid.collectionView?.reloadItems(at: [indexPath])
             } else {
+                guard let colourToBeRemoved = grid.colours[selectedFrame][pad] else {
+                    return
+                }
+                self.animationSequence.removeAnimationBit(
+                    atTick: selectedFrame,
+                    animationBit: AnimationBit(
+                        colour: colourToBeRemoved,
+                        row: indexPath.section,
+                        column: indexPath.item
+                    )
+                )
                 grid.colours[selectedFrame][pad] = nil
                 grid.collectionView?.reloadItems(at: [indexPath])
             }
