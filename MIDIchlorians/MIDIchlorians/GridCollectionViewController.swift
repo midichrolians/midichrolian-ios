@@ -10,7 +10,6 @@ import UIKit
 
 protocol GridDisplayDelegate: class {
     var mode: Mode { get }
-    var selectedIndexPath: IndexPath? { get }
     var frame: Int { get }
 }
 
@@ -31,11 +30,6 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
     var colours: [[Pad:Colour]] = [[:]]
     var selectedFrame: Int {
         return gridDisplayDelegate?.frame ?? 0
-    }
-
-    // currently selected pad, only used for edit mode
-    var selectedIndexPath: IndexPath? {
-        return gridDisplayDelegate?.selectedIndexPath
     }
 
     // MARK: UICollectionViewDataSource
@@ -62,7 +56,6 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             cell.columnNumber = indexPath.item
 
             // reset the styles of the cell
-            cell.unselect()
             cell.setDefaultAppearance()
             cell.clearIndicators()
 
@@ -72,23 +65,11 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
                 break
             case .editing:
                 cell.pad = pad
-
-                // if selected, highlight
-                if selectedIndexPath == indexPath {
-                    cell.setSelected()
-                } else {
-                    cell.unselect()
-                }
             case .design:
                 if let colour = colours[selectedFrame][pad] {
                     cell.animate(backgroundColour: colour.uiColor)
                 } else {
                     cell.setDefaultAppearance()
-                }
-                if selectedIndexPath == indexPath {
-                    cell.setSelected()
-                } else {
-                    cell.unselect()
                 }
             }
 

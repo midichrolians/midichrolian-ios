@@ -93,10 +93,13 @@
 		E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301A1E88EBB300801A9F /* PadDelegate.swift */; };
 		E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */; };
 		E9AD30211E8BAB8C00801A9F /* ColourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */; };
+		E9C6712E1E94B61900777846 /* SelectedPadTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */; };
+		E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712F1E94B7B100777846 /* RemoveButton.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
 		E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4A1E83A81900769A8F /* TopBarController.swift */; };
 		E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */; };
 		E9EC9A381E93F11200C89118 /* PageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */; };
+		E9EC9A3C1E94AEE800C89118 /* PadSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */; };
 		F3173AA61E8306C30095F76A /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA51E8306C30095F76A /* Animation.swift */; };
 		F3173AA81E8306D20095F76A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA71E8306D20095F76A /* Audio.swift */; };
 		F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AB81E83B1A10095F76A /* PadTests.swift */; };
@@ -222,10 +225,13 @@
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
 		E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerController.swift; sourceTree = "<group>"; };
 		E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourPicker.swift; sourceTree = "<group>"; };
+		E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPadTrackingView.swift; sourceTree = "<group>"; };
+		E9C6712F1E94B7B100777846 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
 		E9EC7C4A1E83A81900769A8F /* TopBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarController.swift; sourceTree = "<group>"; };
 		E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectorDelegate.swift; sourceTree = "<group>"; };
 		E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionViewController.swift; sourceTree = "<group>"; };
+		E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadSelection.swift; sourceTree = "<group>"; };
 		F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3173AA51E8306C30095F76A /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		F3173AA71E8306D20095F76A /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
@@ -439,7 +445,10 @@
 		E9158EAE1E86155E00B7ADF9 /* Grid */ = {
 			isa = PBXGroup;
 			children = (
+				E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */,
 				E9158EAA1E860CDB00B7ADF9 /* GridController.swift */,
+				E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */,
+				E9C6712F1E94B7B100777846 /* RemoveButton.swift */,
 				E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */,
 				E9AD301A1E88EBB300801A9F /* PadDelegate.swift */,
 				E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */,
@@ -903,6 +912,7 @@
 				E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */,
 				800362FA1E8F6EF3007813EE /* AudioTrackPlayer.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
+				E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
 				33CC26C71E891E840077F0ED /* AnimationManager.swift in Sources */,
 				F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */,
@@ -930,7 +940,9 @@
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
 				E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */,
 				33BCC5AA1E85064900D8489F /* AnimatableGrid.swift in Sources */,
+				E9C6712E1E94B61900777846 /* SelectedPadTrackingView.swift in Sources */,
 				E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */,
+				E9EC9A3C1E94AEE800C89118 /* PadSelection.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
 				33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */,
 			);
