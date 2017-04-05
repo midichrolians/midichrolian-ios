@@ -38,6 +38,7 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
 
         // Configure the cell
         cell.backgroundColor = UIColor.blue
+        cell.layer.cornerRadius = cell.frame.width / 2
 
         return cell
     }

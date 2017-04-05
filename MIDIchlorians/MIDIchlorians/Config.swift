@@ -85,7 +85,7 @@ struct Config {
 
     // Animation Designer
     static let AnimationDesignerPaneHeightOffset: CGFloat = -200
-    static let TimelineHeight: CGFloat = 60
+    static let TimelineHeight: CGFloat = 48
     static let ColourPickerHeight: CGFloat = 60
     static let TimelineTopOffset: CGFloat = 10
     static let ColourPickerTopOffset: CGFloat = 10
@@ -96,7 +96,7 @@ struct Config {
     // Timeline
     static let TimelineMinNumFrames = 8
     static let TimelineReuseIdentifier = "timeline"
-    static let TimelineInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+    static let TimelineInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     // ratio of height for unselected over selected frame in timeline
     static let TimelineUnselectedFrameRatio: CGFloat = 0.7
 

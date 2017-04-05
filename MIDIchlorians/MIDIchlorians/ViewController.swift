@@ -123,10 +123,11 @@ class ViewController: UIViewController {
 
     private func setUpAnimationDesigner() {
         animationDesignController = AnimationDesignerController()
+        animationDesignController.view.backgroundColor = Config.SecondaryBackgroundColor
         animationDesignController.view.frame =
-            CGRect(x: view.frame.minX + Config.AppLeftPadding,
+            CGRect(x: view.frame.minX,
                    y: view.frame.height * Config.MainViewHeightToAnimMinYRatio,
-                   width: view.frame.width * Config.MainViewWidthToAnimWidthRatio,
+                   width: view.frame.width - Config.SidePaneWidth,
                    height: view.frame.height * Config.MainViewHeightToAnimHeightRatio)
     }
 
