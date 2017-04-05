@@ -76,16 +76,6 @@ class GridCollectionViewCell: UICollectionViewCell, PadView {
         sampleLabel.text = nil
         animationLabel.text = nil
     }
-
-    // This cell is selected in the edit mode
-    func setSelected() {
-        layer.borderColor = UIColor.red.cgColor
-        layer.borderWidth = 3.0
-    }
-
-    func unselect() {
-        layer.borderWidth = 0.0
-    }
 }
 
 extension GridCollectionViewCell: AnimatablePad {

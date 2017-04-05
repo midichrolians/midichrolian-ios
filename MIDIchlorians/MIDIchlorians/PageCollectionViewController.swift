@@ -46,6 +46,7 @@ class PageCollectionViewController: UICollectionViewController, UICollectionView
 
         // Configure the cell
         cell.backgroundColor = UIColor.blue
+        cell.backgroundView = UIImageView(image: UIImage(named: "padplay.png"))
 
         return cell
     }

@@ -18,11 +18,12 @@ class GridController: UIViewController {
         didSet {
             // when entering playing or design, reset the selected index path
             if mode == .playing {
-                selectedIndexPath = nil
                 resetRemoveButton()
+                padSelection.position(at: nil)
             }
         }
     }
+    private var padSelection = PadSelection()
     weak var padDelegate: PadDelegate?
 
     internal var currentSession: Session! {
@@ -41,6 +42,7 @@ class GridController: UIViewController {
     internal var selectedIndexPath: IndexPath? {
         didSet {
             if mode == .editing {
+                padSelection.position(at: selectedIndexPath)
                 showRemoveSampleButton(forPadAt: selectedIndexPath)
             }
             if let prev = oldValue {
@@ -68,6 +70,7 @@ class GridController: UIViewController {
         page.pages = currentSession.numPages
         super.init(nibName: nil, bundle: nil)
         page.delegate = self
+        padSelection.viewController = grid
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -111,6 +114,8 @@ class GridController: UIViewController {
         grid.gridDisplayDelegate = self
 
         view.addSubview(removeSampleView)
+
+        view.addSubview(padSelection)
     }
 
     func getPad(at indexPath: IndexPath) -> Pad {
