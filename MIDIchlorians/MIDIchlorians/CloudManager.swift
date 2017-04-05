@@ -54,33 +54,43 @@ class CloudManager {
     }
 
     private func loadAnimations() {
-        let json = Data()
-        guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: [])) as? [String: Any] else {
-            return
-        }
-        for (_, jsonString) in dictionary {
-            guard let animationJSON = jsonString as? String else {
-                continue
+        let filePath = "/\(Config.AnimationFileName)/\(Config.AnimationExt)"
+        client?.files.download(path: filePath).response { response, error in
+            guard let result = response else {
+                return
             }
-            _ = dataManager.saveAnimation(animationJSON)
+            let json = result.1
+            guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: [])) as? [String: Any] else {
+                return
+            }
+            for (_, jsonString) in dictionary {
+                guard let animationJSON = jsonString as? String else {
+                    continue
+                }
+                _ = self.dataManager.saveAnimation(animationJSON)
+            }
         }
-
     }
 
     private func loadSessions() {
-        let json = Data()
-        guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: [])) as? [String: Any] else {
-            return
-        }
-        for (name, object) in dictionary {
-            guard let sessionName = name as? String,
-                let sessionData = object as? Data else {
+        let filePath = "/\(Config.SessionFileName)/\(Config.SessionExt)"
+        client?.files.download(path: filePath).response { response, error in
+            guard let result = response else {
+                return
+            }
+            let json = result.1
+            guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: [])) as? [String: Any] else {
+                return
+            }
+            for (sessionName, object) in dictionary {
+                guard let sessionData = object as? Data else {
                     continue
+                }
+                guard let session = Session(json: sessionData) else {
+                    continue
+                }
+                _ = self.dataManager.saveSession(sessionName, session)
             }
-            guard let session = Session(json: sessionData) else {
-                continue
-            }
-            _ = dataManager.saveSession(sessionName, session)
         }
 
     }
