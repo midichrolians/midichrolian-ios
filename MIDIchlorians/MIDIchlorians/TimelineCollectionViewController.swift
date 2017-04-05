@@ -11,13 +11,6 @@ import UIKit
 private let reuseIdentifier = "timeline"
 let inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
-protocol TimelineDelegate: class {
-    var frame: [Bool] { get }
-    var selectedIndex: Int { get }
-
-    func timeline(selected: IndexPath)
-}
-
 class TimelineCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var minNumFrames = 8
     weak var timelineDelegate: TimelineDelegate?
