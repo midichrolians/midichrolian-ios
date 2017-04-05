@@ -16,7 +16,6 @@ class TimelineView: UIView {
 
     var frames: [Bool] = [] {
         didSet {
-            print(frames)
             setNeedsDisplay()
         }
     }
