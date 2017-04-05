@@ -48,8 +48,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        //Initalise dropbox client
-        DropboxClientsManager.setupWithAppKey("8a5t7h2dpsfjunc")
+
+        //Get app keys
+        var keys: NSDictionary?
+
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+    
+        if let applicationId = keys?["DropboxAppId"] as? String {
+            //Initalise dropbox client
+            DropboxClientsManager.setupWithAppKey(applicationId)
+        } else {
+            print("Cannot find dropbox key")
+        }
 
         // Try to find a session that was last loaded
         // if not loaded should create an empty session

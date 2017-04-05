@@ -133,7 +133,7 @@ class CloudManager {
             return
         }
 
-        let filePath = "/\(Config.AnimationFileName)/\(Config.AnimationExt))"
+        let filePath = "/\(Config.AnimationFileName).\(Config.AnimationExt)"
         client?.files.upload(path: filePath, input: jsonData)
 
     }
@@ -151,8 +151,12 @@ class CloudManager {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else {
             return
         }
-        let filePath = "/\(Config.SessionFileName)/\(Config.SessionExt))"
-        client?.files.upload(path: filePath, input: jsonData)
+        let filePath = "/\(Config.SessionFileName).\(Config.SessionExt)"
+        print(filePath)
+        client?.files.upload(path: filePath, input: jsonData).response{ response, error in
+            print(response)
+            print(error)
+        }
 
     }
 

@@ -233,5 +233,4 @@ class Session: Object {
         }
         return json
     }
-    
 }
