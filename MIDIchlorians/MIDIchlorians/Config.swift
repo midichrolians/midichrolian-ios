@@ -91,6 +91,9 @@ struct Config {
     static let ClearSwitchLabelLeftOffset: CGFloat = 40
     static let ClearSwitchLeftOffset: CGFloat = 10
 
+    static let RemoveButtonOffset: CGFloat = 10
+    static let RemoveButtonWidth: CGFloat = 32
+
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
     static let AnimationTableReuseIdentifier = "animationCell"

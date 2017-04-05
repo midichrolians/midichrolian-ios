@@ -45,7 +45,8 @@ class PageCollectionViewController: UICollectionViewController, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
         // Configure the cell
-        cell.backgroundColor = UIColor.blue
+        cell.backgroundColor = UIColor.clear
+        cell.tintColor = UIColor.white
         cell.backgroundView = UIImageView(image: UIImage(named: "padplay.png"))
 
         return cell
