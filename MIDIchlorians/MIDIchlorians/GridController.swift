@@ -13,17 +13,17 @@ import UIKit
 class GridController: UIViewController {
     // used for animations
     internal var selectedFrame: Int = 0
-    private var removeSampleView: UIButton = UIButton()
     var mode: Mode = .playing {
         didSet {
             // when entering playing or design, reset the selected index path
             if mode == .playing {
-                resetRemoveButton()
                 padSelection.position(at: nil)
+                removeButton.position(at: nil)
             }
         }
     }
     private var padSelection = PadSelection()
+    private var removeButton = RemoveButton()
     weak var padDelegate: PadDelegate?
 
     internal var currentSession: Session! {
@@ -43,7 +43,12 @@ class GridController: UIViewController {
         didSet {
             if mode == .editing {
                 padSelection.position(at: selectedIndexPath)
-                showRemoveSampleButton(forPadAt: selectedIndexPath)
+                // only show if pad has audio selected
+                if selectedPad?.getAudioFile() != nil {
+                    removeButton.position(at: selectedIndexPath)
+                } else {
+                    removeButton.position(at: nil)
+                }
             }
             if let prev = oldValue {
                 gridCollectionView.reloadItems(at: [prev])
@@ -52,6 +57,12 @@ class GridController: UIViewController {
                 gridCollectionView.reloadItems(at: [cur])
             }
         }
+    }
+    internal var selectedPad: Pad? {
+        guard let indexPath = selectedIndexPath else {
+            return nil
+        }
+        return getPad(at: indexPath)
     }
     internal var grid: GridCollectionViewController! = GridCollectionViewController(
         collectionViewLayout: UICollectionViewFlowLayout())
@@ -66,11 +77,13 @@ class GridController: UIViewController {
 
     init(frame: CGRect, session: Session) {
         currentSession = session
+        super.init(nibName: nil, bundle: nil)
         grid.padGrid = currentSession.getGrid(page: currentPage)
         page.pages = currentSession.numPages
-        super.init(nibName: nil, bundle: nil)
+        grid.gridDisplayDelegate = self
         page.delegate = self
         padSelection.viewController = grid
+        removeButton.viewController = grid
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -85,70 +98,42 @@ class GridController: UIViewController {
     override func loadView() {
         view = UIView()
 
+        // set up pad selection view
+        // added first because this will be behind the grid so it won't block multitouch
+        view.addSubview(padSelection)
+
+        // set up grid collection view
         gridCollectionView = GridCollectionView(frame: CGRect.zero,
                                                 collectionViewLayout: grid.collectionViewLayout)
         grid.collectionView = gridCollectionView
-
-        grid.collectionView!.backgroundColor = Config.BackgroundColor
-
+        // we want the pad selection to show through
+        gridCollectionView.backgroundColor = UIColor.clear
         gridCollectionView.register(GridCollectionViewCell.self,
                                     forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
-
-        removeSampleView.setTitle("X", for: .normal)
-        removeSampleView.backgroundColor = UIColor.blue
-
         gridCollectionView.padDelegate = self
         view.addSubview(grid.view)
 
+        // set up page collection view
         view.addSubview(page.view)
+        page.collectionView!.backgroundColor = Config.BackgroundColor
+
+        // set up remove button
+        view.addSubview(removeButton)
+        removeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeSample)))
+
+        // set up constraints
         page.view.snp.makeConstraints { make in
             make.top.right.bottom.equalTo(view)
             make.width.equalTo(view).multipliedBy(1.0/9.0).offset(-Config.ItemInsets.right)
         }
-        page.collectionView!.backgroundColor = Config.BackgroundColor
-
         grid.view.snp.makeConstraints { make in
             make.top.left.bottom.equalTo(view)
             make.right.equalTo(page.view.snp.left)
         }
-        grid.gridDisplayDelegate = self
-
-        view.addSubview(removeSampleView)
-
-        view.addSubview(padSelection)
     }
 
     func getPad(at indexPath: IndexPath) -> Pad {
         return self.currentSession.getPad(page: currentPage, indexPath: indexPath)
-    }
-
-    // Resets the position of the remove sample button
-    private func resetRemoveButton() {
-        removeSampleView.frame = CGRect.zero
-    }
-
-    func showRemoveSampleButton(forPadAt indexPath: IndexPath?) {
-        guard let indexPath = indexPath else {
-            resetRemoveButton()
-            return
-        }
-        let pad = getPad(at: indexPath)
-        guard pad.getAudioFile() != nil else {
-            resetRemoveButton()
-            return
-        }
-        // first see if the pad has a sample assinged
-        guard let cell = grid.collectionView(
-            grid.collectionView!, cellForItemAt: indexPath) as? GridCollectionViewCell else {
-                return
-        }
-
-        let cellFrame = cell.frame
-        removeSampleView.frame = CGRect(x: cellFrame.minX - 5,
-                                        y: cellFrame.minY - 5,
-                                        width: cellFrame.width / 3,
-                                        height: cellFrame.width / 3)
-        removeSampleView.addTarget(self, action: #selector(removeSample), for: .touchDown)
     }
 
     func removeSample() {

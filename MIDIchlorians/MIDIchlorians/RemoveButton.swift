@@ -1,5 +1,5 @@
 //
-//  PadSelection.swift
+//  RemoveButton.swift
 //  MIDIchlorians
 //
 //  Created by Zhi An Ng on 5/4/17.
@@ -8,15 +8,17 @@
 
 import UIKit
 
-// Shows a selection around a cell
-class PadSelection: SelectedPadTrackingView {
+class RemoveButton: SelectedPadTrackingView {
+    var button = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         isOpaque = false
-        layer.borderColor = UIColor.green.cgColor
-        layer.borderWidth = 3.0
+        backgroundColor = UIColor.blue
         layer.cornerRadius = 5.0
+
+        button.setTitle("X", for: .normal)
+        self.addSubview(button)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -26,10 +28,11 @@ class PadSelection: SelectedPadTrackingView {
     override func calculateOffset(relativeTo cell: UICollectionViewCell) -> CGRect {
         // This selection should look like a border around the cell
         // need to offset the frame by some pixels, increase the width
-        let offset = layer.borderWidth + 2
+        let offset: CGFloat = 10
         return CGRect(x: cell.frame.minX - offset,
                       y: cell.frame.minY - offset,
-                      width: cell.frame.width + offset * 2,
-                      height: cell.frame.height + offset * 2)
+                      width: cell.frame.width * 1 / 3,
+                      height: cell.frame.height * 1 / 3)
     }
+
 }
