@@ -104,6 +104,7 @@
 		E9EC9A381E93F11200C89118 /* PageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */; };
 		E9EC9A3C1E94AEE800C89118 /* PadSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */; };
 		E9EF70801E953FB100234910 /* ColourPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EF707F1E953FB100234910 /* ColourPickerDelegate.swift */; };
+		E9EF70821E95447800234910 /* ColourSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EF70811E95447800234910 /* ColourSelection.swift */; };
 		F3173AA61E8306C30095F76A /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA51E8306C30095F76A /* Animation.swift */; };
 		F3173AA81E8306D20095F76A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA71E8306D20095F76A /* Audio.swift */; };
 		F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AB81E83B1A10095F76A /* PadTests.swift */; };
@@ -240,6 +241,7 @@
 		E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionViewController.swift; sourceTree = "<group>"; };
 		E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadSelection.swift; sourceTree = "<group>"; };
 		E9EF707F1E953FB100234910 /* ColourPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourPickerDelegate.swift; sourceTree = "<group>"; };
+		E9EF70811E95447800234910 /* ColourSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourSelection.swift; sourceTree = "<group>"; };
 		F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3173AA51E8306C30095F76A /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		F3173AA71E8306D20095F76A /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */,
 				E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */,
 				E9EF707F1E953FB100234910 /* ColourPickerDelegate.swift */,
+				E9EF70811E95447800234910 /* ColourSelection.swift */,
 			);
 			name = "Animation Designer";
 			sourceTree = "<group>";
@@ -908,6 +911,7 @@
 				E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */,
 				F32A4CE51E8595F700FF8F1F /* SessionName.swift in Sources */,
 				F3173AA61E8306C30095F76A /* Animation.swift in Sources */,
+				E9EF70821E95447800234910 /* ColourSelection.swift in Sources */,
 				E9EC9A381E93F11200C89118 /* PageCollectionViewController.swift in Sources */,
 				E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */,
 				E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */,

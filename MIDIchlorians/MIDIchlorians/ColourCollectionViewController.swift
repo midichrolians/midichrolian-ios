@@ -45,11 +45,6 @@ class ColourCollectionViewController: UICollectionViewController, UICollectionVi
             return cell
         }
 
-//        if colourDelegate?.selectedColour == colour {
-//            cell.layer.borderColor = UIColor.blue.cgColor
-//            cell.layer.borderWidth = 5.0
-//        }
-//
         print("cell frame: \(cell.frame)")
 
         cell.backgroundView = UIImageView(image: colour.image)
@@ -63,7 +58,7 @@ class ColourCollectionViewController: UICollectionViewController, UICollectionVi
         guard let colour = colourDelegate?.colours[indexPath.row] else {
             return
         }
-        colourDelegate?.colour(selected: colour)
+        colourDelegate?.colour(selected: colour, indexPath: indexPath)
     }
 
     func collectionView(_ collectionView: UICollectionView,

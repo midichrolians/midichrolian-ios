@@ -10,7 +10,6 @@ import Foundation
 
 protocol ColourPickerDelegate: class {
     var colours: [Colour] { get }
-    var selectedColour: Colour { get }
 
-    func colour(selected: Colour)
+    func colour(selected: Colour, indexPath: IndexPath)
 }

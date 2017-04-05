@@ -22,6 +22,7 @@ class AnimationDesignerController: UIViewController {
 
     private var colourLabel: UILabel!
     internal var colourPicker: ColourCollectionViewController!
+    internal var colourSelection = ColourSelection()
 
     private var timelineLabel: UILabel!
     internal var timeline: TimelineCollectionViewController!
@@ -58,8 +59,13 @@ class AnimationDesignerController: UIViewController {
 
         colourPicker = ColourCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         colourPicker.colourDelegate = self
-        timeline.collectionView?.backgroundColor = UIColor.clear
+        colourPicker.collectionView?.backgroundColor = UIColor.clear
         view.addSubview(colourPicker.view)
+
+        colourSelection.viewController = colourPicker
+        colourPicker.view.insertSubview(colourSelection, belowSubview: colourPicker.collectionView!)
+        // view.insertSubview(colourSelection, belowSubview: colourPicker.view)
+        colourSelection.position(at: nil)
 
         clearLabel = UILabel()
         clearLabel.text = "Clear"
@@ -184,8 +190,10 @@ extension AnimationDesignerController: ColourPickerDelegate {
         return Colour.allColours
     }
 
-    func colour(selected colour: Colour) {
+    func colour(selected colour: Colour, indexPath: IndexPath) {
+        delegate?.animationColour(selected: colour)
         selectedColour = colour
         colourPicker.collectionView?.reloadData()
+        colourSelection.position(at: indexPath)
     }
 }
