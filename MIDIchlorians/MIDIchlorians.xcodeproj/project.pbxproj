@@ -95,7 +95,6 @@
 		E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */; };
 		E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301A1E88EBB300801A9F /* PadDelegate.swift */; };
 		E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */; };
-		E9AD30211E8BAB8C00801A9F /* ColourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */; };
 		E9C6712E1E94B61900777846 /* SelectedPadTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */; };
 		E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712F1E94B7B100777846 /* RemoveButton.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
@@ -232,7 +231,6 @@
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
 		E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerController.swift; sourceTree = "<group>"; };
-		E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourPicker.swift; sourceTree = "<group>"; };
 		E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPadTrackingView.swift; sourceTree = "<group>"; };
 		E9C6712F1E94B7B100777846 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
@@ -532,7 +530,6 @@
 				E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */,
 				E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */,
 				E956AD761E8C0E8000CA60BF /* TimelineView.swift */,
-				E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */,
 				E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */,
 				E9EF707F1E953FB100234910 /* ColourPickerDelegate.swift */,
 				E9EF70811E95447800234910 /* ColourSelection.swift */,
@@ -926,7 +923,6 @@
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
 				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
 				33BCC5AC1E85067A00D8489F /* AnimatablePad.swift in Sources */,
-				E9AD30211E8BAB8C00801A9F /* ColourPicker.swift in Sources */,
 				E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */,
 				E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */,
 				800362FA1E8F6EF3007813EE /* AudioTrackPlayer.swift in Sources */,
