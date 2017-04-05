@@ -15,6 +15,20 @@ class GridCollectionViewCell: UICollectionViewCell, PadView {
     var sampleLabel: UILabel!
     var animationLabel: UILabel!
     var imageView: UIImageView!
+    var pad: Pad? {
+        didSet {
+            guard let pad = pad else {
+                clearIndicators()
+                return
+            }
+            if let sample = pad.getAudioFile() {
+                assign(sample: sample)
+            }
+            if let animation = pad.getAnimation() {
+                assign(animation: animation)
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

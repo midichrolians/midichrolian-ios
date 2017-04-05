@@ -14,7 +14,12 @@ class TimelineView: UIView {
     private let fullCircle: CGFloat = CGFloat(2 * M_PI)
     internal var selectedFrameIndex: Int?
 
-    var frames: [Bool] = []
+    var frames: [Bool] = [] {
+        didSet {
+            print(frames)
+            setNeedsDisplay()
+        }
+    }
     let colours = [
         UIColor.blue, UIColor.red,
         UIColor.blue, UIColor.red,
