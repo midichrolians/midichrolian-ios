@@ -1,15 +1,21 @@
 import UIKit
 
 class AnimationEngine: NSObject {
-
     static var updater: CADisplayLink!
+
+    private static var bpm: Int = Config.defaultBPM
     private static var temporaryVariableForAnimationArea: AnimatableGrid?
+
     static var animationArea: AnimatableGrid? {
         get { return temporaryVariableForAnimationArea }
         set { temporaryVariableForAnimationArea = newValue }
     }
     static var animationSequences = [AnimationSequence]()
     static var previousAnimatedIndexPaths = [IndexPath]()
+
+    static func set(beatsPerMinute: Int) {
+        bpm = beatsPerMinute
+    }
 
     static func set(animationGrid: AnimatableGrid) {
         animationArea = animationGrid
@@ -25,7 +31,7 @@ class AnimationEngine: NSObject {
 
     static func start() {
         updater = CADisplayLink(target: self, selector: #selector(animationLoop))
-        updater.preferredFramesPerSecond = Config.animationFrequency
+        updater.preferredFramesPerSecond = (self.bpm * BeatFrequency.max) / Config.numberOfSecondsInMinute
         updater.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
 
@@ -50,7 +56,7 @@ class AnimationEngine: NSObject {
         previousAnimatedIndexPaths = [IndexPath]()
         for index in 0..<animationSequences.count {
             let animationSequence = animationSequences[index]
-            guard let animationSequenceBits = animationSequence.next() else {
+            guard let animationSequenceBits = animationSequence.nextFrame() else {
                 animationSequence.toBeRemoved = true
                 continue
             }

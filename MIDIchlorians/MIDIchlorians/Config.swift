@@ -14,7 +14,7 @@ struct Config {
     static let numberOfRows = 6
     static let numberOfColumns = 8
     static let numberOfPages = 6
-    static let animationFrequency = 16
+    static let numberOfSecondsInMinute = 60
     static let defaultBPM = 120
 
     static let audioSetting = AudioPlayerSetting.audioServices
@@ -113,6 +113,7 @@ struct Config {
 
     static let animationSequenceArrayKey = "animationBitsArray"
     static let animationSequenceNameKey = "name"
+    static let animationSequenceFrequencyKey = "frequencyPerBeat"
 
     static let animationTypeSpreadName = "Spread"
     static let animationTypeSparkName = "Spark"

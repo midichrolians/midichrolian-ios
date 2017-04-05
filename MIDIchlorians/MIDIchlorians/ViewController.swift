@@ -142,6 +142,7 @@ class ViewController: UIViewController {
     // Sets up the animation engine
     private func setUpAnimation() {
         AnimationEngine.set(animationGrid: gridController.gridCollectionView)
+        AnimationEngine.set(beatsPerMinute: Config.defaultBPM)
         AnimationEngine.start()
     }
 
