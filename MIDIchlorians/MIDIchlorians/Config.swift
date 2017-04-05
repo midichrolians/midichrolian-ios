@@ -16,6 +16,8 @@ struct Config {
     static let numberOfPages = 6
     static let numberOfSecondsInMinute = 60
     static let defaultBPM = 120
+
+    static let audioSetting = AudioPlayerSetting.audioServices
     static let sound = [
         [
             "AWOLNATION - Sail", "AWOLNATION - Sail-1",
@@ -68,7 +70,9 @@ struct Config {
     static let MainViewHeightToAnimHeightRatio: CGFloat = 1 / 4
     static let MainViewWidthToAnimWidthRatio: CGFloat = 7 / 12
 
-    static let SectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+    static let SidePaneWidth: CGFloat = 320
+
+    static let SectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     // will be removed once we move to constraints

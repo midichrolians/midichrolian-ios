@@ -15,12 +15,14 @@ class DataManager {
     private var sessionNames: Set<String>
     private var animationStrings: Set<String>
     private var audioStrings: Set<String>
+    private var lastSessionName: String?
 
     //TODO: REALM INIT CAN FAIL
     init() {
         // Not sure if this line should always be there
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
-        self.realm = try? Realm()
+        realm = try? Realm()
+        lastSessionName = nil
         sessionNames = Set<String>()
         animationStrings = Set<String>()
         audioStrings = Set<String>()
@@ -36,6 +38,7 @@ class DataManager {
         for sessionName in sessionNames {
             if let sessionNameString = sessionName.getSessionName() {
                 self.sessionNames.insert(sessionNameString)
+                self.lastSessionName = sessionNameString
             }
         }
     }
@@ -66,17 +69,14 @@ class DataManager {
         var savedSession = session
         if session.getSessionName() != nil {
             savedSession = Session(session: session)
-            savedSession.prepareForSave(sessionName: sessionName)
-        } else {
-            savedSession.prepareForSave(sessionName: sessionName)
         }
+        savedSession.prepareForSave(sessionName: sessionName)
 
         do {
             if !sessionNames.contains(sessionName) {
                 try realm?.write { realm?.add(SessionName(sessionName)) }
             }
             try realm?.write { realm?.add(savedSession, update: true) }
-
         } catch {
             return nil
         }
@@ -84,8 +84,24 @@ class DataManager {
         if !sessionNames.contains(sessionName) {
             self.sessionNames.insert(sessionName)
         }
-
+        lastSessionName = sessionName
         return Session(session: session)
+    }
+
+    func editSessionName(oldSessionName: String, newSessionName: String) -> Bool {
+        guard sessionNames.contains(oldSessionName) else {
+            return false
+        }
+
+        guard let session = loadSession(oldSessionName) else {
+            return false
+        }
+
+        guard removeSession(oldSessionName) else {
+            return false
+        }
+
+        return saveSession(newSessionName, session) != nil
     }
 
     func removeSession(_ sessionName: String) -> Bool {
@@ -98,7 +114,8 @@ class DataManager {
                 return false
             }
 
-            if let sessionNameObject = realm?.object(ofType: SessionName.self, forPrimaryKey: sessionName) {
+            if let sessionNameObject = realm?.object(ofType: SessionName.self,
+                                                     forPrimaryKey: sessionName) {
                 try realm?.write { realm?.delete(sessionNameObject) }
             }
 
@@ -233,5 +250,13 @@ class DataManager {
 
     func loadAllAudioStrings() -> [String] {
         return Array(audioStrings)
+    }
+
+    func loadLastSession() -> Session? {
+        if let lastSessionName = self.lastSessionName {
+            return loadSession(lastSessionName)
+        } else {
+            return nil
+        }
     }
 }

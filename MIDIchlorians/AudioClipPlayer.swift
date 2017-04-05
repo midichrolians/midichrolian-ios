@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AudioToolbox
+import AVFoundation
 //perferbably 30 seconds or shorter only
 //need to check if have problems with longer clips
 
@@ -15,6 +15,7 @@ struct AudioClipPlayer {
 
     //creates ID and returns it to be mapped
     static func initAudioClip(audioDir: String, ext: String = "wav") -> UInt32? {
+
         guard let soundURL = Bundle.main.url(forResource: audioDir, withExtension: ext) else {
             return nil
         }

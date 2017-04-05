@@ -12,7 +12,12 @@ import UIKit
 class AnimationTableViewController: UITableViewController {
     weak var delegate: AnimationTableDelegate?
 
-    internal let animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+    internal var animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
@@ -23,6 +28,8 @@ class AnimationTableViewController: UITableViewController {
                                        image: UIImage(named: Config.SidePaneTabBarAnimationIcon),
                                        selectedImage: UIImage(named: Config.SidePaneTabBarAnimationIcon))
         tableView.separatorStyle = .none
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -82,6 +89,11 @@ class AnimationTableViewController: UITableViewController {
 
     func newAnimation() {
         delegate?.addAnimation(tableView)
+    }
+
+    func refresh() {
+        animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+        refreshControl?.endRefreshing()
     }
 
 }

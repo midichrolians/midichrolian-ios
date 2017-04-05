@@ -12,13 +12,14 @@ class TimelineView: UIView {
     // a data structure of animation frames
     // keep track of which frame is selected currently and show it differently
     private let fullCircle: CGFloat = CGFloat(2 * M_PI)
-    private var selectedFrameIndex: Int?
-    let frames: [Bool] = [
-        true, false,
-        true, false,
-        true, false,
-        true, false
-    ]
+    internal var selectedFrameIndex: Int?
+
+    var frames: [Bool] = [] {
+        didSet {
+            print(frames)
+            setNeedsDisplay()
+        }
+    }
     let colours = [
         UIColor.blue, UIColor.red,
         UIColor.blue, UIColor.red,
@@ -50,7 +51,7 @@ class TimelineView: UIView {
             path.fill()
             path.stroke()
 
-            if frames[i] {
+            if i < frames.count && frames[i] {
                 // if frames have animation data, stroke a circle
                 let ctr = CGPoint(x: CGFloat(i) * width + (width / 2), y : height / 2)
                 let dot = UIBezierPath()

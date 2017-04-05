@@ -16,10 +16,11 @@ class AnimationDesignerController: UIViewController {
 
     // require animation data
     private var colourPicker: ColourPicker!
-    private var timelineView: TimelineView!
+    internal var timelineView: TimelineView!
     private var animationTypeSegmentedControl: UISegmentedControl!
     private var clearLabel: UILabel!
     private var clearSwitch: UISwitch!
+    private var saveButton: UIButton!
 
     private var tapGesture: UITapGestureRecognizer?
     private var selectedColour: Colour? {
@@ -58,6 +59,11 @@ class AnimationDesignerController: UIViewController {
         clearSwitch.addTarget(self, action: #selector(clearSwitchToggle(clearSwitch:)), for: .valueChanged)
         view.addSubview(clearSwitch)
 
+        saveButton = UIButton(type: .custom)
+        saveButton.setTitle("Save Animation", for: .normal)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchDown)
+        view.addSubview(saveButton)
+
         setConstraints()
         addGestures()
     }
@@ -91,6 +97,12 @@ class AnimationDesignerController: UIViewController {
         clearSwitch.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(clearLabel.snp.right).offset(Config.ClearSwitchLeftOffset)
             make.centerY.equalTo(clearLabel)
+        }
+
+        saveButton.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(clearSwitch.snp.right).offset(20)
+            make.centerY.equalTo(clearSwitch)
+            make.height.equalTo(clearSwitch)
         }
     }
 
@@ -136,5 +148,15 @@ class AnimationDesignerController: UIViewController {
         if clearSwitch.isOn {
             delegate?.animationClear()
         }
+    }
+
+    func saveButtonTapped() {
+        delegate?.saveAnimation()
+    }
+}
+
+extension AnimationDesignerController: PadDelegate {
+    func pad(animationUpdated animation: AnimationSequence) {
+        timelineView.frames = animation.animationBitsArray.map { ($0?.count ?? 0) > 0 }
     }
 }
