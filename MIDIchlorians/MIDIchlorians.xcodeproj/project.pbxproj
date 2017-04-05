@@ -88,7 +88,6 @@
 		E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */; };
 		E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */; };
 		E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */; };
-		E956AD771E8C0E8000CA60BF /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E956AD761E8C0E8000CA60BF /* TimelineView.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E99E8A491E800BA8001F9351 /* TopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
@@ -225,7 +224,6 @@
 		E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
 		E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableDelegate.swift; sourceTree = "<group>"; };
 		E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableDelegate.swift; sourceTree = "<group>"; };
-		E956AD761E8C0E8000CA60BF /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		E99E8A481E800BA8001F9351 /* TopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopNavigationBar.swift; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
@@ -526,10 +524,9 @@
 			isa = PBXGroup;
 			children = (
 				E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */,
+				E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */,
 				E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */,
 				E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */,
-				E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */,
-				E956AD761E8C0E8000CA60BF /* TimelineView.swift */,
 				E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */,
 				E9EF707F1E953FB100234910 /* ColourPickerDelegate.swift */,
 				E9EF70811E95447800234910 /* ColourSelection.swift */,
@@ -943,7 +940,6 @@
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */,
 				E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */,
-				E956AD771E8C0E8000CA60BF /* TimelineView.swift in Sources */,
 				E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
 				80299E811E88F8DF00CEB465 /* AudioType.swift in Sources */,
