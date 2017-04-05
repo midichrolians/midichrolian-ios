@@ -16,13 +16,16 @@ class AnimationDesignerController: UIViewController {
 
     // require animation data
     private var colourPicker: ColourPicker!
-    internal var timelineView: TimelineView!
     private var animationTypeSegmentedControl: UISegmentedControl!
     private var clearLabel: UILabel!
     private var clearSwitch: UISwitch!
     private var saveButton: UIButton!
 
-    private var tapGesture: UITapGestureRecognizer?
+    private var colourLabel: UILabel!
+
+    private var timelineLabel: UILabel!
+    internal var timeline: TimelineCollectionViewController!
+
     private var selectedColour: Colour? {
         didSet {
             colourPicker.selectedColour = selectedColour
@@ -31,8 +34,21 @@ class AnimationDesignerController: UIViewController {
             }
         }
     }
+    internal var frames: [Bool] = []
+    internal var selectedFrame = 0
 
     override func viewDidLoad() {
+        timelineLabel = UILabel()
+        timelineLabel.text = "Animation timeline"
+        timelineLabel.textColor = UIColor.white
+        view.addSubview(timelineLabel)
+
+        timeline = TimelineCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        timeline.timelineDelegate = self
+        timeline.collectionView?.backgroundColor = UIColor.clear
+
+        view.addSubview(timeline.view)
+
         animationTypeSegmentedControl = UISegmentedControl(items: AnimationTypeCreationMode.allValues())
 
         animationTypeSegmentedControl.selectedSegmentIndex = 0
@@ -42,13 +58,14 @@ class AnimationDesignerController: UIViewController {
 
         view.addSubview(animationTypeSegmentedControl)
 
+        colourLabel = UILabel()
+        colourLabel.text = "Colour palette"
+        colourLabel.textColor = UIColor.white
+        view.addSubview(colourLabel)
+
         colourPicker = ColourPicker()
         colourPicker.backgroundColor = Config.BackgroundColor
         view.addSubview(colourPicker)
-
-        timelineView = TimelineView()
-        timelineView.backgroundColor = Config.BackgroundColor
-        view.addSubview(timelineView)
 
         clearLabel = UILabel()
         clearLabel.text = "Clear"
@@ -69,19 +86,29 @@ class AnimationDesignerController: UIViewController {
     }
 
     private func setConstraints() {
-        timelineView.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(view.snp.left)
+        timelineLabel.snp.makeConstraints { make in
+            make.left.equalTo(view)
+            make.centerY.equalTo(timeline.view)
+        }
+
+        timeline.view.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(timelineLabel.snp.right).offset(20)
             make.right.equalTo(view.snp.right)
             make.height.equalTo(Config.TimelineHeight)
-            make.top.equalTo(view.snp.top).offset(Config.TimelineTopOffset)
+            make.top.equalTo(view.snp.top)
+        }
+
+        colourLabel.snp.makeConstraints { make in
+            make.left.equalTo(view)
+            make.centerY.equalTo(colourPicker)
+            make.width.equalTo(timelineLabel)
         }
 
         colourPicker.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(view.snp.left)
+            make.left.equalTo(colourLabel.snp.right).offset(20)
             make.right.equalTo(view.snp.right)
-
             make.height.equalTo(Config.ColourPickerHeight)
-            make.top.equalTo(timelineView.snp.bottom).offset(Config.ColourPickerTopOffset)
+            make.top.equalTo(timeline.view.snp.bottom).offset(Config.ColourPickerTopOffset)
         }
 
         animationTypeSegmentedControl.snp.makeConstraints { (make) -> Void in
@@ -107,18 +134,8 @@ class AnimationDesignerController: UIViewController {
     }
 
     private func addGestures() {
-        timelineView.addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(timelineTap(recognizer:))))
-
         colourPicker.addGestureRecognizer(
             UITapGestureRecognizer(target: self, action: #selector(colourPickerTap(recognizer:))))
-    }
-
-    func timelineTap(recognizer: UITapGestureRecognizer) {
-        let loc = recognizer.location(in: timelineView)
-        if let frameIndex = timelineView.frameIndex(at: loc) {
-            delegate?.animationTimeline(selected: frameIndex)
-        }
     }
 
     func colourPickerTap(recognizer: UITapGestureRecognizer) {
@@ -157,6 +174,24 @@ class AnimationDesignerController: UIViewController {
 
 extension AnimationDesignerController: PadDelegate {
     func pad(animationUpdated animation: AnimationSequence) {
-        timelineView.frames = animation.animationBitsArray.map { ($0?.count ?? 0) > 0 }
+        frames = animation.animationBitsArray.map { ($0?.count ?? 0) > 0 }
     }
+}
+
+extension AnimationDesignerController: TimelineDelegate {
+    internal var frame: [Bool] {
+        return frames
+    }
+
+    internal var selectedIndex: Int {
+        return selectedFrame
+    }
+
+    func timeline(selected: IndexPath) {
+        selectedFrame = selected.row
+        timeline.collectionView?.setNeedsLayout()
+        timeline.collectionView?.reloadData()
+        delegate?.animationTimeline(selected: selected.row)
+    }
+
 }

@@ -72,6 +72,7 @@
 		E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAA1E860CDB00B7ADF9 /* GridController.swift */; };
 		E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */; };
 		E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EB11E8645F800B7ADF9 /* PadView.swift */; };
+		E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */; };
 		E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2B1E74F9FC00F5A092 /* SessionTableViewController.swift */; };
 		E92F6C2E1E74FA3400F5A092 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2D1E74FA3400F5A092 /* SessionTableViewCell.swift */; };
 		E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F6C2F1E74FEBB00F5A092 /* SessionTableDelegate.swift */; };
@@ -204,6 +205,7 @@
 		E9158EAA1E860CDB00B7ADF9 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
 		E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewController.swift; sourceTree = "<group>"; };
 		E9158EB11E8645F800B7ADF9 /* PadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadView.swift; sourceTree = "<group>"; };
+		E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewController.swift; sourceTree = "<group>"; };
 		E92F6C2B1E74F9FC00F5A092 /* SessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
 		E92F6C2D1E74FA3400F5A092 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		E92F6C2F1E74FEBB00F5A092 /* SessionTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableDelegate.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */,
+				E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */,
 				E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */,
 				E956AD761E8C0E8000CA60BF /* TimelineView.swift */,
 				E9AD30201E8BAB8C00801A9F /* ColourPicker.swift */,
@@ -929,6 +932,7 @@
 				80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */,
 				E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */,
 				E956AD771E8C0E8000CA60BF /* TimelineView.swift in Sources */,
+				E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
 				80299E811E88F8DF00CEB465 /* AudioType.swift in Sources */,
 				E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */,
