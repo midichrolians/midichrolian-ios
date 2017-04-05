@@ -9,6 +9,7 @@
 import Foundation
 
 struct PlayBackRetriever {
+    public static var instance = PlayBackRetriever(timeIndexArr: [(TimeInterval, (Int, IndexPath))]())
     private var timeIndexArr: [(TimeInterval, (Int, IndexPath))]
     init(timeIndexArr: [(TimeInterval, (Int, IndexPath))]) {
         self.timeIndexArr = timeIndexArr
@@ -16,12 +17,12 @@ struct PlayBackRetriever {
 
     //returns empty arr if there's nothing left
     //otherwise, returns one or more tuples
-    mutating func getNextPads() -> [(Int, IndexPath)] {
-        var nextPads = [(Int, IndexPath)]()
+    mutating func getNextPads() -> [(TimeInterval, (Int, IndexPath))] {
+        var nextPads = [(TimeInterval, (Int, IndexPath))]()
         guard let firstValue = removeNextTuple() else {
             return nextPads
         }
-        nextPads.append((firstValue.1.0, firstValue.1.1))
+        nextPads.append(firstValue)
         repeat {
             guard let nextValue = timeIndexArr.first else {
                 break
@@ -29,7 +30,7 @@ struct PlayBackRetriever {
 
             if firstValue.0 == nextValue.0 {
                 timeIndexArr.removeFirst()
-                nextPads.append(nextValue.1.0, nextValue.1.1)
+                nextPads.append(nextValue)
             } else {
                 break
             }
