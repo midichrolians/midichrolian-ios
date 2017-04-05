@@ -83,6 +83,11 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    // Page
+    static let PageReuseIdentifier = "page"
+    static let PageIconName = "play.png"
+    static let PageSelectedIconName = "play_selected.png"
+
     // Animation Designer
     static let AnimationDesignerPaneHeightOffset: CGFloat = -200
     static let TimelineHeight: CGFloat = 48

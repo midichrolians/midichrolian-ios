@@ -96,6 +96,7 @@
 		E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */; };
 		E9C6712E1E94B61900777846 /* SelectedPadTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */; };
 		E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712F1E94B7B100777846 /* RemoveButton.swift */; };
+		E9E780741E955B8F00F5CC65 /* PageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780731E955B8F00F5CC65 /* PageDelegate.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
 		E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4A1E83A81900769A8F /* TopBarController.swift */; };
 		E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */; };
@@ -231,6 +232,7 @@
 		E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerController.swift; sourceTree = "<group>"; };
 		E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPadTrackingView.swift; sourceTree = "<group>"; };
 		E9C6712F1E94B7B100777846 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
+		E9E780731E955B8F00F5CC65 /* PageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDelegate.swift; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
 		E9EC7C4A1E83A81900769A8F /* TopBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarController.swift; sourceTree = "<group>"; };
 		E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectorDelegate.swift; sourceTree = "<group>"; };
@@ -451,16 +453,17 @@
 		E9158EAE1E86155E00B7ADF9 /* Grid */ = {
 			isa = PBXGroup;
 			children = (
-				E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */,
 				E9158EAA1E860CDB00B7ADF9 /* GridController.swift */,
-				E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */,
-				E9C6712F1E94B7B100777846 /* RemoveButton.swift */,
-				E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */,
+				E9E780731E955B8F00F5CC65 /* PageDelegate.swift */,
 				E9AD301A1E88EBB300801A9F /* PadDelegate.swift */,
 				E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */,
-				33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */,
 				33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */,
+				33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */,
 				E9158EB11E8645F800B7ADF9 /* PadView.swift */,
+				E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */,
+				E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */,
+				E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */,
+				E9C6712F1E94B7B100777846 /* RemoveButton.swift */,
 			);
 			name = Grid;
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
 				33CC26C71E891E840077F0ED /* AnimationManager.swift in Sources */,
+				E9E780741E955B8F00F5CC65 /* PageDelegate.swift in Sources */,
 				F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */,
 				33A2754D1E7BEF56000B1B15 /* Colour.swift in Sources */,
 				E92F6C2E1E74FA3400F5A092 /* SessionTableViewCell.swift in Sources */,
