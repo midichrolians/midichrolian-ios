@@ -58,7 +58,7 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
         var height = collectionView.frame.height - inset.top - inset.bottom
         let selectedOffsetRatio: CGFloat = 1.3
         // if selected make it bigger
-        if timelineDelegate?.selectedIndex != indexPath.row {
+        if timelineDelegate?.selectedFrame != indexPath {
             height /= selectedOffsetRatio
         }
         // if frame has somethign also make it different

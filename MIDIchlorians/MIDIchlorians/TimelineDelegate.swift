@@ -10,7 +10,7 @@ import Foundation
 
 protocol TimelineDelegate: class {
     var frame: [Bool] { get }
-    var selectedIndex: Int { get }
+    var selectedFrame: IndexPath { get }
 
     func timeline(selected: IndexPath)
 }
