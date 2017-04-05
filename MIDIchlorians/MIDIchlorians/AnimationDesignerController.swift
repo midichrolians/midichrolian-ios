@@ -13,6 +13,7 @@ import SnapKit
 
 class AnimationDesignerController: UIViewController {
     weak var delegate: AnimationDesignerDelegate?
+    let offset: CGFloat = 20
 
     // require animation data
     private var animationTypeSegmentedControl: UISegmentedControl!
@@ -35,7 +36,6 @@ class AnimationDesignerController: UIViewController {
     override func viewDidLoad() {
         timelineLabel = UILabel()
         timelineLabel.text = "Animation timeline"
-        timelineLabel.textColor = UIColor.white
         view.addSubview(timelineLabel)
 
         timeline = TimelineCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
@@ -54,7 +54,6 @@ class AnimationDesignerController: UIViewController {
 
         colourLabel = UILabel()
         colourLabel.text = "Colour palette"
-        colourLabel.textColor = UIColor.white
         view.addSubview(colourLabel)
 
         colourPicker = ColourCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
@@ -69,7 +68,6 @@ class AnimationDesignerController: UIViewController {
 
         clearLabel = UILabel()
         clearLabel.text = "Clear"
-        clearLabel.textColor = UIColor.white
         view.addSubview(clearLabel)
 
         clearSwitch = UISwitch()
@@ -86,47 +84,47 @@ class AnimationDesignerController: UIViewController {
 
     private func setConstraints() {
         timelineLabel.snp.makeConstraints { make in
-            make.left.equalTo(view)
+            make.left.equalTo(view).offset(offset)
             make.centerY.equalTo(timeline.view)
         }
 
         timeline.view.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(timelineLabel.snp.right).offset(20)
-            make.right.equalTo(view.snp.right)
+            make.left.equalTo(timelineLabel.snp.right).offset(offset)
+            make.right.equalTo(view)
             make.height.equalTo(Config.TimelineHeight)
-            make.top.equalTo(view.snp.top)
+            make.top.equalTo(view.snp.top).offset(offset)
         }
 
         colourLabel.snp.makeConstraints { make in
-            make.left.equalTo(view)
+            make.left.equalTo(timelineLabel)
             make.centerY.equalTo(colourPicker.view)
             make.width.equalTo(timelineLabel)
         }
 
-        colourPicker.view.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(colourLabel.snp.right).offset(20)
-            make.right.equalTo(view.snp.right)
+        colourPicker.view.snp.makeConstraints { make in
+            make.left.equalTo(timeline.view)
+            make.right.equalTo(view)
             make.height.equalTo(Config.ColourPickerHeight)
             make.top.equalTo(timeline.view.snp.bottom).offset(Config.ColourPickerTopOffset)
         }
 
-        animationTypeSegmentedControl.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(view.snp.left)
+        animationTypeSegmentedControl.snp.makeConstraints { make in
+            make.left.equalTo(colourLabel)
             make.top.equalTo(colourPicker.view.snp.bottom).offset(Config.AnimationTypeControlTopOffset)
         }
 
-        clearLabel.snp.makeConstraints { (make) -> Void in
+        clearLabel.snp.makeConstraints { make in
             make.left.equalTo(animationTypeSegmentedControl.snp.right).offset(Config.ClearSwitchLabelLeftOffset)
             make.centerY.equalTo(animationTypeSegmentedControl)
         }
 
-        clearSwitch.snp.makeConstraints { (make) -> Void in
+        clearSwitch.snp.makeConstraints { make in
             make.left.equalTo(clearLabel.snp.right).offset(Config.ClearSwitchLeftOffset)
             make.centerY.equalTo(clearLabel)
         }
 
-        saveButton.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(clearSwitch.snp.right).offset(20)
+        saveButton.snp.makeConstraints { make in
+            make.left.equalTo(clearSwitch.snp.right).offset(offset)
             make.centerY.equalTo(clearSwitch)
             make.height.equalTo(clearSwitch)
         }

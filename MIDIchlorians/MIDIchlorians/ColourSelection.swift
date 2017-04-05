@@ -17,7 +17,7 @@ class ColourSelection: SelectedPadTrackingView {
         super.init(frame: frame)
         isOpaque = false
         layer.borderWidth = width
-        layer.borderColor = UIColor.green.cgColor
+        layer.borderColor = UIColor.darkGray.cgColor
         layer.cornerRadius = width
     }
 

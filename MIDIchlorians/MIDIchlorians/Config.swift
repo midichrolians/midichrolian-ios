@@ -84,6 +84,7 @@ struct Config {
     static let SidePaneTabBarAnimationIcon = "params.png"
 
     // Animation Designer
+    static let AnimationDesignerPaneHeightOffset: CGFloat = -200
     static let TimelineHeight: CGFloat = 60
     static let ColourPickerHeight: CGFloat = 60
     static let TimelineTopOffset: CGFloat = 10
@@ -102,6 +103,8 @@ struct Config {
     // Colour picker
     static let ColourSelectionWidth: CGFloat = 3
     static let ColourSelectionOffset: CGFloat = 5
+    static let ColourReuseIdentifier = "colour"
+    static let ColourInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
 
     static let RemoveButtonOffset: CGFloat = 10
     static let RemoveButtonWidth: CGFloat = 32

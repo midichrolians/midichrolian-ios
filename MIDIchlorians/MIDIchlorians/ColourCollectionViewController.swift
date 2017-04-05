@@ -11,19 +11,14 @@ import UIKit
 class ColourCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     weak var colourDelegate: ColourPickerDelegate?
 
-    private let reuseIdentifier = "colour"
-    private let inset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    private let reuseIdentifier = Config.ColourReuseIdentifier
+    private let inset = Config.ColourInsets
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
     // MARK: UICollectionViewDataSource
@@ -44,8 +39,6 @@ class ColourCollectionViewController: UICollectionViewController, UICollectionVi
         guard let colour = colourDelegate?.colours[indexPath.row] else {
             return cell
         }
-
-        print("cell frame: \(cell.frame)")
 
         cell.backgroundView = UIImageView(image: colour.image)
 
