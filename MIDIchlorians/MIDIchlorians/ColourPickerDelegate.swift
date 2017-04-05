@@ -9,7 +9,9 @@
 import Foundation
 
 protocol ColourPickerDelegate: class {
+    // List of colours the picker should show
     var colours: [Colour] { get }
 
+    // Called when a colour is selected
     func colour(selected: Colour, indexPath: IndexPath)
 }

@@ -132,15 +132,6 @@ class AnimationDesignerController: UIViewController {
         }
     }
 
-    func colourPickerickerTap(recognizer: UITapGestureRecognizer) {
-//        let loc = recognizer.location(in: colourPickericker)
-//        if let colour = colourPickericker.colour(at: loc) {
-//            // reset the clear switch
-//            clearSwitch.setOn(false, animated: true)
-//            selectedColour = colour
-//        }
-    }
-
     func onAnimatedTypeChange() {
         guard let selectedAnimatedTypeName = self.animationTypeSegmentedControl.titleForSegment(
             at: self.animationTypeSegmentedControl.selectedSegmentIndex
@@ -195,5 +186,6 @@ extension AnimationDesignerController: ColourPickerDelegate {
         selectedColour = colour
         colourPicker.collectionView?.reloadData()
         colourSelection.position(at: indexPath)
+        clearSwitch.setOn(false, animated: true)
     }
 }

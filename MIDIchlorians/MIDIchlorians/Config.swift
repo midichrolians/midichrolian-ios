@@ -83,6 +83,7 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    // Animation Designer
     static let TimelineHeight: CGFloat = 60
     static let ColourPickerHeight: CGFloat = 60
     static let TimelineTopOffset: CGFloat = 10
@@ -90,6 +91,17 @@ struct Config {
     static let AnimationTypeControlTopOffset: CGFloat = 10
     static let ClearSwitchLabelLeftOffset: CGFloat = 40
     static let ClearSwitchLeftOffset: CGFloat = 10
+
+    // Timeline
+    static let TimelineMinNumFrames = 8
+    static let TimelineReuseIdentifier = "timeline"
+    static let TimelineInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+    // ratio of height for unselected over selected frame in timeline
+    static let TimelineUnselectedFrameRatio: CGFloat = 0.7
+
+    // Colour picker
+    static let ColourSelectionWidth: CGFloat = 3
+    static let ColourSelectionOffset: CGFloat = 5
 
     static let RemoveButtonOffset: CGFloat = 10
     static let RemoveButtonWidth: CGFloat = 32
