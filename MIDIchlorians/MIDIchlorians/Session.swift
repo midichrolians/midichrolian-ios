@@ -53,6 +53,36 @@ class Session: Object {
         }
     }
 
+    convenience init?(json: Data) {
+        self.init()
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: [])) as? [String: Any?] else {
+            return nil
+        }
+        guard let BPM = dictionary["BPM"] as? Int,
+        let numRows = dictionary["numRows"] as? Int,
+        let numCols = dictionary["numCols"] as? Int,
+        let numPages = dictionary["numPages"] as? Int else {
+            return nil
+        }
+        self.BPM = BPM
+        self.numRows = numRows
+        self.numCols = numCols
+        self.numPages = numPages
+        self.sessionName = dictionary["sessionName"] as? String
+
+        guard let padArray = dictionary["pads"] as? [Data] else {
+            return nil
+        }
+        for (page, (row, col)) in zip(0..<numPages, zip(0..<numRows, 0..<numCols)) {
+            let listIndex = (page * numRows * numCols) + (row * numCols) + col
+            guard let pad = Pad(json: padArray[listIndex]) else {
+                return nil
+            }
+            pads[page][row][col] = pad
+        }
+
+    }
+
     override static func primaryKey() -> String? {
         return "sessionName"
     }
@@ -181,4 +211,27 @@ class Session: Object {
         }
         return true
     }
+
+    func toJSON() -> Data? {
+        var dictionary = [String: Any]()
+        dictionary["BPM"] = self.BPM
+        dictionary["numPages"] = self.numPages
+        dictionary["numRows"] = self.numRows
+        dictionary["numCols"] = self.numCols
+        dictionary["sessionName"] = self.sessionName
+        var padArray = [Data?]()
+        for (page, (row, col)) in zip(0..<numPages, zip(0..<numRows, 0..<numCols)) {
+            let pad = pads[page][row][col]
+            guard let padJSON = pad.toJSON() else {
+                return nil
+            }
+            padArray.append(padJSON)
+        }
+        dictionary["pads"] = padArray
+        guard let json = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else {
+            return nil
+        }
+        return json
+    }
+    
 }
