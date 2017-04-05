@@ -39,25 +39,50 @@ class CloudManager {
                 guard self.isSoundFile(sample.name) else {
                     continue
                 }
-                let fileNameExtension = "\(sample.name).\(Config.SoundExt)"
-                let filePath = "/\(Config.AudioFolderName)/\(fileNameExtension)"
-                let url = docsURL.appendingPathComponent("\(sample.name).\(Config.SoundExt)")
+                let filePath = "/\(Config.AudioFolderName)/\(sample.name)"
+                let url = docsURL.appendingPathComponent(sample.name)
                 let destination: (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
                     return url
                 }
-                self.client?.files.download(path: filePath, overwrite: true, destination: destination)
+                self.client?.files.download(path: filePath, overwrite: true, destination: destination).response { response, error in
+                    print(response)
+
+                }
                 _ = self.dataManager.saveAudio(sample.name)
             }
         }
     }
 
-
     private func loadAnimations() {
-        //Download to data object
+        let json = Data()
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: [])) as? [String: Any] else {
+            return
+        }
+        for (_, jsonString) in dictionary {
+            guard let animationJSON = jsonString as? String else {
+                continue
+            }
+            _ = dataManager.saveAnimation(animationJSON)
+        }
+
     }
 
     private func loadSessions() {
-        //Download to data object
+        let json = Data()
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: [])) as? [String: Any] else {
+            return
+        }
+        for (name, object) in dictionary {
+            guard let sessionName = name as? String,
+                let sessionData = object as? Data else {
+                    continue
+            }
+            guard let session = Session(json: sessionData) else {
+                continue
+            }
+            _ = dataManager.saveSession(sessionName, session)
+        }
+
     }
 
     func saveToDropbox() {
@@ -86,20 +111,38 @@ class CloudManager {
     }
 
     private func saveAnimations() {
-        //TODO: COnvert array of strings to Data object
-        let animationJSONs = dataManager.loadAllAnimationTypes()
-        let data = Data()
+        let animationTypes = dataManager.loadAllAnimationTypes().flatMap{AnimationType.getAnimationTypeFromJSON(fromJSON: $0) }
+        var dictionary = [String: String]()
+        for animation in animationTypes {
+            guard let jsonString = animation.getJSONforAnimationType() else {
+                continue
+            }
+            dictionary[animation.name] = jsonString
+        }
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else {
+            return
+        }
+
         let filePath = "/\(Config.AnimationFileName)/\(Config.AnimationExt))"
-        client?.files.upload(path: filePath, input: data)
+        client?.files.upload(path: filePath, input: jsonData)
 
     }
 
     private func saveSessions() {
         let sessions = dataManager.loadAllSessionNames().flatMap { dataManager.loadSession($0) }
-            .map {($0, $0.serialise())}
-        let data = Data()
+        var dictionary = [String: Data]()
+        for session in sessions {
+            guard let name = session.getSessionName(),
+                let json = session.toJSON() else {
+                    continue
+            }
+            dictionary[name] = json
+        }
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else {
+            return
+        }
         let filePath = "/\(Config.SessionFileName)/\(Config.SessionExt))"
-        client?.files.upload(path: filePath, input: data)
+        client?.files.upload(path: filePath, input: jsonData)
 
     }
 
