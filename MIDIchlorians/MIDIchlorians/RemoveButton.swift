@@ -10,24 +10,19 @@ import UIKit
 import SnapKit
 
 class RemoveButton: SelectedPadTrackingView {
-    override func draw(_ rect: CGRect) {
-        let c = UIColor.red
-        let width = frame.width
-        let height = width
-        let path = UIBezierPath()
-        let start = CGPoint(x: CGFloat(0) * width, y: 0.0)
-        path.move(to: start)
-        path.addLine(to: CGPoint(x: start.x + width, y: start.y))
-        path.addLine(to: CGPoint(x: start.x + width, y: start.y + height))
-        path.addLine(to: CGPoint(x: start.x, y: start.y + height))
-        path.addLine(to: start)
+    let removeImage = UIImageView(image: UIImage(named: "cancel.png"))
 
-        path.lineWidth = 0.25
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        isOpaque = false
+        self.addSubview(removeImage)
+        removeImage.snp.makeConstraints { make in
+            make.edges.equalTo(self)
+        }
+    }
 
-        c.setFill()
-        c.setStroke()
-        path.fill()
-        path.stroke()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 
     override func calculateOffset(relativeTo cell: UICollectionViewCell) -> CGRect {
