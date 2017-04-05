@@ -10,10 +10,12 @@ import UIKit
 import SnapKit
 
 class GridCollectionViewCell: UICollectionViewCell, PadView {
+    private let sampleIndicatorImage = UIImage(named: "play.png")
+    private let animationIndicatorImage = UIImage(named: "play.png")
     var rowNumber = 0
     var columnNumber = 0
-    var sampleLabel: UILabel!
-    var animationLabel: UILabel!
+    var sampleIndicator: UIImageView!
+    var animationIndicator: UIImageView!
     var imageView: UIImageView!
     var pad: Pad? {
         didSet {
@@ -32,16 +34,29 @@ class GridCollectionViewCell: UICollectionViewCell, PadView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        sampleLabel = UILabel(frame: CGRect.zero)
-        sampleLabel.textAlignment = .center
-        contentView.addSubview(sampleLabel)
 
-        animationLabel = UILabel(frame: CGRect.zero)
-        sampleLabel.textAlignment = .center
-        contentView.addSubview(animationLabel)
 
         imageView = UIImageView(frame: CGRect.zero)
         contentView.addSubview(imageView)
+
+        sampleIndicator = UIImageView()
+        contentView.addSubview(sampleIndicator)
+
+        animationIndicator = UIImageView()
+        contentView.addSubview(animationIndicator)
+
+        // add constraints
+        sampleIndicator.snp.makeConstraints { make in
+            make.width.equalTo(contentView).dividedBy(3)
+            make.height.equalTo(sampleIndicator.snp.width)
+            make.bottom.left.equalTo(contentView)
+        }
+
+        animationIndicator.snp.makeConstraints { make in
+            make.width.equalTo(contentView).dividedBy(3)
+            make.height.equalTo(animationIndicator.snp.width)
+            make.bottom.right.equalTo(contentView)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -53,28 +68,16 @@ class GridCollectionViewCell: UICollectionViewCell, PadView {
     }
 
     func assign(sample: String) {
-        sampleLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(contentView)
-            make.bottom.equalTo(contentView)
-            make.left.equalTo(contentView)
-            make.width.equalTo(contentView).dividedBy(2)
-        }
-        sampleLabel.text = "S"
+        sampleIndicator.image = sampleIndicatorImage
     }
 
     func assign(animation: AnimationSequence) {
-        animationLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(contentView)
-            make.bottom.equalTo(contentView)
-            make.right.equalTo(contentView)
-            make.width.equalTo(contentView).dividedBy(2)
-        }
-        animationLabel.text = "A"
+        animationIndicator.image = animationIndicatorImage
     }
 
     func clearIndicators() {
-        sampleLabel.text = nil
-        animationLabel.text = nil
+        sampleIndicator.image = nil
+        animationIndicator.image = nil
     }
 }
 
