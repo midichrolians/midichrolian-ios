@@ -17,7 +17,7 @@ class AnimationDesignerController: UIViewController {
     // require animation data
     private var animationTypeSegmentedControl: UISegmentedControl!
     private var clearLabel: UILabel!
-    private var clearSwitch: UISwitch!
+    internal var clearSwitch: UISwitch!
     private var saveButton: UIButton!
 
     private var colourLabel: UILabel!
