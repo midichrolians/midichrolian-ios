@@ -27,7 +27,7 @@ class AnimationDesignerController: UIViewController {
     private var timelineLabel: UILabel!
     internal var timeline: TimelineCollectionViewController!
 
-    internal var selectedColour: Colour = Colour.blue // random default colour
+    internal var selectedColour: Colour?
 
     internal var frames: [Bool] = []
     internal var selectedFrame = IndexPath(row: 0, section: 0)
@@ -148,7 +148,11 @@ class AnimationDesignerController: UIViewController {
 
     func clearSwitchToggle(clearSwitch: UISwitch) {
         if clearSwitch.isOn {
+            // clear switch turned on, inform delegate
             delegate?.animationClear()
+            // and also clear selected colour in palette to visually indicate
+            selectedColour = nil
+            colourSelection.position(at: nil)
         }
     }
 
