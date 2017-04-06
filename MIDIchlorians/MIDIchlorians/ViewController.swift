@@ -141,11 +141,14 @@ class ViewController: UIViewController {
     private func setUpAnimationDesigner() {
         animationDesignController = AnimationDesignerController()
         animationDesignController.view.backgroundColor = Config.SecondaryBackgroundColor
-        animationDesignController.view.frame =
-            CGRect(x: view.frame.minX,
-                   y: view.frame.height * Config.MainViewHeightToAnimMinYRatio,
-                   width: view.frame.width - Config.SidePaneWidth,
-                   height: view.frame.height * Config.MainViewHeightToAnimHeightRatio)
+        view.addSubview(animationDesignController.view)
+
+        animationDesignController.view.snp.makeConstraints { make in
+            make.height.equalTo(Config.BottomPaneHeight)
+            make.left.equalTo(view)
+            make.right.equalTo(sidePaneController.view.snp.left)
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
     }
 
     // Sets up application wide styles
@@ -175,6 +178,9 @@ extension ViewController: ModeSwitchDelegate {
         sampleSettingController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
         }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
         gridController.enterEdit()
     }
 
@@ -186,13 +192,18 @@ extension ViewController: ModeSwitchDelegate {
         sampleSettingController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(0)
         }
-        animationDesignController.view.removeFromSuperview()
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
         gridController.enterPlay()
     }
 
     func enterDesign() {
         sampleSettingController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(0)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
         }
         gridController.enterDesign()
     }
@@ -219,7 +230,6 @@ extension ViewController: AnimationTableDelegate {
     }
 
     func addAnimation(_ tableView: UITableView) {
-        view.addSubview(animationDesignController.view)
         gridController.selectedIndexPath = gridController.selectedIndexPath ?? IndexPath(row: 0, section: 0)
         self.enterDesign()
     }
