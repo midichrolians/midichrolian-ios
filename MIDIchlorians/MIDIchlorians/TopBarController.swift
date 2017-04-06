@@ -21,6 +21,11 @@ class TopBarController: UIViewController {
     private var recordButton = UIButton(type: .system)
     private var playButton = UIButton(type: .system)
     private var recordIndicator = UIImageView()
+    private var hasRecording = false {
+        didSet {
+            playButton.isEnabled = hasRecording
+        }
+    }
 
     private let recordImage = UIImage(named: Config.TopNavRecordIcon)
     private let recordingImage = UIImage(named: Config.TopNavRecordingIcon)
@@ -52,6 +57,8 @@ class TopBarController: UIViewController {
 
         playButton.setTitle(Config.TopNavPlayLabel, for: .normal)
         playButton.addTarget(self, action: #selector(onPlayButtonDown(sender:)), for: .touchDown)
+        // play button is always not enabled initially, user has to record something for it to be enabled
+        playButton.isEnabled = false
 
         recordIndicator.image = recordImage
 
@@ -129,7 +136,6 @@ class TopBarController: UIViewController {
     }
 
     func onPlayButtonDown(sender: UIButton) {
-        print("PLAYING")
     }
 
     func startRecord() {
@@ -138,6 +144,8 @@ class TopBarController: UIViewController {
 
     func stopRecord() {
         recordIndicator.image = recordImage
+        // this will enable the play button
+        hasRecording = true
     }
 
 }
