@@ -85,8 +85,8 @@ struct Config {
 
     // Page
     static let PageReuseIdentifier = "page"
-    static let PageIconName = "play.png"
-    static let PageSelectedIconName = "play_selected.png"
+    static let PageIconName = "padplay.png"
+    static let PageSelectedIconName = "padplay_selected.png"
 
     // Animation Designer
     static let AnimationDesignerPaneHeightOffset: CGFloat = -200
