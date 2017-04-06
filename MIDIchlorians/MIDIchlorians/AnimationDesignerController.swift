@@ -15,10 +15,7 @@ class AnimationDesignerController: UIViewController {
     weak var delegate: AnimationDesignerDelegate?
     private let offset: CGFloat = Config.AnimationDesignItemOffset
 
-    // require animation data
     private var animationTypeSegmentedControl: UISegmentedControl!
-    private var clearLabel: UILabel!
-    internal var clearSwitch: UISwitch!
     private var saveButton: UIButton!
 
     private var colourLabel: UILabel!
@@ -63,18 +60,9 @@ class AnimationDesignerController: UIViewController {
 
         colourSelection.viewController = colourPicker
         colourPicker.view.insertSubview(colourSelection, belowSubview: colourPicker.collectionView!)
-        // view.insertSubview(colourSelection, belowSubview: colourPicker.view)
         colourSelection.position(at: nil)
 
-        clearLabel = UILabel()
-        clearLabel.text = Config.AnimationDesignClearLabel
-        view.addSubview(clearLabel)
-
-        clearSwitch = UISwitch()
-        clearSwitch.addTarget(self, action: #selector(clearSwitchToggle(clearSwitch:)), for: .valueChanged)
-        view.addSubview(clearSwitch)
-
-        saveButton = UIButton(type: .custom)
+        saveButton = UIButton(type: .system)
         saveButton.setTitle(Config.AnimationDesignSaveLabel, for: .normal)
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchDown)
         view.addSubview(saveButton)
@@ -111,22 +99,12 @@ class AnimationDesignerController: UIViewController {
         animationTypeSegmentedControl.snp.makeConstraints { make in
             make.left.equalTo(colourLabel)
             make.top.equalTo(colourPicker.view.snp.bottom).offset(Config.AnimationTypeControlTopOffset)
-        }
-
-        clearLabel.snp.makeConstraints { make in
-            make.left.equalTo(animationTypeSegmentedControl.snp.right).offset(Config.ClearSwitchLabelLeftOffset)
-            make.centerY.equalTo(animationTypeSegmentedControl)
-        }
-
-        clearSwitch.snp.makeConstraints { make in
-            make.left.equalTo(clearLabel.snp.right).offset(Config.ClearSwitchLeftOffset)
-            make.centerY.equalTo(clearLabel)
+            make.height.equalTo(Config.TimelineHeight)
         }
 
         saveButton.snp.makeConstraints { make in
-            make.left.equalTo(clearSwitch.snp.right).offset(offset)
-            make.centerY.equalTo(clearSwitch)
-            make.height.equalTo(clearSwitch)
+            make.left.equalTo(animationTypeSegmentedControl.snp.right).offset(offset)
+            make.centerY.height.equalTo(animationTypeSegmentedControl)
         }
     }
 
@@ -142,16 +120,6 @@ class AnimationDesignerController: UIViewController {
         delegate?.animationTypeCreationMode(
             selected: mode
         )
-    }
-
-    func clearSwitchToggle(clearSwitch: UISwitch) {
-        if clearSwitch.isOn {
-            // clear switch turned on, inform delegate
-            delegate?.animationClear()
-            // and also clear selected colour in palette to visually indicate
-            selectedColour = nil
-            colourSelection.position(at: nil)
-        }
     }
 
     func saveButtonTapped() {
@@ -188,6 +156,12 @@ extension AnimationDesignerController: ColourPickerDelegate {
         selectedColour = colour
         colourPicker.collectionView?.reloadData()
         colourSelection.position(at: indexPath)
-        clearSwitch.setOn(false, animated: true)
+    }
+
+    func clear(indexPath: IndexPath) {
+        delegate?.animationClear()
+        // and also clear selected colour in palette to visually indicate
+        selectedColour = nil
+        colourSelection.position(at: indexPath)
     }
 }

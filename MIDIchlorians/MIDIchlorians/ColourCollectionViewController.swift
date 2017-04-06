@@ -29,12 +29,17 @@ class ColourCollectionViewController: UICollectionViewController, UICollectionVi
 
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return colourDelegate?.colours.count ?? 0
+        return (colourDelegate?.colours.count ?? 0) + 1 // because of clear
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+
+        if colourDelegate?.colours.count ?? 0 <= indexPath.row {
+            cell.backgroundColor = UIColor.blue
+            return cell
+        }
 
         guard let colour = colourDelegate?.colours[indexPath.row] else {
             return cell
@@ -48,6 +53,11 @@ class ColourCollectionViewController: UICollectionViewController, UICollectionVi
     // MARK: UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.row < colourDelegate?.colours.count ?? 0 else {
+            colourDelegate?.clear(indexPath: indexPath)
+            return
+        }
+
         guard let colour = colourDelegate?.colours[indexPath.row] else {
             return
         }

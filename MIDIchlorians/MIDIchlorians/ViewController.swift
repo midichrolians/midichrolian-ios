@@ -209,6 +209,33 @@ class ViewController: UIViewController {
         }
     }
 
+    internal func showSampleSettingPane() {
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+    }
+
+    internal func showAnimationDesignPane() {
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+        }
+    }
+
+    internal func hideBottomPane() {
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+    }
+
 }
 
 // Called when the mode is switch. Passes on the event to the grid and side pane
@@ -217,12 +244,7 @@ extension ViewController: ModeSwitchDelegate {
         gridController.view.snp.updateConstraints { make in
             make.right.equalTo(view).offset(-Config.SidePaneWidth)
         }
-        sampleSettingController.view.snp.updateConstraints { make in
-            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
-        }
-        animationDesignController.view.snp.updateConstraints { make in
-            make.top.equalTo(view.snp.bottom).offset(0)
-        }
+        showSampleSettingPane()
         gridController.enterEdit()
     }
 
@@ -231,22 +253,12 @@ extension ViewController: ModeSwitchDelegate {
         gridController.view.snp.updateConstraints { make in
             make.right.equalTo(view).offset(0)
         }
-        sampleSettingController.view.snp.updateConstraints { make in
-            make.top.equalTo(view.snp.bottom).offset(0)
-        }
-        animationDesignController.view.snp.updateConstraints { make in
-            make.top.equalTo(view.snp.bottom).offset(0)
-        }
+        hideBottomPane()
         gridController.enterPlay()
     }
 
     func enterDesign() {
-        sampleSettingController.view.snp.updateConstraints { make in
-            make.top.equalTo(view.snp.bottom).offset(0)
-        }
-        animationDesignController.view.snp.updateConstraints { make in
-            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
-        }
+        showAnimationDesignPane()
         gridController.enterDesign()
     }
 }
@@ -279,7 +291,7 @@ extension ViewController: AnimationTableDelegate {
 
 extension ViewController: SidePaneDelegate {
     func sidePaneSelectSample() {
-        animationDesignController.view.removeFromSuperview()
+        showSampleSettingPane()
         // set the mode back to editing so the animation views and styles will be cleared
         gridController.mode = .editing
     }
