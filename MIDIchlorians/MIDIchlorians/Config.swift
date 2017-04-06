@@ -95,11 +95,18 @@ struct Config {
     static let PadSelectionBorderWidth: CGFloat = 3.0
     static let PadSelectionCornerRadius: CGFloat = 5.0
     static let PadSelectionOffset: CGFloat = 2
-    static let RemoveButtonIcon = "cancel.png"
     static let PadSampleOnceOffIcon = "pad_sample_once_off.png"
     static let PadSampleLoopIcon = "pad_sample_loop.png"
     static let PadAnimationIcon = "pad_animation.png"
     static let PadIndicatorRatio: CGFloat = 3
+
+    // Remove button
+    static let RemoveButtonIcon = "cancel.png"
+    static let RemoveButtonAlertTitle = "Confirm"
+    static let RemoveButtonSampleTitle = "Remove sample"
+    static let RemoveButtonAnimationTitle = "Remove animation"
+    static let RemoveButtonBothTitle = "Remove both"
+    static let RemoveButtonCancelTitle = "Cancel"
 
     // SidePane
     static let SidePaneWidth: CGFloat = 320

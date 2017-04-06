@@ -44,7 +44,7 @@ class GridController: UIViewController {
             if mode == .editing {
                 padSelection.position(at: selectedIndexPath)
                 // only show if pad has audio selected
-                if selectedPad?.getAudioFile() != nil {
+                if selectedPad?.getAudioFile() != nil || selectedPad?.getAnimation() != nil {
                     removeButton.position(at: selectedIndexPath)
                 } else {
                     removeButton.position(at: nil)
@@ -119,7 +119,7 @@ class GridController: UIViewController {
 
         // set up remove button
         view.addSubview(removeButton)
-        removeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeSample)))
+        removeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeFromPad)))
 
         // set up constraints
         page.view.snp.makeConstraints { make in
@@ -136,17 +136,45 @@ class GridController: UIViewController {
         return self.currentSession.getPad(page: currentPage, indexPath: indexPath)
     }
 
-    func removeSample() {
-        let alert = UIAlertController(title: "Remove sample?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { _ in
-            if let indexPath = self.selectedIndexPath {
-                let pad = self.getPad(at: indexPath)
+    // Show an alert to remove something from the pad, where something can be:
+    // 1. only sample
+    // 2. only animation
+    // 3. both sample and animation
+    // depending on what the pad has
+    func removeFromPad() {
+        guard let indexPath = selectedIndexPath else {
+            return
+        }
+        let pad = getPad(at: indexPath)
+
+        let alert = UIAlertController(title: Config.RemoveButtonAlertTitle, message: nil, preferredStyle: .alert)
+
+        if pad.getAudioFile() != nil {
+            alert.addAction(UIAlertAction(title: Config.RemoveButtonSampleTitle, style: .destructive, handler: { _ in
                 pad.clearAudio()
                 self.gridCollectionView.reloadItems(at: [indexPath])
                 self.selectedIndexPath = indexPath
-            }
-        }))
+            }))
+        }
+
+        if pad.getAnimation() != nil {
+            alert.addAction(UIAlertAction(title: Config.RemoveButtonAnimationTitle, style: .destructive, handler: { _ in
+                pad.clearAnimation()
+                self.gridCollectionView.reloadItems(at: [indexPath])
+                self.selectedIndexPath = indexPath
+            }))
+        }
+
+        if pad.getAudioFile() != nil && pad.getAnimation() != nil {
+            alert.addAction(UIAlertAction(title: Config.RemoveButtonBothTitle, style: .destructive, handler: { _ in
+                pad.clearAudio()
+                pad.clearAnimation()
+                self.gridCollectionView.reloadItems(at: [indexPath])
+                self.selectedIndexPath = indexPath
+            }))
+        }
+
+        alert.addAction(UIAlertAction(title: Config.RemoveButtonCancelTitle, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 
