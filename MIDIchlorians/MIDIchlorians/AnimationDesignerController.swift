@@ -13,7 +13,7 @@ import SnapKit
 
 class AnimationDesignerController: UIViewController {
     weak var delegate: AnimationDesignerDelegate?
-    let offset: CGFloat = 20
+    private let offset: CGFloat = Config.AnimationDesignItemOffset
 
     // require animation data
     private var animationTypeSegmentedControl: UISegmentedControl!
@@ -35,7 +35,7 @@ class AnimationDesignerController: UIViewController {
 
     override func viewDidLoad() {
         timelineLabel = UILabel()
-        timelineLabel.text = "Animation timeline"
+        timelineLabel.text = Config.AnimationDesignTimelineLabel
         view.addSubview(timelineLabel)
 
         timeline = TimelineCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
@@ -53,7 +53,7 @@ class AnimationDesignerController: UIViewController {
         view.addSubview(animationTypeSegmentedControl)
 
         colourLabel = UILabel()
-        colourLabel.text = "Colour palette"
+        colourLabel.text = Config.AnimationDesignColourLabel
         view.addSubview(colourLabel)
 
         colourPicker = ColourCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
@@ -67,7 +67,7 @@ class AnimationDesignerController: UIViewController {
         colourSelection.position(at: nil)
 
         clearLabel = UILabel()
-        clearLabel.text = "Clear"
+        clearLabel.text = Config.AnimationDesignClearLabel
         view.addSubview(clearLabel)
 
         clearSwitch = UISwitch()
@@ -75,7 +75,7 @@ class AnimationDesignerController: UIViewController {
         view.addSubview(clearSwitch)
 
         saveButton = UIButton(type: .custom)
-        saveButton.setTitle("Save Animation", for: .normal)
+        saveButton.setTitle(Config.AnimationDesignSaveLabel, for: .normal)
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchDown)
         view.addSubview(saveButton)
 

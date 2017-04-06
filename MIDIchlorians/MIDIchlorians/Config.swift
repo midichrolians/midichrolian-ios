@@ -92,6 +92,7 @@ struct Config {
     static let PageSelectedIconName = "padplay_selected.png"
 
     // Animation Designer
+    static let AnimationDesignItemOffset: CGFloat = 20
     static let AnimationDesignerPaneHeightOffset: CGFloat = -200
     static let TimelineHeight: CGFloat = 48
     static let ColourPickerHeight: CGFloat = 60
@@ -100,6 +101,10 @@ struct Config {
     static let AnimationTypeControlTopOffset: CGFloat = 10
     static let ClearSwitchLabelLeftOffset: CGFloat = 40
     static let ClearSwitchLeftOffset: CGFloat = 10
+    static let AnimationDesignTimelineLabel = "Animation Timeline"
+    static let AnimationDesignColourLabel = "Colour Palette"
+    static let AnimationDesignClearLabel = "Clear"
+    static let AnimationDesignSaveLabel = "Save Animation"
 
     // Timeline
     static let TimelineMinNumFrames = 8
