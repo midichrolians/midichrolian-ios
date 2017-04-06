@@ -21,8 +21,8 @@ class TopBarController: UIViewController {
     private var recordButton = UIButton(type: .system)
     private var recordIndicator = UIImageView()
 
-    private let recordImage = UIImage(named: "record.png")
-    private let recordingImage = UIImage(named: "recording.png")
+    private let recordImage = UIImage(named: Config.TopNavRecordIcon)
+    private let recordingImage = UIImage(named: Config.TopNavRecordingIcon)
 
     weak var modeSwitchDelegate: ModeSwitchDelegate?
     weak var sessionSelectorDelegate: SessionSelectorDelegate?
@@ -30,23 +30,23 @@ class TopBarController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        logo.text = "MIDIchlorians"
+        logo.text = Config.TopNavLogoText
         view.addSubview(logo)
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = Config.SecondaryBackgroundColor
 
-        sessionButton.setTitle("Sessions", for: .normal)
+        sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
         sessionButton.tintColor = UIColor.black
         sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
 
-        saveButton.setTitle("Save", for: .normal)
+        saveButton.setTitle(Config.TopNavSaveLabel, for: .normal)
 
-        editButton.setTitle("Edit", for: .normal)
+        editButton.setTitle(Config.TopNavEditLabel, for: .normal)
         editButton.addTarget(self, action: #selector(onEdit), for: .touchDown)
 
-        exitButton.setTitle("Exit", for: .normal)
+        exitButton.setTitle(Config.TopNavExitLabel, for: .normal)
         exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
 
-        recordButton.setTitle("Record", for: .normal)
+        recordButton.setTitle(Config.TopNavRecordLabel, for: .normal)
         recordButton.addTarget(self, action: #selector(onRecordButtonDown(sender:)), for: .touchDown)
 
         recordIndicator.image = recordImage
@@ -58,7 +58,7 @@ class TopBarController: UIViewController {
         stackView.addArrangedSubview(recordIndicator)
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.spacing = 20
+        stackView.spacing = Config.TopNavStackViewSpacing
         view.addSubview(stackView)
 
         makeConstraints()

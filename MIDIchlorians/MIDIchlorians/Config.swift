@@ -70,20 +70,40 @@ struct Config {
     static let MainViewHeightToAnimHeightRatio: CGFloat = 1 / 4
     static let MainViewWidthToAnimWidthRatio: CGFloat = 7 / 12
 
-    static let SidePaneWidth: CGFloat = 320
-
     static let SectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     // will be removed once we move to constraints
     static let AppLeftPadding: CGFloat = 20
     static let AppRightPadding: CGFloat = 20
-    static let TopNavHeight: CGFloat = 60
 
+    // Top nav
+    static let TopNavHeight: CGFloat = 60
+    static let TopNavLogoText = "MIDIchlorians"
+    static let TopNavSessionLabel = "Sessions"
+    static let TopNavSaveLabel = "Sessions"
+    static let TopNavEditLabel = "Edit"
+    static let TopNavExitLabel = "Exit"
+    static let TopNavRecordLabel = "Record"
+    static let TopNavRecordIcon = "record.png"
+    static let TopNavRecordingIcon = "recording.png"
+    static let TopNavStackViewSpacing: CGFloat = 20
+
+    // Grid
+    static let GridCollectionViewCellIdentifier = "cell"
+    static let PadSelectionBorderColour = UIColor.green.cgColor
+    static let PadSelectionBorderWidth: CGFloat = 3.0
+    static let PadSelectionCornerRadius: CGFloat = 5.0
+    static let PadSelectionOffset: CGFloat = 2
+    static let GridSampleIndicatorIcon = "play.png"
+    static let GridAnimationIndicatorIcon = "play.png"
+
+    // SidePane
+    static let SidePaneWidth: CGFloat = 320
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
-    // Sample Setting
+    // Bottom pane
     static let BottomPaneHeight = 220
 
     // Page
@@ -150,16 +170,10 @@ struct Config {
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
 
-    static let TopNavTitle = "MIDIchlorians"
-    static let TopNavSessionTitle = "Sessions"
-    static let ModeSegmentTitles = ["PLAY", "EDIT"]
-
     static let DefaultSessionName = "New Session"
 
     static let SessionTableTitle = "Sessions"
     static let AnimationTabTitle = "Animations"
-
-    static let GridCollectionViewCellIdentifier = "cell"
 
     static let NewAnimationTypeDefaultName = "Default Animation"
 }

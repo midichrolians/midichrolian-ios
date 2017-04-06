@@ -32,7 +32,6 @@ class SampleSettingViewController: UIViewController {
             make.height.equalTo(Config.TimelineHeight)
         }
     }
-    
 
     /*
     // MARK: - Navigation

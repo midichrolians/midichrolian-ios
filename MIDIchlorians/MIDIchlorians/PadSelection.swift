@@ -14,9 +14,9 @@ class PadSelection: SelectedPadTrackingView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         isOpaque = false
-        layer.borderColor = UIColor.green.cgColor
-        layer.borderWidth = 3.0
-        layer.cornerRadius = 5.0
+        layer.borderColor = Config.PadSelectionBorderColour
+        layer.borderWidth = Config.PadSelectionBorderWidth
+        layer.cornerRadius = Config.PadSelectionCornerRadius
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -26,7 +26,7 @@ class PadSelection: SelectedPadTrackingView {
     override func calculateOffset(relativeTo cell: UICollectionViewCell) -> CGRect {
         // This selection should look like a border around the cell
         // need to offset the frame by some pixels, increase the width
-        let offset = layer.borderWidth + 2
+        let offset = layer.borderWidth + Config.PadSelectionOffset
         return CGRect(x: cell.frame.minX - offset,
                       y: cell.frame.minY - offset,
                       width: cell.frame.width + offset * 2,
