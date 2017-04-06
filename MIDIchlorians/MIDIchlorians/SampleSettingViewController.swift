@@ -14,8 +14,8 @@ class SampleSettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        sampleSettingControl.insertSegment(withTitle: "asdf", at: 0, animated: true)
-        sampleSettingControl.insertSegment(withTitle: "hijkl", at: 0, animated: true)
+        sampleSettingControl.insertSegment(withTitle: Config.SampleSettingLoopLabel, at: 0, animated: true)
+        sampleSettingControl.insertSegment(withTitle: Config.SampleSettingOnceOffLabel, at: 0, animated: true)
 
         view.addSubview(sampleSettingControl)
         setConstraints()
@@ -32,15 +32,5 @@ class SampleSettingViewController: UIViewController {
             make.height.equalTo(Config.TimelineHeight)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -106,6 +106,9 @@ struct Config {
     // Bottom pane
     static let BottomPaneHeight = 220
 
+    static let SampleSettingLoopLabel = "Loop"
+    static let SampleSettingOnceOffLabel = "Once-off"
+
     // Page
     static let PageReuseIdentifier = "page"
     static let PageIconName = "padplay.png"
