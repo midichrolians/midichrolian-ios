@@ -155,6 +155,7 @@ struct Config {
     static let ColourSelectionOffset: CGFloat = 5
     static let ColourReuseIdentifier = "colour"
     static let ColourInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    static let ColourClearAnimImage = "clear_anim.png"
 
     static let RemoveButtonOffset: CGFloat = 10
     static let RemoveButtonWidth: CGFloat = 24

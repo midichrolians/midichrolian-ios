@@ -13,6 +13,7 @@ class ColourCollectionViewController: UICollectionViewController, UICollectionVi
 
     private let reuseIdentifier = Config.ColourReuseIdentifier
     private let inset = Config.ColourInsets
+    private let clearAnimImage = UIImage(named: Config.ColourClearAnimImage)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class ColourCollectionViewController: UICollectionViewController, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
         if colourDelegate?.colours.count ?? 0 <= indexPath.row {
-            cell.backgroundColor = UIColor.blue
+            cell.backgroundView = UIImageView(image: clearAnimImage)
             return cell
         }
 
