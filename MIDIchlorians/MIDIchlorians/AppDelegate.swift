@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyDropbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,50 +18,98 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Copy samples from the bundle onto user's document directory.
     // A list of URLs of the copied samples.
-    func copyBundleSamples() -> [String] {
+    func copyBundleSamples() {
         // store the samples in the document directory
         guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             // if we cannot store, that's fine, the user just won't have any samples loaded
-            return []
+            return
         }
 
         // Helper to copy form src to destination
-        func copy(src: URL, dest: URL) -> URL? {
+        func copy(src: URL, dest: URL) {
             do {
                 try FileManager.default.copyItem(at: src, to: dest)
-                return dest
             } catch {
-                return nil
+                return
             }
         }
 
-        func copyToUserStorage(_ sampleName: String) -> String? {
+        func copyToUserStorage(_ sampleName: String) {
             let sampleURL = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt)
             guard let srcURL = sampleURL else {
-                return nil
+                return
             }
             let destURL = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
-            return copy(src: srcURL, dest: destURL) != nil ? sampleName : nil
+            copy(src: srcURL, dest: destURL)
         }
 
-        return preloadedSamples.flatMap { copyToUserStorage($0) }
+        preloadedSamples.forEach { sample in
+            copyToUserStorage(sample)
+        }
+    }
+
+    //Get all samples present in documents directory
+    func getAppSamples() -> [String] {
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
+            return []
+        }
+
+        do {
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: [])
+            let audioFiles = directoryContents.filter{ $0.pathExtension == Config.SoundExt }
+                                              .map { $0.deletingPathExtension().lastPathComponent }
+            return audioFiles
+
+        } catch {
+            return []
+        }
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //Get app keys
+        var keys: NSDictionary?
+
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        if let applicationId = keys?["DropboxAppId"] as? String {
+            //Initalise dropbox client
+            DropboxClientsManager.setupWithAppKey(applicationId)
+        } else {
+            print("Cannot find dropbox key")
+        }
+
         // Try to find a session that was last loaded
         // if not loaded should create an empty session
 
         // Copy all samples into user directory
-        let copiedSamples = copyBundleSamples()
+        copyBundleSamples()
+
+        //Get all samples in user directory
+        let appSamples = getAppSamples()
 
         // Populate the samples in our database
-        copiedSamples.forEach { sample in
+        appSamples.forEach { sample in
             // if saving fails, what are we gonna do?
             let _ = DataManager.instance.saveAudio(sample)
         }
 
         // Do the same thing for animations as well
+        
+        return true
+    }
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let authResult = DropboxClientsManager.handleRedirectURL(url) {
+            switch authResult {
+            case .success:
+                print("Success! User is logged into Dropbox.")
+            case .cancel:
+                print("Authorization flow was manually canceled by user!")
+            case .error(_, let description):
+                print("Error: \(description)")
+            }
+        }
         return true
     }
 
