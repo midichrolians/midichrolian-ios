@@ -83,6 +83,15 @@ class AnimationTableViewController: UITableViewController {
         return Config.AnimationTableCellHeight
     }
 
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let animationName = animationTypeNames.remove(at: indexPath.row)
+            _ = DataManager.instance.removeAnimation(animationName)
+        }
+    }
+
     private func animationType(at indexPath: IndexPath) -> String {
         return animationTypeNames[indexPath.row]
     }

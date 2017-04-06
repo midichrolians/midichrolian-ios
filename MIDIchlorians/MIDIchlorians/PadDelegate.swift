@@ -17,6 +17,9 @@ protocol PadDelegate: class {
 
     // When a pad is tapped for the second time to be played
     func pad(played: Pad)
+
+    // When an animation is added in design mode)
+    func pad(animationUpdated animation: AnimationSequence)
 }
 
 // Default implementation that does nothing
@@ -28,5 +31,8 @@ extension PadDelegate {
     }
 
     func pad(played: Pad) {
+    }
+
+    func pad(animationUpdated: AnimationSequence) {
     }
 }

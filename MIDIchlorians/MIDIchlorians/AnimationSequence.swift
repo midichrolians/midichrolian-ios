@@ -9,16 +9,24 @@
 import Foundation
 
 class AnimationSequence {
-    private var animationBitsArray: [[AnimationBit]?]
+    private(set) var animationBitsArray: [[AnimationBit]?]
     private var tickCounter: Int
     var toBeRemoved: Bool
     var name: String?
+    var frequencyPerBeat: BeatFrequency = BeatFrequency.eight
+    private var frameCount: Int
+
+    convenience init(beatFrequency: BeatFrequency) {
+        self.init()
+        frequencyPerBeat = beatFrequency
+    }
 
     init() {
         animationBitsArray = [[AnimationBit]]()
         tickCounter = 0
         toBeRemoved = false
         name = nil
+        frameCount = 0
     }
 
     func addAnimationBit(atTick: Int, animationBit: AnimationBit) {
@@ -35,6 +43,17 @@ class AnimationSequence {
         animationBitsArray[atTick] = array
     }
 
+    func removeAnimationBit(atTick: Int, animationBit: AnimationBit) {
+        guard var animationBits = animationBitsArray[atTick] else {
+            return
+        }
+        guard let indexOfAnimationBit = animationBits.index(of: animationBit) else {
+            return
+        }
+        animationBits.remove(at: indexOfAnimationBit)
+        animationBitsArray[atTick] = animationBits
+    }
+
     func next() -> [AnimationBit]? {
         if tickCounter >= animationBitsArray.count {
             return nil
@@ -45,6 +64,21 @@ class AnimationSequence {
             return animationBits
         }
         tickCounter += 1
+        return array
+    }
+
+    func nextFrame() -> [AnimationBit]? {
+        if tickCounter >= animationBitsArray.count {
+            return nil
+        }
+        let animationBits = [AnimationBit]()
+        if frameCount % frequencyPerBeat.framesInABeat() == 0 {
+            tickCounter += 1
+        }
+        frameCount += 1
+        guard let array = animationBitsArray[tickCounter - 1] else {
+            return animationBits
+        }
         return array
     }
 
@@ -70,6 +104,7 @@ class AnimationSequence {
         var dictionary = [String: Any?]()
         dictionary[Config.animationSequenceArrayKey] = arrayOfStrings
         dictionary[Config.animationSequenceNameKey] = name
+        dictionary[Config.animationSequenceFrequencyKey] = frequencyPerBeat.getJSON()
 
         guard let jsonData = try? JSONSerialization.data(
             withJSONObject: dictionary,
@@ -95,6 +130,10 @@ class AnimationSequence {
         guard let name = dictionary[Config.animationSequenceNameKey] as? String else {
             return nil
         }
+        guard let frequencyPerBeat = dictionary[Config.animationSequenceFrequencyKey] as? String else {
+            return nil
+        }
+
         let animationSequence = AnimationSequence()
         var animationBitsArrayForSequence = [[AnimationBit]]()
 
@@ -116,6 +155,8 @@ class AnimationSequence {
 
         animationSequence.animationBitsArray = animationBitsArrayForSequence
         animationSequence.name = name
+        animationSequence.frequencyPerBeat = BeatFrequency(name: frequencyPerBeat)
+
         return animationSequence
     }
 }

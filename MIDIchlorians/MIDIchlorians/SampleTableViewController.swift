@@ -15,7 +15,7 @@ class SampleTableViewController: UITableViewController {
     private let newSampleButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     private let reuseIdentifier = Config.SampleTableReuseIdentifier
 
-    internal let sampleList = DataManager.instance.loadAllAudioStrings()
+    internal var sampleList = DataManager.instance.loadAllAudioStrings()
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
@@ -82,6 +82,17 @@ class SampleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.sampleTable(tableView, didSelect: sound(for: indexPath))
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let sample = sampleList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            // remove from file system too?
+            _ = DataManager.instance.removeAudio(sample)
+        }
     }
 
     private func sound(for indexPath: IndexPath) -> String {

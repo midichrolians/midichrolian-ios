@@ -14,7 +14,7 @@ struct Config {
     static let numberOfRows = 6
     static let numberOfColumns = 8
     static let numberOfPages = 6
-    static let animationFrequency = 16
+    static let numberOfSecondsInMinute = 60
     static let defaultBPM = 120
 
     static let audioSetting = AudioPlayerSetting.audioServices
@@ -72,24 +72,80 @@ struct Config {
     static let MainViewHeightToAnimHeightRatio: CGFloat = 1 / 4
     static let MainViewWidthToAnimWidthRatio: CGFloat = 7 / 12
 
-    static let SectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+    static let SectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     // will be removed once we move to constraints
     static let AppLeftPadding: CGFloat = 20
     static let AppRightPadding: CGFloat = 20
-    static let TopNavHeight: CGFloat = 60
 
+    // Top nav
+    static let TopNavHeight: CGFloat = 60
+    static let TopNavLogoText = "MIDIchlorians"
+    static let TopNavSessionLabel = "Sessions"
+    static let TopNavSaveLabel = "Sessions"
+    static let TopNavEditLabel = "Edit"
+    static let TopNavExitLabel = "Exit"
+    static let TopNavRecordLabel = "Record"
+    static let TopNavRecordIcon = "record.png"
+    static let TopNavRecordingIcon = "recording.png"
+    static let TopNavStackViewSpacing: CGFloat = 20
+
+    // Grid
+    static let GridCollectionViewCellIdentifier = "cell"
+    static let PadSelectionBorderColour = UIColor.green.cgColor
+    static let PadSelectionBorderWidth: CGFloat = 3.0
+    static let PadSelectionCornerRadius: CGFloat = 5.0
+    static let PadSelectionOffset: CGFloat = 2
+    static let GridSampleIndicatorIcon = "play.png"
+    static let GridAnimationIndicatorIcon = "play.png"
+
+    // SidePane
+    static let SidePaneWidth: CGFloat = 320
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
-    static let TimelineHeight: CGFloat = 60
+    // Bottom pane
+    static let BottomPaneHeight = 220
+
+    static let SampleSettingLoopLabel = "Loop"
+    static let SampleSettingOnceOffLabel = "Once-off"
+
+    // Page
+    static let PageReuseIdentifier = "page"
+    static let PageIconName = "padplay.png"
+    static let PageSelectedIconName = "padplay_selected.png"
+
+    // Animation Designer
+    static let AnimationDesignItemOffset: CGFloat = 20
+    static let AnimationDesignerPaneHeightOffset: CGFloat = -200
+    static let TimelineHeight: CGFloat = 48
     static let ColourPickerHeight: CGFloat = 60
     static let TimelineTopOffset: CGFloat = 10
     static let ColourPickerTopOffset: CGFloat = 10
     static let AnimationTypeControlTopOffset: CGFloat = 10
     static let ClearSwitchLabelLeftOffset: CGFloat = 40
     static let ClearSwitchLeftOffset: CGFloat = 10
+    static let AnimationDesignTimelineLabel = "Animation Timeline"
+    static let AnimationDesignColourLabel = "Colour Palette"
+    static let AnimationDesignClearLabel = "Clear"
+    static let AnimationDesignSaveLabel = "Save Animation"
+
+    // Timeline
+    static let TimelineMinNumFrames = 8
+    static let TimelineReuseIdentifier = "timeline"
+    static let TimelineInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    // ratio of height for unselected over selected frame in timeline
+    static let TimelineUnselectedFrameRatio: CGFloat = 0.7
+
+    // Colour picker
+    static let ColourSelectionWidth: CGFloat = 3
+    static let ColourSelectionOffset: CGFloat = 5
+    static let ColourReuseIdentifier = "colour"
+    static let ColourInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+
+    static let RemoveButtonOffset: CGFloat = 10
+    static let RemoveButtonWidth: CGFloat = 32
 
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
@@ -113,21 +169,16 @@ struct Config {
 
     static let animationSequenceArrayKey = "animationBitsArray"
     static let animationSequenceNameKey = "name"
+    static let animationSequenceFrequencyKey = "frequencyPerBeat"
 
     static let animationTypeSpreadName = "Spread"
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
 
-    static let TopNavTitle = "MIDIchlorians"
-    static let TopNavSessionTitle = "Sessions"
-    static let ModeSegmentTitles = ["PLAY", "EDIT"]
-
     static let DefaultSessionName = "New Session"
 
     static let SessionTableTitle = "Sessions"
     static let AnimationTabTitle = "Animations"
-
-    static let GridCollectionViewCellIdentifier = "cell"
 
     static let AudioFolderName = "samples"
     static let AnimationFileName = "animations"
