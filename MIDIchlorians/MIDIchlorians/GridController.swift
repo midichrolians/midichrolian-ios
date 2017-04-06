@@ -118,6 +118,11 @@ extension GridController: PadDelegate {
         if let audioFile = pad.getAudioFile() {
             _ = AudioManager.instance.play(audioDir: audioFile)
         }
+        //RECORDING HACK
+        if TimeTracker.instance.getRecording {
+            TimeTracker.instance.setTimePadPair(pageNum: 0, forIndex: indexPath)
+        }
+        
     }
 }
 

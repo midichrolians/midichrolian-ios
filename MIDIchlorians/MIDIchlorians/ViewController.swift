@@ -16,6 +16,9 @@ import RealmSwift
 // - setting up delegates for side pane and grid
 // - initializing default styles for some views
 class ViewController: UIViewController {
+    var toPlay = [(TimeInterval, (Int, IndexPath))]()
+    var playStart: TimeInterval = 0
+    var timer = Timer()
     internal var topBarController: TopBarController!
     internal var sessionNavigationController: UINavigationController!
     internal var sessionTableViewController: SessionTableViewController!
@@ -127,6 +130,42 @@ class ViewController: UIViewController {
                    y: view.frame.height * Config.MainViewHeightToAnimMinYRatio,
                    width: view.frame.width * Config.MainViewWidthToAnimWidthRatio,
                    height: view.frame.height * Config.MainViewHeightToAnimHeightRatio)
+    }
+
+    //RECORDING HACK
+    @IBAction func testbuttonpressed(_ sender: Any) {
+        print("testButtonPressed")
+        TimeTracker.instance = TimeTracker()
+    }
+
+    @IBAction func playButtonPressed(_ sender: Any) {
+        print("play button Pressed")
+        TimeTracker.instance.stopRecording()
+        PlayBackRetriever.instance = PlayBackRetriever(timeIndexArr: TimeTracker.instance.timePathDict)
+        let tiInterval:TimeInterval = 1/64
+        playStart = 0
+        timer = Timer.scheduledTimer(timeInterval: tiInterval, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: true)
+
+    }
+
+    func runTimedCode() {
+        let tiInterval:TimeInterval = 1/64
+        playStart += tiInterval
+        if toPlay.count <= 0 {
+            toPlay = PlayBackRetriever.instance.getNextPads()
+            if toPlay.count <= 0 {
+                return
+            }
+        }
+        let playTimeInt = toPlay[0].0
+        if playStart >= playTimeInt {
+            for value in toPlay {
+                self.gridController.padTapped(indexPath: value.1.1)
+                print("playing",playStart, value.0, value.1.1)
+            }
+            toPlay = [(TimeInterval, (Int, IndexPath))]()
+        }
+        
     }
 
     // Sets up application wide styles
