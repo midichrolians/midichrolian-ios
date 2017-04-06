@@ -67,7 +67,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
                 cell.pad = pad
             case .design:
                 if let colour = colours[selectedFrame][pad] {
-                    cell.animate(backgroundColour: colour.uiColor)
+                    cell.animate(image: colour.image)
                 } else {
                     cell.setDefaultAppearance()
                 }
