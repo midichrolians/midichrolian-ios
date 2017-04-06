@@ -12,11 +12,13 @@ class AnimationType {
     var name: String
     var mode: AnimationTypeCreationMode
     var animationSequence: AnimationSequence
+    var anchorPoint: IndexPath
 
-    init(name: String, animationSequence: AnimationSequence, mode: AnimationTypeCreationMode) {
+    init(name: String, animationSequence: AnimationSequence, mode: AnimationTypeCreationMode, anchorPoint: IndexPath) {
         self.name = name
         self.mode = mode
         self.animationSequence = animationSequence
+        self.anchorPoint = anchorPoint
     }
 
     func getJSONforAnimationType() -> String? {
@@ -24,6 +26,8 @@ class AnimationType {
         dictionary[Config.animationTypeNameKey] = name
         dictionary[Config.animationTypeModeKey] = mode.rawValue
         dictionary[Config.animationTypeAnimationSequenceKey] = animationSequence.getJSONforAnimationSequence()
+        dictionary[Config.animationTypeAnchorRowKey] = anchorPoint.section
+        dictionary[Config.animationTypeAnchorColumnKey] = anchorPoint.item
 
         guard let jsonData = try? JSONSerialization.data(
             withJSONObject: dictionary,
@@ -57,8 +61,19 @@ class AnimationType {
             fromJSON: animationSequenceString) else {
             return nil
         }
+        guard let anchorRow = dictionary[Config.animationTypeAnchorRowKey] as? Int else {
+            return nil
+        }
+        guard let anchorColumn = dictionary[Config.animationTypeAnchorColumnKey] as? Int else {
+            return nil
+        }
 
-        let animationType = AnimationType(name: name, animationSequence: animationSequence, mode: mode)
+        let animationType = AnimationType(
+            name: name,
+            animationSequence: animationSequence,
+            mode: mode,
+            anchorPoint: IndexPath(item: anchorColumn, section: anchorRow)
+        )
         return animationType
     }
 }
