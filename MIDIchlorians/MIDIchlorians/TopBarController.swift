@@ -8,31 +8,85 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
-class TopBarController {
-    var view: UIView {
-        return topNavigationBar as UIView
+class TopBarController: UIViewController {
+    private var logo = UILabel()
+    // used for managing the controls
+    private var stackView = UIStackView()
+    private var sessionButton = UIButton(type: .system)
+    private var saveButton = UIButton(type: .system)
+    private var editButton = UIButton(type: .system)
+    private var exitButton = UIButton(type: .system)
+
+    weak var modeSwitchDelegate: ModeSwitchDelegate?
+    weak var sessionSelectorDelegate: SessionSelectorDelegate?
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+
+        logo.text = "MIDIchlorians"
+        view.addSubview(logo)
+        view.backgroundColor = UIColor.white
+
+        sessionButton.setTitle("Sessions", for: .normal)
+        sessionButton.tintColor = UIColor.black
+        sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
+        view.addSubview(sessionButton)
+
+        saveButton.setTitle("Save", for: .normal)
+
+        editButton.setTitle("Edit", for: .normal)
+        editButton.addTarget(self, action: #selector(onEdit), for: .touchDown)
+        
+        exitButton.setTitle("Exit", for: .normal)
+        exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
+
+        stackView.addArrangedSubview(sessionButton)
+        stackView.addArrangedSubview(editButton)
+        stackView.addArrangedSubview(saveButton)
+        stackView.axis = .horizontal
+        stackView.spacing = 20
+        view.addSubview(stackView)
+
+        makeConstraints()
     }
 
-    private var topNavigationBar: TopNavigationBar
-    weak var modeSwitchDelegate: ModeSwitchDelegate? {
-        didSet {
-            topNavigationBar.modeSwitchDelegate = modeSwitchDelegate
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    func makeConstraints() {
+        logo.snp.makeConstraints { make in
+            make.left.height.equalTo(view)
         }
-    }
-    weak var sessionSelectorDelegate: SessionSelectorDelegate? {
-        didSet {
-            topNavigationBar.sessionSelectorDelegate = sessionSelectorDelegate
-        }
-    }
 
-    init(frame: CGRect) {
-        self.topNavigationBar = TopNavigationBar(frame: frame)
+        stackView.snp.makeConstraints { make in
+            make.right.height.equalTo(view)
+        }
     }
 
     func setTargetActionOfSaveButton(target: AnyObject, selector: Selector) {
-        topNavigationBar.saveButton.target = target
-        topNavigationBar.saveButton.action = selector
+        saveButton.addTarget(target, action: selector, for: .touchDown)
+    }
+
+    // Called when the session selector is tapped
+    func sessionSelect(sender: UIButton) {
+        sessionSelectorDelegate?.sessionSelector(sender: sender)
+    }
+
+    func onExit() {
+        modeSwitchDelegate?.enterPlay()
+        stackView.removeArrangedSubview(exitButton)
+        exitButton.removeFromSuperview()
+        stackView.insertArrangedSubview(editButton, at: 0)
+    }
+
+    func onEdit() {
+        modeSwitchDelegate?.enterEdit()
+        stackView.removeArrangedSubview(editButton)
+        editButton.removeFromSuperview()
+        stackView.insertArrangedSubview(exitButton, at: 0)
     }
 
 }

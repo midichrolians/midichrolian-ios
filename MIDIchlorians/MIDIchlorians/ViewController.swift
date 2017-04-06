@@ -60,15 +60,17 @@ class ViewController: UIViewController {
         sessionNavigationController.modalPresentationStyle = .popover
         sessionTableViewController.delegate = self
 
-        let navFrame = CGRect(origin: CGPoint.zero,
-                              size: CGSize(width: view.frame.width, height: Config.TopNavHeight))
-        topBarController = TopBarController(frame: navFrame)
+        topBarController = TopBarController()
+        view.addSubview(topBarController.view)
+
+        topBarController.view.snp.makeConstraints { make in
+            make.top.left.right.equalTo(view)
+            make.height.equalTo(Config.TopNavHeight)
+        }
 
         topBarController.modeSwitchDelegate = self
         topBarController.sessionSelectorDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
-
-        view.addSubview(topBarController.view)
     }
 
     // Saves the current session
@@ -174,14 +176,16 @@ extension ViewController: ModeSwitchDelegate {
 
 // Called when session selector is tapped, shows the sessions as a popover
 extension ViewController: SessionSelectorDelegate {
-    func sessionSelector(sender: UIBarButtonItem) {
+    func sessionSelector(sender: UIButton) {
         present(sessionNavigationController, animated: false, completion: nil)
 
         // configure styles and anchor of popover presentation controller
         let popoverPresentationController = sessionNavigationController.popoverPresentationController
         popoverPresentationController?.permittedArrowDirections = [.up]
-        popoverPresentationController?.barButtonItem = sender
-        popoverPresentationController?.backgroundColor = Config.BackgroundColor
+        popoverPresentationController?.sourceView = sender
+        popoverPresentationController?.sourceRect = CGRect(
+            x: sender.frame.midX, y: sender.frame.maxY, width: 0, height: 0)
+        popoverPresentationController?.backgroundColor = Config.SecondaryBackgroundColor
     }
 }
 
