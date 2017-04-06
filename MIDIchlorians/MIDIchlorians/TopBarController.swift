@@ -21,6 +21,9 @@ class TopBarController: UIViewController {
     private var recordButton = UIButton(type: .system)
     private var recordIndicator = UIImageView()
 
+    private let recordImage = UIImage(named: "record.png")
+    private let recordingImage = UIImage(named: "recording.png")
+
     weak var modeSwitchDelegate: ModeSwitchDelegate?
     weak var sessionSelectorDelegate: SessionSelectorDelegate?
 
@@ -44,9 +47,9 @@ class TopBarController: UIViewController {
         exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
 
         recordButton.setTitle("Record", for: .normal)
-        recordButton.addTarget(self, action: #selector(onRecordButtonDown), for: .touchDown)
+        recordButton.addTarget(self, action: #selector(onRecordButtonDown(sender:)), for: .touchDown)
 
-        recordIndicator.image = UIImage(named: "play.png")
+        recordIndicator.image = recordImage
 
         stackView.addArrangedSubview(sessionButton)
         stackView.addArrangedSubview(saveButton)
@@ -54,6 +57,7 @@ class TopBarController: UIViewController {
         stackView.addArrangedSubview(recordButton)
         stackView.addArrangedSubview(recordIndicator)
         stackView.axis = .horizontal
+        stackView.alignment = .center
         stackView.spacing = 20
         view.addSubview(stackView)
 
@@ -73,6 +77,11 @@ class TopBarController: UIViewController {
         stackView.snp.makeConstraints { make in
             make.right.equalTo(view).offset(-Config.AppRightPadding)
             make.height.equalTo(view)
+        }
+
+        recordIndicator.snp.makeConstraints { make in
+            make.width.equalTo(recordIndicator.snp.height)
+            make.top.bottom.equalTo(view).inset(10)
         }
     }
 
@@ -95,16 +104,21 @@ class TopBarController: UIViewController {
         replace(stackView: stackView, rep: editButton, with: exitButton)
     }
 
-    func onRecordButtonDown() {
-        print("RECORD")
+    func onRecordButtonDown(sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            startRecord()
+        } else {
+            stopRecord()
+        }
     }
 
     func startRecord() {
-
+        recordIndicator.image = recordingImage
     }
 
     func stopRecord() {
-
+            recordIndicator.image = recordImage
     }
 
     func replace(stackView: UIStackView, rep: UIView, with: UIView) {
