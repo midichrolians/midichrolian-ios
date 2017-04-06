@@ -83,6 +83,9 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    // Sample Setting
+    static let BottomPaneHeight = 250
+
     // Page
     static let PageReuseIdentifier = "page"
     static let PageIconName = "padplay.png"

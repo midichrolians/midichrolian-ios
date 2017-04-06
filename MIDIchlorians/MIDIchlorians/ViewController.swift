@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     internal var sessionTableViewController: SessionTableViewController!
     internal var sidePaneController: SidePaneController!
     internal var animationDesignController: AnimationDesignerController!
+    internal var sampleSettingController: SampleSettingViewController!
     internal var gridController: GridController!
     internal var currentSession: Session! {
         didSet {
@@ -41,6 +42,7 @@ class ViewController: UIViewController {
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
+        setUpSampleSetting()
         setUpAnimationDesigner()
         setUpStyles()
         setUpAnimation()
@@ -123,6 +125,19 @@ class ViewController: UIViewController {
         }
     }
 
+    private func setUpSampleSetting() {
+        sampleSettingController = SampleSettingViewController()
+        sampleSettingController.view.backgroundColor = Config.SecondaryBackgroundColor
+        view.addSubview(sampleSettingController.view)
+
+        sampleSettingController.view.snp.makeConstraints { make in
+            make.height.equalTo(Config.BottomPaneHeight)
+            make.left.equalTo(view)
+            make.right.equalTo(sidePaneController.view.snp.left)
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+    }
+
     private func setUpAnimationDesigner() {
         animationDesignController = AnimationDesignerController()
         animationDesignController.view.backgroundColor = Config.SecondaryBackgroundColor
@@ -157,6 +172,9 @@ extension ViewController: ModeSwitchDelegate {
         gridController.view.snp.updateConstraints { make in
             make.right.equalTo(view).offset(-Config.SidePaneWidth)
         }
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+        }
         gridController.enterEdit()
     }
 
@@ -165,11 +183,17 @@ extension ViewController: ModeSwitchDelegate {
         gridController.view.snp.updateConstraints { make in
             make.right.equalTo(view).offset(0)
         }
-        gridController.enterPlay()
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
         animationDesignController.view.removeFromSuperview()
+        gridController.enterPlay()
     }
 
     func enterDesign() {
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
         gridController.enterDesign()
     }
 }
