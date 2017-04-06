@@ -134,4 +134,8 @@ struct Config {
     static let SessionFileName = "sessions"
 
     static let NewAnimationTypeDefaultName = "Default Animation"
+
+    static let animationNotificationKey = "animation"
+    static let sessionNotificationKey = "session"
+    static let audioNotificationKey = "audio"
 }

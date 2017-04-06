@@ -156,14 +156,18 @@ class ViewController: UIViewController {
     }
 
     private func importFromDropbox() {
-        if let _ = DropboxClientsManager.authorizedClient {
+        if DropboxClientsManager.authorizedClient != nil {
             cloudManager.loadFromDropbox()
+        } else {
+            loadDropBoxWebView()
         }
     }
 
     private func saveToDropbox() {
-        if let _ = DropboxClientsManager.authorizedClient {
+        if DropboxClientsManager.authorizedClient != nil {
             cloudManager.saveToDropbox()
+        } else {
+            loadDropBoxWebView()
         }
     }
 
