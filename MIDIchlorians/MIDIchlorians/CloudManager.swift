@@ -25,6 +25,8 @@ class CloudManager {
                                         object: self, userInfo: ["success": result])
     }
 
+    //Loads items from Dropbox into App's Documents directory
+    // Posts 3 notifications indicating success or failure, one each for sessions, animations and audios
     func loadFromDropbox() {
         loadAudios()
         loadAnimations()
@@ -154,6 +156,8 @@ class CloudManager {
 
     }
 
+    // Uploads items to Dropbox from App's Documents directory
+    // Posts 3 notifications indicating success or failure, one each for sessions, animations and audios
     func saveToDropbox() {
         saveAudios()
         saveAnimations()

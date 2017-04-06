@@ -85,17 +85,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // if not loaded should create an empty session
 
         // Copy all samples into user directory
+        copyBundleSamples()
+
+        //Get all samples in user directory
         let appSamples = getAppSamples()
+        
         // Populate the samples in our database
         appSamples.forEach { sample in
             // if saving fails, what are we gonna do?
             let _ = DataManager.instance.saveAudio(sample)
         }
 
-        //Load all Audio files that are in the app's doc directory
-
         // Do the same thing for animations as well
-
         return true
     }
 
