@@ -1,5 +1,5 @@
 //
-//  PadSelection.swift
+//  ColourSelection.swift
 //  MIDIchlorians
 //
 //  Created by Zhi An Ng on 5/4/17.
@@ -8,15 +8,17 @@
 
 import UIKit
 
-// Shows a selection around a cell
-class PadSelection: SelectedPadTrackingView {
+// Tracks the currently selected colour in the colour picker
+class ColourSelection: SelectedPadTrackingView {
+    private let width: CGFloat = Config.ColourSelectionWidth
+    private let offset: CGFloat = Config.ColourSelectionOffset
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         isOpaque = false
-        layer.borderColor = Config.PadSelectionBorderColour
-        layer.borderWidth = Config.PadSelectionBorderWidth
-        layer.cornerRadius = Config.PadSelectionCornerRadius
+        layer.borderWidth = width
+        layer.borderColor = UIColor.darkGray.cgColor
+        layer.cornerRadius = width
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -24,12 +26,9 @@ class PadSelection: SelectedPadTrackingView {
     }
 
     override func calculateOffset(relativeTo cell: UICollectionViewCell) -> CGRect {
-        // This selection should look like a border around the cell
-        // need to offset the frame by some pixels, increase the width
-        let offset = layer.borderWidth + Config.PadSelectionOffset
         return CGRect(x: cell.frame.minX - offset,
                       y: cell.frame.minY - offset,
                       width: cell.frame.width + offset * 2,
-                      height: cell.frame.height + offset * 2)
+                      height: cell.frame.width + offset * 2)
     }
 }
