@@ -52,6 +52,19 @@ class ViewController: UIViewController {
         // need assign delegates after everything is initialized
         gridController.padDelegate = self
         animationDesignController.delegate = gridController
+
+        //Need to initialise Notification Center, so I've just put the code here in comments,
+        // so that you can do it wherever you want
+//
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.animationNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.audioNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.sessionNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
     }
 
     // Sets up the top navigation.

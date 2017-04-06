@@ -53,9 +53,12 @@ class Session: Object {
         }
     }
 
-    convenience init?(json: Data) {
+    convenience init?(json: String) {
         self.init()
-        guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: [])) as? [String: Any?] else {
+        guard let data = json.data(using: .utf8) else {
+            return nil
+        }
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any?] else {
             return nil
         }
         guard let BPM = dictionary["BPM"] as? Int,
@@ -70,15 +73,22 @@ class Session: Object {
         self.numPages = numPages
         self.sessionName = dictionary["sessionName"] as? String
 
-        guard let padArray = dictionary["pads"] as? [Data] else {
+        guard let padArray = dictionary["pads"] as? [String] else {
             return nil
         }
-        for (page, (row, col)) in zip(0..<numPages, zip(0..<numRows, 0..<numCols)) {
-            let listIndex = (page * numRows * numCols) + (row * numCols) + col
-            guard let pad = Pad(json: padArray[listIndex]) else {
-                return nil
+
+        for page in 0..<numPages {
+            pads.append([])
+            for row in 0..<numRows {
+                pads[page].append([])
+                for col in 0..<numCols {
+                    let listIndex = (page * numRows * numCols) + (row * numCols) + col
+                    guard let pad = Pad(json: padArray[listIndex]) else {
+                        return nil
+                    }
+                    pads[page][row].append(pad)
+                }
             }
-            pads[page][row][col] = pad
         }
 
     }
@@ -204,33 +214,43 @@ class Session: Object {
               self.numRows == session.numRows && self.numCols == session.numCols else {
             return false
         }
-        for (page, (row, col)) in zip(0..<numPages, zip(0..<numRows, 0..<numCols)) {
-            if !pads[page][row][col].equals(session.pads[page][row][col]) {
-                return false
+
+        for page in 0..<numPages {
+            for row in 0..<numRows {
+                for col in 0..<numCols {
+                    if !pads[page][row][col].equals(session.pads[page][row][col]) {
+                        return false
+                    }
+                }
             }
         }
+
         return true
     }
 
-    func toJSON() -> Data? {
-        var dictionary = [String: Any]()
+    func toJSON() -> String? {
+        var dictionary = [String: Any?]()
         dictionary["BPM"] = self.BPM
         dictionary["numPages"] = self.numPages
         dictionary["numRows"] = self.numRows
         dictionary["numCols"] = self.numCols
         dictionary["sessionName"] = self.sessionName
-        var padArray = [Data?]()
-        for (page, (row, col)) in zip(0..<numPages, zip(0..<numRows, 0..<numCols)) {
-            let pad = pads[page][row][col]
-            guard let padJSON = pad.toJSON() else {
-                return nil
+        var padArray = [String]()
+        for page in 0..<numPages {
+            for row in 0..<numRows {
+                for col in 0..<numCols {
+                    let pad = pads[page][row][col]
+                    guard let padJSON = pad.toJSON() else {
+                        return nil
+                    }
+                    padArray.append(padJSON)
+                }
             }
-            padArray.append(padJSON)
         }
         dictionary["pads"] = padArray
         guard let json = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else {
             return nil
         }
-        return json
+        return String(data: json, encoding: .utf8)
     }
 }

@@ -66,14 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         //Get app keys
         var keys: NSDictionary?
 
         if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
             keys = NSDictionary(contentsOfFile: path)
         }
-    
         if let applicationId = keys?["DropboxAppId"] as? String {
             //Initalise dropbox client
             DropboxClientsManager.setupWithAppKey(applicationId)
@@ -89,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //Get all samples in user directory
         let appSamples = getAppSamples()
-        
+
         // Populate the samples in our database
         appSamples.forEach { sample in
             // if saving fails, what are we gonna do?
@@ -97,6 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         // Do the same thing for animations as well
+        
         return true
     }
 

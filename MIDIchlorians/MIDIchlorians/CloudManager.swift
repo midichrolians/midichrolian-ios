@@ -89,12 +89,10 @@ class CloudManager {
             }
             listFolderCallback(result: result)
         }
-
-
     }
 
     private func loadAnimations() {
-        let filePath = "/\(Config.AnimationFileName)/\(Config.AnimationExt)"
+        let filePath = "/\(Config.AnimationFileName).\(Config.AnimationExt)"
 
         func downloadCallBack(_ result: (Files.FileMetadataSerializer.ValueType, Data)) {
             let json = result.1
@@ -109,7 +107,7 @@ class CloudManager {
                     continue
                 }
                 //What if saving fails
-                _ = self.dataManager.saveAnimation(animationJSON)
+                _ = dataManager.saveAnimation(animationJSON)
             }
             self.postToNotificationCenter(Config.animationNotificationKey, true)
         }
@@ -124,7 +122,7 @@ class CloudManager {
     }
 
     private func loadSessions() {
-        let filePath = "/\(Config.SessionFileName)/\(Config.SessionExt)"
+        let filePath = "/\(Config.SessionFileName).\(Config.SessionExt)"
 
         func downloadCallBack(_ result: (Files.FileMetadataSerializer.ValueType, Data)) {
             let json = result.1
@@ -134,7 +132,7 @@ class CloudManager {
                 return
             }
             for (sessionName, object) in dictionary {
-                guard let sessionData = object as? Data else {
+                guard let sessionData = object as? String else {
                     continue
                 }
                 guard let session = Session(json: sessionData) else {
@@ -213,8 +211,8 @@ class CloudManager {
     }
 
     private func saveAnimations() {
-        let animationTypes = dataManager.loadAllAnimationTypes().flatMap
-            { AnimationType.getAnimationTypeFromJSON(fromJSON: $0) }
+        let animationTypes = dataManager.loadAllAnimationTypes().flatMap {
+            AnimationType.getAnimationTypeFromJSON(fromJSON: $0) }
         var dictionary = [String: String]()
         for animation in animationTypes {
             guard let jsonString = animation.getJSONforAnimationType() else {
@@ -227,7 +225,8 @@ class CloudManager {
         }
 
         let filePath = "/\(Config.AnimationFileName).\(Config.AnimationExt)"
-        client?.files.upload(path: filePath, input: jsonData).response { response, error in
+        client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false, mute: false,
+                             input: jsonData).response { response, error in
             guard response != nil, error == nil else {
                 self.postToNotificationCenter(Config.animationNotificationKey, false)
                 return
@@ -239,7 +238,7 @@ class CloudManager {
 
     private func saveSessions() {
         let sessions = dataManager.loadAllSessionNames().flatMap { dataManager.loadSession($0) }
-        var dictionary = [String: Data]()
+        var dictionary = [String: String]()
         for session in sessions {
             guard let name = session.getSessionName(),
                 let json = session.toJSON() else {
@@ -251,7 +250,8 @@ class CloudManager {
             return
         }
         let filePath = "/\(Config.SessionFileName).\(Config.SessionExt)"
-        client?.files.upload(path: filePath, input: jsonData).response{ response, error in
+        client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false, mute: false,
+                             input: jsonData).response { response, error in
             guard response != nil, error == nil else {
                 self.postToNotificationCenter(Config.sessionNotificationKey, false)
                 return
