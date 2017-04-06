@@ -43,8 +43,8 @@ class TopBarController: UIViewController {
         exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
 
         stackView.addArrangedSubview(sessionButton)
-        stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(saveButton)
+        stackView.addArrangedSubview(editButton)
         stackView.axis = .horizontal
         stackView.spacing = 20
         view.addSubview(stackView)
@@ -79,16 +79,21 @@ class TopBarController: UIViewController {
 
     func onExit() {
         modeSwitchDelegate?.enterPlay()
-        stackView.removeArrangedSubview(exitButton)
-        exitButton.removeFromSuperview()
-        stackView.insertArrangedSubview(editButton, at: 0)
+        replace(stackView: stackView, rep: exitButton, with: editButton)
     }
 
     func onEdit() {
         modeSwitchDelegate?.enterEdit()
-        stackView.removeArrangedSubview(editButton)
-        editButton.removeFromSuperview()
-        stackView.insertArrangedSubview(exitButton, at: 0)
+        replace(stackView: stackView, rep: editButton, with: exitButton)
+    }
+
+    func replace(stackView: UIStackView, rep: UIView, with: UIView) {
+        guard let index = stackView.arrangedSubviews.index(of: rep) else {
+            return
+        }
+        stackView.insertArrangedSubview(with, at: index)
+        stackView.removeArrangedSubview(rep)
+        rep.removeFromSuperview()
     }
 
 }
