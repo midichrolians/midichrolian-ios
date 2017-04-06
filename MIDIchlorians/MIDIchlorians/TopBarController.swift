@@ -96,12 +96,18 @@ class TopBarController: UIViewController {
 
     func onExit() {
         modeSwitchDelegate?.enterPlay()
-        replace(stackView: stackView, rep: exitButton, with: editButton)
+        stackView.replace(view: exitButton, with: editButton)
+        recordButton.isHidden = false
+        recordIndicator.isHidden = false
     }
 
     func onEdit() {
         modeSwitchDelegate?.enterEdit()
-        replace(stackView: stackView, rep: editButton, with: exitButton)
+        stackView.replace(view: editButton, with: exitButton)
+
+        // entering edit mode, so hide functionality to record and play
+        recordButton.isHidden = true
+        recordIndicator.isHidden = true
     }
 
     func onRecordButtonDown(sender: UIButton) {
@@ -118,16 +124,7 @@ class TopBarController: UIViewController {
     }
 
     func stopRecord() {
-            recordIndicator.image = recordImage
-    }
-
-    func replace(stackView: UIStackView, rep: UIView, with: UIView) {
-        guard let index = stackView.arrangedSubviews.index(of: rep) else {
-            return
-        }
-        stackView.insertArrangedSubview(with, at: index)
-        stackView.removeArrangedSubview(rep)
-        rep.removeFromSuperview()
+        recordIndicator.image = recordImage
     }
 
 }

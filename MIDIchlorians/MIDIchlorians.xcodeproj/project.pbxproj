@@ -97,6 +97,7 @@
 		E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712F1E94B7B100777846 /* RemoveButton.swift */; };
 		E9E780741E955B8F00F5CC65 /* PageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780731E955B8F00F5CC65 /* PageDelegate.swift */; };
 		E9E7807A1E96284100F5CC65 /* SampleSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */; };
+		E9E7807C1E96361B00F5CC65 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
 		E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4A1E83A81900769A8F /* TopBarController.swift */; };
 		E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */; };
@@ -233,6 +234,7 @@
 		E9C6712F1E94B7B100777846 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
 		E9E780731E955B8F00F5CC65 /* PageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDelegate.swift; sourceTree = "<group>"; };
 		E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettingViewController.swift; sourceTree = "<group>"; };
+		E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
 		E9EC7C4A1E83A81900769A8F /* TopBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarController.swift; sourceTree = "<group>"; };
 		E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectorDelegate.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				334970C81E72B86B009C78DF /* LowLatencyAudio.swift */,
 				F36B995D1E8148260026721A /* DataManager.swift */,
 				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
+				E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -899,6 +902,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
+				E9E7807C1E96361B00F5CC65 /* UIStackView+Extensions.swift in Sources */,
 				E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */,
 				F3710A8F1E7D280D0031A754 /* Session.swift in Sources */,
 				E92D6F2F1E953DA000E815F1 /* TimelineDelegate.swift in Sources */,
