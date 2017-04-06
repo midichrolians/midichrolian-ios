@@ -29,10 +29,12 @@ class TopBarController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = Config.SecondaryBackgroundColor
 
         logo.text = Config.TopNavLogoText
+        logo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(logoTapped)))
+        logo.isUserInteractionEnabled = true
         view.addSubview(logo)
-        view.backgroundColor = Config.SecondaryBackgroundColor
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
         sessionButton.tintColor = UIColor.black
@@ -119,6 +121,13 @@ class TopBarController: UIViewController {
 
     func stopRecord() {
             recordIndicator.image = recordImage
+    }
+
+    func logoTapped() {
+        let vc = AboutUsViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+        vc.view.backgroundColor = UIColor.blue
     }
 
     func replace(stackView: UIStackView, rep: UIView, with: UIView) {
