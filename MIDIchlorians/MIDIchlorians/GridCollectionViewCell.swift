@@ -9,9 +9,10 @@
 import UIKit
 import SnapKit
 
-class GridCollectionViewCell: UICollectionViewCell, PadView {
-    private let sampleIndicatorImage = UIImage(named: Config.GridSampleIndicatorIcon)
-    private let animationIndicatorImage = UIImage(named: Config.GridAnimationIndicatorIcon)
+class GridCollectionViewCell: UICollectionViewCell {
+    private let sampleOnceOffImage = UIImage(named: Config.PadSampleOnceOffIcon)
+    private let sampleLoopImage = UIImage(named: Config.PadSampleLoopIcon)
+    private let animationIndicatorImage = UIImage(named: Config.PadAnimationIcon)
     var rowNumber = 0
     var columnNumber = 0
     var sampleIndicator: UIImageView!
@@ -23,6 +24,7 @@ class GridCollectionViewCell: UICollectionViewCell, PadView {
                 clearIndicators()
                 return
             }
+            // once we have the notion of an audio having loop/onceoff we will update the image accordingly
             if let sample = pad.getAudioFile() {
                 assign(sample: sample)
             }
@@ -44,17 +46,21 @@ class GridCollectionViewCell: UICollectionViewCell, PadView {
         animationIndicator = UIImageView()
         contentView.addSubview(animationIndicator)
 
+        setConstraints()
+    }
+
+    func setConstraints() {
         // add constraints
         sampleIndicator.snp.makeConstraints { make in
-            make.width.equalTo(contentView).dividedBy(3)
+            make.width.equalTo(contentView).dividedBy(Config.PadIndicatorRatio)
             make.height.equalTo(sampleIndicator.snp.width)
-            make.bottom.left.equalTo(contentView)
+            make.centerY.centerX.equalTo(contentView)
         }
 
         animationIndicator.snp.makeConstraints { make in
-            make.width.equalTo(contentView).dividedBy(3)
+            make.width.equalTo(contentView).dividedBy(Config.PadIndicatorRatio)
             make.height.equalTo(animationIndicator.snp.width)
-            make.bottom.right.equalTo(contentView)
+            make.bottom.centerX.equalTo(contentView)
         }
     }
 
@@ -67,7 +73,7 @@ class GridCollectionViewCell: UICollectionViewCell, PadView {
     }
 
     func assign(sample: String) {
-        sampleIndicator.image = sampleIndicatorImage
+        sampleIndicator.image = sampleOnceOffImage
     }
 
     func assign(animation: AnimationSequence) {

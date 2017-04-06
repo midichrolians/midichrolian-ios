@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class RemoveButton: SelectedPadTrackingView {
-    let removeImage = UIImageView(image: UIImage(named: "cancel.png"))
+    let removeImage = UIImageView(image: UIImage(named: Config.RemoveButtonIcon))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
