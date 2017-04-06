@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    internal var dataManager = DataManager()
+    internal var dataManager = DataManager.instance
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -235,6 +235,10 @@ extension ViewController: SessionTableDelegate {
 
     func sessionTable(_: UITableView, didRemove sessionName: String) {
         _ = dataManager.removeSession(sessionName)
+    }
+
+    func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String) {
+        sessionTableViewController.sessions = dataManager.loadAllSessionNames()
     }
 }
 

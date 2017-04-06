@@ -106,7 +106,11 @@ class SessionTableViewController: UITableViewController {
         let alert = UIAlertController(title: Config.SessionEditAlertTitle, message: nil, preferredStyle: .alert)
         alert.addAction(
             UIAlertAction(title: Config.SessionEditOkayTitle, style: .default, handler: { _ in
-                // need to save session here
+                guard let newName = alert.textFields?.first?.text else {
+                    return
+                }
+                _ = DataManager.instance.editSessionName(oldSessionName: sessionName, newSessionName: newName)
+                self.delegate?.sessionTable(self.tableView, didChange: sessionName, to: newName)
             }))
         alert.addAction(
             UIAlertAction(title: Config.SessionEditCancelTitle, style: .cancel, handler: nil))
