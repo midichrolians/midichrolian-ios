@@ -18,6 +18,8 @@ class TopBarController: UIViewController {
     private var saveButton = UIButton(type: .system)
     private var editButton = UIButton(type: .system)
     private var exitButton = UIButton(type: .system)
+    private var recordButton = UIButton(type: .system)
+    private var recordIndicator = UIImageView()
 
     weak var modeSwitchDelegate: ModeSwitchDelegate?
     weak var sessionSelectorDelegate: SessionSelectorDelegate?
@@ -32,7 +34,6 @@ class TopBarController: UIViewController {
         sessionButton.setTitle("Sessions", for: .normal)
         sessionButton.tintColor = UIColor.black
         sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
-        view.addSubview(sessionButton)
 
         saveButton.setTitle("Save", for: .normal)
 
@@ -42,9 +43,16 @@ class TopBarController: UIViewController {
         exitButton.setTitle("Exit", for: .normal)
         exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
 
+        recordButton.setTitle("Record", for: .normal)
+        recordButton.addTarget(self, action: #selector(onRecordButtonDown), for: .touchDown)
+
+        recordIndicator.image = UIImage(named: "play.png")
+
         stackView.addArrangedSubview(sessionButton)
         stackView.addArrangedSubview(saveButton)
         stackView.addArrangedSubview(editButton)
+        stackView.addArrangedSubview(recordButton)
+        stackView.addArrangedSubview(recordIndicator)
         stackView.axis = .horizontal
         stackView.spacing = 20
         view.addSubview(stackView)
@@ -85,6 +93,18 @@ class TopBarController: UIViewController {
     func onEdit() {
         modeSwitchDelegate?.enterEdit()
         replace(stackView: stackView, rep: editButton, with: exitButton)
+    }
+
+    func onRecordButtonDown() {
+        print("RECORD")
+    }
+
+    func startRecord() {
+
+    }
+
+    func stopRecord() {
+
     }
 
     func replace(stackView: UIStackView, rep: UIView, with: UIView) {
