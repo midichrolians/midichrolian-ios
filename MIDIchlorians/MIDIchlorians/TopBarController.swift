@@ -38,7 +38,7 @@ class TopBarController: UIViewController {
 
         editButton.setTitle("Edit", for: .normal)
         editButton.addTarget(self, action: #selector(onEdit), for: .touchDown)
-        
+
         exitButton.setTitle("Exit", for: .normal)
         exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
 
@@ -58,11 +58,13 @@ class TopBarController: UIViewController {
 
     func makeConstraints() {
         logo.snp.makeConstraints { make in
-            make.left.height.equalTo(view)
+            make.left.equalTo(view).offset(Config.AppLeftPadding)
+            make.height.equalTo(view)
         }
 
         stackView.snp.makeConstraints { make in
-            make.right.height.equalTo(view)
+            make.right.equalTo(view).offset(-Config.AppRightPadding)
+            make.height.equalTo(view)
         }
     }
 
