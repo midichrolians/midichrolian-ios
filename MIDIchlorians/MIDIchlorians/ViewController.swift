@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     internal var sessionTableViewController: SessionTableViewController!
     internal var sidePaneController: SidePaneController!
     internal var animationDesignController: AnimationDesignerController!
+    internal var sampleSettingController: SampleSettingViewController!
     internal var gridController: GridController!
     internal var currentSession: Session! {
         didSet {
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    internal var dataManager = DataManager()
+    internal var dataManager = DataManager.instance
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -41,6 +42,7 @@ class ViewController: UIViewController {
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
+        setUpSampleSetting()
         setUpAnimationDesigner()
         setUpStyles()
         setUpAnimation()
@@ -60,15 +62,17 @@ class ViewController: UIViewController {
         sessionNavigationController.modalPresentationStyle = .popover
         sessionTableViewController.delegate = self
 
-        let navFrame = CGRect(origin: CGPoint.zero,
-                              size: CGSize(width: view.frame.width, height: Config.TopNavHeight))
-        topBarController = TopBarController(frame: navFrame)
+        topBarController = TopBarController()
+        view.addSubview(topBarController.view)
+
+        topBarController.view.snp.makeConstraints { make in
+            make.top.left.right.equalTo(view)
+            make.height.equalTo(Config.TopNavHeight)
+        }
 
         topBarController.modeSwitchDelegate = self
         topBarController.sessionSelectorDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
-
-        view.addSubview(topBarController.view)
     }
 
     // Saves the current session
@@ -121,13 +125,30 @@ class ViewController: UIViewController {
         }
     }
 
+    private func setUpSampleSetting() {
+        sampleSettingController = SampleSettingViewController()
+        sampleSettingController.view.backgroundColor = Config.SecondaryBackgroundColor
+        view.addSubview(sampleSettingController.view)
+
+        sampleSettingController.view.snp.makeConstraints { make in
+            make.height.equalTo(Config.BottomPaneHeight)
+            make.left.equalTo(view)
+            make.right.equalTo(sidePaneController.view.snp.left)
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+    }
+
     private func setUpAnimationDesigner() {
         animationDesignController = AnimationDesignerController()
-        animationDesignController.view.frame =
-            CGRect(x: view.frame.minX + Config.AppLeftPadding,
-                   y: view.frame.height * Config.MainViewHeightToAnimMinYRatio,
-                   width: view.frame.width * Config.MainViewWidthToAnimWidthRatio,
-                   height: view.frame.height * Config.MainViewHeightToAnimHeightRatio)
+        animationDesignController.view.backgroundColor = Config.SecondaryBackgroundColor
+        view.addSubview(animationDesignController.view)
+
+        animationDesignController.view.snp.makeConstraints { make in
+            make.height.equalTo(Config.BottomPaneHeight)
+            make.left.equalTo(view)
+            make.right.equalTo(sidePaneController.view.snp.left)
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
     }
 
     // Sets up application wide styles
@@ -154,6 +175,12 @@ extension ViewController: ModeSwitchDelegate {
         gridController.view.snp.updateConstraints { make in
             make.right.equalTo(view).offset(-Config.SidePaneWidth)
         }
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
         gridController.enterEdit()
     }
 
@@ -162,25 +189,38 @@ extension ViewController: ModeSwitchDelegate {
         gridController.view.snp.updateConstraints { make in
             make.right.equalTo(view).offset(0)
         }
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
         gridController.enterPlay()
-        animationDesignController.view.removeFromSuperview()
     }
 
     func enterDesign() {
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+        }
         gridController.enterDesign()
     }
 }
 
 // Called when session selector is tapped, shows the sessions as a popover
 extension ViewController: SessionSelectorDelegate {
-    func sessionSelector(sender: UIBarButtonItem) {
+    func sessionSelector(sender: UIButton) {
         present(sessionNavigationController, animated: false, completion: nil)
 
         // configure styles and anchor of popover presentation controller
         let popoverPresentationController = sessionNavigationController.popoverPresentationController
         popoverPresentationController?.permittedArrowDirections = [.up]
-        popoverPresentationController?.barButtonItem = sender
-        popoverPresentationController?.backgroundColor = Config.BackgroundColor
+        popoverPresentationController?.sourceView = sender
+        popoverPresentationController?.sourceRect = CGRect(
+            x: sender.frame.midX, y: sender.frame.maxY, width: 0, height: 0)
+        popoverPresentationController?.backgroundColor = Config.SecondaryBackgroundColor
     }
 }
 
@@ -190,7 +230,6 @@ extension ViewController: AnimationTableDelegate {
     }
 
     func addAnimation(_ tableView: UITableView) {
-        view.addSubview(animationDesignController.view)
         gridController.selectedIndexPath = gridController.selectedIndexPath ?? IndexPath(row: 0, section: 0)
         self.enterDesign()
     }
@@ -230,6 +269,10 @@ extension ViewController: SessionTableDelegate {
 
     func sessionTable(_: UITableView, didRemove sessionName: String) {
         _ = dataManager.removeSession(sessionName)
+    }
+
+    func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String) {
+        sessionTableViewController.sessions = dataManager.loadAllSessionNames()
     }
 }
 

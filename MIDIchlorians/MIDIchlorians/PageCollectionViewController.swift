@@ -8,26 +8,19 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-protocol PageDelegate: class {
-    func page(selected: Int)
-}
-
 class PageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var pages: Int = 0
     weak var delegate: PageDelegate?
+    private var pageIcon = UIImage(named: Config.PageIconName)
+    private var pageSelectedIcon = UIImage(named: Config.PageSelectedIconName)
+
+    private let reuseIdentifier = Config.PageReuseIdentifier
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
     // MARK: UICollectionViewDataSource
@@ -47,7 +40,12 @@ class PageCollectionViewController: UICollectionViewController, UICollectionView
         // Configure the cell
         cell.backgroundColor = UIColor.clear
         cell.tintColor = UIColor.white
-        cell.backgroundView = UIImageView(image: UIImage(named: "padplay.png"))
+        cell.backgroundView = UIImageView(image: pageIcon)
+
+        // use a different image if this page is selected
+        if delegate?.currentPage == indexPath.row {
+            cell.backgroundView = UIImageView(image: pageSelectedIcon)
+        }
 
         return cell
     }

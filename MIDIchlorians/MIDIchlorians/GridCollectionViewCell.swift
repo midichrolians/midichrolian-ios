@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 class GridCollectionViewCell: UICollectionViewCell, PadView {
-    private let sampleIndicatorImage = UIImage(named: "play.png")
-    private let animationIndicatorImage = UIImage(named: "play.png")
+    private let sampleIndicatorImage = UIImage(named: Config.GridSampleIndicatorIcon)
+    private let animationIndicatorImage = UIImage(named: Config.GridAnimationIndicatorIcon)
     var rowNumber = 0
     var columnNumber = 0
     var sampleIndicator: UIImageView!

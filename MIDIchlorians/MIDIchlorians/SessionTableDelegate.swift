@@ -17,4 +17,6 @@ protocol SessionTableDelegate: class {
     func sessionTable(_: UITableView)
     // A session is deleted
     func sessionTable(_: UITableView, didRemove sessionName: String)
+    // A session's name is changed
+    func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String)
 }

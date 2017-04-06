@@ -11,5 +11,5 @@ import UIKit
 
 // Adopt this protocol to react when session selector is tapped
 protocol SessionSelectorDelegate: class {
-    func sessionSelector(sender: UIBarButtonItem)
+    func sessionSelector(sender: UIButton)
 }
