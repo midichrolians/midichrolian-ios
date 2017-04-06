@@ -85,6 +85,7 @@ struct Config {
     static let TopNavEditLabel = "Edit"
     static let TopNavExitLabel = "Exit"
     static let TopNavRecordLabel = "Record"
+    static let TopNavPlayLabel = "Play"
     static let TopNavRecordIcon = "record.png"
     static let TopNavRecordingIcon = "recording.png"
     static let TopNavStackViewSpacing: CGFloat = 20

@@ -19,6 +19,7 @@ class TopBarController: UIViewController {
     private var editButton = UIButton(type: .system)
     private var exitButton = UIButton(type: .system)
     private var recordButton = UIButton(type: .system)
+    private var playButton = UIButton(type: .system)
     private var recordIndicator = UIImageView()
 
     private let recordImage = UIImage(named: Config.TopNavRecordIcon)
@@ -49,6 +50,9 @@ class TopBarController: UIViewController {
         recordButton.setTitle(Config.TopNavRecordLabel, for: .normal)
         recordButton.addTarget(self, action: #selector(onRecordButtonDown(sender:)), for: .touchDown)
 
+        playButton.setTitle(Config.TopNavPlayLabel, for: .normal)
+        playButton.addTarget(self, action: #selector(onPlayButtonDown(sender:)), for: .touchDown)
+
         recordIndicator.image = recordImage
 
         stackView.addArrangedSubview(sessionButton)
@@ -56,6 +60,7 @@ class TopBarController: UIViewController {
         stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(recordButton)
         stackView.addArrangedSubview(recordIndicator)
+        stackView.addArrangedSubview(playButton)
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = Config.TopNavStackViewSpacing
@@ -97,8 +102,11 @@ class TopBarController: UIViewController {
     func onExit() {
         modeSwitchDelegate?.enterPlay()
         stackView.replace(view: exitButton, with: editButton)
+
+        // exit edit more (entering play), restore record and play functionality
         recordButton.isHidden = false
         recordIndicator.isHidden = false
+        playButton.isHidden = false
     }
 
     func onEdit() {
@@ -108,6 +116,7 @@ class TopBarController: UIViewController {
         // entering edit mode, so hide functionality to record and play
         recordButton.isHidden = true
         recordIndicator.isHidden = true
+        playButton.isHidden = true
     }
 
     func onRecordButtonDown(sender: UIButton) {
@@ -117,6 +126,10 @@ class TopBarController: UIViewController {
         } else {
             stopRecord()
         }
+    }
+
+    func onPlayButtonDown(sender: UIButton) {
+        print("PLAYING")
     }
 
     func startRecord() {
