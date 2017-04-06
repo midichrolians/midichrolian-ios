@@ -41,6 +41,12 @@ struct Config {
             "AWOLNATION - Sail-28", "AWOLNATION - Sail"
         ]
     ]
+
+    static let preloadedAnimationTypes = [
+        "Spark",
+        "Rainbow",
+        "Spread"
+    ]
     static let SoundExt = "wav"
 
     static let FontPrimaryColor = UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1)
@@ -113,14 +119,12 @@ struct Config {
     static let animationTypeModeKey = "mode"
     static let animationTypeAnimationSequenceKey = "animationSequence"
     static let animationTypeNameKey = "name"
+    static let animationTypeAnchorRowKey = "anchorRow"
+    static let animationTypeAnchorColumnKey = "anchorColumn"
 
     static let animationSequenceArrayKey = "animationBitsArray"
     static let animationSequenceNameKey = "name"
     static let animationSequenceFrequencyKey = "frequencyPerBeat"
-
-    static let animationTypeSpreadName = "Spread"
-    static let animationTypeSparkName = "Spark"
-    static let animationTypeRainbowName = "Rainbow"
 
     static let TopNavTitle = "MIDIchlorians"
     static let TopNavSessionTitle = "Sessions"
@@ -134,4 +138,8 @@ struct Config {
     static let GridCollectionViewCellIdentifier = "cell"
 
     static let NewAnimationTypeDefaultName = "Default Animation"
+
+    static let animationTypeSpreadName = "Spread"
+    static let animationTypeSparkName = "Spark"
+    static let animationTypeRainbowName = "Rainbow"
 }
