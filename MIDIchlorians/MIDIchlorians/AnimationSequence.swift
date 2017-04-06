@@ -56,6 +56,7 @@ class AnimationSequence {
 
     func next() -> [AnimationBit]? {
         if tickCounter >= animationBitsArray.count {
+            tickCounter = 0
             return nil
         }
         let animationBits = [AnimationBit]()
@@ -69,6 +70,7 @@ class AnimationSequence {
 
     func nextFrame() -> [AnimationBit]? {
         if tickCounter >= animationBitsArray.count {
+            tickCounter = 0
             return nil
         }
         let animationBits = [AnimationBit]()
