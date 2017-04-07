@@ -84,15 +84,6 @@ class AnimationTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCellEditingStyle,
-                            forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let animationName = animationTypeNames.remove(at: indexPath.row)
-            _ = DataManager.instance.removeAnimation(animationName)
-        }
-    }
-
-    override func tableView(_ tableView: UITableView,
                             editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .normal,
                                               title: Config.AnimationEditActionTitle) { (_, indexPath) in
