@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         sessionTableViewController.delegate = self
 
         topBarController = TopBarController()
+        addChildViewController(topBarController)
         view.addSubview(topBarController.view)
 
         topBarController.view.snp.makeConstraints { make in
@@ -115,6 +116,7 @@ class ViewController: UIViewController {
     // Sets up the main grid for play/edit
     private func setUpGrid() {
         gridController = GridController(frame: CGRect.zero, session: currentSession)
+        addChildViewController(gridController)
 
         view.addSubview(gridController.view)
 

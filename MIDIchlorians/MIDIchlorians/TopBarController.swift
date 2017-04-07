@@ -34,10 +34,12 @@ class TopBarController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = Config.SecondaryBackgroundColor
 
         logo.text = Config.TopNavLogoText
+        logo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(logoTapped)))
+        logo.isUserInteractionEnabled = true
         view.addSubview(logo)
-        view.backgroundColor = Config.SecondaryBackgroundColor
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
         sessionButton.tintColor = UIColor.black
@@ -142,6 +144,22 @@ class TopBarController: UIViewController {
     func stopRecord() {
         // this will enable the play button
         hasRecording = true
+    }
+
+    func logoTapped() {
+        let vc = AboutUsViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+        vc.view.backgroundColor = UIColor.blue
+    }
+
+    func replace(stackView: UIStackView, rep: UIView, with: UIView) {
+        guard let index = stackView.arrangedSubviews.index(of: rep) else {
+            return
+        }
+        stackView.insertArrangedSubview(with, at: index)
+        stackView.removeArrangedSubview(rep)
+        rep.removeFromSuperview()
     }
 
 }

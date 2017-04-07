@@ -99,8 +99,18 @@ struct Config {
     static let PadSelectionBorderWidth: CGFloat = 3.0
     static let PadSelectionCornerRadius: CGFloat = 5.0
     static let PadSelectionOffset: CGFloat = 2
-    static let GridSampleIndicatorIcon = "play.png"
-    static let GridAnimationIndicatorIcon = "play.png"
+    static let PadSampleOnceOffIcon = "pad_sample_once_off.png"
+    static let PadSampleLoopIcon = "pad_sample_loop.png"
+    static let PadAnimationIcon = "pad_animation.png"
+    static let PadIndicatorRatio: CGFloat = 3
+
+    // Remove button
+    static let RemoveButtonIcon = "cancel.png"
+    static let RemoveButtonAlertTitle = "Confirm"
+    static let RemoveButtonSampleTitle = "Remove sample"
+    static let RemoveButtonAnimationTitle = "Remove animation"
+    static let RemoveButtonBothTitle = "Remove both"
+    static let RemoveButtonCancelTitle = "Cancel"
 
     // SidePane
     static let SidePaneWidth: CGFloat = 320
@@ -147,7 +157,7 @@ struct Config {
     static let ColourInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
 
     static let RemoveButtonOffset: CGFloat = 10
-    static let RemoveButtonWidth: CGFloat = 32
+    static let RemoveButtonWidth: CGFloat = 24
 
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
