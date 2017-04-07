@@ -15,41 +15,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     lazy private var preloadedSamples = Config.sound.joined()
+    lazy private var preloadedAnimationTypes = Config.preloadedAnimationTypes
 
     // Copy samples from the bundle onto user's document directory.
     // A list of URLs of the copied samples.
-    func copyBundleSamples() {
-        // store the samples in the document directory
-        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
-            // if we cannot store, that's fine, the user just won't have any samples loaded
-            return
-        }
 
-        // Helper to copy form src to destination
-        func copy(src: URL, dest: URL) {
-            do {
-                try FileManager.default.copyItem(at: src, to: dest)
-            } catch {
-                return
-            }
-        }
-
-        func copyToUserStorage(_ sampleName: String) {
-            let sampleURL = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt)
-            guard let srcURL = sampleURL else {
-                return
-            }
-            let destURL = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
-            copy(src: srcURL, dest: destURL)
-        }
-
+    private func copyBundleSamples() {
         preloadedSamples.forEach { sample in
             copyToUserStorage(sample)
         }
     }
 
+    // Helper to copy form src to destination
+    private func copy(src: URL, dest: URL) {
+        do {
+            try FileManager.default.copyItem(at: src, to: dest)
+        } catch {
+            return
+        }
+    }
+
+    private func copyToUserStorage(_ sampleName: String) {
+        // store the samples in the document directory
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
+            // if we cannot store, that's fine, the user just won't have any samples loaded
+            return
+        }
+        let sampleURL = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt)
+        guard let srcURL = sampleURL else {
+            return
+        }
+        let destURL = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
+        copy(src: srcURL, dest: destURL)
+    }
+
     //Get all samples present in documents directory
-    func getAppSamples() -> [String] {
+    private func getAppSamples() -> [String] {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             return []
         }
@@ -63,6 +64,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             return []
         }
+    }
+  
+    private func copyBundleAnimationTypes() -> [String] {
+        return preloadedAnimationTypes.flatMap { getStringFromFile(fileName: $0) }
+    }
+
+    private func getStringFromFile(fileName: String) -> String? {
+        let filePath = Bundle.main.path(forResource: fileName, ofType: "")
+        guard let path = filePath else {
+            return nil
+        }
+        let contents = try? String(contentsOfFile: path, encoding: .utf8)
+        return contents
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -95,6 +109,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         // Do the same thing for animations as well
+        let copiedPreloadedAnimations = copyBundleAnimationTypes()
+
+        copiedPreloadedAnimations.forEach { preloadedAnimation in
+            // if saving fails, what are we gonna do?
+            _ = DataManager.instance.saveAnimation(preloadedAnimation)
+        }
         
         return true
     }

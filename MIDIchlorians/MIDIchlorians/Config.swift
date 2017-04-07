@@ -41,6 +41,12 @@ struct Config {
             "AWOLNATION - Sail-28", "AWOLNATION - Sail"
         ]
     ]
+
+    static let preloadedAnimationTypes = [
+        "Spark",
+        "Rainbow",
+        "Spread"
+    ]
     static let SoundExt = "wav"
     static let AnimationExt = "json"
     static let SessionExt = "json"
@@ -179,14 +185,16 @@ struct Config {
     static let animationTypeModeKey = "mode"
     static let animationTypeAnimationSequenceKey = "animationSequence"
     static let animationTypeNameKey = "name"
+    static let animationTypeAnchorRowKey = "anchorRow"
+    static let animationTypeAnchorColumnKey = "anchorColumn"
 
     static let animationSequenceArrayKey = "animationBitsArray"
     static let animationSequenceNameKey = "name"
     static let animationSequenceFrequencyKey = "frequencyPerBeat"
 
-    static let animationTypeSpreadName = "Spread"
-    static let animationTypeSparkName = "Spark"
-    static let animationTypeRainbowName = "Rainbow"
+    static let TopNavTitle = "MIDIchlorians"
+    static let TopNavSessionTitle = "Sessions"
+    static let ModeSegmentTitles = ["PLAY", "EDIT"]
 
     static let DefaultSessionName = "New Session"
 
@@ -198,6 +206,10 @@ struct Config {
     static let SessionFileName = "sessions"
 
     static let NewAnimationTypeDefaultName = "Default Animation"
+
+    static let animationTypeSpreadName = "Spread"
+    static let animationTypeSparkName = "Spark"
+    static let animationTypeRainbowName = "Rainbow"
 
     static let animationNotificationKey = "animation"
     static let sessionNotificationKey = "session"
