@@ -9,7 +9,6 @@
 import Foundation
 
 struct PlayBackRetriever {
-    public static var instance = PlayBackRetriever(timeIndexArr: [(TimeInterval, (Int, IndexPath))]())
     private var timeIndexArr: [(TimeInterval, (Int, IndexPath))]
     init(timeIndexArr: [(TimeInterval, (Int, IndexPath))]) {
         self.timeIndexArr = timeIndexArr
@@ -44,4 +43,5 @@ struct PlayBackRetriever {
         }
         return timeIndexArr.removeFirst()
     }
+
 }
