@@ -15,10 +15,11 @@ struct AudioClipPlayer {
 
     //creates ID and returns it to be mapped
     static func initAudioClip(audioDir: String, ext: String = "wav") -> UInt32? {
-
-        guard let soundURL = Bundle.main.url(forResource: audioDir, withExtension: ext) else {
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask).last else {
             return nil
         }
+        let soundURL = docsURL.appendingPathComponent("\(audioDir).\(ext)")
         var sysID: SystemSoundID = 0
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &sysID)
         return sysID
