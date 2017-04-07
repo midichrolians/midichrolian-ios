@@ -20,36 +20,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Copy samples from the bundle onto user's document directory.
     // A list of URLs of the copied samples.
 
-    func copyBundleSamples() {
-        // store the samples in the document directory
-        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
-            // if we cannot store, that's fine, the user just won't have any samples loaded
-            return
-        }
-        // Helper to copy form src to destination
-        func copy(src: URL, dest: URL) {
-            do {
-                try FileManager.default.copyItem(at: src, to: dest)
-            } catch {
-                return
-            }
-        }
-        func copyToUserStorage(_ sampleName: String) {
-            let sampleURL = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt)
-            guard let srcURL = sampleURL else {
-                return
-            }
-            let destURL = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
-            copy(src: srcURL, dest: destURL)
-        }   
-
+    private func copyBundleSamples() {
         preloadedSamples.forEach { sample in
             copyToUserStorage(sample)
         }
     }
 
+    // Helper to copy form src to destination
+    private func copy(src: URL, dest: URL) {
+        do {
+            try FileManager.default.copyItem(at: src, to: dest)
+        } catch {
+            return
+        }
+    }
+
+    private func copyToUserStorage(_ sampleName: String) {
+        // store the samples in the document directory
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
+            // if we cannot store, that's fine, the user just won't have any samples loaded
+            return
+        }
+        let sampleURL = Bundle.main.url(forResource: sampleName, withExtension: Config.SoundExt)
+        guard let srcURL = sampleURL else {
+            return
+        }
+        let destURL = docsURL.appendingPathComponent("\(sampleName).\(Config.SoundExt)")
+        copy(src: srcURL, dest: destURL)
+    }
+
     //Get all samples present in documents directory
-    func getAppSamples() -> [String] {
+    private func getAppSamples() -> [String] {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             return []
         }

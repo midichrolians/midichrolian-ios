@@ -28,6 +28,7 @@
 		334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */; };
 		338275391E924FA500C6B3B7 /* BeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338275381E924FA500C6B3B7 /* BeatFrequency.swift */; };
 		33A2754D1E7BEF56000B1B15 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2754C1E7BEF56000B1B15 /* Colour.swift */; };
+		33A6FF9B1E97517700E7E8B1 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33A6FF9A1E97517700E7E8B1 /* Keys.plist */; };
 		33BCC5AA1E85064900D8489F /* AnimatableGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCC5A91E85064900D8489F /* AnimatableGrid.swift */; };
 		33BCC5AC1E85067A00D8489F /* AnimatablePad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */; };
 		33CC26C71E891E840077F0ED /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CC26C61E891E840077F0ED /* AnimationManager.swift */; };
@@ -119,7 +120,6 @@
 		F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B2A511E7A84AC00FD2C61 /* Pad.swift */; };
 		F36B995E1E8148260026721A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B995D1E8148260026721A /* DataManager.swift */; };
 		F3710A8F1E7D280D0031A754 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3710A8E1E7D280C0031A754 /* Session.swift */; };
-		F3BE9A591E948E88002A25F1 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3BE9A581E948E88002A25F1 /* Keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +166,7 @@
 		334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeCreationMode.swift; sourceTree = "<group>"; };
 		338275381E924FA500C6B3B7 /* BeatFrequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatFrequency.swift; sourceTree = "<group>"; };
 		33A2754C1E7BEF56000B1B15 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
+		33A6FF9A1E97517700E7E8B1 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		33BCC5A91E85064900D8489F /* AnimatableGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableGrid.swift; sourceTree = "<group>"; };
 		33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatablePad.swift; sourceTree = "<group>"; };
 		33CC26C61E891E840077F0ED /* AnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
@@ -263,7 +264,6 @@
 		F34B2A511E7A84AC00FD2C61 /* Pad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pad.swift; sourceTree = "<group>"; };
 		F36B995D1E8148260026721A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F3710A8E1E7D280C0031A754 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		F3BE9A581E948E88002A25F1 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -325,7 +325,7 @@
 				805946D01E816CEC00EF7A2B /* Audio */,
 				F34B2A501E7A721500FD2C61 /* Models */,
 				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
-				F3BE9A581E948E88002A25F1 /* Keys.plist */,
+				33A6FF9A1E97517700E7E8B1 /* Keys.plist */,
 				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
 				E95CACD41E96A97D009E6DA6 /* AboutUsViewController.swift */,
 				E9AD30221E8BADF200801A9F /* Animation Designer */,
@@ -738,10 +738,10 @@
 				33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */,
 				33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */,
 				33DAAAAF1E72BEA300987E86 /* AWOLNATION - Sail-11.wav in Resources */,
+				33A6FF9B1E97517700E7E8B1 /* Keys.plist in Resources */,
 				33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */,
 				33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */,
 				33DAAAB61E72BEA300987E86 /* AWOLNATION - Sail-18.wav in Resources */,
-				F3BE9A591E948E88002A25F1 /* Keys.plist in Resources */,
 				33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */,
 				33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */,
 				33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */,
