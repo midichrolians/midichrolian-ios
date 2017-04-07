@@ -153,13 +153,4 @@ class TopBarController: UIViewController {
         vc.view.backgroundColor = UIColor.blue
     }
 
-    func replace(stackView: UIStackView, rep: UIView, with: UIView) {
-        guard let index = stackView.arrangedSubviews.index(of: rep) else {
-            return
-        }
-        stackView.insertArrangedSubview(with, at: index)
-        stackView.removeArrangedSubview(rep)
-        rep.removeFromSuperview()
-    }
-
 }
