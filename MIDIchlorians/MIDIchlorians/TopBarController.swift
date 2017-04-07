@@ -18,11 +18,16 @@ class TopBarController: UIViewController {
     private var saveButton = UIButton(type: .system)
     private var editButton = UIButton(type: .system)
     private var exitButton = UIButton(type: .system)
-    private var recordButton = UIButton(type: .system)
-    private var recordIndicator = UIImageView()
+    private var recordButton = UIButton(type: .custom)
+    private var playButton = UIButton(type: .system)
+    private var hasRecording = false {
+        didSet {
+            playButton.isEnabled = hasRecording
+        }
+    }
 
-    private let recordImage = UIImage(named: Config.TopNavRecordIcon)
-    private let recordingImage = UIImage(named: Config.TopNavRecordingIcon)
+    private let recordImage = UIImage(named: Config.TopNavRecordIcon)!
+    private let recordBlackImage = UIImage(named: Config.TopNavRecordingBlackIcon)!
 
     weak var modeSwitchDelegate: ModeSwitchDelegate?
     weak var sessionSelectorDelegate: SessionSelectorDelegate?
@@ -48,16 +53,23 @@ class TopBarController: UIViewController {
         exitButton.setTitle(Config.TopNavExitLabel, for: .normal)
         exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
 
-        recordButton.setTitle(Config.TopNavRecordLabel, for: .normal)
+        let loopingImage = UIImage.animatedImage(
+            with: [recordImage, recordBlackImage],
+            duration: Config.TopNavRecordingLoopDuration)
+        recordButton.setBackgroundImage(recordImage, for: .normal)
+        recordButton.setBackgroundImage(loopingImage, for: .selected)
         recordButton.addTarget(self, action: #selector(onRecordButtonDown(sender:)), for: .touchDown)
 
-        recordIndicator.image = recordImage
+        playButton.setTitle(Config.TopNavPlayLabel, for: .normal)
+        playButton.addTarget(self, action: #selector(onPlayButtonDown(sender:)), for: .touchDown)
+        // play button is always not enabled initially, user has to record something for it to be enabled
+        playButton.isEnabled = false
 
         stackView.addArrangedSubview(sessionButton)
         stackView.addArrangedSubview(saveButton)
         stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(recordButton)
-        stackView.addArrangedSubview(recordIndicator)
+        stackView.addArrangedSubview(playButton)
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = Config.TopNavStackViewSpacing
@@ -81,8 +93,8 @@ class TopBarController: UIViewController {
             make.height.equalTo(view)
         }
 
-        recordIndicator.snp.makeConstraints { make in
-            make.width.equalTo(recordIndicator.snp.height)
+        recordButton.snp.makeConstraints { make in
+            make.width.equalTo(recordButton.snp.height)
             make.top.bottom.equalTo(view).inset(10)
         }
     }
@@ -98,12 +110,20 @@ class TopBarController: UIViewController {
 
     func onExit() {
         modeSwitchDelegate?.enterPlay()
-        replace(stackView: stackView, rep: exitButton, with: editButton)
+        stackView.replace(view: exitButton, with: editButton)
+
+        // exit edit more (entering play), restore record and play functionality
+        recordButton.isHidden = false
+        playButton.isHidden = false
     }
 
     func onEdit() {
         modeSwitchDelegate?.enterEdit()
-        replace(stackView: stackView, rep: editButton, with: exitButton)
+        stackView.replace(view: editButton, with: exitButton)
+
+        // entering edit mode, so hide functionality to record and play
+        recordButton.isHidden = true
+        playButton.isHidden = true
     }
 
     func onRecordButtonDown(sender: UIButton) {
@@ -115,12 +135,15 @@ class TopBarController: UIViewController {
         }
     }
 
+    func onPlayButtonDown(sender: UIButton) {
+    }
+
     func startRecord() {
-        recordIndicator.image = recordingImage
     }
 
     func stopRecord() {
-            recordIndicator.image = recordImage
+        // this will enable the play button
+        hasRecording = true
     }
 
     func logoTapped() {
@@ -128,15 +151,6 @@ class TopBarController: UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
         vc.view.backgroundColor = UIColor.blue
-    }
-
-    func replace(stackView: UIStackView, rep: UIView, with: UIView) {
-        guard let index = stackView.arrangedSubviews.index(of: rep) else {
-            return
-        }
-        stackView.insertArrangedSubview(with, at: index)
-        stackView.removeArrangedSubview(rep)
-        rep.removeFromSuperview()
     }
 
 }

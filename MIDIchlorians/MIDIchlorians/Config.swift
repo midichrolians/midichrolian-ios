@@ -83,12 +83,14 @@ struct Config {
     static let TopNavHeight: CGFloat = 60
     static let TopNavLogoText = "MIDIchlorians"
     static let TopNavSessionLabel = "Sessions"
-    static let TopNavSaveLabel = "Sessions"
+    static let TopNavSaveLabel = "Save"
     static let TopNavEditLabel = "Edit"
     static let TopNavExitLabel = "Exit"
     static let TopNavRecordLabel = "Record"
+    static let TopNavPlayLabel = "Play"
     static let TopNavRecordIcon = "record.png"
-    static let TopNavRecordingIcon = "recording.png"
+    static let TopNavRecordingBlackIcon = "record_black.png"
+    static let TopNavRecordingLoopDuration: TimeInterval = 0.7
     static let TopNavStackViewSpacing: CGFloat = 20
 
     // Grid
