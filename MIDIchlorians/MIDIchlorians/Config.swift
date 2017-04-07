@@ -148,6 +148,9 @@ struct Config {
     static let AnimationDesignColourLabel = "Colour Palette"
     static let AnimationDesignClearLabel = "Clear"
     static let AnimationDesignSaveLabel = "Save Animation"
+    static let AnimationSaveAlertTitle = "Name for animation"
+    static let AnimationSaveOkayTitle = "Save"
+    static let AnimationSaveCancelTitle = "Cancel"
 
     // Timeline
     static let TimelineMinNumFrames = 8
