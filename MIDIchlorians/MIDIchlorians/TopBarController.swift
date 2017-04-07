@@ -22,6 +22,7 @@ class TopBarController: UIViewController {
     private var recordButton = UIButton(type: .custom)
     private var playButton = UIButton(type: .system)
     private var syncButton = UIButton(type: .system)
+    private var syncViewController = SyncViewController()
     private var hasRecording = false {
         didSet {
             playButton.isEnabled = hasRecording
@@ -67,8 +68,8 @@ class TopBarController: UIViewController {
         // play button is always not enabled initially, user has to record something for it to be enabled
         playButton.isEnabled = false
 
-        syncButton.setTitle("Sync", for: .normal)
-        syncButton.addTarget(self, action: #selector(sync), for: .touchDown)
+        syncButton.setTitle(Config.TopNavSyncLabel, for: .normal)
+        syncButton.addTarget(self, action: #selector(sync(sender:)), for: .touchDown)
 
         stackView.addArrangedSubview(sessionButton)
         stackView.addArrangedSubview(saveButton)
@@ -160,16 +161,15 @@ class TopBarController: UIViewController {
         vc.view.backgroundColor = UIColor.blue
     }
 
-    func sync() {
-        if DropboxClientsManager.authorizedClient == nil {
-            DropboxClientsManager.authorizeFromController(UIApplication.shared,
-                                                          controller: self,
-                                                          openURL: { (url: URL) -> Void in
-                                                            UIApplication.shared.open(url) },
-                                                          browserAuth: false)
-        } else {
-            CloudManager.instance.saveToDropbox()
-        }
+    func sync(sender: UIButton) {
+        syncViewController.modalPresentationStyle = .popover
+        present(syncViewController, animated: true, completion: nil)
+//
+        // configure styles and anchor of popover presentation controller
+        let popoverPresentationController = syncViewController.popoverPresentationController
+        popoverPresentationController?.sourceView = sender
+        popoverPresentationController?.sourceRect = sender.bounds
+        popoverPresentationController?.popoverLayoutMargins = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
     }
 
 }

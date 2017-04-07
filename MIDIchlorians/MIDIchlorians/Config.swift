@@ -98,6 +98,11 @@ struct Config {
     static let TopNavRecordingBlackIcon = "record_black.png"
     static let TopNavRecordingLoopDuration: TimeInterval = 0.7
     static let TopNavStackViewSpacing: CGFloat = 20
+    static let TopNavSyncLabel = "Sync"
+    static let TopNavSyncUploadTitle = "Upload"
+    static let TopNavSyncDownloadTitle = "Download"
+    static let TopNavSyncPreferredWidth: CGFloat = 200
+    static let TopNavSyncPreferredHeight: CGFloat = 100
 
     // Grid
     static let GridCollectionViewCellIdentifier = "cell"
