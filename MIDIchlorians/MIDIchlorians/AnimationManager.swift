@@ -13,6 +13,8 @@ class AnimationManager {
 
     private var animationTypes = [String: AnimationType]()
 
+    private init() {}
+
     func getAllAnimationTypesNames() -> [String] {
         let storedAnimationTypes = DataManager.instance.loadAllAnimationTypes()
         storedAnimationTypes.forEach({(animationTypeString: String) in
@@ -62,6 +64,32 @@ class AnimationManager {
             return false
         }
         return DataManager.instance.saveAnimation(animationString)
+    }
+
+    func removeAnimationType(name: String) -> Bool {
+        guard let animationType = animationTypes[name] else {
+            return false
+        }
+        guard let animationTypeString = animationType.getJSONforAnimationType() else {
+            return false
+        }
+        animationTypes[name] = nil
+        return DataManager.instance.removeAnimation(animationTypeString)
+    }
+
+    func editAnimationTypeName(oldName: String, newName: String) -> Bool {
+        guard let animationType = animationTypes[oldName] else {
+            return false
+        }
+        if removeAnimationType(name: oldName) == false {
+            return false
+        }
+        return addNewAnimationType(
+            name: newName,
+            animationSequence: animationType.animationSequence,
+            mode: animationType.mode,
+            anchor: animationType.anchorPoint
+        )
     }
 
     private func derelativiseAnimationSequence(animationType: AnimationType,
