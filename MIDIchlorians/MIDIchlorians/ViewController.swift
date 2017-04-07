@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyDropbox
 
 // The ViewController is the main (and only) for the entire app.
 // Management and hooking up all child view controllers are done in this class.
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
     internal var sessionTableViewController: SessionTableViewController!
     internal var sidePaneController: SidePaneController!
     internal var animationDesignController: AnimationDesignerController!
+    internal var sampleSettingController: SampleSettingViewController!
     internal var gridController: GridController!
     internal var currentSession: Session! {
         didSet {
@@ -32,7 +34,8 @@ class ViewController: UIViewController {
             }
         }
     }
-    internal var dataManager = DataManager()
+    private let cloudManager = CloudManager.instance
+    internal var dataManager = DataManager.instance
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -40,16 +43,31 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentSession = loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM)
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
+        setUpSampleSetting()
         setUpAnimationDesigner()
         setUpStyles()
         setUpAnimation()
 
         // need assign delegates after everything is initialized
-        gridController.padDelegate = sidePaneController
+        gridController.padDelegate = self
         animationDesignController.delegate = gridController
+
+        //Need to initialise Notification Center, so I've just put the code here in comments,
+        // so that you can do it wherever you want
+//
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.animationNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.audioNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.sessionNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
     }
 
     // Sets up the top navigation.
@@ -62,15 +80,18 @@ class ViewController: UIViewController {
         sessionNavigationController.modalPresentationStyle = .popover
         sessionTableViewController.delegate = self
 
-        let navFrame = CGRect(origin: CGPoint.zero,
-                              size: CGSize(width: view.frame.width, height: Config.TopNavHeight))
-        topBarController = TopBarController(frame: navFrame)
+        topBarController = TopBarController()
+        addChildViewController(topBarController)
+        view.addSubview(topBarController.view)
+
+        topBarController.view.snp.makeConstraints { make in
+            make.top.left.right.equalTo(view)
+            make.height.equalTo(Config.TopNavHeight)
+        }
 
         topBarController.modeSwitchDelegate = self
         topBarController.sessionSelectorDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
-
-        view.addSubview(topBarController.view)
     }
 
     // Saves the current session
@@ -97,15 +118,15 @@ class ViewController: UIViewController {
 
     // Sets up the main grid for play/edit
     private func setUpGrid() {
-        let frame = view.frame
-        let gridFrame = CGRect(x: frame.minX + Config.AppLeftPadding,
-                           y: frame.height * Config.MainViewHeightToGridMinYRatio,
-                           width: frame.width - Config.AppLeftPadding - Config.AppRightPadding,
-                           height: frame.height * Config.MainViewHeightToGridHeightRatio)
-        currentSession = loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM)
-        gridController = GridController(frame: gridFrame, session: currentSession)
+        gridController = GridController(frame: CGRect.zero, session: currentSession)
+        addChildViewController(gridController)
 
         view.addSubview(gridController.view)
+
+        gridController.view.snp.makeConstraints { make in
+            make.top.equalTo(topBarController.view.snp.bottom)
+            make.left.right.bottom.equalTo(view)
+        }
     }
 
     // Sets up the side pane with controls for samples and animations
@@ -115,21 +136,39 @@ class ViewController: UIViewController {
         sidePaneController.animationTableDelegate = self
         sidePaneController.delegate = self
 
-        let frame = view.frame
-        sidePaneController.view.frame =
-            CGRect(x: frame.width * Config.MainViewWidthToSideMinXRatio,
-                   y: frame.height * Config.MainViewHeightToSideMinYRatio,
-                   width: frame.width * Config.MainViewWidthToSideWidthRatio,
-                   height: frame.height * Config.MainViewHeightToSideHeightRatio)
+        view.addSubview(sidePaneController.view)
+        sidePaneController.view.snp.makeConstraints { make in
+            make.width.equalTo(Config.SidePaneWidth)
+            make.left.equalTo(gridController.view.snp.right)
+            make.top.equalTo(topBarController.view.snp.bottom)
+            make.bottom.equalTo(view)
+        }
+    }
+
+    private func setUpSampleSetting() {
+        sampleSettingController = SampleSettingViewController()
+        sampleSettingController.view.backgroundColor = Config.SecondaryBackgroundColor
+        view.addSubview(sampleSettingController.view)
+
+        sampleSettingController.view.snp.makeConstraints { make in
+            make.height.equalTo(Config.BottomPaneHeight)
+            make.left.equalTo(view)
+            make.right.equalTo(sidePaneController.view.snp.left)
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
     }
 
     private func setUpAnimationDesigner() {
         animationDesignController = AnimationDesignerController()
-        animationDesignController.view.frame =
-            CGRect(x: view.frame.minX + Config.AppLeftPadding,
-                   y: view.frame.height * Config.MainViewHeightToAnimMinYRatio,
-                   width: view.frame.width * Config.MainViewWidthToAnimWidthRatio,
-                   height: view.frame.height * Config.MainViewHeightToAnimHeightRatio)
+        animationDesignController.view.backgroundColor = Config.SecondaryBackgroundColor
+        view.addSubview(animationDesignController.view)
+
+        animationDesignController.view.snp.makeConstraints { make in
+            make.height.equalTo(Config.BottomPaneHeight)
+            make.left.equalTo(view)
+            make.right.equalTo(sidePaneController.view.snp.left)
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
     }
 
     //RECORDING HACK
@@ -179,8 +218,61 @@ class ViewController: UIViewController {
 
     // Sets up the animation engine
     private func setUpAnimation() {
-        AnimationEngine.set(animationGrid: gridController.gridView)
+        AnimationEngine.set(animationGrid: gridController.gridCollectionView)
+        AnimationEngine.set(beatsPerMinute: Config.defaultBPM)
         AnimationEngine.start()
+    }
+
+    //Loads the dropbox webview for logging in
+    private func loadDropBoxWebView() {
+        DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                                                      controller: self,
+                                                      openURL: { (url: URL) -> Void in
+                                                      UIApplication.shared.open(url) },
+                                                      browserAuth: false)
+    }
+
+    private func importFromDropbox() {
+        if DropboxClientsManager.authorizedClient != nil {
+            cloudManager.loadFromDropbox()
+        } else {
+            loadDropBoxWebView()
+        }
+    }
+
+    private func saveToDropbox() {
+        if DropboxClientsManager.authorizedClient != nil {
+            cloudManager.saveToDropbox()
+        } else {
+            loadDropBoxWebView()
+        }
+    }
+
+    internal func showSampleSettingPane() {
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+    }
+
+    internal func showAnimationDesignPane() {
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+        }
+    }
+
+    internal func hideBottomPane() {
+        sampleSettingController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
+        animationDesignController.view.snp.updateConstraints { make in
+            make.top.equalTo(view.snp.bottom).offset(0)
+        }
     }
 
 }
@@ -188,32 +280,40 @@ class ViewController: UIViewController {
 // Called when the mode is switch. Passes on the event to the grid and side pane
 extension ViewController: ModeSwitchDelegate {
     func enterEdit() {
+        gridController.view.snp.updateConstraints { make in
+            make.right.equalTo(view).offset(-Config.SidePaneWidth)
+        }
+        showSampleSettingPane()
         gridController.enterEdit()
-        view.addSubview(sidePaneController.view)
     }
 
     func enterPlay() {
         // error handling
+        gridController.view.snp.updateConstraints { make in
+            make.right.equalTo(view).offset(0)
+        }
+        hideBottomPane()
         gridController.enterPlay()
-        sidePaneController.view.removeFromSuperview()
-        animationDesignController.view.removeFromSuperview()
     }
 
     func enterDesign() {
+        showAnimationDesignPane()
         gridController.enterDesign()
     }
 }
 
 // Called when session selector is tapped, shows the sessions as a popover
 extension ViewController: SessionSelectorDelegate {
-    func sessionSelector(sender: UIBarButtonItem) {
+    func sessionSelector(sender: UIButton) {
         present(sessionNavigationController, animated: false, completion: nil)
 
         // configure styles and anchor of popover presentation controller
         let popoverPresentationController = sessionNavigationController.popoverPresentationController
         popoverPresentationController?.permittedArrowDirections = [.up]
-        popoverPresentationController?.barButtonItem = sender
-        popoverPresentationController?.backgroundColor = Config.BackgroundColor
+        popoverPresentationController?.sourceView = sender
+        popoverPresentationController?.sourceRect = CGRect(
+            x: sender.frame.midX, y: sender.frame.maxY, width: 0, height: 0)
+        popoverPresentationController?.backgroundColor = Config.SecondaryBackgroundColor
     }
 }
 
@@ -223,14 +323,14 @@ extension ViewController: AnimationTableDelegate {
     }
 
     func addAnimation(_ tableView: UITableView) {
-        view.addSubview(animationDesignController.view)
+        gridController.selectedIndexPath = gridController.selectedIndexPath ?? IndexPath(row: 0, section: 0)
         self.enterDesign()
     }
 }
 
 extension ViewController: SidePaneDelegate {
     func sidePaneSelectSample() {
-        animationDesignController.view.removeFromSuperview()
+        showSampleSettingPane()
         // set the mode back to editing so the animation views and styles will be cleared
         gridController.mode = .editing
     }
@@ -263,4 +363,27 @@ extension ViewController: SessionTableDelegate {
     func sessionTable(_: UITableView, didRemove sessionName: String) {
         _ = dataManager.removeSession(sessionName)
     }
+
+    func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String) {
+        sessionTableViewController.sessions = dataManager.loadAllSessionNames()
+    }
+}
+
+extension ViewController: PadDelegate {
+    func padTapped(indexPath: IndexPath) {
+        sidePaneController.padTapped(indexPath: indexPath)
+    }
+
+    func pad(selected: Pad) {
+        sidePaneController.pad(selected: selected)
+    }
+
+    func pad(played: Pad) {
+        sidePaneController.pad(played: played)
+    }
+
+    func pad(animationUpdated animation: AnimationSequence) {
+        animationDesignController.pad(animationUpdated: animation)
+    }
+
 }

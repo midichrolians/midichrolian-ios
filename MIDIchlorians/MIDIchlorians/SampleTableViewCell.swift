@@ -21,18 +21,16 @@ class SampleTableViewCell: UITableViewCell {
         contentView.addSubview(playButton)
 
         playButton.snp.makeConstraints {(make) -> Void in
-            make.left.equalTo(contentView)
-            make.height.equalTo(contentView)
+            make.left.top.height.equalTo(contentView)
             make.width.equalTo(playButton.snp.height)
         }
 
         sampleName = UILabel(frame: CGRect.zero)
         contentView.addSubview(sampleName)
 
-        sampleName.snp.makeConstraints {(make) -> Void in
+        sampleName.snp.makeConstraints { make in
             make.left.equalTo(playButton.snp.right).offset(10)
-            make.right.equalTo(contentView)
-            make.height.equalTo(contentView)
+            make.top.right.height.equalTo(contentView)
         }
 
     }

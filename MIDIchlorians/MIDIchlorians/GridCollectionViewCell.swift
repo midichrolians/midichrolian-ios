@@ -9,25 +9,59 @@
 import UIKit
 import SnapKit
 
-class GridCollectionViewCell: UICollectionViewCell, PadView {
+class GridCollectionViewCell: UICollectionViewCell {
+    private let sampleOnceOffImage = UIImage(named: Config.PadSampleOnceOffIcon)
+    private let sampleLoopImage = UIImage(named: Config.PadSampleLoopIcon)
+    private let animationIndicatorImage = UIImage(named: Config.PadAnimationIcon)
     var rowNumber = 0
     var columnNumber = 0
-    var sampleLabel: UILabel!
-    var animationLabel: UILabel!
+    var sampleIndicator: UIImageView!
+    var animationIndicator: UIImageView!
     var imageView: UIImageView!
+    var pad: Pad? {
+        didSet {
+            guard let pad = pad else {
+                clearIndicators()
+                return
+            }
+            // once we have the notion of an audio having loop/onceoff we will update the image accordingly
+            if let sample = pad.getAudioFile() {
+                assign(sample: sample)
+            }
+            if let animation = pad.getAnimation() {
+                assign(animation: animation)
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        sampleLabel = UILabel(frame: CGRect.zero)
-        sampleLabel.textAlignment = .center
-        contentView.addSubview(sampleLabel)
-
-        animationLabel = UILabel(frame: CGRect.zero)
-        sampleLabel.textAlignment = .center
-        contentView.addSubview(animationLabel)
 
         imageView = UIImageView(frame: CGRect.zero)
         contentView.addSubview(imageView)
+
+        sampleIndicator = UIImageView()
+        contentView.addSubview(sampleIndicator)
+
+        animationIndicator = UIImageView()
+        contentView.addSubview(animationIndicator)
+
+        setConstraints()
+    }
+
+    func setConstraints() {
+        // add constraints
+        sampleIndicator.snp.makeConstraints { make in
+            make.width.equalTo(contentView).dividedBy(Config.PadIndicatorRatio)
+            make.height.equalTo(sampleIndicator.snp.width)
+            make.centerY.centerX.equalTo(contentView)
+        }
+
+        animationIndicator.snp.makeConstraints { make in
+            make.width.equalTo(contentView).dividedBy(Config.PadIndicatorRatio)
+            make.height.equalTo(animationIndicator.snp.width)
+            make.bottom.centerX.equalTo(contentView)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -39,38 +73,16 @@ class GridCollectionViewCell: UICollectionViewCell, PadView {
     }
 
     func assign(sample: String) {
-        sampleLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(contentView)
-            make.bottom.equalTo(contentView)
-            make.left.equalTo(contentView)
-            make.width.equalTo(contentView).dividedBy(2)
-        }
-        sampleLabel.text = "S"
+        sampleIndicator.image = sampleOnceOffImage
     }
 
     func assign(animation: AnimationSequence) {
-        animationLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(contentView)
-            make.bottom.equalTo(contentView)
-            make.right.equalTo(contentView)
-            make.width.equalTo(contentView).dividedBy(2)
-        }
-        animationLabel.text = "A"
+        animationIndicator.image = animationIndicatorImage
     }
 
     func clearIndicators() {
-        sampleLabel.text = nil
-        animationLabel.text = nil
-    }
-
-    // This cell is selected in the edit mode
-    func setSelected() {
-        layer.borderColor = UIColor.red.cgColor
-        layer.borderWidth = 3.0
-    }
-
-    func unselect() {
-        layer.borderWidth = 0.0
+        sampleIndicator.image = nil
+        animationIndicator.image = nil
     }
 }
 

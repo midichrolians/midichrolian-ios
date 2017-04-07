@@ -8,13 +8,17 @@
 
 import UIKit
 
+protocol GridDisplayDelegate: class {
+    var mode: Mode { get }
+    var frame: Int { get }
+}
+
 // Provides the data source and layout information for the underying GridCollectionView
 // Events that happen on the collection view will be sent to the parent GridController, not this view controller.
 class GridCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    var mode: Mode = .playing {
-        didSet {
-            collectionView?.reloadData()
-        }
+    weak var gridDisplayDelegate: GridDisplayDelegate?
+    var mode: Mode {
+        return gridDisplayDelegate?.mode ?? .playing
     }
     // the currently visible 6x8 grid of pads
     var padGrid: [[Pad]] = [] {
@@ -24,14 +28,8 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
     }
     // temp hack to get colours to show up on grid when designing
     var colours: [[Pad:Colour]] = [[:]]
-    var selectedFrame: Int = 0
-
-    // currently selected pad, only used for edit mode
-    var selectedIndexPath: IndexPath? {
-        didSet {
-            // reload everything just to be safe (and it's easier too)
-            collectionView?.reloadData()
-        }
+    var selectedFrame: Int {
+        return gridDisplayDelegate?.frame ?? 0
     }
 
     // MARK: UICollectionViewDataSource
@@ -58,8 +56,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             cell.columnNumber = indexPath.item
 
             // reset the styles of the cell
-            cell.unselect()
-            cell.setDefaultAppearance()
+            cell.clearAnimation()
             cell.clearIndicators()
 
             // and then assign styles based on the mode
@@ -67,30 +64,12 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             case .playing:
                 break
             case .editing:
-                if let sample = pad.getAudioFile() {
-                    cell.assign(sample: sample)
-                }
-
-                if let animation = pad.getAnimation() {
-                    cell.assign(animation: animation)
-                }
-
-                // if selected, highlight
-                if selectedIndexPath == indexPath {
-                    cell.setSelected()
-                } else {
-                    cell.unselect()
-                }
+                cell.pad = pad
             case .design:
                 if let colour = colours[selectedFrame][pad] {
-                    cell.animate(backgroundColour: colour.uiColor)
+                    cell.animate(image: colour.image)
                 } else {
                     cell.setDefaultAppearance()
-                }
-                if selectedIndexPath == indexPath {
-                    cell.setSelected()
-                } else {
-                    cell.unselect()
                 }
             }
 
@@ -103,8 +82,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let totalLength = collectionView.frame.width
-        // need to + 1 cos of the page buttons, this will be changed soon
-        let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section)) + 1
+        let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section))
         let insetLength = Config.ItemInsets.left * (itemsPerRow + 1)
         let availableLength = totalLength - insetLength
         let itemLength = availableLength / itemsPerRow

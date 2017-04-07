@@ -21,7 +21,7 @@ protocol AnimationDesignerDelegate: class {
     // Animation type creation mode is selected
     func animationTypeCreationMode(selected mode: AnimationTypeCreationMode)
     // Save the animation designed thus far
-    func saveAnimation()
+    func saveAnimation(name: String)
 }
 
 // Default no-op implementations

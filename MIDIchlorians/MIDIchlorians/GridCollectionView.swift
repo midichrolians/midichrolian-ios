@@ -30,6 +30,12 @@ class GridCollectionView: UICollectionView {
 
 extension GridCollectionView: AnimatableGrid {
     func getAnimatablePad(forIndex: IndexPath) -> AnimatablePad? {
-        return cellForItem(at: forIndex) as? GridCollectionViewCell
+        if forIndex.section >= self.numberOfSections {
+            return nil
+        }
+        guard let cell = cellForItem(at: forIndex) as? GridCollectionViewCell else {
+            return nil
+        }
+        return cell
     }
 }

@@ -16,7 +16,7 @@ import RealmSwift
 class Session: Object {
 
     private dynamic var BPM = Config.defaultBPM
-    private dynamic var numPages = Config.numberOfPages
+    private(set) dynamic var numPages = Config.numberOfPages
     private dynamic var numRows = Config.numberOfRows
     private dynamic var numCols = Config.numberOfColumns
     private dynamic var sessionName: String?
@@ -51,6 +51,46 @@ class Session: Object {
 
             }
         }
+    }
+
+    convenience init?(json: String) {
+        self.init()
+        guard let data = json.data(using: .utf8) else {
+            return nil
+        }
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any?] else {
+            return nil
+        }
+        guard let BPM = dictionary["BPM"] as? Int,
+        let numRows = dictionary["numRows"] as? Int,
+        let numCols = dictionary["numCols"] as? Int,
+        let numPages = dictionary["numPages"] as? Int else {
+            return nil
+        }
+        self.BPM = BPM
+        self.numRows = numRows
+        self.numCols = numCols
+        self.numPages = numPages
+        self.sessionName = dictionary["sessionName"] as? String
+
+        guard let padArray = dictionary["pads"] as? [String] else {
+            return nil
+        }
+
+        for page in 0..<numPages {
+            pads.append([])
+            for row in 0..<numRows {
+                pads[page].append([])
+                for col in 0..<numCols {
+                    let listIndex = (page * numRows * numCols) + (row * numCols) + col
+                    guard let pad = Pad(json: padArray[listIndex]) else {
+                        return nil
+                    }
+                    pads[page][row].append(pad)
+                }
+            }
+        }
+
     }
 
     override static func primaryKey() -> String? {
@@ -174,11 +214,43 @@ class Session: Object {
               self.numRows == session.numRows && self.numCols == session.numCols else {
             return false
         }
-        for (page, (row, col)) in zip(0..<numPages, zip(0..<numRows, 0..<numCols)) {
-            if !pads[page][row][col].equals(session.pads[page][row][col]) {
-                return false
+
+        for page in 0..<numPages {
+            for row in 0..<numRows {
+                for col in 0..<numCols {
+                    if !pads[page][row][col].equals(session.pads[page][row][col]) {
+                        return false
+                    }
+                }
             }
         }
+
         return true
+    }
+
+    func toJSON() -> String? {
+        var dictionary = [String: Any?]()
+        dictionary["BPM"] = self.BPM
+        dictionary["numPages"] = self.numPages
+        dictionary["numRows"] = self.numRows
+        dictionary["numCols"] = self.numCols
+        dictionary["sessionName"] = self.sessionName
+        var padArray = [String]()
+        for page in 0..<numPages {
+            for row in 0..<numRows {
+                for col in 0..<numCols {
+                    let pad = pads[page][row][col]
+                    guard let padJSON = pad.toJSON() else {
+                        return nil
+                    }
+                    padArray.append(padJSON)
+                }
+            }
+        }
+        dictionary["pads"] = padArray
+        guard let json = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else {
+            return nil
+        }
+        return String(data: json, encoding: .utf8)
     }
 }
