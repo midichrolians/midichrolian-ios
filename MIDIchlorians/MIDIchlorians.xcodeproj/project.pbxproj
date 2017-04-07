@@ -71,7 +71,6 @@
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
 		E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAA1E860CDB00B7ADF9 /* GridController.swift */; };
 		E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */; };
-		E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EB11E8645F800B7ADF9 /* PadView.swift */; };
 		E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */; };
 		E92D6F2D1E953D7100E815F1 /* ColourCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */; };
 		E92D6F2F1E953DA000E815F1 /* TimelineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */; };
@@ -210,7 +209,6 @@
 		E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E9158EAA1E860CDB00B7ADF9 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
 		E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewController.swift; sourceTree = "<group>"; };
-		E9158EB11E8645F800B7ADF9 /* PadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadView.swift; sourceTree = "<group>"; };
 		E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewController.swift; sourceTree = "<group>"; };
 		E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourCollectionViewController.swift; sourceTree = "<group>"; };
 		E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDelegate.swift; sourceTree = "<group>"; };
@@ -469,7 +467,6 @@
 				E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */,
 				33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */,
 				33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */,
-				E9158EB11E8645F800B7ADF9 /* PadView.swift */,
 				E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */,
 				E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */,
 				E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */,
@@ -922,7 +919,6 @@
 				E9EF70821E95447800234910 /* ColourSelection.swift in Sources */,
 				E9EC9A381E93F11200C89118 /* PageCollectionViewController.swift in Sources */,
 				E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */,
-				E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */,
 				E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */,
 				E92D6F2D1E953D7100E815F1 /* ColourCollectionViewController.swift in Sources */,
 				338275391E924FA500C6B3B7 /* BeatFrequency.swift in Sources */,
