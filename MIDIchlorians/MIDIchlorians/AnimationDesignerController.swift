@@ -138,7 +138,7 @@ class AnimationDesignerController: UIViewController {
         guard let newName = self.saveAlert.textFields?.first?.text else {
             return
         }
-        if newName.isEmpty {
+        if newName.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
             return
         }
         self.delegate?.saveAnimation(name: newName)
@@ -199,7 +199,7 @@ extension AnimationDesignerController: UITextFieldDelegate {
         }
 
         let str = (text as NSString).replacingCharacters(in: range, with: string)
-        if str.isEmpty {
+        if str.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
             saveAlert.actions.first?.isEnabled = false
         } else {
             saveAlert.actions.first?.isEnabled = true
