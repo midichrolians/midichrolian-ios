@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         sessionTableViewController.delegate = self
 
         topBarController = TopBarController()
+        addChildViewController(topBarController)
         view.addSubview(topBarController.view)
 
         topBarController.view.snp.makeConstraints { make in
