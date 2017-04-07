@@ -122,7 +122,7 @@ class Session: Object {
     func getSessionName() -> String? {
         return sessionName
     }
-    
+
     func getPad(page: Int, indexPath: IndexPath) -> Pad {
         return self.pads[page][indexPath.section][indexPath.row]
     }
