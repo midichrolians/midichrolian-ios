@@ -123,7 +123,17 @@ class AnimationDesignerController: UIViewController {
     }
 
     func saveButtonTapped() {
-        delegate?.saveAnimation()
+        let alert = UIAlertController(title: Config.AnimationSaveAlertTitle, message: nil, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: Config.AnimationSaveOkayTitle, style: .default, handler: { _ in
+                guard let newName = alert.textFields?.first?.text else {
+                    return
+                }
+                self.delegate?.saveAnimation(name: newName)
+            }))
+        alert.addAction(UIAlertAction(title: Config.AnimationSaveCancelTitle, style: .cancel, handler: nil))
+        alert.addTextField()
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

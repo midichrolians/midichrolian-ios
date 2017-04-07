@@ -328,12 +328,12 @@ extension GridController: AnimationDesignerDelegate {
         self.animationTypeCreationMode = mode
     }
 
-    func saveAnimation() {
+    func saveAnimation(name: String) {
         guard let indexPath = selectedIndexPath else {
             return
         }
         _ = AnimationManager.instance.addNewAnimationType(
-            name: self.animationName,
+            name: name,
             animationSequence: self.animationSequence,
             mode: self.animationTypeCreationMode,
             anchor: indexPath
