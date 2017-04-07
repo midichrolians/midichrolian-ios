@@ -92,6 +92,44 @@ class AnimationTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView,
+                            editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .normal,
+                                              title: Config.AnimationEditActionTitle) { (_, indexPath) in
+            self.edit(at: indexPath)
+        }
+        let removeAction = UITableViewRowAction(style: .destructive,
+                                                title: Config.AnimationRemoveActionTitle) { (_, indexPath) in
+            self.removeAnimation(at: indexPath)
+        }
+        return [removeAction, editAction]
+    }
+
+    // Show alert to allow user to edit animation name
+    func edit(at indexPath: IndexPath) {
+        let animationName = animationTypeNames[indexPath.row]
+        let alert = UIAlertController(title: Config.AnimationEditAlertTitle, message: nil, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: Config.AnimationEditOkayTitle, style: .default, handler: { _ in
+                guard let newName = alert.textFields?.first?.text else {
+                    // need to call datamanager to update name
+                    // and then reload
+                    return
+                }
+            }))
+        alert.addAction(
+            UIAlertAction(title: Config.AnimationEditCancelTitle, style: .cancel, handler: nil))
+        alert.addTextField(configurationHandler: { textField in
+            textField.text = animationName
+        })
+        present(alert, animated: true, completion: nil)
+    }
+
+    func removeAnimation(at indexPath: IndexPath) {
+        let animationName = animationTypeNames.remove(at: indexPath.row)
+        _ = DataManager.instance.removeAnimation(animationName)
+    }
+
     private func animationType(at indexPath: IndexPath) -> String {
         return animationTypeNames[indexPath.row]
     }

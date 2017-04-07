@@ -117,6 +117,13 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    // Animation table
+    static let AnimationEditActionTitle = "Edit"
+    static let AnimationRemoveActionTitle = "Remove"
+    static let AnimationEditAlertTitle = "Enter a new name"
+    static let AnimationEditOkayTitle = "Okay"
+    static let AnimationEditCancelTitle = "Cancel"
+
     // Bottom pane
     static let BottomPaneHeight = 220
 
