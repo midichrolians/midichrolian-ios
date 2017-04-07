@@ -168,7 +168,7 @@ class TopBarController: UIViewController {
                                                             UIApplication.shared.open(url) },
                                                           browserAuth: false)
         } else {
-            CloudManager.instance.loadFromDropbox()
+            CloudManager.instance.saveToDropbox()
         }
     }
 
