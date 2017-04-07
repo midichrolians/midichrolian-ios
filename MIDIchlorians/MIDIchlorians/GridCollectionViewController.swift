@@ -56,7 +56,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             cell.columnNumber = indexPath.item
 
             // reset the styles of the cell
-            cell.setDefaultAppearance()
+            cell.clearAnimation()
             cell.clearIndicators()
 
             // and then assign styles based on the mode

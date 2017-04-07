@@ -14,4 +14,6 @@ protocol ColourPickerDelegate: class {
 
     // Called when a colour is selected
     func colour(selected: Colour, indexPath: IndexPath)
+    // Called when clear selected
+    func clear(indexPath: IndexPath)
 }

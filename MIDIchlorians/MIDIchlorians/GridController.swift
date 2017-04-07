@@ -343,6 +343,15 @@ extension GridController: AnimationDesignerDelegate {
 
 extension GridController: PageDelegate {
     func page(selected: Int) {
-        currentPage = selected
+        switch mode {
+        case .playing:
+            fallthrough
+        case .editing:
+            currentPage = selected
+        case .design:
+            // page selection is not allowed in design mode, it will be confusing
+            // since animations are only defined and shown for one grid at a time
+            break
+        }
     }
 }

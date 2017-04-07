@@ -16,6 +16,7 @@ class SampleSettingViewController: UIViewController {
         super.viewDidLoad()
         sampleSettingControl.insertSegment(withTitle: Config.SampleSettingLoopLabel, at: 0, animated: true)
         sampleSettingControl.insertSegment(withTitle: Config.SampleSettingOnceOffLabel, at: 0, animated: true)
+        sampleSettingControl.selectedSegmentIndex = 0
 
         view.addSubview(sampleSettingControl)
         setConstraints()

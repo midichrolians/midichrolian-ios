@@ -86,6 +86,7 @@ class TopBarController: UIViewController {
         logo.snp.makeConstraints { make in
             make.left.equalTo(view).offset(Config.AppLeftPadding)
             make.height.equalTo(view)
+            make.centerY.equalTo(view)
         }
 
         stackView.snp.makeConstraints { make in
