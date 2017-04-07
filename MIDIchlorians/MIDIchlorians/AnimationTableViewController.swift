@@ -126,8 +126,6 @@ class AnimationTableViewController: UITableViewController {
     }
 
     func removeAnimation(at indexPath: IndexPath) {
-        let animationName = animationTypeNames.remove(at: indexPath.row)
-        _ = DataManager.instance.removeAnimation(animationName)
     }
 
     private func animationType(at indexPath: IndexPath) -> String {
