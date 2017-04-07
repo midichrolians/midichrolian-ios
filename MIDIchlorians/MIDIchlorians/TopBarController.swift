@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import SwiftyDropbox
 
 class TopBarController: UIViewController {
     private var logo = UILabel()
@@ -20,6 +21,7 @@ class TopBarController: UIViewController {
     private var exitButton = UIButton(type: .system)
     private var recordButton = UIButton(type: .custom)
     private var playButton = UIButton(type: .system)
+    private var syncButton = UIButton(type: .system)
     private var hasRecording = false {
         didSet {
             playButton.isEnabled = hasRecording
@@ -65,11 +67,15 @@ class TopBarController: UIViewController {
         // play button is always not enabled initially, user has to record something for it to be enabled
         playButton.isEnabled = false
 
+        syncButton.setTitle("Sync", for: .normal)
+        syncButton.addTarget(self, action: #selector(sync), for: .touchDown)
+
         stackView.addArrangedSubview(sessionButton)
         stackView.addArrangedSubview(saveButton)
         stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(recordButton)
         stackView.addArrangedSubview(playButton)
+        stackView.addArrangedSubview(syncButton)
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = Config.TopNavStackViewSpacing
@@ -152,6 +158,18 @@ class TopBarController: UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
         vc.view.backgroundColor = UIColor.blue
+    }
+
+    func sync() {
+        if DropboxClientsManager.authorizedClient == nil {
+            DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                                                          controller: self,
+                                                          openURL: { (url: URL) -> Void in
+                                                            UIApplication.shared.open(url) },
+                                                          browserAuth: false)
+        } else {
+            CloudManager.instance.loadFromDropbox()
+        }
     }
 
 }
