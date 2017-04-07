@@ -466,8 +466,8 @@
 		80034E821E93ACC3005B4487 /* Recording */ = {
 			isa = PBXGroup;
 			children = (
-				80034E841E93ACE8005B4487 /* TimeTracker.swift */,
 				80034E831E93ACE8005B4487 /* PlayBackRetriever.swift */,
+				80034E841E93ACE8005B4487 /* TimeTracker.swift */,
 			);
 			name = Recording;
 			sourceTree = "<group>";

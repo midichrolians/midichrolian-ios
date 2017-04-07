@@ -73,8 +73,7 @@ struct AudioManager {
         case AudioPlayerSetting.audioServices:
             guard let audio = audioClipDict[audioDir] else {
                 _ = initAudio(audioDir: audioDir)
-                // if true call itself
-                return playAudioTrack(audioDir: audioDir, bpm: bpm)//should not be play audio track
+                return playAudioTrack(audioDir: audioDir, bpm: bpm)
             }
 
             AudioClipPlayer.playAudioClip(soundID: audio)
