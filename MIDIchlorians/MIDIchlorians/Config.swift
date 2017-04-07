@@ -48,6 +48,8 @@ struct Config {
         "Spread"
     ]
     static let SoundExt = "wav"
+    static let AnimationExt = "json"
+    static let SessionExt = "json"
 
     static let FontPrimaryColor = UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1)
     static let BackgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
@@ -101,8 +103,18 @@ struct Config {
     static let PadSelectionBorderWidth: CGFloat = 3.0
     static let PadSelectionCornerRadius: CGFloat = 5.0
     static let PadSelectionOffset: CGFloat = 2
-    static let GridSampleIndicatorIcon = "play.png"
-    static let GridAnimationIndicatorIcon = "play.png"
+    static let PadSampleOnceOffIcon = "pad_sample_once_off.png"
+    static let PadSampleLoopIcon = "pad_sample_loop.png"
+    static let PadAnimationIcon = "pad_animation.png"
+    static let PadIndicatorRatio: CGFloat = 3
+
+    // Remove button
+    static let RemoveButtonIcon = "cancel.png"
+    static let RemoveButtonAlertTitle = "Confirm"
+    static let RemoveButtonSampleTitle = "Remove sample"
+    static let RemoveButtonAnimationTitle = "Remove animation"
+    static let RemoveButtonBothTitle = "Remove both"
+    static let RemoveButtonCancelTitle = "Cancel"
 
     // SidePane
     static let SidePaneWidth: CGFloat = 320
@@ -149,7 +161,7 @@ struct Config {
     static let ColourInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
 
     static let RemoveButtonOffset: CGFloat = 10
-    static let RemoveButtonWidth: CGFloat = 32
+    static let RemoveButtonWidth: CGFloat = 24
 
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
@@ -186,9 +198,17 @@ struct Config {
     static let SessionTableTitle = "Sessions"
     static let AnimationTabTitle = "Animations"
 
+    static let AudioFolderName = "samples"
+    static let AnimationFileName = "animations"
+    static let SessionFileName = "sessions"
+
     static let NewAnimationTypeDefaultName = "Default Animation"
 
     static let animationTypeSpreadName = "Spread"
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
+  
+    static let animationNotificationKey = "animation"
+    static let sessionNotificationKey = "session"
+    static let audioNotificationKey = "audio"
 }

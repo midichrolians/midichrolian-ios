@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyDropbox
 
 // The ViewController is the main (and only) for the entire app.
 // Management and hooking up all child view controllers are done in this class.
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    private let cloudManager = CloudManager.instance
     internal var dataManager = DataManager.instance
 
     override var prefersStatusBarHidden: Bool {
@@ -50,6 +52,19 @@ class ViewController: UIViewController {
         // need assign delegates after everything is initialized
         gridController.padDelegate = self
         animationDesignController.delegate = gridController
+
+        //Need to initialise Notification Center, so I've just put the code here in comments,
+        // so that you can do it wherever you want
+//
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.animationNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.audioNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
+//        NotificationCenter.default
+//            .addObserver(forName:Notification.Name(rawValue: Config.sessionNotificationKey),
+//                         object: nil, queue: nil, using: handleStop)
     }
 
     // Sets up the top navigation.
@@ -63,6 +78,7 @@ class ViewController: UIViewController {
         sessionTableViewController.delegate = self
 
         topBarController = TopBarController()
+        addChildViewController(topBarController)
         view.addSubview(topBarController.view)
 
         topBarController.view.snp.makeConstraints { make in
@@ -100,6 +116,7 @@ class ViewController: UIViewController {
     // Sets up the main grid for play/edit
     private func setUpGrid() {
         gridController = GridController(frame: CGRect.zero, session: currentSession)
+        addChildViewController(gridController)
 
         view.addSubview(gridController.view)
 
@@ -165,6 +182,31 @@ class ViewController: UIViewController {
         AnimationEngine.set(animationGrid: gridController.gridCollectionView)
         AnimationEngine.set(beatsPerMinute: Config.defaultBPM)
         AnimationEngine.start()
+    }
+
+    //Loads the dropbox webview for logging in
+    private func loadDropBoxWebView() {
+        DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                                                      controller: self,
+                                                      openURL: { (url: URL) -> Void in
+                                                      UIApplication.shared.open(url) },
+                                                      browserAuth: false)
+    }
+
+    private func importFromDropbox() {
+        if DropboxClientsManager.authorizedClient != nil {
+            cloudManager.loadFromDropbox()
+        } else {
+            loadDropBoxWebView()
+        }
+    }
+
+    private func saveToDropbox() {
+        if DropboxClientsManager.authorizedClient != nil {
+            cloudManager.saveToDropbox()
+        } else {
+            loadDropBoxWebView()
+        }
     }
 
 }

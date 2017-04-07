@@ -74,7 +74,6 @@
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
 		E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAA1E860CDB00B7ADF9 /* GridController.swift */; };
 		E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */; };
-		E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EB11E8645F800B7ADF9 /* PadView.swift */; };
 		E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */; };
 		E92D6F2D1E953D7100E815F1 /* ColourCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */; };
 		E92D6F2F1E953DA000E815F1 /* TimelineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */; };
@@ -91,6 +90,7 @@
 		E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */; };
 		E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */; };
 		E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */; };
+		E95CACD51E96A97D009E6DA6 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95CACD41E96A97D009E6DA6 /* AboutUsViewController.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
 		E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */; };
@@ -114,10 +114,12 @@
 		F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABC1E83B2B50095F76A /* AnimationTests.swift */; };
 		F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABE1E83B2D50095F76A /* AudioTests.swift */; };
 		F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */; };
+		F31E2B131E8FF1B000C23325 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E2B121E8FF1B000C23325 /* CloudManager.swift */; };
 		F32A4CE51E8595F700FF8F1F /* SessionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A4CE41E8595F700FF8F1F /* SessionName.swift */; };
 		F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B2A511E7A84AC00FD2C61 /* Pad.swift */; };
 		F36B995E1E8148260026721A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B995D1E8148260026721A /* DataManager.swift */; };
 		F3710A8F1E7D280D0031A754 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3710A8E1E7D280C0031A754 /* Session.swift */; };
+		F3BE9A591E948E88002A25F1 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3BE9A581E948E88002A25F1 /* Keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,7 +215,6 @@
 		E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E9158EAA1E860CDB00B7ADF9 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
 		E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewController.swift; sourceTree = "<group>"; };
-		E9158EB11E8645F800B7ADF9 /* PadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadView.swift; sourceTree = "<group>"; };
 		E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewController.swift; sourceTree = "<group>"; };
 		E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourCollectionViewController.swift; sourceTree = "<group>"; };
 		E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +232,7 @@
 		E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
 		E93A02C91E74017000DFB2B7 /* SampleTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableDelegate.swift; sourceTree = "<group>"; };
 		E93A02CC1E7403CD00DFB2B7 /* AnimationTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTableDelegate.swift; sourceTree = "<group>"; };
+		E95CACD41E96A97D009E6DA6 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
@@ -256,10 +258,12 @@
 		F3173ABC1E83B2B50095F76A /* AnimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
 		F3173ABE1E83B2D50095F76A /* AudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTests.swift; sourceTree = "<group>"; };
 		F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		F31E2B121E8FF1B000C23325 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		F32A4CE41E8595F700FF8F1F /* SessionName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionName.swift; sourceTree = "<group>"; };
 		F34B2A511E7A84AC00FD2C61 /* Pad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pad.swift; sourceTree = "<group>"; };
 		F36B995D1E8148260026721A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F3710A8E1E7D280C0031A754 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		F3BE9A581E948E88002A25F1 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -321,7 +325,9 @@
 				805946D01E816CEC00EF7A2B /* Audio */,
 				F34B2A501E7A721500FD2C61 /* Models */,
 				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
+				F3BE9A581E948E88002A25F1 /* Keys.plist */,
 				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
+				E95CACD41E96A97D009E6DA6 /* AboutUsViewController.swift */,
 				E9AD30221E8BADF200801A9F /* Animation Designer */,
 				E99E8A4A1E8016BF001F9351 /* Top Nav */,
 				E92F6C331E7522F700F5A092 /* Session Table */,
@@ -337,6 +343,7 @@
 				334970C81E72B86B009C78DF /* LowLatencyAudio.swift */,
 				F36B995D1E8148260026721A /* DataManager.swift */,
 				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
+				F31E2B121E8FF1B000C23325 /* CloudManager.swift */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -477,7 +484,6 @@
 				E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */,
 				33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */,
 				33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */,
-				E9158EB11E8645F800B7ADF9 /* PadView.swift */,
 				E9EC9A371E93F11200C89118 /* PageCollectionViewController.swift */,
 				E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */,
 				E9EC9A3B1E94AEE800C89118 /* PadSelection.swift */,
@@ -735,6 +741,7 @@
 				33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */,
 				33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */,
 				33DAAAB61E72BEA300987E86 /* AWOLNATION - Sail-18.wav in Resources */,
+				F3BE9A591E948E88002A25F1 /* Keys.plist in Resources */,
 				33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */,
 				33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */,
 				33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */,
@@ -918,6 +925,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31E2B131E8FF1B000C23325 /* CloudManager.swift in Sources */,
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
 				E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */,
 				F3710A8F1E7D280D0031A754 /* Session.swift in Sources */,
@@ -931,7 +939,6 @@
 				E9EF70821E95447800234910 /* ColourSelection.swift in Sources */,
 				E9EC9A381E93F11200C89118 /* PageCollectionViewController.swift in Sources */,
 				E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */,
-				E9158EB21E8645F800B7ADF9 /* PadView.swift in Sources */,
 				E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */,
 				E92D6F2D1E953D7100E815F1 /* ColourCollectionViewController.swift in Sources */,
 				338275391E924FA500C6B3B7 /* BeatFrequency.swift in Sources */,
@@ -974,6 +981,7 @@
 				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
 				334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */,
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
+				E95CACD51E96A97D009E6DA6 /* AboutUsViewController.swift in Sources */,
 				E92F6C301E74FEBB00F5A092 /* SessionTableDelegate.swift in Sources */,
 				33BCC5AA1E85064900D8489F /* AnimatableGrid.swift in Sources */,
 				E9C6712E1E94B61900777846 /* SelectedPadTrackingView.swift in Sources */,

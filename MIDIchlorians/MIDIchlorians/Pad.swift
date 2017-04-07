@@ -28,6 +28,18 @@ class Pad: Object {
         self.animationString = pad.animationString
     }
 
+    convenience init?(json: String) {
+        self.init()
+        guard let data = json.data(using: .utf8) else {
+            return nil
+        }
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any?] else {
+            return nil
+        }
+        self.audioFile = dictionary["audioFile"] as? String
+        self.animationString = dictionary["animationString"] as? String
+    }
+
     func addAudio(audioFile: String) {
         self.audioFile = audioFile
     }
@@ -57,5 +69,15 @@ class Pad: Object {
 
     func equals(_ pad: Pad) -> Bool {
         return self.audioFile == pad.audioFile && self.animationString == pad.animationString
+    }
+
+    func toJSON() -> String? {
+        var dictionary = [String: String?]()
+        dictionary["audioFile"] = audioFile
+        dictionary["animationString"] = animationString
+        guard let data = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else {
+            return nil
+        }
+        return String(data: data, encoding: .utf8)
     }
 }
