@@ -223,7 +223,6 @@ class DataManager {
         if !audioStrings.contains(audioFile) {
             self.audioStrings.insert(audioFile)
         }
-
         return true
     }
 
