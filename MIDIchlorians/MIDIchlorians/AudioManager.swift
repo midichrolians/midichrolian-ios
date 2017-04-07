@@ -13,6 +13,7 @@ struct AudioManager {
     public static var instance = AudioManager(Config.audioSetting)
     private var audioClipDict: [String: UInt32]
     private var audioTrackDict: [String: AVAudioPlayer]
+    private var loopDict: [String:Timer]
     private var audioPlayerType: AudioPlayerSetting
     private let AUDIOCLIPLIMIT: Double = 30
     //only needs to be a small enough number such that there's a low buffer (cant be zero)
@@ -21,6 +22,7 @@ struct AudioManager {
     init(_ setting: AudioPlayerSetting) {
         audioClipDict = [String: UInt32]()
         audioTrackDict = [String: AVAudioPlayer]()
+        loopDict = [String:Timer]()
         audioPlayerType = setting
         do {
             let sharedSessionIntance = AVAudioSession.sharedInstance() as AVAudioSession
@@ -79,6 +81,29 @@ struct AudioManager {
 
     }
 
+    mutating func playLoop(audioDir: String, bpm: Int) {
+        if loopDict[audioDir] == nil {
+            let secondsPerBeat: Double = 60.0 / Double(bpm)
+            loopDict[audioDir] = Timer.scheduledTimer(timeInterval: secondsPerBeat,
+                                                      target: self,
+                                                      selector: #selector(self.updateTimer),
+                                                      userInfo: audioDir,
+                                                      repeats: true)
+        } else {
+            stop(audioDir: audioDir)
+        }
+    }
+
+    func updateTimer() {
+        print("test")
+        /*
+        guard let audioDir = timer.userInfo as? String else {
+            return
+        }
+        _ = play(audioDir: audioDir)
+ */
+    }
+
     private mutating func playAudioTrack(audioDir: String, bpm: Int?) -> Bool {
         guard let audio = audioTrackDict[audioDir] else {
             if initAudio(audioDir: audioDir) {
@@ -97,7 +122,11 @@ struct AudioManager {
     }
 
     //ideally should stop a looping track
-    func stop(audioDir: String) {
-
+    mutating func stop(audioDir: String) {
+        guard let audioTimer = loopDict[audioDir] else {
+            return
+        }
+        audioTimer.invalidate()
+        loopDict[audioDir] = nil
     }
 }
