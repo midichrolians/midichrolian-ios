@@ -58,6 +58,7 @@ struct AudioManager {
 
     // for avAudioplayer (not system sounds)
     private mutating func initAudioTrack(audioDir: String) -> Bool {
+        print("initializing Audio Track")
         guard let avTrackPlayer = AudioTrackPlayer.initAudioTrack(audioDir: audioDir) else {
             return false
         }
@@ -69,27 +70,22 @@ struct AudioManager {
     //returns success
     mutating func play(audioDir: String, bpm: Int? = nil) -> Bool {
 
-        switch audioPlayerType {
-        case AudioPlayerSetting.audioServices:
-            guard let audio = audioClipDict[audioDir] else {
-                if initAudio(audioDir: audioDir) {
-                    return play(audioDir: audioDir, bpm: bpm)
-                } else {
-                    return false
-                }
-            }
-
-            AudioClipPlayer.playAudioClip(soundID: audio)
-            return true
-        case AudioPlayerSetting.aVAudioPlayer:
+        guard let audio = audioClipDict[audioDir] else {
             return playAudioTrack(audioDir: audioDir, bpm: bpm)
         }
 
+        AudioClipPlayer.playAudioClip(soundID: audio)
+        return true
+
     }
 
-    private func playAudioTrack(audioDir: String, bpm: Int?) -> Bool {
+    private mutating func playAudioTrack(audioDir: String, bpm: Int?) -> Bool {
         guard let audio = audioTrackDict[audioDir] else {
-            return false
+            if initAudio(audioDir: audioDir) {
+                return play(audioDir: audioDir, bpm: bpm)
+            } else {
+                return false
+            }
         }
         AudioTrackPlayer.playAudioTrack(audioPlayer: audio)
         return true
