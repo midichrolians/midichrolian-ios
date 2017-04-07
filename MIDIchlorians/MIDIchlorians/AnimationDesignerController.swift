@@ -69,16 +69,9 @@ class AnimationDesignerController: UIViewController {
         view.addSubview(saveButton)
 
         saveAlert = UIAlertController(title: Config.AnimationSaveAlertTitle, message: nil, preferredStyle: .alert)
-        saveAlert.addAction(
-            UIAlertAction(title: Config.AnimationSaveOkayTitle, style: .default, handler: { _ in
-                guard let newName = self.saveAlert.textFields?.first?.text else {
-                    return
-                }
-                if newName.isEmpty {
-                    return
-                }
-                self.delegate?.saveAnimation(name: newName)
-            }))
+        let saveAction = UIAlertAction(title: Config.AnimationSaveOkayTitle, style: .default, handler: saveActionDone)
+        saveAction.isEnabled = false
+        saveAlert.addAction(saveAction)
         saveAlert.addAction(UIAlertAction(title: Config.AnimationSaveCancelTitle, style: .cancel, handler: nil))
         saveAlert.addTextField(configurationHandler: { $0.delegate = self })
 
@@ -139,6 +132,16 @@ class AnimationDesignerController: UIViewController {
 
     func saveButtonTapped() {
         self.present(saveAlert, animated: true, completion: nil)
+    }
+
+    func saveActionDone(_: UIAlertAction) {
+        guard let newName = self.saveAlert.textFields?.first?.text else {
+            return
+        }
+        if newName.isEmpty {
+            return
+        }
+        self.delegate?.saveAnimation(name: newName)
     }
 }
 
