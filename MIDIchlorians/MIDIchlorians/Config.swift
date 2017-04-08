@@ -114,6 +114,8 @@ struct Config {
     static let PadSampleLoopIcon = "pad_sample_loop.png"
     static let PadAnimationIcon = "pad_animation.png"
     static let PadIndicatorRatio: CGFloat = 3
+    static let RemoveButtonOffset: CGFloat = 10
+    static let RemoveButtonWidth: CGFloat = 24
 
     // Remove button
     static let RemoveButtonIcon = "cancel.png"
@@ -128,7 +130,16 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    // Sample table
+    static let SampleTableCellHeight: CGFloat = 60
+    static let SampleTableTitle = "Samples"
+    static let SampleTableReuseIdentifier = "sampleCell"
+    static let SampleRemoveTitleFormat = "Remove %@?"
+    static let SampleRemoveConfirmTitle = "Confirm"
+    static let SampleRemoveCancelTitle = "Cancel"
+
     // Animation table
+    static let AnimationTableReuseIdentifier = "animationCell"
     static let AnimationEditActionTitle = "Edit"
     static let AnimationRemoveActionTitle = "Remove"
     static let AnimationEditAlertTitle = "Enter a new name"
@@ -137,6 +148,7 @@ struct Config {
     static let AnimationRemoveTitleFormat = "Remove %@?"
     static let AnimationRemoveConfirmTitle = "Confirm"
     static let AnimationRemoveCancelTitle = "Cancel"
+    static let AnimationTableCellHeight: CGFloat = Config.SampleTableCellHeight
 
     // Bottom pane
     static let BottomPaneHeight = 220
@@ -181,13 +193,6 @@ struct Config {
     static let ColourInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     static let ColourClearAnimImage = "clear_anim.png"
 
-    static let RemoveButtonOffset: CGFloat = 10
-    static let RemoveButtonWidth: CGFloat = 24
-
-    static let SampleTableTitle = "Samples"
-    static let SampleTableReuseIdentifier = "sampleCell"
-    static let AnimationTableReuseIdentifier = "animationCell"
-
     // Session
     static let SessionEditActionTitle = "Edit"
     static let SessionRemoveActionTitle = "Remove"
@@ -198,9 +203,6 @@ struct Config {
     static let SessionRemoveConfirmTitle = "Confirm"
     static let SessionRemoveCancelTitle = "Cancel"
     static let SessionTableReuseIdentifier = "sessionCell"
-
-    static let SampleTableCellHeight: CGFloat = 60
-    static let AnimationTableCellHeight: CGFloat = Config.SampleTableCellHeight
 
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
