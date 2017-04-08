@@ -10,6 +10,7 @@ target 'MIDIchlorians' do
   pod 'SwiftLint'
   pod 'SnapKit', '~> 3.2.0'
   pod 'SwiftyDropbox'
+  pod 'ImageSlideshow', '~> 1.2'
   # Pods for MIDIchlorians
 
   target 'MIDIchloriansTests' do

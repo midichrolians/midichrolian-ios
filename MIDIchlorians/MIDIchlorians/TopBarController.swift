@@ -12,7 +12,7 @@ import SnapKit
 import SwiftyDropbox
 
 class TopBarController: UIViewController {
-    private var logo = UILabel()
+    private var logo = UIButton(type: .system)
     // used for managing the controls
     private var stackView = UIStackView()
     private var sessionButton = UIButton(type: .system)
@@ -39,9 +39,8 @@ class TopBarController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = Config.SecondaryBackgroundColor
 
-        logo.text = Config.TopNavLogoText
-        logo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(logoTapped)))
-        logo.isUserInteractionEnabled = true
+        logo.setTitle(Config.TopNavLogoText, for: .normal)
+        logo.addTarget(self, action: #selector(logoTapped), for: .touchDown)
         view.addSubview(logo)
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
@@ -157,7 +156,6 @@ class TopBarController: UIViewController {
         let vc = AboutUsViewController()
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
-        vc.view.backgroundColor = UIColor.blue
     }
 
     func sync(sender: UIButton) {
