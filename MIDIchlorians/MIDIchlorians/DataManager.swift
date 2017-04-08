@@ -289,7 +289,6 @@ class DataManager {
         guard audioStrings.contains(sample) else {
             return false
         }
-        
         guard let audio = realm?.object(ofType: Audio.self, forPrimaryKey: sample) else {
             return false
         }
