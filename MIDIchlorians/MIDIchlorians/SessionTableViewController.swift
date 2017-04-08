@@ -44,7 +44,7 @@ class SessionTableViewController: UITableViewController {
 
         // have to set target/action here for this to work, not above in the inistnatiation.
         self.newSessionButton.target = self
-        self.newSessionButton.action = #selector(newSession(barButton:))
+        self.newSessionButton.action = #selector(newSession)
 
         self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
@@ -167,7 +167,7 @@ class SessionTableViewController: UITableViewController {
         delegate?.sessionTable(tableView, didRemove: deletedSession)
     }
 
-    func newSession(barButton: UIBarButtonItem) {
+    func newSession() {
         delegate?.sessionTable(tableView)
     }
 }
