@@ -16,6 +16,8 @@ struct Config {
     static let numberOfPages = 6
     static let numberOfSecondsInMinute = 60
     static let defaultBPM = 120
+    static let defaultAnimationValue = ""
+    static let defaultAudioValue = ""
 
     static let audioSetting = AudioPlayerSetting.audioServices
     static let sound = [
@@ -98,6 +100,11 @@ struct Config {
     static let TopNavRecordingBlackIcon = "record_black.png"
     static let TopNavRecordingLoopDuration: TimeInterval = 0.7
     static let TopNavStackViewSpacing: CGFloat = 20
+    static let TopNavSyncLabel = "Sync"
+    static let TopNavSyncUploadTitle = "Upload"
+    static let TopNavSyncDownloadTitle = "Download"
+    static let TopNavSyncPreferredWidth: CGFloat = 200
+    static let TopNavSyncPreferredHeight: CGFloat = 100
 
     // Grid
     static let GridCollectionViewCellIdentifier = "cell"
@@ -109,6 +116,8 @@ struct Config {
     static let PadSampleLoopIcon = "pad_sample_loop.png"
     static let PadAnimationIcon = "pad_animation.png"
     static let PadIndicatorRatio: CGFloat = 3
+    static let RemoveButtonOffset: CGFloat = 10
+    static let RemoveButtonWidth: CGFloat = 24
 
     // Remove button
     static let RemoveButtonIcon = "cancel.png"
@@ -123,12 +132,26 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    // Sample table
+    static let SampleTableCellHeight: CGFloat = 60
+    static let SampleTableTitle = "Samples"
+    static let SampleTableReuseIdentifier = "sampleCell"
+    static let SampleRemoveTitleFormat = "Remove %@?"
+    static let SampleRemoveConfirmTitle = "Confirm"
+    static let SampleRemoveCancelTitle = "Cancel"
+
     // Animation table
+    static let AnimationTableReuseIdentifier = "animationCell"
     static let AnimationEditActionTitle = "Edit"
     static let AnimationRemoveActionTitle = "Remove"
     static let AnimationEditAlertTitle = "Enter a new name"
     static let AnimationEditOkayTitle = "Okay"
     static let AnimationEditCancelTitle = "Cancel"
+    static let AnimationRemoveTitleFormat = "Remove %@?"
+    static let AnimationRemoveConfirmTitle = "Confirm"
+    static let AnimationRemoveCancelTitle = "Cancel"
+    static let AnimationTableCellHeight: CGFloat = Config.SampleTableCellHeight
+    static let AnimationTabTitle = "Animations"
 
     // Bottom pane
     static let BottomPaneHeight = 220
@@ -173,20 +196,18 @@ struct Config {
     static let ColourInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     static let ColourClearAnimImage = "clear_anim.png"
 
-    static let RemoveButtonOffset: CGFloat = 10
-    static let RemoveButtonWidth: CGFloat = 24
-
-    static let SampleTableTitle = "Samples"
-    static let SampleTableReuseIdentifier = "sampleCell"
-    static let AnimationTableReuseIdentifier = "animationCell"
-    static let SessionTableReuseIdentifier = "sessionCell"
-
-    static let SampleTableCellHeight: CGFloat = 60
-    static let AnimationTableCellHeight: CGFloat = Config.SampleTableCellHeight
-
+    // Session
+    static let SessionTableTitle = "Sessions"
+    static let SessionEditActionTitle = "Edit"
+    static let SessionRemoveActionTitle = "Remove"
     static let SessionEditAlertTitle = "Enter a new name"
-    static let SessionEditOkayTitle = "Save"
+    static let SessionEditOkayTitle = "Okay"
     static let SessionEditCancelTitle = "Cancel"
+    static let SessionRemoveTitleFormat = "Remove %@?"
+    static let SessionRemoveConfirmTitle = "Confirm"
+    static let SessionRemoveCancelTitle = "Cancel"
+    static let SessionTableReuseIdentifier = "sessionCell"
+    static let DefaultSessionName = "New Session"
 
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
@@ -201,15 +222,6 @@ struct Config {
     static let animationSequenceArrayKey = "animationBitsArray"
     static let animationSequenceNameKey = "name"
     static let animationSequenceFrequencyKey = "frequencyPerBeat"
-
-    static let TopNavTitle = "MIDIchlorians"
-    static let TopNavSessionTitle = "Sessions"
-    static let ModeSegmentTitles = ["PLAY", "EDIT"]
-
-    static let DefaultSessionName = "New Session"
-
-    static let SessionTableTitle = "Sessions"
-    static let AnimationTabTitle = "Animations"
 
     static let AudioFolderName = "samples"
     static let AnimationFileName = "animations"

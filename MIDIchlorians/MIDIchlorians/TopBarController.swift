@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import SwiftyDropbox
 
 class TopBarController: UIViewController {
     private var logo = UILabel()
@@ -20,6 +21,8 @@ class TopBarController: UIViewController {
     private var exitButton = UIButton(type: .system)
     private var recordButton = UIButton(type: .custom)
     private var playButton = UIButton(type: .system)
+    private var syncButton = UIButton(type: .system)
+    private var syncViewController = SyncViewController()
     private var hasRecording = false {
         didSet {
             playButton.isEnabled = hasRecording
@@ -42,7 +45,6 @@ class TopBarController: UIViewController {
         view.addSubview(logo)
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
-        sessionButton.tintColor = UIColor.black
         sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
 
         saveButton.setTitle(Config.TopNavSaveLabel, for: .normal)
@@ -65,11 +67,15 @@ class TopBarController: UIViewController {
         // play button is always not enabled initially, user has to record something for it to be enabled
         playButton.isEnabled = false
 
+        syncButton.setTitle(Config.TopNavSyncLabel, for: .normal)
+        syncButton.addTarget(self, action: #selector(sync(sender:)), for: .touchDown)
+
         stackView.addArrangedSubview(sessionButton)
         stackView.addArrangedSubview(saveButton)
         stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(recordButton)
         stackView.addArrangedSubview(playButton)
+        stackView.addArrangedSubview(syncButton)
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = Config.TopNavStackViewSpacing
@@ -159,6 +165,17 @@ class TopBarController: UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
         vc.view.backgroundColor = UIColor.blue
+    }
+
+    func sync(sender: UIButton) {
+        syncViewController.modalPresentationStyle = .popover
+        present(syncViewController, animated: true, completion: nil)
+//
+        // configure styles and anchor of popover presentation controller
+        let popoverPresentationController = syncViewController.popoverPresentationController
+        popoverPresentationController?.sourceView = sender
+        popoverPresentationController?.sourceRect = sender.bounds
+        popoverPresentationController?.popoverLayoutMargins = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
     }
 
 }
