@@ -107,6 +107,12 @@ struct Config {
     static let TopNavSyncPreferredWidth: CGFloat = 200
     static let TopNavSyncPreferredHeight: CGFloat = 100
 
+    // About
+    static let AboutCloseTitle = "Close"
+    static let AboutCloseInset: CGFloat = 10
+    static let AboutCloseWidth: CGFloat = 50
+    static let AboutSlideshowInset = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+
     // Grid
     static let GridCollectionViewCellIdentifier = "cell"
     static let PadSelectionBorderColour = UIColor.green.cgColor
@@ -209,6 +215,14 @@ struct Config {
     static let SessionRemoveCancelTitle = "Cancel"
     static let SessionTableReuseIdentifier = "sessionCell"
     static let DefaultSessionName = "New Session"
+
+    // About / Tutorial
+    static let TutorialImages = [
+        "tutorial_1.png",
+        "tutorial_2.png",
+        "tutorial_3.png",
+        "tutorial_4.png"
+    ]
 
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
