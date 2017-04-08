@@ -427,9 +427,7 @@
 				332109FF1E94FBD2003E2DBF /* PredefinedAnimationTypes */,
 				33DAAAC21E72BEAE00987E86 /* SailSample */,
 				80A050C41E9937D400091411 /* MortalKombatSample */,
-				80A051011E99382300091411 /* AviciiSample */,
 				80A051021E99385200091411 /* FurEliseSample */,
-				80A051031E99386400091411 /* AllStarSample */,
 				33120E1C1E6FD30A007E7717 /* MIDIchlorians */,
 				33120E311E6FD30A007E7717 /* MIDIchloriansUITests */,
 				F3173AAE1E83B1550095F76A /* MIDIchloriansTests */,
@@ -643,13 +641,6 @@
 			name = MortalKombatSample;
 			sourceTree = "<group>";
 		};
-		80A051011E99382300091411 /* AviciiSample */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = AviciiSample;
-			sourceTree = "<group>";
-		};
 		80A051021E99385200091411 /* FurEliseSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,13 +676,6 @@
 				80A0510A1E9939EA00091411 /* VOX.wav */,
 			);
 			name = FurEliseSample;
-			sourceTree = "<group>";
-		};
-		80A051031E99386400091411 /* AllStarSample */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = AllStarSample;
 			sourceTree = "<group>";
 		};
 		E9158EAE1E86155E00B7ADF9 /* Grid */ = {
