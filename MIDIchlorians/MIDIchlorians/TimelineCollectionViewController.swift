@@ -20,6 +20,16 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(pan(recognizer:)))
+        self.collectionView!.addGestureRecognizer(panGesture)
+    }
+
+    func pan(recognizer: UIPanGestureRecognizer) {
+        let point = recognizer.location(in: collectionView!)
+        guard let indexPath = collectionView?.indexPathForItem(at: point) else {
+            return
+        }
+        collectionView(collectionView!, didSelectItemAt: indexPath)
     }
 
     // MARK: UICollectionViewDataSource
@@ -36,8 +46,13 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
-        // Configure the cell
-        cell.backgroundColor = UIColor.blue
+        cell.backgroundColor = UIColor.white
+        if let frame = timelineDelegate?.frame, indexPath.row < frame.count && frame[indexPath.row] {
+            cell.backgroundColor = UIColor.gray
+        }
+
+        cell.layer.borderWidth = 5.0
+        cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.cornerRadius = cell.frame.width / 2
 
         return cell

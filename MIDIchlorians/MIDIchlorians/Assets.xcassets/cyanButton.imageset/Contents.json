@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "cyanButton.png",
+      "filename" : "purplePad.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "purplePad@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "purplePad@3x.png",
       "scale" : "3x"
     }
   ],
