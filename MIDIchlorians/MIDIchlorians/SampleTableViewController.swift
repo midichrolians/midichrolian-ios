@@ -17,6 +17,11 @@ class SampleTableViewController: UITableViewController {
 
     internal var sampleList = DataManager.instance.loadAllAudioStrings()
 
+    private var editingIndexPath: IndexPath?
+    private var removeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+    private var removeAlertConfirmAction: UIAlertAction!
+    private var removeAlertCancelAction: UIAlertAction!
+
     override init(style: UITableViewStyle) {
         super.init(style: style)
 
@@ -25,6 +30,15 @@ class SampleTableViewController: UITableViewController {
                                   image: UIImage(named: Config.SidePaneTabBarSampleIcon),
                                   selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
         tableView.separatorStyle = .none
+
+        removeAlertConfirmAction = UIAlertAction(title: Config.SampleRemoveConfirmTitle,
+                                                 style: .destructive,
+                                                 handler: confirmActionDone)
+        removeAlertCancelAction = UIAlertAction(title: Config.SampleRemoveCancelTitle,
+                                                style: .cancel,
+                                                handler: cancelActionDone)
+        removeAlert.addAction(removeAlertConfirmAction)
+        removeAlert.addAction(removeAlertCancelAction)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -88,11 +102,30 @@ class SampleTableViewController: UITableViewController {
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let sample = sampleList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            // remove from file system too?
-            _ = DataManager.instance.removeAudio(sample)
+            editingIndexPath = indexPath
+            let title = String(format: Config.SampleRemoveTitleFormat, sound(for: indexPath))
+            removeAlert.title = title
+            present(removeAlert, animated: true, completion: nil)
         }
+    }
+
+    func cancelActionDone(_: UIAlertAction) {
+        guard let indexPath = editingIndexPath else {
+            return
+        }
+        editingIndexPath = nil
+        // clear the swipe actions
+        tableView.reloadRows(at: [indexPath], with: .right)
+    }
+
+    func confirmActionDone(_: UIAlertAction) {
+        guard let indexPath = editingIndexPath else {
+            return
+        }
+        let sample = sampleList.remove(at: indexPath.row)
+        // remove from file system too?
+        _ = DataManager.instance.removeAudio(sample)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 
     private func sound(for indexPath: IndexPath) -> String {
