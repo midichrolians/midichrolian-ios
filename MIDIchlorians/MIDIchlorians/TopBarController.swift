@@ -45,7 +45,6 @@ class TopBarController: UIViewController {
         view.addSubview(logo)
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
-        sessionButton.tintColor = UIColor.black
         sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
 
         saveButton.setTitle(Config.TopNavSaveLabel, for: .normal)
