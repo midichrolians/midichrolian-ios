@@ -98,6 +98,7 @@
 		E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301A1E88EBB300801A9F /* PadDelegate.swift */; };
 		E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */; };
 		E9C54EB91E9773B300141BCE /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C54EB81E9773B300141BCE /* SyncViewController.swift */; };
+		E9C54EBD1E98CA9B00141BCE /* AlertActionTextFieldSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */; };
 		E9C6712E1E94B61900777846 /* SelectedPadTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */; };
 		E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712F1E94B7B100777846 /* RemoveButton.swift */; };
 		E9E780741E955B8F00F5CC65 /* PageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780731E955B8F00F5CC65 /* PageDelegate.swift */; };
@@ -241,6 +242,7 @@
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
 		E9AD301C1E8BA9FE00801A9F /* AnimationDesignerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerController.swift; sourceTree = "<group>"; };
 		E9C54EB81E9773B300141BCE /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
+		E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertActionTextFieldSync.swift; sourceTree = "<group>"; };
 		E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPadTrackingView.swift; sourceTree = "<group>"; };
 		E9C6712F1E94B7B100777846 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
 		E9E780731E955B8F00F5CC65 /* PageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDelegate.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
 				E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */,
 				F31E2B121E8FF1B000C23325 /* CloudManager.swift */,
+				E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -977,6 +980,7 @@
 				334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */,
+				E9C54EBD1E98CA9B00141BCE /* AlertActionTextFieldSync.swift in Sources */,
 				E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */,
 				E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
