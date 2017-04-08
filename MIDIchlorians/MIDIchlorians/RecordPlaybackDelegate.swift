@@ -10,6 +10,6 @@ import Foundation
 
 protocol RecordPlaybackDelegate: class {
     // used to programatically "tap" a pad
-    static func playPad(page: Int, indexPath: IndexPath)
+    func playPad(page: Int, indexPath: IndexPath)
 
 }

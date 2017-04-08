@@ -21,6 +21,7 @@ class RecorderManager {
     private var playClock: TimeInterval = 0
     private var playingStarted = false
     private var playTimer: Timer?
+    private var delegate: RecordPlaybackDelegate?
 
     init() {
         playBack = PlayBackRetriever(timeIndexArr: [(TimeInterval, (Int, IndexPath))]())
@@ -79,7 +80,7 @@ class RecorderManager {
             for value in toPlay {
                 let pageNum = value.1.0
                 let indexPath = value.1.1
-                GridController.playPad(page: pageNum, indexPath: indexPath)
+                delegate?.playPad(page: pageNum, indexPath: indexPath)
             }
             toPlay = [(TimeInterval, (Int, IndexPath))]()
         }
