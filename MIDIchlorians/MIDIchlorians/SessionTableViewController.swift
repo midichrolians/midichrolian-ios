@@ -11,6 +11,20 @@ import UIKit
 class SessionTableViewController: UITableViewController {
     weak var delegate: SessionTableDelegate?
 
+    private var rowEditAction: UITableViewRowAction!
+    private var rowRemoveAction: UITableViewRowAction!
+    private var editingIndexPath: IndexPath?
+
+    private var editAlert = UIAlertController(title: Config.SessionEditAlertTitle,
+                                              message: nil,
+                                              preferredStyle: .alert)
+    internal var alertSaveAction: UIAlertAction!
+    private var alertCancelAction: UIAlertAction!
+
+    private var removeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+    private var removeAlertConfirmAction: UIAlertAction!
+    private var removeAlertCancelAction: UIAlertAction!
+
     var sessions: [String] = [] {
         didSet {
             tableView.reloadData()
@@ -19,6 +33,7 @@ class SessionTableViewController: UITableViewController {
     private let reuseIdentifier = Config.SessionTableReuseIdentifier
     private let newSessionButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     private var longPress: UILongPressGestureRecognizer!
+    private var syncAction: AlertActionTextFieldSync!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +49,35 @@ class SessionTableViewController: UITableViewController {
         self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
 
-        // this needs to be set up here instead of at class instantiation time
-        longPress = UILongPressGestureRecognizer(
-            target: self, action: #selector(longPressInTable(recognizer:)))
-        self.tableView.addGestureRecognizer(longPress)
+        rowEditAction = UITableViewRowAction(style: .normal,
+                                             title: Config.SessionEditActionTitle,
+                                             handler: editAction)
+        rowRemoveAction = UITableViewRowAction(style: .destructive,
+                                               title: Config.SessionRemoveActionTitle,
+                                               handler: removeAction)
+
+        // Set up alert shown when editing a row
+        alertSaveAction = UIAlertAction(title: Config.SessionEditOkayTitle,
+                                        style: .default,
+                                        handler: saveActionDone)
+        alertCancelAction = UIAlertAction(title: Config.SessionEditCancelTitle,
+                                          style: .cancel,
+                                          handler: cancelActionDone)
+        editAlert.addAction(alertCancelAction)
+        editAlert.addAction(alertSaveAction)
+
+        syncAction = AlertActionTextFieldSync(alertAction: alertSaveAction)
+        editAlert.addTextField(configurationHandler: { $0.delegate = self.syncAction })
+
+        removeAlertConfirmAction = UIAlertAction(title: Config.SessionRemoveConfirmTitle,
+                                                 style: .destructive,
+                                                 handler: confirmActionDone)
+        removeAlertCancelAction = UIAlertAction(title: Config.SessionEditCancelTitle,
+                                                style: .cancel,
+                                                handler: cancelActionDone)
+
+        removeAlert.addAction(removeAlertConfirmAction)
+        removeAlert.addAction(removeAlertCancelAction)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,15 +106,6 @@ class SessionTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCellEditingStyle,
-                            forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let deletedSession = sessions.remove(at: indexPath.row)
-            delegate?.sessionTable(tableView, didRemove: deletedSession)
-        }
-    }
-
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView,
@@ -87,37 +118,56 @@ class SessionTableViewController: UITableViewController {
         delegate?.sessionTable(tableView, didSelect: sessions[indexPath.row])
     }
 
+    override func tableView(_ tableView: UITableView,
+                            editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        return [rowRemoveAction, rowEditAction]
+    }
+
+    // Show alert to allow user to edit session name
+    func editAction(_: UITableViewRowAction, _ indexPath: IndexPath) {
+        editingIndexPath = indexPath
+        editAlert.textFields?.first?.text = sessions[indexPath.row]
+        present(editAlert, animated: true, completion: nil)
+    }
+
+    // Show alert to confirm deletion
+    func removeAction(_: UITableViewRowAction, _ indexPath: IndexPath) {
+        editingIndexPath = indexPath
+        let title = String(format: Config.SessionRemoveTitleFormat, sessions[indexPath.row])
+        removeAlert.title = title
+        present(removeAlert, animated: true, completion: nil)
+    }
+
+    func saveActionDone(_: UIAlertAction) {
+        guard let indexPath = editingIndexPath else {
+            return
+        }
+        let sessionName = sessions[indexPath.row]
+        guard let newName = editAlert.textFields?.first?.text else {
+            return
+        }
+        _ = DataManager.instance.editSessionName(oldSessionName: sessionName, newSessionName: newName)
+        self.delegate?.sessionTable(self.tableView, didChange: sessionName, to: newName)
+    }
+
+    func cancelActionDone(_: UIAlertAction) {
+        guard let indexPath = editingIndexPath else {
+            return
+        }
+        editingIndexPath = nil
+        // clear the swipe actions
+        tableView.reloadRows(at: [indexPath], with: .right)
+    }
+
+    func confirmActionDone(_: UIAlertAction) {
+        guard let indexPath = editingIndexPath else {
+            return
+        }
+        let deletedSession = sessions.remove(at: indexPath.row)
+        delegate?.sessionTable(tableView, didRemove: deletedSession)
+    }
+
     func newSession(barButton: UIBarButtonItem) {
         delegate?.sessionTable(tableView)
     }
-
-    func longPressInTable(recognizer: UILongPressGestureRecognizer) {
-        guard recognizer.state == .ended else {
-            return
-        }
-
-        let point = recognizer.location(in: tableView)
-        guard let indexPath = tableView.indexPathForRow(at: point) else {
-            return
-        }
-
-        let sessionName = sessions[indexPath.row]
-
-        let alert = UIAlertController(title: Config.SessionEditAlertTitle, message: nil, preferredStyle: .alert)
-        alert.addAction(
-            UIAlertAction(title: Config.SessionEditOkayTitle, style: .default, handler: { _ in
-                guard let newName = alert.textFields?.first?.text else {
-                    return
-                }
-                _ = DataManager.instance.editSessionName(oldSessionName: sessionName, newSessionName: newName)
-                self.delegate?.sessionTable(self.tableView, didChange: sessionName, to: newName)
-            }))
-        alert.addAction(
-            UIAlertAction(title: Config.SessionEditCancelTitle, style: .cancel, handler: nil))
-        alert.addTextField(configurationHandler: { textField in
-            textField.text = sessionName
-        })
-        self.present(alert, animated: true, completion: nil)
-    }
-
 }

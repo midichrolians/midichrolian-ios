@@ -187,14 +187,20 @@ struct Config {
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
     static let AnimationTableReuseIdentifier = "animationCell"
+
+    // Session
+    static let SessionEditActionTitle = "Edit"
+    static let SessionRemoveActionTitle = "Remove"
+    static let SessionEditAlertTitle = "Enter a new name"
+    static let SessionEditOkayTitle = "Okay"
+    static let SessionEditCancelTitle = "Cancel"
+    static let SessionRemoveTitleFormat = "Remove %@?"
+    static let SessionRemoveConfirmTitle = "Confirm"
+    static let SessionRemoveCancelTitle = "Cancel"
     static let SessionTableReuseIdentifier = "sessionCell"
 
     static let SampleTableCellHeight: CGFloat = 60
     static let AnimationTableCellHeight: CGFloat = Config.SampleTableCellHeight
-
-    static let SessionEditAlertTitle = "Enter a new name"
-    static let SessionEditOkayTitle = "Save"
-    static let SessionEditCancelTitle = "Cancel"
 
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
