@@ -173,4 +173,63 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(session1.equals(dataManager.loadSession("test12")!))
     }
 
+    func testGetSamplesForGroup() {
+        XCTAssertEqual([], dataManager.getSamplesForGroup(group: "sail"))
+        var audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
+        audios.forEach({ sample in
+            _ = dataManager.saveAudio(sample)
+            _ = dataManager.addSampleToGroup(group: "sail", sample: sample)
+        })
+        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+        _ = dataManager.addSampleToGroup(group: "sail1", sample: "AWOLNATION - Sail-4")
+        _ = dataManager.saveAudio("AWOLNATION - Sail-5")
+        _ = dataManager.addSampleToGroup(group: "sail", sample: "AWOLNATION - Sail-5")
+        _ = dataManager.addSampleToGroup(group: "sail", sample: "AWOLNATION - Sail-3")
+        audios.append("AWOLNATION - Sail-5")
+        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+
+    }
+
+    func testAddSampleToGroup() {
+        var audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
+        audios.forEach({ sample in
+            _ = dataManager.saveAudio(sample)
+            XCTAssertTrue(dataManager.addSampleToGroup(group: "sail", sample: sample))
+        })
+        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+
+        //Test adding sample that does not exist
+        XCTAssertFalse(dataManager.addSampleToGroup(group: "sail", sample: "AWOLNATION - Sail-5"))
+        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+
+        //Test adding sample to same group
+        _ = dataManager.saveAudio("AWOLNATION - Sail-5")
+        audios.append("AWOLNATION - Sail-5")
+        XCTAssertTrue(dataManager.addSampleToGroup(group: "sail", sample: "AWOLNATION - Sail-5"))
+        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+
+        //Test adding sample to different group
+        _ = dataManager.saveAudio("AWOLNATION - Sail-4")
+        XCTAssertTrue(dataManager.addSampleToGroup(group: "sail1", sample: "AWOLNATION - Sail-4"))
+        XCTAssertEqual(["AWOLNATION - Sail-4"], dataManager.getSamplesForGroup(group: "sail1"))
+
+        //Test changing group
+        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+        XCTAssertTrue(dataManager.addSampleToGroup(group: "sail1", sample: "AWOLNATION - Sail-5"))
+        let removedSample = audios.removeLast()
+        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+        XCTAssertEqual(["AWOLNATION - Sail-4", removedSample],
+                       dataManager.getSamplesForGroup(group: "sail1").sorted())
+
+    }
+
+    func testGetAllGroups() {
+        var audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
+        audios.forEach({ sample in
+            _ = dataManager.saveAudio(sample)
+            XCTAssertTrue(dataManager.addSampleToGroup(group: sample, sample: sample))
+        })
+        XCTAssertEqual(audios, dataManager.getAllGroups().sorted())
+    }
+
 }

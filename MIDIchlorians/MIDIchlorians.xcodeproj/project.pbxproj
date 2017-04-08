@@ -123,6 +123,7 @@
 		F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B2A511E7A84AC00FD2C61 /* Pad.swift */; };
 		F36B995E1E8148260026721A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B995D1E8148260026721A /* DataManager.swift */; };
 		F3710A8F1E7D280D0031A754 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3710A8E1E7D280C0031A754 /* Session.swift */; };
+		F3A05F531E98F3D800D663B1 /* AudioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A05F521E98F3D800D663B1 /* AudioGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +271,7 @@
 		F34B2A511E7A84AC00FD2C61 /* Pad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pad.swift; sourceTree = "<group>"; };
 		F36B995D1E8148260026721A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F3710A8E1E7D280C0031A754 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		F3A05F521E98F3D800D663B1 /* AudioGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioGroup.swift; sourceTree = "<group>"; };
 		F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -600,6 +602,7 @@
 				F3173AA51E8306C30095F76A /* Animation.swift */,
 				F3173AA71E8306D20095F76A /* Audio.swift */,
 				F32A4CE41E8595F700FF8F1F /* SessionName.swift */,
+				F3A05F521E98F3D800D663B1 /* AudioGroup.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */,
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
 				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
+				F3A05F531E98F3D800D663B1 /* AudioGroup.swift in Sources */,
 				33BCC5AC1E85067A00D8489F /* AnimatablePad.swift in Sources */,
 				E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */,
 				E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */,
