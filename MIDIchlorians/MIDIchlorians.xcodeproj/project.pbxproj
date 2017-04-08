@@ -73,6 +73,7 @@
 		80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
 		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
 		80A050BC1E98033C00091411 /* RecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BB1E98033C00091411 /* RecorderManager.swift */; };
+		80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */; };
 		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
 		E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAA1E860CDB00B7ADF9 /* GridController.swift */; };
@@ -218,6 +219,7 @@
 		80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerSetting.swift; sourceTree = "<group>"; };
 		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
 		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
+		80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPlaybackDelegate.swift; sourceTree = "<group>"; };
 		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
 		CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansTests/Pods-MIDIchloriansTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				80A050BB1E98033C00091411 /* RecorderManager.swift */,
+				80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */,
 				80034E831E93ACE8005B4487 /* PlayBackRetriever.swift */,
 				80034E841E93ACE8005B4487 /* TimeTracker.swift */,
 			);
@@ -985,6 +988,7 @@
 				800362FA1E8F6EF3007813EE /* AudioTrackPlayer.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
 				E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */,
+				80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
 				33CC26C71E891E840077F0ED /* AnimationManager.swift in Sources */,
 				E9E780741E955B8F00F5CC65 /* PageDelegate.swift in Sources */,

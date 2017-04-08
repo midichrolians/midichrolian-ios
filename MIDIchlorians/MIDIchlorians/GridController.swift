@@ -359,3 +359,9 @@ extension GridController: PageDelegate {
         }
     }
 }
+
+extension GridController: RecordPlaybackDelegate {
+    static func playPad(page: Int, indexPath: IndexPath) {
+        print("Page", page, "indexPath", indexPath)
+    }
+}

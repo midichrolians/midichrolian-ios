@@ -17,7 +17,6 @@ class RecorderManager {
 
     //for playback
     private var playBack: PlayBackRetriever
-    private let TIMEINTERVAL: TimeInterval = 1/60
     private var toPlay = [(TimeInterval, (Int, IndexPath))]()
     private var playClock: TimeInterval = 0
     private var playingStarted = false
@@ -38,7 +37,7 @@ class RecorderManager {
         recordingStarted = false
     }
 
-    func recordPad (forPage pageNum: Int, forIndex indexPath: IndexPath) {
+    func recordPad(forPage pageNum: Int, forIndex indexPath: IndexPath) {
         guard recordingStarted && !playingStarted else {
             return
         }
@@ -49,7 +48,7 @@ class RecorderManager {
         playingStarted = true
         playClock = 0
         playBack = PlayBackRetriever(timeIndexArr: timeTracker.timePathDict)
-        playTimer = Timer.scheduledTimer(timeInterval: TIMEINTERVAL,
+        playTimer = Timer.scheduledTimer(timeInterval: Config.playBackAccuracy,
                                          target: self,
                                          selector: #selector(self.runTimedCode),
                                          userInfo: nil,
@@ -66,7 +65,7 @@ class RecorderManager {
     }
 
     @objc func runTimedCode(_ timer: Timer) {
-        playClock += TIMEINTERVAL
+        playClock += Config.playBackAccuracy
         if toPlay.count <= 0 {
             toPlay = playBack.getNextPads()
             if toPlay.count <= 0 {
@@ -78,8 +77,9 @@ class RecorderManager {
         let playTimeInt = toPlay[0].0
         if playClock >= playTimeInt {
             for value in toPlay {
-                //TODO: Call pad to be played here
-                print("page", value.1.0, "index", value.1.1)
+                let pageNum = value.1.0
+                let indexPath = value.1.1
+                GridController.playPad(page: pageNum, indexPath: indexPath)
             }
             toPlay = [(TimeInterval, (Int, IndexPath))]()
         }

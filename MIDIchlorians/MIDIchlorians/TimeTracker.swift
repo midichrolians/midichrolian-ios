@@ -11,8 +11,6 @@ import Foundation
 struct TimeTracker {
     private var timeIndexArr: [(TimeInterval, (Int, IndexPath))]
     private let start: Date
-    //the 'fps' at which we will play the recording
-    private let PLAYBACKACCURACY: TimeInterval = 1/60
     //save the start time to compare to in setTimePadPair
     init () {
         start = Date()
@@ -23,7 +21,7 @@ struct TimeTracker {
     mutating func setTimePadPair(pageNum page: Int, forIndex indexPath: IndexPath) {
         var timeInterval = start.timeIntervalSinceNow
         //to make sure that the playback presses two buttons at the same time instead of slightly off synch
-        timeInterval = timeInterval.truncatingRemainder(dividingBy: PLAYBACKACCURACY) - timeInterval
+        timeInterval = timeInterval.truncatingRemainder(dividingBy: Config.playBackAccuracy) - timeInterval
         timeIndexArr.append((timeInterval, (page, indexPath)))
     }
 

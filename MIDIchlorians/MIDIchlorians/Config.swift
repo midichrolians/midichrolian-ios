@@ -18,6 +18,7 @@ struct Config {
     static let defaultBPM = 120
     static let defaultAnimationValue = ""
     static let defaultAudioValue = ""
+    static let playBackAccuracy: TimeInterval = 1/60
 
     static let audioSetting = AudioPlayerSetting.audioServices
     static let sound = [
