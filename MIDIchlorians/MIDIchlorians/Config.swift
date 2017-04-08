@@ -207,6 +207,14 @@ struct Config {
     static let SessionTableReuseIdentifier = "sessionCell"
     static let DefaultSessionName = "New Session"
 
+    // About / Tutorial
+    static let TutorialImages = [
+        "tutorial_1.png",
+        "tutorial_2.png",
+        "tutorial_3.png",
+        "tutorial_4.png"
+    ]
+
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
     static let animationBitColumnKey = "column"
