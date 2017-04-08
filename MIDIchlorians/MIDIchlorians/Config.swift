@@ -106,6 +106,12 @@ struct Config {
     static let TopNavSyncPreferredWidth: CGFloat = 200
     static let TopNavSyncPreferredHeight: CGFloat = 100
 
+    // About
+    static let AboutCloseTitle = "Close"
+    static let AboutCloseInset: CGFloat = 10
+    static let AboutCloseWidth: CGFloat = 50
+    static let AboutSlideshowInset = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+
     // Grid
     static let GridCollectionViewCellIdentifier = "cell"
     static let PadSelectionBorderColour = UIColor.green.cgColor
