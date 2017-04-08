@@ -110,12 +110,7 @@ class SampleTableViewController: UITableViewController {
     }
 
     func cancelActionDone(_: UIAlertAction) {
-        guard let indexPath = editingIndexPath else {
-            return
-        }
-        editingIndexPath = nil
-        // clear the swipe actions
-        tableView.reloadRows(at: [indexPath], with: .right)
+        tableView.setEditing(false, animated: true)
     }
 
     func confirmActionDone(_: UIAlertAction) {
