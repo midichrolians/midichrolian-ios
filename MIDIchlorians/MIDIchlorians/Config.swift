@@ -17,7 +17,7 @@ struct Config {
     static let numberOfSecondsInMinute = 60
     static let defaultBPM = 120
 
-    static let audioSetting = AudioPlayerSetting.audioServices
+    static let audioSetting = AudioPlayerSetting.aVAudioPlayer
     static let sound = [
         [
             "AWOLNATION - Sail", "AWOLNATION - Sail-1",

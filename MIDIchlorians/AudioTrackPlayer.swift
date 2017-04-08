@@ -25,10 +25,9 @@ struct AudioTrackPlayer {
     }
 
     static func playAudioTrack (audioPlayer: AVAudioPlayer) {
-        if audioPlayer.isPlaying {
-            audioPlayer.currentTime = 0
-        } else {
+        DispatchQueue.global().async {
             audioPlayer.play()
         }
+        
     }
 }
