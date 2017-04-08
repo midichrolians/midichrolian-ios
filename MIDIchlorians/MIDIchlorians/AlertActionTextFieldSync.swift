@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 // Synchronizes the enabled state of an alert action with a text field's contents
 class AlertActionTextFieldSync: NSObject, UITextFieldDelegate {
     private var alertAction: UIAlertAction
