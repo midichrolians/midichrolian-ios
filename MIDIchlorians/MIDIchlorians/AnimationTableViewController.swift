@@ -25,7 +25,7 @@ class AnimationTableViewController: UITableViewController {
     private var editingIndexPath: IndexPath?
     private var rowEditAction: UITableViewRowAction!
     private var rowRemoveAction: UITableViewRowAction!
-    private var removeAlert = UIAlertController(title: "Remove?", message: nil, preferredStyle: .alert)
+    private var removeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
     private var removeAlertConfirmAction: UIAlertAction!
     private var removeAlertCancelAction: UIAlertAction!
 
@@ -54,10 +54,10 @@ class AnimationTableViewController: UITableViewController {
         editAlert.addTextField(configurationHandler: { $0.delegate = self })
 
         // Set up alert shown when removing a row
-        removeAlertConfirmAction = UIAlertAction(title: "Confirm",
+        removeAlertConfirmAction = UIAlertAction(title: Config.AnimationRemoveConfirmTitle,
                                                  style: .destructive,
                                                  handler: confirmActionDone)
-        removeAlertCancelAction = UIAlertAction(title: "Cancel",
+        removeAlertCancelAction = UIAlertAction(title: Config.AnimationRemoveCancelTitle,
                                                 style: .cancel,
                                                 handler: cancelActionDone)
         removeAlert.addAction(removeAlertConfirmAction)
@@ -137,7 +137,8 @@ class AnimationTableViewController: UITableViewController {
     // Show alert to confirm deletion
     func removeAction(_: UITableViewRowAction, _ indexPath: IndexPath) {
         editingIndexPath = indexPath
-        editAlert.textFields?.first?.text = "Remove " + animationType(at: indexPath) + "?"
+        let title = String(format: Config.AnimationRemoveTitleFormat, animationType(at: indexPath))
+        removeAlert.title = title
         present(removeAlert, animated: true, completion: nil)
     }
 

@@ -129,6 +129,9 @@ struct Config {
     static let AnimationEditAlertTitle = "Enter a new name"
     static let AnimationEditOkayTitle = "Okay"
     static let AnimationEditCancelTitle = "Cancel"
+    static let AnimationRemoveTitleFormat = "Remove %@?"
+    static let AnimationRemoveConfirmTitle = "Confirm"
+    static let AnimationRemoveCancelTitle = "Cancel"
 
     // Bottom pane
     static let BottomPaneHeight = 220
