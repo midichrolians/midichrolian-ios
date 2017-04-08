@@ -274,7 +274,7 @@ class DataManager {
     }
 
     func getSamplesForGroup(group: String) -> [String] {
-        guard let audiosResultObject = realm?.objects(Audio.self).filter("group = %@", group) else {
+        guard let audiosResultObject = realm?.objects(Audio.self).filter("audioGroup = %@", group) else {
             return []
         }
         var samples = [String]()
@@ -284,7 +284,12 @@ class DataManager {
         return samples
     }
 
+    //Returns false if the sample does not exist in the database
     func addSampleToGroup(group: String, sample: String) -> Bool {
+        guard audioStrings.contains(sample) else {
+            return false
+        }
+        
         guard let audio = realm?.object(ofType: Audio.self, forPrimaryKey: sample) else {
             return false
         }
