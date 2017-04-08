@@ -9,10 +9,11 @@
 import Foundation
 import AVFoundation
 
-struct AudioManager {
+class AudioManager {
     public static var instance = AudioManager(Config.audioSetting)
     private var audioClipDict: [String: UInt32]
     private var audioTrackDict: [String: AVAudioPlayer]
+    private var loopDict: [String:Timer]
     private var audioPlayerType: AudioPlayerSetting
     private let AUDIOCLIPLIMIT: Double = 30
     //only needs to be a small enough number such that there's a low buffer (cant be zero)
@@ -21,6 +22,7 @@ struct AudioManager {
     init(_ setting: AudioPlayerSetting) {
         audioClipDict = [String: UInt32]()
         audioTrackDict = [String: AVAudioPlayer]()
+        loopDict = [String: Timer]()
         audioPlayerType = setting
         do {
             let sharedSessionIntance = AVAudioSession.sharedInstance() as AVAudioSession
@@ -33,7 +35,7 @@ struct AudioManager {
 
     //initialize single audio file
     //returns successs
-    mutating func initAudio(audioDir: String) -> Bool {
+    func initAudio(audioDir: String) -> Bool {
         //want if nil means not initialized yet
         guard audioClipDict[audioDir] == nil && audioTrackDict[audioDir] == nil else {
             return true
@@ -57,7 +59,8 @@ struct AudioManager {
     }
 
     // for avAudioplayer (not system sounds)
-    private mutating func initAudioTrack(audioDir: String) -> Bool {
+    private func initAudioTrack(audioDir: String) -> Bool {
+        print("initializing Audio Track")
         guard let avTrackPlayer = AudioTrackPlayer.initAudioTrack(audioDir: audioDir) else {
             return false
         }
@@ -67,26 +70,48 @@ struct AudioManager {
 
     //call this to play audio with single directory
     //returns success
-    mutating func play(audioDir: String, bpm: Int? = nil) -> Bool {
-
-        switch audioPlayerType {
-        case AudioPlayerSetting.audioServices:
+    func play(audioDir: String, bpm: Int? = nil) -> Bool {
+        guard let beatsPerMin = bpm else {
             guard let audio = audioClipDict[audioDir] else {
-                _ = initAudio(audioDir: audioDir)
                 return playAudioTrack(audioDir: audioDir, bpm: bpm)
             }
 
             AudioClipPlayer.playAudioClip(soundID: audio)
             return true
-        case AudioPlayerSetting.aVAudioPlayer:
-            return playAudioTrack(audioDir: audioDir, bpm: bpm)
         }
 
+        playLoop(audioDir: audioDir, bpm: beatsPerMin)
+        return true
+    }
+
+    private func playLoop(audioDir: String, bpm: Int) {
+        if loopDict[audioDir] == nil {
+            let secondsPerBeat: Double = 60.0 / Double(bpm)
+            loopDict[audioDir] = Timer.scheduledTimer(timeInterval: secondsPerBeat,
+                                                      target: self,
+                                                      selector: #selector(self.runTimedCode(_:)),
+                                                      userInfo: audioDir,
+                                                      repeats: true)
+        } else {
+            stop(audioDir: audioDir)
+        }
+    }
+
+    //has to expose to objc to be target of selector
+    @objc func runTimedCode(_ timer: Timer) {
+        guard let audioDir = timer.userInfo as? String else {
+            return
+        }
+        _ = play(audioDir: audioDir)
     }
 
     private func playAudioTrack(audioDir: String, bpm: Int?) -> Bool {
         guard let audio = audioTrackDict[audioDir] else {
-            return false
+            if initAudio(audioDir: audioDir) {
+                return play(audioDir: audioDir, bpm: bpm)
+            } else {
+                return false
+            }
         }
         AudioTrackPlayer.playAudioTrack(audioPlayer: audio)
         return true
@@ -99,6 +124,10 @@ struct AudioManager {
 
     //ideally should stop a looping track
     func stop(audioDir: String) {
-
+        guard let audioTimer = loopDict[audioDir] else {
+            return
+        }
+        audioTimer.invalidate()
+        loopDict[audioDir] = nil
     }
 }
