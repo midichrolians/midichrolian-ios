@@ -19,7 +19,7 @@ struct Config {
     static let defaultAnimationValue = ""
     static let defaultAudioValue = ""
 
-    static let audioSetting = AudioPlayerSetting.aVAudioPlayer
+    static let audioSetting = AudioPlayerSetting.gSAudio
     static let sound = [
         [
             "AWOLNATION - Sail", "AWOLNATION - Sail-1",

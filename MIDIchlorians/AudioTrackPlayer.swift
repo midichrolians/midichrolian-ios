@@ -11,11 +11,13 @@ import AVFoundation
 
 struct AudioTrackPlayer {
     static func initAudioTrack (audioDir: String, ext: String = "wav") -> AVAudioPlayer? {
-        guard let audioURL = Bundle.main.url(forResource: audioDir, withExtension: ext) else {
-            return nil
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask).last else {
+                                                        return nil
         }
+        let soundURL = docsURL.appendingPathComponent("\(audioDir).\(ext)")
         do {
-            let player = try AVAudioPlayer(contentsOf: audioURL)
+            let player = try AVAudioPlayer(contentsOf: soundURL)
             player.prepareToPlay()
             return player
         } catch {
@@ -25,9 +27,10 @@ struct AudioTrackPlayer {
     }
 
     static func playAudioTrack (audioPlayer: AVAudioPlayer) {
-        DispatchQueue.global().async {
+        if audioPlayer.isPlaying {
+            audioPlayer.currentTime = 0
+        } else {
             audioPlayer.play()
         }
-        
     }
 }

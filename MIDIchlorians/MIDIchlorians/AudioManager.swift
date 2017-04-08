@@ -55,6 +55,8 @@ class AudioManager {
             case AudioPlayerSetting.aVAudioPlayer:
                 print("initializing")
                 return initAudioTrack(audioDir: audioDir)
+            case AudioPlayerSetting.gSAudio:
+                return false
         }
     }
 
@@ -73,7 +75,12 @@ class AudioManager {
     func play(audioDir: String, bpm: Int? = nil) -> Bool {
         guard let beatsPerMin = bpm else {
             guard let audio = audioClipDict[audioDir] else {
-                return playAudioTrack(audioDir: audioDir, bpm: bpm)
+                guard let audioTrack = audioTrackDict[audioDir] else {
+                    GSAudio.sharedInstance.playSound(audioDir: audioDir)
+                    return false
+                }
+                AudioTrackPlayer.playAudioTrack(audioPlayer: audioTrack)
+                return true
             }
 
             AudioClipPlayer.playAudioClip(soundID: audio)
