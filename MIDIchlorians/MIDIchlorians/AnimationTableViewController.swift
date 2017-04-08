@@ -17,12 +17,17 @@ class AnimationTableViewController: UITableViewController {
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
-    private var alert = UIAlertController(title: Config.AnimationEditAlertTitle, message: nil, preferredStyle: .alert)
+    private var editAlert = UIAlertController(title: Config.AnimationEditAlertTitle,
+                                              message: nil,
+                                              preferredStyle: .alert)
     internal var alertSaveAction: UIAlertAction!
     private var alertCancelAction: UIAlertAction!
     private var editingIndexPath: IndexPath?
     private var rowEditAction: UITableViewRowAction!
     private var rowRemoveAction: UITableViewRowAction!
+    private var removeAlert = UIAlertController(title: "Remove?", message: nil, preferredStyle: .alert)
+    private var removeAlertConfirmAction: UIAlertAction!
+    private var removeAlertCancelAction: UIAlertAction!
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
@@ -37,20 +42,33 @@ class AnimationTableViewController: UITableViewController {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
-        alertSaveAction = UIAlertAction(title: Config.AnimationEditOkayTitle, style: .default, handler: saveActionDone)
+        // Set up alert shown when editing a row
+        alertSaveAction = UIAlertAction(title: Config.AnimationEditOkayTitle,
+                                        style: .default,
+                                        handler: saveActionDone)
         alertCancelAction = UIAlertAction(title: Config.AnimationEditCancelTitle,
                                           style: .cancel,
-                                          handler: editActionCancel)
-        alert.addAction(alertCancelAction)
-        alert.addAction(alertSaveAction)
-        alert.addTextField(configurationHandler: { $0.delegate = self })
+                                          handler: cancelActionDone)
+        editAlert.addAction(alertCancelAction)
+        editAlert.addAction(alertSaveAction)
+        editAlert.addTextField(configurationHandler: { $0.delegate = self })
+
+        // Set up alert shown when removing a row
+        removeAlertConfirmAction = UIAlertAction(title: "Confirm",
+                                                 style: .destructive,
+                                                 handler: confirmActionDone)
+        removeAlertCancelAction = UIAlertAction(title: "Cancel",
+                                                style: .cancel,
+                                                handler: cancelActionDone)
+        removeAlert.addAction(removeAlertConfirmAction)
+        removeAlert.addAction(removeAlertCancelAction)
 
         rowEditAction = UITableViewRowAction(style: .normal,
                                              title: Config.AnimationEditActionTitle,
-                                             handler: edit)
+                                             handler: editAction)
         rowRemoveAction = UITableViewRowAction(style: .destructive,
                                                title: Config.AnimationRemoveActionTitle,
-                                               handler: removeAnimation)
+                                               handler: removeAction)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -110,10 +128,17 @@ class AnimationTableViewController: UITableViewController {
     }
 
     // Show alert to allow user to edit animation name
-    func edit(_: UITableViewRowAction, _ indexPath: IndexPath) {
+    func editAction(_: UITableViewRowAction, _ indexPath: IndexPath) {
         editingIndexPath = indexPath
-        alert.textFields?.first?.text = animationType(at: indexPath)
-        present(alert, animated: true, completion: nil)
+        editAlert.textFields?.first?.text = animationType(at: indexPath)
+        present(editAlert, animated: true, completion: nil)
+    }
+
+    // Show alert to confirm deletion
+    func removeAction(_: UITableViewRowAction, _ indexPath: IndexPath) {
+        editingIndexPath = indexPath
+        editAlert.textFields?.first?.text = "Remove " + animationType(at: indexPath) + "?"
+        present(removeAlert, animated: true, completion: nil)
     }
 
     func saveActionDone(_: UIAlertAction) {
@@ -121,7 +146,7 @@ class AnimationTableViewController: UITableViewController {
             return
         }
         let animationName = animationType(at: indexPath)
-        guard let newName = alert.textFields?.first?.text else {
+        guard let newName = editAlert.textFields?.first?.text else {
             return
         }
         let updated = AnimationManager.instance.editAnimationTypeName(oldName: animationName, newName: newName)
@@ -136,7 +161,7 @@ class AnimationTableViewController: UITableViewController {
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
 
-    func editActionCancel(_: UIAlertAction) {
+    func cancelActionDone(_: UIAlertAction) {
         guard let indexPath = editingIndexPath else {
             return
         }
@@ -145,7 +170,10 @@ class AnimationTableViewController: UITableViewController {
         tableView.reloadRows(at: [indexPath], with: .right)
     }
 
-    func removeAnimation(_: UITableViewRowAction, _ indexPath: IndexPath) {
+    func confirmActionDone(_: UIAlertAction) {
+        guard let indexPath = editingIndexPath else {
+            return
+        }
         let animationName = animationTypeNames.remove(at: indexPath.row)
         _ = AnimationManager.instance.removeAnimationType(name: animationName)
         self.tableView.deleteRows(at: [indexPath], with: .fade)
