@@ -149,6 +149,7 @@ struct Config {
     static let AnimationRemoveConfirmTitle = "Confirm"
     static let AnimationRemoveCancelTitle = "Cancel"
     static let AnimationTableCellHeight: CGFloat = Config.SampleTableCellHeight
+    static let AnimationTabTitle = "Animations"
 
     // Bottom pane
     static let BottomPaneHeight = 220
@@ -194,6 +195,7 @@ struct Config {
     static let ColourClearAnimImage = "clear_anim.png"
 
     // Session
+    static let SessionTableTitle = "Sessions"
     static let SessionEditActionTitle = "Edit"
     static let SessionRemoveActionTitle = "Remove"
     static let SessionEditAlertTitle = "Enter a new name"
@@ -203,6 +205,7 @@ struct Config {
     static let SessionRemoveConfirmTitle = "Confirm"
     static let SessionRemoveCancelTitle = "Cancel"
     static let SessionTableReuseIdentifier = "sessionCell"
+    static let DefaultSessionName = "New Session"
 
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
@@ -217,15 +220,6 @@ struct Config {
     static let animationSequenceArrayKey = "animationBitsArray"
     static let animationSequenceNameKey = "name"
     static let animationSequenceFrequencyKey = "frequencyPerBeat"
-
-    static let TopNavTitle = "MIDIchlorians"
-    static let TopNavSessionTitle = "Sessions"
-    static let ModeSegmentTitles = ["PLAY", "EDIT"]
-
-    static let DefaultSessionName = "New Session"
-
-    static let SessionTableTitle = "Sessions"
-    static let AnimationTabTitle = "Animations"
 
     static let AudioFolderName = "samples"
     static let AnimationFileName = "animations"
