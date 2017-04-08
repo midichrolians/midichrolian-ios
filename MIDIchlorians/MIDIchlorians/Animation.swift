@@ -10,7 +10,7 @@ import RealmSwift
 
 class Animation: Object {
 
-    private dynamic var animationString: String?
+    private dynamic var animationString: String = Config.defaultAnimationValue
 
     convenience init(_ animationType: String) {
         self.init()
@@ -21,7 +21,7 @@ class Animation: Object {
         return "animationString"
     }
 
-    func getAnimationType() -> String? {
+    func getAnimationType() -> String {
         return animationString
     }
 

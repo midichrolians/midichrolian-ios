@@ -15,6 +15,7 @@ class DataManager {
     private var sessionNames: Set<String>
     private var animationStrings: Set<String>
     private var audioStrings: Set<String>
+    private var audioGroups: Set<String>
     private var lastSessionName: String?
 
     //TODO: REALM INIT CAN FAIL
@@ -26,9 +27,11 @@ class DataManager {
         sessionNames = Set<String>()
         animationStrings = Set<String>()
         audioStrings = Set<String>()
+        audioGroups = Set<String>()
         initialiseSessionNames()
         initialiseAnimations()
         initialiseAudios()
+        initialiseAudioGroups()
     }
 
     private func initialiseSessionNames() {
@@ -48,7 +51,8 @@ class DataManager {
             return
         }
         for animation in animations {
-            if let animationString = animation.getAnimationType() {
+            let animationString = animation.getAnimationType()
+            if animationString != Config.defaultAnimationValue {
                 animationStrings.insert(animationString)
             }
         }
@@ -59,9 +63,19 @@ class DataManager {
             return
         }
         for audio in audios {
-            if let audioString = audio.getAudioFile() {
+            let audioString = audio.getAudioFile()
+            if audioString != Config.defaultAudioValue {
                 audioStrings.insert(audioString)
             }
+        }
+    }
+
+    private func initialiseAudioGroups() {
+        guard let groups = realm?.objects(AudioGroup.self) else {
+            return
+        }
+        for group in groups {
+            audioGroups.insert(group.getGroupName())
         }
     }
 
@@ -257,5 +271,40 @@ class DataManager {
         } else {
             return nil
         }
+    }
+
+    func getSamplesForGroup(group: String) -> [String] {
+        guard let audiosResultObject = realm?.objects(Audio.self).filter("group = %@", group) else {
+            return []
+        }
+        var samples = [String]()
+        audiosResultObject.forEach({ audio in
+            samples.append(audio.getAudioFile())
+        })
+        return samples
+    }
+
+    func addSampleToGroup(group: String, sample: String) -> Bool {
+        guard let audio = realm?.object(ofType: Audio.self, forPrimaryKey: sample) else {
+            return false
+        }
+        do {
+            try realm?.write {
+                audio.setAudioGroup(group: group)
+                //Create group
+                if !audioGroups.contains(group) {
+                    realm?.add(AudioGroup(group))
+                    audioGroups.insert(group)
+                }
+            }
+        } catch {
+            return false
+        }
+        return true
+
+    }
+
+    func getAllGroups() -> [String] {
+        return Array(audioGroups)
     }
 }
