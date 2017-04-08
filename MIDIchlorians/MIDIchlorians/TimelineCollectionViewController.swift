@@ -20,6 +20,16 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(pan(recognizer:)))
+        self.collectionView!.addGestureRecognizer(panGesture)
+    }
+
+    func pan(recognizer: UIPanGestureRecognizer) {
+        let point = recognizer.location(in: collectionView!)
+        guard let indexPath = collectionView?.indexPathForItem(at: point) else {
+            return
+        }
+        collectionView(collectionView!, didSelectItemAt: indexPath)
     }
 
     // MARK: UICollectionViewDataSource
