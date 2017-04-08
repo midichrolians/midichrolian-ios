@@ -24,7 +24,6 @@
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
 		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
 		334970C71E72B83D009C78DF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C61E72B83D009C78DF /* AudioManager.swift */; };
-		334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C81E72B86B009C78DF /* LowLatencyAudio.swift */; };
 		334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */; };
 		338275391E924FA500C6B3B7 /* BeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338275381E924FA500C6B3B7 /* BeatFrequency.swift */; };
 		33A2754D1E7BEF56000B1B15 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2754C1E7BEF56000B1B15 /* Colour.swift */; };
@@ -123,6 +122,7 @@
 		F34B2A521E7A84AC00FD2C61 /* Pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B2A511E7A84AC00FD2C61 /* Pad.swift */; };
 		F36B995E1E8148260026721A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B995D1E8148260026721A /* DataManager.swift */; };
 		F3710A8F1E7D280D0031A754 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3710A8E1E7D280C0031A754 /* Session.swift */; };
+		F3A05F531E98F3D800D663B1 /* AudioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A05F521E98F3D800D663B1 /* AudioGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,7 +165,6 @@
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		334970C61E72B83D009C78DF /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = MIDIchlorians/AudioManager.swift; sourceTree = "<group>"; };
-		334970C81E72B86B009C78DF /* LowLatencyAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowLatencyAudio.swift; sourceTree = "<group>"; };
 		334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeCreationMode.swift; sourceTree = "<group>"; };
 		338275381E924FA500C6B3B7 /* BeatFrequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatFrequency.swift; sourceTree = "<group>"; };
 		33A2754C1E7BEF56000B1B15 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
@@ -270,6 +269,7 @@
 		F34B2A511E7A84AC00FD2C61 /* Pad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pad.swift; sourceTree = "<group>"; };
 		F36B995D1E8148260026721A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F3710A8E1E7D280C0031A754 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		F3A05F521E98F3D800D663B1 /* AudioGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioGroup.swift; sourceTree = "<group>"; };
 		F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -346,7 +346,6 @@
 				33DAAAC31E72C38100987E86 /* Animation */,
 				334970C01E72583F009C78DF /* Config.swift */,
 				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
-				334970C81E72B86B009C78DF /* LowLatencyAudio.swift */,
 				F36B995D1E8148260026721A /* DataManager.swift */,
 				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
 				E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */,
@@ -600,6 +599,7 @@
 				F3173AA51E8306C30095F76A /* Animation.swift */,
 				F3173AA71E8306D20095F76A /* Audio.swift */,
 				F32A4CE41E8595F700FF8F1F /* SessionName.swift */,
+				F3A05F521E98F3D800D663B1 /* AudioGroup.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -960,6 +960,7 @@
 				E9AD301D1E8BA9FE00801A9F /* AnimationDesignerController.swift in Sources */,
 				E93A02C81E73FA1D00DFB2B7 /* SideNavigationViewController.swift in Sources */,
 				E93A02C41E73F5E700DFB2B7 /* AnimationTableViewController.swift in Sources */,
+				F3A05F531E98F3D800D663B1 /* AudioGroup.swift in Sources */,
 				33BCC5AC1E85067A00D8489F /* AnimatablePad.swift in Sources */,
 				E93A02CD1E7403CD00DFB2B7 /* AnimationTableDelegate.swift in Sources */,
 				E93A02BC1E73B9CE00DFB2B7 /* SampleTableViewController.swift in Sources */,
@@ -977,7 +978,6 @@
 				F36B995E1E8148260026721A /* DataManager.swift in Sources */,
 				E92F6C321E751EAE00F5A092 /* Mode.swift in Sources */,
 				805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */,
-				334970C91E72B86B009C78DF /* LowLatencyAudio.swift in Sources */,
 				33120E1E1E6FD30A007E7717 /* AppDelegate.swift in Sources */,
 				80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */,
 				E9C54EBD1E98CA9B00141BCE /* AlertActionTextFieldSync.swift in Sources */,

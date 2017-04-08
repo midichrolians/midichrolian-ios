@@ -10,7 +10,8 @@ import RealmSwift
 
 class Audio: Object {
 
-    private dynamic var audioFile: String?
+    private dynamic var audioFile: String = Config.defaultAudioValue
+    private dynamic var audioGroup: String?
 
     convenience init(_ audioFile: String) {
         self.init()
@@ -21,7 +22,15 @@ class Audio: Object {
         return "audioFile"
     }
 
-    func getAudioFile() -> String? {
+    func getAudioFile() -> String {
         return audioFile
+    }
+
+    func getAudioGroup() -> String? {
+        return audioGroup
+    }
+
+    func setAudioGroup(group: String) {
+        self.audioGroup = group
     }
 }

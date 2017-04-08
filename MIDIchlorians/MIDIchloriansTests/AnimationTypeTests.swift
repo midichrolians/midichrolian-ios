@@ -39,16 +39,16 @@ class AnimationTypeTests: XCTestCase {
         animationSequence.name = "name"
     }
 
-    func testGetJSONforAnimationType() {
-        let animationType = AnimationType(
-            name: "name",
-            animationSequence: animationSequence,
-            mode: AnimationTypeCreationMode.absolute
-        )
-        let stringFromAnimationType = animationType.getJSONforAnimationType()
-
-        XCTAssertEqual(stringFromAnimationType, animationTypeString)
-    }
+//    func testGetJSONforAnimationType() {
+//        let animationType = AnimationType(
+//            name: "name",
+//            animationSequence: animationSequence,
+//            mode: AnimationTypeCreationMode.absolute
+//        )
+//        let stringFromAnimationType = animationType.getJSONforAnimationType()
+//
+//        XCTAssertEqual(stringFromAnimationType, animationTypeString)
+//    }
 
     func testGetAnimationTypeFromJSON() {
         let animationType = AnimationType.getAnimationTypeFromJSON(

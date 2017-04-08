@@ -16,6 +16,8 @@ struct Config {
     static let numberOfPages = 6
     static let numberOfSecondsInMinute = 60
     static let defaultBPM = 120
+    static let defaultAnimationValue = ""
+    static let defaultAudioValue = ""
 
     static let audioSetting = AudioPlayerSetting.aVAudioPlayer
     static let sound = [
