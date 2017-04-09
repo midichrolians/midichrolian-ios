@@ -312,10 +312,24 @@ extension ViewController: SessionTableDelegate {
     }
 
     func sessionTable(_: UITableView) {
-        // create a new blank session
+        // if the name already exist we want to create one with different name
+        // the convention is to use the default name with the smallest possible numeric suffix
+        var count = 0
+        func newUnusedName(suffix: String) -> String {
+            // we add the space to the suffix in the recursive call so that
+            // the first call will not have an extranaeous space
+            let name = "\(Config.DefaultSessionName)\(suffix)"
+            let defaultSession = dataManager.loadSession(name)
+            if defaultSession == nil {
+                return name
+            } else {
+                count += 1
+                return newUnusedName(suffix: " \(String(count))")
+            }
+        }
+        let name = newUnusedName(suffix: "")
         currentSession = Session(bpm: Config.defaultBPM)
-        // save it
-        saveCurrentSession()
+        _ = dataManager.saveSession(name, currentSession)
         // then we reload the session lists in sessionTableViewController
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
         sessionNavigationController.dismiss(animated: true, completion: nil)

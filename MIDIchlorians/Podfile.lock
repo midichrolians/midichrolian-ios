@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.0.1)
+  - ImageSlideshow (1.2.0):
+    - ImageSlideshow/Core (= 1.2.0)
+  - ImageSlideshow/Core (1.2.0)
   - Realm (2.4.4):
     - Realm/Headers (= 2.4.4)
   - Realm/Headers (2.4.4)
@@ -11,6 +14,7 @@ PODS:
     - Alamofire (~> 4.0.1)
 
 DEPENDENCIES:
+  - ImageSlideshow (~> 1.2)
   - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - SnapKit (~> 3.2.0)
@@ -39,12 +43,13 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  ImageSlideshow: c1395dcf33f7dba407fd21df0e8c315e8941e209
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   RealmSwift: e45530b4eb17dcc244a2f187d2e2338a48d2f8c2
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
   SwiftyDropbox: dfcd4d308d32d74729255b48833db61acdfb9c23
 
-PODFILE CHECKSUM: cc6246f73952e2e5895b672dae34ec6150096cd5
+PODFILE CHECKSUM: 0feaa3f169aaebffaaef5e100bc1b72d2dfb575d
 
 COCOAPODS: 1.2.0

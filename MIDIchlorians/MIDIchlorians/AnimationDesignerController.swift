@@ -148,6 +148,7 @@ class AnimationDesignerController: UIViewController {
 extension AnimationDesignerController: PadDelegate {
     func pad(animationUpdated animation: AnimationSequence) {
         frames = animation.animationBitsArray.map { ($0?.count ?? 0) > 0 }
+        timeline.collectionView?.reloadData()
     }
 }
 

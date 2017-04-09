@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "redPad.png",
+      "filename" : "tutorial_2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "redPad@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "redPad@3x.png",
       "scale" : "3x"
     }
   ],

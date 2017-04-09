@@ -18,6 +18,7 @@ struct Config {
     static let defaultBPM = 120
     static let defaultAnimationValue = ""
     static let defaultAudioValue = ""
+    static let playBackAccuracy: TimeInterval = 1/60
 
     static let audioSetting = AudioPlayerSetting.gSAudio
     static let sound = [
@@ -105,6 +106,12 @@ struct Config {
     static let TopNavSyncDownloadTitle = "Download"
     static let TopNavSyncPreferredWidth: CGFloat = 200
     static let TopNavSyncPreferredHeight: CGFloat = 100
+
+    // About
+    static let AboutCloseTitle = "Close"
+    static let AboutCloseInset: CGFloat = 10
+    static let AboutCloseWidth: CGFloat = 50
+    static let AboutSlideshowInset = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
 
     // Grid
     static let GridCollectionViewCellIdentifier = "cell"
@@ -208,6 +215,14 @@ struct Config {
     static let SessionRemoveCancelTitle = "Cancel"
     static let SessionTableReuseIdentifier = "sessionCell"
     static let DefaultSessionName = "New Session"
+
+    // About / Tutorial
+    static let TutorialImages = [
+        "tutorial_1.png",
+        "tutorial_2.png",
+        "tutorial_3.png",
+        "tutorial_4.png"
+    ]
 
     static let animationBitColourKey = "colour"
     static let animationBitRowKey = "row"
