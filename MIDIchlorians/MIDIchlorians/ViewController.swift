@@ -74,6 +74,7 @@ class ViewController: UIViewController {
         topBarController = TopBarController()
         addChildViewController(topBarController)
         view.addSubview(topBarController.view)
+        topBarController.didMove(toParentViewController: self)
 
         topBarController.view.snp.makeConstraints { make in
             make.top.left.right.equalTo(view)
@@ -113,8 +114,8 @@ class ViewController: UIViewController {
     private func setUpGrid() {
         gridController = GridController(frame: CGRect.zero, session: currentSession)
         addChildViewController(gridController)
-
         view.addSubview(gridController.view)
+        gridController.didMove(toParentViewController: self)
 
         gridController.view.snp.makeConstraints { make in
             make.top.equalTo(topBarController.view.snp.bottom)
@@ -141,7 +142,9 @@ class ViewController: UIViewController {
     private func setUpSampleSetting() {
         sampleSettingController = SampleSettingViewController()
         sampleSettingController.view.backgroundColor = Config.SecondaryBackgroundColor
+        addChildViewController(sampleSettingController)
         view.addSubview(sampleSettingController.view)
+        didMove(toParentViewController: self)
 
         sampleSettingController.view.snp.makeConstraints { make in
             make.height.equalTo(Config.BottomPaneHeight)
@@ -154,7 +157,9 @@ class ViewController: UIViewController {
     private func setUpAnimationDesigner() {
         animationDesignController = AnimationDesignerController()
         animationDesignController.view.backgroundColor = Config.SecondaryBackgroundColor
+        addChildViewController(animationDesignController)
         view.addSubview(animationDesignController.view)
+        animationDesignController.didMove(toParentViewController: self)
 
         animationDesignController.view.snp.makeConstraints { make in
             make.height.equalTo(Config.BottomPaneHeight)
