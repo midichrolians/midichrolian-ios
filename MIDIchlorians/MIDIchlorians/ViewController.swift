@@ -93,7 +93,7 @@ class ViewController: UIViewController {
 
     // Saves the current session
     func saveCurrentSession() {
-        currentSession = dataManager.saveSession(Config.DefaultSessionName, currentSession)
+        currentSession = dataManager.saveSession(currentSession.getSessionName()!, currentSession)
     }
 
     // Tries to load a session, if no sessions exists then returns nil
