@@ -181,7 +181,7 @@ class DataManager {
 
     func saveAnimation(_ animationString: String) -> Bool {
         if animationStrings.contains(animationString) {
-            _ = removeAnimation(animationString)
+            return true
         }
 
         do {
@@ -225,7 +225,7 @@ class DataManager {
 
     func saveAudio(_ audioFile: String) -> Bool {
         if audioStrings.contains(audioFile) {
-            _ = removeAudio(audioFile)
+            return true
         }
 
         do {
