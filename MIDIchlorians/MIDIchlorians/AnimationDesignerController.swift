@@ -208,3 +208,10 @@ extension AnimationDesignerController: UITextFieldDelegate {
         return true
     }
 }
+
+extension AnimationDesignerController: ModeSwitchDelegate {
+    func enterDesign() {
+        selectedFrame = IndexPath(row: 0, section: 0)
+        frames = []
+    }
+}

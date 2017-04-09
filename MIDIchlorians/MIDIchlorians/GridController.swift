@@ -20,11 +20,13 @@ class GridController: UIViewController {
                 padSelection.position(at: nil)
                 removeButton.position(at: nil)
             }
+            grid.collectionView?.reloadData()
         }
     }
     private var padSelection = PadSelection()
     private var removeButton = RemoveButton()
     weak var padDelegate: PadDelegate?
+    weak var animationDesignerDelegate: AnimationDesignerDelegate?
 
     internal var currentSession: Session! {
         didSet {
@@ -303,6 +305,10 @@ extension GridController: ModeSwitchDelegate {
     }
 
     func enterDesign() {
+        // reset design related structures
+        animationSequence = AnimationSequence()
+        grid.colours = [[:]]
+        selectedFrame = 0
         self.mode = .design
     }
 
@@ -342,6 +348,7 @@ extension GridController: AnimationDesignerDelegate {
             mode: self.animationTypeCreationMode,
             anchor: indexPath
         )
+        animationDesignerDelegate?.saveAnimation(name: name)
     }
 }
 

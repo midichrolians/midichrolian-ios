@@ -130,3 +130,13 @@ extension SidePaneController: UITabBarControllerDelegate {
     }
 
 }
+
+extension SidePaneController: AnimationDesignerDelegate {
+    func saveAnimation(name: String) {
+        let names = animationTableViewController.animationTypeNames
+        let insertIndex = names.index(where: { $0 > name }) ?? names.endIndex
+        animationTableViewController.animationTypeNames.insert(name, at: insertIndex)
+        animationTableViewController.tableView.insertRows(
+            at: [IndexPath(row: insertIndex, section: 0)], with: .fade)
+    }
+}
