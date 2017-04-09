@@ -22,16 +22,17 @@ class SidePaneController: NSObject {
     }
     weak var delegate: SidePaneDelegate?
 
-    internal let sampleTableViewController = SampleTableViewController(style: .plain)
     internal let animationTableViewController = AnimationTableViewController(style: .plain)
-    internal var sampleNavigationController: UINavigationController
     internal var animationNavigationController: UINavigationController
+
+    internal let groups = GroupTableViewController(style: .plain)
+    let groupNav: UINavigationController
 
     private let sidePaneViewController = SidePaneTabBarController()
 
     var sampleTableDelegate: SampleTableDelegate? {
         didSet {
-            self.sampleTableViewController.delegate = sampleTableDelegate
+            self.groups.delegate = sampleTableDelegate
         }
     }
     var animationTableDelegate: AnimationTableDelegate? {
@@ -41,13 +42,14 @@ class SidePaneController: NSObject {
     }
 
     override init() {
-        sampleNavigationController = SideNavigationViewController(rootViewController: sampleTableViewController)
         animationNavigationController = SideNavigationViewController(rootViewController: animationTableViewController)
+
+        groupNav = SideNavigationViewController(rootViewController: groups)
 
         super.init()
 
         sidePaneViewController.viewControllers = [
-            sampleNavigationController,
+            groupNav,
             animationNavigationController
         ]
         sidePaneViewController.selectedIndex = 0
@@ -57,27 +59,12 @@ class SidePaneController: NSObject {
 }
 
 extension SidePaneController: PadDelegate {
-    // Get index of sample assigned to selected pad in sample list
-    private func indexOfSample(assignedTo pad: Pad) -> Int? {
-        return pad
-            .getAudioFile()
-            .flatMap { sample in sampleTableViewController.sampleList.index(of: sample) }
-    }
-
     // Get index of animation assigned to selected pad in animation list
     private func indexOfAnimation(assignedTo pad: Pad) -> Int? {
         return pad
             .getAnimation()?
             .name
             .flatMap { animation in animationTableViewController.animationTypeNames.index(of: animation) }
-    }
-
-    // Deselect currently selected row in sample table view
-    private func deselectAllSamples() {
-        sampleTableViewController.tableView.indexPathForSelectedRow
-            .map { indexPath in
-                sampleTableViewController.tableView.deselectRow(at: indexPath, animated: true)
-            }
     }
 
     // Deselect currently selected row in animation table view
@@ -88,17 +75,28 @@ extension SidePaneController: PadDelegate {
         }
     }
 
-    // When a pad is selected in edit mode, we want to highlight/select the row in the table view
-    // that is the sample assigned to the pad
-    // If the pad has no sample assigned, deselect everything.
-    private func highlightSample(assignedTo: Pad) {
-        guard let sampleIndex = indexOfSample(assignedTo: assignedTo) else {
-            deselectAllSamples()
+    // When a pad is selected in edit mode, we want to select 2 things:
+    // 1. group
+    // 2. sample in the list of samples in group
+    // If the sample cannot be found, deselect everything
+    private func highlightSample(assignedTo pad: Pad) {
+        // unhighlight if pad has no name
+        guard let name = pad.getAudioFile() else {
+            if let tableVC = groupNav.topViewController as? UITableViewController {
+                tableVC.tableView.deselectAll()
+            }
             return
         }
-        sampleTableViewController.tableView.selectRow(at: IndexPath(row: sampleIndex, section: 0),
-                                                      animated: true,
-                                                      scrollPosition: .middle)
+        groups.selectedSampleName = name
+
+        if let tv = groupNav.topViewController as? GroupTableViewController {
+            tv.selectedSampleName = name
+            // need to get audio group from pad
+        }
+        if let tvc = groupNav.topViewController as? SampleTableViewController {
+            tvc.selectedSampleName = name
+            tvc.highlight(sample: name)
+        }
     }
 
     // When a pad is selected in edit mode, we want to highlight/select the row in the table view
@@ -122,7 +120,7 @@ extension SidePaneController: PadDelegate {
 
 extension SidePaneController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if viewController == sampleNavigationController {
+        if viewController == groupNav {
             delegate?.sidePaneSelectSample()
         } else if viewController == animationNavigationController {
             delegate?.sidePaneSelectAnimation()

@@ -12,10 +12,10 @@ import UIKit
 class SampleTableViewController: UITableViewController {
     weak var delegate: SampleTableDelegate?
 
-    private let newSampleButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     private let reuseIdentifier = Config.SampleTableReuseIdentifier
 
-    internal var sampleList = DataManager.instance.loadAllAudioStrings()
+    internal var sampleList: [String] = []
+    var selectedSampleName: String?
 
     private var editingIndexPath: IndexPath?
     private var removeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -26,9 +26,7 @@ class SampleTableViewController: UITableViewController {
         super.init(style: style)
 
         title = Config.SampleTableTitle
-        tabBarItem = UITabBarItem(title: Config.SampleTableTitle,
-                                  image: UIImage(named: Config.SidePaneTabBarSampleIcon),
-                                  selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
+
         tableView.separatorStyle = .none
 
         removeAlertConfirmAction = UIAlertAction(title: Config.SampleRemoveConfirmTitle,
@@ -67,7 +65,12 @@ class SampleTableViewController: UITableViewController {
         self.tableView.separatorColor = Config.TableViewSeparatorColor
 
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.navigationItem.leftBarButtonItem = self.newSampleButton
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if let name = selectedSampleName {
+            self.highlight(sample: name)
+        }
     }
 
     // MARK: - Table view data source
@@ -110,6 +113,7 @@ class SampleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedSampleName = sound(for: indexPath)
         delegate?.sampleTable(tableView, didSelect: sound(for: indexPath))
     }
 
@@ -144,6 +148,18 @@ class SampleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Config.SampleTableCellHeight
+    }
+
+    func unhighlight() {
+        tableView.deselectAll()
+    }
+
+    func highlight(sample: String) {
+        guard let index = sampleList.index(of: sample) else {
+            return unhighlight()
+        }
+
+        tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
     }
 
 }

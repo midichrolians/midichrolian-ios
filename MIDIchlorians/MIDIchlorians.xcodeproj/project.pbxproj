@@ -72,6 +72,8 @@
 		80299E811E88F8DF00CEB465 /* AudioType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E801E88F8DF00CEB465 /* AudioType.swift */; };
 		80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
 		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
+		80A050BC1E98033C00091411 /* RecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BB1E98033C00091411 /* RecorderManager.swift */; };
+		80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */; };
 		80A050E31E9937EA00091411 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A050C51E9937EA00091411 /* 1.wav */; };
 		80A050E41E9937EA00091411 /* 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A050C61E9937EA00091411 /* 2.wav */; };
 		80A050E51E9937EA00091411 /* 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A050C71E9937EA00091411 /* 3.wav */; };
@@ -132,8 +134,6 @@
 		80A0513D1E993A3A00091411 /* Mel Bass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A051261E993A3A00091411 /* Mel Bass.wav */; };
 		80A0513E1E993A3A00091411 /* Mel Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A051271E993A3A00091411 /* Mel Kick.wav */; };
 		80A0513F1E993A3A00091411 /* Ride and Clap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A051281E993A3A00091411 /* Ride and Clap.wav */; };
-		80A050BC1E98033C00091411 /* RecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BB1E98033C00091411 /* RecorderManager.swift */; };
-		80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */; };
 		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
 		E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAA1E860CDB00B7ADF9 /* GridController.swift */; };
@@ -164,6 +164,8 @@
 		E9C54EBD1E98CA9B00141BCE /* AlertActionTextFieldSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */; };
 		E9C6712E1E94B61900777846 /* SelectedPadTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */; };
 		E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6712F1E94B7B100777846 /* RemoveButton.swift */; };
+		E9C677891E9A0A3400AE0E2E /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C677881E9A0A3400AE0E2E /* GroupTableViewController.swift */; };
+		E9C6778B1E9A18D200AE0E2E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */; };
 		E9E780741E955B8F00F5CC65 /* PageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780731E955B8F00F5CC65 /* PageDelegate.swift */; };
 		E9E7807A1E96284100F5CC65 /* SampleSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */; };
 		E9E7807C1E96361B00F5CC65 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */; };
@@ -278,6 +280,8 @@
 		80299E801E88F8DF00CEB465 /* AudioType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioType.swift; sourceTree = "<group>"; };
 		80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerSetting.swift; sourceTree = "<group>"; };
 		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
+		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
+		80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPlaybackDelegate.swift; sourceTree = "<group>"; };
 		80A050C51E9937EA00091411 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1.wav; sourceTree = "<group>"; };
 		80A050C61E9937EA00091411 /* 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 2.wav; sourceTree = "<group>"; };
 		80A050C71E9937EA00091411 /* 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 3.wav; sourceTree = "<group>"; };
@@ -338,8 +342,6 @@
 		80A051261E993A3A00091411 /* Mel Bass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Mel Bass.wav"; sourceTree = "<group>"; };
 		80A051271E993A3A00091411 /* Mel Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Mel Kick.wav"; sourceTree = "<group>"; };
 		80A051281E993A3A00091411 /* Ride and Clap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Ride and Clap.wav"; sourceTree = "<group>"; };
-		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
-		80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPlaybackDelegate.swift; sourceTree = "<group>"; };
 		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
 		CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansTests/Pods-MIDIchloriansTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -372,6 +374,8 @@
 		E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertActionTextFieldSync.swift; sourceTree = "<group>"; };
 		E9C6712D1E94B61900777846 /* SelectedPadTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPadTrackingView.swift; sourceTree = "<group>"; };
 		E9C6712F1E94B7B100777846 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
+		E9C677881E9A0A3400AE0E2E /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		E9E780731E955B8F00F5CC65 /* PageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDelegate.swift; sourceTree = "<group>"; };
 		E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettingViewController.swift; sourceTree = "<group>"; };
 		E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
@@ -479,6 +483,7 @@
 				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
 				F36B995D1E8148260026721A /* DataManager.swift */,
 				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
+				E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */,
 				E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */,
 				F31E2B121E8FF1B000C23325 /* CloudManager.swift */,
 				E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */,
@@ -752,6 +757,7 @@
 				E9EC7C461E8395AC00769A8F /* SidePaneController.swift */,
 				E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */,
 				E93A02C71E73FA1D00DFB2B7 /* SideNavigationViewController.swift */,
+				E9C677881E9A0A3400AE0E2E /* GroupTableViewController.swift */,
 				E92F6C341E7522FD00F5A092 /* Sample */,
 				E92F6C351E75230400F5A092 /* Animation */,
 			);
@@ -1210,6 +1216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C6778B1E9A18D200AE0E2E /* UITableView+Extensions.swift in Sources */,
 				F31E2B131E8FF1B000C23325 /* CloudManager.swift in Sources */,
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
 				E9E7807C1E96361B00F5CC65 /* UIStackView+Extensions.swift in Sources */,
@@ -1263,6 +1270,7 @@
 				E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */,
 				E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */,
 				E93A02C21E73C27200DFB2B7 /* SidePaneTabBarController.swift in Sources */,
+				E9C677891E9A0A3400AE0E2E /* GroupTableViewController.swift in Sources */,
 				80299E811E88F8DF00CEB465 /* AudioType.swift in Sources */,
 				E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */,
 				E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */,
