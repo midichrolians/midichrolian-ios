@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         // need assign delegates after everything is initialized
         gridController.padDelegate = self
         animationDesignController.delegate = gridController
+        gridController.animationDesignerDelegate = sidePaneController
 
         //Need to initialise Notification Center, so I've just put the code here in comments,
         // so that you can do it wherever you want
@@ -260,6 +261,8 @@ extension ViewController: ModeSwitchDelegate {
     func enterDesign() {
         showAnimationDesignPane()
         gridController.enterDesign()
+        animationDesignController.enterDesign()
+        self.pad(animationUpdated: gridController.animationSequence)
     }
 }
 
@@ -285,6 +288,7 @@ extension ViewController: AnimationTableDelegate {
 
     func addAnimation(_ tableView: UITableView) {
         gridController.selectedIndexPath = gridController.selectedIndexPath ?? IndexPath(row: 0, section: 0)
+        animationDesignController.selectedFrame = IndexPath(row: 0, section: 0)
         self.enterDesign()
     }
 }

@@ -28,6 +28,7 @@ protocol AnimationDesignerDelegate: class {
 extension AnimationDesignerDelegate {
     func animationTimeline(selected frame: Int) {}
     func animationColour(selected colour: Colour) {}
+    func animationClear() {}
     func animationTypeCreationMode(selected mode: AnimationTypeCreationMode) {}
-    func saveAnimation() {}
+    func saveAnimation(name: String) {}
 }

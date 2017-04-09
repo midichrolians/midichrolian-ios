@@ -12,7 +12,7 @@ import UIKit
 class AnimationTableViewController: UITableViewController {
     weak var delegate: AnimationTableDelegate?
 
-    internal var animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+    internal var animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames().sorted()
 
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
@@ -190,7 +190,7 @@ class AnimationTableViewController: UITableViewController {
 
     // Reload animation names from animation manager, and reload data for table view
     private func reloadAnimationNames() {
-        animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+        animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames().sorted()
         tableView.reloadData()
     }
 
