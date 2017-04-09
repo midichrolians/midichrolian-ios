@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for (groupName, samplesArray) in preloadedSampleSongs {
             samplesArray.forEach { sample in
                 let success = DataManager.instance.addSampleToGroup(group: groupName, sample: sample)
-                print(success)
             }
         }
     }
