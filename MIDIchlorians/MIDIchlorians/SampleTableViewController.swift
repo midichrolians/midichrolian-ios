@@ -25,8 +25,6 @@ class SampleTableViewController: UITableViewController {
     override init(style: UITableViewStyle) {
         super.init(style: style)
 
-        title = Config.SampleTableTitle
-
         tableView.separatorStyle = .none
 
         removeAlertConfirmAction = UIAlertAction(title: Config.SampleRemoveConfirmTitle,
@@ -68,9 +66,8 @@ class SampleTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if let name = selectedSampleName {
-            self.highlight(sample: name)
-        }
+        super.viewWillAppear(animated)
+        self.highlightSelected()
     }
 
     // MARK: - Table view data source
@@ -115,6 +112,11 @@ class SampleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedSampleName = sound(for: indexPath)
         delegate?.sampleTable(tableView, didSelect: sound(for: indexPath))
+        for vc in self.navigationController?.viewControllers ?? [] {
+            if let vc = vc as? GroupTableViewController {
+                vc.selectedGroupName = title
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView,
@@ -154,8 +156,8 @@ class SampleTableViewController: UITableViewController {
         tableView.deselectAll()
     }
 
-    func highlight(sample: String) {
-        guard let index = sampleList.index(of: sample) else {
+    func highlightSelected() {
+        guard let sel = selectedSampleName, let index = sampleList.index(of: sel) else {
             return unhighlight()
         }
 
