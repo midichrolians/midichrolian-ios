@@ -16,13 +16,29 @@ class CloudManager {
         return DropboxClientsManager.authorizedClient
     }
 
+    private let resultCount = 3
+    private var resultsReceived = 0
+    private var isSuccessful = true
+
     private init() {
         //Just to ensure initialiser is private
     }
 
-    private func postToNotificationCenter(_ key: String, _ result: Bool) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: key),
+    private func postToNotificationCenter( _ result: Bool) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Config.cloudManagerNotificationKey),
                                         object: self, userInfo: ["success": result])
+    }
+
+    private func handleResult(result: Bool) {
+        if !result {
+            self.isSuccessful = false
+        }
+        resultsReceived += 1
+        if resultsReceived  == resultCount {
+            postToNotificationCenter(isSuccessful)
+            resultsReceived = 0
+            isSuccessful = true
+        }
     }
 
     //Loads items from Dropbox into App's Documents directory
@@ -52,7 +68,7 @@ class CloudManager {
                 //What if the saving fails?
                 _ = dataManager.saveAudio(sample)
             }
-            postToNotificationCenter(Config.audioNotificationKey, true)
+            handleResult(result: true)
         }
 
         func listFolderCallback(result: Files.ListFolderResultSerializer.ValueType) {
@@ -71,7 +87,7 @@ class CloudManager {
                                             destination: destination).response { response, error in
                     guard let result = response, error == nil else {
                         if !notificationPosted {
-                            self.postToNotificationCenter(Config.audioNotificationKey, false)
+                            self.handleResult(result: false)
                             notificationPosted = true
                         }
                         return
@@ -84,7 +100,7 @@ class CloudManager {
 
         client?.files.listFolder(path: "/\(Config.AudioFolderName)/").response { response, error in
             guard let result = response, error == nil else {
-                self.postToNotificationCenter(Config.audioNotificationKey, false)
+                self.handleResult(result: false)
                 return
             }
             listFolderCallback(result: result)
@@ -98,7 +114,7 @@ class CloudManager {
             let json = result.1
             guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: []))
                                          as? [String: Any] else {
-                self.postToNotificationCenter(Config.animationNotificationKey, false)
+                handleResult(result: false)
                 return
             }
             for (_, jsonString) in dictionary {
@@ -109,12 +125,12 @@ class CloudManager {
                 //What if saving fails
                 _ = dataManager.saveAnimation(animationJSON)
             }
-            self.postToNotificationCenter(Config.animationNotificationKey, true)
+            handleResult(result: true)
         }
 
         client?.files.download(path: filePath).response { response, error in
             guard let result = response, error == nil else {
-                self.postToNotificationCenter(Config.animationNotificationKey, false)
+                self.handleResult(result: false)
                 return
             }
             downloadCallBack(result)
@@ -128,7 +144,7 @@ class CloudManager {
             let json = result.1
             guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: []))
                                          as? [String: Any] else {
-                self.postToNotificationCenter(Config.sessionNotificationKey, false)
+                handleResult(result: false)
                 return
             }
             for (sessionName, object) in dictionary {
@@ -141,12 +157,12 @@ class CloudManager {
                 _ = self.dataManager.saveSession(sessionName, session)
 
             }
-            self.postToNotificationCenter(Config.sessionNotificationKey, true)
+            handleResult(result: true)
         }
 
         client?.files.download(path: filePath).response { response, error in
             guard let result = response, error == nil else {
-                self.postToNotificationCenter(Config.sessionNotificationKey, false)
+                self.handleResult(result: false)
                 return
             }
             downloadCallBack(result)
@@ -165,7 +181,7 @@ class CloudManager {
     private func saveAudios() {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask).last else {
-            self.postToNotificationCenter(Config.audioNotificationKey, false)
+            handleResult(result: false)
             return
         }
         //Get a list of samples
@@ -177,7 +193,7 @@ class CloudManager {
             guard samples.count == numSamplesUploaded else {
                 return
             }
-            self.postToNotificationCenter(Config.audioNotificationKey, true)
+            handleResult(result: true)
         }
 
         func getMetaDataCallback(filePath: String, sample: String) {
@@ -185,7 +201,7 @@ class CloudManager {
             self.client?.files.upload(path: filePath, input: url).response { response, error in
                 guard let result = response, error == nil else {
                     if !notificationPosted {
-                        self.postToNotificationCenter(Config.audioNotificationKey, false)
+                        self.handleResult(result: false)
                         notificationPosted = true
                     }
                     return
@@ -228,10 +244,10 @@ class CloudManager {
         client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false, mute: false,
                              input: jsonData).response { response, error in
             guard response != nil, error == nil else {
-                self.postToNotificationCenter(Config.animationNotificationKey, false)
+                self.handleResult(result: false)
                 return
             }
-            self.postToNotificationCenter(Config.animationNotificationKey, true)
+            self.handleResult(result: true)
         }
 
     }
@@ -253,10 +269,10 @@ class CloudManager {
         client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false, mute: false,
                              input: jsonData).response { response, error in
             guard response != nil, error == nil else {
-                self.postToNotificationCenter(Config.sessionNotificationKey, false)
+                self.handleResult(result: false)
                 return
             }
-            self.postToNotificationCenter(Config.sessionNotificationKey, true)
+            self.handleResult(result: true)
         }
 
     }
