@@ -53,19 +53,6 @@ class ViewController: UIViewController {
         gridController.padDelegate = self
         animationDesignController.delegate = gridController
         gridController.animationDesignerDelegate = sidePaneController
-
-        //Need to initialise Notification Center, so I've just put the code here in comments,
-        // so that you can do it wherever you want
-//
-//        NotificationCenter.default
-//            .addObserver(forName:Notification.Name(rawValue: Config.animationNotificationKey),
-//                         object: nil, queue: nil, using: handleStop)
-//        NotificationCenter.default
-//            .addObserver(forName:Notification.Name(rawValue: Config.audioNotificationKey),
-//                         object: nil, queue: nil, using: handleStop)
-//        NotificationCenter.default
-//            .addObserver(forName:Notification.Name(rawValue: Config.sessionNotificationKey),
-//                         object: nil, queue: nil, using: handleStop)
     }
 
     // Sets up the top navigation.
@@ -77,6 +64,12 @@ class ViewController: UIViewController {
         // present the session table as a popover
         sessionNavigationController.modalPresentationStyle = .popover
         sessionTableViewController.delegate = self
+
+        // handle completion of syncing sessions
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handle(notification:)),
+                                               name: NSNotification.Name(rawValue: Config.sessionNotificationKey),
+                                               object: nil)
 
         topBarController = TopBarController()
         addChildViewController(topBarController)
@@ -185,31 +178,6 @@ class ViewController: UIViewController {
         AnimationEngine.start()
     }
 
-    //Loads the dropbox webview for logging in
-    private func loadDropBoxWebView() {
-        DropboxClientsManager.authorizeFromController(UIApplication.shared,
-                                                      controller: self,
-                                                      openURL: { (url: URL) -> Void in
-                                                      UIApplication.shared.open(url) },
-                                                      browserAuth: false)
-    }
-
-    private func importFromDropbox() {
-        if DropboxClientsManager.authorizedClient != nil {
-            cloudManager.loadFromDropbox()
-        } else {
-            loadDropBoxWebView()
-        }
-    }
-
-    private func saveToDropbox() {
-        if DropboxClientsManager.authorizedClient != nil {
-            cloudManager.saveToDropbox()
-        } else {
-            loadDropBoxWebView()
-        }
-    }
-
     internal func showSampleSettingPane() {
         sampleSettingController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
@@ -237,6 +205,10 @@ class ViewController: UIViewController {
         }
     }
 
+    // Update session table with new sessions after downloading
+    func handle(notification: Notification) {
+        sessionTableViewController.sessions = dataManager.loadAllSessionNames()
+    }
 }
 
 // Called when the mode is switch. Passes on the event to the grid and side pane
