@@ -87,15 +87,18 @@ extension SidePaneController: PadDelegate {
             }
             return
         }
+
+        if let group = DataManager.instance.getGroup(pad: pad) {
+            groups.selectedGroupName = group
+        }
         groups.selectedSampleName = name
 
         if let tv = groupNav.topViewController as? GroupTableViewController {
-            tv.selectedSampleName = name
-            // need to get audio group from pad
+            tv.highlightSelected()
         }
         if let tvc = groupNav.topViewController as? SampleTableViewController {
             tvc.selectedSampleName = name
-            tvc.highlight(sample: name)
+            tvc.highlightSelected()
         }
     }
 
