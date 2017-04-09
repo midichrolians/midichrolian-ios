@@ -185,31 +185,6 @@ class ViewController: UIViewController {
         AnimationEngine.start()
     }
 
-    //Loads the dropbox webview for logging in
-    private func loadDropBoxWebView() {
-        DropboxClientsManager.authorizeFromController(UIApplication.shared,
-                                                      controller: self,
-                                                      openURL: { (url: URL) -> Void in
-                                                      UIApplication.shared.open(url) },
-                                                      browserAuth: false)
-    }
-
-    private func importFromDropbox() {
-        if DropboxClientsManager.authorizedClient != nil {
-            cloudManager.loadFromDropbox()
-        } else {
-            loadDropBoxWebView()
-        }
-    }
-
-    private func saveToDropbox() {
-        if DropboxClientsManager.authorizedClient != nil {
-            cloudManager.saveToDropbox()
-        } else {
-            loadDropBoxWebView()
-        }
-    }
-
     internal func showSampleSettingPane() {
         sampleSettingController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
