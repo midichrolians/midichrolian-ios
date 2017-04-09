@@ -200,6 +200,9 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    // Group table
+    static let GroupTableReuseIdentifier = "group"
+
     // Sample table
     static let SampleTableCellHeight: CGFloat = 60
     static let SampleTableTitle = "Samples"
