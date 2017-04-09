@@ -39,6 +39,21 @@ class SampleTableViewController: UITableViewController {
                                                 handler: cancelActionDone)
         removeAlert.addAction(removeAlertConfirmAction)
         removeAlert.addAction(removeAlertCancelAction)
+        // set up handler for sync
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handle(notification:)),
+                                               name: NSNotification.Name(rawValue: Config.audioNotificationKey),
+                                               object: nil)
+    }
+
+    // Handle notification from dropbox download
+    func handle(notification: Notification) {
+        guard let success = notification.userInfo?["success"] as? Bool else {
+            return
+        }
+        if success {
+            sampleList = DataManager.instance.loadAllAudioStrings()
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
