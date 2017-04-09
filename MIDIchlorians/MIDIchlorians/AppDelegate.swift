@@ -14,15 +14,26 @@ import SwiftyDropbox
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy private var preloadedSamples = Config.sound.joined()
+    lazy private var preloadedSampleSongs = Config.sounds
     lazy private var preloadedAnimationTypes = Config.preloadedAnimationTypes
 
     // Copy samples from the bundle onto user's document directory.
     // A list of URLs of the copied samples.
 
     private func copyBundleSamples() {
-        preloadedSamples.forEach { sample in
-            copyToUserStorage(sample)
+        for (songName, _) in preloadedSampleSongs {
+            preloadedSampleSongs[songName]?.forEach { sample in
+                copyToUserStorage(sample)
+            }
+        }
+    }
+
+    private func savePreloadedSamplesToGroup() {
+        for (groupName, samplesArray) in preloadedSampleSongs {
+            samplesArray.forEach { sample in
+                let success = DataManager.instance.addSampleToGroup(group: groupName, sample: sample)
+                print(success)
+            }
         }
     }
 
@@ -99,6 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Copy all samples into user directory
         copyBundleSamples()
 
+
         //Get all samples in user directory
         let appSamples = getAppSamples()
 
@@ -107,6 +119,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // if saving fails, what are we gonna do?
             let _ = DataManager.instance.saveAudio(sample)
         }
+        
+        // add all preloaded samples to group according to the songs they belong to, based on the information in Config
+        savePreloadedSamplesToGroup()
 
         // Do the same thing for animations as well
         let copiedPreloadedAnimations = copyBundleAnimationTypes()

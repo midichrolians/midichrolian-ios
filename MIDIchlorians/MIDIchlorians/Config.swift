@@ -21,27 +21,88 @@ struct Config {
     static let playBackAccuracy: TimeInterval = 1/60
 
     static let audioSetting = AudioPlayerSetting.audioServices
-    static let sound = [
-        [
+    static let sounds = [
+        "Sail": [
             "AWOLNATION - Sail", "AWOLNATION - Sail-1",
             "AWOLNATION - Sail-2", "AWOLNATION - Sail-3",
             "AWOLNATION - Sail-4", "AWOLNATION - Sail-5",
-            "AWOLNATION - Sail-6", "AWOLNATION - Sail-7"
-        ], [
+            "AWOLNATION - Sail-6", "AWOLNATION - Sail-7",
             "AWOLNATION - Sail-8", "AWOLNATION - Sail-9",
             "AWOLNATION - Sail-10", "AWOLNATION - Sail-11",
             "AWOLNATION - Sail-12", "AWOLNATION - Sail-13",
-            "AWOLNATION - Sail-14", "AWOLNATION - Sail-15"
-        ], [
+            "AWOLNATION - Sail-14", "AWOLNATION - Sail-15",
             "AWOLNATION - Sail-16", "AWOLNATION - Sail-9",
             "AWOLNATION - Sail-10", "AWOLNATION - Sail-17",
             "AWOLNATION - Sail-18", "AWOLNATION - Sail-19",
-            "AWOLNATION - Sail-20", "AWOLNATION - Sail-21"
-        ], [
+            "AWOLNATION - Sail-20", "AWOLNATION - Sail-21",
             "AWOLNATION - Sail-22", "AWOLNATION - Sail-23",
             "AWOLNATION - Sail-24", "AWOLNATION - Sail-25",
             "AWOLNATION - Sail-26", "AWOLNATION - Sail-27",
             "AWOLNATION - Sail-28", "AWOLNATION - Sail"
+        ],
+        "Fur elise": [
+            "All Leads - No Sidechain-1",
+            "All Leads - No Sidechain-10",
+            "All Leads - No Sidechain-12",
+            "All Leads - No Sidechain-13-1",
+            "All Leads - No Sidechain-14",
+            "All Leads - No Sidechain-15",
+            "All Leads - No Sidechain-16",
+            "All Leads - No Sidechain-2",
+            "All Leads - No Sidechain-3",
+            "All Leads - No Sidechain-4",
+            "All Leads - No Sidechain-6",
+            "All Leads - No Sidechain-8",
+            "All Leads - No Sidechain",
+            "Build Up FX",
+            "Drop FX",
+            "Fill Kick",
+            "Fur Elise Cuts-1",
+            "Fur Elise Cuts-2",
+            "Fur Elise Cuts-3",
+            "Fur Elise Cuts",
+            "Fur Elise Main",
+            "Intro",
+            "KICK HIT",
+            "KICK",
+            "KickfeMain",
+            "Mel Bass",
+            "Mel Kick Bass",
+            "Mel Kick",
+            "Ride and Clap",
+            "SNARE HIT",
+            "SNARE",
+            "Second half drop FX",
+            "SnarefurE",
+            "Start FX",
+            "VOX",
+            "hit"
+        ],
+        "Mortal Kombat": [
+            "1",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "2",
+            "20",
+            "21",
+            "22",
+            "23",
+            "25",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
         ]
     ]
 
