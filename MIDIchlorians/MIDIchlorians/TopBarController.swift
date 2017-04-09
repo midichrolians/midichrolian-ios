@@ -142,12 +142,19 @@ class TopBarController: UIViewController {
     }
 
     func onPlayButtonDown(sender: UIButton) {
+        if RecorderManager.instance.isPlaying {
+            RecorderManager.instance.stopPlay()
+        } else {
+            RecorderManager.instance.startPlay()
+        }
     }
 
     func startRecord() {
+        RecorderManager.instance.startRecord()
     }
 
     func stopRecord() {
+        RecorderManager.instance.stopRecord()
         // this will enable the play button
         hasRecording = true
     }
