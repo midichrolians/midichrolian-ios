@@ -181,7 +181,7 @@ class CloudManager {
         }
 
         func getMetaDataCallback(filePath: String, sample: String) {
-            let url = docsURL.appendingPathComponent("\(sample).\(Config.SoundExt)")
+            let url = docsURL.appendingPathComponent("\(sample)")
             self.client?.files.upload(path: filePath, input: url).response { response, error in
                 guard let result = response, error == nil else {
                     if !notificationPosted {
@@ -197,7 +197,7 @@ class CloudManager {
 
         //Upload each sample
         for sample in samples {
-            let fileNameExtension = "\(sample).\(Config.SoundExt)"
+            let fileNameExtension = "\(sample)"
             let filePath = "/\(Config.AudioFolderName)/\(fileNameExtension)"
             client?.files.getMetadata(path: filePath).response { response, error in
                 guard response == nil, error != nil else {

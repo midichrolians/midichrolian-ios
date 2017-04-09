@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: [])
             let audioFiles = directoryContents.filter{ $0.pathExtension == Config.SoundExt }
-                                              .map { $0.deletingPathExtension().lastPathComponent }
+                                              .map { $0.lastPathComponent }
             return audioFiles
 
         } catch {
