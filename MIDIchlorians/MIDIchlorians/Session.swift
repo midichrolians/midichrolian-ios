@@ -181,6 +181,17 @@ class Session: Object {
 
     func setSessionBPM(bpm: Int) {
         self.BPM = bpm
+        for page in 0..<numPages {
+            for row in 0..<numRows {
+                for col in 0..<numCols {
+                    guard pads[page][row][col].getBPM() != nil else {
+                        continue
+                    }
+                    pads[page][row][col].setBPM(bpm: bpm)
+                }
+
+            }
+        }
     }
 
     func getSessionBPM() -> Int {
