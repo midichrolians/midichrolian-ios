@@ -34,6 +34,11 @@ class TopBarController: UIViewController {
 
     weak var modeSwitchDelegate: ModeSwitchDelegate?
     weak var sessionSelectorDelegate: SessionSelectorDelegate?
+    var syncDelegate: SyncDelegate? {
+        didSet {
+            self.syncViewController.delegate = syncDelegate
+        }
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)

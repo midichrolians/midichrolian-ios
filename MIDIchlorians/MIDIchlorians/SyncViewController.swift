@@ -14,6 +14,7 @@ class SyncViewController: UIViewController {
     private var upload: UIButton!
     private var download: UIButton!
     private var stackView: UIStackView!
+    weak var delegate: SyncDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +47,7 @@ class SyncViewController: UIViewController {
 
     func onUpload() {
         if DropboxClientsManager.authorizedClient == nil {
-            DropboxClientsManager.authorizeFromController(UIApplication.shared,
-                                                          controller: self,
-                                                          openURL: { (url: URL) -> Void in
-                                                            UIApplication.shared.open(url) },
-                                                          browserAuth: false)
+            delegate?.loadDropboxWebView()
         } else {
             CloudManager.instance.saveToDropbox()
         }
@@ -59,11 +56,7 @@ class SyncViewController: UIViewController {
 
     func onDownload() {
         if DropboxClientsManager.authorizedClient == nil {
-            DropboxClientsManager.authorizeFromController(UIApplication.shared,
-                                                          controller: self,
-                                                          openURL: { (url: URL) -> Void in
-                                                            UIApplication.shared.open(url) },
-                                                          browserAuth: false)
+            delegate?.loadDropboxWebView()
         } else {
             CloudManager.instance.loadFromDropbox()
         }
