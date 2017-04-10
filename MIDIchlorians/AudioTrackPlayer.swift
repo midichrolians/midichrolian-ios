@@ -10,12 +10,12 @@ import Foundation
 import AVFoundation
 
 struct AudioTrackPlayer {
-    static func initAudioTrack (audioDir: String, ext: String = "wav") -> AVAudioPlayer? {
+    static func initAudioTrack (audioDir: String) -> AVAudioPlayer? {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask).last else {
                                                         return nil
         }
-        let soundURL = docsURL.appendingPathComponent("\(audioDir).\(ext)")
+        let soundURL = docsURL.appendingPathComponent("\(audioDir)")
         do {
             let player = try AVAudioPlayer(contentsOf: soundURL)
             player.prepareToPlay()
