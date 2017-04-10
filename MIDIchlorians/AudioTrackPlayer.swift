@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 struct AudioTrackPlayer {
-    static func initAudioTrack (audioDir: String) -> AVAudioPlayer? {
+    static func initAudioTrack(audioDir: String) -> AVAudioPlayer? {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask).last else {
                                                         return nil
@@ -26,11 +26,21 @@ struct AudioTrackPlayer {
         return nil
     }
 
-    static func playAudioTrack (audioPlayer: AVAudioPlayer) {
+    static func playAudioTrack(audioPlayer: AVAudioPlayer) {
         if audioPlayer.isPlaying {
             audioPlayer.currentTime = 0
         } else {
             audioPlayer.play()
         }
+    }
+
+    static func stopAudioTrack(audioPlayer: AVAudioPlayer) -> Bool {
+        audioPlayer.currentTime = 0
+        audioPlayer.stop()
+        return !audioPlayer.isPlaying
+    }
+
+    static func isPlaying(audioPlayer: AVAudioPlayer) -> Bool {
+        return audioPlayer.isPlaying
     }
 }

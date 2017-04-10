@@ -311,7 +311,7 @@ class DataManager {
     func getAllGroups() -> [String] {
         return Array(audioGroups)
     }
-    
+
     //TODO: Add test for this
     func getGroup(pad: Pad) -> String? {
         guard let audioString = pad.getAudioFile() else {

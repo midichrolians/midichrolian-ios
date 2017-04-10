@@ -53,10 +53,10 @@ class AudioManager {
                     return initAudioTrack(audioDir: audioDir)
                 }
             case AudioPlayerSetting.aVAudioPlayer:
-                print("initializing")
+                //print("initializing")
                 return initAudioTrack(audioDir: audioDir)
             case AudioPlayerSetting.gSAudio:
-                return false
+                return initAudioTrack(audioDir: audioDir)
         }
     }
 
@@ -74,20 +74,49 @@ class AudioManager {
     //returns success
     func play(audioDir: String, bpm: Int? = nil) -> Bool {
         guard let beatsPerMin = bpm else {
-            guard let audio = audioClipDict[audioDir] else {
-                guard let audioTrack = audioTrackDict[audioDir] else {
-                    GSAudio.sharedInstance.playSound(audioDir: audioDir)
-                    return false
-                }
-                AudioTrackPlayer.playAudioTrack(audioPlayer: audioTrack)
-                return true
+            if audioDuration(for: audioDir) >= AUDIOCLIPLIMIT {
+                return playLongTrack(audioDir: audioDir)
+            } else {
+               return tryAudioClip(audioDir: audioDir)
             }
 
-            AudioClipPlayer.playAudioClip(soundID: audio)
-            return true
         }
 
         playLoop(audioDir: audioDir, bpm: beatsPerMin)
+        return true
+    }
+
+    private func playLongTrack(audioDir: String) -> Bool {
+        guard let player = audioTrackDict[audioDir] else {
+            if initAudio(audioDir: audioDir) {
+                return playAudioTrack(audioDir: audioDir)
+            } else {
+                return false
+            }
+        }
+
+        if AudioTrackPlayer.isPlaying(audioPlayer: player) {
+            return AudioTrackPlayer.stopAudioTrack(audioPlayer: player)
+        } else {
+            return playAudioTrack(audioDir: audioDir)
+        }
+    }
+
+    private func tryAudioClip(audioDir: String) -> Bool {
+        guard let audio = audioClipDict[audioDir] else {
+            return tryAudioTrack(audioDir: audioDir)
+        }
+
+        AudioClipPlayer.playAudioClip(soundID: audio)
+        return true
+    }
+
+    private func tryAudioTrack(audioDir: String) -> Bool {
+        guard let audioTrack = audioTrackDict[audioDir] else {
+            GSAudio.sharedInstance.playSound(audioDir: audioDir)
+            return false
+        }
+        AudioTrackPlayer.playAudioTrack(audioPlayer: audioTrack)
         return true
     }
 
@@ -112,10 +141,10 @@ class AudioManager {
         _ = play(audioDir: audioDir)
     }
 
-    private func playAudioTrack(audioDir: String, bpm: Int?) -> Bool {
+    private func playAudioTrack(audioDir: String) -> Bool {
         guard let audio = audioTrackDict[audioDir] else {
             if initAudio(audioDir: audioDir) {
-                return play(audioDir: audioDir, bpm: bpm)
+                return play(audioDir: audioDir)
             } else {
                 return false
             }
@@ -125,7 +154,12 @@ class AudioManager {
     }
 
     private func audioDuration(for resource: String) -> Double {
-        let asset = AVURLAsset(url: URL(fileURLWithPath: resource))
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask).last else {
+                                                        return -1
+        }
+        let soundURL = docsURL.appendingPathComponent("\(resource)")
+        let asset = AVURLAsset(url: soundURL)
         return Double(CMTimeGetSeconds(asset.duration))
     }
 
