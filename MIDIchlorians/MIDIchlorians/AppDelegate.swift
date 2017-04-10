@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 import SwiftyDropbox
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -130,6 +132,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // if saving fails, what are we gonna do?
             _ = DataManager.instance.saveAnimation(preloadedAnimation)
         }
+
+        Fabric.with([Crashlytics.self])
         
         return true
     }
