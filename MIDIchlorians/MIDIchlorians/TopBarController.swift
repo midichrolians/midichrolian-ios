@@ -14,6 +14,7 @@ import SwiftyDropbox
 class TopBarController: UIViewController {
     private var logo = UIButton(type: .system)
     // used for managing the controls
+    private var sessionTitle = UILabel()
     private var stackView = UIStackView()
     private var sessionButton = UIButton(type: .system)
     private var saveButton = UIButton(type: .system)
@@ -47,6 +48,9 @@ class TopBarController: UIViewController {
         logo.setTitle(Config.TopNavLogoText, for: .normal)
         logo.addTarget(self, action: #selector(logoTapped), for: .touchDown)
         view.addSubview(logo)
+
+        sessionTitle.text = Config.DefaultSessionName
+        view.addSubview(sessionTitle)
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
         sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
@@ -97,6 +101,11 @@ class TopBarController: UIViewController {
             make.left.equalTo(view).offset(Config.AppLeftPadding)
             make.height.equalTo(view)
             make.centerY.equalTo(view)
+        }
+
+        sessionTitle.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(view)
         }
 
         stackView.snp.makeConstraints { make in
@@ -173,12 +182,16 @@ class TopBarController: UIViewController {
     func sync(sender: UIButton) {
         syncViewController.modalPresentationStyle = .popover
         present(syncViewController, animated: true, completion: nil)
-//
+
         // configure styles and anchor of popover presentation controller
         let popoverPresentationController = syncViewController.popoverPresentationController
         popoverPresentationController?.sourceView = sender
         popoverPresentationController?.sourceRect = sender.bounds
         popoverPresentationController?.popoverLayoutMargins = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
+    }
+
+    func setSession(to session: Session) {
+        sessionTitle.text = session.getSessionName()
     }
 
 }
