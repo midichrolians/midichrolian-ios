@@ -11,6 +11,8 @@ target 'MIDIchlorians' do
   pod 'SnapKit', '~> 3.2.0'
   pod 'SwiftyDropbox'
   pod 'ImageSlideshow', '~> 1.2'
+  pod 'Fabric'
+  pod 'Crashlytics'
   # Pods for MIDIchlorians
 
   target 'MIDIchloriansTests' do
