@@ -12,7 +12,9 @@ import SnapKit
 import SwiftyDropbox
 
 class TopBarController: UIViewController {
-    private var logo = UIButton(type: .system)
+    private var logoPic = UIImageView()
+    private var logoImage = UIImage(named: "logo.png")!
+    private var logo = UILabel()
     // used for managing the controls
     private var sessionTitle = UILabel()
     private var stackView = UIStackView()
@@ -30,6 +32,7 @@ class TopBarController: UIViewController {
             playButton.isEnabled = hasRecording
         }
     }
+    private var helpButton = UIButton(type: .system)
 
     private let recordImage = UIImage(named: Config.TopNavRecordIcon)!
     private let recordBlackImage = UIImage(named: Config.TopNavRecordingBlackIcon)!
@@ -47,8 +50,11 @@ class TopBarController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = Config.SecondaryBackgroundColor
 
-        logo.setTitle(Config.TopNavLogoText, for: .normal)
-        logo.addTarget(self, action: #selector(logoTapped), for: .touchDown)
+        logoPic.image = logoImage
+        logoPic.contentMode = .scaleAspectFit
+        view.addSubview(logoPic)
+
+        logo.text = Config.TopNavLogoText
         view.addSubview(logo)
 
         sessionTitle.text = Config.DefaultSessionName
@@ -81,6 +87,9 @@ class TopBarController: UIViewController {
         syncButton.setTitle(Config.TopNavSyncLabel, for: .normal)
         syncButton.addTarget(self, action: #selector(sync(sender:)), for: .touchDown)
 
+        helpButton.setTitle("?", for: .normal)
+        helpButton.addTarget(self, action: #selector(logoTapped), for: .touchDown)
+
         stackView.addArrangedSubview(sessionButton)
         stackView.addArrangedSubview(bpmSelector)
         stackView.addArrangedSubview(saveButton)
@@ -88,6 +97,7 @@ class TopBarController: UIViewController {
         stackView.addArrangedSubview(recordButton)
         stackView.addArrangedSubview(playButton)
         stackView.addArrangedSubview(syncButton)
+        stackView.addArrangedSubview(helpButton)
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = Config.TopNavStackViewSpacing
@@ -101,9 +111,15 @@ class TopBarController: UIViewController {
     }
 
     func makeConstraints() {
-        logo.snp.makeConstraints { make in
+        logoPic.snp.makeConstraints { make in
             make.left.equalTo(view).offset(Config.AppLeftPadding)
-            make.height.equalTo(view)
+            make.height.equalTo(view).inset(10)
+            make.centerY.equalTo(view)
+            make.width.equalTo(logoPic.snp.height)
+        }
+
+        logo.snp.makeConstraints { make in
+            make.left.equalTo(logoPic.snp.right).offset(10)
             make.centerY.equalTo(view)
         }
 
@@ -122,6 +138,7 @@ class TopBarController: UIViewController {
             make.width.equalTo(recordButton.snp.height)
             make.top.bottom.equalTo(view).inset(10)
         }
+
     }
 
     func setTargetActionOfSaveButton(target: AnyObject, selector: Selector) {

@@ -162,7 +162,7 @@ struct Config {
     static let TopNavRecordIcon = "record.png"
     static let TopNavRecordingBlackIcon = "record_black.png"
     static let TopNavRecordingLoopDuration: TimeInterval = 0.7
-    static let TopNavStackViewSpacing: CGFloat = 20
+    static let TopNavStackViewSpacing: CGFloat = 10
     static let TopNavSyncLabel = "Sync"
     static let TopNavLoginTitle = "Login"
     static let TopNavLogoutTitle = "Logout"
