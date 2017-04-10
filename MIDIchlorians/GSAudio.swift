@@ -17,12 +17,13 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
     var players = [URL: AVAudioPlayer]()
     var duplicatePlayers = [AVAudioPlayer]()
 
-    func playSound (audioDir: String, ext: String = "wav") {
+    func playSound (audioDir: String) {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask).last else {
                                                         return
         }
-        let soundURL = docsURL.appendingPathComponent("\(audioDir).\(ext)")
+        print(audioDir)
+        let soundURL = docsURL.appendingPathComponent("\(audioDir)")
         let soundFileNameURL = soundURL
 
         if let player = players[soundFileNameURL] { //player for sound has been found
