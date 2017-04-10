@@ -357,3 +357,9 @@ extension ViewController: SyncDelegate {
                                                       browserAuth: true)
     }
 }
+
+extension ViewController: BPMSelectorDelegate {
+    func bpm(selected bpm: Int) {
+        currentSession.setSessionBPM(bpm: bpm)
+    }
+}

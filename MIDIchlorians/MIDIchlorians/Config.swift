@@ -168,6 +168,12 @@ struct Config {
     static let TopNavSyncDownloadTitle = "Download"
     static let TopNavSyncPreferredWidth: CGFloat = 200
     static let TopNavSyncPreferredHeight: CGFloat = 100
+    static let TopNavBPMTitleFormat = "%d BPM"
+    static let TopNavBPMMinBPM = 100
+    static let TopNavBPMDefaultBPM = 128
+    static let TopNavBPMMaxBPM = 140
+    static let TopNavBPMPreferredWidth: CGFloat = 150
+    static let TopNavBPMPreferredHeight: CGFloat = 200
 
     // About
     static let AboutCloseTitle = "Close"
