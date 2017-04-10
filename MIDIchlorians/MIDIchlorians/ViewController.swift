@@ -87,6 +87,7 @@ class ViewController: UIViewController {
         topBarController.syncDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
         topBarController.setSession(to: currentSession)
+        topBarController.bpmSelectorDelegate = self
     }
 
     // Saves the current session
@@ -361,5 +362,6 @@ extension ViewController: SyncDelegate {
 extension ViewController: BPMSelectorDelegate {
     func bpm(selected bpm: Int) {
         currentSession.setSessionBPM(bpm: bpm)
+        print(currentSession.getSessionBPM())
     }
 }

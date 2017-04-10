@@ -422,5 +422,16 @@ extension GridController: RecordPlaybackDelegate {
 extension GridController: SampleSettingDelegate {
     func sampleSettingMode(selected: SampleSettingMode) {
         self.sampleSettingMode = selected
+        guard let indexPath = self.selectedIndexPath else {
+            return
+        }
+
+        switch selected {
+        case .loop:
+            currentSession.addBPMToPad(
+                page: currentPage, row: indexPath.section, col: indexPath.row, bpm: currentSession.getSessionBPM())
+        case .once:
+            currentSession.clearBPMAtPad(page: currentPage, row: indexPath.section, col: indexPath.row)
+        }
     }
 }
