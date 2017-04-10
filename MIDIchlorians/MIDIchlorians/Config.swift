@@ -164,10 +164,19 @@ struct Config {
     static let TopNavRecordingLoopDuration: TimeInterval = 0.7
     static let TopNavStackViewSpacing: CGFloat = 20
     static let TopNavSyncLabel = "Sync"
+    static let TopNavLoginTitle = "Login"
+    static let TopNavLogoutTitle = "Logout"
     static let TopNavSyncUploadTitle = "Upload"
     static let TopNavSyncDownloadTitle = "Download"
     static let TopNavSyncPreferredWidth: CGFloat = 200
-    static let TopNavSyncPreferredHeight: CGFloat = 100
+    static let TopNavSyncPreferredHeight: CGFloat = 150
+    static let TopNavBPMTitleFormat = "%d BPM"
+    static let TopNavBPMMinBPM = 100
+    static let TopNavBPMDefaultBPM = 128
+    static let TopNavBPMMaxBPM = 140
+    static let TopNavBPMPreferredWidth: CGFloat = 150
+    static let TopNavBPMPreferredHeight: CGFloat = 200
+    static let TopNavSyncSpinnerInset: CGFloat = 20
 
     // About
     static let AboutCloseTitle = "Close"

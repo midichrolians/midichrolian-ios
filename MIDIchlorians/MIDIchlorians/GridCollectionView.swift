@@ -26,6 +26,18 @@ class GridCollectionView: UICollectionView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
 
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let touchLocation = touch.location(in: self)
+
+            guard let indexPath = self.indexPathForItem(at: touchLocation) else {
+                return
+            }
+
+            padDelegate?.padTapped(indexPath: indexPath)
+        }
+    }
+
 }
 
 extension GridCollectionView: AnimatableGrid {

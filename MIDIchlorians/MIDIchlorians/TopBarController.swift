@@ -17,6 +17,8 @@ class TopBarController: UIViewController {
     private var sessionTitle = UILabel()
     private var stackView = UIStackView()
     private var sessionButton = UIButton(type: .system)
+    private var bpmSelector = UIButton(type: .system)
+    private var bpmVC = BPMViewController()
     private var saveButton = UIButton(type: .system)
     private var editButton = UIButton(type: .system)
     private var exitButton = UIButton(type: .system)
@@ -35,11 +37,12 @@ class TopBarController: UIViewController {
 
     weak var modeSwitchDelegate: ModeSwitchDelegate?
     weak var sessionSelectorDelegate: SessionSelectorDelegate?
-    var syncDelegate: SyncDelegate? {
+    weak var syncDelegate: SyncDelegate? {
         didSet {
             self.syncViewController.delegate = syncDelegate
         }
     }
+    weak var bpmSelectorDelegate: BPMSelectorDelegate?
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -54,6 +57,10 @@ class TopBarController: UIViewController {
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
         sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
+
+        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, Config.TopNavBPMDefaultBPM), for: .normal)
+        bpmSelector.addTarget(self, action: #selector(bpmSelect(sender:)), for: .touchDown)
+        bpmVC.selectedBPM = Config.TopNavBPMDefaultBPM
 
         saveButton.setTitle(Config.TopNavSaveLabel, for: .normal)
 
@@ -79,6 +86,7 @@ class TopBarController: UIViewController {
         syncButton.addTarget(self, action: #selector(sync(sender:)), for: .touchDown)
 
         stackView.addArrangedSubview(sessionButton)
+        stackView.addArrangedSubview(bpmSelector)
         stackView.addArrangedSubview(saveButton)
         stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(recordButton)
@@ -126,6 +134,22 @@ class TopBarController: UIViewController {
     // Called when the session selector is tapped
     func sessionSelect(sender: UIButton) {
         sessionSelectorDelegate?.sessionSelector(sender: sender)
+    }
+
+    // Called when bpm selector is tapped
+    func bpmSelect(sender: UIButton) {
+        // present a UIPickerView as a popover
+        bpmVC.modalPresentationStyle = .popover
+        bpmVC.bpmListener = bpmListener
+        present(bpmVC, animated: true, completion: nil)
+        let popover = bpmVC.popoverPresentationController
+        popover?.sourceView = sender
+        popover?.sourceRect = sender.bounds
+    }
+
+    func bpmListener(bpm: Int) {
+        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, bpm), for: .normal)
+        bpmSelectorDelegate?.bpm(selected: bpm)
     }
 
     func onExit() {
@@ -187,7 +211,6 @@ class TopBarController: UIViewController {
         let popoverPresentationController = syncViewController.popoverPresentationController
         popoverPresentationController?.sourceView = sender
         popoverPresentationController?.sourceRect = sender.bounds
-        popoverPresentationController?.popoverLayoutMargins = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
     }
 
     func setSession(to session: Session) {

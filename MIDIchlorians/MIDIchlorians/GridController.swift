@@ -197,7 +197,7 @@ class GridController: UIViewController {
         }
 
         if let audioFile = pad.getAudioFile() {
-            _ = AudioManager.instance.play(audioDir: audioFile)
+            _ = AudioManager.instance.play(audioDir: audioFile, bpm: pad.getBPM())
         }
     }
 
@@ -305,7 +305,8 @@ extension GridController: SampleTableDelegate {
         }
         self.currentSession.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
         if self.sampleSettingMode == SampleSettingMode.loop {
-            self.currentSession.addBPMToPad(page: self.currentPage, row: row, col: col, bpm: self.currentSession.getSessionBPM())
+            self.currentSession.addBPMToPad(
+                page: self.currentPage, row: row, col: col, bpm: self.currentSession.getSessionBPM())
         } else {
             self.currentSession.clearBPMAtPad(page: self.currentPage, row: row, col: col)
         }
