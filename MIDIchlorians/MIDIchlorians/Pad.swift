@@ -80,6 +80,10 @@ class Pad: Object {
         self.animationString = nil
     }
 
+    func clearBPM() {
+        self.BPM = Config.invalidBPM
+    }
+
     func equals(_ pad: Pad) -> Bool {
         return self.audioFile == pad.audioFile && self.animationString == pad.animationString
     }

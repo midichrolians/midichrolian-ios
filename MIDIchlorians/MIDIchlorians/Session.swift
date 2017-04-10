@@ -131,6 +131,13 @@ class Session: Object {
         return self.pads[page]
     }
 
+    func addBPMToPad(page: Int, row: Int, col: Int, bpm: Int) {
+        guard isValidPosition(page, row, col) else {
+            return
+        }
+        pads[page][row][col].setBPM(bpm: bpm)
+    }
+
     func addAudio(page: Int, row: Int, col: Int, audioFile: String) {
         guard isValidPosition(page, row, col) else {
             return
@@ -143,6 +150,13 @@ class Session: Object {
             return
         }
         pads[page][row][col].clearAudio()
+    }
+
+    func clearBPMAtPad(page: Int, row: Int, col: Int) {
+        guard isValidPosition(page, row, col) else {
+            return
+        }
+        pads[page][row][col].clearBPM()
     }
 
     func addAnimation(page: Int, row: Int, col: Int, animation: AnimationSequence) {
@@ -165,7 +179,7 @@ class Session: Object {
             col < numCols && col >= 0
     }
 
-    func setBPM(bpm: Int) {
+    func setSessionBPM(bpm: Int) {
         self.BPM = bpm
     }
 
