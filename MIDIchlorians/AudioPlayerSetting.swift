@@ -10,5 +10,6 @@ import Foundation
 
 enum AudioPlayerSetting {
     case audioServices,
-        aVAudioPlayer
+        aVAudioPlayer,
+        gSAudio
 }
