@@ -78,7 +78,7 @@ class GridController: UIViewController {
     internal var colour: Colour?
     internal var animationSequence: AnimationSequence = AnimationSequence()
     internal var animationName: String = Config.NewAnimationTypeDefaultName
-    internal var animationTypeCreationMode = AnimationTypeCreationMode.absolute
+    internal var animationTypeCreationMode = AnimationTypeCreationMode.relative
 
     internal var sampleSettingMode = SampleSettingMode.once
 
