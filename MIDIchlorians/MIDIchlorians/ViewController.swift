@@ -93,6 +93,7 @@ class ViewController: UIViewController {
         currentSession = dataManager.saveSession(
             currentSession.getSessionName() ?? Config.DefaultSessionName, currentSession)
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
+        // set sesion ame
     }
 
     // Tries to load a session, if no sessions exists then returns nil
@@ -313,7 +314,7 @@ extension ViewController: SessionTableDelegate {
         }
         let name = newUnusedName(suffix: "")
         currentSession = Session(bpm: Config.defaultBPM)
-        _ = dataManager.saveSession(name, currentSession)
+        currentSession = dataManager.saveSession(name, currentSession)
         topBarController.setSession(to: currentSession)
         // then we reload the session lists in sessionTableViewController
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
