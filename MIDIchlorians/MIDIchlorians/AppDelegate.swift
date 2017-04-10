@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func savePreloadedSamplesToGroup() {
         for (groupName, samplesArray) in preloadedSampleSongs {
             samplesArray.forEach { sample in
-                let success = DataManager.instance.addSampleToGroup(group: groupName, sample: sample)
-                print(success)
+                let sampleName = "\(sample).\(Config.SoundExt)"
+                _ = DataManager.instance.addSampleToGroup(group: groupName, sample: sampleName)
             }
         }
     }
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: [])
             let audioFiles = directoryContents.filter{ $0.pathExtension == Config.SoundExt }
-                                              .map { $0.deletingPathExtension().lastPathComponent }
+                                              .map { $0.lastPathComponent }
             return audioFiles
 
         } catch {

@@ -200,6 +200,9 @@ struct Config {
     static let SidePaneTabBarSampleIcon = "sound.png"
     static let SidePaneTabBarAnimationIcon = "params.png"
 
+    // Group table
+    static let GroupTableReuseIdentifier = "group"
+
     // Sample table
     static let SampleTableCellHeight: CGFloat = 60
     static let SampleTableTitle = "Samples"
@@ -282,7 +285,9 @@ struct Config {
         "tutorial_1.png",
         "tutorial_2.png",
         "tutorial_3.png",
-        "tutorial_4.png"
+        "tutorial_4.png",
+        "tutorial_5.png",
+        "tutorial_6.png"
     ]
 
     static let animationBitColourKey = "colour"
@@ -309,7 +314,8 @@ struct Config {
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
 
-    static let animationNotificationKey = "animation"
-    static let sessionNotificationKey = "session"
-    static let audioNotificationKey = "audio"
+    static let audioNotificationKey = "Audio"
+    static let animationNotificationKey = "Animation"
+    static let sessionNotificationKey = "Session"
+    static let cloudNotificationKey = "Cloud"
 }

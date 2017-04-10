@@ -15,16 +15,18 @@ class GridController: UIViewController {
     internal var selectedFrame: Int = 0
     var mode: Mode = .playing {
         didSet {
-            // when entering playing or design, reset the selected index path
+            // when entering playing, reset the selected index path
             if mode == .playing {
                 padSelection.position(at: nil)
                 removeButton.position(at: nil)
             }
+            grid.collectionView?.reloadData()
         }
     }
     private var padSelection = PadSelection()
     private var removeButton = RemoveButton()
     weak var padDelegate: PadDelegate?
+    weak var animationDesignerDelegate: AnimationDesignerDelegate?
 
     internal var currentSession: Session! {
         didSet {
@@ -33,9 +35,12 @@ class GridController: UIViewController {
     }
     internal var currentPage = 0 {
         didSet {
-            grid.padGrid = currentSession.getGrid(page: currentPage)
-            gridCollectionView.reloadData()
-            page.collectionView?.reloadData()
+            // slight optimaization, don't do anything if the page doesnt change
+            if oldValue != currentPage {
+                grid.padGrid = currentSession.getGrid(page: currentPage)
+                gridCollectionView.reloadData()
+                page.collectionView?.reloadData()
+            }
         }
     }
     // Keep the selectedIndexPath of the view controller in sync
@@ -43,7 +48,7 @@ class GridController: UIViewController {
         didSet {
             if mode == .editing {
                 padSelection.position(at: selectedIndexPath)
-                // only show if pad has audio selected
+                // only show if pad has audio or animation selected
                 if selectedPad?.getAudioFile() != nil || selectedPad?.getAnimation() != nil {
                     removeButton.position(at: selectedIndexPath)
                 } else {
@@ -84,6 +89,7 @@ class GridController: UIViewController {
         page.delegate = self
         padSelection.viewController = grid
         removeButton.viewController = grid
+        RecorderManager.instance.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -178,6 +184,19 @@ class GridController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
+    // Actually play the sample and animation assigned to a pad
+    func playSampleAndAnimation(assignedTo pad: Pad) {
+        padDelegate?.pad(played: pad)
+
+        if let animationSequence = pad.getAnimation() {
+            AnimationEngine.register(animationSequence: animationSequence)
+        }
+
+        if let audioFile = pad.getAudioFile() {
+            _ = AudioManager.instance.play(audioDir: audioFile)
+        }
+    }
+
 }
 
 extension GridController: GridDisplayDelegate {
@@ -188,59 +207,74 @@ extension GridController: GridDisplayDelegate {
 
 extension GridController: PadDelegate {
     func padTapped(indexPath: IndexPath) {
+        switch mode {
+        case .design:
+            padInDesign(indexPath: indexPath)
+        case .editing:
+            if selectedIndexPath != indexPath {
+                padInEdit(indexPath: indexPath)
+            } else {
+                fallthrough
+            }
+        case .playing:
+            padInPlay(indexPath: indexPath)
+        }
+    }
+
+    private func padInEdit(indexPath: IndexPath) {
+        // if in editing mode, highlight the tapped grid
+        let pad = getPad(at: indexPath)
+        self.selectedIndexPath = indexPath
+        padDelegate?.pad(selected: pad)
+    }
+
+    private func padInDesign(indexPath: IndexPath) {
         let pad = getPad(at: indexPath)
 
-        // if in editing mode, highlight the tapped grid
-        if mode == .editing && selectedIndexPath != indexPath {
-            self.selectedIndexPath = indexPath
-            padDelegate?.pad(selected: pad)
-            return
-        }
-
-        if mode == .design {
-            if let colour = self.colour {
-                // in design mode and we have a colour selected, so change the colour
-                // temp heck to change colour, since Pad doesn't have a colour
-                if let existingColour = grid.colours[selectedFrame][pad] {
-                    self.animationSequence.removeAnimationBit(
-                        atTick: selectedFrame,
-                        animationBit: AnimationBit(
-                            colour: existingColour,
-                            row: indexPath.section,
-                            column: indexPath.item
-                        )
-                    )
-                }
-                grid.colours[selectedFrame][pad] = colour
-                self.animationSequence.addAnimationBit(
-                    atTick: selectedFrame,
-                    animationBit: AnimationBit(
-                        colour: colour,
-                        row: indexPath.section,
-                        column: indexPath.item
-                    )
-                )
-                grid.collectionView?.reloadItems(at: [indexPath])
-            } else {
-                guard let colourToBeRemoved = grid.colours[selectedFrame][pad] else {
-                    return
-                }
+        if let colour = self.colour {
+            // in design mode and we have a colour selected, so change the colour
+            // temp heck to change colour, since Pad doesn't have a colour
+            if let existingColour = grid.colours[selectedFrame][pad] {
                 self.animationSequence.removeAnimationBit(
                     atTick: selectedFrame,
                     animationBit: AnimationBit(
-                        colour: colourToBeRemoved,
+                        colour: existingColour,
                         row: indexPath.section,
                         column: indexPath.item
                     )
                 )
-                grid.colours[selectedFrame][pad] = nil
-                grid.collectionView?.reloadItems(at: [indexPath])
             }
-            padDelegate?.pad(animationUpdated: animationSequence)
-            // prevent the pad from being played in design mode
-            return
+            grid.colours[selectedFrame][pad] = colour
+            self.animationSequence.addAnimationBit(
+                atTick: selectedFrame,
+                animationBit: AnimationBit(
+                    colour: colour,
+                    row: indexPath.section,
+                    column: indexPath.item
+                )
+            )
+            grid.collectionView?.reloadItems(at: [indexPath])
+        } else {
+            guard let colourToBeRemoved = grid.colours[selectedFrame][pad] else {
+                return
+            }
+            self.animationSequence.removeAnimationBit(
+                atTick: selectedFrame,
+                animationBit: AnimationBit(
+                    colour: colourToBeRemoved,
+                    row: indexPath.section,
+                    column: indexPath.item
+                )
+            )
+            grid.colours[selectedFrame][pad] = nil
+            grid.collectionView?.reloadItems(at: [indexPath])
         }
+        padDelegate?.pad(animationUpdated: animationSequence)
+        // prevent the pad from being played in design mode
+    }
 
+    private func padInPlay(indexPath: IndexPath) {
+        let pad = getPad(at: indexPath)
         padDelegate?.pad(played: pad)
 
         if let animationSequence = pad.getAnimation() {
@@ -303,6 +337,10 @@ extension GridController: ModeSwitchDelegate {
     }
 
     func enterDesign() {
+        // reset design related structures
+        animationSequence = AnimationSequence()
+        grid.colours = [[:]]
+        selectedFrame = 0
         self.mode = .design
     }
 
@@ -342,6 +380,7 @@ extension GridController: AnimationDesignerDelegate {
             mode: self.animationTypeCreationMode,
             anchor: indexPath
         )
+        animationDesignerDelegate?.saveAnimation(name: name)
     }
 }
 
@@ -357,5 +396,15 @@ extension GridController: PageDelegate {
             // since animations are only defined and shown for one grid at a time
             break
         }
+    }
+}
+
+extension GridController: RecordPlaybackDelegate {
+    func playPad(page: Int, indexPath: IndexPath) {
+        // switch to the required page
+        currentPage = page
+        // then get the pad and play it
+        let pad = getPad(at: indexPath)
+        playSampleAndAnimation(assignedTo: pad)
     }
 }

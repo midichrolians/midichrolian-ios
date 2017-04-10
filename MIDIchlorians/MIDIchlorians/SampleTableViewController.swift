@@ -12,10 +12,10 @@ import UIKit
 class SampleTableViewController: UITableViewController {
     weak var delegate: SampleTableDelegate?
 
-    private let newSampleButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     private let reuseIdentifier = Config.SampleTableReuseIdentifier
 
-    internal var sampleList = DataManager.instance.loadAllAudioStrings()
+    internal var sampleList: [String] = []
+    var selectedSampleName: String?
 
     private var editingIndexPath: IndexPath?
     private var removeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -25,10 +25,6 @@ class SampleTableViewController: UITableViewController {
     override init(style: UITableViewStyle) {
         super.init(style: style)
 
-        title = Config.SampleTableTitle
-        tabBarItem = UITabBarItem(title: Config.SampleTableTitle,
-                                  image: UIImage(named: Config.SidePaneTabBarSampleIcon),
-                                  selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
         tableView.separatorStyle = .none
 
         removeAlertConfirmAction = UIAlertAction(title: Config.SampleRemoveConfirmTitle,
@@ -39,6 +35,21 @@ class SampleTableViewController: UITableViewController {
                                                 handler: cancelActionDone)
         removeAlert.addAction(removeAlertConfirmAction)
         removeAlert.addAction(removeAlertCancelAction)
+        // set up handler for sync
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handle(notification:)),
+                                               name: NSNotification.Name(rawValue: Config.audioNotificationKey),
+                                               object: nil)
+    }
+
+    // Handle notification from dropbox download
+    func handle(notification: Notification) {
+        guard let success = notification.userInfo?["success"] as? Bool else {
+            return
+        }
+        if success {
+            sampleList = DataManager.instance.loadAllAudioStrings()
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -52,7 +63,11 @@ class SampleTableViewController: UITableViewController {
         self.tableView.separatorColor = Config.TableViewSeparatorColor
 
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.navigationItem.leftBarButtonItem = self.newSampleButton
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.highlightSelected()
     }
 
     // MARK: - Table view data source
@@ -95,7 +110,13 @@ class SampleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedSampleName = sound(for: indexPath)
         delegate?.sampleTable(tableView, didSelect: sound(for: indexPath))
+        for vc in self.navigationController?.viewControllers ?? [] {
+            if let vc = vc as? GroupTableViewController {
+                vc.selectedGroupName = title
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView,
@@ -129,6 +150,18 @@ class SampleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Config.SampleTableCellHeight
+    }
+
+    func unhighlight() {
+        tableView.deselectAll()
+    }
+
+    func highlightSelected() {
+        guard let sel = selectedSampleName, let index = sampleList.index(of: sel) else {
+            return unhighlight()
+        }
+
+        tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
     }
 
 }

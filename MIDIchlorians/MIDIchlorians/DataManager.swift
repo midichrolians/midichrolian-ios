@@ -311,4 +311,17 @@ class DataManager {
     func getAllGroups() -> [String] {
         return Array(audioGroups)
     }
+    
+    //TODO: Add test for this
+    func getGroup(pad: Pad) -> String? {
+        guard let audioString = pad.getAudioFile() else {
+            return nil
+        }
+        guard let audioObject = realm?.object(ofType: Audio.self, forPrimaryKey: audioString) else {
+            return nil
+        }
+
+        return audioObject.getAudioGroup()
+
+    }
 }

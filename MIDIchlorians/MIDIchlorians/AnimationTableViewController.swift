@@ -12,7 +12,7 @@ import UIKit
 class AnimationTableViewController: UITableViewController {
     weak var delegate: AnimationTableDelegate?
 
-    internal var animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+    internal var animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames().sorted()
 
     private let reuseIdentifier = Config.AnimationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
@@ -69,6 +69,23 @@ class AnimationTableViewController: UITableViewController {
         rowRemoveAction = UITableViewRowAction(style: .destructive,
                                                title: Config.AnimationRemoveActionTitle,
                                                handler: removeAction)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handle(notification:)),
+                                               name: NSNotification.Name(rawValue: Config.animationNotificationKey),
+                                               object: nil)
+    }
+
+    // Update animation table with new animations after downloading
+    func handle(notification: Notification) {
+        guard let success = notification.userInfo?["success"] as? Bool else {
+            return
+        }
+
+        if success {
+            animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+        }
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -190,7 +207,7 @@ class AnimationTableViewController: UITableViewController {
 
     // Reload animation names from animation manager, and reload data for table view
     private func reloadAnimationNames() {
-        animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
+        animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames().sorted()
         tableView.reloadData()
     }
 
