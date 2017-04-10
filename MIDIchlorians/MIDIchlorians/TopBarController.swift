@@ -21,7 +21,6 @@ class TopBarController: UIViewController {
     private var bpmVC = BPMViewController()
     private var saveButton = UIButton(type: .system)
     private var editButton = UIButton(type: .system)
-    private var exitButton = UIButton(type: .system)
     private var recordButton = UIButton(type: .custom)
     private var playButton = UIButton(type: .system)
     private var syncButton = UIButton(type: .system)
@@ -65,10 +64,7 @@ class TopBarController: UIViewController {
         saveButton.setTitle(Config.TopNavSaveLabel, for: .normal)
 
         editButton.setTitle(Config.TopNavEditLabel, for: .normal)
-        editButton.addTarget(self, action: #selector(onEdit), for: .touchDown)
-
-        exitButton.setTitle(Config.TopNavExitLabel, for: .normal)
-        exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
+        editButton.addTarget(self, action: #selector(onEdit(_:)), for: .touchDown)
 
         let loopingImage = UIImage.animatedImage(
             with: [recordImage, recordBlackImage],
@@ -153,22 +149,19 @@ class TopBarController: UIViewController {
         bpmSelectorDelegate?.bpm(selected: bpm)
     }
 
-    func onExit() {
-        modeSwitchDelegate?.enterPlay()
-        stackView.replace(view: exitButton, with: editButton)
-
-        // exit edit more (entering play), restore record and play functionality
-        recordButton.isEnabled = true
-        playButton.isEnabled = true
-    }
-
-    func onEdit() {
-        modeSwitchDelegate?.enterEdit()
-        stackView.replace(view: editButton, with: exitButton)
-
-        // entering edit mode, so hide functionality to record and play
-        recordButton.isEnabled = false
-        playButton.isEnabled = false
+    func onEdit(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            // edit mode
+            modeSwitchDelegate?.enterEdit()
+            recordButton.isEnabled = false
+            playButton.isEnabled = false
+        } else {
+            // exit edit more (entering play), restore record and play functionality
+            modeSwitchDelegate?.enterPlay()
+            recordButton.isEnabled = true
+            playButton.isEnabled = true
+        }
     }
 
     func onRecordButtonDown(sender: UIButton) {
