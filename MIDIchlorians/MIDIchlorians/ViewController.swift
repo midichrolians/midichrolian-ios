@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         didSet {
             if currentSession != nil {
                 gridController?.currentSession = currentSession
+                topBarController?.setSession(to: currentSession)
             }
         }
     }
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentSession = loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM)
+        currentSession = (loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM))
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
@@ -93,7 +94,6 @@ class ViewController: UIViewController {
         currentSession = dataManager.saveSession(
             currentSession.getSessionName() ?? Config.DefaultSessionName, currentSession)
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
-        topBarController.setSession(to: currentSession)
     }
 
     // Tries to load a session, if no sessions exists then returns nil
@@ -292,7 +292,6 @@ extension ViewController: SessionTableDelegate {
             return
         }
         self.currentSession = loadedSession
-        topBarController.setSession(to: currentSession)
         sessionNavigationController.dismiss(animated: true, completion: nil)
     }
 
@@ -313,9 +312,7 @@ extension ViewController: SessionTableDelegate {
             }
         }
         let name = newUnusedName(suffix: "")
-        currentSession = Session(bpm: Config.defaultBPM)
-        currentSession = dataManager.saveSession(name, currentSession)
-        topBarController.setSession(to: currentSession)
+        currentSession = dataManager.saveSession(name, Session(bpm: Config.defaultBPM))
         // then we reload the session lists in sessionTableViewController
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
         sessionNavigationController.dismiss(animated: true, completion: nil)
@@ -328,7 +325,6 @@ extension ViewController: SessionTableDelegate {
     func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String) {
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
         currentSession = dataManager.loadSession(newSessionName)
-        topBarController.setSession(to: currentSession)
     }
 }
 
