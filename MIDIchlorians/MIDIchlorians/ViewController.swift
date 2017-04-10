@@ -85,7 +85,7 @@ class ViewController: UIViewController {
         topBarController.sessionSelectorDelegate = self
         topBarController.syncDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
-        topBarController.setSessionName(name: currentSession.getSessionName())
+        topBarController.setSession(to: currentSession)
     }
 
     // Saves the current session
@@ -291,7 +291,7 @@ extension ViewController: SessionTableDelegate {
             return
         }
         self.currentSession = loadedSession
-        topBarController.setSessionName(name: currentSession.getSessionName())
+        topBarController.setSession(to: currentSession)
         sessionNavigationController.dismiss(animated: true, completion: nil)
     }
 
@@ -314,7 +314,7 @@ extension ViewController: SessionTableDelegate {
         let name = newUnusedName(suffix: "")
         currentSession = Session(bpm: Config.defaultBPM)
         _ = dataManager.saveSession(name, currentSession)
-        topBarController.setSessionName(name: name)
+        topBarController.setSession(to: currentSession)
         // then we reload the session lists in sessionTableViewController
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
         sessionNavigationController.dismiss(animated: true, completion: nil)
@@ -326,7 +326,7 @@ extension ViewController: SessionTableDelegate {
 
     func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String) {
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
-        topBarController.setSessionName(name: newSessionName)
+        topBarController.setSession(to: currentSession)
     }
 }
 

@@ -190,8 +190,8 @@ class TopBarController: UIViewController {
         popoverPresentationController?.popoverLayoutMargins = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
     }
 
-    func setSessionName(name: String?) {
-        sessionTitle.text = name ?? Config.DefaultSessionName
+    func setSession(to session: Session) {
+        sessionTitle.text = session.getSessionName()
     }
 
 }
