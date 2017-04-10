@@ -197,7 +197,7 @@ class GridController: UIViewController {
         }
 
         if let audioFile = pad.getAudioFile() {
-            _ = AudioManager.instance.play(audioDir: audioFile)
+            _ = AudioManager.instance.play(audioDir: audioFile, bpm: pad.getBPM())
         }
     }
 
