@@ -90,6 +90,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return contents
     }
 
+    private func loadPreloadedSessions() {
+        guard let filePath = Bundle.main.path(forResource: Config.DefaultSessionsName,
+                                              ofType: Config.SessionExt) else {
+            return
+        }
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
+            return
+        }
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: []))
+            as? [String: Any] else {
+                return
+        }
+        for (sessionName, object) in dictionary {
+            guard let sessionData = object as? String else {
+                continue
+            }
+            guard let session = Session(json: sessionData) else {
+                continue
+            }
+            _ = DataManager.instance.saveSession(sessionName, session)
+
+        }
+
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //Get app keys
         var keys: NSDictionary?
@@ -104,8 +129,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Cannot find dropbox key")
         }
 
-        // Try to find a session that was last loaded
-        // if not loaded should create an empty session
+        //Load preloaded sessions
+        loadPreloadedSessions()
 
         // Copy all samples into user directory
         copyBundleSamples()
