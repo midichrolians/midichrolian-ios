@@ -327,6 +327,7 @@ extension ViewController: SessionTableDelegate {
 
     func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String) {
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
+        currentSession = dataManager.loadSession(newSessionName)
         topBarController.setSession(to: currentSession)
     }
 }
