@@ -83,6 +83,7 @@ class ViewController: UIViewController {
 
         topBarController.modeSwitchDelegate = self
         topBarController.sessionSelectorDelegate = self
+        topBarController.syncDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
     }
 
@@ -344,4 +345,15 @@ extension ViewController: PadDelegate {
         animationDesignController.pad(animationUpdated: animation)
     }
 
+}
+
+extension ViewController: SyncDelegate {
+    // Loads the dropbox authentication
+    func loadDropboxWebView() {
+        DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                                                      controller: self,
+                                                      openURL: { (url: URL) -> Void in
+                                                        UIApplication.shared.open(url) },
+                                                      browserAuth: true)
+    }
 }

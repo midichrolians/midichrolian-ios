@@ -312,7 +312,8 @@ struct Config {
     static let animationTypeSparkName = "Spark"
     static let animationTypeRainbowName = "Rainbow"
 
-    static let animationNotificationKey = "animation"
-    static let sessionNotificationKey = "session"
-    static let audioNotificationKey = "audio"
+    static let audioNotificationKey = "Audio"
+    static let animationNotificationKey = "Animation"
+    static let sessionNotificationKey = "Session"
+    static let cloudNotificationKey = "Cloud"
 }
