@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         currentSession = dataManager.saveSession(
             currentSession.getSessionName() ?? Config.DefaultSessionName, currentSession)
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
-        // set sesion ame
+        topBarController.setSession(to: currentSession)
     }
 
     // Tries to load a session, if no sessions exists then returns nil
