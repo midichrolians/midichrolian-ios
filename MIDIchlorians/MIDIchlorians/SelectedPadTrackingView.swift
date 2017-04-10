@@ -30,9 +30,12 @@ class SelectedPadTrackingView: UIView {
 
         frame = calculateOffset(relativeTo: cell)
 
+        alpha = 0.0
         isHidden = false
 
-        setNeedsDisplay()
+        UIView.animate(withDuration: Config.PadSelectionAnimationTime) {
+            self.alpha = 1.0
+        }
     }
 
     func calculateOffset(relativeTo cell: UICollectionViewCell) -> CGRect {

@@ -244,6 +244,7 @@ struct Config {
     static let PadSelectionBorderWidth: CGFloat = 1.0
     static let PadSelectionCornerRadiusRatio: CGFloat = 1 / 16.0
     static let PadSelectionOffsetRaio: CGFloat =  1 / 12.0
+    static let PadSelectionAnimationTime: TimeInterval = 0.3
     static let PadSampleOnceOffIcon = "pad_sample_once_off.png"
     static let PadSampleLoopIcon = "pad_sample_loop.png"
     static let PadAnimationIcon = "pad_animation.png"
