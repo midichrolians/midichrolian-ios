@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func savePreloadedSamplesToGroup() {
         for (groupName, samplesArray) in preloadedSampleSongs {
             samplesArray.forEach { sample in
-                _ = DataManager.instance.addSampleToGroup(group: groupName, sample: sample)
+                let sampleName = "\(sample).\(Config.SoundExt)"
+                _ = DataManager.instance.addSampleToGroup(group: groupName, sample: sampleName)
             }
         }
     }

@@ -14,12 +14,12 @@ import AVFoundation
 struct AudioClipPlayer {
 
     //creates ID and returns it to be mapped
-    static func initAudioClip(audioDir: String, ext: String = "wav") -> UInt32? {
+    static func initAudioClip(audioDir: String) -> UInt32? {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask).last else {
             return nil
         }
-        let soundURL = docsURL.appendingPathComponent("\(audioDir).\(ext)")
+        let soundURL = docsURL.appendingPathComponent("\(audioDir)")
         var sysID: SystemSoundID = 0
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &sysID)
         return sysID
