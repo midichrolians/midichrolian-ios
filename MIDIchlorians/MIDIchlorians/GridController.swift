@@ -250,7 +250,7 @@ extension GridController: PadDelegate {
         }
 
         if let audioFile = pad.getAudioFile() {
-            _ = AudioManager.instance.play(audioDir: audioFile)
+            _ = AudioManager.instance.play(audioDir: audioFile, bpm: pad.getBPM())
         }
 
         if RecorderManager.instance.isRecording {

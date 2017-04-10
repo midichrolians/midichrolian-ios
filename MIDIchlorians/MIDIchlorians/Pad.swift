@@ -57,7 +57,10 @@ class Pad: Object {
         animationString = animation.getJSONforAnimationSequence()
     }
 
-    func getBPM() -> Int {
+    func getBPM() -> Int? {
+        guard self.BPM != Config.invalidBPM else {
+            return nil
+        }
         return self.BPM
     }
 
