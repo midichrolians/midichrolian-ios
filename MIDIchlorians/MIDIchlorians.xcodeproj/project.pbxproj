@@ -858,6 +858,7 @@
 				33EC0A3A1E6FD46600229A92 /* ShellScript */,
 				85207170A186EACFF6F15CFB /* [CP] Embed Pods Frameworks */,
 				21E11D3C90BBD9712CE7AC97 /* [CP] Copy Pods Resources */,
+				F36082BF1E9B8EB90054221A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1227,6 +1228,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F36082BF1E9B8EB90054221A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 56683ad8cc8f1cf4ed01f5000ee9e316e315fc62 057ff98ce1de17b9a374d22f755e86cc2a78b5fd8e6f57f90d0a990f804fe729";
 		};
 /* End PBXShellScriptBuildPhase section */
 

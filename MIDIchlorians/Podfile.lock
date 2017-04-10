@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.0.1)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.11)
   - ImageSlideshow (1.2.0):
     - ImageSlideshow/Core (= 1.2.0)
   - ImageSlideshow/Core (1.2.0)
@@ -14,6 +17,8 @@ PODS:
     - Alamofire (~> 4.0.1)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - ImageSlideshow (~> 1.2)
   - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
@@ -43,6 +48,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   ImageSlideshow: c1395dcf33f7dba407fd21df0e8c315e8941e209
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   RealmSwift: e45530b4eb17dcc244a2f187d2e2338a48d2f8c2
@@ -50,6 +57,6 @@ SPEC CHECKSUMS:
   SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
   SwiftyDropbox: dfcd4d308d32d74729255b48833db61acdfb9c23
 
-PODFILE CHECKSUM: 0feaa3f169aaebffaaef5e100bc1b72d2dfb575d
+PODFILE CHECKSUM: 37a52f71135cef7e342848f91a4bb787660976b3
 
 COCOAPODS: 1.2.0
