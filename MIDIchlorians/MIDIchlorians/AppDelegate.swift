@@ -104,6 +104,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Cannot find dropbox key")
         }
 
+        //Create default group
+        _ = DataManager.instance.createGroup(group: Config.defaultGroup)
+
         // Try to find a session that was last loaded
         // if not loaded should create an empty session
 
@@ -117,7 +120,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Populate the samples in our database
         appSamples.forEach { sample in
             // if saving fails, what are we gonna do?
-            let _ = DataManager.instance.saveAudio(sample)
+            _ = DataManager.instance.saveAudio(sample)
+            _ = DataManager.instance.addSampleToGroup(group: Config.defaultGroup, sample: sample)
         }
         
         // add all preloaded samples to group according to the songs they belong to, based on the information in Config

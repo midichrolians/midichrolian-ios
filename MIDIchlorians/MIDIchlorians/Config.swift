@@ -330,4 +330,6 @@ struct Config {
     static let animationNotificationKey = "Animation"
     static let sessionNotificationKey = "Session"
     static let cloudNotificationKey = "Cloud"
+
+    static let defaultGroup = "Your samples"
 }
