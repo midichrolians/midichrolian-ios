@@ -37,7 +37,7 @@ class SyncViewController: UIViewController {
         self.preferredContentSize = CGSize(width: Config.TopNavSyncPreferredWidth,
                                            height: Config.TopNavSyncPreferredHeight)
 
-        spinnerView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        spinnerView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         spinnerView.hidesWhenStopped = true
         view.addSubview(spinnerView)
 
