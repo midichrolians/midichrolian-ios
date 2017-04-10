@@ -11,6 +11,11 @@ import UIKit
 // Controller to manage the list of samples in editing mode.
 class SampleTableViewController: UITableViewController {
     weak var delegate: SampleTableDelegate?
+    var group: String? {
+        didSet {
+            title = group
+        }
+    }
 
     private let reuseIdentifier = Config.SampleTableReuseIdentifier
 
@@ -21,6 +26,9 @@ class SampleTableViewController: UITableViewController {
     private var removeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
     private var removeAlertConfirmAction: UIAlertAction!
     private var removeAlertCancelAction: UIAlertAction!
+
+    private var leftGroupBarButton: UIBarButtonItem!
+    private var rightDoneBarButton: UIBarButtonItem!
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
@@ -40,6 +48,48 @@ class SampleTableViewController: UITableViewController {
                                                selector: #selector(handle(notification:)),
                                                name: NSNotification.Name(rawValue: Config.audioNotificationKey),
                                                object: nil)
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
+        tableView.addGestureRecognizer(longPress)
+
+        leftGroupBarButton = UIBarButtonItem(title: "Group", style: .done, target: self, action: #selector(group(_:)))
+        rightDoneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+    }
+
+    // Show a popup to allow user to select stuff
+    func group(_ sender: UIBarButtonItem) {
+        let group = GroupTableViewController(style: .plain)
+        group.preferredContentSize = CGSize(width: 300, height: 300)
+        group.modalPresentationStyle = .popover
+        group.groupTableDelegate = self
+        present(group, animated: true, completion: nil)
+
+        let popover = group.popoverPresentationController
+        popover?.barButtonItem = sender
+    }
+
+    // Exit grouping
+    func done() {
+        tableView.deselectAll()
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.hidesBackButton = false
+        navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    // When we enter a long press state, we shall go into grouping mode to allow user to
+    // select multiple samples and send them all into a group
+    func longPress(_ recognizer: UILongPressGestureRecognizer) {
+        if recognizer.state == .ended {
+            tableView.allowsMultipleSelection = true
+            let point = recognizer.location(in: tableView!)
+            guard let indexPath = tableView.indexPathForRow(at: point) else {
+                return
+            }
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+
+            navigationItem.hidesBackButton = true
+            navigationItem.setLeftBarButton(leftGroupBarButton, animated: true)
+            navigationItem.setRightBarButton(rightDoneBarButton, animated: true)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -134,7 +184,7 @@ class SampleTableViewController: UITableViewController {
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 
-    private func sound(for indexPath: IndexPath) -> String {
+    fileprivate func sound(for indexPath: IndexPath) -> String {
         return sampleList[indexPath.row]
     }
 
@@ -160,9 +210,34 @@ class SampleTableViewController: UITableViewController {
             return
         }
         if success {
-            sampleList = DataManager.instance.loadAllAudioStrings()
-            tableView.reloadData()
+            refresh()
         }
     }
 
+    fileprivate func refresh() {
+        guard let group = group else {
+            return
+        }
+        sampleList = DataManager.instance.getSamplesForGroup(group: group)
+        tableView.reloadData()
+    }
+
+}
+
+extension SampleTableViewController: GroupTableDelegate {
+    func group(selected group: String) {
+        // group all songs
+        guard let indexPaths = tableView.indexPathsForSelectedRows else {
+            return
+        }
+        for indexPath in indexPaths {
+            let sample = sound(for: indexPath)
+            _ = DataManager.instance.addSampleToGroup(group: group, sample: sample)
+        }
+        // refresh the sample list
+        refresh()
+        done()
+        // dismiss the group popover
+        dismiss(animated: true, completion: nil)
+    }
 }
