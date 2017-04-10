@@ -157,7 +157,9 @@ class GridController: UIViewController {
 
         let alert = UIAlertController(title: Config.RemoveButtonAlertTitle, message: nil, preferredStyle: .alert)
 
-        if pad.getAudioFile() != nil {
+        if let audioFile = pad.getAudioFile() {
+            //need to stop looping track
+            _ = AudioManager.instance.stop(audioDir: audioFile)
             alert.addAction(UIAlertAction(title: Config.RemoveButtonSampleTitle, style: .destructive, handler: { _ in
                 pad.clearAudio()
                 self.gridCollectionView.reloadItems(at: [indexPath])
