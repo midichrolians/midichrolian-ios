@@ -46,6 +46,8 @@ class GridCollectionViewCell: UICollectionViewCell {
         animationIndicator = UIImageView()
         contentView.addSubview(animationIndicator)
 
+        layer.cornerRadius = frame.width * Config.PadCornerRadiusRatio
+
         setConstraints()
     }
 
