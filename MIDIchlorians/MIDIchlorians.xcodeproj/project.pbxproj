@@ -20,6 +20,8 @@
 		334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */; };
 		334113941E8E5E9500F998E9 /* AnimationTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */; };
 		334113971E8E6CE900F998E9 /* AnimationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334113961E8E6CE900F998E9 /* AnimationManagerTests.swift */; };
+		3346913B1E9B3E8F00BDA7B1 /* SampleSettingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */; };
+		3346913D1E9B407600BDA7B1 /* SampleSettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */; };
 		334970BF1E72557D009C78DF /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationType.swift */; };
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
 		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
@@ -72,8 +74,8 @@
 		80299E811E88F8DF00CEB465 /* AudioType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E801E88F8DF00CEB465 /* AudioType.swift */; };
 		80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
 		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
-        80A050C01E9926FD00091411 /* GSAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BF1E9926FD00091411 /* GSAudio.swift */; };
 		80A050BC1E98033C00091411 /* RecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BB1E98033C00091411 /* RecorderManager.swift */; };
+		80A050C01E9926FD00091411 /* GSAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BF1E9926FD00091411 /* GSAudio.swift */; };
 		80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */; };
 		80A050E31E9937EA00091411 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A050C51E9937EA00091411 /* 1.wav */; };
 		80A050E41E9937EA00091411 /* 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A050C61E9937EA00091411 /* 2.wav */; };
@@ -135,9 +137,6 @@
 		80A0513D1E993A3A00091411 /* Mel Bass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A051261E993A3A00091411 /* Mel Bass.wav */; };
 		80A0513E1E993A3A00091411 /* Mel Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A051271E993A3A00091411 /* Mel Kick.wav */; };
 		80A0513F1E993A3A00091411 /* Ride and Clap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 80A051281E993A3A00091411 /* Ride and Clap.wav */; };
-		80A050BC1E98033C00091411 /* RecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BB1E98033C00091411 /* RecorderManager.swift */; };
-		80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */; };
-        855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
 		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
 		E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAA1E860CDB00B7ADF9 /* GridController.swift */; };
@@ -232,6 +231,8 @@
 		334113911E8E4DCE00F998E9 /* AnimationSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequenceTests.swift; sourceTree = "<group>"; };
 		334113931E8E5E9500F998E9 /* AnimationTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeTests.swift; sourceTree = "<group>"; };
 		334113961E8E6CE900F998E9 /* AnimationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationManagerTests.swift; sourceTree = "<group>"; };
+		3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettingMode.swift; sourceTree = "<group>"; };
+		3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettingDelegate.swift; sourceTree = "<group>"; };
 		334970BE1E72557D009C78DF /* AnimationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -285,7 +286,8 @@
 		80299E801E88F8DF00CEB465 /* AudioType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioType.swift; sourceTree = "<group>"; };
 		80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerSetting.swift; sourceTree = "<group>"; };
 		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
-		80A050BF1E9926FD00091411 /* GSAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSAudio.swift; sourceTree = "<group>"; };		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
+		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
+		80A050BF1E9926FD00091411 /* GSAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSAudio.swift; sourceTree = "<group>"; };
 		80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPlaybackDelegate.swift; sourceTree = "<group>"; };
 		80A050C51E9937EA00091411 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1.wav; sourceTree = "<group>"; };
 		80A050C61E9937EA00091411 /* 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 2.wav; sourceTree = "<group>"; };
@@ -347,9 +349,7 @@
 		80A051261E993A3A00091411 /* Mel Bass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Mel Bass.wav"; sourceTree = "<group>"; };
 		80A051271E993A3A00091411 /* Mel Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Mel Kick.wav"; sourceTree = "<group>"; };
 		80A051281E993A3A00091411 /* Ride and Clap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Ride and Clap.wav"; sourceTree = "<group>"; };
-		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
-		80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPlaybackDelegate.swift; sourceTree = "<group>"; };
-        A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
+		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
 		CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIchloriansUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansTests/Pods-MIDIchloriansTests.release.xcconfig"; sourceTree = "<group>"; };
 		E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -495,6 +495,8 @@
 				E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */,
 				F31E2B121E8FF1B000C23325 /* CloudManager.swift */,
 				E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */,
+				3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */,
+				3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -1233,7 +1235,9 @@
 				E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */,
 				F3710A8F1E7D280D0031A754 /* Session.swift in Sources */,
 				E92D6F2F1E953DA000E815F1 /* TimelineDelegate.swift in Sources */,
+				3346913B1E9B3E8F00BDA7B1 /* SampleSettingMode.swift in Sources */,
 				E93A02CA1E74017000DFB2B7 /* SampleTableDelegate.swift in Sources */,
+				3346913D1E9B407600BDA7B1 /* SampleSettingDelegate.swift in Sources */,
 				33120E201E6FD30A007E7717 /* ViewController.swift in Sources */,
 				334970C11E72583F009C78DF /* Config.swift in Sources */,
 				E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */,

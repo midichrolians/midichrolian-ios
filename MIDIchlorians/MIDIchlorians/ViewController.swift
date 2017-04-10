@@ -143,6 +143,7 @@ class ViewController: UIViewController {
     private func setUpSampleSetting() {
         sampleSettingController = SampleSettingViewController()
         sampleSettingController.view.backgroundColor = Config.SecondaryBackgroundColor
+        sampleSettingController.delegate = gridController
         addChildViewController(sampleSettingController)
         view.addSubview(sampleSettingController.view)
         didMove(toParentViewController: self)

@@ -11,12 +11,13 @@ import SnapKit
 
 class SampleSettingViewController: UIViewController {
     private var sampleSettingControl = UISegmentedControl()
+    weak var delegate: SampleSettingDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        sampleSettingControl.insertSegment(withTitle: Config.SampleSettingLoopLabel, at: 0, animated: true)
-        sampleSettingControl.insertSegment(withTitle: Config.SampleSettingOnceOffLabel, at: 0, animated: true)
+        sampleSettingControl = UISegmentedControl(items: SampleSettingMode.allValues())
         sampleSettingControl.selectedSegmentIndex = 0
+        sampleSettingControl.addTarget(self, action: #selector(onSampleSettingModeChange), for: .valueChanged)
 
         view.addSubview(sampleSettingControl)
         setConstraints()
@@ -34,4 +35,17 @@ class SampleSettingViewController: UIViewController {
         }
     }
 
+    func onSampleSettingModeChange() {
+        guard let selectedSampleSettingModeName = self.sampleSettingControl.titleForSegment(
+            at: self.sampleSettingControl.selectedSegmentIndex
+            ) else {
+                return
+        }
+        guard let mode = SampleSettingMode(rawValue: selectedSampleSettingModeName) else {
+            return
+        }
+        delegate?.sampleSettingMode(
+            selected: mode
+        )
+    }
 }
