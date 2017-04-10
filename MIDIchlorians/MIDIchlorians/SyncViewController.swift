@@ -14,6 +14,7 @@ class SyncViewController: UIViewController {
     private var upload: UIButton!
     private var download: UIButton!
     private var stackView: UIStackView!
+    private var spinnerView: UIActivityIndicatorView!
     weak var delegate: SyncDelegate?
 
     override func viewDidLoad() {
@@ -36,6 +37,17 @@ class SyncViewController: UIViewController {
         self.preferredContentSize = CGSize(width: Config.TopNavSyncPreferredWidth,
                                            height: Config.TopNavSyncPreferredHeight)
 
+        spinnerView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        spinnerView.hidesWhenStopped = true
+        view.addSubview(spinnerView)
+
+        // add listener for sync completion
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handle(notification:)),
+            name: NSNotification.Name(rawValue: Config.cloudNotificationKey),
+            object: nil)
+
         setConstraints()
     }
 
@@ -43,12 +55,17 @@ class SyncViewController: UIViewController {
         stackView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+
+        spinnerView.snp.makeConstraints { make in
+            make.edges.equalTo(view).inset(20)
+        }
     }
 
     func onUpload() {
         if DropboxClientsManager.authorizedClient == nil {
             delegate?.loadDropboxWebView()
         } else {
+            animateSyncStart()
             CloudManager.instance.saveToDropbox()
         }
         dismiss(animated: true, completion: nil)
@@ -58,9 +75,22 @@ class SyncViewController: UIViewController {
         if DropboxClientsManager.authorizedClient == nil {
             delegate?.loadDropboxWebView()
         } else {
+            animateSyncStart()
             CloudManager.instance.loadFromDropbox()
         }
         dismiss(animated: true, completion: nil)
+    }
+
+    func animateSyncStart() {
+        upload.isEnabled = false
+        download.isEnabled = false
+        spinnerView.startAnimating()
+    }
+
+    func handle(notification: Notification) {
+        spinnerView.stopAnimating()
+        upload.isEnabled = true
+        download.isEnabled = true
     }
 
 }
