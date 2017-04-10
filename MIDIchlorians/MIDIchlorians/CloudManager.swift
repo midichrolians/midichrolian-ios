@@ -53,8 +53,14 @@ class CloudManager {
     private func loadAudios() {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask).last else {
+           self.handleResult(Config.audioNotificationKey, false)
            return
         }
+        let samples = dataManager.loadAllAudioStrings()
+        var sampleMap = Set<String>()
+        samples.forEach({ sample in
+            sampleMap.insert(sample)
+        })
         var samplesReceived = [String]()
         var numSamples = 0
         var notificationPosted = false
@@ -68,6 +74,7 @@ class CloudManager {
             for sample in samplesReceived {
                 //What if the saving fails?
                 _ = dataManager.saveAudio(sample)
+                _ = dataManager.addSampleToGroup(group: Config.defaultGroup, sample: sample)
             }
             self.handleResult(Config.audioNotificationKey, true)
         }
@@ -78,6 +85,16 @@ class CloudManager {
                 guard self.isSoundFile(sample.name) else {
                     continue
                 }
+
+                if sampleMap.contains(sample.name) {
+                    numSamples -= 1
+                    if numSamples == 0 {
+                        self.handleResult(Config.audioNotificationKey, true)
+                        return
+                    }
+                    continue
+                }
+
                 let filePath = "/\(Config.AudioFolderName)/\(sample.name)"
                 let url = docsURL.appendingPathComponent(sample.name)
                 let destination: (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
@@ -211,7 +228,7 @@ class CloudManager {
                 uploadCallback(result)
             }
         }
-
+        var numExisting = 0
         //Upload each sample
         for sample in samples {
             let fileNameExtension = "\(sample)"
@@ -219,6 +236,10 @@ class CloudManager {
             client?.files.getMetadata(path: filePath).response { response, error in
                 guard response == nil, error != nil else {
                     //File already exists
+                    numExisting += 1
+                    if numExisting == samples.count {
+                        self.handleResult(Config.audioNotificationKey, true)
+                    }
                     return
                 }
                 getMetaDataCallback(filePath: filePath, sample: sample)

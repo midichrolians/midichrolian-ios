@@ -308,6 +308,21 @@ class DataManager {
 
     }
 
+    func createGroup(group: String) -> Bool {
+        if audioGroups.contains(group) {
+            return true
+        }
+
+        do {
+            try realm?.write { realm?.add(AudioGroup(group)) }
+        } catch {
+            return false
+        }
+
+        audioGroups.insert(group)
+        return true
+    }
+
     func getAllGroups() -> [String] {
         return Array(audioGroups)
     }
