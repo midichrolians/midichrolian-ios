@@ -28,9 +28,9 @@ class SelectedPadTrackingView: UIView {
 
         let cell = viewController.collectionView(viewController.collectionView!, cellForItemAt: indexPath)
 
-        isHidden = false
-
         frame = calculateOffset(relativeTo: cell)
+
+        isHidden = false
 
         setNeedsDisplay()
     }

@@ -187,16 +187,19 @@ struct Config {
 
     // Grid
     static let GridCollectionViewCellIdentifier = "cell"
+    static let GridDefaultBackgroundColour = UIColor(colorLiteralRed: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
     static let PadSelectionBorderColour = UIColor.green.cgColor
-    static let PadSelectionBorderWidth: CGFloat = 3.0
-    static let PadSelectionCornerRadius: CGFloat = 5.0
-    static let PadSelectionOffset: CGFloat = 2
+    static let PadSelectionBorderWidth: CGFloat = 1.0
+    static let PadSelectionCornerRadiusRatio: CGFloat = 1 / 16.0
+    static let PadSelectionOffsetRaio: CGFloat =  1 / 12.0
     static let PadSampleOnceOffIcon = "pad_sample_once_off.png"
     static let PadSampleLoopIcon = "pad_sample_loop.png"
     static let PadAnimationIcon = "pad_animation.png"
     static let PadIndicatorRatio: CGFloat = 3
     static let RemoveButtonOffset: CGFloat = 10
     static let RemoveButtonWidth: CGFloat = 24
+    static let PadCornerRadiusRatio: CGFloat = 1 / 24.0
+    static let PadCornerBorderWidthRatio: CGFloat = 1 / 64.0
 
     // Remove button
     static let RemoveButtonIcon = "cancel.png"
