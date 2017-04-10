@@ -177,6 +177,7 @@ struct Config {
     static let TopNavBPMPreferredWidth: CGFloat = 150
     static let TopNavBPMPreferredHeight: CGFloat = 200
     static let TopNavSyncSpinnerInset: CGFloat = 20
+    static let TopNavSessionNameMaxWidth: CGFloat = 150
 
     // About
     static let AboutCloseTitle = "Close"
