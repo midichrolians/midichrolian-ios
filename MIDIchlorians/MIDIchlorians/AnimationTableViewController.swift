@@ -76,18 +76,6 @@ class AnimationTableViewController: UITableViewController {
                                                object: nil)
     }
 
-    // Update animation table with new animations after downloading
-    func handle(notification: Notification) {
-        guard let success = notification.userInfo?["success"] as? Bool else {
-            return
-        }
-
-        if success {
-            animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames()
-        }
-
-    }
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -209,6 +197,16 @@ class AnimationTableViewController: UITableViewController {
     private func reloadAnimationNames() {
         animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames().sorted()
         tableView.reloadData()
+    }
+
+    // Update animation table with new animations after downloading
+    func handle(notification: Notification) {
+        guard let success = notification.userInfo?["success"] as? Bool else {
+            return
+        }
+        if success {
+            reloadAnimationNames()
+        }
     }
 
 }

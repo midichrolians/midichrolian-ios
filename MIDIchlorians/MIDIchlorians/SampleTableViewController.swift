@@ -42,16 +42,6 @@ class SampleTableViewController: UITableViewController {
                                                object: nil)
     }
 
-    // Handle notification from dropbox download
-    func handle(notification: Notification) {
-        guard let success = notification.userInfo?["success"] as? Bool else {
-            return
-        }
-        if success {
-            sampleList = DataManager.instance.loadAllAudioStrings()
-        }
-    }
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -162,6 +152,17 @@ class SampleTableViewController: UITableViewController {
         }
 
         tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
+    }
+
+    // Handle notification from dropbox download
+    func handle(notification: Notification) {
+        guard let success = notification.userInfo?["success"] as? Bool else {
+            return
+        }
+        if success {
+            sampleList = DataManager.instance.loadAllAudioStrings()
+            tableView.reloadData()
+        }
     }
 
 }
