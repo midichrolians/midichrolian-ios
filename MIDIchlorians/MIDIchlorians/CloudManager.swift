@@ -24,18 +24,19 @@ class CloudManager {
         //Just to ensure initialiser is private
     }
 
-    private func postToNotificationCenter( _ result: Bool) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: Config.cloudManagerNotificationKey),
+    private func postToNotificationCenter(_ key: String, _ result: Bool) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: key),
                                         object: self, userInfo: ["success": result])
     }
 
-    private func handleResult(result: Bool) {
+    private func handleResult(_ key: String, _ result: Bool) {
         if !result {
             self.isSuccessful = false
         }
         resultsReceived += 1
+        postToNotificationCenter(key, result)
         if resultsReceived  == resultCount {
-            postToNotificationCenter(isSuccessful)
+            postToNotificationCenter(Config.cloudNotificationKey, isSuccessful)
             resultsReceived = 0
             isSuccessful = true
         }
@@ -68,7 +69,7 @@ class CloudManager {
                 //What if the saving fails?
                 _ = dataManager.saveAudio(sample)
             }
-            handleResult(result: true)
+            self.handleResult(Config.audioNotificationKey, true)
         }
 
         func listFolderCallback(result: Files.ListFolderResultSerializer.ValueType) {
@@ -87,7 +88,7 @@ class CloudManager {
                                             destination: destination).response { response, error in
                     guard let result = response, error == nil else {
                         if !notificationPosted {
-                            self.handleResult(result: false)
+                            self.handleResult(Config.audioNotificationKey, false)
                             notificationPosted = true
                         }
                         return
@@ -100,7 +101,7 @@ class CloudManager {
 
         client?.files.listFolder(path: "/\(Config.AudioFolderName)/").response { response, error in
             guard let result = response, error == nil else {
-                self.handleResult(result: false)
+                self.handleResult(Config.audioNotificationKey, false)
                 return
             }
             listFolderCallback(result: result)
@@ -114,7 +115,7 @@ class CloudManager {
             let json = result.1
             guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: []))
                                          as? [String: Any] else {
-                handleResult(result: false)
+                self.handleResult(Config.animationNotificationKey, false)
                 return
             }
             for (_, jsonString) in dictionary {
@@ -125,12 +126,12 @@ class CloudManager {
                 //What if saving fails
                 _ = dataManager.saveAnimation(animationJSON)
             }
-            handleResult(result: true)
+            self.handleResult(Config.animationNotificationKey, true)
         }
 
         client?.files.download(path: filePath).response { response, error in
             guard let result = response, error == nil else {
-                self.handleResult(result: false)
+                self.handleResult(Config.animationNotificationKey, false)
                 return
             }
             downloadCallBack(result)
@@ -144,7 +145,7 @@ class CloudManager {
             let json = result.1
             guard let dictionary = (try? JSONSerialization.jsonObject(with: json, options: []))
                                          as? [String: Any] else {
-                handleResult(result: false)
+                self.handleResult(Config.sessionNotificationKey, false)
                 return
             }
             for (sessionName, object) in dictionary {
@@ -157,12 +158,12 @@ class CloudManager {
                 _ = self.dataManager.saveSession(sessionName, session)
 
             }
-            handleResult(result: true)
+            self.handleResult(Config.sessionNotificationKey, true)
         }
 
         client?.files.download(path: filePath).response { response, error in
             guard let result = response, error == nil else {
-                self.handleResult(result: false)
+                self.handleResult(Config.sessionNotificationKey, false)
                 return
             }
             downloadCallBack(result)
@@ -181,7 +182,7 @@ class CloudManager {
     private func saveAudios() {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask).last else {
-            handleResult(result: false)
+            self.handleResult(Config.audioNotificationKey, false)
             return
         }
         //Get a list of samples
@@ -193,7 +194,7 @@ class CloudManager {
             guard samples.count == numSamplesUploaded else {
                 return
             }
-            handleResult(result: true)
+            self.handleResult(Config.audioNotificationKey, true)
         }
 
         func getMetaDataCallback(filePath: String, sample: String) {
@@ -201,7 +202,7 @@ class CloudManager {
             self.client?.files.upload(path: filePath, input: url).response { response, error in
                 guard let result = response, error == nil else {
                     if !notificationPosted {
-                        self.handleResult(result: false)
+                        self.handleResult(Config.audioNotificationKey, false)
                         notificationPosted = true
                     }
                     return
@@ -244,10 +245,10 @@ class CloudManager {
         client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false, mute: false,
                              input: jsonData).response { response, error in
             guard response != nil, error == nil else {
-                self.handleResult(result: false)
+                self.handleResult(Config.animationNotificationKey, false)
                 return
             }
-            self.handleResult(result: true)
+            self.handleResult(Config.animationNotificationKey, true)
         }
 
     }
@@ -269,10 +270,10 @@ class CloudManager {
         client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false, mute: false,
                              input: jsonData).response { response, error in
             guard response != nil, error == nil else {
-                self.handleResult(result: false)
+                self.handleResult(Config.sessionNotificationKey, false)
                 return
             }
-            self.handleResult(result: true)
+            self.handleResult(Config.sessionNotificationKey, true)
         }
 
     }
