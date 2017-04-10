@@ -12,16 +12,16 @@ import SnapKit
 import SwiftyDropbox
 
 class TopBarController: UIViewController {
-    private var logo = UIButton(type: .system)
+    private var logoPic = UIImageView()
+    private var logoImage = UIImage(named: "logo.png")!
+    private var logo = UILabel()
     // used for managing the controls
     private var sessionTitle = UILabel()
     private var stackView = UIStackView()
     private var sessionButton = UIButton(type: .system)
-    private var bpmSelector = UIButton(type: .system)
-    private var bpmVC = BPMViewController()
+
     private var saveButton = UIButton(type: .system)
     private var editButton = UIButton(type: .system)
-    private var exitButton = UIButton(type: .system)
     private var recordButton = UIButton(type: .custom)
     private var playButton = UIButton(type: .system)
     private var syncButton = UIButton(type: .system)
@@ -31,6 +31,7 @@ class TopBarController: UIViewController {
             playButton.isEnabled = hasRecording
         }
     }
+    private var helpButton = UIButton(type: .system)
 
     private let recordImage = UIImage(named: Config.TopNavRecordIcon)!
     private let recordBlackImage = UIImage(named: Config.TopNavRecordingBlackIcon)!
@@ -42,14 +43,16 @@ class TopBarController: UIViewController {
             self.syncViewController.delegate = syncDelegate
         }
     }
-    weak var bpmSelectorDelegate: BPMSelectorDelegate?
 
     init() {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = Config.SecondaryBackgroundColor
 
-        logo.setTitle(Config.TopNavLogoText, for: .normal)
-        logo.addTarget(self, action: #selector(logoTapped), for: .touchDown)
+        logoPic.image = logoImage
+        logoPic.contentMode = .scaleAspectFit
+        view.addSubview(logoPic)
+
+        logo.text = Config.TopNavLogoText
         view.addSubview(logo)
 
         sessionTitle.text = Config.DefaultSessionName
@@ -58,17 +61,10 @@ class TopBarController: UIViewController {
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
         sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
 
-        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, Config.TopNavBPMDefaultBPM), for: .normal)
-        bpmSelector.addTarget(self, action: #selector(bpmSelect(sender:)), for: .touchDown)
-        bpmVC.selectedBPM = Config.TopNavBPMDefaultBPM
-
         saveButton.setTitle(Config.TopNavSaveLabel, for: .normal)
 
         editButton.setTitle(Config.TopNavEditLabel, for: .normal)
-        editButton.addTarget(self, action: #selector(onEdit), for: .touchDown)
-
-        exitButton.setTitle(Config.TopNavExitLabel, for: .normal)
-        exitButton.addTarget(self, action: #selector(onExit), for: .touchDown)
+        editButton.addTarget(self, action: #selector(onEdit(_:)), for: .touchDown)
 
         let loopingImage = UIImage.animatedImage(
             with: [recordImage, recordBlackImage],
@@ -85,13 +81,16 @@ class TopBarController: UIViewController {
         syncButton.setTitle(Config.TopNavSyncLabel, for: .normal)
         syncButton.addTarget(self, action: #selector(sync(sender:)), for: .touchDown)
 
+        helpButton.setTitle("?", for: .normal)
+        helpButton.addTarget(self, action: #selector(logoTapped), for: .touchDown)
+
         stackView.addArrangedSubview(sessionButton)
-        stackView.addArrangedSubview(bpmSelector)
         stackView.addArrangedSubview(saveButton)
         stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(recordButton)
         stackView.addArrangedSubview(playButton)
         stackView.addArrangedSubview(syncButton)
+        stackView.addArrangedSubview(helpButton)
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = Config.TopNavStackViewSpacing
@@ -105,9 +104,15 @@ class TopBarController: UIViewController {
     }
 
     func makeConstraints() {
-        logo.snp.makeConstraints { make in
+        logoPic.snp.makeConstraints { make in
             make.left.equalTo(view).offset(Config.AppLeftPadding)
-            make.height.equalTo(view)
+            make.height.equalTo(view).inset(10)
+            make.centerY.equalTo(view)
+            make.width.equalTo(logoPic.snp.height)
+        }
+
+        logo.snp.makeConstraints { make in
+            make.left.equalTo(logoPic.snp.right).offset(10)
             make.centerY.equalTo(view)
         }
 
@@ -126,6 +131,7 @@ class TopBarController: UIViewController {
             make.width.equalTo(recordButton.snp.height)
             make.top.bottom.equalTo(view).inset(10)
         }
+
     }
 
     func setTargetActionOfSaveButton(target: AnyObject, selector: Selector) {
@@ -137,38 +143,19 @@ class TopBarController: UIViewController {
         sessionSelectorDelegate?.sessionSelector(sender: sender)
     }
 
-    // Called when bpm selector is tapped
-    func bpmSelect(sender: UIButton) {
-        // present a UIPickerView as a popover
-        bpmVC.modalPresentationStyle = .popover
-        bpmVC.bpmListener = bpmListener
-        present(bpmVC, animated: true, completion: nil)
-        let popover = bpmVC.popoverPresentationController
-        popover?.sourceView = sender
-        popover?.sourceRect = sender.bounds
-    }
-
-    func bpmListener(bpm: Int) {
-        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, bpm), for: .normal)
-        bpmSelectorDelegate?.bpm(selected: bpm)
-    }
-
-    func onExit() {
-        modeSwitchDelegate?.enterPlay()
-        stackView.replace(view: exitButton, with: editButton)
-
-        // exit edit more (entering play), restore record and play functionality
-        recordButton.isEnabled = true
-        playButton.isEnabled = true
-    }
-
-    func onEdit() {
-        modeSwitchDelegate?.enterEdit()
-        stackView.replace(view: editButton, with: exitButton)
-
-        // entering edit mode, so hide functionality to record and play
-        recordButton.isEnabled = false
-        playButton.isEnabled = false
+    func onEdit(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            // edit mode
+            modeSwitchDelegate?.enterEdit()
+            recordButton.isEnabled = false
+            playButton.isEnabled = false
+        } else {
+            // exit edit more (entering play), restore record and play functionality
+            modeSwitchDelegate?.enterPlay()
+            recordButton.isEnabled = true
+            playButton.isEnabled = true
+        }
     }
 
     func onRecordButtonDown(sender: UIButton) {

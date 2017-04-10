@@ -87,7 +87,6 @@ class ViewController: UIViewController {
         topBarController.syncDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
         topBarController.setSession(to: currentSession)
-        topBarController.bpmSelectorDelegate = self
     }
 
     // Saves the current session
@@ -147,6 +146,7 @@ class ViewController: UIViewController {
         sampleSettingController = SampleSettingViewController()
         sampleSettingController.view.backgroundColor = Config.SecondaryBackgroundColor
         sampleSettingController.delegate = gridController
+        sampleSettingController.bpmSelectorDelegate = self
         addChildViewController(sampleSettingController)
         view.addSubview(sampleSettingController.view)
         didMove(toParentViewController: self)

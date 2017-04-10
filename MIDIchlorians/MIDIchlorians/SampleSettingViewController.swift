@@ -12,26 +12,36 @@ import SnapKit
 class SampleSettingViewController: UIViewController {
     private var sampleSettingControl = UISegmentedControl()
     weak var delegate: SampleSettingDelegate?
+    private var bpmSelector = UIButton(type: .system)
+    private var bpmVC = BPMViewController()
+    weak var bpmSelectorDelegate: BPMSelectorDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         sampleSettingControl = UISegmentedControl(items: SampleSettingMode.allValues())
         sampleSettingControl.selectedSegmentIndex = 0
         sampleSettingControl.addTarget(self, action: #selector(onSampleSettingModeChange), for: .valueChanged)
-
         view.addSubview(sampleSettingControl)
-        setConstraints()
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, Config.TopNavBPMDefaultBPM), for: .normal)
+        bpmSelector.addTarget(self, action: #selector(bpmSelect(sender:)), for: .touchDown)
+        bpmVC.selectedBPM = Config.TopNavBPMDefaultBPM
+        view.addSubview(bpmSelector)
+
+        setConstraints()
+
     }
 
     func setConstraints() {
         sampleSettingControl.snp.makeConstraints { make in
-            make.centerY.centerX.equalTo(view)
+            make.left.top.equalTo(view).offset(Config.AppLeftPadding)
             make.height.equalTo(Config.TimelineHeight)
+        }
+
+        bpmSelector.snp.makeConstraints { make in
+            make.left.height.equalTo(sampleSettingControl)
+            make.top.equalTo(sampleSettingControl.snp.bottom).offset(10)
         }
     }
 
@@ -48,4 +58,21 @@ class SampleSettingViewController: UIViewController {
             selected: mode
         )
     }
+
+    // Called when bpm selector is tapped
+    func bpmSelect(sender: UIButton) {
+        // present a UIPickerView as a popover
+        bpmVC.modalPresentationStyle = .popover
+        bpmVC.bpmListener = bpmListener
+        present(bpmVC, animated: true, completion: nil)
+        let popover = bpmVC.popoverPresentationController
+        popover?.sourceView = sender
+        popover?.sourceRect = sender.bounds
+    }
+
+    func bpmListener(bpm: Int) {
+        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, bpm), for: .normal)
+        bpmSelectorDelegate?.bpm(selected: bpm)
+    }
+
 }
