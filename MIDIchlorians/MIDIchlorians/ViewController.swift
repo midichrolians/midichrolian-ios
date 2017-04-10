@@ -85,6 +85,7 @@ class ViewController: UIViewController {
         topBarController.sessionSelectorDelegate = self
         topBarController.syncDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
+        topBarController.setSessionName(name: currentSession.getSessionName())
     }
 
     // Saves the current session
@@ -284,15 +285,13 @@ extension ViewController: SidePaneDelegate {
 
 extension ViewController: SessionTableDelegate {
     func sessionTable(_: UITableView, didSelect sessionName: String) {
-        // try to load session
-        let loadedSession = dataManager.loadSession(sessionName)
-        if loadedSession == nil {
+        guard let loadedSession = dataManager.loadSession(sessionName) else {
             // failed to load this session, which is weird since we got the session name from the data manager
             // maybe we can show some error error
-        } else {
-            // session successfully loaded
-            self.currentSession = loadedSession
+            return
         }
+        self.currentSession = loadedSession
+        topBarController.setSessionName(name: currentSession.getSessionName())
         sessionNavigationController.dismiss(animated: true, completion: nil)
     }
 
@@ -315,6 +314,7 @@ extension ViewController: SessionTableDelegate {
         let name = newUnusedName(suffix: "")
         currentSession = Session(bpm: Config.defaultBPM)
         _ = dataManager.saveSession(name, currentSession)
+        topBarController.setSessionName(name: name)
         // then we reload the session lists in sessionTableViewController
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
         sessionNavigationController.dismiss(animated: true, completion: nil)
@@ -326,6 +326,7 @@ extension ViewController: SessionTableDelegate {
 
     func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String) {
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
+        topBarController.setSessionName(name: newSessionName)
     }
 }
 
