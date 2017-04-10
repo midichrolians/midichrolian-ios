@@ -80,6 +80,8 @@ class GridController: UIViewController {
     internal var animationName: String = Config.NewAnimationTypeDefaultName
     internal var animationTypeCreationMode = AnimationTypeCreationMode.absolute
 
+    internal var sampleSettingMode = SampleSettingMode.once
+
     init(frame: CGRect, session: Session) {
         currentSession = session
         super.init(nibName: nil, bundle: nil)
@@ -300,6 +302,11 @@ extension GridController: SampleTableDelegate {
             return
         }
         self.currentSession.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
+        if self.sampleSettingMode == SampleSettingMode.loop {
+            self.currentSession.addBPMToPad(page: self.currentPage, row: row, col: col, bpm: self.currentSession.getSessionBPM())
+        } else {
+            self.currentSession.clearBPMAtPad(page: self.currentPage, row: row, col: col)
+        }
         self.grid.collectionView!.reloadItems(at: [indexPath])
         self.selectedIndexPath = indexPath
     }
@@ -406,5 +413,11 @@ extension GridController: RecordPlaybackDelegate {
         // then get the pad and play it
         let pad = getPad(at: indexPath)
         playSampleAndAnimation(assignedTo: pad)
+    }
+}
+
+extension GridController: SampleSettingDelegate {
+    func sampleSettingMode(selected: SampleSettingMode) {
+        self.sampleSettingMode = selected
     }
 }

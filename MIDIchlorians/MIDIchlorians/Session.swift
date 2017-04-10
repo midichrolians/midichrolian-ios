@@ -183,6 +183,10 @@ class Session: Object {
         self.BPM = bpm
     }
 
+    func getSessionBPM() -> Int {
+        return self.BPM
+    }
+
     func getPad(page: Int, row: Int, col: Int) -> Pad? {
         guard isValidPosition(page, row, col) else {
             return nil
