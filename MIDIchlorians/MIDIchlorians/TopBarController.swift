@@ -114,6 +114,7 @@ class TopBarController: UIViewController {
         sessionTitle.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
             make.height.equalTo(view)
+            make.width.lessThanOrEqualTo(Config.TopNavSessionNameMaxWidth)
         }
 
         stackView.snp.makeConstraints { make in
@@ -157,8 +158,8 @@ class TopBarController: UIViewController {
         stackView.replace(view: exitButton, with: editButton)
 
         // exit edit more (entering play), restore record and play functionality
-        recordButton.isHidden = false
-        playButton.isHidden = false
+        recordButton.isEnabled = true
+        playButton.isEnabled = true
     }
 
     func onEdit() {
@@ -166,8 +167,8 @@ class TopBarController: UIViewController {
         stackView.replace(view: editButton, with: exitButton)
 
         // entering edit mode, so hide functionality to record and play
-        recordButton.isHidden = true
-        playButton.isHidden = true
+        recordButton.isEnabled = false
+        playButton.isEnabled = false
     }
 
     func onRecordButtonDown(sender: UIButton) {
