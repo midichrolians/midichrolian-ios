@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         didSet {
             if currentSession != nil {
                 gridController?.currentSession = currentSession
+                topBarController?.setSession(to: currentSession)
             }
         }
     }
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentSession = loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM)
+        currentSession = (loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM))
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
@@ -85,6 +86,7 @@ class ViewController: UIViewController {
         topBarController.sessionSelectorDelegate = self
         topBarController.syncDelegate = self
         topBarController.setTargetActionOfSaveButton(target: self, selector: #selector(saveCurrentSession))
+        topBarController.setSession(to: currentSession)
     }
 
     // Saves the current session
@@ -284,15 +286,12 @@ extension ViewController: SidePaneDelegate {
 
 extension ViewController: SessionTableDelegate {
     func sessionTable(_: UITableView, didSelect sessionName: String) {
-        // try to load session
-        let loadedSession = dataManager.loadSession(sessionName)
-        if loadedSession == nil {
+        guard let loadedSession = dataManager.loadSession(sessionName) else {
             // failed to load this session, which is weird since we got the session name from the data manager
             // maybe we can show some error error
-        } else {
-            // session successfully loaded
-            self.currentSession = loadedSession
+            return
         }
+        self.currentSession = loadedSession
         sessionNavigationController.dismiss(animated: true, completion: nil)
     }
 
@@ -313,8 +312,7 @@ extension ViewController: SessionTableDelegate {
             }
         }
         let name = newUnusedName(suffix: "")
-        currentSession = Session(bpm: Config.defaultBPM)
-        _ = dataManager.saveSession(name, currentSession)
+        currentSession = dataManager.saveSession(name, Session(bpm: Config.defaultBPM))
         // then we reload the session lists in sessionTableViewController
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
         sessionNavigationController.dismiss(animated: true, completion: nil)
@@ -326,6 +324,7 @@ extension ViewController: SessionTableDelegate {
 
     func sessionTable(_: UITableView, didChange oldSessionName: String, to newSessionName: String) {
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
+        currentSession = dataManager.loadSession(newSessionName)
     }
 }
 
