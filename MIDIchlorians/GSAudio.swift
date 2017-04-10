@@ -22,7 +22,6 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
                                                      in: .userDomainMask).last else {
                                                         return
         }
-        print(audioDir)
         let soundURL = docsURL.appendingPathComponent("\(audioDir)")
         let soundFileNameURL = soundURL
 
