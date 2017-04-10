@@ -205,7 +205,7 @@ struct Config {
     static let MainViewHeightToAnimHeightRatio: CGFloat = 1 / 4
     static let MainViewWidthToAnimWidthRatio: CGFloat = 7 / 12
 
-    static let SectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+    static let SectionInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 10)
     static let ItemInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     // will be removed once we move to constraints
@@ -314,6 +314,8 @@ struct Config {
     static let PageReuseIdentifier = "page"
     static let PageIconName = "padplay.png"
     static let PageSelectedIconName = "padplay_selected.png"
+    static let PageDefaultNumSections = 1
+    static let PageDefaultNumPages = 1
 
     // Animation Designer
     static let AnimationDesignItemOffset: CGFloat = 20

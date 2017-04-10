@@ -129,13 +129,24 @@ class GridController: UIViewController {
         view.addSubview(removeButton)
         removeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeFromPad)))
 
+        let numCol = 8 // need to replace this with call to session
         // set up constraints
         page.view.snp.makeConstraints { make in
-            make.top.right.bottom.equalTo(view)
-            make.width.equalTo(view).multipliedBy(1.0/9.0).offset(-Config.ItemInsets.right)
+            make.top.bottom.equalTo(view)
+            make.right.equalTo(view).inset(Config.AppRightPadding)
+            // calculate how much width the page selector will need
+            // first subtract away the app padding on the left and right,
+            // and compensate with the right inset width
+            let offset = Config.ItemInsets.right - Config.AppLeftPadding - Config.AppRightPadding
+            // because of the way snapkit constraints is set up, we cannot offset then divide,
+            // so we make use of this inequality to divide then offset
+            // make.width = (view.width + offset) / num - inset.right
+            //            = (view.width / num) + (offset / num) - inset.right
+            make.width.equalTo(view).dividedBy(numCol + 1).offset(offset / CGFloat(numCol + 1) - 10)
         }
         grid.view.snp.makeConstraints { make in
-            make.top.left.bottom.equalTo(view)
+            make.top.bottom.equalTo(view)
+            make.left.equalTo(view).inset(Config.AppLeftPadding)
             make.right.equalTo(page.view.snp.left)
         }
     }

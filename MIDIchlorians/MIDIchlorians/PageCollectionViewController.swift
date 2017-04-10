@@ -9,7 +9,7 @@
 import UIKit
 
 class PageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    var pages: Int = 0
+    var pages: Int = Config.PageDefaultNumPages
     weak var delegate: PageDelegate?
     private var pageIcon = UIImage(named: Config.PageIconName)
     private var pageSelectedIcon = UIImage(named: Config.PageSelectedIconName)
@@ -19,14 +19,13 @@ class PageCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return Config.PageDefaultNumSections
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
