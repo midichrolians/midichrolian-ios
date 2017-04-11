@@ -365,7 +365,8 @@ struct Config {
         "tutorial_1.png", "tutorial_2.png",
         "tutorial_3.png", "tutorial_4.png",
         "tutorial_5.png", "tutorial_6.png",
-        "tutorial_7.png"
+        "tutorial_7.png", "tutorial_8.png",
+        "tutorial_9.png"
     ]
 
     static let animationBitColourKey = "colour"
