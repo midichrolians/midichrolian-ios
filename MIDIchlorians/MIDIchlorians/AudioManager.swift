@@ -142,10 +142,12 @@ class AudioManager {
     }
 
     func isTrackPlaying(audioDir: String) -> Bool {
-        guard let player = audioTrackDict[audioDir] else {
-            return false
+        if let player = audioTrackDict[audioDir] {
+            return player.isPlaying
+        } else if let timer = loopDict[audioDir] {
+            return true
         }
-        return player.isPlaying
+        return false
     }
 
     private func playAudioTrack(audioDir: String) -> Bool {

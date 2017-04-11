@@ -13,11 +13,24 @@ class GridCollectionViewCell: UICollectionViewCell {
     private let sampleOnceOffImage = UIImage(named: Config.PadSampleOnceOffIcon)
     private let sampleLoopImage = UIImage(named: Config.PadSampleLoopIcon)
     private let animationIndicatorImage = UIImage(named: Config.PadAnimationIcon)
+    private let playLoopIndicatorImage = UIImage(named: Config.PadPlayLoopIcon)
+
     var rowNumber = 0
     var columnNumber = 0
     var sampleIndicator: UIImageView!
     var animationIndicator: UIImageView!
     var imageView: UIImageView!
+    private var playLoopIndicator: UIImageView!
+    var looping = false {
+        didSet {
+            // if looping, animate blinking
+            if looping {
+                playLoopIndicator.alpha = 1
+            } else {
+                playLoopIndicator.alpha = 0
+            }
+        }
+    }
     var pad: Pad? {
         didSet {
             guard let pad = pad else {
@@ -26,7 +39,7 @@ class GridCollectionViewCell: UICollectionViewCell {
             }
             // once we have the notion of an audio having loop/onceoff we will update the image accordingly
             if let sample = pad.getAudioFile() {
-                assign(sample: sample)
+                assign(sample: sample, isLooping: pad.getBPM() != nil)
             }
             if let animation = pad.getAnimation() {
                 assign(animation: animation)
@@ -46,6 +59,11 @@ class GridCollectionViewCell: UICollectionViewCell {
         animationIndicator = UIImageView()
         contentView.addSubview(animationIndicator)
 
+        playLoopIndicator = UIImageView()
+        playLoopIndicator.image = playLoopIndicatorImage
+        playLoopIndicator.alpha = 0
+        contentView.addSubview(playLoopIndicator)
+
         layer.cornerRadius = frame.width * Config.PadCornerRadiusRatio
 
         setConstraints()
@@ -64,6 +82,11 @@ class GridCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(animationIndicator.snp.width)
             make.bottom.centerX.equalTo(contentView)
         }
+
+        playLoopIndicator.snp.makeConstraints { make in
+            make.width.height.equalTo(contentView).dividedBy(Config.PadPlayLoopIndicatorRatio)
+            make.bottom.right.equalToSuperview().inset(Config.PadPlayLoopIndicatorInset)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -74,8 +97,12 @@ class GridCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor.darkGray
     }
 
-    func assign(sample: String) {
-        sampleIndicator.image = sampleOnceOffImage
+    func assign(sample: String, isLooping: Bool) {
+        if isLooping {
+            sampleIndicator.image = sampleLoopImage
+        } else {
+            sampleIndicator.image = sampleOnceOffImage
+        }
     }
 
     func assign(animation: AnimationSequence) {
