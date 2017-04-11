@@ -105,7 +105,7 @@ struct Config {
             "8",
             "9"
         ],
-        "Drums ()": [
+        "Drums": [
             "clap-808", "clap-analog",
             "clap-crushed", "clap-fat",
             "clap-slapper", "clap-tape",
