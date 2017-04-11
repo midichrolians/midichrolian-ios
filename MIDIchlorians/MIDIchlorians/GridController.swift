@@ -106,10 +106,6 @@ class GridController: UIViewController {
     override func loadView() {
         view = UIView()
 
-        // set up pad selection view
-        // added first because this will be behind the grid so it won't block multitouch
-        view.addSubview(padSelection)
-
         // set up grid collection view
         gridCollectionView = GridCollectionView(frame: CGRect.zero,
                                                 collectionViewLayout: grid.collectionViewLayout)
@@ -125,8 +121,13 @@ class GridController: UIViewController {
         view.addSubview(page.view)
         page.collectionView!.backgroundColor = Config.BackgroundColor
 
+        // set up pad selection view
+        // add it to the grid's view because frame is calculate in that coordinate system
+        grid.view.insertSubview(padSelection, at: 0)
+
         // set up remove button
-        view.addSubview(removeButton)
+        // similarly add it to the grid's view for its coordinate system
+        grid.view.addSubview(removeButton)
         removeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeFromPad)))
 
         let numCol = 8 // need to replace this with call to session
@@ -142,7 +143,9 @@ class GridController: UIViewController {
             // so we make use of this inequality to divide then offset
             // make.width = (view.width + offset) / num - inset.right
             //            = (view.width / num) + (offset / num) - inset.right
-            make.width.equalTo(view).dividedBy(numCol + 1).offset(offset / CGFloat(numCol + 1) - 10)
+            make.width.equalTo(view)
+                .dividedBy(numCol + 1)
+                .offset(offset / CGFloat(numCol + 1) - Config.ItemInsets.right)
         }
         grid.view.snp.makeConstraints { make in
             make.top.bottom.equalTo(view)
