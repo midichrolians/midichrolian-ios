@@ -39,7 +39,7 @@ class GridCollectionViewCell: UICollectionViewCell {
             }
             // once we have the notion of an audio having loop/onceoff we will update the image accordingly
             if let sample = pad.getAudioFile() {
-                assign(sample: sample)
+                assign(sample: sample, isLooping: pad.getBPM() != nil)
             }
             if let animation = pad.getAnimation() {
                 assign(animation: animation)
@@ -97,8 +97,12 @@ class GridCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor.darkGray
     }
 
-    func assign(sample: String) {
-        sampleIndicator.image = sampleOnceOffImage
+    func assign(sample: String, isLooping: Bool) {
+        if isLooping {
+            sampleIndicator.image = sampleLoopImage
+        } else {
+            sampleIndicator.image = sampleOnceOffImage
+        }
     }
 
     func assign(animation: AnimationSequence) {

@@ -449,5 +449,6 @@ extension GridController: SampleSettingDelegate {
         case .once:
             currentSession.clearBPMAtPad(page: currentPage, row: indexPath.section, col: indexPath.row)
         }
+        grid.collectionView?.reloadItems(at: [indexPath])
     }
 }
