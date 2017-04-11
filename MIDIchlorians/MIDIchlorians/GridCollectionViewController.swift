@@ -31,6 +31,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
     var selectedFrame: Int {
         return gridDisplayDelegate?.frame ?? 0
     }
+    var looping: Set<Pad> = Set()
 
     // MARK: UICollectionViewDataSource
 
@@ -62,7 +63,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
             // and then assign styles based on the mode
             switch mode {
             case .playing:
-                break
+                cell.looping = looping.contains(pad)
             case .editing:
                 cell.pad = pad
             case .design:

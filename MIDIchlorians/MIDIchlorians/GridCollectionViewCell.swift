@@ -13,11 +13,22 @@ class GridCollectionViewCell: UICollectionViewCell {
     private let sampleOnceOffImage = UIImage(named: Config.PadSampleOnceOffIcon)
     private let sampleLoopImage = UIImage(named: Config.PadSampleLoopIcon)
     private let animationIndicatorImage = UIImage(named: Config.PadAnimationIcon)
+    private let playLoopIndicatorImage = UIImage(named: Config.PadAnimationIcon)
+
     var rowNumber = 0
     var columnNumber = 0
     var sampleIndicator: UIImageView!
     var animationIndicator: UIImageView!
     var imageView: UIImageView!
+    private var playLoopIndicator: UIImageView!
+    var looping = false {
+        didSet {
+            guard oldValue != looping else {
+                return
+            }
+            animationIndicator.image = looping ? animationIndicatorImage : nil
+        }
+    }
     var pad: Pad? {
         didSet {
             guard let pad = pad else {
@@ -46,6 +57,9 @@ class GridCollectionViewCell: UICollectionViewCell {
         animationIndicator = UIImageView()
         contentView.addSubview(animationIndicator)
 
+        playLoopIndicator = UIImageView()
+        contentView.addSubview(playLoopIndicator)
+
         layer.cornerRadius = frame.width * Config.PadCornerRadiusRatio
 
         setConstraints()
@@ -63,6 +77,10 @@ class GridCollectionViewCell: UICollectionViewCell {
             make.width.equalTo(contentView).dividedBy(Config.PadIndicatorRatio)
             make.height.equalTo(animationIndicator.snp.width)
             make.bottom.centerX.equalTo(contentView)
+        }
+
+        playLoopIndicator.snp.makeConstraints { make in
+            make.edges.equalTo(contentView).inset(contentView.frame.width / 2)
         }
     }
 

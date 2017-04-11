@@ -287,6 +287,22 @@ extension GridController: PadDelegate {
 
         if let audioFile = pad.getAudioFile() {
             _ = AudioManager.instance.play(audioDir: audioFile, bpm: pad.getBPM())
+            // first we check if this pad is looping, we do that by checking bpm
+            let isLooping = pad.getBPM() != nil
+            // check if it is playing, AudioManager would have played/stopped a looping track,
+            // so checking the state here will allow us to decide if we want to show or hide the indicator
+            if isLooping { // we only care that a pad has a looping track
+                // if it is playing we want the tap to stop the audio playing
+                let isPlaying = AudioManager.instance.isTrackPlaying(audioDir: audioFile)
+                if isPlaying {
+                    // the pad is now playing, so add the loop indicator
+                    grid.looping.insert(pad)
+                    grid.collectionView?.reloadItems(at: [indexPath])
+                } else {
+                    grid.looping.remove(pad)
+                    grid.collectionView?.reloadItems(at: [indexPath])
+                }
+            }
         }
 
         if RecorderManager.instance.isRecording {
