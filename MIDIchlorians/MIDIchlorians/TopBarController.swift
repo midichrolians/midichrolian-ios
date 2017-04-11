@@ -117,7 +117,7 @@ class TopBarController: UIViewController {
         }
 
         sessionTitle.snp.makeConstraints { make in
-            make.centerX.equalTo(view.snp.centerX)
+            make.centerX.centerY.equalTo(view)
             make.height.equalTo(view)
             make.width.lessThanOrEqualTo(Config.TopNavSessionNameMaxWidth)
         }
