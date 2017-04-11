@@ -195,11 +195,14 @@ struct Config {
     static let PadSampleOnceOffIcon = "pad_sample_once_off.png"
     static let PadSampleLoopIcon = "pad_sample_loop.png"
     static let PadAnimationIcon = "pad_animation.png"
+    static let PadPlayLoopIcon = "pad_loop_indicator.png"
     static let PadIndicatorRatio: CGFloat = 3
     static let RemoveButtonOffset: CGFloat = 10
     static let RemoveButtonWidth: CGFloat = 24
     static let PadCornerRadiusRatio: CGFloat = 1 / 24.0
     static let PadCornerBorderWidthRatio: CGFloat = 1 / 64.0
+    static let PadPlayLoopIndicatorRatio: CGFloat = 16.0
+    static let PadPlayLoopIndicatorInset: CGFloat = 10
 
     // Remove button
     static let RemoveButtonIcon = "cancel.png"
