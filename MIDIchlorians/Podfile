@@ -26,6 +26,9 @@ target 'MIDIchlorians' do
   target 'MIDIchloriansUITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', :submodules => true
+    pod 'RealmSwift', :git => 'https://github.com/realm/realm-cocoa.git', :branch => 'master', :submodules => true
+    pod 'Nimble'
   end
 
 end

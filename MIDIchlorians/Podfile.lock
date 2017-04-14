@@ -6,6 +6,7 @@ PODS:
   - ImageSlideshow (1.2.0):
     - ImageSlideshow/Core (= 1.2.0)
   - ImageSlideshow/Core (1.2.0)
+  - Nimble (6.0.1)
   - Realm (2.4.4):
     - Realm/Headers (= 2.4.4)
   - Realm/Headers (2.4.4)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - ImageSlideshow (~> 1.2)
+  - Nimble
   - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - SnapKit (~> 3.2.0)
@@ -51,12 +53,13 @@ SPEC CHECKSUMS:
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   ImageSlideshow: c1395dcf33f7dba407fd21df0e8c315e8941e209
+  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   RealmSwift: e45530b4eb17dcc244a2f187d2e2338a48d2f8c2
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
   SwiftyDropbox: dfcd4d308d32d74729255b48833db61acdfb9c23
 
-PODFILE CHECKSUM: 37a52f71135cef7e342848f91a4bb787660976b3
+PODFILE CHECKSUM: ecd8d0f1057974d37caafcc0b44082bd9afadea6
 
 COCOAPODS: 1.2.0
