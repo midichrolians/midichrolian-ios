@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// The AnimatableGrid protocol should be conformed to by any View
+/// which gets passed to the AnimationEngine
 protocol AnimatableGrid {
     func getAnimatablePad(forIndex: IndexPath) -> AnimatablePad?
 }
