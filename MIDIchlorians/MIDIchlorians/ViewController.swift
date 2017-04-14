@@ -10,11 +10,11 @@ import UIKit
 import RealmSwift
 import SwiftyDropbox
 
-// The ViewController is the main (and only) for the entire app.
+// The ViewController is the main for the entire app.
 // Management and hooking up all child view controllers are done in this class.
 // The responsibilities of this class includes
-// - setting up dimensions (might be replaced by autoconstraint / snapkit)
-// - setting up delegates for side pane and grid
+// - setting up constraints between child views
+// - setting up delegates for side pane, grid, animation designer
 // - initializing default styles for some views
 class ViewController: UIViewController {
     internal var topBarController: TopBarController!
@@ -142,6 +142,7 @@ class ViewController: UIViewController {
         }
     }
 
+    // Sets up the bottom panel for editing sample settings
     private func setUpSampleSetting() {
         sampleSettingController = SampleSettingViewController()
         sampleSettingController.view.backgroundColor = Config.SecondaryBackgroundColor
@@ -159,6 +160,7 @@ class ViewController: UIViewController {
         }
     }
 
+    // Sets up the bottom panel for designing animations
     private func setUpAnimationDesigner() {
         animationDesignController = AnimationDesignerController()
         animationDesignController.view.backgroundColor = Config.SecondaryBackgroundColor
@@ -190,6 +192,7 @@ class ViewController: UIViewController {
         AnimationEngine.start()
     }
 
+    // Helper function to update constraints to show sample setting panel
     internal func showSampleSettingPane() {
         sampleSettingController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
@@ -199,6 +202,7 @@ class ViewController: UIViewController {
         }
     }
 
+    // Helper function to update constraints to show animation design panel
     internal func showAnimationDesignPane() {
         sampleSettingController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(0)
@@ -208,6 +212,7 @@ class ViewController: UIViewController {
         }
     }
 
+    // Helper function to update constraints to hide bottom panels
     internal func hideBottomPane() {
         sampleSettingController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(0)
@@ -265,6 +270,7 @@ extension ViewController: SessionSelectorDelegate {
     }
 }
 
+// Called when an animation is selected from the animation table
 extension ViewController: AnimationTableDelegate {
     func animationTable(_ tableView: UITableView, didSelect animation: String) {
         gridController.animationTable(tableView, didSelect: animation)
@@ -277,6 +283,7 @@ extension ViewController: AnimationTableDelegate {
     }
 }
 
+// Called when a tab is selected in the side pane
 extension ViewController: SidePaneDelegate {
     func sidePaneSelectSample() {
         showSampleSettingPane()
@@ -285,6 +292,7 @@ extension ViewController: SidePaneDelegate {
     }
 }
 
+// Called when an event happens on the session table
 extension ViewController: SessionTableDelegate {
     func sessionTable(_: UITableView, didSelect sessionName: String) {
         guard let loadedSession = dataManager.loadSession(sessionName) else {
@@ -329,6 +337,7 @@ extension ViewController: SessionTableDelegate {
     }
 }
 
+// Called when a pad in the grid is tapped
 extension ViewController: PadDelegate {
     func padTapped(indexPath: IndexPath) {
         sidePaneController.padTapped(indexPath: indexPath)
@@ -348,6 +357,7 @@ extension ViewController: PadDelegate {
 
 }
 
+// Called by sync manager to initiate syncing to dropbox
 extension ViewController: SyncDelegate {
     // Loads the dropbox authentication
     func loadDropboxWebView() {
@@ -359,6 +369,7 @@ extension ViewController: SyncDelegate {
     }
 }
 
+// Called when the bpm for a sample is changed
 extension ViewController: BPMSelectorDelegate {
     func bpm(selected bpm: Int) {
         currentSession.setSessionBPM(bpm: bpm)
