@@ -41,7 +41,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentSession = (loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM))
+
+        ensureSessionLoaded()
+        setUpUI()
+        assignDelegates()
+    }
+
+    // Many things rely on a session being loaded, so make sure we have one
+    private func ensureSessionLoaded() {
+        currentSession = (loadFirstSessionIfExists() ?? Session(bpm: Config.defaultBPM))
+    }
+
+    // Sets up all the UI components needed for the app
+    private func setUpUI() {
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
@@ -49,9 +61,10 @@ class ViewController: UIViewController {
         setUpAnimationDesigner()
         setUpStyles()
         setUpAnimation()
+    }
 
-        // need assign delegates after everything is initialized
-        gridController.padDelegate = self
+    private func assignDelegates() {
+        // need assign these delegates after everything is initialized
         animationDesignController.delegate = gridController
         gridController.animationDesignerDelegate = sidePaneController
     }
@@ -91,13 +104,13 @@ class ViewController: UIViewController {
 
     // Saves the current session
     func saveCurrentSession() {
-        currentSession = dataManager.saveSession(
-            currentSession.getSessionName() ?? Config.DefaultSessionName, currentSession)
+        let sessionName = currentSession.getSessionName() ?? Config.DefaultSessionName
+        currentSession = dataManager.saveSession(sessionName, currentSession)
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
     }
 
     // Tries to load a session, if no sessions exists then returns nil
-    private func loadFirstSessionIfExsists() -> Session? {
+    private func loadFirstSessionIfExists() -> Session? {
         func loadTillSuccessOrEnd(names: [String]) -> Session? {
             guard let name = names.first else {
                 return nil
@@ -116,6 +129,7 @@ class ViewController: UIViewController {
     // Sets up the main grid for play/edit
     private func setUpGrid() {
         gridController = GridController(frame: CGRect.zero, session: currentSession)
+        gridController.padDelegate = self
         addChildViewController(gridController)
         view.addSubview(gridController.view)
         gridController.didMove(toParentViewController: self)
