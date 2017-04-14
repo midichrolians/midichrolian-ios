@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Colour: String {
+enum Colour: String, JSONable {
     case violet
     case indigo
     case blue
@@ -17,8 +17,8 @@ enum Colour: String {
     case orange
     case red
 
-    init(colourName: String) {
-        guard let colour = Colour(rawValue: colourName) else {
+    init(fromJSON: String) {
+        guard let colour = Colour(rawValue: fromJSON) else {
             self = Colour.blue
             return
         }
@@ -68,7 +68,7 @@ enum Colour: String {
         return imageToBeReturned
     }
 
-    func getJSON() -> String {
+    func getJSON() -> String? {
         return rawValue
     }
 

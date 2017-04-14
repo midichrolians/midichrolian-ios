@@ -14,6 +14,7 @@
 		33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33120E241E6FD30A007E7717 /* Assets.xcassets */; };
 		33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */; };
 		33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */; };
+		3312CAC51EA0D8BF00C7A65A /* JSONable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3312CAC41EA0D8BF00C7A65A /* JSONable.swift */; };
 		33210A011E950132003E2DBF /* Spark in Resources */ = {isa = PBXBuildFile; fileRef = 33210A001E950132003E2DBF /* Spark */; };
 		33210A031E95041A003E2DBF /* Rainbow in Resources */ = {isa = PBXBuildFile; fileRef = 33210A021E95041A003E2DBF /* Rainbow */; };
 		33210A051E95054C003E2DBF /* Spread in Resources */ = {isa = PBXBuildFile; fileRef = 33210A041E95054C003E2DBF /* Spread */; };
@@ -381,6 +382,7 @@
 		33120E2E1E6FD30A007E7717 /* MIDIchloriansUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIDIchloriansUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIchloriansUITests.swift; sourceTree = "<group>"; };
 		33120E341E6FD30A007E7717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3312CAC41EA0D8BF00C7A65A /* JSONable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONable.swift; sourceTree = "<group>"; };
 		33210A001E950132003E2DBF /* Spark */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Spark; path = MIDIchlorians/PredefinedAnimationTypes/Spark; sourceTree = "<group>"; };
 		33210A021E95041A003E2DBF /* Rainbow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Rainbow; path = MIDIchlorians/PredefinedAnimationTypes/Rainbow; sourceTree = "<group>"; };
 		33210A041E95054C003E2DBF /* Spread */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Spread; path = MIDIchlorians/PredefinedAnimationTypes/Spread; sourceTree = "<group>"; };
@@ -898,6 +900,7 @@
 				33CC26C61E891E840077F0ED /* AnimationManager.swift */,
 				334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */,
 				338275381E924FA500C6B3B7 /* BeatFrequency.swift */,
+				3312CAC41EA0D8BF00C7A65A /* JSONable.swift */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -1934,6 +1937,7 @@
 				800362FA1E8F6EF3007813EE /* AudioTrackPlayer.swift in Sources */,
 				33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */,
 				E9C671301E94B7B100777846 /* RemoveButton.swift in Sources */,
+				3312CAC51EA0D8BF00C7A65A /* JSONable.swift in Sources */,
 				80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */,
 				334970C71E72B83D009C78DF /* AudioManager.swift in Sources */,
 				F31DB0AC1E9B093C005DB81A /* SyncDelegate.swift in Sources */,

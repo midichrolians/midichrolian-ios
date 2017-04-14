@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AnimationSequence {
+class AnimationSequence: JSONable {
     private(set) var animationBitsArray: [[AnimationBit]?]
     private var tickCounter: Int
     var toBeRemoved: Bool
@@ -27,6 +27,48 @@ class AnimationSequence {
         toBeRemoved = false
         name = nil
         frameCount = 0
+    }
+
+    convenience required init?(fromJSON: String) {
+        guard let data = fromJSON.data(using: .utf8) else {
+            return nil
+        }
+
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any?] else {
+            return nil
+        }
+        guard let array = dictionary[Config.animationSequenceArrayKey] as? [[String]?] else {
+            return nil
+        }
+        guard let name = dictionary[Config.animationSequenceNameKey] as? String else {
+            return nil
+        }
+        guard let frequencyPerBeat = dictionary[Config.animationSequenceFrequencyKey] as? String else {
+            return nil
+        }
+
+        self.init()
+        var animationBitsArrayForSequence = [[AnimationBit]]()
+
+        for stringArray in array {
+            var arrayForTick = [AnimationBit]()
+            guard let arrayOfStrings = stringArray else {
+                animationBitsArrayForSequence.append(arrayForTick)
+                continue
+            }
+
+            for string in arrayOfStrings {
+                guard let animationBit = AnimationBit(fromJSON: string) else {
+                    continue
+                }
+                arrayForTick.append(animationBit)
+            }
+            animationBitsArrayForSequence.append(arrayForTick)
+        }
+
+        self.animationBitsArray = animationBitsArrayForSequence
+        self.name = name
+        self.frequencyPerBeat = BeatFrequency(name: frequencyPerBeat)
     }
 
     func addAnimationBit(atTick: Int, animationBit: AnimationBit) {
@@ -84,7 +126,7 @@ class AnimationSequence {
         return array
     }
 
-    func getJSONforAnimationSequence() -> String? {
+    func getJSON() -> String? {
         var arrayOfStrings = [[String]?]()
 
         for animationBitArray in self.animationBitsArray {
@@ -118,47 +160,4 @@ class AnimationSequence {
         return String(data: jsonData, encoding: .utf8)
     }
 
-    static func getAnimationSequenceFromJSON(fromJSON: String) -> AnimationSequence? {
-        guard let data = fromJSON.data(using: .utf8) else {
-            return nil
-        }
-
-        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any?] else {
-            return nil
-        }
-        guard let array = dictionary[Config.animationSequenceArrayKey] as? [[String]?] else {
-            return nil
-        }
-        guard let name = dictionary[Config.animationSequenceNameKey] as? String else {
-            return nil
-        }
-        guard let frequencyPerBeat = dictionary[Config.animationSequenceFrequencyKey] as? String else {
-            return nil
-        }
-
-        let animationSequence = AnimationSequence()
-        var animationBitsArrayForSequence = [[AnimationBit]]()
-
-        for stringArray in array {
-            var arrayForTick = [AnimationBit]()
-            guard let arrayOfStrings = stringArray else {
-                animationBitsArrayForSequence.append(arrayForTick)
-                continue
-            }
-
-            for string in arrayOfStrings {
-                guard let animationBit = AnimationBit.getAnimationBitFromJSON(fromJSON: string) else {
-                    continue
-                }
-                arrayForTick.append(animationBit)
-            }
-            animationBitsArrayForSequence.append(arrayForTick)
-        }
-
-        animationSequence.animationBitsArray = animationBitsArrayForSequence
-        animationSequence.name = name
-        animationSequence.frequencyPerBeat = BeatFrequency(name: frequencyPerBeat)
-
-        return animationSequence
-    }
 }
