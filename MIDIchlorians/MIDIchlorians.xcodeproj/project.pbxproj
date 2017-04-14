@@ -294,6 +294,8 @@
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
 		E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAA1E860CDB00B7ADF9 /* GridController.swift */; };
 		E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */; };
+		E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */; };
+		E920F4271EA11BED00D5B165 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E920F4261EA11BED00D5B165 /* BaseTestCase.swift */; };
 		E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */; };
 		E92D6F2D1E953D7100E815F1 /* ColourCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */; };
 		E92D6F2F1E953DA000E815F1 /* TimelineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */; };
@@ -664,6 +666,8 @@
 		E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E9158EAA1E860CDB00B7ADF9 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
 		E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewController.swift; sourceTree = "<group>"; };
+		E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarTestCase.swift; sourceTree = "<group>"; };
+		E920F4261EA11BED00D5B165 /* BaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewController.swift; sourceTree = "<group>"; };
 		E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourCollectionViewController.swift; sourceTree = "<group>"; };
 		E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDelegate.swift; sourceTree = "<group>"; };
@@ -822,6 +826,8 @@
 			isa = PBXGroup;
 			children = (
 				33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */,
+				E920F4261EA11BED00D5B165 /* BaseTestCase.swift */,
+				E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */,
 				33120E341E6FD30A007E7717 /* Info.plist */,
 			);
 			path = MIDIchloriansUITests;
@@ -1983,6 +1989,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */,
+				E920F4271EA11BED00D5B165 /* BaseTestCase.swift in Sources */,
+				E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
