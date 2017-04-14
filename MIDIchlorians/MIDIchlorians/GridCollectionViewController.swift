@@ -16,6 +16,7 @@ protocol GridDisplayDelegate: class {
 // Provides the data source and layout information for the underying GridCollectionView
 // Events that happen on the collection view will be sent to the parent GridController, not this view controller.
 class GridCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    private let reuseIdentifier = Config.GridCollectionViewCellIdentifier
     weak var gridDisplayDelegate: GridDisplayDelegate?
     var mode: Mode {
         return gridDisplayDelegate?.mode ?? .playing
@@ -45,9 +46,8 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Config.GridCollectionViewCellIdentifier,
-                for: indexPath as IndexPath) as? GridCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+                as? GridCollectionViewCell else {
                     return GridCollectionViewCell()
             }
 

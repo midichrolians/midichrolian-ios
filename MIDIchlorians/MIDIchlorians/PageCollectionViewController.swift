@@ -22,6 +22,7 @@ class PageCollectionViewController: UICollectionViewController, UICollectionView
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView!.backgroundColor = Config.BackgroundColor
     }
 
     // MARK: UICollectionViewDataSource
