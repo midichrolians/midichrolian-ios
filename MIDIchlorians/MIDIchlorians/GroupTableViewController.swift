@@ -12,6 +12,8 @@ protocol GroupTableDelegate: class {
     func group(selected: String)
 }
 
+// Manages the groups (of samples) that the user has
+// A user might have a lot of samples, and this view allows users to browse all samples by groups
 class GroupTableViewController: UITableViewController {
     var groups = DataManager.instance.getAllGroups().sorted()
     private let reuseIdentifier = Config.GroupTableReuseIdentifier

@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import SwiftyDropbox
 
+// Manages the ui for sync (upload and download) to dropbox
 class SyncViewController: UIViewController {
     private var loginout: UIButton = UIButton(type: .system)
     private var upload: UIButton = UIButton(type: .system)

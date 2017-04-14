@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Conform to this protocol to be notified when the sample setting changes
 protocol SampleSettingDelegate: class {
+    // Called when sample setting changes
     func sampleSettingMode(selected: SampleSettingMode)
 }

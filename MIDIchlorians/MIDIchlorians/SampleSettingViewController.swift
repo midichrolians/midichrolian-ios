@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+// Manages the control to configure a sample assigned to a pad.
+// Supports one-off and loop.
 class SampleSettingViewController: UIViewController {
     private var sampleSettingControl = UISegmentedControl()
     weak var delegate: SampleSettingDelegate?

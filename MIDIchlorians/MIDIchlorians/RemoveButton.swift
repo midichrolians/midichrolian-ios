@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+// A remove button around pad with sample/animation assigned
 class RemoveButton: SelectedPadTrackingView {
     let removeImage = UIImageView(image: UIImage(named: Config.RemoveButtonIcon))
 

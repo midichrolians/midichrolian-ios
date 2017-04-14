@@ -11,6 +11,10 @@ import UIKit
 
 import SnapKit
 
+// Used for creating custom animation types.
+// Supports creating up to 8 frames of animations,
+// where in each frame, every pad in the grid can be configured with 1 of 8 colours.
+// The created animation can also be named and saved.
 class AnimationDesignerController: UIViewController {
     weak var delegate: AnimationDesignerDelegate?
     private let offset: CGFloat = Config.AnimationDesignItemOffset
@@ -116,6 +120,7 @@ class AnimationDesignerController: UIViewController {
         }
     }
 
+    // Called when the animation type changes between relative and absolute
     func onAnimatedTypeChange() {
         guard let selectedAnimatedTypeName = self.animationTypeSegmentedControl.titleForSegment(
             at: self.animationTypeSegmentedControl.selectedSegmentIndex

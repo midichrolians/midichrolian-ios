@@ -319,6 +319,10 @@ struct Config {
     static let AnimationDesignItemOffset: CGFloat = 20
     static let AnimationDesignerPaneHeightOffset: CGFloat = -200
     static let TimelineHeight: CGFloat = 48
+    static let TimelineNumSections = 1
+    static let TimelineBorderWidth: CGFloat = 5.0
+    static let TimelineBorderColour = UIColor.gray.cgColor
+    static let TimelineCornerRadiusRatio: CGFloat = 1 / 2.0
     static let ColourPickerHeight: CGFloat = 60
     static let TimelineTopOffset: CGFloat = 10
     static let ColourPickerTopOffset: CGFloat = 10

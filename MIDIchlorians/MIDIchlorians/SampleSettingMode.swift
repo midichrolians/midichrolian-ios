@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Samples can be in one of two modes, once-off or loop.
+// Once off samples are played once when tapped, loop samples will be looped until user tops it.
 enum SampleSettingMode: String {
     case once  = "Once-off"
     case loop = "Loop"

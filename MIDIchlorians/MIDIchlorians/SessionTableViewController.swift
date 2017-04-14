@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Manages a list of sessions that the user has
 class SessionTableViewController: UITableViewController {
     weak var delegate: SessionTableDelegate?
 

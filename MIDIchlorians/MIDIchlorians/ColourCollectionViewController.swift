@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Manages the colour palette from which a user can select colours to build their animations
 class ColourCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     weak var colourDelegate: ColourPickerDelegate?
 
