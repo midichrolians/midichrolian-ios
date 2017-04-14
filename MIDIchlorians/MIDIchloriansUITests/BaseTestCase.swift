@@ -47,6 +47,6 @@ class BaseTestCase: XCTestCase {
     }
 
     func dismissPopover() {
-        app.windows.element(boundBy: 0).tap()
+        app.otherElements["PopoverDismissRegion"].tap()
     }
 }
