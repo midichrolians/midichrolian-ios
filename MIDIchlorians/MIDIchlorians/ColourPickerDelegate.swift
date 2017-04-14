@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Conform to this protocol to be informed when actions happen on the colour picker
+// and to manage the source of colours for the picker.
 protocol ColourPickerDelegate: class {
     // List of colours the picker should show
     var colours: [Colour] { get }

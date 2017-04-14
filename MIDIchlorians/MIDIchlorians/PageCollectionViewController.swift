@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Manages the page selectors to change between pages of grid
 class PageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var pages: Int = 0
     weak var delegate: PageDelegate?

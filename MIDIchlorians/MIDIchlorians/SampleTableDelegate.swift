@@ -11,5 +11,6 @@ import UIKit
 
 // Adopt this protocol to react to selection of a sample in SampleTableViewController.
 protocol SampleTableDelegate: class {
+    // A sample is selected
     func sampleTable(_: UITableView, didSelect sample: String)
 }

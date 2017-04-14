@@ -11,6 +11,8 @@ import UIKit
 import SnapKit
 import SwiftyDropbox
 
+// The top bar for the entire app.
+// Handles the controls for selecting session, recording and playing, tutorial, sync.
 class TopBarController: UIViewController {
     private var logoPic = UIImageView()
     private var logoImage = UIImage(named: "logo.png")!

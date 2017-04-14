@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Conform to this protocol to be called when a page is selected
 protocol PageDelegate: class {
     var currentPage: Int { get }
     func page(selected: Int)

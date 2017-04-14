@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+// Manages the control that displays the current BPM for the session, and allows a user to change it.
 class BPMViewController: UIViewController {
     var bpmPicker = UIPickerView()
     var selectedBPM: Int = Config.TopNavBPMDefaultBPM

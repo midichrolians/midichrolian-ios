@@ -8,8 +8,12 @@
 
 import Foundation
 
+// The different modes the app can be in
 enum Mode {
+    // Playing/Performance mode, all editing panels should be hidden
     case playing
+    // Editing mode, users can select pads to assign samples and animations
     case editing
+    // Animation designing mode, users can use the timeline and palette to create custom animations
     case design
 }

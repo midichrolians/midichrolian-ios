@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Conform to this protocol to be informed when a pad is tapped
 protocol PadDelegate: class {
     // Called everytime a pad is tapped
     func padTapped(indexPath: IndexPath)

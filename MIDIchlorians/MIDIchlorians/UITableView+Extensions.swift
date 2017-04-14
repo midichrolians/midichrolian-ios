@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UITableView {
+    // Deselects all rows that are selected
     func deselectAll(animated: Bool = true) {
         self.indexPathsForSelectedRows.flatMap {
             $0.forEach { self.deselectRow(at: $0, animated: animated) }

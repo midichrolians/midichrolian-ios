@@ -8,9 +8,11 @@
 
 import Foundation
 
+// Conform to this protocol to manage the actions and data for the timeline
 protocol TimelineDelegate: class {
     // Gets informations about which frames have animation bit set
     var frame: [Bool] { get }
+
     // IndexPath of the currently selected frame
     var selectedFrame: IndexPath { get }
 
