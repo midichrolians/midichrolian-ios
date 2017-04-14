@@ -8,6 +8,12 @@
 
 import UIKit
 
+/// AnimationType is a named AnimationSequence which gets persisted and reused.
+/// Unlike AnimationSequence, it is not tied to a pad and can be assigned to any pad
+
+/// AnimationType allows for the designing of animation relative to a particular pad,
+/// identified by the anchor point, and then reuse it relative to another pad
+
 class AnimationType: JSONable {
     var name: String
     var mode: AnimationTypeCreationMode

@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// AnimationBit is the most fundamental block of animation, and is identified
+/// by its row, column and colour. It represents a single pad, lit with a particular colour
+
 struct AnimationBit: Equatable, JSONable {
     var colour: Colour
     var row: Int

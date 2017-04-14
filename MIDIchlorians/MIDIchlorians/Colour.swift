@@ -8,6 +8,10 @@
 
 import UIKit
 
+/// This enum represents the set of colours currently supported by the app
+/// and is limited only by the number of image files created to give the effect of
+/// physical buttons underlaid with LED lights
+
 enum Colour: String, JSONable {
     case violet
     case indigo

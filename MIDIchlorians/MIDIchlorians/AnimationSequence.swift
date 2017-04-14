@@ -8,11 +8,23 @@
 
 import Foundation
 
-class AnimationSequence: JSONable {
+/// AnimationSequence represents an entire animation which is to be played when a pad is pressed
+/// The animation is defined tick-by-tick, where each tick is represented by an
+/// array of AnimationBits.
+
+/// It conforms to the IteratorProtocol since it returns the array of AnimationBits
+/// for the next tick
+
+class AnimationSequence: JSONable, IteratorProtocol {
     private(set) var animationBitsArray: [[AnimationBit]?]
     private var tickCounter: Int
     var toBeRemoved: Bool
     var name: String?
+
+    // represents how many ticks the AnimationSequence progresses through in one beat
+    // BeatFrequency.one means each tick of animation will last an entire beat
+    // BeatFrequency.two means each tick of animation will last half the duration of a beat
+    // This allows different animations to progress at different speeds
     var frequencyPerBeat: BeatFrequency = BeatFrequency.eight
     private var frameCount: Int
 
@@ -71,6 +83,7 @@ class AnimationSequence: JSONable {
         self.frequencyPerBeat = BeatFrequency(name: frequencyPerBeat)
     }
 
+    // adds an AnimationBit to the frame at a particular tick
     func addAnimationBit(atTick: Int, animationBit: AnimationBit) {
         if animationBitsArray.count <= atTick {
             for _ in animationBitsArray.count...atTick {
@@ -85,6 +98,7 @@ class AnimationSequence: JSONable {
         animationBitsArray[atTick] = array
     }
 
+    // removes a particular AnimationBit from the frame at a particular tick
     func removeAnimationBit(atTick: Int, animationBit: AnimationBit) {
         guard var animationBits = animationBitsArray[atTick] else {
             return
@@ -96,6 +110,7 @@ class AnimationSequence: JSONable {
         animationBitsArray[atTick] = animationBits
     }
 
+    // returns the array of AnimationBits at the next tick, or nil, if the sequence is over
     func next() -> [AnimationBit]? {
         if tickCounter >= animationBitsArray.count {
             tickCounter = 0
@@ -110,6 +125,10 @@ class AnimationSequence: JSONable {
         return array
     }
 
+    // returns the next frame as required by the AnimationEngine.
+    // This method exists because one tick in an AnimationSequence need not correspond
+    // to one frame as rendered by the AnimationEngine. One tick could correspond to one frame,
+    // two frames, four frames and so on, depending on the frequency per beat
     func nextFrame() -> [AnimationBit]? {
         if tickCounter >= animationBitsArray.count {
             tickCounter = 0
