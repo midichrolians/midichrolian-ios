@@ -34,6 +34,7 @@ class SampleTableViewController: UITableViewController {
         super.init(style: style)
 
         tableView.separatorStyle = .none
+        tableView.accessibilityLabel = "Sample Table"
 
         removeAlertConfirmAction = UIAlertAction(title: Config.SampleRemoveConfirmTitle,
                                                  style: .destructive,

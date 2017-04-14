@@ -119,6 +119,7 @@ class GridController: UIViewController {
         gridCollectionView.register(GridCollectionViewCell.self,
                                     forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
         gridCollectionView.padDelegate = self
+        gridCollectionView.accessibilityLabel = "Grid"
         view.addSubview(grid.view)
 
         // set up page collection view

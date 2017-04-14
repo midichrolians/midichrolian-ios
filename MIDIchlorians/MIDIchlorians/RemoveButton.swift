@@ -17,6 +17,7 @@ class RemoveButton: SelectedPadTrackingView {
         super.init(frame: frame)
         isOpaque = false
         self.addSubview(removeImage)
+        removeImage.accessibilityLabel = "Remove Pad"
         removeImage.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }

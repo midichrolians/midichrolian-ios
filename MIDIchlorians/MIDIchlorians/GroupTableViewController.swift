@@ -34,6 +34,7 @@ class GroupTableViewController: UITableViewController {
                                   image: UIImage(named: Config.SidePaneTabBarSampleIcon),
                                   selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
         tableView.separatorStyle = .none
+        tableView.accessibilityLabel = "Group Table"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add, target: self, action: #selector(addSample))
 
