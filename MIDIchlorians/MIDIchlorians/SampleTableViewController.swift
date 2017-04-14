@@ -218,7 +218,7 @@ class SampleTableViewController: UITableViewController {
         guard let group = group else {
             return
         }
-        sampleList = DataManager.instance.getSamplesForGroup(group: group)
+        sampleList = DataManager.instance.getSamplesForGroup(group: group).sorted()
         tableView.reloadData()
     }
 
