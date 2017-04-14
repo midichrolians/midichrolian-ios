@@ -1,5 +1,5 @@
 //
-//  AboutUsViewController.swift
+//  TutorialViewController.swift
 //  MIDIchlorians
 //
 //  Created by Zhi An Ng on 7/4/17.
@@ -10,7 +10,8 @@ import UIKit
 import SnapKit
 import ImageSlideshow
 
-class AboutUsViewController: UIViewController {
+// Shows the tutorial
+class TutorialViewController: UIViewController {
     var closeButton = UIButton(type: .system)
     let images = Config.TutorialImages
     var currentIndex = 0

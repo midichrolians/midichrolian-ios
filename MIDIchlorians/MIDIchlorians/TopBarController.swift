@@ -186,7 +186,7 @@ class TopBarController: UIViewController {
     }
 
     func logoTapped() {
-        let vc = AboutUsViewController()
+        let vc = TutorialViewController()
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
     }
