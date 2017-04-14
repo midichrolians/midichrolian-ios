@@ -177,11 +177,11 @@ class AudioManager {
         if durNum < 0 {
             return ""
         }
-        let minutes:Int = Int(durNum) % 3600 / 60
-        let seconds:Int = (Int(durNum) % 3600) % 60
+        let minutes: Int = Int(durNum) % 3600 / 60
+        let seconds: Int = (Int(durNum) % 3600) % 60
         return "\(minutes) min \(seconds) seconds"
     }
-    
+
     //ideally should stop a looping track
     func stop(audioDir: String) {
         guard let audioTimer = loopDict[audioDir] else {

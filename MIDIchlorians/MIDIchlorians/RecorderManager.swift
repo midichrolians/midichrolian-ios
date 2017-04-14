@@ -21,7 +21,7 @@ class RecorderManager {
     private var playClock: TimeInterval = 0
     private var playingStarted = false
     private var playTimer: Timer?
-    var delegate: RecordPlaybackDelegate?
+    weak var delegate: RecordPlaybackDelegate?
 
     init() {
         playBack = PlayBackRetriever(timeIndexArr: [(TimeInterval, (Int, IndexPath))]())
