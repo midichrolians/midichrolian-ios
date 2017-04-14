@@ -8,6 +8,10 @@
 
 import UIKit
 
+// Displays a timeline of animation frames.
+// The timeline is used when designing custom animations.
+// It displays up to 8 selectable frames, and the user can design a different configuration
+// of pad to animation colours for each frame.
 class TimelineCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     weak var timelineDelegate: TimelineDelegate?
 
@@ -51,9 +55,9 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
             cell.backgroundColor = UIColor.gray
         }
 
-        cell.layer.borderWidth = 5.0
-        cell.layer.borderColor = UIColor.gray.cgColor
-        cell.layer.cornerRadius = cell.frame.width / 2
+        cell.layer.borderWidth = Config.TimelineBorderWidth
+        cell.layer.borderColor = Config.TimelineBorderColour
+        cell.layer.cornerRadius = cell.frame.width * Config.TimelineCornerRadiusRatio
 
         return cell
     }
