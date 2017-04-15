@@ -28,7 +28,7 @@ class AnimationTableViewController: UITableViewController {
     private var removeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
     private var removeAlertConfirmAction: UIAlertAction!
     private var removeAlertCancelAction: UIAlertAction!
-    private var textSync: AlertActionTextFieldSync!
+    private var actionTextSync: AlertActionTextFieldSync!
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
@@ -65,7 +65,6 @@ class AnimationTableViewController: UITableViewController {
                                           handler: cancelActionDone)
         editAlert.addAction(alertCancelAction)
         editAlert.addAction(alertSaveAction)
-//        editAlert.addTextField(configurationHandler: { $0.delegate = self })
 
         // Set up alert shown when removing a row
         removeAlertConfirmAction = UIAlertAction(title: Config.AnimationRemoveConfirmTitle,
@@ -76,7 +75,7 @@ class AnimationTableViewController: UITableViewController {
                                                 handler: cancelActionDone)
         removeAlert.addAction(removeAlertConfirmAction)
         removeAlert.addAction(removeAlertCancelAction)
-        textSync = AlertActionTextFieldSync(alertAction: alertSaveAction)
+        actionTextSync = AlertActionTextFieldSync(alertAction: alertSaveAction)
     }
 
     private func setUpEditActions() {
