@@ -314,6 +314,7 @@
 		E95EBC361E9B54FB00E66D1C /* BPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */; };
 		E95EBC381E9B5B5700E66D1C /* BPMSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
+		E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
 		E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */; };
 		E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301A1E88EBB300801A9F /* PadDelegate.swift */; };
@@ -684,6 +685,7 @@
 		E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMViewController.swift; sourceTree = "<group>"; };
 		E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorDelegate.swift; sourceTree = "<group>"; };
+		E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GridController+PadDelegate.swift"; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
@@ -1216,6 +1218,7 @@
 			isa = PBXGroup;
 			children = (
 				E9158EAA1E860CDB00B7ADF9 /* GridController.swift */,
+				E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */,
 				E9E780731E955B8F00F5CC65 /* PageDelegate.swift */,
 				E9AD301A1E88EBB300801A9F /* PadDelegate.swift */,
 				E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */,
@@ -1973,6 +1976,7 @@
 				E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */,
 				80A050C01E9926FD00091411 /* GSAudio.swift in Sources */,
 				E9EC9A3C1E94AEE800C89118 /* PadSelection.swift in Sources */,
+				E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
 				33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */,
 			);

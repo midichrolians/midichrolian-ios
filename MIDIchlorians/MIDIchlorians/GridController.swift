@@ -15,7 +15,6 @@ class GridController: UIViewController {
     internal var selectedFrame: Int = 0
     var mode: Mode = .playing {
         didSet {
-            // when entering playing, reset the selected index path
             if mode == .playing {
                 padSelection.position(at: nil)
                 removeButton.position(at: nil)
@@ -23,10 +22,6 @@ class GridController: UIViewController {
             grid.collectionView?.reloadData()
         }
     }
-    private var padSelection = PadSelection()
-    private var removeButton = RemoveButton()
-    weak var padDelegate: PadDelegate?
-    weak var animationDesignerDelegate: AnimationDesignerDelegate?
 
     internal var currentSession: Session! {
         didSet {
@@ -43,7 +38,6 @@ class GridController: UIViewController {
             }
         }
     }
-    // Keep the selectedIndexPath of the view controller in sync
     internal var selectedIndexPath: IndexPath? {
         didSet {
             if mode == .editing {
@@ -69,13 +63,17 @@ class GridController: UIViewController {
         }
         return getPad(at: indexPath)
     }
+
     internal var grid: GridCollectionViewController! =
         GridCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     internal var page: PageCollectionViewController! =
         PageCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-
     internal var gridCollectionView =
         GridCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private var padSelection = PadSelection()
+    private var removeButton = RemoveButton()
+    weak var padDelegate: PadDelegate?
+    weak var animationDesignerDelegate: AnimationDesignerDelegate?
 
     internal var colour: Colour?
     internal var animationSequence = AnimationSequence()
@@ -235,109 +233,6 @@ class GridController: UIViewController {
 extension GridController: GridDisplayDelegate {
     var frame: Int {
         return selectedFrame
-    }
-}
-
-extension GridController: PadDelegate {
-    func padTapped(indexPath: IndexPath) {
-        switch mode {
-        case .design:
-            padInDesign(indexPath: indexPath)
-        case .editing:
-            // if in editing mode, selected an already selected pad should preview tjhe pad
-            if selectedIndexPath != indexPath {
-                padInEdit(indexPath: indexPath)
-            } else {
-                fallthrough
-            }
-        case .playing:
-            padInPlay(indexPath: indexPath)
-        }
-    }
-
-    private func padInEdit(indexPath: IndexPath) {
-        // if in editing mode, highlight the tapped grid
-        let pad = getPad(at: indexPath)
-        selectedIndexPath = indexPath
-        padDelegate?.pad(selected: pad)
-    }
-
-    private func padInDesign(indexPath: IndexPath) {
-        let pad = getPad(at: indexPath)
-
-        if let colour = self.colour {
-            // in design mode and we have a colour selected, so change the colour
-            // temp heck to change colour, since Pad doesn't have a colour
-            if let existingColour = grid.colours[selectedFrame][pad] {
-                self.animationSequence.removeAnimationBit(
-                    atTick: selectedFrame,
-                    animationBit: AnimationBit(
-                        colour: existingColour,
-                        row: indexPath.section,
-                        column: indexPath.item
-                    )
-                )
-            }
-            grid.colours[selectedFrame][pad] = colour
-            self.animationSequence.addAnimationBit(
-                atTick: selectedFrame,
-                animationBit: AnimationBit(
-                    colour: colour,
-                    row: indexPath.section,
-                    column: indexPath.item
-                )
-            )
-            grid.collectionView?.reloadItems(at: [indexPath])
-        } else {
-            guard let colourToBeRemoved = grid.colours[selectedFrame][pad] else {
-                return
-            }
-            self.animationSequence.removeAnimationBit(
-                atTick: selectedFrame,
-                animationBit: AnimationBit(
-                    colour: colourToBeRemoved,
-                    row: indexPath.section,
-                    column: indexPath.item
-                )
-            )
-            grid.colours[selectedFrame][pad] = nil
-            grid.collectionView?.reloadItems(at: [indexPath])
-        }
-        padDelegate?.pad(animationUpdated: animationSequence)
-        // prevent the pad from being played in design mode
-    }
-
-    private func padInPlay(indexPath: IndexPath) {
-        let pad = getPad(at: indexPath)
-        padDelegate?.pad(played: pad)
-
-        if let animationSequence = pad.getAnimation() {
-            AnimationEngine.register(animationSequence: animationSequence)
-        }
-
-        if let audioFile = pad.getAudioFile() {
-            _ = AudioManager.instance.play(audioDir: audioFile, bpm: pad.getBPM())
-            // first we check if this pad is looping, we do that by checking bpm
-            let isLooping = pad.getBPM() != nil
-            // check if it is playing, AudioManager would have played/stopped a looping track,
-            // so checking the state here will allow us to decide if we want to show or hide the indicator
-            if isLooping { // we only care that a pad has a looping track
-                // if it is playing we want the tap to stop the audio playing
-                let isPlaying = AudioManager.instance.isTrackPlaying(audioDir: audioFile)
-                if isPlaying {
-                    // the pad is now playing, so add the loop indicator
-                    grid.looping.insert(pad)
-                    grid.collectionView?.reloadItems(at: [indexPath])
-                } else {
-                    grid.looping.remove(pad)
-                    grid.collectionView?.reloadItems(at: [indexPath])
-                }
-            }
-        }
-
-        if RecorderManager.instance.isRecording {
-            RecorderManager.instance.recordPad(forPage: currentPage, forIndex: indexPath)
-        }
     }
 }
 
