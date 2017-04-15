@@ -295,6 +295,7 @@ struct Config {
     static let SampleRemoveTitleFormat = "Remove %@?"
     static let SampleRemoveConfirmTitle = "Confirm"
     static let SampleRemoveCancelTitle = "Cancel"
+    static let SamplePlayButtonIcon = "play.png"
 
     // Animation table
     static let AnimationTableReuseIdentifier = "animationCell"
