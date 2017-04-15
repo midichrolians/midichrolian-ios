@@ -17,10 +17,10 @@ class GridCollectionViewCell: UICollectionViewCell {
 
     var rowNumber = 0
     var columnNumber = 0
-    var sampleIndicator: UIImageView!
-    var animationIndicator: UIImageView!
-    var imageView: UIImageView!
-    private var playLoopIndicator: UIImageView!
+    var sampleIndicator = UIImageView()
+    var animationIndicator = UIImageView()
+    var imageView: UIImageView = UIImageView()
+    private var playLoopIndicator = UIImageView()
     var looping = false {
         didSet {
             // if looping, animate blinking
@@ -49,24 +49,22 @@ class GridCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setUp()
+        buildViewHierarchy()
+        setConstraints()
+    }
 
-        imageView = UIImageView(frame: CGRect.zero)
-        contentView.addSubview(imageView)
-
-        sampleIndicator = UIImageView()
-        contentView.addSubview(sampleIndicator)
-
-        animationIndicator = UIImageView()
-        contentView.addSubview(animationIndicator)
-
-        playLoopIndicator = UIImageView()
+    func setUp() {
         playLoopIndicator.image = playLoopIndicatorImage
         playLoopIndicator.alpha = 0
-        contentView.addSubview(playLoopIndicator)
-
         layer.cornerRadius = frame.width * Config.PadCornerRadiusRatio
+    }
 
-        setConstraints()
+    func buildViewHierarchy() {
+        contentView.addSubview(imageView)
+        contentView.addSubview(sampleIndicator)
+        contentView.addSubview(playLoopIndicator)
+        contentView.addSubview(animationIndicator)
     }
 
     func setConstraints() {
