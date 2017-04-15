@@ -284,6 +284,8 @@ struct Config {
 
     // Group table
     static let GroupTableReuseIdentifier = "group"
+    static let GroupNameOkayTitle = "Okay"
+    static let GroupNameCancelTitle = "Cancel"
 
     // Sample table
     static let SampleTableCellHeight: CGFloat = 60
