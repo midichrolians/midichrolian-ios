@@ -23,6 +23,7 @@ class RemoveButton: SelectedPadTrackingView {
 
     func setUp() {
         isOpaque = false
+        removeImage.accessibilityLabel = "Remove Pad"
     }
 
     func buildViewHierarchy() {

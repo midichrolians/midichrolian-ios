@@ -117,6 +117,7 @@ class GridController: UIViewController {
                                     forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
         gridCollectionView.padDelegate = self
         gridCollectionView.backgroundColor = UIColor.clear
+        gridCollectionView.accessibilityLabel = "Grid"
 
         grid.padGrid = currentSession.getGrid(page: currentPage)
         grid.gridDisplayDelegate = self

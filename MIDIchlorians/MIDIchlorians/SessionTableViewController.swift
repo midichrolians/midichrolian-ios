@@ -51,6 +51,7 @@ class SessionTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.newSessionButton
         self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
+        self.tableView.accessibilityLabel = "Session Table"
     }
 
     func setUpTargetAction() {

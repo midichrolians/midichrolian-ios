@@ -8,7 +8,11 @@
 
 import UIKit
 
-enum Colour: String {
+/// This enum represents the set of colours currently supported by the app
+/// and is limited only by the number of image files created to give the effect of
+/// physical buttons underlaid with LED lights
+
+enum Colour: String, JSONable {
     case violet
     case indigo
     case blue
@@ -17,8 +21,8 @@ enum Colour: String {
     case orange
     case red
 
-    init(colourName: String) {
-        guard let colour = Colour(rawValue: colourName) else {
+    init(fromJSON: String) {
+        guard let colour = Colour(rawValue: fromJSON) else {
             self = Colour.blue
             return
         }
@@ -68,7 +72,7 @@ enum Colour: String {
         return imageToBeReturned
     }
 
-    func getJSON() -> String {
+    func getJSON() -> String? {
         return rawValue
     }
 

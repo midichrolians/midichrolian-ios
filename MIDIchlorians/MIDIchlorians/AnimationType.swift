@@ -8,7 +8,13 @@
 
 import UIKit
 
-class AnimationType {
+/// AnimationType is a named AnimationSequence which gets persisted and reused.
+/// Unlike AnimationSequence, it is not tied to a pad and can be assigned to any pad
+
+/// AnimationType allows for the designing of animation relative to a particular pad,
+/// identified by the anchor point, and then reuse it relative to another pad
+
+class AnimationType: JSONable {
     var name: String
     var mode: AnimationTypeCreationMode
     var animationSequence: AnimationSequence
@@ -21,24 +27,7 @@ class AnimationType {
         self.anchorPoint = anchorPoint
     }
 
-    func getJSONforAnimationType() -> String? {
-        var dictionary = [String: Any]()
-        dictionary[Config.animationTypeNameKey] = name
-        dictionary[Config.animationTypeModeKey] = mode.rawValue
-        dictionary[Config.animationTypeAnimationSequenceKey] = animationSequence.getJSONforAnimationSequence()
-        dictionary[Config.animationTypeAnchorRowKey] = anchorPoint.section
-        dictionary[Config.animationTypeAnchorColumnKey] = anchorPoint.item
-
-        guard let jsonData = try? JSONSerialization.data(
-            withJSONObject: dictionary,
-            options: JSONSerialization.WritingOptions.prettyPrinted
-            ) else {
-                return nil
-        }
-        return String(data: jsonData, encoding: .utf8)
-    }
-
-    static func getAnimationTypeFromJSON(fromJSON: String) -> AnimationType? {
+    convenience required init?(fromJSON: String) {
         guard let data = fromJSON.data(using: .utf8) else {
             return nil
         }
@@ -57,9 +46,9 @@ class AnimationType {
         guard let mode = AnimationTypeCreationMode(rawValue: modeString) else {
             return nil
         }
-        guard let animationSequence = AnimationSequence.getAnimationSequenceFromJSON(
+        guard let animationSequence = AnimationSequence(
             fromJSON: animationSequenceString) else {
-            return nil
+                return nil
         }
         guard let anchorRow = dictionary[Config.animationTypeAnchorRowKey] as? Int else {
             return nil
@@ -68,12 +57,29 @@ class AnimationType {
             return nil
         }
 
-        let animationType = AnimationType(
+        self.init(
             name: name,
             animationSequence: animationSequence,
             mode: mode,
             anchorPoint: IndexPath(item: anchorColumn, section: anchorRow)
         )
-        return animationType
     }
+
+    func getJSON() -> String? {
+        var dictionary = [String: Any]()
+        dictionary[Config.animationTypeNameKey] = name
+        dictionary[Config.animationTypeModeKey] = mode.rawValue
+        dictionary[Config.animationTypeAnimationSequenceKey] = animationSequence.getJSON()
+        dictionary[Config.animationTypeAnchorRowKey] = anchorPoint.section
+        dictionary[Config.animationTypeAnchorColumnKey] = anchorPoint.item
+
+        guard let jsonData = try? JSONSerialization.data(
+            withJSONObject: dictionary,
+            options: JSONSerialization.WritingOptions.prettyPrinted
+            ) else {
+                return nil
+        }
+        return String(data: jsonData, encoding: .utf8)
+    }
+
 }

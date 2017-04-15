@@ -20,7 +20,6 @@ class GroupTableViewController: UITableViewController {
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
-
         setUp()
     }
 
@@ -28,6 +27,7 @@ class GroupTableViewController: UITableViewController {
         tabBarItem = UITabBarItem(
             title: Config.SampleTableTitle, image: tabBarSampleIcon, selectedImage: tabBarSampleIcon)
         tableView.separatorStyle = .none
+        tableView.accessibilityLabel = "Group Table"
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
   
-    private func copyBundleAnimationTypes() -> [String] {
+    private func getBundleAnimationTypes() -> [String] {
         return preloadedAnimationTypes.flatMap { getStringFromFile(fileName: $0) }
     }
 
@@ -154,11 +154,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // add all preloaded samples to group according to the songs they belong to, based on the information in Config
         savePreloadedSamplesToGroup()
 
-        // Do the same thing for animations as well
-        let copiedPreloadedAnimations = copyBundleAnimationTypes()
+        // Get preloaded animations from the app bundle
+        let preloadedAnimations = getBundleAnimationTypes()
 
-        copiedPreloadedAnimations.forEach { preloadedAnimation in
-            // if saving fails, what are we gonna do?
+        // Save preloaded animations to realm
+        preloadedAnimations.forEach { preloadedAnimation in
             _ = DataManager.instance.saveAnimation(preloadedAnimation)
         }
 

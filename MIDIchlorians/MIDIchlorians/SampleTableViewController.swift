@@ -38,7 +38,7 @@ class SampleTableViewController: UITableViewController {
     func setUp() {
         tableView.separatorStyle = .none
         tableView.register(SampleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.separatorColor = Config.TableViewSeparatorColor
+        tableView.accessibilityLabel = "Sample Table"
     }
 
     func setUpAlert() {

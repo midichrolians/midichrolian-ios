@@ -8,10 +8,33 @@
 
 import UIKit
 
-struct AnimationBit: Equatable {
+/// AnimationBit is the most fundamental block of animation, and is identified
+/// by its row, column and colour. It represents a single pad, lit with a particular colour
+
+struct AnimationBit: Equatable, JSONable {
     var colour: Colour
     var row: Int
     var column: Int
+
+    init?(fromJSON: String) {
+        guard let data = fromJSON.data(using: .utf8) else {
+            return nil
+        }
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
+            return nil
+        }
+        guard let colour = dictionary[Config.animationBitColourKey] as? String else {
+            return nil
+        }
+        guard let row = dictionary[Config.animationBitRowKey] as? Int else {
+            return nil
+        }
+        guard let column = dictionary[Config.animationBitColumnKey] as? Int else {
+            return nil
+        }
+        let animationBit = AnimationBit(colour: Colour(fromJSON: colour), row: row, column: column)
+        self = animationBit
+    }
 
     init(colour: Colour, row: Int, column: Int) {
         self.colour = colour
@@ -31,26 +54,6 @@ struct AnimationBit: Equatable {
             return nil
         }
         return String(data: jsonData, encoding: .utf8)
-    }
-
-    static func getAnimationBitFromJSON(fromJSON: String) -> AnimationBit? {
-        guard let data = fromJSON.data(using: .utf8) else {
-            return nil
-        }
-        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
-            return nil
-        }
-        guard let colour = dictionary[Config.animationBitColourKey] as? String else {
-            return nil
-        }
-        guard let row = dictionary[Config.animationBitRowKey] as? Int else {
-            return nil
-        }
-        guard let column = dictionary[Config.animationBitColumnKey] as? Int else {
-            return nil
-        }
-        let animationBit = AnimationBit(colour: Colour(colourName: colour), row: row, column: column)
-        return animationBit
     }
 
     static func == (lhs: AnimationBit, rhs: AnimationBit) -> Bool {
