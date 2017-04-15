@@ -275,6 +275,7 @@ extension GridController: ModeSwitchDelegate {
 
     func enterPlay() {
         self.mode = .playing
+        selectedIndexPath = nil
     }
 
     func enterDesign() {
