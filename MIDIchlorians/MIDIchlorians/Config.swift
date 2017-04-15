@@ -384,4 +384,12 @@ struct Config {
     static let cloudNotificationKey = "Cloud"
 
     static let defaultGroup = "Your samples"
+
+    static let colourPurpleImageName = "purpleButton"
+    static let colourLightBlueImageName = "lightBlueButton"
+    static let colourBlueImageName = "blueButton"
+    static let colourGreenImageName = "greenButton"
+    static let colourYellowImageName = "yellowButton"
+    static let colourPinkImageName = "pinkButton"
+    static let colourRedImageName = "redButton"
 }
