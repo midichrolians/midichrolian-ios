@@ -28,20 +28,34 @@ class AnimationTableViewController: UITableViewController {
     private var removeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
     private var removeAlertConfirmAction: UIAlertAction!
     private var removeAlertCancelAction: UIAlertAction!
+    private var textSync: AlertActionTextFieldSync!
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
 
-        self.title = Config.AnimationTabTitle
+        setUp()
+        setUpAlert()
+        setUpEditActions()
+        setUpTargetAction()
+        setUpNotificationHandler()
+    }
 
-        self.tabBarItem = UITabBarItem(title: Config.AnimationTabTitle,
+    private func setUp() {
+        title = Config.AnimationTabTitle
+        tabBarItem = UITabBarItem(title: Config.AnimationTabTitle,
                                        image: UIImage(named: Config.SidePaneTabBarAnimationIcon),
                                        selectedImage: UIImage(named: Config.SidePaneTabBarAnimationIcon))
         tableView.separatorStyle = .none
+        tableView.separatorColor = Config.TableViewSeparatorColor
+        tableView.register(AnimationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+
+        navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.leftBarButtonItem = self.newAnimationButton
 
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
 
+    private func setUpAlert() {
         // Set up alert shown when editing a row
         alertSaveAction = UIAlertAction(title: Config.AnimationEditOkayTitle,
                                         style: .default,
@@ -51,7 +65,7 @@ class AnimationTableViewController: UITableViewController {
                                           handler: cancelActionDone)
         editAlert.addAction(alertCancelAction)
         editAlert.addAction(alertSaveAction)
-        editAlert.addTextField(configurationHandler: { $0.delegate = self })
+//        editAlert.addTextField(configurationHandler: { $0.delegate = self })
 
         // Set up alert shown when removing a row
         removeAlertConfirmAction = UIAlertAction(title: Config.AnimationRemoveConfirmTitle,
@@ -62,14 +76,25 @@ class AnimationTableViewController: UITableViewController {
                                                 handler: cancelActionDone)
         removeAlert.addAction(removeAlertConfirmAction)
         removeAlert.addAction(removeAlertCancelAction)
+        textSync = AlertActionTextFieldSync(alertAction: alertSaveAction)
+    }
 
+    private func setUpEditActions() {
         rowEditAction = UITableViewRowAction(style: .normal,
                                              title: Config.AnimationEditActionTitle,
                                              handler: editAction)
         rowRemoveAction = UITableViewRowAction(style: .destructive,
                                                title: Config.AnimationRemoveActionTitle,
                                                handler: removeAction)
+    }
 
+    private func setUpTargetAction() {
+        newAnimationButton.target = self
+        newAnimationButton.action = #selector(newAnimation)
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+
+    private func setUpNotificationHandler() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handle(notification:)),
                                                name: NSNotification.Name(rawValue: Config.animationNotificationKey),
@@ -78,18 +103,6 @@ class AnimationTableViewController: UITableViewController {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.tableView.separatorColor = Config.TableViewSeparatorColor
-        self.tableView.register(AnimationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.navigationItem.leftBarButtonItem = self.newAnimationButton
-        newAnimationButton.target = self
-        newAnimationButton.action = #selector(newAnimation)
     }
 
     // MARK: - Table view data source
@@ -209,28 +222,4 @@ class AnimationTableViewController: UITableViewController {
         }
     }
 
-}
-
-extension AnimationTableViewController: UITextFieldDelegate {
-    // Don't allow return if the field is empty, user must explicitly cancel
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return !(textField.text?.isEmpty ?? true)
-    }
-
-    // Deactivate the Save button if text field is empty
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        guard let text = textField.text else {
-            return true
-        }
-
-        let str = (text as NSString).replacingCharacters(in: range, with: string)
-        if str.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
-            alertSaveAction.isEnabled = false
-        } else {
-            alertSaveAction.isEnabled = true
-        }
-        return true
-    }
 }
