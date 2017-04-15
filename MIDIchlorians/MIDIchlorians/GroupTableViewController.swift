@@ -18,36 +18,16 @@ class GroupTableViewController: UITableViewController {
     var selectedGroupName: String?
     private var tabBarSampleIcon = UIImage(named: Config.SidePaneTabBarSampleIcon)
 
-    private var alert = UIAlertController(title: Config.GroupAlertTitle, message: nil, preferredStyle: .alert)
-    private var cancelAction: UIAlertAction!
-    private var okayAction: UIAlertAction!
-    private var okayTextSync: AlertActionTextFieldSync!
-
     override init(style: UITableViewStyle) {
         super.init(style: style)
 
         setUp()
-        setUpAlert()
     }
 
     func setUp() {
         tabBarItem = UITabBarItem(
             title: Config.SampleTableTitle, image: tabBarSampleIcon, selectedImage: tabBarSampleIcon)
         tableView.separatorStyle = .none
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add, target: self, action: #selector(addSample))
-    }
-
-    func setUpAlert() {
-        cancelAction = UIAlertAction(title: Config.GroupNameCancelTitle, style: .default, handler: cancelActionDone)
-        okayAction = UIAlertAction(title: Config.GroupNameOkayTitle, style: .default, handler: okayActionDone)
-        okayAction.isEnabled = false
-        okayTextSync = AlertActionTextFieldSync(alertAction: okayAction)
-        alert.addAction(cancelAction)
-        alert.addAction(okayAction)
-        alert.addTextField(configurationHandler: { textfield in
-            textfield.delegate = self.okayTextSync
-        })
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -104,17 +84,5 @@ class GroupTableViewController: UITableViewController {
             return unhighlight()
         }
         tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
-    }
-
-    func addSample() {
-        present(alert, animated: true, completion: nil)
-    }
-
-    func okayActionDone(_: UIAlertAction) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    func cancelActionDone(_: UIAlertAction) {
-        dismiss(animated: true, completion: nil)
     }
 }
