@@ -798,6 +798,7 @@
 				E92F6C331E7522F700F5A092 /* Session Table */,
 				E93A02CB1E7403B900DFB2B7 /* Side Pane */,
 				E9158EAE1E86155E00B7ADF9 /* Grid */,
+				E97B146A1EA1C09200489C5A /* Sample Setting */,
 				33120E211E6FD30A007E7717 /* Main.storyboard */,
 				33120E241E6FD30A007E7717 /* Assets.xcassets */,
 				33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */,
@@ -807,12 +808,9 @@
 				F36082C01E9BB2230054221A /* DefaultSessions.json */,
 				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
 				F36B995D1E8148260026721A /* DataManager.swift */,
-				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
 				E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */,
 				F31E2B121E8FF1B000C23325 /* CloudManager.swift */,
 				E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */,
-				3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */,
-				3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -1271,6 +1269,16 @@
 				E92F6C351E75230400F5A092 /* Animation */,
 			);
 			name = "Side Pane";
+			sourceTree = "<group>";
+		};
+		E97B146A1EA1C09200489C5A /* Sample Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
+				3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */,
+				3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */,
+			);
+			name = "Sample Setting";
 			sourceTree = "<group>";
 		};
 		E99E8A4A1E8016BF001F9351 /* Top Nav */ = {
