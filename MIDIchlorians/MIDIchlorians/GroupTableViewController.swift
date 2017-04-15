@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol GroupTableDelegate: class {
-    func group(selected: String)
-}
-
 // Manages the groups (of samples) that the user has
 // A user might have a lot of samples, and this view allows users to browse all samples by groups
 class GroupTableViewController: UITableViewController {
@@ -20,35 +16,18 @@ class GroupTableViewController: UITableViewController {
     weak var delegate: SampleTableDelegate?
     var selectedSampleName: String?
     var selectedGroupName: String?
-
-    private var alert = UIAlertController(title: "Group name", message: nil, preferredStyle: .alert)
-    private var cancelAction: UIAlertAction!
-    private var okayAction: UIAlertAction!
-    private var okayTextSync: AlertActionTextFieldSync!
-
-    weak var groupTableDelegate: GroupTableDelegate?
+    private var tabBarSampleIcon = UIImage(named: Config.SidePaneTabBarSampleIcon)
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
-        tabBarItem = UITabBarItem(title: Config.SampleTableTitle,
-                                  image: UIImage(named: Config.SidePaneTabBarSampleIcon),
-                                  selectedImage: UIImage(named: Config.SidePaneTabBarSampleIcon))
+        setUp()
+    }
+
+    func setUp() {
+        tabBarItem = UITabBarItem(
+            title: Config.SampleTableTitle, image: tabBarSampleIcon, selectedImage: tabBarSampleIcon)
         tableView.separatorStyle = .none
         tableView.accessibilityLabel = "Group Table"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add, target: self, action: #selector(addSample))
-
-        cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: cancelActionDone)
-
-        okayAction = UIAlertAction(title: "Okay", style: .default, handler: okayActionDone)
-        okayAction.isEnabled = false
-        okayTextSync = AlertActionTextFieldSync(alertAction: okayAction)
-
-        alert.addAction(cancelAction)
-        alert.addAction(okayAction)
-        alert.addTextField(configurationHandler: { textfield in
-            textfield.delegate = self.okayTextSync
-        })
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -89,7 +68,6 @@ class GroupTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sampleTableViewController = SampleTableViewController(style: .plain)
         let group = groups[indexPath.row]
-        groupTableDelegate?.group(selected: group)
         sampleTableViewController.sampleList = DataManager.instance.getSamplesForGroup(group: group)
         sampleTableViewController.delegate = delegate
         sampleTableViewController.selectedSampleName = selectedSampleName
@@ -106,17 +84,5 @@ class GroupTableViewController: UITableViewController {
             return unhighlight()
         }
         tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
-    }
-
-    func addSample() {
-        present(alert, animated: true, completion: nil)
-    }
-
-    func okayActionDone(_: UIAlertAction) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    func cancelActionDone(_: UIAlertAction) {
-        dismiss(animated: true, completion: nil)
     }
 }

@@ -25,41 +25,46 @@ class SyncViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        buildViewHierarchy()
+        setUp()
+        setUpTargetAction()
+        addNotificationHandler()
+        setConstraints()
+    }
+
+    func buildViewHierarchy() {
+        stackView.addArrangedSubview(loginout)
+        stackView.addArrangedSubview(upload)
+        stackView.addArrangedSubview(download)
+        view.addSubview(stackView)
+        view.addSubview(spinnerView)
+    }
+
+    func setUp() {
         if isLoggedIn {
             loginout.setTitle(Config.TopNavLoginTitle, for: .normal)
         } else {
             loginout.setTitle(Config.TopNavLogoutTitle, for: .normal)
         }
-        loginout.addTarget(self, action: #selector(onLoginout), for: .touchDown)
 
         upload.setTitle(Config.TopNavSyncUploadTitle, for: .normal)
-        upload.addTarget(self, action: #selector(onUpload), for: .touchDown)
 
         download.setTitle(Config.TopNavSyncDownloadTitle, for: .normal)
-        download.addTarget(self, action: #selector(onDownload), for: .touchDown)
 
-        stackView.addArrangedSubview(loginout)
-        stackView.addArrangedSubview(upload)
-        stackView.addArrangedSubview(download)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .center
 
-        view.addSubview(stackView)
         self.preferredContentSize = CGSize(width: Config.TopNavSyncPreferredWidth,
                                            height: Config.TopNavSyncPreferredHeight)
 
         spinnerView.hidesWhenStopped = true
-        view.addSubview(spinnerView)
+    }
 
-        // add listener for sync completion
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handle(notification:)),
-            name: NSNotification.Name(rawValue: Config.cloudNotificationKey),
-            object: nil)
-
-        setConstraints()
+    func setUpTargetAction() {
+        loginout.addTarget(self, action: #selector(onLoginout), for: .touchDown)
+        upload.addTarget(self, action: #selector(onUpload), for: .touchDown)
+        download.addTarget(self, action: #selector(onDownload), for: .touchDown)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +79,15 @@ class SyncViewController: UIViewController {
             upload.isEnabled = false
             download.isEnabled = false
         }
+    }
+
+    func addNotificationHandler() {
+        // add listener for sync completion
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handle(notification:)),
+            name: NSNotification.Name(rawValue: Config.cloudNotificationKey),
+            object: nil)
     }
 
     func setConstraints() {

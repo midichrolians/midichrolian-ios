@@ -317,6 +317,7 @@
 		E95EBC361E9B54FB00E66D1C /* BPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */; };
 		E95EBC381E9B5B5700E66D1C /* BPMSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
+		E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
 		E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */; };
 		E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301A1E88EBB300801A9F /* PadDelegate.swift */; };
@@ -329,7 +330,6 @@
 		E9C6778B1E9A18D200AE0E2E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */; };
 		E9E780741E955B8F00F5CC65 /* PageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780731E955B8F00F5CC65 /* PageDelegate.swift */; };
 		E9E7807A1E96284100F5CC65 /* SampleSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */; };
-		E9E7807C1E96361B00F5CC65 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
 		E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4A1E83A81900769A8F /* TopBarController.swift */; };
 		E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */; };
@@ -690,6 +690,7 @@
 		E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMViewController.swift; sourceTree = "<group>"; };
 		E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorDelegate.swift; sourceTree = "<group>"; };
+		E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GridController+PadDelegate.swift"; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
@@ -702,7 +703,6 @@
 		E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		E9E780731E955B8F00F5CC65 /* PageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDelegate.swift; sourceTree = "<group>"; };
 		E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettingViewController.swift; sourceTree = "<group>"; };
-		E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
 		E9EC7C4A1E83A81900769A8F /* TopBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarController.swift; sourceTree = "<group>"; };
 		E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectorDelegate.swift; sourceTree = "<group>"; };
@@ -795,31 +795,26 @@
 				80034E821E93ACC3005B4487 /* Recording */,
 				805946D01E816CEC00EF7A2B /* Audio */,
 				F34B2A501E7A721500FD2C61 /* Models */,
-				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
-				33A6FF9A1E97517700E7E8B1 /* Keys.plist */,
-				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
-				E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */,
 				E9AD30221E8BADF200801A9F /* Animation Designer */,
 				E99E8A4A1E8016BF001F9351 /* Top Nav */,
 				E92F6C331E7522F700F5A092 /* Session Table */,
 				E93A02CB1E7403B900DFB2B7 /* Side Pane */,
 				E9158EAE1E86155E00B7ADF9 /* Grid */,
+				E97B146A1EA1C09200489C5A /* Sample Setting */,
+				33DAAAC31E72C38100987E86 /* Animation */,
+				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
+				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
+				33A6FF9A1E97517700E7E8B1 /* Keys.plist */,
 				33120E211E6FD30A007E7717 /* Main.storyboard */,
 				33120E241E6FD30A007E7717 /* Assets.xcassets */,
 				33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */,
 				33120E291E6FD30A007E7717 /* Info.plist */,
-				33DAAAC31E72C38100987E86 /* Animation */,
 				334970C01E72583F009C78DF /* Config.swift */,
 				F36082C01E9BB2230054221A /* DefaultSessions.json */,
-				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
+				E97B146B1EA1C0FE00489C5A /* Extensions */,
 				F36B995D1E8148260026721A /* DataManager.swift */,
-				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
-				E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */,
-				E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */,
 				F31E2B121E8FF1B000C23325 /* CloudManager.swift */,
-				E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */,
-				3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */,
-				3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */,
+				E97B146C1EA1C11300489C5A /* Helpers */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -1225,6 +1220,7 @@
 			isa = PBXGroup;
 			children = (
 				E9158EAA1E860CDB00B7ADF9 /* GridController.swift */,
+				E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */,
 				E9E780731E955B8F00F5CC65 /* PageDelegate.swift */,
 				E9AD301A1E88EBB300801A9F /* PadDelegate.swift */,
 				E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */,
@@ -1282,6 +1278,33 @@
 			name = "Side Pane";
 			sourceTree = "<group>";
 		};
+		E97B146A1EA1C09200489C5A /* Sample Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
+				3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */,
+				3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */,
+			);
+			name = "Sample Setting";
+			sourceTree = "<group>";
+		};
+		E97B146B1EA1C0FE00489C5A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
+				E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		E97B146C1EA1C11300489C5A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		E99E8A4A1E8016BF001F9351 /* Top Nav */ = {
 			isa = PBXGroup;
 			children = (
@@ -1293,6 +1316,7 @@
 				E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */,
 				F31DB0AB1E9B093C005DB81A /* SyncDelegate.swift */,
 				E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */,
+				E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */,
 			);
 			name = "Top Nav";
 			sourceTree = "<group>";
@@ -1909,7 +1933,6 @@
 				E9C6778B1E9A18D200AE0E2E /* UITableView+Extensions.swift in Sources */,
 				F31E2B131E8FF1B000C23325 /* CloudManager.swift in Sources */,
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
-				E9E7807C1E96361B00F5CC65 /* UIStackView+Extensions.swift in Sources */,
 				E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */,
 				F3710A8F1E7D280D0031A754 /* Session.swift in Sources */,
 				E92D6F2F1E953DA000E815F1 /* TimelineDelegate.swift in Sources */,
@@ -1983,6 +2006,7 @@
 				E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */,
 				80A050C01E9926FD00091411 /* GSAudio.swift in Sources */,
 				E9EC9A3C1E94AEE800C89118 /* PadSelection.swift in Sources */,
+				E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
 				33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */,
 			);

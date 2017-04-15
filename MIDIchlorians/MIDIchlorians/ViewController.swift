@@ -12,10 +12,6 @@ import SwiftyDropbox
 
 // The ViewController is the main for the entire app.
 // Management and hooking up all child view controllers are done in this class.
-// The responsibilities of this class includes
-// - setting up constraints between child views
-// - setting up delegates for side pane, grid, animation designer
-// - initializing default styles for some views
 class ViewController: UIViewController {
     internal var topBarController: TopBarController!
     internal var sessionNavigationController: UINavigationController!
@@ -41,7 +37,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentSession = (loadFirstSessionIfExsists() ?? Session(bpm: Config.defaultBPM))
+
+        ensureSessionLoaded()
+        setUpUI()
+        assignDelegates()
+    }
+
+    // Many things rely on a session being loaded, so make sure we have one
+    private func ensureSessionLoaded() {
+        currentSession = (loadFirstSessionIfExists() ?? Session(bpm: Config.defaultBPM))
+    }
+
+    // Sets up all the UI components needed for the app
+    private func setUpUI() {
         setUpTopNav()
         setUpGrid()
         setUpSidePane()
@@ -49,9 +57,10 @@ class ViewController: UIViewController {
         setUpAnimationDesigner()
         setUpStyles()
         setUpAnimation()
+    }
 
-        // need assign delegates after everything is initialized
-        gridController.padDelegate = self
+    private func assignDelegates() {
+        // need assign these delegates after everything is initialized
         animationDesignController.delegate = gridController
         gridController.animationDesignerDelegate = sidePaneController
     }
@@ -59,19 +68,30 @@ class ViewController: UIViewController {
     // Sets up the top navigation.
     // The top navigation has controls to show the session table, so we set that up here as well.
     private func setUpTopNav() {
+        setUpSessionTable()
+        setUpNotificationHandler()
+        setUpTopBarController()
+    }
+
+    private func setUpSessionTable() {
         sessionTableViewController = SessionTableViewController(style: .plain)
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
         sessionNavigationController = UINavigationController(rootViewController: sessionTableViewController)
         // present the session table as a popover
         sessionNavigationController.modalPresentationStyle = .popover
         sessionTableViewController.delegate = self
+    }
 
+    private func setUpNotificationHandler() {
         // handle completion of syncing sessions
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handle(notification:)),
                                                name: NSNotification.Name(rawValue: Config.sessionNotificationKey),
                                                object: nil)
 
+    }
+
+    private func setUpTopBarController() {
         topBarController = TopBarController()
         addChildViewController(topBarController)
         view.addSubview(topBarController.view)
@@ -91,13 +111,13 @@ class ViewController: UIViewController {
 
     // Saves the current session
     func saveCurrentSession() {
-        currentSession = dataManager.saveSession(
-            currentSession.getSessionName() ?? Config.DefaultSessionName, currentSession)
+        let sessionName = currentSession.getSessionName() ?? Config.DefaultSessionName
+        currentSession = dataManager.saveSession(sessionName, currentSession)
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
     }
 
     // Tries to load a session, if no sessions exists then returns nil
-    private func loadFirstSessionIfExsists() -> Session? {
+    private func loadFirstSessionIfExists() -> Session? {
         func loadTillSuccessOrEnd(names: [String]) -> Session? {
             guard let name = names.first else {
                 return nil
@@ -116,6 +136,7 @@ class ViewController: UIViewController {
     // Sets up the main grid for play/edit
     private func setUpGrid() {
         gridController = GridController(frame: CGRect.zero, session: currentSession)
+        gridController.padDelegate = self
         addChildViewController(gridController)
         view.addSubview(gridController.view)
         gridController.didMove(toParentViewController: self)

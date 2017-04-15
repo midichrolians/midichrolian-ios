@@ -19,6 +19,14 @@ class TutorialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setUp()
+        buildViewHierarchy()
+        addTargetAction()
+        buildConstraints()
+    }
+
+    func setUp() {
         slideshow.backgroundColor = UIColor.clear
         slideshow.pageControlPosition = PageControlPosition.underScrollView
         slideshow.pageControl.currentPageIndicatorTintColor = UIColor.lightGray
@@ -26,19 +34,23 @@ class TutorialViewController: UIViewController {
         slideshow.contentScaleMode = UIViewContentMode.scaleAspectFit
         let sources = Config.TutorialImages.map { ImageSource(imageString: $0)! }
         slideshow.setImageInputs(sources)
-        view.addSubview(slideshow)
 
         view.backgroundColor = UIColor.white
 
-        closeButton.addTarget(self, action: #selector(closeButtonDown), for: .touchDown)
         closeButton.setTitle(Config.AboutCloseTitle, for: .normal)
         closeButton.setTitleColor(UIColor.black, for: .normal)
-        view.addSubview(closeButton)
-
-        setConstraints()
     }
 
-    func setConstraints() {
+    func buildViewHierarchy() {
+        view.addSubview(slideshow)
+        view.addSubview(closeButton)
+    }
+
+    func addTargetAction() {
+        closeButton.addTarget(self, action: #selector(closeButtonDown), for: .touchDown)
+    }
+
+    func buildConstraints() {
         slideshow.snp.makeConstraints { make in
             make.edges.equalTo(view).inset(Config.AboutSlideshowInset)
         }

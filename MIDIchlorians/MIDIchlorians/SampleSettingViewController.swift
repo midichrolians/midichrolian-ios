@@ -12,7 +12,7 @@ import SnapKit
 // Manages the control to configure a sample assigned to a pad.
 // Supports one-off and loop.
 class SampleSettingViewController: UIViewController {
-    private var sampleSettingControl = UISegmentedControl()
+    private var sampleSettingControl = UISegmentedControl(items: SampleSettingMode.allValues())
     weak var delegate: SampleSettingDelegate?
     private var bpmSelector = UIButton(type: .system)
     private var bpmVC = BPMViewController()
@@ -21,21 +21,24 @@ class SampleSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sampleSettingControl = UISegmentedControl(items: SampleSettingMode.allValues())
-        sampleSettingControl.selectedSegmentIndex = 0
-        sampleSettingControl.addTarget(self, action: #selector(onSampleSettingModeChange), for: .valueChanged)
-        view.addSubview(sampleSettingControl)
-
-        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, Config.TopNavBPMDefaultBPM), for: .normal)
-        bpmSelector.addTarget(self, action: #selector(bpmSelect(sender:)), for: .touchDown)
-        bpmVC.selectedBPM = Config.TopNavBPMDefaultBPM
-        view.addSubview(bpmSelector)
-
-        setConstraints()
-
+        setUp()
+        buildViewHierarchy()
+        buildConstraints()
+        addTargetAction()
     }
 
-    func setConstraints() {
+    func setUp() {
+        sampleSettingControl.selectedSegmentIndex = 0
+        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, Config.TopNavBPMDefaultBPM), for: .normal)
+        bpmVC.selectedBPM = Config.TopNavBPMDefaultBPM
+    }
+
+    func buildViewHierarchy() {
+        view.addSubview(sampleSettingControl)
+        view.addSubview(bpmSelector)
+    }
+
+    func buildConstraints() {
         sampleSettingControl.snp.makeConstraints { make in
             make.left.top.equalTo(view).offset(Config.AppLeftPadding)
             make.height.equalTo(Config.TimelineHeight)
@@ -45,6 +48,11 @@ class SampleSettingViewController: UIViewController {
             make.left.height.equalTo(sampleSettingControl)
             make.top.equalTo(sampleSettingControl.snp.bottom).offset(10)
         }
+    }
+
+    func addTargetAction() {
+        sampleSettingControl.addTarget(self, action: #selector(onSampleSettingModeChange), for: .valueChanged)
+        bpmSelector.addTarget(self, action: #selector(bpmSelect(sender:)), for: .touchDown)
     }
 
     func onSampleSettingModeChange() {

@@ -15,9 +15,22 @@ class RemoveButton: SelectedPadTrackingView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        setUp()
+        buildViewHierarchy()
+        makeConstraints()
+    }
+
+    func setUp() {
         isOpaque = false
-        self.addSubview(removeImage)
         removeImage.accessibilityLabel = "Remove Pad"
+    }
+
+    func buildViewHierarchy() {
+        self.addSubview(removeImage)
+    }
+
+    func makeConstraints() {
         removeImage.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
