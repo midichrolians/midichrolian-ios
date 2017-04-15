@@ -49,6 +49,7 @@ class SessionTableViewController: UITableViewController {
 
         self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
+        self.tableView.accessibilityLabel = "Session Table"
 
         rowEditAction = UITableViewRowAction(style: .normal,
                                              title: Config.SessionEditActionTitle,
