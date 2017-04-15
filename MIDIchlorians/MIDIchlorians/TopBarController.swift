@@ -15,13 +15,12 @@ import SwiftyDropbox
 // Handles the controls for selecting session, recording and playing, tutorial, sync.
 class TopBarController: UIViewController {
     private var logoPic = UIImageView()
-    private var logoImage = UIImage(named: "logo.png")!
+    private var logoImage = UIImage(named: Config.TopNavLogoIcon)!
     private var logo = UILabel()
     // used for managing the controls
     private var sessionTitle = UILabel()
     private var stackView = UIStackView()
     private var sessionButton = UIButton(type: .system)
-
     private var saveButton = UIButton(type: .system)
     private var editButton = UIButton(type: .system)
     private var recordButton = UIButton(type: .custom)
@@ -48,44 +47,52 @@ class TopBarController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+
+        buildViewHierarchy()
+        setUp()
+        setUpTargetAction()
+        makeConstraints()
+    }
+
+    func setUp() {
         view.backgroundColor = Config.SecondaryBackgroundColor
 
         logoPic.image = logoImage
         logoPic.contentMode = .scaleAspectFit
-        view.addSubview(logoPic)
 
         logo.text = Config.TopNavLogoText
-        view.addSubview(logo)
 
         sessionTitle.text = Config.DefaultSessionName
-        view.addSubview(sessionTitle)
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
-        sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
 
         saveButton.setTitle(Config.TopNavSaveLabel, for: .normal)
 
         editButton.setTitle(Config.TopNavEditLabel, for: .normal)
-        editButton.addTarget(self, action: #selector(onEdit(_:)), for: .touchDown)
 
         let loopingImage = UIImage.animatedImage(
             with: [recordImage, recordBlackImage],
             duration: Config.TopNavRecordingLoopDuration)
         recordButton.setBackgroundImage(recordImage, for: .normal)
         recordButton.setBackgroundImage(loopingImage, for: .selected)
-        recordButton.addTarget(self, action: #selector(onRecordButtonDown(sender:)), for: .touchDown)
 
         playButton.setTitle(Config.TopNavPlayLabel, for: .normal)
-        playButton.addTarget(self, action: #selector(onPlayButtonDown(sender:)), for: .touchDown)
         // play button is always not enabled initially, user has to record something for it to be enabled
         playButton.isEnabled = false
 
         syncButton.setTitle(Config.TopNavSyncLabel, for: .normal)
-        syncButton.addTarget(self, action: #selector(sync(sender:)), for: .touchDown)
 
-        helpButton.setTitle("?", for: .normal)
-        helpButton.addTarget(self, action: #selector(logoTapped), for: .touchDown)
+        helpButton.setTitle(Config.TopNavHelpLabel, for: .normal)
 
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = Config.TopNavStackViewSpacing
+    }
+
+    func buildViewHierarchy() {
+        view.addSubview(logoPic)
+        view.addSubview(logo)
+        view.addSubview(sessionTitle)
         stackView.addArrangedSubview(sessionButton)
         stackView.addArrangedSubview(saveButton)
         stackView.addArrangedSubview(editButton)
@@ -93,12 +100,16 @@ class TopBarController: UIViewController {
         stackView.addArrangedSubview(playButton)
         stackView.addArrangedSubview(syncButton)
         stackView.addArrangedSubview(helpButton)
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = Config.TopNavStackViewSpacing
         view.addSubview(stackView)
+    }
 
-        makeConstraints()
+    func setUpTargetAction() {
+        editButton.addTarget(self, action: #selector(onEdit(_:)), for: .touchDown)
+        recordButton.addTarget(self, action: #selector(onRecordButtonDown(sender:)), for: .touchDown)
+        sessionButton.addTarget(self, action: #selector(sessionSelect(sender:)), for: .touchDown)
+        playButton.addTarget(self, action: #selector(onPlayButtonDown(sender:)), for: .touchDown)
+        syncButton.addTarget(self, action: #selector(sync(sender:)), for: .touchDown)
+        helpButton.addTarget(self, action: #selector(logoTapped), for: .touchDown)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -214,6 +214,7 @@ struct Config {
 
     // Top nav
     static let TopNavHeight: CGFloat = 60
+    static let TopNavLogoIcon = "logo.png"
     static let TopNavLogoText = "MIDIchlorians"
     static let TopNavSessionLabel = "Sessions"
     static let TopNavSaveLabel = "Save"
@@ -230,6 +231,7 @@ struct Config {
     static let TopNavLogoutTitle = "Logout"
     static let TopNavSyncUploadTitle = "Upload"
     static let TopNavSyncDownloadTitle = "Download"
+    static let TopNavHelpLabel = "?"
     static let TopNavSyncPreferredWidth: CGFloat = 200
     static let TopNavSyncPreferredHeight: CGFloat = 150
     static let TopNavBPMTitleFormat = "%d BPM"
