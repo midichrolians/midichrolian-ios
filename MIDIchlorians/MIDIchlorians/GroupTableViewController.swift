@@ -22,7 +22,7 @@ class GroupTableViewController: UITableViewController {
     var selectedGroupName: String?
     private var tabBarSampleIcon = UIImage(named: Config.SidePaneTabBarSampleIcon)
 
-    private var alert = UIAlertController(title: "Group name", message: nil, preferredStyle: .alert)
+    private var alert = UIAlertController(title: Config.GroupAlertTitle, message: nil, preferredStyle: .alert)
     private var cancelAction: UIAlertAction!
     private var okayAction: UIAlertAction!
     private var okayTextSync: AlertActionTextFieldSync!

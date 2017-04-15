@@ -284,6 +284,7 @@ struct Config {
 
     // Group table
     static let GroupTableReuseIdentifier = "group"
+    static let GroupAlertTitle = "Group name"
     static let GroupNameOkayTitle = "Okay"
     static let GroupNameCancelTitle = "Cancel"
 
