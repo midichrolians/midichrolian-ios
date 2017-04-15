@@ -250,10 +250,10 @@ class CloudManager {
 
     private func saveAnimations() {
         let animationTypes = dataManager.loadAllAnimationTypes().flatMap {
-            AnimationType.getAnimationTypeFromJSON(fromJSON: $0) }
+            AnimationType(fromJSON: $0) }
         var dictionary = [String: String]()
         for animation in animationTypes {
-            guard let jsonString = animation.getJSONforAnimationType() else {
+            guard let jsonString = animation.getJSON() else {
                 continue
             }
             dictionary[animation.name] = jsonString

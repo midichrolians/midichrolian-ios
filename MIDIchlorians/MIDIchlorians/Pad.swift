@@ -54,7 +54,7 @@ class Pad: Object {
     }
 
     func addAnimation(animation: AnimationSequence) {
-        animationString = animation.getJSONforAnimationSequence()
+        animationString = animation.getJSON()
     }
 
     func getBPM() -> Int? {
@@ -72,7 +72,7 @@ class Pad: Object {
         guard let animationJSON = animationString else {
             return nil
         }
-        return AnimationSequence.getAnimationSequenceFromJSON(fromJSON: animationJSON)
+        return AnimationSequence(fromJSON: animationJSON)
     }
 
     func clearAudio() {

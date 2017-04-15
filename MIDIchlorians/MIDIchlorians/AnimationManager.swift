@@ -8,7 +8,13 @@
 
 import Foundation
 
+/// AnimationManager exposes a singleton used by UI to create, edit or
+/// delete AnimationTypes, generate AnimationSequences from AnimationTypes
+
+/// It references the DataManager to ensure the persistence of AnimationTypes
+
 class AnimationManager {
+    // the singleton
     static var instance = AnimationManager()
 
     private var animationTypes = [String: AnimationType]()
@@ -18,7 +24,7 @@ class AnimationManager {
     func getAllAnimationTypesNames() -> [String] {
         let storedAnimationTypes = DataManager.instance.loadAllAnimationTypes()
         storedAnimationTypes.forEach({(animationTypeString: String) in
-            guard let animationType = AnimationType.getAnimationTypeFromJSON(fromJSON: animationTypeString) else {
+            guard let animationType = AnimationType(fromJSON: animationTypeString) else {
                 return
             }
             animationTypes[animationType.name] = animationType
@@ -27,6 +33,9 @@ class AnimationManager {
         return arrayOfNames
     }
 
+    // returns the AnimationSequence of the given AnimationType for a
+    // given origin indexPath (relevant for relative AnimationTypes) and
+    // a particular beatFrequency
     func getAnimationSequenceForAnimationType(animationTypeName: String,
                                               beatFrequency: BeatFrequency = BeatFrequency.eight,
                                               indexPath: IndexPath) -> AnimationSequence? {
@@ -49,6 +58,7 @@ class AnimationManager {
         return animationSequence
     }
 
+    // creates a new AnimationType and persists it using DataManager
     func addNewAnimationType(name: String, animationSequence: AnimationSequence,
                              mode: AnimationTypeCreationMode, anchor: IndexPath) -> Bool {
         var animationType: AnimationType
@@ -60,23 +70,25 @@ class AnimationManager {
         )
         animationType.animationSequence.name = name
         animationTypes[name] = animationType
-        guard let animationString = animationType.getJSONforAnimationType() else {
+        guard let animationString = animationType.getJSON() else {
             return false
         }
         return DataManager.instance.saveAnimation(animationString)
     }
 
+    // deletes the AnimationType from persistence
     func removeAnimationType(name: String) -> Bool {
         guard let animationType = animationTypes[name] else {
             return false
         }
-        guard let animationTypeString = animationType.getJSONforAnimationType() else {
+        guard let animationTypeString = animationType.getJSON() else {
             return false
         }
         animationTypes[name] = nil
         return DataManager.instance.removeAnimation(animationTypeString)
     }
 
+    // renames a particular AnimationType
     func editAnimationTypeName(oldName: String, newName: String) -> Bool {
         guard let animationType = animationTypes[oldName] else {
             return false
@@ -92,6 +104,8 @@ class AnimationManager {
         )
     }
 
+    // returns the AnimationSequence for an AnimationType relative to the index of the
+    // pad which was clicked
     private func derelativiseAnimationSequence(animationType: AnimationType,
                                                clickedIndex: IndexPath) -> AnimationSequence {
         let anchor = animationType.anchorPoint
@@ -102,6 +116,7 @@ class AnimationManager {
         )
     }
 
+    // translates each AnimationBit in the AnimationSequence by a given offset
     private func transformAnimationSequence(animationSequence: AnimationSequence,
                                             rowOffset: Int, columnOffset: Int) -> AnimationSequence {
         let transformedAnimationSequence = AnimationSequence()
