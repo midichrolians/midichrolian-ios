@@ -12,10 +12,6 @@ import SwiftyDropbox
 
 // The ViewController is the main for the entire app.
 // Management and hooking up all child view controllers are done in this class.
-// The responsibilities of this class includes
-// - setting up constraints between child views
-// - setting up delegates for side pane, grid, animation designer
-// - initializing default styles for some views
 class ViewController: UIViewController {
     internal var topBarController: TopBarController!
     internal var sessionNavigationController: UINavigationController!
@@ -72,19 +68,30 @@ class ViewController: UIViewController {
     // Sets up the top navigation.
     // The top navigation has controls to show the session table, so we set that up here as well.
     private func setUpTopNav() {
+        setUpSessionTable()
+        setUpNotificationHandler()
+        setUpTopBarController()
+    }
+
+    private func setUpSessionTable() {
         sessionTableViewController = SessionTableViewController(style: .plain)
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
         sessionNavigationController = UINavigationController(rootViewController: sessionTableViewController)
         // present the session table as a popover
         sessionNavigationController.modalPresentationStyle = .popover
         sessionTableViewController.delegate = self
+    }
 
+    private func setUpNotificationHandler() {
         // handle completion of syncing sessions
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handle(notification:)),
                                                name: NSNotification.Name(rawValue: Config.sessionNotificationKey),
                                                object: nil)
 
+    }
+
+    private func setUpTopBarController() {
         topBarController = TopBarController()
         addChildViewController(topBarController)
         view.addSubview(topBarController.view)
