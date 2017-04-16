@@ -47,7 +47,7 @@ class BaseTestCase: XCTestCase {
         app.tabBars.buttons[Config.AnimationTabTitle].tap()
     }
 
-    // Grid related
+    // MARK: - Grid related
     func selectFirstPadInGrid() {
         let grid = app.collectionViews[Config.GridA11yLabel]
         let pad1 = grid.cells.element(boundBy: 0)
