@@ -48,17 +48,15 @@ struct Config {
             "All Leads - No Sidechain-16", "All Leads - No Sidechain-2",
             "All Leads - No Sidechain-3", "All Leads - No Sidechain-4",
             "All Leads - No Sidechain-6", "All Leads - No Sidechain-8",
-            "All Leads - No Sidechain", "Build Up FX",
+            "All Leads - No Sidechain",
             "Drop FX", "Fill Kick",
             "Fur Elise Cuts-1", "Fur Elise Cuts-2",
-            "Fur Elise Cuts-3", "Fur Elise Cuts",
-            "Fur Elise Main", "Intro",
+            "Fur Elise Cuts-3", "Fur Elise Cuts", "Intro",
             "KICK HIT", "KICK",
             "KickfeMain", "Mel Bass",
             "Mel Kick Bass", "Mel Kick",
             "Ride and Clap", "SNARE HIT",
-            "SNARE", "Second half drop FX",
-            "SnarefurE", "Start FX",
+            "SNARE", "SnarefurE", "Start FX",
             "VOX", "hit"
         ],
         "Mortal Kombat": [
@@ -120,37 +118,6 @@ struct Config {
             "tom-chiptune", "tom-fm",
             "tom-lofi", "tom-rototom",
             "tom-short"
-        ],
-        "Cymatics": [
-            "808 1 F#", "808 2 E", "Arp Loop 1 Em 140 BPM",
-            "Arp Loop 2 Em 140 BPM", "Brass Loop 1 Fm 160 BPM",
-            "Brass Loop 2 Dm 145 BPM ", "Brass Stab F",
-            "Build Up 1 160 BPM", "Build Up 2 150 BPM",
-            "Downlifter F 140 BPM", "Drop Loop 1 Em 160 BPM",
-            "Drop Loop 2 Fm 150 BPM", "Hihat Loop 1 160 BPM",
-            "Hihat Loop 2 150 BPM", "Impact 1",
-            "Impact 2", "Kick 1", "Kick 2", "Kick 3",
-            "Melody Loop - Fm 150 BPM", "Perc Drop Loop 1 - 140 BPM",
-            "Perc Drop Loop 2 - 140 BPM", "Perc Drop Loop 3 - 160 BPM",
-            "Perc Fill - 150 BPM", "Predrop Vocal 1",
-            "Predrop Vocal 2", "Real Drum Build - 140 BPM",
-            "Riser 1 - F 150 BPM", "Riser 2 - F# 160 BPM",
-            "Riser 3 - F 160 BPM", "Small Reverb Snare 1",
-            "Small Reverb Snare 2", "Snare Big Reverb 1",
-            "Snare Big Reverb 2", "Snare Big Reverb 3",
-            "Snare Roll 1 - 160 BPM", "Snare Roll 2 - 140 BPM",
-            "Tom Fill 1 - 150 BPM", "Tom Fill 2 - 150 BPM",
-            "Vocal Chant 1", "Vocal Chant 2",
-            "Vocal Chop Loop 1 - Fm 150 BPM", "Vocal Chop Loop 2 - 150 BPM "
-        ],
-        "Vocal": [
-            "dj-snake-vocal", "electro-vocal", "vocal-drop",
-            "weazel-vocal", "yeah"
-        ],
-        "Intro": [
-            "avicii-waiting-for-love-1", "avicii-waiting-for-love-2",
-            "calvin-intro", "dubstep",
-            "ironman", "titanium", "tron-intro"
         ]
     ]
 
