@@ -68,7 +68,6 @@ class AnimationEngine: NSObject {
                 continue
             }
             previousAnimatedIndexPaths.append(indexPath)
-            pad.animate(backgroundColour: animationBit.colour.uiColor)
             pad.animate(image: animationBit.colour.image)
         }
     }

@@ -39,43 +39,51 @@ class SessionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUp()
+        setUpTargetAction()
+        setUpEditAction()
+        setUpAlert()
+    }
+
+    func setUp() {
         self.title = Config.SessionTableTitle
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.leftBarButtonItem = self.newSessionButton
-
-        // have to set target/action here for this to work, not above in the inistnatiation.
-        self.newSessionButton.target = self
-        self.newSessionButton.action = #selector(newSession)
-
         self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.separatorColor = Config.TableViewSeparatorColor
+        self.tableView.accessibilityLabel = "Session Table"
+    }
 
+    func setUpTargetAction() {
+        self.newSessionButton.target = self
+        self.newSessionButton.action = #selector(newSession)
+    }
+
+    func setUpEditAction() {
         rowEditAction = UITableViewRowAction(style: .normal,
                                              title: Config.SessionEditActionTitle,
                                              handler: editAction)
         rowRemoveAction = UITableViewRowAction(style: .destructive,
                                                title: Config.SessionRemoveActionTitle,
                                                handler: removeAction)
+    }
 
+    func setUpAlert() {
         // Set up alert shown when editing a row
-        alertSaveAction = UIAlertAction(title: Config.SessionEditOkayTitle,
-                                        style: .default,
-                                        handler: saveActionDone)
-        alertCancelAction = UIAlertAction(title: Config.SessionEditCancelTitle,
-                                          style: .cancel,
-                                          handler: cancelActionDone)
+        alertSaveAction = UIAlertAction(
+            title: Config.SessionEditOkayTitle, style: .default, handler: saveActionDone)
+        alertCancelAction = UIAlertAction(
+            title: Config.SessionEditCancelTitle, style: .cancel, handler: cancelActionDone)
         editAlert.addAction(alertCancelAction)
         editAlert.addAction(alertSaveAction)
 
         syncAction = AlertActionTextFieldSync(alertAction: alertSaveAction)
         editAlert.addTextField(configurationHandler: { $0.delegate = self.syncAction })
 
-        removeAlertConfirmAction = UIAlertAction(title: Config.SessionRemoveConfirmTitle,
-                                                 style: .destructive,
-                                                 handler: confirmActionDone)
-        removeAlertCancelAction = UIAlertAction(title: Config.SessionEditCancelTitle,
-                                                style: .cancel,
-                                                handler: cancelActionDone)
+        removeAlertConfirmAction = UIAlertAction(
+            title: Config.SessionRemoveConfirmTitle, style: .destructive, handler: confirmActionDone)
+        removeAlertCancelAction = UIAlertAction(
+            title: Config.SessionEditCancelTitle, style: .cancel, handler: cancelActionDone)
 
         removeAlert.addAction(removeAlertConfirmAction)
         removeAlert.addAction(removeAlertCancelAction)

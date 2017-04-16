@@ -15,7 +15,6 @@ class GridController: UIViewController {
     internal var selectedFrame: Int = 0
     var mode: Mode = .playing {
         didSet {
-            // when entering playing, reset the selected index path
             if mode == .playing {
                 padSelection.position(at: nil)
                 removeButton.position(at: nil)
@@ -23,10 +22,6 @@ class GridController: UIViewController {
             grid.collectionView?.reloadData()
         }
     }
-    private var padSelection = PadSelection()
-    private var removeButton = RemoveButton()
-    weak var padDelegate: PadDelegate?
-    weak var animationDesignerDelegate: AnimationDesignerDelegate?
 
     internal var currentSession: Session! {
         didSet {
@@ -43,7 +38,6 @@ class GridController: UIViewController {
             }
         }
     }
-    // Keep the selectedIndexPath of the view controller in sync
     internal var selectedIndexPath: IndexPath? {
         didSet {
             if mode == .editing {
@@ -69,67 +63,83 @@ class GridController: UIViewController {
         }
         return getPad(at: indexPath)
     }
-    internal var grid: GridCollectionViewController! = GridCollectionViewController(
-        collectionViewLayout: UICollectionViewFlowLayout())
-    internal var page: PageCollectionViewController! = PageCollectionViewController(
-        collectionViewLayout: UICollectionViewFlowLayout())
 
-    internal var gridCollectionView: GridCollectionView!
+    internal var grid: GridCollectionViewController! =
+        GridCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    internal var page: PageCollectionViewController! =
+        PageCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    internal var gridCollectionView =
+        GridCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private var padSelection = PadSelection()
+    private var removeButton = RemoveButton()
+    weak var padDelegate: PadDelegate?
+    weak var animationDesignerDelegate: AnimationDesignerDelegate?
+
     internal var colour: Colour?
-    internal var animationSequence: AnimationSequence = AnimationSequence()
-    internal var animationName: String = Config.NewAnimationTypeDefaultName
+    internal var animationSequence = AnimationSequence()
+    internal var animationName = Config.NewAnimationTypeDefaultName
     internal var animationTypeCreationMode = AnimationTypeCreationMode.relative
 
     internal var sampleSettingMode = SampleSettingMode.once
 
+    private var alert = UIAlertController(
+        title: Config.RemoveButtonAlertTitle, message: nil, preferredStyle: .alert)
+    private var removeSampleAction: UIAlertAction!
+    private var removeAnimationAction: UIAlertAction!
+    private var removeBothAction: UIAlertAction!
+    private var cancelAction: UIAlertAction!
+
     init(frame: CGRect, session: Session) {
         currentSession = session
         super.init(nibName: nil, bundle: nil)
-        grid.padGrid = currentSession.getGrid(page: currentPage)
-        page.pages = currentSession.numPages
-        grid.gridDisplayDelegate = self
-        page.delegate = self
-        padSelection.viewController = grid
-        removeButton.viewController = grid
-        RecorderManager.instance.delegate = self
+
+        buildViewHierarchy()
+        setup()
+        buildConstraints()
+        addGestures()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(nibName: nil, bundle: nil)
     }
 
-    override func viewDidLayoutSubviews() {
-        gridCollectionView.reloadData()
-        page.collectionView?.reloadData()
-    }
-
-    override func loadView() {
-        view = UIView()
-
-        // set up pad selection view
+    private func buildViewHierarchy() {
         // added first because this will be behind the grid so it won't block multitouch
         view.addSubview(padSelection)
+        view.addSubview(grid.view)
+        view.addSubview(page.view)
+        view.addSubview(removeButton)
+    }
 
-        // set up grid collection view
-        gridCollectionView = GridCollectionView(frame: CGRect.zero,
-                                                collectionViewLayout: grid.collectionViewLayout)
-        grid.collectionView = gridCollectionView
-        // we want the pad selection to show through
-        gridCollectionView.backgroundColor = UIColor.clear
+    private func setup() {
+        // for some reason we must register this here, instead of in GridCollectionView.viewDidLoad
         gridCollectionView.register(GridCollectionViewCell.self,
                                     forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
         gridCollectionView.padDelegate = self
-        view.addSubview(grid.view)
+        gridCollectionView.backgroundColor = UIColor.clear
+        gridCollectionView.accessibilityLabel = "Grid"
 
-        // set up page collection view
-        view.addSubview(page.view)
-        page.collectionView!.backgroundColor = Config.BackgroundColor
+        grid.padGrid = currentSession.getGrid(page: currentPage)
+        grid.gridDisplayDelegate = self
+        grid.collectionView = gridCollectionView
 
-        // set up remove button
-        view.addSubview(removeButton)
-        removeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeFromPad)))
+        page.delegate = self
+        page.pages = currentSession.numPages
 
-        // set up constraints
+        padSelection.viewController = grid
+        removeButton.viewController = grid
+        RecorderManager.instance.delegate = self
+
+        removeSampleAction = UIAlertAction(
+            title: Config.RemoveButtonSampleTitle, style: .destructive, handler: removeSample)
+        removeAnimationAction = UIAlertAction(
+            title: Config.RemoveButtonAnimationTitle, style: .destructive, handler: removeAnimation)
+        removeBothAction = UIAlertAction(
+            title: Config.RemoveButtonBothTitle, style: .destructive, handler: removeBoth)
+        cancelAction = UIAlertAction(title: Config.RemoveButtonCancelTitle, style: .default, handler: nil)
+    }
+
+    private func buildConstraints() {
         page.view.snp.makeConstraints { make in
             make.top.right.bottom.equalTo(view)
             make.width.equalTo(view).multipliedBy(1.0/9.0).offset(-Config.ItemInsets.right)
@@ -140,51 +150,70 @@ class GridController: UIViewController {
         }
     }
 
+    private func addGestures() {
+        removeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeFromPad)))
+    }
+
+    override func viewDidLayoutSubviews() {
+        gridCollectionView.reloadData()
+        page.collectionView?.reloadData()
+    }
+
     func getPad(at indexPath: IndexPath) -> Pad {
         return self.currentSession.getPad(page: currentPage, indexPath: indexPath)
     }
 
-    // Show an alert to remove something from the pad, where something can be:
-    // 1. only sample
-    // 2. only animation
-    // 3. both sample and animation
-    // depending on what the pad has
-    func removeFromPad() {
+    // MARK: Alert related to clearing pad
+
+    func removeSample(_: UIAlertAction) {
         guard let indexPath = selectedIndexPath else {
             return
         }
-        let pad = getPad(at: indexPath)
+        getPad(at: indexPath).clearAudio()
+        selectedIndexPath = indexPath
+    }
 
-        let alert = UIAlertController(title: Config.RemoveButtonAlertTitle, message: nil, preferredStyle: .alert)
+    func removeAnimation(_: UIAlertAction) {
+        guard let indexPath = selectedIndexPath else {
+            return
+        }
+        getPad(at: indexPath).clearAnimation()
+        selectedIndexPath = indexPath
+    }
+
+    func removeBoth(_: UIAlertAction) {
+        guard let indexPath = selectedIndexPath else {
+            return
+        }
+        getPad(at: indexPath).clearAudio()
+        getPad(at: indexPath).clearAnimation()
+        selectedIndexPath = indexPath
+    }
+
+    // Show an alert to remove something from the pad, where something can be (depending on the pad):
+    // 1. only sample
+    // 2. only animation
+    // 3. both sample and animation
+    func removeFromPad() {
+        guard let pad = selectedPad else {
+            return
+        }
 
         if let audioFile = pad.getAudioFile() {
             //need to stop looping track
             _ = AudioManager.instance.stop(audioDir: audioFile)
-            alert.addAction(UIAlertAction(title: Config.RemoveButtonSampleTitle, style: .destructive, handler: { _ in
-                pad.clearAudio()
-                self.gridCollectionView.reloadItems(at: [indexPath])
-                self.selectedIndexPath = indexPath
-            }))
+            alert.addAction(removeSampleAction)
         }
 
         if pad.getAnimation() != nil {
-            alert.addAction(UIAlertAction(title: Config.RemoveButtonAnimationTitle, style: .destructive, handler: { _ in
-                pad.clearAnimation()
-                self.gridCollectionView.reloadItems(at: [indexPath])
-                self.selectedIndexPath = indexPath
-            }))
+            alert.addAction(removeAnimationAction)
         }
 
         if pad.getAudioFile() != nil && pad.getAnimation() != nil {
-            alert.addAction(UIAlertAction(title: Config.RemoveButtonBothTitle, style: .destructive, handler: { _ in
-                pad.clearAudio()
-                pad.clearAnimation()
-                self.gridCollectionView.reloadItems(at: [indexPath])
-                self.selectedIndexPath = indexPath
-            }))
+            alert.addAction(removeBothAction)
         }
 
-        alert.addAction(UIAlertAction(title: Config.RemoveButtonCancelTitle, style: .default, handler: nil))
+        alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
 
@@ -200,7 +229,6 @@ class GridController: UIViewController {
             _ = AudioManager.instance.play(audioDir: audioFile, bpm: pad.getBPM())
         }
     }
-
 }
 
 extension GridController: GridDisplayDelegate {
@@ -209,125 +237,14 @@ extension GridController: GridDisplayDelegate {
     }
 }
 
-extension GridController: PadDelegate {
-    func padTapped(indexPath: IndexPath) {
-        switch mode {
-        case .design:
-            padInDesign(indexPath: indexPath)
-        case .editing:
-            if selectedIndexPath != indexPath {
-                padInEdit(indexPath: indexPath)
-            } else {
-                fallthrough
-            }
-        case .playing:
-            padInPlay(indexPath: indexPath)
-        }
-    }
-
-    private func padInEdit(indexPath: IndexPath) {
-        // if in editing mode, highlight the tapped grid
-        let pad = getPad(at: indexPath)
-        self.selectedIndexPath = indexPath
-        padDelegate?.pad(selected: pad)
-    }
-
-    private func padInDesign(indexPath: IndexPath) {
-        let pad = getPad(at: indexPath)
-
-        if let colour = self.colour {
-            // in design mode and we have a colour selected, so change the colour
-            // temp heck to change colour, since Pad doesn't have a colour
-            if let existingColour = grid.colours[selectedFrame][pad] {
-                self.animationSequence.removeAnimationBit(
-                    atTick: selectedFrame,
-                    animationBit: AnimationBit(
-                        colour: existingColour,
-                        row: indexPath.section,
-                        column: indexPath.item
-                    )
-                )
-            }
-            grid.colours[selectedFrame][pad] = colour
-            self.animationSequence.addAnimationBit(
-                atTick: selectedFrame,
-                animationBit: AnimationBit(
-                    colour: colour,
-                    row: indexPath.section,
-                    column: indexPath.item
-                )
-            )
-            grid.collectionView?.reloadItems(at: [indexPath])
-        } else {
-            guard let colourToBeRemoved = grid.colours[selectedFrame][pad] else {
-                return
-            }
-            self.animationSequence.removeAnimationBit(
-                atTick: selectedFrame,
-                animationBit: AnimationBit(
-                    colour: colourToBeRemoved,
-                    row: indexPath.section,
-                    column: indexPath.item
-                )
-            )
-            grid.colours[selectedFrame][pad] = nil
-            grid.collectionView?.reloadItems(at: [indexPath])
-        }
-        padDelegate?.pad(animationUpdated: animationSequence)
-        // prevent the pad from being played in design mode
-    }
-
-    private func padInPlay(indexPath: IndexPath) {
-        let pad = getPad(at: indexPath)
-        padDelegate?.pad(played: pad)
-
-        if let animationSequence = pad.getAnimation() {
-            AnimationEngine.register(animationSequence: animationSequence)
-        }
-
-        if let audioFile = pad.getAudioFile() {
-            _ = AudioManager.instance.play(audioDir: audioFile, bpm: pad.getBPM())
-            // first we check if this pad is looping, we do that by checking bpm
-            let isLooping = pad.getBPM() != nil
-            // check if it is playing, AudioManager would have played/stopped a looping track,
-            // so checking the state here will allow us to decide if we want to show or hide the indicator
-            if isLooping { // we only care that a pad has a looping track
-                // if it is playing we want the tap to stop the audio playing
-                let isPlaying = AudioManager.instance.isTrackPlaying(audioDir: audioFile)
-                if isPlaying {
-                    // the pad is now playing, so add the loop indicator
-                    grid.looping.insert(pad)
-                    grid.collectionView?.reloadItems(at: [indexPath])
-                } else {
-                    grid.looping.remove(pad)
-                    grid.collectionView?.reloadItems(at: [indexPath])
-                }
-            }
-        }
-
-        if RecorderManager.instance.isRecording {
-            RecorderManager.instance.recordPad(forPage: self.currentPage, forIndex: indexPath)
-        }
-    }
-}
-
 extension GridController: SampleTableDelegate {
     func sampleTable(_: UITableView, didSelect sample: String) {
         guard let indexPath = self.selectedIndexPath else {
             return
         }
-        guard let row = self.selectedIndexPath?.section, let col = self.selectedIndexPath?.row else {
-            return
-        }
-        self.currentSession.addAudio(page: self.currentPage, row: row, col: col, audioFile: sample)
-        if self.sampleSettingMode == SampleSettingMode.loop {
-            self.currentSession.addBPMToPad(
-                page: self.currentPage, row: row, col: col, bpm: self.currentSession.getSessionBPM())
-        } else {
-            self.currentSession.clearBPMAtPad(page: self.currentPage, row: row, col: col)
-        }
-        self.grid.collectionView!.reloadItems(at: [indexPath])
-        self.selectedIndexPath = indexPath
+        currentSession.addAudio(page: currentPage, row: indexPath.section, col: indexPath.row, audioFile: sample)
+        sampleSettingMode(selected: sampleSettingMode)
+        selectedIndexPath = indexPath
     }
 }
 
@@ -344,8 +261,7 @@ extension GridController: AnimationTableDelegate {
 
         self.currentSession.addAnimation(
             page: self.currentPage, row: indexPath.section, col: indexPath.row, animation: animationSequence)
-        self.grid.collectionView!.reloadItems(at: [indexPath])
-        self.selectedIndexPath = indexPath
+        selectedIndexPath = indexPath
     }
 
     func addAnimation(_ tableView: UITableView) {
@@ -360,6 +276,7 @@ extension GridController: ModeSwitchDelegate {
 
     func enterPlay() {
         self.mode = .playing
+        selectedIndexPath = nil
     }
 
     func enterDesign() {
@@ -369,7 +286,6 @@ extension GridController: ModeSwitchDelegate {
         selectedFrame = 0
         self.mode = .design
     }
-
 }
 
 extension GridController: AnimationDesignerDelegate {
@@ -427,18 +343,15 @@ extension GridController: PageDelegate {
 
 extension GridController: RecordPlaybackDelegate {
     func playPad(page: Int, indexPath: IndexPath) {
-        // switch to the required page
         currentPage = page
-        // then get the pad and play it
-        let pad = getPad(at: indexPath)
-        playSampleAndAnimation(assignedTo: pad)
+        playSampleAndAnimation(assignedTo: getPad(at: indexPath))
     }
 }
 
 extension GridController: SampleSettingDelegate {
     func sampleSettingMode(selected: SampleSettingMode) {
         self.sampleSettingMode = selected
-        guard let indexPath = self.selectedIndexPath else {
+        guard let indexPath = selectedIndexPath else {
             return
         }
 

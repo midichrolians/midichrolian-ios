@@ -25,7 +25,6 @@
 		3346913D1E9B407600BDA7B1 /* SampleSettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */; };
 		334970BF1E72557D009C78DF /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationType.swift */; };
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
-		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
 		334970C71E72B83D009C78DF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C61E72B83D009C78DF /* AudioManager.swift */; };
 		334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */; };
 		338275391E924FA500C6B3B7 /* BeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338275381E924FA500C6B3B7 /* BeatFrequency.swift */; };
@@ -295,6 +294,8 @@
 		B49473BC446DC26204B223F1 /* Pods_MIDIchloriansUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9072948CB8AB76A19799BB /* Pods_MIDIchloriansUITests.framework */; };
 		E9158EAB1E860CDB00B7ADF9 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAA1E860CDB00B7ADF9 /* GridController.swift */; };
 		E9158EB01E86353600B7ADF9 /* GridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */; };
+		E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */; };
+		E920F4271EA11BED00D5B165 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E920F4261EA11BED00D5B165 /* BaseTestCase.swift */; };
 		E92D6F291E94F5C300E815F1 /* TimelineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */; };
 		E92D6F2D1E953D7100E815F1 /* ColourCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */; };
 		E92D6F2F1E953DA000E815F1 /* TimelineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */; };
@@ -315,6 +316,7 @@
 		E95EBC361E9B54FB00E66D1C /* BPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */; };
 		E95EBC381E9B5B5700E66D1C /* BPMSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
+		E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
 		E9A1A6081E8E4061001B13DB /* SidePaneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */; };
 		E9AD301B1E88EBB300801A9F /* PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD301A1E88EBB300801A9F /* PadDelegate.swift */; };
@@ -327,7 +329,6 @@
 		E9C6778B1E9A18D200AE0E2E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */; };
 		E9E780741E955B8F00F5CC65 /* PageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780731E955B8F00F5CC65 /* PageDelegate.swift */; };
 		E9E7807A1E96284100F5CC65 /* SampleSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */; };
-		E9E7807C1E96361B00F5CC65 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */; };
 		E9EC7C471E8395AC00769A8F /* SidePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C461E8395AC00769A8F /* SidePaneController.swift */; };
 		E9EC7C4B1E83A81900769A8F /* TopBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4A1E83A81900769A8F /* TopBarController.swift */; };
 		E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */; };
@@ -393,7 +394,6 @@
 		3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettingDelegate.swift; sourceTree = "<group>"; };
 		334970BE1E72557D009C78DF /* AnimationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		334970C61E72B83D009C78DF /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = MIDIchlorians/AudioManager.swift; sourceTree = "<group>"; };
 		334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeCreationMode.swift; sourceTree = "<group>"; };
 		338275381E924FA500C6B3B7 /* BeatFrequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatFrequency.swift; sourceTree = "<group>"; };
@@ -666,6 +666,8 @@
 		E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchloriansUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchloriansUITests/Pods-MIDIchloriansUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E9158EAA1E860CDB00B7ADF9 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
 		E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewController.swift; sourceTree = "<group>"; };
+		E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarTestCase.swift; sourceTree = "<group>"; };
+		E920F4261EA11BED00D5B165 /* BaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		E92D6F281E94F5C300E815F1 /* TimelineCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewController.swift; sourceTree = "<group>"; };
 		E92D6F2C1E953D7100E815F1 /* ColourCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourCollectionViewController.swift; sourceTree = "<group>"; };
 		E92D6F2E1E953DA000E815F1 /* TimelineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDelegate.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 		E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMViewController.swift; sourceTree = "<group>"; };
 		E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorDelegate.swift; sourceTree = "<group>"; };
+		E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GridController+PadDelegate.swift"; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
 		E9AD301A1E88EBB300801A9F /* PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadDelegate.swift; sourceTree = "<group>"; };
@@ -698,7 +701,6 @@
 		E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		E9E780731E955B8F00F5CC65 /* PageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDelegate.swift; sourceTree = "<group>"; };
 		E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettingViewController.swift; sourceTree = "<group>"; };
-		E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		E9EC7C461E8395AC00769A8F /* SidePaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneController.swift; sourceTree = "<group>"; };
 		E9EC7C4A1E83A81900769A8F /* TopBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarController.swift; sourceTree = "<group>"; };
 		E9EC7C4C1E83B7F100769A8F /* SessionSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectorDelegate.swift; sourceTree = "<group>"; };
@@ -791,31 +793,26 @@
 				80034E821E93ACC3005B4487 /* Recording */,
 				805946D01E816CEC00EF7A2B /* Audio */,
 				F34B2A501E7A721500FD2C61 /* Models */,
-				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
-				33A6FF9A1E97517700E7E8B1 /* Keys.plist */,
-				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
-				E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */,
 				E9AD30221E8BADF200801A9F /* Animation Designer */,
 				E99E8A4A1E8016BF001F9351 /* Top Nav */,
 				E92F6C331E7522F700F5A092 /* Session Table */,
 				E93A02CB1E7403B900DFB2B7 /* Side Pane */,
 				E9158EAE1E86155E00B7ADF9 /* Grid */,
+				E97B146A1EA1C09200489C5A /* Sample Setting */,
+				33DAAAC31E72C38100987E86 /* Animation */,
+				33120E1D1E6FD30A007E7717 /* AppDelegate.swift */,
+				33120E1F1E6FD30A007E7717 /* ViewController.swift */,
+				33A6FF9A1E97517700E7E8B1 /* Keys.plist */,
 				33120E211E6FD30A007E7717 /* Main.storyboard */,
 				33120E241E6FD30A007E7717 /* Assets.xcassets */,
 				33120E261E6FD30A007E7717 /* LaunchScreen.storyboard */,
 				33120E291E6FD30A007E7717 /* Info.plist */,
-				33DAAAC31E72C38100987E86 /* Animation */,
 				334970C01E72583F009C78DF /* Config.swift */,
 				F36082C01E9BB2230054221A /* DefaultSessions.json */,
-				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
+				E97B146B1EA1C0FE00489C5A /* Extensions */,
 				F36B995D1E8148260026721A /* DataManager.swift */,
-				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
-				E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */,
-				E9E7807B1E96361B00F5CC65 /* UIStackView+Extensions.swift */,
 				F31E2B121E8FF1B000C23325 /* CloudManager.swift */,
-				E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */,
-				3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */,
-				3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */,
+				E97B146C1EA1C11300489C5A /* Helpers */,
 			);
 			path = MIDIchlorians;
 			sourceTree = "<group>";
@@ -824,6 +821,8 @@
 			isa = PBXGroup;
 			children = (
 				33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */,
+				E920F4261EA11BED00D5B165 /* BaseTestCase.swift */,
+				E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */,
 				33120E341E6FD30A007E7717 /* Info.plist */,
 			);
 			path = MIDIchloriansUITests;
@@ -893,7 +892,6 @@
 				33EC0A411E6FE55000229A92 /* AnimationBit.swift */,
 				33EC0A431E6FE67700229A92 /* AnimationSequence.swift */,
 				334970BE1E72557D009C78DF /* AnimationType.swift */,
-				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
 				33A2754C1E7BEF56000B1B15 /* Colour.swift */,
 				33BCC5A91E85064900D8489F /* AnimatableGrid.swift */,
 				33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */,
@@ -1219,6 +1217,7 @@
 			isa = PBXGroup;
 			children = (
 				E9158EAA1E860CDB00B7ADF9 /* GridController.swift */,
+				E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */,
 				E9E780731E955B8F00F5CC65 /* PageDelegate.swift */,
 				E9AD301A1E88EBB300801A9F /* PadDelegate.swift */,
 				E9158EAF1E86353600B7ADF9 /* GridCollectionViewController.swift */,
@@ -1276,6 +1275,33 @@
 			name = "Side Pane";
 			sourceTree = "<group>";
 		};
+		E97B146A1EA1C09200489C5A /* Sample Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E9E780791E96284100F5CC65 /* SampleSettingViewController.swift */,
+				3346913A1E9B3E8F00BDA7B1 /* SampleSettingMode.swift */,
+				3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */,
+			);
+			name = "Sample Setting";
+			sourceTree = "<group>";
+		};
+		E97B146B1EA1C0FE00489C5A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E93A02B11E738C0400DFB2B7 /* CGSize+Extensions.swift */,
+				E9C6778A1E9A18D200AE0E2E /* UITableView+Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		E97B146C1EA1C11300489C5A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E9C54EBC1E98CA9B00141BCE /* AlertActionTextFieldSync.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		E99E8A4A1E8016BF001F9351 /* Top Nav */ = {
 			isa = PBXGroup;
 			children = (
@@ -1287,6 +1313,7 @@
 				E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */,
 				F31DB0AB1E9B093C005DB81A /* SyncDelegate.swift */,
 				E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */,
+				E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */,
 			);
 			name = "Top Nav";
 			sourceTree = "<group>";
@@ -1903,7 +1930,6 @@
 				E9C6778B1E9A18D200AE0E2E /* UITableView+Extensions.swift in Sources */,
 				F31E2B131E8FF1B000C23325 /* CloudManager.swift in Sources */,
 				33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */,
-				E9E7807C1E96361B00F5CC65 /* UIStackView+Extensions.swift in Sources */,
 				E9EC7C4D1E83B7F100769A8F /* SessionSelectorDelegate.swift in Sources */,
 				F3710A8F1E7D280D0031A754 /* Session.swift in Sources */,
 				E92D6F2F1E953DA000E815F1 /* TimelineDelegate.swift in Sources */,
@@ -1966,7 +1992,6 @@
 				F3173AA81E8306D20095F76A /* Audio.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				80034E861E93ACE8005B4487 /* TimeTracker.swift in Sources */,
-				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
 				334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */,
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
 				E95CACD51E96A97D009E6DA6 /* TutorialViewController.swift in Sources */,
@@ -1977,6 +2002,7 @@
 				E93A02C01E73BBA000DFB2B7 /* SampleTableViewCell.swift in Sources */,
 				80A050C01E9926FD00091411 /* GSAudio.swift in Sources */,
 				E9EC9A3C1E94AEE800C89118 /* PadSelection.swift in Sources */,
+				E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */,
 				33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */,
 				33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */,
 			);
@@ -1987,6 +2013,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */,
+				E920F4271EA11BED00D5B165 /* BaseTestCase.swift in Sources */,
+				E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2138,7 +2166,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = MIDIchlorians/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2152,6 +2182,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = MIDIchlorians/Info.plist;
@@ -2166,7 +2197,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F95731B6B5E072075D849CB3 /* Pods-MIDIchloriansUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 473WNZW6EJ;
 				INFOPLIST_FILE = MIDIchloriansUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2181,7 +2213,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6848E6E722EA2AD451EA962 /* Pods-MIDIchloriansUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 473WNZW6EJ;
 				INFOPLIST_FILE = MIDIchloriansUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2196,7 +2228,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 018206302E262402CC884AA2 /* Pods-MIDIchloriansTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = MIDIchloriansTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0144939r.MIDIchloriansTests;
@@ -2210,6 +2244,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D998B282F8D0434AE2F48F95 /* Pods-MIDIchloriansTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MIDIchloriansTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
