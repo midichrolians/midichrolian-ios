@@ -310,9 +310,7 @@ class DataManager {
         }
 
         audioStrings.remove(audioFile)
-
         return true
-
     }
 
     func loadAllAudioStrings() -> [String] {
@@ -397,6 +395,5 @@ class DataManager {
         }
 
         return audioObject.getAudioGroup()
-
     }
 }
