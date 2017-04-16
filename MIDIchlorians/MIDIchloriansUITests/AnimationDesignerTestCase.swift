@@ -12,20 +12,20 @@ import Nimble
 class AnimationDesignerTestCase: BaseTestCase {
 
     func tapAddAnimation() {
-        app.navigationBars[Config.AnimationTabTitle].buttons["Add"].tap()
+        app.navigationBars[Config.AnimationTabTitle].buttons[Config.CommonSystemAddTitle].tap()
     }
 
     func selectColour(at index: UInt) {
-        app.collectionViews["Colour Picker"].cells.element(boundBy: index).tap()
+        app.collectionViews[Config.ColourPickerA11yLabel].cells.element(boundBy: index).tap()
     }
 
     func selectClear() {
-        let count = app.collectionViews["Colour Picker"].cells.count
+        let count = app.collectionViews[Config.ColourPickerA11yLabel].cells.count
         selectColour(at: count - 1)
     }
 
     func timelineFrame(at index: UInt) -> XCUIElement {
-        return app.collectionViews["Timeline"].cells.element(boundBy: index)
+        return app.collectionViews[Config.TimelineA11yLabel].cells.element(boundBy: index)
     }
 
     func selectTimelineFrame(at index: UInt) {
@@ -33,7 +33,7 @@ class AnimationDesignerTestCase: BaseTestCase {
     }
 
     func gridPad(at index: UInt) -> XCUIElement {
-        return app.collectionViews["Grid"].cells.element(boundBy: 0)
+        return app.collectionViews[Config.GridA11yLabel].cells.element(boundBy: 0)
     }
 
     func tapGridPad() {
@@ -41,7 +41,7 @@ class AnimationDesignerTestCase: BaseTestCase {
     }
 
     func numberOfAnimations() -> UInt {
-        return app.tables["Animation Table"].cells.count
+        return app.tables[Config.AnimationTableA11YLabel].cells.count
     }
 
     func expectSizeOfSelectedFrameToBeBigger(selectedIndex: UInt) {
@@ -52,11 +52,11 @@ class AnimationDesignerTestCase: BaseTestCase {
     }
 
     func expectGridPadToNotHaveColour() {
-        expect(self.gridPad(at: 0).images["Animation image"].exists) == false
+        expect(self.gridPad(at: 0).images[Config.GridCollectionViewCellA11yLabel].exists) == false
     }
 
     func expectGridPadToHaveColour() {
-        expect(self.gridPad(at: 0).images["Animation image"].exists) == true
+        expect(self.gridPad(at: 0).images[Config.GridCollectionViewCellA11yLabel].exists) == true
     }
 
     func tapAbsolute() {

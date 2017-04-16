@@ -26,7 +26,7 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(pan(recognizer:)))
         self.collectionView!.addGestureRecognizer(panGesture)
-        collectionView?.accessibilityLabel = "Timeline"
+        collectionView?.accessibilityLabel = Config.TimelineA11yLabel
     }
 
     func pan(recognizer: UIPanGestureRecognizer) {

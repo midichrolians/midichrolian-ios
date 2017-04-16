@@ -49,7 +49,7 @@ class BaseTestCase: XCTestCase {
 
     // Grid related
     func selectFirstPadInGrid() {
-        let grid = app.collectionViews["Grid"]
+        let grid = app.collectionViews[Config.GridA11yLabel]
         let pad1 = grid.cells.element(boundBy: 0)
         pad1.tap()
     }

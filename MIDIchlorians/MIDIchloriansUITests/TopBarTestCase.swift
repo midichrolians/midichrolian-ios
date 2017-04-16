@@ -21,15 +21,15 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func assignSampleToPad() {
-        let groupTable = app.tables["Group Table"]
+        let groupTable = app.tables[Config.GroupTableA11yLabel]
         expect(groupTable.cells.count) > 0
         groupTable.cells.element(boundBy: 0).tap()
-        let sampleTable = app.tables["Sample Table"]
+        let sampleTable = app.tables[Config.SampleTableA11yLabel]
         sampleTable.cells.element(boundBy: 0).tap()
     }
 
     func tapRemovePad() {
-        app.images["Remove Pad"].tap()
+        app.images[Config.RemoveButtonA11yLabel].tap()
     }
 
     func ensureRemoveSampleOptionExists() {
@@ -83,11 +83,11 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func newSession() {
-        app.buttons["New session"].tap()
+        app.navigationBars[Config.SessionTableTitle].buttons[Config.CommonSystemAddTitle].tap()
     }
 
     func sessionCount() -> UInt {
-        return app.tables["Session Table"].cells.count
+        return app.tables[Config.SessionTableA11yLabel].cells.count
     }
 
     func tapSessionAndGetSessionCount() -> UInt {
@@ -96,11 +96,11 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func test_newSession_createsNewSession() {
-        let currentSessionTitle = app.staticTexts["Session title"].label
+        let currentSessionTitle = app.staticTexts[Config.TopNavSessionTitleA11yLabel].label
         let prevCount = tapSessionAndGetSessionCount()
         newSession()
 
-        let newSessionTitle = app.staticTexts["Session title"].label
+        let newSessionTitle = app.staticTexts[Config.TopNavSessionTitleA11yLabel].label
         expect(currentSessionTitle == newSessionTitle) == false
 
         let newCount = tapSessionAndGetSessionCount()
@@ -112,11 +112,11 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func expectSessionExists(_ name: String) {
-        expect(self.app.tables["Session Table"].cells.staticTexts[name].exists) == true
+        expect(self.app.tables[Config.SessionTableA11yLabel].cells.staticTexts[name].exists) == true
     }
 
     func getSessionName(_ index: UInt) -> String {
-        return app.tables["Session Table"].cells.element(boundBy: index).staticTexts.element.label
+        return app.tables[Config.SessionTableA11yLabel].cells.element(boundBy: index).staticTexts.element.label
     }
 
     func typeSessionName(_ suffix: String) {
@@ -125,7 +125,7 @@ class TopBarTestCase: BaseTestCase {
 
     func test_editSession_editName() {
         tapSession()
-        editRow(app.tables["Session Table"])
+        editRow(app.tables[Config.SessionTableA11yLabel])
         let originalName = getSessionName(0)
         // suffix because the cursor is at the end of the text field
         let suffix = "123"
@@ -136,7 +136,7 @@ class TopBarTestCase: BaseTestCase {
 
     func test_editSession_removeSession() {
         let prevCount = tapSessionAndGetSessionCount()
-        let sessionTable = app.tables["Session Table"]
+        let sessionTable = app.tables[Config.SessionTableA11yLabel]
         removeRow(sessionTable)
         confirm(app.alerts.element)
         let newCount = sessionCount()

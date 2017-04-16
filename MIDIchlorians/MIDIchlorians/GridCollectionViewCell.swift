@@ -58,7 +58,7 @@ class GridCollectionViewCell: UICollectionViewCell {
         playLoopIndicator.image = playLoopIndicatorImage
         playLoopIndicator.alpha = 0
         layer.cornerRadius = frame.width * Config.PadCornerRadiusRatio
-        imageView.accessibilityLabel = "Animation image"
+        imageView.accessibilityLabel = Config.GridCollectionViewCellA11yLabel
     }
 
     func buildViewHierarchy() {
