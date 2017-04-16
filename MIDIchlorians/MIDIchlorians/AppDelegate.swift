@@ -118,6 +118,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func removeDeletedSamples(samplesInDocDirectory: [String]) {
+        let samplesInDatabase = DataManager.instance.loadAllAudioStrings()
+        var setOfSamplesInDocDirectory = Set<String>()
+
+        samplesInDocDirectory.forEach({ sample in
+            setOfSamplesInDocDirectory.insert(sample)
+        })
+
+        for sample in samplesInDatabase where !setOfSamplesInDocDirectory.contains(sample) {
+            _ = DataManager.instance.removeAudio(sample)
+        }
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //Get app keys
         var keys: NSDictionary?
@@ -150,6 +163,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = DataManager.instance.saveAudio(sample)
             _ = DataManager.instance.addAudioToGroup(group: Config.defaultGroup, audio: sample)
         }
+
+        //Remove samples that exist in Realm but no longer exist in the docs directory
+        removeDeletedSamples(samplesInDocDirectory: appSamples)
         
         // add all preloaded samples to group according to the songs they belong to, 
         // based on the information in Config
