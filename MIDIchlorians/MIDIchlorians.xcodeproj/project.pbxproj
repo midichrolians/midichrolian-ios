@@ -265,9 +265,10 @@
 		E95EBC381E9B5B5700E66D1C /* BPMSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */; };
 		E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */; };
 		E968C14B1EA37494007CE28D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
-		E968C14C1EA374CA007CE28D /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
+		E968C14C1EA374CA007CE28D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E968C14E1EA38690007CE28D /* TopBarTestCaseHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C14D1EA38690007CE28D /* TopBarTestCaseHelpers.swift */; };
 		E968C1501EA387C2007CE28D /* AnimationDesignerTestCaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C14F1EA387C2007CE28D /* AnimationDesignerTestCaseHelper.swift */; };
+		E96CD4421EA3BB3A00C9F018 /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088778B1EA373A500408A3C /* AudioPlayerSetting.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
@@ -1789,12 +1790,13 @@
 			files = (
 				33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */,
 				E920F4271EA11BED00D5B165 /* BaseTestCase.swift in Sources */,
-				E968C14C1EA374CA007CE28D /* AudioPlayerSetting.swift in Sources */,
+				E968C14C1EA374CA007CE28D /* (null) in Sources */,
 				E968C14B1EA37494007CE28D /* Config.swift in Sources */,
 				E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */,
 				E968C1501EA387C2007CE28D /* AnimationDesignerTestCaseHelper.swift in Sources */,
 				E968C14E1EA38690007CE28D /* TopBarTestCaseHelpers.swift in Sources */,
 				E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */,
+				E96CD4421EA3BB3A00C9F018 /* AudioPlayerSetting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1808,12 +1810,10 @@
 				334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */,
 				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
 				808877941EA3769500408A3C /* AudioTrackPlayerTests.swift in Sources */,
-				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
 				8088779D1EA38A1E00408A3C /* PlayBackRetrieverTests.swift in Sources */,
 				334113971E8E6CE900F998E9 /* AnimationManagerTests.swift in Sources */,
 				808877971EA3794E00408A3C /* RecorderManagerTests.swift in Sources */,
 				808877921EA3751000408A3C /* AudioClipPlayerTests.swift in Sources */,
-				F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */,
 				33DDEB021E8D1DA600380C30 /* AnimationBitTests.swift in Sources */,
 				8088779B1EA385DE00408A3C /* TimeTrackerTests.swift in Sources */,
 				F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */,
