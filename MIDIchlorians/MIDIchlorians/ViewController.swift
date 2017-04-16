@@ -99,7 +99,7 @@ class ViewController: UIViewController {
 
         topBarController.view.snp.makeConstraints { make in
             make.top.left.right.equalTo(view)
-            make.height.equalTo(Config.TopNavHeight)
+            make.height.equalTo(Config.topNavHeight)
         }
 
         topBarController.modeSwitchDelegate = self
@@ -111,7 +111,7 @@ class ViewController: UIViewController {
 
     // Saves the current session
     func saveCurrentSession() {
-        let sessionName = currentSession.getSessionName() ?? Config.DefaultSessionName
+        let sessionName = currentSession.getSessionName() ?? Config.defaultSessionName
         currentSession = dataManager.saveSession(sessionName, currentSession)
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
     }
@@ -156,7 +156,7 @@ class ViewController: UIViewController {
 
         view.addSubview(sidePaneController.view)
         sidePaneController.view.snp.makeConstraints { make in
-            make.width.equalTo(Config.SidePaneWidth)
+            make.width.equalTo(Config.sidePaneWidth)
             make.left.equalTo(gridController.view.snp.right)
             make.top.equalTo(topBarController.view.snp.bottom)
             make.bottom.equalTo(view)
@@ -166,7 +166,7 @@ class ViewController: UIViewController {
     // Sets up the bottom panel for editing sample settings
     private func setUpSampleSetting() {
         sampleSettingController = SampleSettingViewController()
-        sampleSettingController.view.backgroundColor = Config.SecondaryBackgroundColor
+        sampleSettingController.view.backgroundColor = Config.secondaryBackgroundColor
         sampleSettingController.delegate = gridController
         sampleSettingController.bpmSelectorDelegate = self
         addChildViewController(sampleSettingController)
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
         didMove(toParentViewController: self)
 
         sampleSettingController.view.snp.makeConstraints { make in
-            make.height.equalTo(Config.BottomPaneHeight)
+            make.height.equalTo(Config.bottomPaneHeight)
             make.left.equalTo(view)
             make.right.equalTo(sidePaneController.view.snp.left)
             make.top.equalTo(view.snp.bottom).offset(0)
@@ -184,13 +184,13 @@ class ViewController: UIViewController {
     // Sets up the bottom panel for designing animations
     private func setUpAnimationDesigner() {
         animationDesignController = AnimationDesignerController()
-        animationDesignController.view.backgroundColor = Config.SecondaryBackgroundColor
+        animationDesignController.view.backgroundColor = Config.secondaryBackgroundColor
         addChildViewController(animationDesignController)
         view.addSubview(animationDesignController.view)
         animationDesignController.didMove(toParentViewController: self)
 
         animationDesignController.view.snp.makeConstraints { make in
-            make.height.equalTo(Config.BottomPaneHeight)
+            make.height.equalTo(Config.bottomPaneHeight)
             make.left.equalTo(view)
             make.right.equalTo(sidePaneController.view.snp.left)
             make.top.equalTo(view.snp.bottom).offset(0)
@@ -199,11 +199,11 @@ class ViewController: UIViewController {
 
     // Sets up application wide styles
     private func setUpStyles() {
-        view.backgroundColor = Config.BackgroundColor
+        view.backgroundColor = Config.backgroundColor
 
         // proxy to make all table views have the same background color
-        UITableView.appearance().backgroundColor = Config.SecondaryBackgroundColor
-        UITableViewCell.appearance().backgroundColor = Config.SecondaryBackgroundColor
+        UITableView.appearance().backgroundColor = Config.secondaryBackgroundColor
+        UITableViewCell.appearance().backgroundColor = Config.secondaryBackgroundColor
     }
 
     // Sets up the animation engine
@@ -216,7 +216,7 @@ class ViewController: UIViewController {
     // Helper function to update constraints to show sample setting panel
     internal func showSampleSettingPane() {
         sampleSettingController.view.snp.updateConstraints { make in
-            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+            make.top.equalTo(view.snp.bottom).offset(-Config.bottomPaneHeight)
         }
         animationDesignController.view.snp.updateConstraints { make in
             make.top.equalTo(view.snp.bottom).offset(0)
@@ -229,7 +229,7 @@ class ViewController: UIViewController {
             make.top.equalTo(view.snp.bottom).offset(0)
         }
         animationDesignController.view.snp.updateConstraints { make in
-            make.top.equalTo(view.snp.bottom).offset(-Config.BottomPaneHeight)
+            make.top.equalTo(view.snp.bottom).offset(-Config.bottomPaneHeight)
         }
     }
 
@@ -253,7 +253,7 @@ class ViewController: UIViewController {
 extension ViewController: ModeSwitchDelegate {
     func enterEdit() {
         gridController.view.snp.updateConstraints { make in
-            make.right.equalTo(view).offset(-Config.SidePaneWidth)
+            make.right.equalTo(view).offset(-Config.sidePaneWidth)
         }
         showSampleSettingPane()
         gridController.enterEdit()
@@ -287,7 +287,7 @@ extension ViewController: SessionSelectorDelegate {
         popoverPresentationController?.sourceView = sender
         popoverPresentationController?.sourceRect = CGRect(
             x: sender.frame.midX, y: sender.frame.maxY, width: 0, height: 0)
-        popoverPresentationController?.backgroundColor = Config.SecondaryBackgroundColor
+        popoverPresentationController?.backgroundColor = Config.secondaryBackgroundColor
     }
 }
 
@@ -332,7 +332,7 @@ extension ViewController: SessionTableDelegate {
         func newUnusedName(suffix: String) -> String {
             // we add the space to the suffix in the recursive call so that
             // the first call will not have an extranaeous space
-            let name = "\(Config.DefaultSessionName)\(suffix)"
+            let name = "\(Config.defaultSessionName)\(suffix)"
             let defaultSession = dataManager.loadSession(name)
             if defaultSession == nil {
                 return name

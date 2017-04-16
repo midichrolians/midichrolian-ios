@@ -11,7 +11,27 @@ import XCTest
 
 class SessionTests: XCTestCase {
 
+    func testInit() {
+
+    }
+
+    func testInitFromSession() {
+
+    }
+
+    func testSetSessionName() {
+
+    }
+
     func testGetSessionName() {
+
+    }
+
+    func testGetGrid() {
+
+    }
+
+    func testAddBPMToPad() {
 
     }
 
@@ -27,11 +47,27 @@ class SessionTests: XCTestCase {
 
     }
 
+    func testClearBPMAtPad() {
+
+    }
+
+    func testAddAnimation() {
+
+    }
+
     func testClearAnimation() {
 
     }
 
-    func testSetBPM() {
+    func testSetSessionBPM() {
+
+    }
+
+    func testGetSessionBPM() {
+
+    }
+
+    func testGetPad() {
 
     }
 
@@ -39,11 +75,20 @@ class SessionTests: XCTestCase {
 
     }
 
-    func testLoad() {
+    func testPrepareForUse() {
+
     }
 
-    func testGetPad() {
+    func testGetPadList() {
 
+    }
+
+    func testEquality() {
+
+    }
+
+    func testJSONSerialisation() {
+        
     }
 
 }

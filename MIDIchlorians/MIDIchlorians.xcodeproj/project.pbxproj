@@ -266,6 +266,8 @@
 		E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */; };
 		E968C14B1EA37494007CE28D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
 		E968C14C1EA374CA007CE28D /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
+		E968C14E1EA38690007CE28D /* TopBarTestCaseHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C14D1EA38690007CE28D /* TopBarTestCaseHelpers.swift */; };
+		E968C1501EA387C2007CE28D /* AnimationDesignerTestCaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C14F1EA387C2007CE28D /* AnimationDesignerTestCaseHelper.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
@@ -291,8 +293,6 @@
 		F3173AA81E8306D20095F76A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA71E8306D20095F76A /* Audio.swift */; };
 		F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AB81E83B1A10095F76A /* PadTests.swift */; };
 		F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABA1E83B2A90095F76A /* SessionTests.swift */; };
-		F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABC1E83B2B50095F76A /* AnimationTests.swift */; };
-		F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABE1E83B2D50095F76A /* AudioTests.swift */; };
 		F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */; };
 		F31DB0AC1E9B093C005DB81A /* SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31DB0AB1E9B093C005DB81A /* SyncDelegate.swift */; };
 		F31E2B131E8FF1B000C23325 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E2B121E8FF1B000C23325 /* CloudManager.swift */; };
@@ -588,6 +588,8 @@
 		E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMViewController.swift; sourceTree = "<group>"; };
 		E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorDelegate.swift; sourceTree = "<group>"; };
 		E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerTestCase.swift; sourceTree = "<group>"; };
+		E968C14D1EA38690007CE28D /* TopBarTestCaseHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarTestCaseHelpers.swift; sourceTree = "<group>"; };
+		E968C14F1EA387C2007CE28D /* AnimationDesignerTestCaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerTestCaseHelper.swift; sourceTree = "<group>"; };
 		E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GridController+PadDelegate.swift"; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
@@ -615,8 +617,6 @@
 		F3173AB11E83B1550095F76A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3173AB81E83B1A10095F76A /* PadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadTests.swift; sourceTree = SOURCE_ROOT; };
 		F3173ABA1E83B2A90095F76A /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
-		F3173ABC1E83B2B50095F76A /* AnimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
-		F3173ABE1E83B2D50095F76A /* AudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTests.swift; sourceTree = "<group>"; };
 		F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		F31DB0AB1E9B093C005DB81A /* SyncDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncDelegate.swift; sourceTree = "<group>"; };
 		F31E2B121E8FF1B000C23325 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
@@ -720,7 +720,9 @@
 				33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */,
 				E920F4261EA11BED00D5B165 /* BaseTestCase.swift */,
 				E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */,
+				E968C14F1EA387C2007CE28D /* AnimationDesignerTestCaseHelper.swift */,
 				E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */,
+				E968C14D1EA38690007CE28D /* TopBarTestCaseHelpers.swift */,
 				33120E341E6FD30A007E7717 /* Info.plist */,
 			);
 			path = MIDIchloriansUITests;
@@ -1182,8 +1184,6 @@
 			children = (
 				F3173AB81E83B1A10095F76A /* PadTests.swift */,
 				F3173ABA1E83B2A90095F76A /* SessionTests.swift */,
-				F3173ABC1E83B2B50095F76A /* AnimationTests.swift */,
-				F3173ABE1E83B2D50095F76A /* AudioTests.swift */,
 			);
 			name = ModelTests;
 			sourceTree = "<group>";
@@ -1792,6 +1792,8 @@
 				E968C14C1EA374CA007CE28D /* AudioPlayerSetting.swift in Sources */,
 				E968C14B1EA37494007CE28D /* Config.swift in Sources */,
 				E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */,
+				E968C1501EA387C2007CE28D /* AnimationDesignerTestCaseHelper.swift in Sources */,
+				E968C14E1EA38690007CE28D /* TopBarTestCaseHelpers.swift in Sources */,
 				E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

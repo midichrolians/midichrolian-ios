@@ -7,10 +7,20 @@
 //
 
 import RealmSwift
+/**
+ This class represents an Audio group in the Database, which is a wrapper around a String. The
+ String represents the name of the group.
 
+ Created this as we want to support the query of getting all groups in an efficient manner. (Similar
+ to the case of Session Name)
+ 
+ Since the default initialiser is valid because of Realm classes inheriting Object, the value of
+ group is an optional, so as to ensure that AudioGroups created using the default
+ initialiser are invalid. For correct results, the convenience initialisers defined below must be used.
+ **/
 class AudioGroup: Object {
 
-    private dynamic var group: String = ""
+    private dynamic var group: String?
 
     convenience init(_ group: String) {
         self.init()
@@ -21,7 +31,7 @@ class AudioGroup: Object {
         return "group"
     }
 
-    func getGroupName() -> String {
+    func getGroupName() -> String? {
         return group
     }
 }
