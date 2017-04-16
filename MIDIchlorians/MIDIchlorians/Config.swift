@@ -6,8 +6,6 @@
 //  Copyright © 2017 nus.cs3217.a0118897. All rights reserved.
 //
 
-import CoreGraphics
-import Foundation
 import UIKit
 
 struct Config {
@@ -17,10 +15,8 @@ struct Config {
     static let numberOfSecondsInMinute = 60
     static let defaultBPM = 120
     static let invalidBPM = 0
-    static let defaultAnimationValue = ""
-    static let defaultAudioValue = ""
+    static let numberOfItemsToSync = 3
     static let playBackAccuracy: TimeInterval = 1/60
-
     static let audioSetting = AudioPlayerSetting.audioServices
     static let sounds = [
         "Sail": [

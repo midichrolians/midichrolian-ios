@@ -9,22 +9,26 @@
 import RealmSwift
 
 /**
- As only specific datatypes can be persisted, the idea is to have 4 optional properties. One
- property is an Audio, and one is an Animation Sequence, as these are what define a Pad object. 
- The other two reprsent serialised versions of the 2 structures mentioned above, and only these 2 
- serialised properties will be persisted.
+ This class represents a single Pad in a grid. A pad may have a track(audio file) and an animation
+ assigned to it. A pad may also have a BPM value, indicating the number of 
+ beats per minute at which the corresponding audio track plays.
+ These properties are supported via optionals, since they may or may not exist. One exception
+ is the BPM field, since Realm has it's own syntax for Integer optionals, which I did not want to 
+ use as it causes a few issues. To someone calling the functions, the BPM property can be treated 
+ as an optional, even though under the hood it is implemented differently.
  
  Using a class because Realm can't deal with structs.
  */
 class Pad: Object {
 
-    //Persisted properties. Dynamic is a realm requirement
+    // Persisted properties. Dynamic is a realm requirement
     private dynamic var audioFile: String?
     private dynamic var animationString: String?
     // Not using an optional because Realm has special syntax for integer optionals, which 
     // leads to issues for our requirements
     private dynamic var BPM: Int = Config.invalidBPM
 
+    // An initialser to create a pad which is a copy of another one
     convenience init(_ pad: Pad) {
         self.init()
         self.audioFile = pad.audioFile
@@ -32,12 +36,15 @@ class Pad: Object {
         self.BPM = pad.BPM
     }
 
+    // Constructs a pad object from a JSON string. This method is useful when saving sessions
+    // to JSON files, to enable sharing between different users.
     convenience init?(json: String) {
         self.init()
         guard let data = json.data(using: .utf8) else {
             return nil
         }
-        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any?] else {
+        guard let dictionary = (try? JSONSerialization.jsonObject(with: data, options: []))
+                                as? [String: Any?] else {
             return nil
         }
         self.audioFile = dictionary["audioFile"] as? String
@@ -57,6 +64,8 @@ class Pad: Object {
         animationString = animation.getJSON()
     }
 
+    // Returns nil in case no BPM was assigned(i.e. the value of the BPM is invalid)
+    // This way, someone calling the functions can treat it as an optional
     func getBPM() -> Int? {
         guard self.BPM != Config.invalidBPM else {
             return nil
@@ -87,7 +96,12 @@ class Pad: Object {
         self.BPM = Config.invalidBPM
     }
 
-    func equals(_ pad: Pad) -> Bool {
+    // Since Pad inherits from Object, which inherits from NSObject, need to override this function
+    // for checking equality (NSObject already conforms to Equatable protocol)
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let pad = object as? Pad else {
+            return false
+        }
         return self.audioFile == pad.audioFile && self.animationString == pad.animationString
     }
 

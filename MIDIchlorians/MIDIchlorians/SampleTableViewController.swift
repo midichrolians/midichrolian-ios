@@ -218,7 +218,7 @@ class SampleTableViewController: UITableViewController {
         guard let group = group else {
             return
         }
-        sampleList = DataManager.instance.getSamplesForGroup(group: group).sorted()
+        sampleList = DataManager.instance.getAudiosForGroup(group: group).sorted()
         tableView.reloadData()
     }
 
@@ -232,7 +232,7 @@ extension SampleTableViewController: GroupTableDelegate {
         }
         for indexPath in indexPaths {
             let sample = sound(for: indexPath)
-            _ = DataManager.instance.addSampleToGroup(group: group, sample: sample)
+            _ = DataManager.instance.addAudioToGroup(group: group, audio: sample)
         }
         // refresh the sample list
         refresh()

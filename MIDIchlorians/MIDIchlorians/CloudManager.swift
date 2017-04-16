@@ -7,21 +7,29 @@
 //
 
 import SwiftyDropbox
-
+/**
+ This class handles the operations for saving and loading data from cloud resources(in this case,
+ Dropbox). Since the API requests are asynchronous, it posts notifications on completion to indicate
+ success/failure.
+ **/
 class CloudManager {
 
-    static let instance = CloudManager()
-    private let dataManager = DataManager.instance
+    private let dataManager: DataManager
     private var client: DropboxClient? {
         return DropboxClientsManager.authorizedClient
     }
+    //The total number of results expected
+    private let numResultsExpected: Int
+    //Counts the number of requests for which results(success/failure) have been obtained
+    private var resultsReceived: Int
+    //Variable to indicate if the entire process was successful
+    private var isSuccessful: Bool
 
-    private let resultCount = 3
-    private var resultsReceived = 0
-    private var isSuccessful = true
-
-    private init() {
-        //Just to ensure initialiser is private
+    init() {
+        dataManager = DataManager.instance
+        numResultsExpected = Config.numberOfItemsToSync
+        resultsReceived = 0
+        isSuccessful = true
     }
 
     private func postToNotificationCenter(_ key: String, _ result: Bool) {
@@ -29,13 +37,15 @@ class CloudManager {
                                         object: self, userInfo: ["success": result])
     }
 
+    //Handles the result of a save/load operation. There are 3 in total, one each for animations,
+    //audios, and sessions. On completion of all 3, a final notification is posted
     private func handleResult(_ key: String, _ result: Bool) {
         if !result {
-            self.isSuccessful = false
+            isSuccessful = false
         }
         resultsReceived += 1
         postToNotificationCenter(key, result)
-        if resultsReceived  == resultCount {
+        if resultsReceived  == numResultsExpected {
             postToNotificationCenter(Config.cloudNotificationKey, isSuccessful)
             resultsReceived = 0
             isSuccessful = true
@@ -74,7 +84,7 @@ class CloudManager {
             for sample in samplesReceived {
                 //What if the saving fails?
                 _ = dataManager.saveAudio(sample)
-                _ = dataManager.addSampleToGroup(group: Config.defaultGroup, sample: sample)
+                _ = dataManager.addAudioToGroup(group: Config.defaultGroup, audio: sample)
             }
             self.handleResult(Config.audioNotificationKey, true)
         }

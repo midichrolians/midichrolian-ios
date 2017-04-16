@@ -88,7 +88,7 @@ extension SidePaneController: PadDelegate {
             return
         }
 
-        if let group = DataManager.instance.getGroup(pad: pad) {
+        if let group = DataManager.instance.getAudioGroup(pad: pad) {
             groups.selectedGroupName = group
         }
         groups.selectedSampleName = name

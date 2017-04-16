@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for (groupName, samplesArray) in preloadedSampleSongs {
             samplesArray.forEach { sample in
                 let sampleName = "\(sample).\(Config.SoundExt)"
-                _ = DataManager.instance.addSampleToGroup(group: groupName, sample: sampleName)
+                _ = DataManager.instance.addAudioToGroup(group: groupName, audio: sampleName)
             }
         }
     }
@@ -132,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         //Create default group
-        _ = DataManager.instance.createGroup(group: Config.defaultGroup)
+        _ = DataManager.instance.createAudioGroup(group: Config.defaultGroup)
       
         //Load preloaded sessions
         loadPreloadedSessions()
@@ -148,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appSamples.forEach { sample in
             // if saving fails, what are we gonna do?
             _ = DataManager.instance.saveAudio(sample)
-            _ = DataManager.instance.addSampleToGroup(group: Config.defaultGroup, sample: sample)
+            _ = DataManager.instance.addAudioToGroup(group: Config.defaultGroup, audio: sample)
         }
         
         // add all preloaded samples to group according to the songs they belong to, based on the information in Config
