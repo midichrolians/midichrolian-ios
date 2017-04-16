@@ -34,7 +34,7 @@ struct Config {
             "AWOLNATION - Sail-22", "AWOLNATION - Sail-23",
             "AWOLNATION - Sail-24", "AWOLNATION - Sail-25",
             "AWOLNATION - Sail-26", "AWOLNATION - Sail-27",
-            "AWOLNATION - Sail-28",
+            "AWOLNATION - Sail-28"
         ],
         "Fur elise": [
             "All Leads - No Sidechain-1", "All Leads - No Sidechain-10",
