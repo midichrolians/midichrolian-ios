@@ -29,7 +29,7 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func tapRemovePad() {
-        app.images["Remove pad"].tap()
+        app.images["Remove Pad"].tap()
     }
 
     func ensureRemoveSampleOptionExists() {
