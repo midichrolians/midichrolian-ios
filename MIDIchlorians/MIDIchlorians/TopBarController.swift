@@ -63,6 +63,7 @@ class TopBarController: UIViewController {
         logo.text = Config.TopNavLogoText
 
         sessionTitle.text = Config.DefaultSessionName
+        sessionTitle.accessibilityIdentifier = "Session title"
 
         sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
 

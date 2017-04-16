@@ -57,4 +57,30 @@ class BaseTestCase: XCTestCase {
     func dismissPopover() {
         app.otherElements["PopoverDismissRegion"].tap()
     }
+
+    // MARK: - Table view action related
+
+    func editRow(_ table: XCUIElement) {
+        table.cells.element(boundBy: 0).swipeLeft()
+        table.cells.element(boundBy: 0).buttons["Edit"].tap()
+    }
+
+    func removeRow(_ table: XCUIElement) {
+        table.cells.element(boundBy: 0).swipeLeft()
+        table.cells.element(boundBy: 0).buttons["Remove"].tap()
+    }
+
+    // MARK: - Alerts related
+
+    func cancel(_ alert: XCUIElement) {
+        alert.buttons["Cancel"].tap()
+    }
+
+    func okay(_ alert: XCUIElement) {
+        alert.buttons["Okay"].tap()
+    }
+
+    func confirm(_ alert: XCUIElement) {
+        alert.buttons["Confirm"].tap()
+    }
 }

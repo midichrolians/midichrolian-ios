@@ -78,4 +78,69 @@ class TopBarTestCase: BaseTestCase {
         tapCancelButton()
     }
 
+    func tapSession() {
+        app.buttons["Sessions"].tap()
+    }
+
+    func newSession() {
+        app.buttons["New session"].tap()
+    }
+
+    func sessionCount() -> UInt {
+        return app.tables["Session Table"].cells.count
+    }
+
+    func tapSessionAndGetSessionCount() -> UInt {
+        tapSession()
+        return sessionCount()
+    }
+
+    func test_newSession_createsNewSession() {
+        let currentSessionTitle = app.staticTexts["Session title"].label
+        let prevCount = tapSessionAndGetSessionCount()
+        newSession()
+
+        let newSessionTitle = app.staticTexts["Session title"].label
+        expect(currentSessionTitle == newSessionTitle) == false
+
+        let newCount = tapSessionAndGetSessionCount()
+        expect(newCount).to(equal(prevCount + 1))
+    }
+
+    func editSessions() {
+        app.navigationBars["Sessions"].buttons["Edit"].tap()
+    }
+
+    func expectSessionExists(_ name: String) {
+        expect(self.app.tables["Session Table"].cells.staticTexts[name].exists) == true
+    }
+
+    func getSessionName(_ index: UInt) -> String {
+        return app.tables["Session Table"].cells.element(boundBy: index).staticTexts.element.label
+    }
+
+    func typeSessionName(_ suffix: String) {
+        app.alerts.element.textFields.element.typeText(suffix)
+    }
+
+    func test_editSession_editName() {
+        tapSession()
+        editRow(app.tables["Session Table"])
+        let originalName = getSessionName(0)
+        // suffix because the cursor is at the end of the text field
+        let suffix = "123"
+        typeSessionName(suffix)
+        okay(app.alerts.element)
+        expectSessionExists("\(originalName)\(suffix)")
+    }
+
+    func test_editSession_removeSession() {
+        let prevCount = tapSessionAndGetSessionCount()
+        let sessionTable = app.tables["Session Table"]
+        removeRow(sessionTable)
+        confirm(app.alerts.element)
+        let newCount = sessionCount()
+        expect(newCount).to(equal(prevCount - 1))
+    }
+
 }
