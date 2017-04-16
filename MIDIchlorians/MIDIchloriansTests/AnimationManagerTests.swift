@@ -178,4 +178,5 @@ class AnimationManagerTests: XCTestCase {
 
         XCTAssertEqual(animationSequenceFromType?.frequencyPerBeat, BeatFrequency.two)
     }
+
 }

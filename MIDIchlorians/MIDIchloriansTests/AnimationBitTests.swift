@@ -41,4 +41,5 @@ class AnimationBitTests: XCTestCase {
         )
         XCTAssertNil(animationBit)
     }
+
 }
