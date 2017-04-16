@@ -252,7 +252,6 @@ struct Config {
     // Grid
     static let GridCollectionViewCellIdentifier = "cell"
     static let GridDefaultBackgroundColour = UIColor(colorLiteralRed: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
-    static let PadSelectionBorderColour = UIColor.green.cgColor
     static let PadSelectionBorderWidth: CGFloat = 1.0
     static let PadSelectionCornerRadiusRatio: CGFloat = 1 / 16.0
     static let PadSelectionOffsetRaio: CGFloat =  1 / 12.0

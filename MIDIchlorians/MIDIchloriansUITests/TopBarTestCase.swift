@@ -13,11 +13,11 @@ import Nimble
 
 class TopBarTestCase: BaseTestCase {
     func expectToBeLoggedOutOfDropbox() {
-        let login = app.buttons["Login"]
+        let login = app.buttons[Config.TopNavLoginTitle]
         expect(login.isEnabled) == true
-        expect(self.app.buttons["Logout"].exists) == false
-        expect(self.app.buttons["Upload"].isEnabled) == false
-        expect(self.app.buttons["Download"].isEnabled) == false
+        expect(self.app.buttons[Config.TopNavLogoutTitle].exists) == false
+        expect(self.app.buttons[Config.TopNavSyncUploadTitle].isEnabled) == false
+        expect(self.app.buttons[Config.TopNavSyncDownloadTitle].isEnabled) == false
     }
 
     func assignSampleToPad() {
@@ -29,37 +29,37 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func tapRemovePad() {
-        app.images["Remove Pad"].tap()
+        app.images[Config.RemoveButtonSampleTitle].tap()
     }
 
     func ensureRemoveSampleOptionExists() {
-        expect(self.app.alerts["Confirm"].buttons["Remove sample"].exists) == true
+        expect(self.app.alerts[Config.RemoveButtonAlertTitle].buttons[Config.RemoveButtonSampleTitle].exists) == true
     }
 
     func ensureRemoveAnimationOptionExists() {
-        expect(self.app.alerts["Confirm"].buttons["Remove sample"].exists) == true
+        expect(self.app.alerts[Config.RemoveButtonAlertTitle].buttons[Config.RemoveButtonSampleTitle].exists) == true
     }
 
     func ensureRemoveBothOptionExists() {
         ensureRemoveSampleOptionExists()
         ensureRemoveAnimationOptionExists()
-        expect(self.app.alerts["Confirm"].buttons["Remove both"].exists) == true
+        expect(self.app.alerts[Config.RemoveButtonAlertTitle].buttons[Config.RemoveButtonBothTitle].exists) == true
     }
 
     func tapCancelButton() {
-        app.alerts["Confirm"].buttons["Cancel"].tap()
+        app.alerts[Config.RemoveButtonAlertTitle].buttons[Config.RemoveButtonCancelTitle].tap()
     }
 
     func assignAnimationToPad() {
-        app.tabBars.buttons["Animations"].tap()
-        app.tables.staticTexts["Rainbow"].tap()
+        app.tabBars.buttons[Config.AnimationTabTitle].tap()
+        app.tables.staticTexts[Config.animationTypeRainbowName].tap()
     }
 
     func test_editSelected_enableEdit() {
         // enter edit mode
-        let edit = tapButton("Edit")
+        let edit = tapButton(Config.TopNavEditLabel)
         expectElementToBeSelected(edit)
-        _ = tapButton("Sync")
+        _ = tapButton(Config.TopNavSyncLabel)
         expectToBeLoggedOutOfDropbox()
         dismissPopover()
 
@@ -79,7 +79,7 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func tapSession() {
-        app.buttons["Sessions"].tap()
+        app.buttons[Config.TopNavSessionLabel].tap()
     }
 
     func newSession() {
@@ -108,7 +108,7 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func editSessions() {
-        app.navigationBars["Sessions"].buttons["Edit"].tap()
+        app.navigationBars[Config.TopNavSessionLabel].buttons[Config.TopNavEditLabel].tap()
     }
 
     func expectSessionExists(_ name: String) {

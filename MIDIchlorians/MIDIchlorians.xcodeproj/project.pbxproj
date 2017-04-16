@@ -317,6 +317,8 @@
 		E95EBC361E9B54FB00E66D1C /* BPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */; };
 		E95EBC381E9B5B5700E66D1C /* BPMSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */; };
 		E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */; };
+		E968C14B1EA37494007CE28D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
+		E968C14C1EA374CA007CE28D /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
@@ -2021,6 +2023,8 @@
 			files = (
 				33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */,
 				E920F4271EA11BED00D5B165 /* BaseTestCase.swift in Sources */,
+				E968C14C1EA374CA007CE28D /* AudioPlayerSetting.swift in Sources */,
+				E968C14B1EA37494007CE28D /* Config.swift in Sources */,
 				E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */,
 				E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */,
 			);
