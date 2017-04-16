@@ -33,6 +33,7 @@ class DataManager {
     private var lastSessionName: String?
 
     init() {
+        Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
         //Syntax for getting realm instance
         realm = try? Realm()
         guard realm != nil else {
