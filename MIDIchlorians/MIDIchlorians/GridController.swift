@@ -160,7 +160,12 @@ class GridController: UIViewController {
     }
 
     func getPad(at indexPath: IndexPath) -> Pad {
-        return self.currentSession.getPad(page: currentPage, indexPath: indexPath)
+        guard let pad = self.currentSession.getPad(page: currentPage,
+                                                   row: indexPath.section,
+                                                   col: indexPath.row) else {
+            return Pad()
+        }
+        return pad
     }
 
     // MARK: Alert related to clearing pad

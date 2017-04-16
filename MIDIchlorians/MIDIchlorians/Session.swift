@@ -9,8 +9,8 @@ import RealmSwift
 
 /**
  This class represents a Session, which is a collection of grids, each grid being a collection
- of pads. A session also has a BPM associated with it, which defines the rate at which any animation
- tied to a pad on the session changes.
+ of pads. A session also has a BPM associated with it, which can be removed in the future
+ if we want pads to support their own BPMs
  
  A session is represented internally by a 3D matrix of pads. It also has a List<Pad> property,
  which is what is persisted, since Realm cannot persist arrays. Before saving, one needs to call the 
@@ -142,10 +142,6 @@ class Session: Object {
 
     func getGrid(page: Int) -> [[Pad]] {
         return self.pads[page]
-    }
-
-    func getPad(page: Int, indexPath: IndexPath) -> Pad {
-        return self.pads[page][indexPath.section][indexPath.row]
     }
 
     func addBPMToPad(page: Int, row: Int, col: Int, bpm: Int) {

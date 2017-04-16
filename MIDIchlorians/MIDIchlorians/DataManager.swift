@@ -32,11 +32,12 @@ class DataManager {
     //Stores the name of the last session accessed by the user
     private var lastSessionName: String?
 
-    init() {
-        //Not sure if this line should always be there
-        Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
+    private init() {
         //Syntax for getting realm instance
         realm = try? Realm()
+        guard realm != nil else {
+            fatalError("Realm database load failed")
+        }
         lastSessionName = nil
         //Create the sets for efficient lookup and initialise them
         sessionNames = Set<String>()
