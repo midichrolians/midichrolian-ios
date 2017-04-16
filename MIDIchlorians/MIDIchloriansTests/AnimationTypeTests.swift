@@ -14,14 +14,14 @@ class AnimationTypeTests: XCTestCase {
     var animationSequence = AnimationSequence()
 
     let firstAnimationBit = AnimationBit(colour: Colour.green, row: 1, column: 1)
-    let secondAnimationBit = AnimationBit(colour: Colour.violet, row: 5, column: 4)
-    let thirdAnimationBit = AnimationBit(colour: Colour.orange, row: 3, column: 2)
+    let secondAnimationBit = AnimationBit(colour: Colour.purple, row: 5, column: 4)
+    let thirdAnimationBit = AnimationBit(colour: Colour.pink, row: 3, column: 2)
 
     let animationSequenceString = "{\n  \"name\" : \"name\",\n  \"animationBitsArray\" : [\n" +
         "    [\n      \"{\\n  \\\"column\\\" : 1,\\n  \\\"row\\\" : 1,\\n  \\\"colour\\\" : \\\"" +
         "green\\\"\\n}\"\n    ],\n    [\n\n    ],\n    [\n      \"{\\n  \\\"column\\\" : 4,\\n  \\\"" +
-        "row\\\" : 5,\\n  \\\"colour\\\" : \\\"violet\\\"\\n}\",\n      \"{\\n  \\\"column\\\" : 2," +
-        "\\n  \\\"row\\\" : 3,\\n  \\\"colour\\\" : \\\"orange\\\"\\n}\"\n    ]\n  ],\n  \"" +
+        "row\\\" : 5,\\n  \\\"colour\\\" : \\\"purple\\\"\\n}\",\n      \"{\\n  \\\"column\\\" : 2," +
+        "\\n  \\\"row\\\" : 3,\\n  \\\"colour\\\" : \\\"pink\\\"\\n}\"\n    ]\n  ],\n  \"" +
         "frequencyPerBeat\" : \"8\"\n}"
 
     let animationTypeString = "{\n  \"name\" : \"name\",\n  \"mode\" : \"absolute\",\n  \"anchorColumn" +
@@ -29,9 +29,9 @@ class AnimationTypeTests: XCTestCase {
         "\\n  \\\"animationBitsArray\\\" : [\\n    [\\n      \\\"{\\\\n  \\\\\\\"column\\\\\\\" : 1," +
         "\\\\n  \\\\\\\"row\\\\\\\" : 1,\\\\n  \\\\\\\"colour\\\\\\\" : \\\\\\\"green\\\\\\\"\\\\n}\\\"" +
         "\\n    ],\\n    [\\n\\n    ],\\n    [\\n      \\\"{\\\\n  \\\\\\\"column\\\\\\\" : 4,\\\\n  " +
-        "\\\\\\\"row\\\\\\\" : 5,\\\\n  \\\\\\\"colour\\\\\\\" : \\\\\\\"violet\\\\\\\"\\\\n}\\\",\\n" +
+        "\\\\\\\"row\\\\\\\" : 5,\\\\n  \\\\\\\"colour\\\\\\\" : \\\\\\\"purple\\\\\\\"\\\\n}\\\",\\n" +
         "      \\\"{\\\\n  \\\\\\\"column\\\\\\\" : 2,\\\\n  \\\\\\\"row\\\\\\\" : 3,\\\\n  \\\\\\\"" +
-        "colour\\\\\\\" : \\\\\\\"orange\\\\\\\"\\\\n}\\\"\\n    ]\\n  ],\\n  \\\"frequencyPerBeat\\\"" +
+        "colour\\\\\\\" : \\\\\\\"pink\\\\\\\"\\\\n}\\\"\\n    ]\\n  ],\\n  \\\"frequencyPerBeat\\\"" +
         " : \\\"8\\\"\\n}\"\n}"
 
     override func setUp() {

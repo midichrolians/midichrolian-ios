@@ -20,23 +20,23 @@ class AnimationManagerTests: XCTestCase {
     var editedNonExistentAnimationName = "another animation name which does not exist"
 
     let firstAnimationBit = AnimationBit(colour: Colour.green, row: 1, column: 1)
-    let secondAnimationBit = AnimationBit(colour: Colour.violet, row: 5, column: 4)
-    let thirdAnimationBit = AnimationBit(colour: Colour.orange, row: 3, column: 2)
+    let secondAnimationBit = AnimationBit(colour: Colour.purple, row: 5, column: 4)
+    let thirdAnimationBit = AnimationBit(colour: Colour.pink, row: 3, column: 2)
 
     let animationSequenceString = "{\n  \"name\" : \"some very unique absolute animation name\",\n  " +
         "\"animationBitsArray\"" +
         " : [\n    [\n      \"{\\n  \\\"column\\\" : 1,\\n  \\\"row\\\" : 1,\\n  \\\"colour\\\" : \\\"" +
         "green\\\"\\n}\"\n    ],\n    [\n\n    ],\n    [\n      \"{\\n  \\\"column\\\" : 4,\\n  \\\"" +
-        "row\\\" : 5,\\n  \\\"colour\\\" : \\\"violet\\\"\\n}\",\n      \"{\\n  \\\"column\\\" : 2," +
-        "\\n  \\\"row\\\" : 3,\\n  \\\"colour\\\" : \\\"orange\\\"\\n}\"\n    ]\n  ],\n  \"" +
+        "row\\\" : 5,\\n  \\\"colour\\\" : \\\"purple\\\"\\n}\",\n      \"{\\n  \\\"column\\\" : 2," +
+        "\\n  \\\"row\\\" : 3,\\n  \\\"colour\\\" : \\\"pink\\\"\\n}\"\n    ]\n  ],\n  \"" +
         "frequencyPerBeat\" : \"8\"\n}"
 
     let animationSequenceRelativeString = "{\n  \"name\" : \"some very unique relative animation name\",\n  \"" +
         "animationBitsArray\" : [\n " +
         "   [\n      \"{\\n  \\\"column\\\" : 3,\\n  \\\"row\\\" : 0,\\n  \\\"colour\\\" : \\\"green" +
         "\\\"\\n}\"\n    ],\n    [\n\n    ],\n    [\n      \"{\\n  \\\"column\\\" : 6,\\n  \\\"row\\\"" +
-        " : 4,\\n  \\\"colour\\\" : \\\"violet\\\"\\n}\",\n      \"{\\n  \\\"column\\\" : 4,\\n  \\\"" +
-        "row\\\" : 2,\\n  \\\"colour\\\" : \\\"orange\\\"\\n}\"\n    ]\n  ],\n  \"frequencyPerBeat\" : " +
+        " : 4,\\n  \\\"colour\\\" : \\\"purple\\\"\\n}\",\n      \"{\\n  \\\"column\\\" : 4,\\n  \\\"" +
+        "row\\\" : 2,\\n  \\\"colour\\\" : \\\"pink\\\"\\n}\"\n    ]\n  ],\n  \"frequencyPerBeat\" : " +
         "\"8\"\n}"
 
     override func setUp() {
