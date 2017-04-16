@@ -11,20 +11,20 @@ import Nimble
 
 extension AnimationDesignerTestCase {
     func tapAddAnimation() {
-        app.navigationBars[Config.AnimationTabTitle].buttons[Config.CommonSystemAddTitle].tap()
+        app.navigationBars[Config.animationTabTitle].buttons[Config.commonSystemAddTitle].tap()
     }
 
     func selectColour(at index: UInt) {
-        app.collectionViews[Config.ColourPickerA11yLabel].cells.element(boundBy: index).tap()
+        app.collectionViews[Config.colourPickerA11yLabel].cells.element(boundBy: index).tap()
     }
 
     func selectClear() {
-        let count = app.collectionViews[Config.ColourPickerA11yLabel].cells.count
+        let count = app.collectionViews[Config.colourPickerA11yLabel].cells.count
         selectColour(at: count - 1)
     }
 
     func timelineFrame(at index: UInt) -> XCUIElement {
-        return app.collectionViews[Config.TimelineA11yLabel].cells.element(boundBy: index)
+        return app.collectionViews[Config.timelineA11yLabel].cells.element(boundBy: index)
     }
 
     func selectTimelineFrame(at index: UInt) {
@@ -32,7 +32,7 @@ extension AnimationDesignerTestCase {
     }
 
     func gridPad(at index: UInt) -> XCUIElement {
-        return app.collectionViews[Config.GridA11yLabel].cells.element(boundBy: 0)
+        return app.collectionViews[Config.gridA11yLabel].cells.element(boundBy: 0)
     }
 
     func tapGridPad() {
@@ -40,7 +40,7 @@ extension AnimationDesignerTestCase {
     }
 
     func numberOfAnimations() -> UInt {
-        return app.tables[Config.AnimationTableA11YLabel].cells.count
+        return app.tables[Config.animationTableA11YLabel].cells.count
     }
 
     func expectSizeOfSelectedFrameToBeBigger(selectedIndex: UInt) {
@@ -51,11 +51,11 @@ extension AnimationDesignerTestCase {
     }
 
     func expectGridPadToNotHaveColour() {
-        expect(self.gridPad(at: 0).images[Config.GridCollectionViewCellA11yLabel].exists) == false
+        expect(self.gridPad(at: 0).images[Config.gridCollectionViewCellA11yLabel].exists) == false
     }
 
     func expectGridPadToHaveColour() {
-        expect(self.gridPad(at: 0).images[Config.GridCollectionViewCellA11yLabel].exists) == true
+        expect(self.gridPad(at: 0).images[Config.gridCollectionViewCellA11yLabel].exists) == true
     }
 
     func tapAbsolute() {
@@ -63,13 +63,13 @@ extension AnimationDesignerTestCase {
     }
 
     func tapSaveAnimation() {
-        app.buttons[Config.AnimationDesignSaveLabel].tap()
+        app.buttons[Config.animationDesignSaveLabel].tap()
     }
 
     func enterNameForAnimationAndSave() {
-        let alert = app.alerts[Config.AnimationSaveAlertTitle]
+        let alert = app.alerts[Config.animationSaveAlertTitle]
         alert.textFields.element.typeText("asdf")
-        alert.buttons[Config.AnimationSaveOkayTitle].tap()
+        alert.buttons[Config.animationSaveOkayTitle].tap()
     }
 
 }

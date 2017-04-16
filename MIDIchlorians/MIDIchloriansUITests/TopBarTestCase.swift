@@ -14,9 +14,9 @@ import Nimble
 class TopBarTestCase: BaseTestCase {
     func test_editSelected_enableEdit() {
         // enter edit mode
-        let edit = tapButton(Config.TopNavEditLabel)
+        let edit = tapButton(Config.topNavEditLabel)
         expectElementToBeSelected(edit)
-        _ = tapButton(Config.TopNavSyncLabel)
+        _ = tapButton(Config.topNavSyncLabel)
         expectToBeLoggedOutOfDropbox()
         dismissPopover()
 
@@ -36,11 +36,11 @@ class TopBarTestCase: BaseTestCase {
     }
 
     func test_newSession_createsNewSession() {
-        let currentSessionTitle = app.staticTexts[Config.TopNavSessionTitleA11yLabel].label
+        let currentSessionTitle = app.staticTexts[Config.topNavSessionTitleA11yLabel].label
         let prevCount = tapSessionAndGetSessionCount()
         newSession()
 
-        let newSessionTitle = app.staticTexts[Config.TopNavSessionTitleA11yLabel].label
+        let newSessionTitle = app.staticTexts[Config.topNavSessionTitleA11yLabel].label
         expect(currentSessionTitle == newSessionTitle) == false
 
         let newCount = tapSessionAndGetSessionCount()
@@ -49,7 +49,7 @@ class TopBarTestCase: BaseTestCase {
 
     func test_editSession_editName() {
         tapSession()
-        editRow(app.tables[Config.SessionTableA11yLabel])
+        editRow(app.tables[Config.sessionTableA11yLabel])
         let originalName = getSessionName(0)
         // suffix because the cursor is at the end of the text field
         let suffix = "123"
@@ -60,7 +60,7 @@ class TopBarTestCase: BaseTestCase {
 
     func test_editSession_removeSession() {
         let prevCount = tapSessionAndGetSessionCount()
-        let sessionTable = app.tables[Config.SessionTableA11yLabel]
+        let sessionTable = app.tables[Config.sessionTableA11yLabel]
         removeRow(sessionTable)
         confirm(app.alerts.element)
         let newCount = sessionCount()

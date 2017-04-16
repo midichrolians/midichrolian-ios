@@ -33,7 +33,7 @@ class SelectedPadTrackingView: UIView {
         alpha = 0.0
         isHidden = false
 
-        UIView.animate(withDuration: Config.PadSelectionAnimationTime) {
+        UIView.animate(withDuration: Config.padSelectionAnimationTime) {
             self.alpha = 1.0
         }
     }

@@ -95,7 +95,7 @@ class CloudManager {
                     continue
                 }
 
-                let filePath = "/\(Config.AudioFolderName)/\(sample.name)"
+                let filePath = "/\(Config.audioFolderName)/\(sample.name)"
                 let url = docsURL.appendingPathComponent(sample.name)
                 let destination: (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
                     return url
@@ -116,7 +116,7 @@ class CloudManager {
             }
         }
 
-        client?.files.listFolder(path: "/\(Config.AudioFolderName)/").response { response, error in
+        client?.files.listFolder(path: "/\(Config.audioFolderName)/").response { response, error in
             guard let result = response, error == nil else {
                 self.handleResult(Config.audioNotificationKey, false)
                 return
@@ -126,7 +126,7 @@ class CloudManager {
     }
 
     private func loadAnimations() {
-        let filePath = "/\(Config.AnimationFileName).\(Config.AnimationExt)"
+        let filePath = "/\(Config.animationFileName).\(Config.animationExt)"
 
         func downloadCallBack(_ result: (Files.FileMetadataSerializer.ValueType, Data)) {
             let json = result.1
@@ -156,7 +156,7 @@ class CloudManager {
     }
 
     private func loadSessions() {
-        let filePath = "/\(Config.SessionFileName).\(Config.SessionExt)"
+        let filePath = "/\(Config.sessionFileName).\(Config.sessionExt)"
 
         func downloadCallBack(_ result: (Files.FileMetadataSerializer.ValueType, Data)) {
             let json = result.1
@@ -232,7 +232,7 @@ class CloudManager {
         //Upload each sample
         for sample in samples {
             let fileNameExtension = "\(sample)"
-            let filePath = "/\(Config.AudioFolderName)/\(fileNameExtension)"
+            let filePath = "/\(Config.audioFolderName)/\(fileNameExtension)"
             client?.files.getMetadata(path: filePath).response { response, error in
                 guard response == nil, error != nil else {
                     //File already exists
@@ -262,7 +262,7 @@ class CloudManager {
             return
         }
 
-        let filePath = "/\(Config.AnimationFileName).\(Config.AnimationExt)"
+        let filePath = "/\(Config.animationFileName).\(Config.animationExt)"
         client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false, mute: false,
                              input: jsonData).response { response, error in
             guard response != nil, error == nil else {
@@ -287,7 +287,7 @@ class CloudManager {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else {
             return
         }
-        let filePath = "/\(Config.SessionFileName).\(Config.SessionExt)"
+        let filePath = "/\(Config.sessionFileName).\(Config.sessionExt)"
         client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false, mute: false,
                              input: jsonData).response { response, error in
             guard response != nil, error == nil else {

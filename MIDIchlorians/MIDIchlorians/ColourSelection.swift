@@ -10,8 +10,8 @@ import UIKit
 
 // Tracks the currently selected colour in the colour picker
 class ColourSelection: SelectedPadTrackingView {
-    private let width: CGFloat = Config.ColourSelectionWidth
-    private let offset: CGFloat = Config.ColourSelectionOffset
+    private let width: CGFloat = Config.colourSelectionWidth
+    private let offset: CGFloat = Config.colourSelectionOffset
 
     override init(frame: CGRect) {
         super.init(frame: frame)

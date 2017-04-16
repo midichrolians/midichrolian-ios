@@ -15,7 +15,7 @@ import SwiftyDropbox
 // Handles the controls for selecting session, recording and playing, tutorial, sync.
 class TopBarController: UIViewController {
     private var logoPic = UIImageView()
-    private var logoImage = UIImage(named: Config.TopNavLogoIcon)!
+    private var logoImage = UIImage(named: Config.topNavLogoIcon)!
     private var logo = UILabel()
     // used for managing the controls
     private var sessionTitle = UILabel()
@@ -34,8 +34,8 @@ class TopBarController: UIViewController {
     }
     private var helpButton = UIButton(type: .system)
 
-    private let recordImage = UIImage(named: Config.TopNavRecordIcon)!
-    private let recordBlackImage = UIImage(named: Config.TopNavRecordingBlackIcon)!
+    private let recordImage = UIImage(named: Config.topNavRecordIcon)!
+    private let recordBlackImage = UIImage(named: Config.topNavRecordingBlackIcon)!
 
     weak var modeSwitchDelegate: ModeSwitchDelegate?
     weak var sessionSelectorDelegate: SessionSelectorDelegate?
@@ -55,39 +55,39 @@ class TopBarController: UIViewController {
     }
 
     func setUp() {
-        view.backgroundColor = Config.SecondaryBackgroundColor
+        view.backgroundColor = Config.secondaryBackgroundColor
 
         logoPic.image = logoImage
         logoPic.contentMode = .scaleAspectFit
 
-        logo.text = Config.TopNavLogoText
+        logo.text = Config.topNavLogoText
 
-        sessionTitle.text = Config.DefaultSessionName
-        sessionTitle.accessibilityIdentifier = Config.TopNavSessionTitleA11yLabel
+        sessionTitle.text = Config.defaultSessionName
+        sessionTitle.accessibilityIdentifier = Config.topNavSessionTitleA11yLabel
 
-        sessionButton.setTitle(Config.TopNavSessionLabel, for: .normal)
+        sessionButton.setTitle(Config.topNavSessionLabel, for: .normal)
 
-        saveButton.setTitle(Config.TopNavSaveLabel, for: .normal)
+        saveButton.setTitle(Config.topNavSaveLabel, for: .normal)
 
-        editButton.setTitle(Config.TopNavEditLabel, for: .normal)
+        editButton.setTitle(Config.topNavEditLabel, for: .normal)
 
         let loopingImage = UIImage.animatedImage(
             with: [recordImage, recordBlackImage],
-            duration: Config.TopNavRecordingLoopDuration)
+            duration: Config.topNavRecordingLoopDuration)
         recordButton.setBackgroundImage(recordImage, for: .normal)
         recordButton.setBackgroundImage(loopingImage, for: .selected)
 
-        playButton.setTitle(Config.TopNavPlayLabel, for: .normal)
+        playButton.setTitle(Config.topNavPlayLabel, for: .normal)
         // play button is always not enabled initially, user has to record something for it to be enabled
         playButton.isEnabled = false
 
-        syncButton.setTitle(Config.TopNavSyncLabel, for: .normal)
+        syncButton.setTitle(Config.topNavSyncLabel, for: .normal)
 
-        helpButton.setTitle(Config.TopNavHelpLabel, for: .normal)
+        helpButton.setTitle(Config.topNavHelpLabel, for: .normal)
 
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.spacing = Config.TopNavStackViewSpacing
+        stackView.spacing = Config.topNavStackViewSpacing
     }
 
     func buildViewHierarchy() {
@@ -119,7 +119,7 @@ class TopBarController: UIViewController {
 
     func makeConstraints() {
         logoPic.snp.makeConstraints { make in
-            make.left.equalTo(view).offset(Config.AppLeftPadding)
+            make.left.equalTo(view).offset(Config.appLeftPadding)
             make.height.equalTo(view).inset(10)
             make.centerY.equalTo(view)
             make.width.equalTo(logoPic.snp.height)
@@ -133,11 +133,11 @@ class TopBarController: UIViewController {
         sessionTitle.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(view)
             make.height.equalTo(view)
-            make.width.lessThanOrEqualTo(Config.TopNavSessionNameMaxWidth)
+            make.width.lessThanOrEqualTo(Config.topNavSessionNameMaxWidth)
         }
 
         stackView.snp.makeConstraints { make in
-            make.right.equalTo(view).offset(-Config.AppRightPadding)
+            make.right.equalTo(view).offset(-Config.appRightPadding)
             make.height.equalTo(view)
         }
 

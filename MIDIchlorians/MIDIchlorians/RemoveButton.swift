@@ -11,7 +11,7 @@ import SnapKit
 
 // A remove button around pad with sample/animation assigned
 class RemoveButton: SelectedPadTrackingView {
-    let removeImage = UIImageView(image: UIImage(named: Config.RemoveButtonIcon))
+    let removeImage = UIImageView(image: UIImage(named: Config.removeButtonIcon))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +23,7 @@ class RemoveButton: SelectedPadTrackingView {
 
     func setUp() {
         isOpaque = false
-        removeImage.accessibilityLabel = Config.RemoveButtonA11yLabel
+        removeImage.accessibilityLabel = Config.removeButtonA11yLabel
     }
 
     func buildViewHierarchy() {
@@ -41,10 +41,10 @@ class RemoveButton: SelectedPadTrackingView {
     }
 
     override func calculateOffset(relativeTo cell: UICollectionViewCell) -> CGRect {
-        return CGRect(x: cell.frame.minX - Config.RemoveButtonOffset,
-                      y: cell.frame.minY - Config.RemoveButtonOffset,
-                      width: Config.RemoveButtonWidth,
-                      height: Config.RemoveButtonWidth)
+        return CGRect(x: cell.frame.minX - Config.removeButtonOffset,
+                      y: cell.frame.minY - Config.removeButtonOffset,
+                      width: Config.removeButtonWidth,
+                      height: Config.removeButtonWidth)
     }
 
 }

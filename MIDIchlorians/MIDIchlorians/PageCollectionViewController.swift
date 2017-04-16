@@ -12,17 +12,17 @@ import UIKit
 class PageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var pages: Int = 0
     weak var delegate: PageDelegate?
-    private var pageIcon = UIImage(named: Config.PageIconName)
-    private var pageSelectedIcon = UIImage(named: Config.PageSelectedIconName)
+    private var pageIcon = UIImage(named: Config.pageIconName)
+    private var pageSelectedIcon = UIImage(named: Config.pageSelectedIconName)
 
-    private let reuseIdentifier = Config.PageReuseIdentifier
+    private let reuseIdentifier = Config.pageReuseIdentifier
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView!.backgroundColor = Config.BackgroundColor
+        collectionView!.backgroundColor = Config.backgroundColor
     }
 
     // MARK: UICollectionViewDataSource
@@ -62,13 +62,13 @@ class PageCollectionViewController: UICollectionViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Config.ItemInsets.top
+        return Config.itemInsets.top
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return Config.SectionInsets
+        return Config.sectionInsets
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

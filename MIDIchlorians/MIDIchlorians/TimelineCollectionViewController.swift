@@ -15,9 +15,9 @@ import UIKit
 class TimelineCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     weak var timelineDelegate: TimelineDelegate?
 
-    private var minNumFrames = Config.TimelineMinNumFrames
-    private let reuseIdentifier = Config.TimelineReuseIdentifier
-    private let insets = Config.TimelineInsets
+    private var minNumFrames = Config.timelineMinNumFrames
+    private let reuseIdentifier = Config.timelineReuseIdentifier
+    private let insets = Config.timelineInsets
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(pan(recognizer:)))
         self.collectionView!.addGestureRecognizer(panGesture)
-        collectionView?.accessibilityLabel = Config.TimelineA11yLabel
+        collectionView?.accessibilityLabel = Config.timelineA11yLabel
     }
 
     func pan(recognizer: UIPanGestureRecognizer) {
@@ -56,9 +56,9 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
             cell.backgroundColor = UIColor.gray
         }
 
-        cell.layer.borderWidth = Config.TimelineBorderWidth
-        cell.layer.borderColor = Config.TimelineBorderColour
-        cell.layer.cornerRadius = cell.frame.width * Config.TimelineCornerRadiusRatio
+        cell.layer.borderWidth = Config.timelineBorderWidth
+        cell.layer.borderColor = Config.timelineBorderColour
+        cell.layer.cornerRadius = cell.frame.width * Config.timelineCornerRadiusRatio
 
         return cell
     }
@@ -75,7 +75,7 @@ class TimelineCollectionViewController: UICollectionViewController, UICollection
 
         // if not selected make it smaller
         if timelineDelegate?.selectedFrame != indexPath {
-            height *= Config.TimelineUnselectedFrameRatio
+            height *= Config.timelineUnselectedFrameRatio
         }
 
         // if frame has something also make it different

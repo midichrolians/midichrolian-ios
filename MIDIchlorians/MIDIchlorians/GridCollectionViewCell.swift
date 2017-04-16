@@ -10,10 +10,10 @@ import UIKit
 import SnapKit
 
 class GridCollectionViewCell: UICollectionViewCell {
-    private let sampleOnceOffImage = UIImage(named: Config.PadSampleOnceOffIcon)
-    private let sampleLoopImage = UIImage(named: Config.PadSampleLoopIcon)
-    private let animationIndicatorImage = UIImage(named: Config.PadAnimationIcon)
-    private let playLoopIndicatorImage = UIImage(named: Config.PadPlayLoopIcon)
+    private let sampleOnceOffImage = UIImage(named: Config.padSampleOnceOffIcon)
+    private let sampleLoopImage = UIImage(named: Config.padSampleLoopIcon)
+    private let animationIndicatorImage = UIImage(named: Config.padAnimationIcon)
+    private let playLoopIndicatorImage = UIImage(named: Config.padPlayLoopIcon)
 
     var rowNumber = 0
     var columnNumber = 0
@@ -57,8 +57,8 @@ class GridCollectionViewCell: UICollectionViewCell {
     func setUp() {
         playLoopIndicator.image = playLoopIndicatorImage
         playLoopIndicator.alpha = 0
-        layer.cornerRadius = frame.width * Config.PadCornerRadiusRatio
-        imageView.accessibilityLabel = Config.GridCollectionViewCellA11yLabel
+        layer.cornerRadius = frame.width * Config.padCornerRadiusRatio
+        imageView.accessibilityLabel = Config.gridCollectionViewCellA11yLabel
     }
 
     func buildViewHierarchy() {
@@ -71,20 +71,20 @@ class GridCollectionViewCell: UICollectionViewCell {
     func setConstraints() {
         // add constraints
         sampleIndicator.snp.makeConstraints { make in
-            make.width.equalTo(contentView).dividedBy(Config.PadIndicatorRatio)
+            make.width.equalTo(contentView).dividedBy(Config.padIndicatorRatio)
             make.height.equalTo(sampleIndicator.snp.width)
             make.centerY.centerX.equalTo(contentView)
         }
 
         animationIndicator.snp.makeConstraints { make in
-            make.width.equalTo(contentView).dividedBy(Config.PadIndicatorRatio)
+            make.width.equalTo(contentView).dividedBy(Config.padIndicatorRatio)
             make.height.equalTo(animationIndicator.snp.width)
             make.bottom.centerX.equalTo(contentView)
         }
 
         playLoopIndicator.snp.makeConstraints { make in
-            make.width.height.equalTo(contentView).dividedBy(Config.PadPlayLoopIndicatorRatio)
-            make.bottom.right.equalToSuperview().inset(Config.PadPlayLoopIndicatorInset)
+            make.width.height.equalTo(contentView).dividedBy(Config.padPlayLoopIndicatorRatio)
+            make.bottom.right.equalToSuperview().inset(Config.padPlayLoopIndicatorInset)
         }
     }
 

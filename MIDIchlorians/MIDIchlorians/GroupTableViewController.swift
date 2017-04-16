@@ -12,11 +12,11 @@ import UIKit
 // A user might have a lot of samples, and this view allows users to browse all samples by groups
 class GroupTableViewController: UITableViewController {
     var groups = DataManager.instance.getAllGroups().sorted()
-    private let reuseIdentifier = Config.GroupTableReuseIdentifier
+    private let reuseIdentifier = Config.groupTableReuseIdentifier
     weak var delegate: SampleTableDelegate?
     var selectedSampleName: String?
     var selectedGroupName: String?
-    private var tabBarSampleIcon = UIImage(named: Config.SidePaneTabBarSampleIcon)
+    private var tabBarSampleIcon = UIImage(named: Config.sidePaneTabBarSampleIcon)
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
@@ -25,9 +25,9 @@ class GroupTableViewController: UITableViewController {
 
     func setUp() {
         tabBarItem = UITabBarItem(
-            title: Config.SampleTableTitle, image: tabBarSampleIcon, selectedImage: tabBarSampleIcon)
+            title: Config.sampleTableTitle, image: tabBarSampleIcon, selectedImage: tabBarSampleIcon)
         tableView.separatorStyle = .none
-        tableView.accessibilityLabel = Config.GroupTableA11yLabel
+        tableView.accessibilityLabel = Config.groupTableA11yLabel
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +37,7 @@ class GroupTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = Config.SampleTableTitle
+        title = Config.sampleTableTitle
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
 

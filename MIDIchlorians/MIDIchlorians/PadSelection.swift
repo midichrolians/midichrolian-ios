@@ -25,13 +25,13 @@ class PadSelection: SelectedPadTrackingView {
     override func calculateOffset(relativeTo cell: UICollectionViewCell) -> CGRect {
         // This selection should look like a border around the cell
         // need to offset the frame by some pixels, increase the width
-        let offset = layer.borderWidth + (cell.frame.width * Config.PadSelectionOffsetRaio)
+        let offset = layer.borderWidth + (cell.frame.width * Config.padSelectionOffsetRaio)
         let frame = CGRect(x: cell.frame.minX - offset,
                       y: cell.frame.minY - offset,
                       width: cell.frame.width + offset * 2,
                       height: cell.frame.height + offset * 2)
-        layer.borderWidth = Config.PadSelectionBorderWidth
-        layer.cornerRadius = cell.frame.width * Config.PadSelectionCornerRadiusRatio
+        layer.borderWidth = Config.padSelectionBorderWidth
+        layer.cornerRadius = cell.frame.width * Config.padSelectionCornerRadiusRatio
         return frame
     }
 }

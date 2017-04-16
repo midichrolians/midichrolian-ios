@@ -12,7 +12,7 @@ import SnapKit
 // Manages the control that displays the current BPM for the session, and allows a user to change it.
 class BPMViewController: UIViewController {
     var bpmPicker = UIPickerView()
-    var selectedBPM: Int = Config.TopNavBPMDefaultBPM
+    var selectedBPM: Int = Config.topNavBPMDefaultBPM
     var bpmListener: ((Int) -> Void)?
 
     override func viewDidLoad() {
@@ -20,11 +20,11 @@ class BPMViewController: UIViewController {
 
         bpmPicker.dataSource = self
         bpmPicker.delegate = self
-        bpmPicker.selectRow(selectedBPM - Config.TopNavBPMMinBPM, inComponent: 0, animated: false)
+        bpmPicker.selectRow(selectedBPM - Config.topNavBPMMinBPM, inComponent: 0, animated: false)
         view.addSubview(bpmPicker)
 
-        preferredContentSize = CGSize(width: Config.TopNavBPMPreferredWidth,
-                                      height: Config.TopNavBPMPreferredHeight)
+        preferredContentSize = CGSize(width: Config.topNavBPMPreferredWidth,
+                                      height: Config.topNavBPMPreferredHeight)
 
         setConstraints()
     }
@@ -48,17 +48,17 @@ extension BPMViewController: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Config.TopNavBPMMaxBPM - Config.TopNavBPMMinBPM + 1
+        return Config.topNavBPMMaxBPM - Config.topNavBPMMinBPM + 1
     }
 }
 
 extension BPMViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(Config.TopNavBPMMinBPM + row)
+        return String(Config.topNavBPMMinBPM + row)
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedBPM = Config.TopNavBPMMinBPM + row
+        selectedBPM = Config.topNavBPMMinBPM + row
         bpmListener?(selectedBPM)
     }
 }

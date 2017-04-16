@@ -12,7 +12,7 @@ import SnapKit
 class SampleTableViewCell: UITableViewCell {
     var sampleName = UILabel()
     var playButton = UIButton()
-    let playIcon = UIImage(named: Config.SamplePlayButtonIcon)
+    let playIcon = UIImage(named: Config.samplePlayButtonIcon)
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
