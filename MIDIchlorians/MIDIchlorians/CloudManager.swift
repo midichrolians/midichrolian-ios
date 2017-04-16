@@ -119,7 +119,7 @@ class CloudManager {
             }
 
             for audio in filesToDownload {
-                let filePath = "/\(Config.AudioFolderName)/\(audio.name)"
+                let filePath = "/\(Config.audioFolderName)/\(audio.name)"
                 let url = docsURL.appendingPathComponent(audio.name)
                 let destination: (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
                     return url
@@ -143,7 +143,7 @@ class CloudManager {
             }
         }
 
-        client?.files.listFolder(path: "/\(Config.AudioFolderName)/").response { response, error in
+        client?.files.listFolder(path: "/\(Config.audioFolderName)/").response { response, error in
             //If error occurred
             guard let result = response, error == nil else {
                 self.handleResult(Config.audioNotificationKey, false)
@@ -157,7 +157,7 @@ class CloudManager {
     // local database The animations.json file is a json string comprising of many json strings,
     // one for each animation type
     private func loadAnimations() {
-        let filePath = "/\(Config.AnimationFileName).\(Config.AnimationExt)"
+        let filePath = "/\(Config.animationFileName).\(Config.animationExt)"
 
         //Internal function called after file has been downloaded
         func downloadCallBack(_ result: (Files.FileMetadataSerializer.ValueType, Data)) {
@@ -190,7 +190,7 @@ class CloudManager {
     // local database. The sessions.json file is a json string comprising of many json strings,
     // one for each session
     private func loadSessions() {
-        let filePath = "/\(Config.SessionFileName).\(Config.SessionExt)"
+        let filePath = "/\(Config.sessionFileName).\(Config.sessionExt)"
         //Internal function called after file has been downloaded
         func downloadCallBack(_ result: (Files.FileMetadataSerializer.ValueType, Data)) {
             let json = result.1
@@ -279,7 +279,7 @@ class CloudManager {
 
             for audio in filesToUpload {
                 let fileNameExtension = "\(audio)"
-                let filePath = "/\(Config.AudioFolderName)/\(fileNameExtension)"
+                let filePath = "/\(Config.audioFolderName)/\(fileNameExtension)"
                 let url = docsURL.appendingPathComponent("\(audio)")
                 self.client?.files.upload(path: filePath, input: url).response { response, error in
                     guard let result = response, error == nil else {
@@ -294,7 +294,7 @@ class CloudManager {
             }
         }
 
-        client?.files.listFolder(path: "/\(Config.AudioFolderName)/").response { response, _ in
+        client?.files.listFolder(path: "/\(Config.audioFolderName)/").response { response, _ in
             listFolderCallback(response: response)
         }
     }
@@ -316,7 +316,7 @@ class CloudManager {
             return
         }
         //Upload the file
-        let filePath = "/\(Config.AnimationFileName).\(Config.AnimationExt)"
+        let filePath = "/\(Config.animationFileName).\(Config.animationExt)"
         client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false,
                              mute: false, input: jsonData).response { response, error in
             //In case error occurred while uploading
@@ -349,7 +349,7 @@ class CloudManager {
             return
         }
         //Upload json
-        let filePath = "/\(Config.SessionFileName).\(Config.SessionExt)"
+        let filePath = "/\(Config.sessionFileName).\(Config.sessionExt)"
         client?.files.upload(path: filePath, mode: Files.WriteMode.overwrite, autorename: false,
                              mute: false, input: jsonData).response { response, error in
             //Error occurred
