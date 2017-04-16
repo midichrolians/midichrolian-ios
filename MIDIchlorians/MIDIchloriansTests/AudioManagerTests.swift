@@ -17,11 +17,10 @@ class AudioManagerTests: XCTestCase {
         XCTAssertTrue(testInit)
     }
 
-    //TODO: shouldn't be true
     func testInitAudioDoesntExist() {
         let audioStringDoesntExist = ""
         let testInit = AudioManager.instance.initAudio(audioDir: audioStringDoesntExist)
-        XCTAssertTrue(testInit)
+        XCTAssertFalse(testInit)
     }
 
     func testAudioPlay() {
@@ -52,7 +51,21 @@ class AudioManagerTests: XCTestCase {
     func testIsPlaying() {
         let audioString = "AWOLNATION - Sail-1.wav"
         _ = AudioManager.instance.play(audioDir: audioString)
-        let isPlaying = AudioManager.instance.isTrackPlaying(audioDir: audioString)
-        XCTAssertTrue(isPlaying)
+        XCTAssertTrue(AudioManager.instance.isTrackPlaying(audioDir: audioString))
+    }
+
+    func testIsPlayingFalse() {
+        let audioString = "doesntexist"
+        XCTAssertFalse(AudioManager.instance.isTrackPlaying(audioDir: audioString))
+    }
+
+    func testLoop() {
+        let audioString = "AWOLNATION - Sail-1.wav"
+        //loop starts
+        _ = AudioManager.instance.play(audioDir: audioString, bpm: 100)
+        XCTAssertTrue(AudioManager.instance.isTrackPlaying(audioDir: audioString))
+        _ = AudioManager.instance.play(audioDir: audioString)
+        //loop stops
+        XCTAssertTrue(AudioManager.instance.isTrackPlaying(audioDir: audioString))
     }
 }

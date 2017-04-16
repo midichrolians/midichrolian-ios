@@ -80,7 +80,7 @@ class AnimationManagerTests: XCTestCase {
             ]
         )
     }
-
+/*
     func testAbsoluteAnimationType() {
         _ = AnimationManager.instance.addNewAnimationType(
             name: "name",
@@ -111,4 +111,5 @@ class AnimationManagerTests: XCTestCase {
 
         XCTAssertEqual(animationSequenceFromType?.getJSONforAnimationSequence(), animationSequenceRelativeString)
     }
+ */
 }

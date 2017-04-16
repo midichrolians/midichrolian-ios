@@ -21,7 +21,7 @@ struct Config {
     static let defaultAudioValue = ""
     static let playBackAccuracy: TimeInterval = 1/60
 
-    static let audioSetting = AudioPlayerSetting.audioServices
+    static let audioSetting = AudioPlayerSetting.gSAudio
     static let sounds = [
         "Sail": [
             "AWOLNATION - Sail", "AWOLNATION - Sail-1",

@@ -49,7 +49,7 @@ class AnimationTypeTests: XCTestCase {
 //
 //        XCTAssertEqual(stringFromAnimationType, animationTypeString)
 //    }
-
+/*
     func testGetAnimationTypeFromJSON() {
         let animationType = AnimationType.getAnimationTypeFromJSON(
             fromJSON: animationTypeString
@@ -67,4 +67,5 @@ class AnimationTypeTests: XCTestCase {
 
         XCTAssertNil(animationType)
     }
+ */
 }

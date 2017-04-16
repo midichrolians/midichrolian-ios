@@ -16,7 +16,7 @@ class AnimationBitTests: XCTestCase {
             "{\n  \"column\" : 0,\n  \"row\" : 0,\n  \"colour\" : \"blue\"\n}"
         )
     }
-
+/*
     func testGetAnimationBitFromJSON() {
         let animationBit = AnimationBit.getAnimationBitFromJSON(
             fromJSON: "{\n  \"column\" : 0,\n  \"row\" : 0,\n  \"colour\" : \"blue\"\n}"
@@ -41,4 +41,5 @@ class AnimationBitTests: XCTestCase {
         )
         XCTAssertNil(animationBit)
     }
+ */
 }
