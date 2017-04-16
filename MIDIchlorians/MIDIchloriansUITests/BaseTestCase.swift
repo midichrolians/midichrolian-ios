@@ -39,6 +39,14 @@ class BaseTestCase: XCTestCase {
         expect(element.isSelected) == true
     }
 
+    func enterEditMode() {
+        app.buttons["Edit"].tap()
+    }
+
+    func selectAnimationsTab() {
+        app.tabBars.buttons["Animations"].tap()
+    }
+
     // Grid related
     func selectFirstPadInGrid() {
         let grid = app.collectionViews["Grid"]

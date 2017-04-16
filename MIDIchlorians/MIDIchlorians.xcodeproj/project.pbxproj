@@ -316,6 +316,7 @@
 		E95CACD51E96A97D009E6DA6 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */; };
 		E95EBC361E9B54FB00E66D1C /* BPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */; };
 		E95EBC381E9B5B5700E66D1C /* BPMSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */; };
+		E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
@@ -690,6 +691,7 @@
 		E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMViewController.swift; sourceTree = "<group>"; };
 		E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorDelegate.swift; sourceTree = "<group>"; };
+		E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerTestCase.swift; sourceTree = "<group>"; };
 		E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GridController+PadDelegate.swift"; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 			children = (
 				33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */,
 				E920F4261EA11BED00D5B165 /* BaseTestCase.swift */,
+				E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */,
 				E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */,
 				33120E341E6FD30A007E7717 /* Info.plist */,
 			);
@@ -2019,6 +2022,7 @@
 				33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */,
 				E920F4271EA11BED00D5B165 /* BaseTestCase.swift in Sources */,
 				E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */,
+				E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

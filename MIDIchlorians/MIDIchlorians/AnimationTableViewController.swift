@@ -48,6 +48,7 @@ class AnimationTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.separatorColor = Config.TableViewSeparatorColor
         tableView.register(AnimationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.accessibilityLabel = "Animation Table"
 
         navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.leftBarButtonItem = self.newAnimationButton

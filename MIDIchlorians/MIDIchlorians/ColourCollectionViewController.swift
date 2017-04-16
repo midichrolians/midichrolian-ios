@@ -21,6 +21,7 @@ class ColourCollectionViewController: UICollectionViewController, UICollectionVi
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView?.accessibilityLabel = "Colour Picker"
     }
 
     // MARK: UICollectionViewDataSource
