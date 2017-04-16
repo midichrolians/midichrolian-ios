@@ -6,6 +6,7 @@
 //  Copyright © 2017 nus.cs3217.a0118897. All rights reserved.
 //
 
+import XCTest
 import Foundation
 import Nimble
 
