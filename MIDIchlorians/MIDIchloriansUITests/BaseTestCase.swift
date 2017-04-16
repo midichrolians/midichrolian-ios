@@ -39,14 +39,48 @@ class BaseTestCase: XCTestCase {
         expect(element.isSelected) == true
     }
 
+    func enterEditMode() {
+        app.buttons[Config.TopNavEditLabel].tap()
+    }
+
+    func selectAnimationsTab() {
+        app.tabBars.buttons[Config.AnimationTabTitle].tap()
+    }
+
     // Grid related
     func selectFirstPadInGrid() {
-        let grid = app.collectionViews["Grid"]
+        let grid = app.collectionViews[Config.GridA11yLabel]
         let pad1 = grid.cells.element(boundBy: 0)
         pad1.tap()
     }
 
     func dismissPopover() {
-        app.otherElements["PopoverDismissRegion"].tap()
+        app.otherElements[Config.PopOverDismissLabel].tap()
+    }
+
+    // MARK: - Table view action related
+
+    func editRow(_ table: XCUIElement) {
+        table.cells.element(boundBy: 0).swipeLeft()
+        table.cells.element(boundBy: 0).buttons[Config.CommonEditActionTitle].tap()
+    }
+
+    func removeRow(_ table: XCUIElement) {
+        table.cells.element(boundBy: 0).swipeLeft()
+        table.cells.element(boundBy: 0).buttons[Config.CommonRemoveActionTitle].tap()
+    }
+
+    // MARK: - Alerts related
+
+    func cancel(_ alert: XCUIElement) {
+        alert.buttons[Config.CommonButtonCancelTitle].tap()
+    }
+
+    func okay(_ alert: XCUIElement) {
+        alert.buttons[Config.CommonButtonOkayTitle].tap()
+    }
+
+    func confirm(_ alert: XCUIElement) {
+        alert.buttons[Config.CommonButtonConfirmTitle].tap()
     }
 }

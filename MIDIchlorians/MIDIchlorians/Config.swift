@@ -162,6 +162,15 @@ struct Config {
     static let AppLeftPadding: CGFloat = 20
     static let AppRightPadding: CGFloat = 20
 
+    // Common
+    static let PopOverDismissLabel = "PopoverDismissRegion"
+    static let CommonEditActionTitle = "Edit"
+    static let CommonRemoveActionTitle = "Remove"
+    static let CommonButtonCancelTitle = "Cancel"
+    static let CommonButtonOkayTitle = "Okay"
+    static let CommonButtonConfirmTitle = "Confirm"
+    static let CommonSystemAddTitle = "Add"
+
     // Top nav
     static let TopNavHeight: CGFloat = 60
     static let TopNavLogoIcon = "logo.png"
@@ -192,6 +201,7 @@ struct Config {
     static let TopNavBPMPreferredHeight: CGFloat = 200
     static let TopNavSyncSpinnerInset: CGFloat = 20
     static let TopNavSessionNameMaxWidth: CGFloat = 150
+    static let TopNavSessionTitleA11yLabel = "Session title"
 
     // About
     static let AboutCloseTitle = "Close"
@@ -200,9 +210,10 @@ struct Config {
     static let AboutSlideshowInset = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
 
     // Grid
+    static let GridA11yLabel = "Grid"
+    static let GridCollectionViewCellA11yLabel = "Animation image"
     static let GridCollectionViewCellIdentifier = "cell"
     static let GridDefaultBackgroundColour = UIColor(colorLiteralRed: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
-    static let PadSelectionBorderColour = UIColor.green.cgColor
     static let PadSelectionBorderWidth: CGFloat = 1.0
     static let PadSelectionCornerRadiusRatio: CGFloat = 1 / 16.0
     static let PadSelectionOffsetRaio: CGFloat =  1 / 12.0
@@ -212,6 +223,7 @@ struct Config {
     static let PadAnimationIcon = "pad_animation.png"
     static let PadPlayLoopIcon = "pad_loop_indicator.png"
     static let PadIndicatorRatio: CGFloat = 3
+    static let RemoveButtonA11yLabel = "Remove Pad"
     static let RemoveButtonOffset: CGFloat = 10
     static let RemoveButtonWidth: CGFloat = 24
     static let PadCornerRadiusRatio: CGFloat = 1 / 24.0
@@ -233,12 +245,14 @@ struct Config {
     static let SidePaneTabBarAnimationIcon = "params.png"
 
     // Group table
+    static let GroupTableA11yLabel = "Group Table"
     static let GroupTableReuseIdentifier = "group"
     static let GroupAlertTitle = "Group name"
     static let GroupNameOkayTitle = "Okay"
     static let GroupNameCancelTitle = "Cancel"
 
     // Sample table
+    static let SampleTableA11yLabel = "Sample Table"
     static let SampleTableCellHeight: CGFloat = 60
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
@@ -248,6 +262,7 @@ struct Config {
     static let SamplePlayButtonIcon = "play.png"
 
     // Animation table
+    static let AnimationTableA11YLabel = "Animation Table"
     static let AnimationTableReuseIdentifier = "animationCell"
     static let AnimationEditActionTitle = "Edit"
     static let AnimationRemoveActionTitle = "Remove"
@@ -294,6 +309,7 @@ struct Config {
     static let AnimationSaveCancelTitle = "Cancel"
 
     // Timeline
+    static let TimelineA11yLabel = "Timeline"
     static let TimelineMinNumFrames = 8
     static let TimelineReuseIdentifier = "timeline"
     static let TimelineInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -301,6 +317,7 @@ struct Config {
     static let TimelineUnselectedFrameRatio: CGFloat = 0.7
 
     // Colour picker
+    static let ColourPickerA11yLabel = "Colour Picker"
     static let ColourSelectionWidth: CGFloat = 3
     static let ColourSelectionOffset: CGFloat = 5
     static let ColourReuseIdentifier = "colour"
@@ -308,6 +325,7 @@ struct Config {
     static let ColourClearAnimImage = "clear_anim.png"
 
     // Session
+    static let SessionTableA11yLabel = "Session Table"
     static let SessionTableTitle = "Sessions"
     static let SessionEditActionTitle = "Edit"
     static let SessionRemoveActionTitle = "Remove"

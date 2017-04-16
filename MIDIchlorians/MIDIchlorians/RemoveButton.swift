@@ -23,7 +23,7 @@ class RemoveButton: SelectedPadTrackingView {
 
     func setUp() {
         isOpaque = false
-        removeImage.accessibilityLabel = "Remove Pad"
+        removeImage.accessibilityLabel = Config.RemoveButtonA11yLabel
     }
 
     func buildViewHierarchy() {
