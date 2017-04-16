@@ -191,7 +191,6 @@ class CloudManager {
     // one for each session
     private func loadSessions() {
         let filePath = "/\(Config.sessionFileName).\(Config.sessionExt)"
-
         //Internal function called after file has been downloaded
         func downloadCallBack(_ result: (Files.FileMetadataSerializer.ValueType, Data)) {
             let json = result.1
