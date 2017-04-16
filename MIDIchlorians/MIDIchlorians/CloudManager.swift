@@ -10,14 +10,13 @@ import SwiftyDropbox
 /**
  This class handles the saving and loading of data from cloud services(Dropbox). Animations and
  Sessions are serialised to JSONs and saved, while Audio files are saved from the Documents
- Directory.
+ Directory. The Singleton pattern is used here to prevent multiple instances from accessing the folder
+ at the same time.
  
  Since the API requests are asynchronous, the notification center is used to indicate when a given
  request has received a result. One notification each is posted on obtaining results for animations,
  sessions and all audio files. Once all 3 have been received another notification is posted to indicate
  the overall completion of the sync.
-
- The Singleton pattern is used here because..
  **/
 class CloudManager {
 

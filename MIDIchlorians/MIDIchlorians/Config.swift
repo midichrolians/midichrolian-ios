@@ -28,14 +28,13 @@ struct Config {
             "AWOLNATION - Sail-10", "AWOLNATION - Sail-11",
             "AWOLNATION - Sail-12", "AWOLNATION - Sail-13",
             "AWOLNATION - Sail-14", "AWOLNATION - Sail-15",
-            "AWOLNATION - Sail-16", "AWOLNATION - Sail-9",
-            "AWOLNATION - Sail-10", "AWOLNATION - Sail-17",
+            "AWOLNATION - Sail-16", "AWOLNATION - Sail-17",
             "AWOLNATION - Sail-18", "AWOLNATION - Sail-19",
             "AWOLNATION - Sail-20", "AWOLNATION - Sail-21",
             "AWOLNATION - Sail-22", "AWOLNATION - Sail-23",
             "AWOLNATION - Sail-24", "AWOLNATION - Sail-25",
             "AWOLNATION - Sail-26", "AWOLNATION - Sail-27",
-            "AWOLNATION - Sail-28", "AWOLNATION - Sail"
+            "AWOLNATION - Sail-28",
         ],
         "Fur elise": [
             "All Leads - No Sidechain-1", "All Leads - No Sidechain-10",
