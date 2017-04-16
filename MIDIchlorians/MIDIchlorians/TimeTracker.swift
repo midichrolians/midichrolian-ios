@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ sets the start date and then uses that to calculate the time interval since recording first started
+ */
 struct TimeTracker {
     private var timeIndexArr: [(TimeInterval, (Int, IndexPath))]
     private let start: Date

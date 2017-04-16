@@ -7,7 +7,9 @@
 //
 
 import Foundation
-
+/**
+ used for quick change in audio playing methods
+ */
 enum AudioPlayerSetting {
     case audioServices,
         aVAudioPlayer,

@@ -8,7 +8,11 @@
 
 import Foundation
 
+/**
+ takes in the same timeIndexArr (format) from the Time Tracker
+ */
 struct PlayBackRetriever {
+    //tuple of (timeInt tuple) because swift requires tuples to be size 2
     private var timeIndexArr: [(TimeInterval, (Int, IndexPath))]
     init(timeIndexArr: [(TimeInterval, (Int, IndexPath))]) {
         self.timeIndexArr = timeIndexArr

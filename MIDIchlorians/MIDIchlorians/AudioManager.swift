@@ -9,6 +9,13 @@
 import Foundation
 import AVFoundation
 
+/**
+ Singleton, access the audio players from here. Will take in an enum (audioPlayerSetting) to choose which audioplayer to use
+ AudioPlayerSetting = 
+ gSAudio: newest setting, uses GS audio for all short clips, uses AudioTrackPlayer for Long clips and loops
+ aVAudioPlayer: Uses AudioTrackPlayer for all audios,all lengths and loops. will have distortion when playing short clips
+ audioServices: oldest setting, uses AudioClipPlayer (running on audio services) for short clips and loops, AudioTrackPlayer for long clips
+ */
 class AudioManager {
     public static var instance = AudioManager(Config.audioSetting)
     private var audioClipDict: [String: UInt32]
@@ -34,7 +41,8 @@ class AudioManager {
     }
 
     //initialize single audio file
-    //returns successs
+    //returns success
+    //chooses method based on the audioPlayerType
     func initAudio(audioDir: String) -> Bool {
         //want if nil means not initialized yet
         guard audioClipDict[audioDir] == nil && audioTrackDict[audioDir] == nil else {
@@ -71,6 +79,7 @@ class AudioManager {
     }
 
     //call this to play audio with single directory
+    //checks for audio duration for clips longer than 30 seconds
     //returns success
     func play(audioDir: String, bpm: Int? = nil) -> Bool {
         guard let beatsPerMin = bpm else {
@@ -137,6 +146,7 @@ class AudioManager {
     }
 
     //has to expose to objc to be target of selector
+    //for playing of loops
     @objc func runTimedCode(_ timer: Timer) {
         guard let audioDir = timer.userInfo as? String else {
             return
@@ -144,6 +154,7 @@ class AudioManager {
         _ = play(audioDir: audioDir)
     }
 
+    //returns if the track is playing or not. only works with AudioTrackPlayer or loops
     func isTrackPlaying(audioDir: String) -> Bool {
         if let player = audioTrackDict[audioDir] {
             return player.isPlaying
@@ -175,6 +186,7 @@ class AudioManager {
         return Double(CMTimeGetSeconds(asset.duration))
     }
 
+    //returns audio duration in X min X seconds format. not used in UI as of submission, but can be implemented if required
     func getDuration(for resource: String) -> String {
         let durNum = audioDuration(for: resource)
         if durNum < 0 {
@@ -185,7 +197,7 @@ class AudioManager {
         return "\(minutes) min \(seconds) seconds"
     }
 
-    //ideally should stop a looping track
+    //stops looping tracks
     func stop(audioDir: String) {
         guard let audioTimer = loopDict[audioDir] else {
             return

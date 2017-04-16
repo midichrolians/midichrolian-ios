@@ -8,7 +8,10 @@
 
 import Foundation
 import AVFoundation
-
+/**
+ standard AVAudioPlayer
+ sets the track back to "0" if asked to play when playing
+ */
 struct AudioTrackPlayer {
     static func initAudioTrack(audioDir: String) -> AVAudioPlayer? {
         guard let docsURL = FileManager.default.urls(for: .documentDirectory,

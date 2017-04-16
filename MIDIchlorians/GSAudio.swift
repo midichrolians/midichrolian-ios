@@ -8,6 +8,11 @@
 import Foundation
 import AVFoundation
 
+/**
+ uses AVAudioPlayer, creates duplicate players to play (so that sound overlaps instead of abrubtly stopping)
+ will do initializing on playSound and store the players in "players"
+ will remove duplicate players after they finish playing
+ */
 class GSAudio: NSObject, AVAudioPlayerDelegate {
 
     static let sharedInstance = GSAudio()
