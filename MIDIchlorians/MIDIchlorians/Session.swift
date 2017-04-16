@@ -273,10 +273,8 @@ class Session: Object {
         // Check if every pair of pads is equal
         for page in 0..<numPages {
             for row in 0..<numRows {
-                for col in 0..<numCols {
-                    if pads[page][row][col] != session.pads[page][row][col] {
+                for col in 0..<numCols where pads[page][row][col] != session.pads[page][row][col] {
                         return false
-                    }
                 }
             }
         }

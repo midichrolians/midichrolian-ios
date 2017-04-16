@@ -32,7 +32,7 @@ class DataManager {
     //Stores the name of the last session accessed by the user
     private var lastSessionName: String?
 
-    private init() {
+    init() {
         //Not sure if this line should always be there
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
         //Syntax for getting realm instance

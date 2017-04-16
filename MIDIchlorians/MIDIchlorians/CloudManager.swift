@@ -16,8 +16,7 @@ import SwiftyDropbox
  request has received a result. One notification each is posted on obtaining results for animations,
  sessions and all audio files. Once all 3 have been received another notification is posted to indicate
  the overall completion of the sync.
- 
- 
+
  The Singleton pattern is used here because..
  **/
 class CloudManager {
@@ -265,7 +264,7 @@ class CloudManager {
             //Construct list of files to upload
             if let result = response {
                 result.entries.forEach({ audio in
-                    if (audioMap.contains(audio.name)) {
+                    if audioMap.contains(audio.name) {
                         audioMap.remove(audio.name)
                     }
                 })
@@ -296,7 +295,7 @@ class CloudManager {
             }
         }
 
-        client?.files.listFolder(path: "/\(Config.AudioFolderName)/").response { response, error in
+        client?.files.listFolder(path: "/\(Config.AudioFolderName)/").response { response, _ in
             listFolderCallback(response: response)
         }
     }
