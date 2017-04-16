@@ -224,7 +224,7 @@ class DataManagerTests: XCTestCase {
     }
 
     func testGetAllGroups() {
-        var audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
+        let audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
         audios.forEach({ sample in
             _ = dataManager.saveAudio(sample)
             XCTAssertTrue(dataManager.addSampleToGroup(group: sample, sample: sample))
