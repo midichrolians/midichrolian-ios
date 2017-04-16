@@ -144,7 +144,7 @@ class AudioManager {
     func isTrackPlaying(audioDir: String) -> Bool {
         if let player = audioTrackDict[audioDir] {
             return player.isPlaying
-        } else if let timer = loopDict[audioDir] {
+        } else if loopDict[audioDir] != nil {
             return true
         }
         return false

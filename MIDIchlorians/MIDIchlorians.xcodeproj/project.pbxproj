@@ -288,6 +288,7 @@
 		800362FA1E8F6EF3007813EE /* AudioTrackPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800362F91E8F6EF3007813EE /* AudioTrackPlayer.swift */; };
 		80299E831E88FAB000CEB465 /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
 		805946D21E816D0E00EF7A2B /* AudioClipPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */; };
+		808877881EA3149C00408A3C /* AudioManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877871EA3149C00408A3C /* AudioManagerTests.swift */; };
 		80A050BC1E98033C00091411 /* RecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BB1E98033C00091411 /* RecorderManager.swift */; };
 		80A050C01E9926FD00091411 /* GSAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BF1E9926FD00091411 /* GSAudio.swift */; };
 		80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */; };
@@ -659,6 +660,7 @@
 		800362F91E8F6EF3007813EE /* AudioTrackPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrackPlayer.swift; sourceTree = "<group>"; };
 		80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerSetting.swift; sourceTree = "<group>"; };
 		805946D11E816D0E00EF7A2B /* AudioClipPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayer.swift; sourceTree = "<group>"; };
+		808877871EA3149C00408A3C /* AudioManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManagerTests.swift; sourceTree = "<group>"; };
 		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
 		80A050BF1E9926FD00091411 /* GSAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSAudio.swift; sourceTree = "<group>"; };
 		80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPlaybackDelegate.swift; sourceTree = "<group>"; };
@@ -1019,6 +1021,7 @@
 		800362FB1E8F74E5007813EE /* AudioTests */ = {
 			isa = PBXGroup;
 			children = (
+				808877871EA3149C00408A3C /* AudioManagerTests.swift */,
 			);
 			name = AudioTests;
 			sourceTree = "<group>";
@@ -2028,6 +2031,7 @@
 			files = (
 				334113941E8E5E9500F998E9 /* AnimationTypeTests.swift in Sources */,
 				F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */,
+				808877881EA3149C00408A3C /* AudioManagerTests.swift in Sources */,
 				334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */,
 				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
 				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
