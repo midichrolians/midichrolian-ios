@@ -293,8 +293,8 @@
 		808877921EA3751000408A3C /* AudioClipPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877911EA3751000408A3C /* AudioClipPlayerTests.swift */; };
 		808877941EA3769500408A3C /* AudioTrackPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877931EA3769500408A3C /* AudioTrackPlayerTests.swift */; };
 		808877971EA3794E00408A3C /* RecorderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877961EA3794E00408A3C /* RecorderManagerTests.swift */; };
-		808877991EA385C000408A3C /* PlayBackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877981EA385C000408A3C /* PlayBackerTests.swift */; };
 		8088779B1EA385DE00408A3C /* TimeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088779A1EA385DE00408A3C /* TimeTrackerTests.swift */; };
+		8088779D1EA38A1E00408A3C /* PlayBackRetrieverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088779C1EA38A1E00408A3C /* PlayBackRetrieverTests.swift */; };
 		80A050BC1E98033C00091411 /* RecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BB1E98033C00091411 /* RecorderManager.swift */; };
 		80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */; };
 		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
@@ -670,8 +670,8 @@
 		808877911EA3751000408A3C /* AudioClipPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayerTests.swift; sourceTree = "<group>"; };
 		808877931EA3769500408A3C /* AudioTrackPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrackPlayerTests.swift; sourceTree = "<group>"; };
 		808877961EA3794E00408A3C /* RecorderManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManagerTests.swift; sourceTree = "<group>"; };
-		808877981EA385C000408A3C /* PlayBackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayBackerTests.swift; sourceTree = "<group>"; };
 		8088779A1EA385DE00408A3C /* TimeTrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTrackerTests.swift; sourceTree = "<group>"; };
+		8088779C1EA38A1E00408A3C /* PlayBackRetrieverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayBackRetrieverTests.swift; sourceTree = "<group>"; };
 		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
 		80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPlaybackDelegate.swift; sourceTree = "<group>"; };
 		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
@@ -1161,8 +1161,8 @@
 			isa = PBXGroup;
 			children = (
 				808877961EA3794E00408A3C /* RecorderManagerTests.swift */,
-				808877981EA385C000408A3C /* PlayBackerTests.swift */,
 				8088779A1EA385DE00408A3C /* TimeTrackerTests.swift */,
+				8088779C1EA38A1E00408A3C /* PlayBackRetrieverTests.swift */,
 			);
 			name = RecordingTests;
 			sourceTree = "<group>";
@@ -2059,7 +2059,7 @@
 				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
 				808877941EA3769500408A3C /* AudioTrackPlayerTests.swift in Sources */,
 				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
-				808877991EA385C000408A3C /* PlayBackerTests.swift in Sources */,
+				8088779D1EA38A1E00408A3C /* PlayBackRetrieverTests.swift in Sources */,
 				334113971E8E6CE900F998E9 /* AnimationManagerTests.swift in Sources */,
 				808877971EA3794E00408A3C /* RecorderManagerTests.swift in Sources */,
 				808877921EA3751000408A3C /* AudioClipPlayerTests.swift in Sources */,

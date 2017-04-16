@@ -37,7 +37,7 @@ class AnimationSequenceTests: XCTestCase {
         XCTAssertEqual(animationSequence.next()!, [secondAnimationBit, thirdAnimationBit])
         XCTAssertNil(animationSequence.next())
     }
-/*
+
     func testGetJSONforAnimationSequence() {
         let stringFromAnimationSequence = animationSequence.getJSONforAnimationSequence()
         XCTAssertEqual(
@@ -64,5 +64,5 @@ class AnimationSequenceTests: XCTestCase {
 
         XCTAssertNil(animationSequenceFromString)
     }
- */
+ 
 }
