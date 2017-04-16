@@ -212,6 +212,14 @@ struct Config {
     static let AppLeftPadding: CGFloat = 20
     static let AppRightPadding: CGFloat = 20
 
+    // Common
+    static let PopOverDismissLabel = "PopoverDismissRegion"
+    static let CommonEditActionTitle = "Edit"
+    static let CommonRemoveActionTitle = "Remove"
+    static let CommonButtonCancelTitle = "Cancel"
+    static let CommonButtonOkayTitle = "Okay"
+    static let CommonButtonConfirmTitle = "Confirm"
+
     // Top nav
     static let TopNavHeight: CGFloat = 60
     static let TopNavLogoIcon = "logo.png"

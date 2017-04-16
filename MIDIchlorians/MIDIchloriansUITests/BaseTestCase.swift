@@ -40,11 +40,11 @@ class BaseTestCase: XCTestCase {
     }
 
     func enterEditMode() {
-        app.buttons["Edit"].tap()
+        app.buttons[Config.TopNavExitLabel].tap()
     }
 
     func selectAnimationsTab() {
-        app.tabBars.buttons["Animations"].tap()
+        app.tabBars.buttons[Config.AnimationTabTitle].tap()
     }
 
     // Grid related
@@ -55,32 +55,32 @@ class BaseTestCase: XCTestCase {
     }
 
     func dismissPopover() {
-        app.otherElements["PopoverDismissRegion"].tap()
+        app.otherElements[Config.PopOverDismissLabel].tap()
     }
 
     // MARK: - Table view action related
 
     func editRow(_ table: XCUIElement) {
         table.cells.element(boundBy: 0).swipeLeft()
-        table.cells.element(boundBy: 0).buttons["Edit"].tap()
+        table.cells.element(boundBy: 0).buttons[Config.CommonEditActionTitle].tap()
     }
 
     func removeRow(_ table: XCUIElement) {
         table.cells.element(boundBy: 0).swipeLeft()
-        table.cells.element(boundBy: 0).buttons["Remove"].tap()
+        table.cells.element(boundBy: 0).buttons[Config.CommonRemoveActionTitle].tap()
     }
 
     // MARK: - Alerts related
 
     func cancel(_ alert: XCUIElement) {
-        alert.buttons["Cancel"].tap()
+        alert.buttons[Config.CommonButtonCancelTitle].tap()
     }
 
     func okay(_ alert: XCUIElement) {
-        alert.buttons["Okay"].tap()
+        alert.buttons[Config.CommonButtonOkayTitle].tap()
     }
 
     func confirm(_ alert: XCUIElement) {
-        alert.buttons["Confirm"].tap()
+        alert.buttons[Config.CommonButtonConfirmTitle].tap()
     }
 }

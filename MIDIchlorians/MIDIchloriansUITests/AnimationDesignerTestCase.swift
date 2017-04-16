@@ -12,7 +12,7 @@ import Nimble
 class AnimationDesignerTestCase: BaseTestCase {
 
     func tapAddAnimation() {
-        app.navigationBars["Animations"].buttons["Add"].tap()
+        app.navigationBars[Config.AnimationTabTitle].buttons["Add"].tap()
     }
 
     func selectColour(at index: UInt) {
@@ -64,13 +64,13 @@ class AnimationDesignerTestCase: BaseTestCase {
     }
 
     func tapSaveAnimation() {
-        app.buttons["Save Animation"].tap()
+        app.buttons[Config.AnimationDesignSaveLabel].tap()
     }
 
     func enterNameForAnimationAndSave() {
-        let alert = app.alerts["Name for animation"]
+        let alert = app.alerts[Config.AnimationSaveAlertTitle]
         alert.textFields.element.typeText("asdf")
-        alert.buttons["Save"].tap()
+        alert.buttons[Config.AnimationSaveOkayTitle].tap()
     }
 
     func test_animationDesigner_newAnimation() {
