@@ -145,23 +145,28 @@ class SessionTests: XCTestCase {
         XCTAssertEqual(session.getPad(page: 0, row: 0, col: 0)!, pad)
     }
 
-    func testPrepareForSave() {
-
-    }
-
-    func testPrepareForUse() {
-
-    }
-
-    func testGetPadList() {
-
-    }
-
     func testEquality() {
-
+        let session = Session(bpm: 120)
+        let otherSession = Session(bpm: 120)
+        session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1.wav")
+        otherSession.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1.wav")
+        let animationSequence = AnimationManager.instance.getAnimationSequenceForAnimationType(
+            animationTypeName: "Spark", indexPath: IndexPath(row: 0, section: 0))!
+        session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence)
+        otherSession.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence)
+        XCTAssertEqual(otherSession, session)
+        otherSession.setSessionName(sessionName: "A")
+        XCTAssertNotEqual(otherSession, session)
     }
 
     func testJSONSerialisation() {
-        
+        let session = Session(bpm: 120)
+        session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1.wav")
+        let animationSequence = AnimationManager.instance.getAnimationSequenceForAnimationType(
+            animationTypeName: "Spark", indexPath: IndexPath(row: 0, section: 0))!
+        session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence)
+        let json = session.toJSON()!
+        let newSession = Session(json: json)
+        XCTAssertEqual(session, newSession)
     }
 }

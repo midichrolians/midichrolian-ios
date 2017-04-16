@@ -271,7 +271,8 @@ class Session: Object {
         }
 
         guard self.BPM == session.BPM && self.numPages == session.numPages &&
-            self.numRows == session.numRows && self.numCols == session.numCols else {
+            self.numRows == session.numRows && self.numCols == session.numCols
+            && self.sessionName == session.sessionName else {
                 return false
         }
 

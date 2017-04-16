@@ -170,6 +170,7 @@ class DataManagerTests: XCTestCase {
         _ = dataManager.saveSession("test", session)
         XCTAssertFalse(dataManager.editSessionName(oldSessionName: "test1", newSessionName: "test12"))
         XCTAssertTrue(dataManager.editSessionName(oldSessionName: "test", newSessionName: "test12"))
+        session1.setSessionName(sessionName: "test12")
         XCTAssertEqual(session1, dataManager.loadSession("test12")!)
     }
 
