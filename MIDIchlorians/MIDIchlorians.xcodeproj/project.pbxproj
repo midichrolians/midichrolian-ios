@@ -25,7 +25,6 @@
 		3346913D1E9B407600BDA7B1 /* SampleSettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */; };
 		334970BF1E72557D009C78DF /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970BE1E72557D009C78DF /* AnimationType.swift */; };
 		334970C11E72583F009C78DF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
-		334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C21E726AE9009C78DF /* UIColorExtension.swift */; };
 		334970C71E72B83D009C78DF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C61E72B83D009C78DF /* AudioManager.swift */; };
 		334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */; };
 		338275391E924FA500C6B3B7 /* BeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338275381E924FA500C6B3B7 /* BeatFrequency.swift */; };
@@ -43,14 +42,12 @@
 		33A503311E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030D1E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav */; };
 		33A503321E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030E1E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav */; };
 		33A503331E9C9E4B00F20787 /* All Leads - No Sidechain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030F1E9C9E4B00F20787 /* All Leads - No Sidechain.wav */; };
-		33A503341E9C9E4B00F20787 /* Build Up FX.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503101E9C9E4B00F20787 /* Build Up FX.wav */; };
 		33A503351E9C9E4B00F20787 /* Drop FX.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503111E9C9E4B00F20787 /* Drop FX.wav */; };
 		33A503361E9C9E4B00F20787 /* Fill Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503121E9C9E4B00F20787 /* Fill Kick.wav */; };
 		33A503371E9C9E4B00F20787 /* Fur Elise Cuts-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503131E9C9E4B00F20787 /* Fur Elise Cuts-1.wav */; };
 		33A503381E9C9E4B00F20787 /* Fur Elise Cuts-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503141E9C9E4B00F20787 /* Fur Elise Cuts-2.wav */; };
 		33A503391E9C9E4B00F20787 /* Fur Elise Cuts-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503151E9C9E4B00F20787 /* Fur Elise Cuts-3.wav */; };
 		33A5033A1E9C9E4B00F20787 /* Fur Elise Cuts.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503161E9C9E4B00F20787 /* Fur Elise Cuts.wav */; };
-		33A5033B1E9C9E4B00F20787 /* Fur Elise Main.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503171E9C9E4B00F20787 /* Fur Elise Main.wav */; };
 		33A5033C1E9C9E4B00F20787 /* hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503181E9C9E4B00F20787 /* hit.wav */; };
 		33A5033D1E9C9E4B00F20787 /* Intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503191E9C9E4B00F20787 /* Intro.wav */; };
 		33A5033E1E9C9E4B00F20787 /* KICK HIT.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031A1E9C9E4B00F20787 /* KICK HIT.wav */; };
@@ -60,7 +57,6 @@
 		33A503421E9C9E4B00F20787 /* Mel Kick Bass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031E1E9C9E4B00F20787 /* Mel Kick Bass.wav */; };
 		33A503431E9C9E4B00F20787 /* Mel Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031F1E9C9E4B00F20787 /* Mel Kick.wav */; };
 		33A503441E9C9E4B00F20787 /* Ride and Clap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503201E9C9E4B00F20787 /* Ride and Clap.wav */; };
-		33A503451E9C9E4B00F20787 /* Second half drop FX.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503211E9C9E4B00F20787 /* Second half drop FX.wav */; };
 		33A503461E9C9E4B00F20787 /* SNARE HIT.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503221E9C9E4B00F20787 /* SNARE HIT.wav */; };
 		33A503471E9C9E4B00F20787 /* SNARE.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503231E9C9E4B00F20787 /* SNARE.wav */; };
 		33A503481E9C9E4B00F20787 /* SnarefurE.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503241E9C9E4B00F20787 /* SnarefurE.wav */; };
@@ -228,61 +224,6 @@
 		33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */; };
 		33EC0A421E6FE55000229A92 /* AnimationBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A411E6FE55000229A92 /* AnimationBit.swift */; };
 		33EC0A441E6FE67700229A92 /* AnimationSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A431E6FE67700229A92 /* AnimationSequence.swift */; };
-		33FBC63A1E9CA6EB0089B359 /* 808 1 F#.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC60F1E9CA6EB0089B359 /* 808 1 F#.wav */; };
-		33FBC63B1E9CA6EB0089B359 /* 808 2 E.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6101E9CA6EB0089B359 /* 808 2 E.wav */; };
-		33FBC63C1E9CA6EB0089B359 /* Arp Loop 1 Em 140 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6111E9CA6EB0089B359 /* Arp Loop 1 Em 140 BPM.wav */; };
-		33FBC63D1E9CA6EB0089B359 /* Arp Loop 2 Em 140 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6121E9CA6EB0089B359 /* Arp Loop 2 Em 140 BPM.wav */; };
-		33FBC63E1E9CA6EB0089B359 /* Brass Loop 1 Fm 160 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6131E9CA6EB0089B359 /* Brass Loop 1 Fm 160 BPM.wav */; };
-		33FBC63F1E9CA6EB0089B359 /* Brass Loop 2 Dm 145 BPM .wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6141E9CA6EB0089B359 /* Brass Loop 2 Dm 145 BPM .wav */; };
-		33FBC6401E9CA6EB0089B359 /* Brass Stab F.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6151E9CA6EB0089B359 /* Brass Stab F.wav */; };
-		33FBC6411E9CA6EB0089B359 /* Build Up 1 160 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6161E9CA6EB0089B359 /* Build Up 1 160 BPM.wav */; };
-		33FBC6421E9CA6EB0089B359 /* Build Up 2 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6171E9CA6EB0089B359 /* Build Up 2 150 BPM.wav */; };
-		33FBC6431E9CA6EB0089B359 /* Downlifter F 140 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6181E9CA6EB0089B359 /* Downlifter F 140 BPM.wav */; };
-		33FBC6441E9CA6EB0089B359 /* Drop Loop 1 Em 160 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6191E9CA6EB0089B359 /* Drop Loop 1 Em 160 BPM.wav */; };
-		33FBC6451E9CA6EB0089B359 /* Drop Loop 2 Fm 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC61A1E9CA6EB0089B359 /* Drop Loop 2 Fm 150 BPM.wav */; };
-		33FBC6461E9CA6EB0089B359 /* Hihat Loop 1 160 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC61B1E9CA6EB0089B359 /* Hihat Loop 1 160 BPM.wav */; };
-		33FBC6471E9CA6EB0089B359 /* Hihat Loop 2 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC61C1E9CA6EB0089B359 /* Hihat Loop 2 150 BPM.wav */; };
-		33FBC6481E9CA6EB0089B359 /* Impact 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC61D1E9CA6EB0089B359 /* Impact 1.wav */; };
-		33FBC6491E9CA6EB0089B359 /* Impact 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC61E1E9CA6EB0089B359 /* Impact 2.wav */; };
-		33FBC64A1E9CA6EB0089B359 /* Kick 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC61F1E9CA6EB0089B359 /* Kick 1.wav */; };
-		33FBC64B1E9CA6EB0089B359 /* Kick 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6201E9CA6EB0089B359 /* Kick 2.wav */; };
-		33FBC64C1E9CA6EB0089B359 /* Kick 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6211E9CA6EB0089B359 /* Kick 3.wav */; };
-		33FBC64D1E9CA6EB0089B359 /* Melody Loop - Fm 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6221E9CA6EB0089B359 /* Melody Loop - Fm 150 BPM.wav */; };
-		33FBC64E1E9CA6EB0089B359 /* Perc Drop Loop 1 - 140 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6231E9CA6EB0089B359 /* Perc Drop Loop 1 - 140 BPM.wav */; };
-		33FBC64F1E9CA6EB0089B359 /* Perc Drop Loop 2 - 140 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6241E9CA6EB0089B359 /* Perc Drop Loop 2 - 140 BPM.wav */; };
-		33FBC6501E9CA6EB0089B359 /* Perc Drop Loop 3 - 160 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6251E9CA6EB0089B359 /* Perc Drop Loop 3 - 160 BPM.wav */; };
-		33FBC6511E9CA6EB0089B359 /* Perc Fill - 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6261E9CA6EB0089B359 /* Perc Fill - 150 BPM.wav */; };
-		33FBC6521E9CA6EB0089B359 /* Predrop Vocal 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6271E9CA6EB0089B359 /* Predrop Vocal 1.wav */; };
-		33FBC6531E9CA6EB0089B359 /* Predrop Vocal 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6281E9CA6EB0089B359 /* Predrop Vocal 2.wav */; };
-		33FBC6541E9CA6EB0089B359 /* Real Drum Build - 140 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6291E9CA6EB0089B359 /* Real Drum Build - 140 BPM.wav */; };
-		33FBC6551E9CA6EB0089B359 /* Riser 1 - F 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC62A1E9CA6EB0089B359 /* Riser 1 - F 150 BPM.wav */; };
-		33FBC6561E9CA6EB0089B359 /* Riser 2 - F# 160 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC62B1E9CA6EB0089B359 /* Riser 2 - F# 160 BPM.wav */; };
-		33FBC6571E9CA6EB0089B359 /* Riser 3 - F 160 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC62C1E9CA6EB0089B359 /* Riser 3 - F 160 BPM.wav */; };
-		33FBC6581E9CA6EB0089B359 /* Small Reverb Snare 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC62D1E9CA6EB0089B359 /* Small Reverb Snare 1.wav */; };
-		33FBC6591E9CA6EB0089B359 /* Small Reverb Snare 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC62E1E9CA6EB0089B359 /* Small Reverb Snare 2.wav */; };
-		33FBC65A1E9CA6EB0089B359 /* Snare Big Reverb 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC62F1E9CA6EB0089B359 /* Snare Big Reverb 1.wav */; };
-		33FBC65B1E9CA6EB0089B359 /* Snare Big Reverb 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6301E9CA6EB0089B359 /* Snare Big Reverb 2.wav */; };
-		33FBC65C1E9CA6EB0089B359 /* Snare Big Reverb 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6311E9CA6EB0089B359 /* Snare Big Reverb 3.wav */; };
-		33FBC65D1E9CA6EB0089B359 /* Snare Roll 1 - 160 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6321E9CA6EB0089B359 /* Snare Roll 1 - 160 BPM.wav */; };
-		33FBC65E1E9CA6EB0089B359 /* Snare Roll 2 - 140 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6331E9CA6EB0089B359 /* Snare Roll 2 - 140 BPM.wav */; };
-		33FBC65F1E9CA6EB0089B359 /* Tom Fill 1 - 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6341E9CA6EB0089B359 /* Tom Fill 1 - 150 BPM.wav */; };
-		33FBC6601E9CA6EB0089B359 /* Tom Fill 2 - 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6351E9CA6EB0089B359 /* Tom Fill 2 - 150 BPM.wav */; };
-		33FBC6611E9CA6EB0089B359 /* Vocal Chant 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6361E9CA6EB0089B359 /* Vocal Chant 1.wav */; };
-		33FBC6621E9CA6EB0089B359 /* Vocal Chant 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6371E9CA6EB0089B359 /* Vocal Chant 2.wav */; };
-		33FBC6631E9CA6EB0089B359 /* Vocal Chop Loop 1 - Fm 150 BPM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6381E9CA6EB0089B359 /* Vocal Chop Loop 1 - Fm 150 BPM.wav */; };
-		33FBC6641E9CA6EB0089B359 /* Vocal Chop Loop 2 - 150 BPM .wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6391E9CA6EB0089B359 /* Vocal Chop Loop 2 - 150 BPM .wav */; };
-		33FBC66B1E9CA72A0089B359 /* dj-snake-vocal.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6661E9CA72A0089B359 /* dj-snake-vocal.wav */; };
-		33FBC66C1E9CA72A0089B359 /* electro-vocal.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6671E9CA72A0089B359 /* electro-vocal.wav */; };
-		33FBC66D1E9CA72A0089B359 /* vocal-drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6681E9CA72A0089B359 /* vocal-drop.wav */; };
-		33FBC66E1E9CA72A0089B359 /* weazel-vocal.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6691E9CA72A0089B359 /* weazel-vocal.wav */; };
-		33FBC66F1E9CA72A0089B359 /* yeah.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC66A1E9CA72A0089B359 /* yeah.wav */; };
-		33FBC6781E9CA73E0089B359 /* avicii-waiting-for-love-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6711E9CA73E0089B359 /* avicii-waiting-for-love-1.wav */; };
-		33FBC6791E9CA73E0089B359 /* avicii-waiting-for-love-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6721E9CA73E0089B359 /* avicii-waiting-for-love-2.wav */; };
-		33FBC67A1E9CA73E0089B359 /* calvin-intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6731E9CA73E0089B359 /* calvin-intro.wav */; };
-		33FBC67B1E9CA73E0089B359 /* dubstep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6741E9CA73E0089B359 /* dubstep.wav */; };
-		33FBC67C1E9CA73E0089B359 /* ironman.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6751E9CA73E0089B359 /* ironman.wav */; };
-		33FBC67D1E9CA73E0089B359 /* titanium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6761E9CA73E0089B359 /* titanium.wav */; };
-		33FBC67E1E9CA73E0089B359 /* tron-intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33FBC6771E9CA73E0089B359 /* tron-intro.wav */; };
 		80034E851E93ACE8005B4487 /* PlayBackRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80034E831E93ACE8005B4487 /* PlayBackRetriever.swift */; };
 		80034E861E93ACE8005B4487 /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80034E841E93ACE8005B4487 /* TimeTracker.swift */; };
 		808877881EA3149C00408A3C /* AudioManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877871EA3149C00408A3C /* AudioManagerTests.swift */; };
@@ -322,6 +263,9 @@
 		E95CACD51E96A97D009E6DA6 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */; };
 		E95EBC361E9B54FB00E66D1C /* BPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */; };
 		E95EBC381E9B5B5700E66D1C /* BPMSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */; };
+		E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */; };
+		E968C14B1EA37494007CE28D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334970C01E72583F009C78DF /* Config.swift */; };
+		E968C14C1EA374CA007CE28D /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80299E821E88FAB000CEB465 /* AudioPlayerSetting.swift */; };
 		E97733FC1E83CC3D00703A65 /* ModeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93A02B51E7390DD00DFB2B7 /* ModeDelegate.swift */; };
 		E97B14691EA1B0ED00489C5A /* GridController+PadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */; };
 		E9A05D861E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */; };
@@ -401,7 +345,6 @@
 		3346913C1E9B407600BDA7B1 /* SampleSettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettingDelegate.swift; sourceTree = "<group>"; };
 		334970BE1E72557D009C78DF /* AnimationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
 		334970C01E72583F009C78DF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		334970C21E726AE9009C78DF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		334970C61E72B83D009C78DF /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = MIDIchlorians/AudioManager.swift; sourceTree = "<group>"; };
 		334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeCreationMode.swift; sourceTree = "<group>"; };
 		338275381E924FA500C6B3B7 /* BeatFrequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatFrequency.swift; sourceTree = "<group>"; };
@@ -419,14 +362,12 @@
 		33A5030D1E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-15.wav"; path = "Fur Elise/All Leads - No Sidechain-15.wav"; sourceTree = "<group>"; };
 		33A5030E1E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-16.wav"; path = "Fur Elise/All Leads - No Sidechain-16.wav"; sourceTree = "<group>"; };
 		33A5030F1E9C9E4B00F20787 /* All Leads - No Sidechain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain.wav"; path = "Fur Elise/All Leads - No Sidechain.wav"; sourceTree = "<group>"; };
-		33A503101E9C9E4B00F20787 /* Build Up FX.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Build Up FX.wav"; path = "Fur Elise/Build Up FX.wav"; sourceTree = "<group>"; };
 		33A503111E9C9E4B00F20787 /* Drop FX.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Drop FX.wav"; path = "Fur Elise/Drop FX.wav"; sourceTree = "<group>"; };
 		33A503121E9C9E4B00F20787 /* Fill Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fill Kick.wav"; path = "Fur Elise/Fill Kick.wav"; sourceTree = "<group>"; };
 		33A503131E9C9E4B00F20787 /* Fur Elise Cuts-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Cuts-1.wav"; path = "Fur Elise/Fur Elise Cuts-1.wav"; sourceTree = "<group>"; };
 		33A503141E9C9E4B00F20787 /* Fur Elise Cuts-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Cuts-2.wav"; path = "Fur Elise/Fur Elise Cuts-2.wav"; sourceTree = "<group>"; };
 		33A503151E9C9E4B00F20787 /* Fur Elise Cuts-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Cuts-3.wav"; path = "Fur Elise/Fur Elise Cuts-3.wav"; sourceTree = "<group>"; };
 		33A503161E9C9E4B00F20787 /* Fur Elise Cuts.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Cuts.wav"; path = "Fur Elise/Fur Elise Cuts.wav"; sourceTree = "<group>"; };
-		33A503171E9C9E4B00F20787 /* Fur Elise Main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Main.wav"; path = "Fur Elise/Fur Elise Main.wav"; sourceTree = "<group>"; };
 		33A503181E9C9E4B00F20787 /* hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hit.wav; path = "Fur Elise/hit.wav"; sourceTree = "<group>"; };
 		33A503191E9C9E4B00F20787 /* Intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Intro.wav; path = "Fur Elise/Intro.wav"; sourceTree = "<group>"; };
 		33A5031A1E9C9E4B00F20787 /* KICK HIT.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "KICK HIT.wav"; path = "Fur Elise/KICK HIT.wav"; sourceTree = "<group>"; };
@@ -436,7 +377,6 @@
 		33A5031E1E9C9E4B00F20787 /* Mel Kick Bass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Mel Kick Bass.wav"; path = "Fur Elise/Mel Kick Bass.wav"; sourceTree = "<group>"; };
 		33A5031F1E9C9E4B00F20787 /* Mel Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Mel Kick.wav"; path = "Fur Elise/Mel Kick.wav"; sourceTree = "<group>"; };
 		33A503201E9C9E4B00F20787 /* Ride and Clap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Ride and Clap.wav"; path = "Fur Elise/Ride and Clap.wav"; sourceTree = "<group>"; };
-		33A503211E9C9E4B00F20787 /* Second half drop FX.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Second half drop FX.wav"; path = "Fur Elise/Second half drop FX.wav"; sourceTree = "<group>"; };
 		33A503221E9C9E4B00F20787 /* SNARE HIT.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "SNARE HIT.wav"; path = "Fur Elise/SNARE HIT.wav"; sourceTree = "<group>"; };
 		33A503231E9C9E4B00F20787 /* SNARE.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = SNARE.wav; path = "Fur Elise/SNARE.wav"; sourceTree = "<group>"; };
 		33A503241E9C9E4B00F20787 /* SnarefurE.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = SnarefurE.wav; path = "Fur Elise/SnarefurE.wav"; sourceTree = "<group>"; };
@@ -604,61 +544,6 @@
 		33EC0A3F1E6FE40500229A92 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
 		33EC0A411E6FE55000229A92 /* AnimationBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationBit.swift; sourceTree = "<group>"; };
 		33EC0A431E6FE67700229A92 /* AnimationSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequence.swift; sourceTree = "<group>"; };
-		33FBC60F1E9CA6EB0089B359 /* 808 1 F#.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "808 1 F#.wav"; path = "Cymatics/808 1 F#.wav"; sourceTree = "<group>"; };
-		33FBC6101E9CA6EB0089B359 /* 808 2 E.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "808 2 E.wav"; path = "Cymatics/808 2 E.wav"; sourceTree = "<group>"; };
-		33FBC6111E9CA6EB0089B359 /* Arp Loop 1 Em 140 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Arp Loop 1 Em 140 BPM.wav"; path = "Cymatics/Arp Loop 1 Em 140 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6121E9CA6EB0089B359 /* Arp Loop 2 Em 140 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Arp Loop 2 Em 140 BPM.wav"; path = "Cymatics/Arp Loop 2 Em 140 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6131E9CA6EB0089B359 /* Brass Loop 1 Fm 160 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Brass Loop 1 Fm 160 BPM.wav"; path = "Cymatics/Brass Loop 1 Fm 160 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6141E9CA6EB0089B359 /* Brass Loop 2 Dm 145 BPM .wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Brass Loop 2 Dm 145 BPM .wav"; path = "Cymatics/Brass Loop 2 Dm 145 BPM .wav"; sourceTree = "<group>"; };
-		33FBC6151E9CA6EB0089B359 /* Brass Stab F.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Brass Stab F.wav"; path = "Cymatics/Brass Stab F.wav"; sourceTree = "<group>"; };
-		33FBC6161E9CA6EB0089B359 /* Build Up 1 160 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Build Up 1 160 BPM.wav"; path = "Cymatics/Build Up 1 160 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6171E9CA6EB0089B359 /* Build Up 2 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Build Up 2 150 BPM.wav"; path = "Cymatics/Build Up 2 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6181E9CA6EB0089B359 /* Downlifter F 140 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Downlifter F 140 BPM.wav"; path = "Cymatics/Downlifter F 140 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6191E9CA6EB0089B359 /* Drop Loop 1 Em 160 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Drop Loop 1 Em 160 BPM.wav"; path = "Cymatics/Drop Loop 1 Em 160 BPM.wav"; sourceTree = "<group>"; };
-		33FBC61A1E9CA6EB0089B359 /* Drop Loop 2 Fm 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Drop Loop 2 Fm 150 BPM.wav"; path = "Cymatics/Drop Loop 2 Fm 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC61B1E9CA6EB0089B359 /* Hihat Loop 1 160 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Hihat Loop 1 160 BPM.wav"; path = "Cymatics/Hihat Loop 1 160 BPM.wav"; sourceTree = "<group>"; };
-		33FBC61C1E9CA6EB0089B359 /* Hihat Loop 2 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Hihat Loop 2 150 BPM.wav"; path = "Cymatics/Hihat Loop 2 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC61D1E9CA6EB0089B359 /* Impact 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Impact 1.wav"; path = "Cymatics/Impact 1.wav"; sourceTree = "<group>"; };
-		33FBC61E1E9CA6EB0089B359 /* Impact 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Impact 2.wav"; path = "Cymatics/Impact 2.wav"; sourceTree = "<group>"; };
-		33FBC61F1E9CA6EB0089B359 /* Kick 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Kick 1.wav"; path = "Cymatics/Kick 1.wav"; sourceTree = "<group>"; };
-		33FBC6201E9CA6EB0089B359 /* Kick 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Kick 2.wav"; path = "Cymatics/Kick 2.wav"; sourceTree = "<group>"; };
-		33FBC6211E9CA6EB0089B359 /* Kick 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Kick 3.wav"; path = "Cymatics/Kick 3.wav"; sourceTree = "<group>"; };
-		33FBC6221E9CA6EB0089B359 /* Melody Loop - Fm 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Melody Loop - Fm 150 BPM.wav"; path = "Cymatics/Melody Loop - Fm 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6231E9CA6EB0089B359 /* Perc Drop Loop 1 - 140 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Perc Drop Loop 1 - 140 BPM.wav"; path = "Cymatics/Perc Drop Loop 1 - 140 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6241E9CA6EB0089B359 /* Perc Drop Loop 2 - 140 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Perc Drop Loop 2 - 140 BPM.wav"; path = "Cymatics/Perc Drop Loop 2 - 140 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6251E9CA6EB0089B359 /* Perc Drop Loop 3 - 160 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Perc Drop Loop 3 - 160 BPM.wav"; path = "Cymatics/Perc Drop Loop 3 - 160 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6261E9CA6EB0089B359 /* Perc Fill - 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Perc Fill - 150 BPM.wav"; path = "Cymatics/Perc Fill - 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6271E9CA6EB0089B359 /* Predrop Vocal 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Predrop Vocal 1.wav"; path = "Cymatics/Predrop Vocal 1.wav"; sourceTree = "<group>"; };
-		33FBC6281E9CA6EB0089B359 /* Predrop Vocal 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Predrop Vocal 2.wav"; path = "Cymatics/Predrop Vocal 2.wav"; sourceTree = "<group>"; };
-		33FBC6291E9CA6EB0089B359 /* Real Drum Build - 140 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Real Drum Build - 140 BPM.wav"; path = "Cymatics/Real Drum Build - 140 BPM.wav"; sourceTree = "<group>"; };
-		33FBC62A1E9CA6EB0089B359 /* Riser 1 - F 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Riser 1 - F 150 BPM.wav"; path = "Cymatics/Riser 1 - F 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC62B1E9CA6EB0089B359 /* Riser 2 - F# 160 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Riser 2 - F# 160 BPM.wav"; path = "Cymatics/Riser 2 - F# 160 BPM.wav"; sourceTree = "<group>"; };
-		33FBC62C1E9CA6EB0089B359 /* Riser 3 - F 160 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Riser 3 - F 160 BPM.wav"; path = "Cymatics/Riser 3 - F 160 BPM.wav"; sourceTree = "<group>"; };
-		33FBC62D1E9CA6EB0089B359 /* Small Reverb Snare 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Small Reverb Snare 1.wav"; path = "Cymatics/Small Reverb Snare 1.wav"; sourceTree = "<group>"; };
-		33FBC62E1E9CA6EB0089B359 /* Small Reverb Snare 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Small Reverb Snare 2.wav"; path = "Cymatics/Small Reverb Snare 2.wav"; sourceTree = "<group>"; };
-		33FBC62F1E9CA6EB0089B359 /* Snare Big Reverb 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Snare Big Reverb 1.wav"; path = "Cymatics/Snare Big Reverb 1.wav"; sourceTree = "<group>"; };
-		33FBC6301E9CA6EB0089B359 /* Snare Big Reverb 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Snare Big Reverb 2.wav"; path = "Cymatics/Snare Big Reverb 2.wav"; sourceTree = "<group>"; };
-		33FBC6311E9CA6EB0089B359 /* Snare Big Reverb 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Snare Big Reverb 3.wav"; path = "Cymatics/Snare Big Reverb 3.wav"; sourceTree = "<group>"; };
-		33FBC6321E9CA6EB0089B359 /* Snare Roll 1 - 160 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Snare Roll 1 - 160 BPM.wav"; path = "Cymatics/Snare Roll 1 - 160 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6331E9CA6EB0089B359 /* Snare Roll 2 - 140 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Snare Roll 2 - 140 BPM.wav"; path = "Cymatics/Snare Roll 2 - 140 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6341E9CA6EB0089B359 /* Tom Fill 1 - 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Tom Fill 1 - 150 BPM.wav"; path = "Cymatics/Tom Fill 1 - 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6351E9CA6EB0089B359 /* Tom Fill 2 - 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Tom Fill 2 - 150 BPM.wav"; path = "Cymatics/Tom Fill 2 - 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6361E9CA6EB0089B359 /* Vocal Chant 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Vocal Chant 1.wav"; path = "Cymatics/Vocal Chant 1.wav"; sourceTree = "<group>"; };
-		33FBC6371E9CA6EB0089B359 /* Vocal Chant 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Vocal Chant 2.wav"; path = "Cymatics/Vocal Chant 2.wav"; sourceTree = "<group>"; };
-		33FBC6381E9CA6EB0089B359 /* Vocal Chop Loop 1 - Fm 150 BPM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Vocal Chop Loop 1 - Fm 150 BPM.wav"; path = "Cymatics/Vocal Chop Loop 1 - Fm 150 BPM.wav"; sourceTree = "<group>"; };
-		33FBC6391E9CA6EB0089B359 /* Vocal Chop Loop 2 - 150 BPM .wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Vocal Chop Loop 2 - 150 BPM .wav"; path = "Cymatics/Vocal Chop Loop 2 - 150 BPM .wav"; sourceTree = "<group>"; };
-		33FBC6661E9CA72A0089B359 /* dj-snake-vocal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "dj-snake-vocal.wav"; path = "Vocals/dj-snake-vocal.wav"; sourceTree = "<group>"; };
-		33FBC6671E9CA72A0089B359 /* electro-vocal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "electro-vocal.wav"; path = "Vocals/electro-vocal.wav"; sourceTree = "<group>"; };
-		33FBC6681E9CA72A0089B359 /* vocal-drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "vocal-drop.wav"; path = "Vocals/vocal-drop.wav"; sourceTree = "<group>"; };
-		33FBC6691E9CA72A0089B359 /* weazel-vocal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "weazel-vocal.wav"; path = "Vocals/weazel-vocal.wav"; sourceTree = "<group>"; };
-		33FBC66A1E9CA72A0089B359 /* yeah.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = yeah.wav; path = Vocals/yeah.wav; sourceTree = "<group>"; };
-		33FBC6711E9CA73E0089B359 /* avicii-waiting-for-love-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "avicii-waiting-for-love-1.wav"; path = "Intro/avicii-waiting-for-love-1.wav"; sourceTree = "<group>"; };
-		33FBC6721E9CA73E0089B359 /* avicii-waiting-for-love-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "avicii-waiting-for-love-2.wav"; path = "Intro/avicii-waiting-for-love-2.wav"; sourceTree = "<group>"; };
-		33FBC6731E9CA73E0089B359 /* calvin-intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "calvin-intro.wav"; path = "Intro/calvin-intro.wav"; sourceTree = "<group>"; };
-		33FBC6741E9CA73E0089B359 /* dubstep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dubstep.wav; path = Intro/dubstep.wav; sourceTree = "<group>"; };
-		33FBC6751E9CA73E0089B359 /* ironman.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ironman.wav; path = Intro/ironman.wav; sourceTree = "<group>"; };
-		33FBC6761E9CA73E0089B359 /* titanium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = titanium.wav; path = Intro/titanium.wav; sourceTree = "<group>"; };
-		33FBC6771E9CA73E0089B359 /* tron-intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "tron-intro.wav"; path = "Intro/tron-intro.wav"; sourceTree = "<group>"; };
 		68381907BD5B384221D4EB3C /* Pods-MIDIchlorians.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.debug.xcconfig"; sourceTree = "<group>"; };
 		80034E831E93ACE8005B4487 /* PlayBackRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayBackRetriever.swift; sourceTree = "<group>"; };
 		80034E841E93ACE8005B4487 /* TimeTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTracker.swift; sourceTree = "<group>"; };
@@ -702,6 +587,7 @@
 		E95CACD41E96A97D009E6DA6 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		E95EBC351E9B54FB00E66D1C /* BPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMViewController.swift; sourceTree = "<group>"; };
 		E95EBC371E9B5B5700E66D1C /* BPMSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorDelegate.swift; sourceTree = "<group>"; };
+		E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerTestCase.swift; sourceTree = "<group>"; };
 		E97B14681EA1B0ED00489C5A /* GridController+PadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GridController+PadDelegate.swift"; sourceTree = "<group>"; };
 		E9A05D851E8CAA6300E5DD35 /* AnimationDesignerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDesignerDelegate.swift; sourceTree = "<group>"; };
 		E9A1A6071E8E4061001B13DB /* SidePaneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePaneDelegate.swift; sourceTree = "<group>"; };
@@ -774,9 +660,6 @@
 		33120E111E6FD30A007E7717 = {
 			isa = PBXGroup;
 			children = (
-				33FBC6701E9CA7300089B359 /* Intro */,
-				33FBC6651E9CA6F70089B359 /* VocalSample */,
-				33FBC60E1E9CA6D50089B359 /* CymaticsSample */,
 				808876BE1E9BD35500408A3C /* DrumSample */,
 				332109FF1E94FBD2003E2DBF /* PredefinedAnimationTypes */,
 				33DAAAC21E72BEAE00987E86 /* SailSample */,
@@ -836,6 +719,7 @@
 			children = (
 				33120E321E6FD30A007E7717 /* MIDIchloriansUITests.swift */,
 				E920F4261EA11BED00D5B165 /* BaseTestCase.swift */,
+				E968C1491EA296B0007CE28D /* AnimationDesignerTestCase.swift */,
 				E920F4221EA0C65100D5B165 /* TopBarTestCase.swift */,
 				33120E341E6FD30A007E7717 /* Info.plist */,
 			);
@@ -906,7 +790,6 @@
 				33EC0A411E6FE55000229A92 /* AnimationBit.swift */,
 				33EC0A431E6FE67700229A92 /* AnimationSequence.swift */,
 				334970BE1E72557D009C78DF /* AnimationType.swift */,
-				334970C21E726AE9009C78DF /* UIColorExtension.swift */,
 				33A2754C1E7BEF56000B1B15 /* Colour.swift */,
 				33BCC5A91E85064900D8489F /* AnimatableGrid.swift */,
 				33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */,
@@ -916,82 +799,6 @@
 				3312CAC41EA0D8BF00C7A65A /* JSONable.swift */,
 			);
 			name = Animation;
-			sourceTree = "<group>";
-		};
-		33FBC60E1E9CA6D50089B359 /* CymaticsSample */ = {
-			isa = PBXGroup;
-			children = (
-				33FBC60F1E9CA6EB0089B359 /* 808 1 F#.wav */,
-				33FBC6101E9CA6EB0089B359 /* 808 2 E.wav */,
-				33FBC6111E9CA6EB0089B359 /* Arp Loop 1 Em 140 BPM.wav */,
-				33FBC6121E9CA6EB0089B359 /* Arp Loop 2 Em 140 BPM.wav */,
-				33FBC6131E9CA6EB0089B359 /* Brass Loop 1 Fm 160 BPM.wav */,
-				33FBC6141E9CA6EB0089B359 /* Brass Loop 2 Dm 145 BPM .wav */,
-				33FBC6151E9CA6EB0089B359 /* Brass Stab F.wav */,
-				33FBC6161E9CA6EB0089B359 /* Build Up 1 160 BPM.wav */,
-				33FBC6171E9CA6EB0089B359 /* Build Up 2 150 BPM.wav */,
-				33FBC6181E9CA6EB0089B359 /* Downlifter F 140 BPM.wav */,
-				33FBC6191E9CA6EB0089B359 /* Drop Loop 1 Em 160 BPM.wav */,
-				33FBC61A1E9CA6EB0089B359 /* Drop Loop 2 Fm 150 BPM.wav */,
-				33FBC61B1E9CA6EB0089B359 /* Hihat Loop 1 160 BPM.wav */,
-				33FBC61C1E9CA6EB0089B359 /* Hihat Loop 2 150 BPM.wav */,
-				33FBC61D1E9CA6EB0089B359 /* Impact 1.wav */,
-				33FBC61E1E9CA6EB0089B359 /* Impact 2.wav */,
-				33FBC61F1E9CA6EB0089B359 /* Kick 1.wav */,
-				33FBC6201E9CA6EB0089B359 /* Kick 2.wav */,
-				33FBC6211E9CA6EB0089B359 /* Kick 3.wav */,
-				33FBC6221E9CA6EB0089B359 /* Melody Loop - Fm 150 BPM.wav */,
-				33FBC6231E9CA6EB0089B359 /* Perc Drop Loop 1 - 140 BPM.wav */,
-				33FBC6241E9CA6EB0089B359 /* Perc Drop Loop 2 - 140 BPM.wav */,
-				33FBC6251E9CA6EB0089B359 /* Perc Drop Loop 3 - 160 BPM.wav */,
-				33FBC6261E9CA6EB0089B359 /* Perc Fill - 150 BPM.wav */,
-				33FBC6271E9CA6EB0089B359 /* Predrop Vocal 1.wav */,
-				33FBC6281E9CA6EB0089B359 /* Predrop Vocal 2.wav */,
-				33FBC6291E9CA6EB0089B359 /* Real Drum Build - 140 BPM.wav */,
-				33FBC62A1E9CA6EB0089B359 /* Riser 1 - F 150 BPM.wav */,
-				33FBC62B1E9CA6EB0089B359 /* Riser 2 - F# 160 BPM.wav */,
-				33FBC62C1E9CA6EB0089B359 /* Riser 3 - F 160 BPM.wav */,
-				33FBC62D1E9CA6EB0089B359 /* Small Reverb Snare 1.wav */,
-				33FBC62E1E9CA6EB0089B359 /* Small Reverb Snare 2.wav */,
-				33FBC62F1E9CA6EB0089B359 /* Snare Big Reverb 1.wav */,
-				33FBC6301E9CA6EB0089B359 /* Snare Big Reverb 2.wav */,
-				33FBC6311E9CA6EB0089B359 /* Snare Big Reverb 3.wav */,
-				33FBC6321E9CA6EB0089B359 /* Snare Roll 1 - 160 BPM.wav */,
-				33FBC6331E9CA6EB0089B359 /* Snare Roll 2 - 140 BPM.wav */,
-				33FBC6341E9CA6EB0089B359 /* Tom Fill 1 - 150 BPM.wav */,
-				33FBC6351E9CA6EB0089B359 /* Tom Fill 2 - 150 BPM.wav */,
-				33FBC6361E9CA6EB0089B359 /* Vocal Chant 1.wav */,
-				33FBC6371E9CA6EB0089B359 /* Vocal Chant 2.wav */,
-				33FBC6381E9CA6EB0089B359 /* Vocal Chop Loop 1 - Fm 150 BPM.wav */,
-				33FBC6391E9CA6EB0089B359 /* Vocal Chop Loop 2 - 150 BPM .wav */,
-			);
-			name = CymaticsSample;
-			sourceTree = "<group>";
-		};
-		33FBC6651E9CA6F70089B359 /* VocalSample */ = {
-			isa = PBXGroup;
-			children = (
-				33FBC6661E9CA72A0089B359 /* dj-snake-vocal.wav */,
-				33FBC6671E9CA72A0089B359 /* electro-vocal.wav */,
-				33FBC6681E9CA72A0089B359 /* vocal-drop.wav */,
-				33FBC6691E9CA72A0089B359 /* weazel-vocal.wav */,
-				33FBC66A1E9CA72A0089B359 /* yeah.wav */,
-			);
-			name = VocalSample;
-			sourceTree = "<group>";
-		};
-		33FBC6701E9CA7300089B359 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-				33FBC6711E9CA73E0089B359 /* avicii-waiting-for-love-1.wav */,
-				33FBC6721E9CA73E0089B359 /* avicii-waiting-for-love-2.wav */,
-				33FBC6731E9CA73E0089B359 /* calvin-intro.wav */,
-				33FBC6741E9CA73E0089B359 /* dubstep.wav */,
-				33FBC6751E9CA73E0089B359 /* ironman.wav */,
-				33FBC6761E9CA73E0089B359 /* titanium.wav */,
-				33FBC6771E9CA73E0089B359 /* tron-intro.wav */,
-			);
-			name = Intro;
 			sourceTree = "<group>";
 		};
 		43E957C410DC5BA6DE0E7CF6 /* Pods */ = {
@@ -1214,14 +1021,12 @@
 				33A5030D1E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav */,
 				33A5030E1E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav */,
 				33A5030F1E9C9E4B00F20787 /* All Leads - No Sidechain.wav */,
-				33A503101E9C9E4B00F20787 /* Build Up FX.wav */,
 				33A503111E9C9E4B00F20787 /* Drop FX.wav */,
 				33A503121E9C9E4B00F20787 /* Fill Kick.wav */,
 				33A503131E9C9E4B00F20787 /* Fur Elise Cuts-1.wav */,
 				33A503141E9C9E4B00F20787 /* Fur Elise Cuts-2.wav */,
 				33A503151E9C9E4B00F20787 /* Fur Elise Cuts-3.wav */,
 				33A503161E9C9E4B00F20787 /* Fur Elise Cuts.wav */,
-				33A503171E9C9E4B00F20787 /* Fur Elise Main.wav */,
 				33A503181E9C9E4B00F20787 /* hit.wav */,
 				33A503191E9C9E4B00F20787 /* Intro.wav */,
 				33A5031A1E9C9E4B00F20787 /* KICK HIT.wav */,
@@ -1231,7 +1036,6 @@
 				33A5031E1E9C9E4B00F20787 /* Mel Kick Bass.wav */,
 				33A5031F1E9C9E4B00F20787 /* Mel Kick.wav */,
 				33A503201E9C9E4B00F20787 /* Ride and Clap.wav */,
-				33A503211E9C9E4B00F20787 /* Second half drop FX.wav */,
 				33A503221E9C9E4B00F20787 /* SNARE HIT.wav */,
 				33A503231E9C9E4B00F20787 /* SNARE.wav */,
 				33A503241E9C9E4B00F20787 /* SnarefurE.wav */,
@@ -1517,8 +1321,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33FBC6621E9CA6EB0089B359 /* Vocal Chant 2.wav in Resources */,
-				33FBC6461E9CA6EB0089B359 /* Hihat Loop 1 160 BPM.wav in Resources */,
 				33A503721E9C9EC600F20787 /* 16.wav in Resources */,
 				33A5032C1E9C9E4B00F20787 /* All Leads - No Sidechain-8.wav in Resources */,
 				33A503E21E9C9F0A00F20787 /* clap-slapper.wav in Resources */,
@@ -1533,9 +1335,6 @@
 				33A5032A1E9C9E4B00F20787 /* All Leads - No Sidechain-4.wav in Resources */,
 				33A503E31E9C9F0A00F20787 /* clap-tape.wav in Resources */,
 				33A5040A1E9C9F0A00F20787 /* kick-tron.wav in Resources */,
-				33FBC6411E9CA6EB0089B359 /* Build Up 1 160 BPM.wav in Resources */,
-				33FBC6641E9CA6EB0089B359 /* Vocal Chop Loop 2 - 150 BPM .wav in Resources */,
-				33FBC64B1E9CA6EB0089B359 /* Kick 2.wav in Resources */,
 				33A5036C1E9C9EC600F20787 /* 10.wav in Resources */,
 				33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */,
 				33A5043F1E9C9F0A00F20787 /* tom-rototom.wav in Resources */,
@@ -1552,16 +1351,13 @@
 				33A503F11E9C9F0A00F20787 /* hihat-plain.wav in Resources */,
 				33A503401E9C9E4B00F20787 /* KickfeMain.wav in Resources */,
 				33A503271E9C9E4B00F20787 /* All Leads - No Sidechain-1.wav in Resources */,
-				33FBC66C1E9CA72A0089B359 /* electro-vocal.wav in Resources */,
 				33A5043B1E9C9F0A00F20787 /* tom-analog.wav in Resources */,
-				33FBC6511E9CA6EB0089B359 /* Perc Fill - 150 BPM.wav in Resources */,
 				33A503311E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav in Resources */,
 				33DAAAAD1E72BEA300987E86 /* AWOLNATION - Sail-9.wav in Resources */,
 				33A504221E9C9F0A00F20787 /* snare-808.wav in Resources */,
 				33A504311E9C9F0A00F20787 /* snare-pinch.wav in Resources */,
 				33A5043A1E9C9F0A00F20787 /* tom-acoustic02.wav in Resources */,
 				33A503371E9C9E4B00F20787 /* Fur Elise Cuts-1.wav in Resources */,
-				33FBC64A1E9CA6EB0089B359 /* Kick 1.wav in Resources */,
 				33A503411E9C9E4B00F20787 /* Mel Bass.wav in Resources */,
 				33DAAAAA1E72BEA300987E86 /* AWOLNATION - Sail-6.wav in Resources */,
 				33A503421E9C9E4B00F20787 /* Mel Kick Bass.wav in Resources */,
@@ -1573,7 +1369,6 @@
 				33A503671E9C9EC600F20787 /* 5.wav in Resources */,
 				33210A051E95054C003E2DBF /* Spread in Resources */,
 				33A503EE1E9C9F0A00F20787 /* hihat-dist01.wav in Resources */,
-				33FBC6441E9CA6EB0089B359 /* Drop Loop 1 Em 160 BPM.wav in Resources */,
 				33A5033C1E9C9E4B00F20787 /* hit.wav in Resources */,
 				33DAAAB51E72BEA300987E86 /* AWOLNATION - Sail-17.wav in Resources */,
 				F36082C11E9BB2230054221A /* DefaultSessions.json in Resources */,
@@ -1582,38 +1377,28 @@
 				33A504101E9C9F0A00F20787 /* openhat-analog.wav in Resources */,
 				33A504001E9C9F0A00F20787 /* kick-heavy.wav in Resources */,
 				33A503F91E9C9F0A00F20787 /* kick-cultivator.wav in Resources */,
-				33FBC65F1E9CA6EB0089B359 /* Tom Fill 1 - 150 BPM.wav in Resources */,
 				33A503F71E9C9F0A00F20787 /* kick-big.wav in Resources */,
 				33A503641E9C9EC600F20787 /* 2.wav in Resources */,
 				33A503E01E9C9F0A00F20787 /* clap-crushed.wav in Resources */,
 				33DAAAB41E72BEA300987E86 /* AWOLNATION - Sail-16.wav in Resources */,
-				33FBC63B1E9CA6EB0089B359 /* 808 2 E.wav in Resources */,
 				33A503F31E9C9F0A00F20787 /* hihat-ring.wav in Resources */,
-				33FBC6471E9CA6EB0089B359 /* Hihat Loop 2 150 BPM.wav in Resources */,
 				33A5040D1E9C9F0A00F20787 /* kick-zapper.wav in Resources */,
 				33A5041A1E9C9F0A00F20787 /* perc-tambo.wav in Resources */,
 				33A503FC1E9C9F0A00F20787 /* kick-electro01.wav in Resources */,
-				33FBC6571E9CA6EB0089B359 /* Riser 3 - F 160 BPM.wav in Resources */,
 				33A503651E9C9EC600F20787 /* 3.wav in Resources */,
 				33A503461E9C9E4B00F20787 /* SNARE HIT.wav in Resources */,
-				33FBC6631E9CA6EB0089B359 /* Vocal Chop Loop 1 - Fm 150 BPM.wav in Resources */,
 				33A503291E9C9E4B00F20787 /* All Leads - No Sidechain-3.wav in Resources */,
-				33FBC67C1E9CA73E0089B359 /* ironman.wav in Resources */,
 				33A504121E9C9F0A00F20787 /* openhat-tight.wav in Resources */,
 				33A503EC1E9C9F0A00F20787 /* hihat-analog.wav in Resources */,
 				33A503361E9C9E4B00F20787 /* Fill Kick.wav in Resources */,
-				33FBC6791E9CA73E0089B359 /* avicii-waiting-for-love-2.wav in Resources */,
 				33A503331E9C9E4B00F20787 /* All Leads - No Sidechain.wav in Resources */,
 				33A503741E9C9EC600F20787 /* 18.wav in Resources */,
 				33A503F81E9C9F0A00F20787 /* kick-classic.wav in Resources */,
-				33FBC6551E9CA6EB0089B359 /* Riser 1 - F 150 BPM.wav in Resources */,
 				33DAAAB11E72BEA300987E86 /* AWOLNATION - Sail-13.wav in Resources */,
 				33A503491E9C9E4B00F20787 /* Start FX.wav in Resources */,
 				33A503381E9C9E4B00F20787 /* Fur Elise Cuts-2.wav in Resources */,
 				33A503FD1E9C9F0A00F20787 /* kick-electro02.wav in Resources */,
-				33FBC66E1E9CA72A0089B359 /* weazel-vocal.wav in Resources */,
 				33A504291E9C9F0A00F20787 /* snare-dist01.wav in Resources */,
-				33FBC63E1E9CA6EB0089B359 /* Brass Loop 1 Fm 160 BPM.wav in Resources */,
 				33DAAAB01E72BEA300987E86 /* AWOLNATION - Sail-12.wav in Resources */,
 				33A5033F1E9C9E4B00F20787 /* KICK.wav in Resources */,
 				33A503ED1E9C9F0A00F20787 /* hihat-digital.wav in Resources */,
@@ -1621,27 +1406,19 @@
 				33A504021E9C9F0A00F20787 /* kick-oldschool.wav in Resources */,
 				33DAAAB81E72BEA300987E86 /* AWOLNATION - Sail-20.wav in Resources */,
 				33A504111E9C9F0A00F20787 /* openhat-slick.wav in Resources */,
-				33FBC63F1E9CA6EB0089B359 /* Brass Loop 2 Dm 145 BPM .wav in Resources */,
-				33FBC66F1E9CA72A0089B359 /* yeah.wav in Resources */,
-				33FBC6601E9CA6EB0089B359 /* Tom Fill 2 - 150 BPM.wav in Resources */,
 				33A5036A1E9C9EC600F20787 /* 8.wav in Resources */,
 				33A5040E1E9C9F0A00F20787 /* openhat-808.wav in Resources */,
-				33FBC6611E9CA6EB0089B359 /* Vocal Chant 1.wav in Resources */,
 				33A504131E9C9F0A00F20787 /* perc-808.wav in Resources */,
 				33A503431E9C9E4B00F20787 /* Mel Kick.wav in Resources */,
 				33A504231E9C9F0A00F20787 /* snare-acoustic01.wav in Resources */,
-				33FBC65C1E9CA6EB0089B359 /* Snare Big Reverb 3.wav in Resources */,
 				33A504241E9C9F0A00F20787 /* snare-acoustic02.wav in Resources */,
 				33A503E71E9C9F0A00F20787 /* crash-noise.wav in Resources */,
-				33FBC6431E9CA6EB0089B359 /* Downlifter F 140 BPM.wav in Resources */,
 				33A5034A1E9C9E4B00F20787 /* VOX.wav in Resources */,
-				33FBC67E1E9CA73E0089B359 /* tron-intro.wav in Resources */,
 				33A5041E1E9C9F0A00F20787 /* ride-acoustic02.wav in Resources */,
 				33A5033E1E9C9E4B00F20787 /* KICK HIT.wav in Resources */,
 				33A503631E9C9EC600F20787 /* 1.wav in Resources */,
 				33A503E51E9C9F0A00F20787 /* crash-808.wav in Resources */,
 				33A504151E9C9F0A00F20787 /* perc-hollow.wav in Resources */,
-				33FBC65B1E9CA6EB0089B359 /* Snare Big Reverb 2.wav in Resources */,
 				33A5036B1E9C9EC600F20787 /* 9.wav in Resources */,
 				33A503681E9C9EC600F20787 /* 6.wav in Resources */,
 				33A503F51E9C9F0A00F20787 /* kick-acoustic01.wav in Resources */,
@@ -1653,23 +1430,19 @@
 				33A503761E9C9EC600F20787 /* 20.wav in Resources */,
 				33A5033A1E9C9E4B00F20787 /* Fur Elise Cuts.wav in Resources */,
 				33A503731E9C9EC600F20787 /* 17.wav in Resources */,
-				33FBC65D1E9CA6EB0089B359 /* Snare Roll 1 - 160 BPM.wav in Resources */,
 				33DAAABE1E72BEA300987E86 /* AWOLNATION - Sail-26.wav in Resources */,
 				33A503481E9C9E4B00F20787 /* SnarefurE.wav in Resources */,
 				33210A031E95041A003E2DBF /* Rainbow in Resources */,
 				33A503F21E9C9F0A00F20787 /* hihat-reso.wav in Resources */,
 				33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */,
 				33A504031E9C9F0A00F20787 /* kick-plain.wav in Resources */,
-				33FBC6501E9CA6EB0089B359 /* Perc Drop Loop 3 - 160 BPM.wav in Resources */,
 				33A504051E9C9F0A00F20787 /* kick-softy.wav in Resources */,
 				33A503691E9C9EC600F20787 /* 7.wav in Resources */,
 				33A503701E9C9EC600F20787 /* 14.wav in Resources */,
 				33A5042E1E9C9F0A00F20787 /* snare-lofi02.wav in Resources */,
 				33A5043E1E9C9F0A00F20787 /* tom-lofi.wav in Resources */,
-				33FBC64C1E9CA6EB0089B359 /* Kick 3.wav in Resources */,
 				33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */,
 				33DAAAAF1E72BEA300987E86 /* AWOLNATION - Sail-11.wav in Resources */,
-				33A503451E9C9E4B00F20787 /* Second half drop FX.wav in Resources */,
 				33A5032F1E9C9E4B00F20787 /* All Leads - No Sidechain-13-1.wav in Resources */,
 				33A6FF9B1E97517700E7E8B1 /* Keys.plist in Resources */,
 				33A503E11E9C9F0A00F20787 /* clap-fat.wav in Resources */,
@@ -1678,33 +1451,21 @@
 				33A5042A1E9C9F0A00F20787 /* snare-dist02.wav in Resources */,
 				33A504261E9C9F0A00F20787 /* snare-big.wav in Resources */,
 				33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */,
-				33A503341E9C9E4B00F20787 /* Build Up FX.wav in Resources */,
 				33A503751E9C9EC600F20787 /* 19.wav in Resources */,
 				33A5032D1E9C9E4B00F20787 /* All Leads - No Sidechain-10.wav in Resources */,
 				33A504271E9C9F0A00F20787 /* snare-block.wav in Resources */,
 				33A504161E9C9F0A00F20787 /* perc-laser.wav in Resources */,
-				33FBC64E1E9CA6EB0089B359 /* Perc Drop Loop 1 - 140 BPM.wav in Resources */,
 				33A503791E9C9EC600F20787 /* 23.wav in Resources */,
 				33A5042C1E9C9F0A00F20787 /* snare-electro.wav in Resources */,
 				33A503441E9C9E4B00F20787 /* Ride and Clap.wav in Resources */,
 				33A503FF1E9C9F0A00F20787 /* kick-gritty.wav in Resources */,
-				33FBC6491E9CA6EB0089B359 /* Impact 2.wav in Resources */,
 				33A504191E9C9F0A00F20787 /* perc-short.wav in Resources */,
 				33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */,
-				33FBC66D1E9CA72A0089B359 /* vocal-drop.wav in Resources */,
-				33A5033B1E9C9E4B00F20787 /* Fur Elise Main.wav in Resources */,
-				33FBC63A1E9CA6EB0089B359 /* 808 1 F#.wav in Resources */,
 				33A5036E1E9C9EC600F20787 /* 12.wav in Resources */,
-				33FBC6561E9CA6EB0089B359 /* Riser 2 - F# 160 BPM.wav in Resources */,
 				33A503E61E9C9F0A00F20787 /* crash-acoustic.wav in Resources */,
-				33FBC66B1E9CA72A0089B359 /* dj-snake-vocal.wav in Resources */,
 				33A503301E9C9E4B00F20787 /* All Leads - No Sidechain-14.wav in Resources */,
-				33FBC64F1E9CA6EB0089B359 /* Perc Drop Loop 2 - 140 BPM.wav in Resources */,
-				33FBC6521E9CA6EB0089B359 /* Predrop Vocal 1.wav in Resources */,
 				33A504391E9C9F0A00F20787 /* tom-acoustic01.wav in Resources */,
 				33A504331E9C9F0A00F20787 /* snare-smasher.wav in Resources */,
-				33FBC6531E9CA6EB0089B359 /* Predrop Vocal 2.wav in Resources */,
-				33FBC64D1E9CA6EB0089B359 /* Melody Loop - Fm 150 BPM.wav in Resources */,
 				33A5033D1E9C9E4B00F20787 /* Intro.wav in Resources */,
 				33A5041D1E9C9F0A00F20787 /* ride-acoustic01.wav in Resources */,
 				33A503F61E9C9F0A00F20787 /* kick-acoustic02.wav in Resources */,
@@ -1716,22 +1477,15 @@
 				33A503FE1E9C9F0A00F20787 /* kick-floppy.wav in Resources */,
 				33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */,
 				33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */,
-				33FBC6541E9CA6EB0089B359 /* Real Drum Build - 140 BPM.wav in Resources */,
-				33FBC67B1E9CA73E0089B359 /* dubstep.wav in Resources */,
-				33FBC65A1E9CA6EB0089B359 /* Snare Big Reverb 1.wav in Resources */,
 				33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */,
 				33A503321E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav in Resources */,
 				33A503711E9C9EC600F20787 /* 15.wav in Resources */,
-				33FBC6481E9CA6EB0089B359 /* Impact 1.wav in Resources */,
 				33A504381E9C9F0A00F20787 /* tom-808.wav in Resources */,
 				33A503F41E9C9F0A00F20787 /* kick-808.wav in Resources */,
 				33A504321E9C9F0A00F20787 /* snare-punch.wav in Resources */,
 				33DAAAB21E72BEA300987E86 /* AWOLNATION - Sail-14.wav in Resources */,
 				33A503FA1E9C9F0A00F20787 /* kick-deep.wav in Resources */,
-				33FBC65E1E9CA6EB0089B359 /* Snare Roll 2 - 140 BPM.wav in Resources */,
-				33FBC6581E9CA6EB0089B359 /* Small Reverb Snare 1.wav in Resources */,
 				33A504251E9C9F0A00F20787 /* snare-analog.wav in Resources */,
-				33FBC6451E9CA6EB0089B359 /* Drop Loop 2 Fm 150 BPM.wav in Resources */,
 				33A5041C1E9C9F0A00F20787 /* perc-weirdo.wav in Resources */,
 				33A503281E9C9E4B00F20787 /* All Leads - No Sidechain-2.wav in Resources */,
 				33A503F01E9C9F0A00F20787 /* hihat-electro.wav in Resources */,
@@ -1745,24 +1499,16 @@
 				33A504081E9C9F0A00F20787 /* kick-thump.wav in Resources */,
 				33A5042F1E9C9F0A00F20787 /* snare-modular.wav in Resources */,
 				33A5036F1E9C9EC600F20787 /* 13.wav in Resources */,
-				33FBC67A1E9CA73E0089B359 /* calvin-intro.wav in Resources */,
 				33A503391E9C9E4B00F20787 /* Fur Elise Cuts-3.wav in Resources */,
 				33DAAAB91E72BEA300987E86 /* AWOLNATION - Sail-21.wav in Resources */,
-				33FBC63C1E9CA6EB0089B359 /* Arp Loop 1 Em 140 BPM.wav in Resources */,
-				33FBC63D1E9CA6EB0089B359 /* Arp Loop 2 Em 140 BPM.wav in Resources */,
 				33A504011E9C9F0A00F20787 /* kick-newwave.wav in Resources */,
 				33A503661E9C9EC600F20787 /* 4.wav in Resources */,
 				33A503471E9C9E4B00F20787 /* SNARE.wav in Resources */,
-				33FBC6781E9CA73E0089B359 /* avicii-waiting-for-love-1.wav in Resources */,
-				33FBC6401E9CA6EB0089B359 /* Brass Stab F.wav in Resources */,
-				33FBC67D1E9CA73E0089B359 /* titanium.wav in Resources */,
 				33DAAABB1E72BEA300987E86 /* AWOLNATION - Sail-23.wav in Resources */,
 				33A503DF1E9C9F0A00F20787 /* clap-analog.wav in Resources */,
 				33DAAAAB1E72BEA300987E86 /* AWOLNATION - Sail-7.wav in Resources */,
 				33A503E91E9C9F0A00F20787 /* hihat-808.wav in Resources */,
 				33A503EF1E9C9F0A00F20787 /* hihat-dist02.wav in Resources */,
-				33FBC6421E9CA6EB0089B359 /* Build Up 2 150 BPM.wav in Resources */,
-				33FBC6591E9CA6EB0089B359 /* Small Reverb Snare 2.wav in Resources */,
 				33A504341E9C9F0A00F20787 /* snare-sumo.wav in Resources */,
 				33A503771E9C9EC600F20787 /* 21.wav in Resources */,
 				33A5040C1E9C9F0A00F20787 /* kick-vinyl02.wav in Resources */,
@@ -2022,7 +1768,6 @@
 				F3173AA81E8306D20095F76A /* Audio.swift in Sources */,
 				33EC0A401E6FE40500229A92 /* AnimationEngine.swift in Sources */,
 				80034E861E93ACE8005B4487 /* TimeTracker.swift in Sources */,
-				334970C31E726AE9009C78DF /* UIColorExtension.swift in Sources */,
 				334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */,
 				E92F6C2C1E74F9FC00F5A092 /* SessionTableViewController.swift in Sources */,
 				E95CACD51E96A97D009E6DA6 /* TutorialViewController.swift in Sources */,
@@ -2044,7 +1789,10 @@
 			files = (
 				33120E331E6FD30A007E7717 /* MIDIchloriansUITests.swift in Sources */,
 				E920F4271EA11BED00D5B165 /* BaseTestCase.swift in Sources */,
+				E968C14C1EA374CA007CE28D /* AudioPlayerSetting.swift in Sources */,
+				E968C14B1EA37494007CE28D /* Config.swift in Sources */,
 				E920F4231EA0C65100D5B165 /* TopBarTestCase.swift in Sources */,
+				E968C14A1EA296B0007CE28D /* AnimationDesignerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

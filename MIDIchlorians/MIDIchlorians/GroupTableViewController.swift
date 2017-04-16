@@ -27,7 +27,7 @@ class GroupTableViewController: UITableViewController {
         tabBarItem = UITabBarItem(
             title: Config.SampleTableTitle, image: tabBarSampleIcon, selectedImage: tabBarSampleIcon)
         tableView.separatorStyle = .none
-        tableView.accessibilityLabel = "Group Table"
+        tableView.accessibilityLabel = Config.GroupTableA11yLabel
     }
 
     required init?(coder aDecoder: NSCoder) {

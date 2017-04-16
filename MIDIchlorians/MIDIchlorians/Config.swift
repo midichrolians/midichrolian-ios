@@ -48,32 +48,24 @@ struct Config {
             "All Leads - No Sidechain-16", "All Leads - No Sidechain-2",
             "All Leads - No Sidechain-3", "All Leads - No Sidechain-4",
             "All Leads - No Sidechain-6", "All Leads - No Sidechain-8",
-            "All Leads - No Sidechain", "Build Up FX",
+            "All Leads - No Sidechain",
             "Drop FX", "Fill Kick",
             "Fur Elise Cuts-1", "Fur Elise Cuts-2",
-            "Fur Elise Cuts-3", "Fur Elise Cuts",
-            "Fur Elise Main", "Intro",
+            "Fur Elise Cuts-3", "Fur Elise Cuts", "Intro",
             "KICK HIT", "KICK",
             "KickfeMain", "Mel Bass",
             "Mel Kick Bass", "Mel Kick",
             "Ride and Clap", "SNARE HIT",
-            "SNARE", "Second half drop FX",
-            "SnarefurE", "Start FX",
+            "SNARE", "SnarefurE", "Start FX",
             "VOX", "hit"
         ],
         "Mortal Kombat": [
-            "1", "10",
-            "11", "12",
-            "13", "14",
-            "15", "16",
-            "17", "18",
-            "19", "2",
-            "20", "21",
-            "22", "23",
-            "25", "3",
-            "4", "5",
-            "6", "7",
-            "8", "9"
+            "1", "10", "11", "12",
+            "13", "14", "15", "16",
+            "17", "18", "19", "2",
+            "20", "21", "22", "23",
+            "25", "3", "4", "5",
+            "6", "7", "8", "9"
         ],
         "Drums": [
             "clap-808", "clap-analog",
@@ -126,53 +118,11 @@ struct Config {
             "tom-chiptune", "tom-fm",
             "tom-lofi", "tom-rototom",
             "tom-short"
-        ],
-        "Cymatics": [
-            "808 1 F#",
-            "808 2 E", "Arp Loop 1 Em 140 BPM",
-            "Arp Loop 2 Em 140 BPM", "Brass Loop 1 Fm 160 BPM",
-            "Brass Loop 2 Dm 145 BPM ", "Brass Stab F",
-            "Build Up 1 160 BPM", "Build Up 2 150 BPM",
-            "Downlifter F 140 BPM", "Drop Loop 1 Em 160 BPM",
-            "Drop Loop 2 Fm 150 BPM", "Hihat Loop 1 160 BPM",
-            "Hihat Loop 2 150 BPM", "Impact 1",
-            "Impact 2", "Kick 1",
-            "Kick 2", "Kick 3",
-            "Melody Loop - Fm 150 BPM", "Perc Drop Loop 1 - 140 BPM",
-            "Perc Drop Loop 2 - 140 BPM", "Perc Drop Loop 3 - 160 BPM",
-            "Perc Fill - 150 BPM", "Predrop Vocal 1",
-            "Predrop Vocal 2", "Real Drum Build - 140 BPM",
-            "Riser 1 - F 150 BPM", "Riser 2 - F# 160 BPM",
-            "Riser 3 - F 160 BPM", "Small Reverb Snare 1",
-            "Small Reverb Snare 2", "Snare Big Reverb 1",
-            "Snare Big Reverb 2", "Snare Big Reverb 3",
-            "Snare Roll 1 - 160 BPM", "Snare Roll 2 - 140 BPM",
-            "Tom Fill 1 - 150 BPM", "Tom Fill 2 - 150 BPM",
-            "Vocal Chant 1", "Vocal Chant 2",
-            "Vocal Chop Loop 1 - Fm 150 BPM", "Vocal Chop Loop 2 - 150 BPM "
-        ],
-        "Vocal": [
-            "dj-snake-vocal",
-            "electro-vocal",
-            "vocal-drop",
-            "weazel-vocal",
-            "yeah"
-        ],
-        "Intro": [
-            "avicii-waiting-for-love-1",
-            "avicii-waiting-for-love-2",
-            "calvin-intro",
-            "dubstep",
-            "ironman",
-            "titanium",
-            "tron-intro"
         ]
     ]
 
     static let preloadedAnimationTypes = [
-        "Spark",
-        "Rainbow",
-        "Spread"
+        "Spark", "Rainbow", "Spread"
     ]
     static let SoundExt = "wav"
     static let AnimationExt = "json"
@@ -212,6 +162,15 @@ struct Config {
     static let AppLeftPadding: CGFloat = 20
     static let AppRightPadding: CGFloat = 20
 
+    // Common
+    static let PopOverDismissLabel = "PopoverDismissRegion"
+    static let CommonEditActionTitle = "Edit"
+    static let CommonRemoveActionTitle = "Remove"
+    static let CommonButtonCancelTitle = "Cancel"
+    static let CommonButtonOkayTitle = "Okay"
+    static let CommonButtonConfirmTitle = "Confirm"
+    static let CommonSystemAddTitle = "Add"
+
     // Top nav
     static let TopNavHeight: CGFloat = 60
     static let TopNavLogoIcon = "logo.png"
@@ -242,6 +201,7 @@ struct Config {
     static let TopNavBPMPreferredHeight: CGFloat = 200
     static let TopNavSyncSpinnerInset: CGFloat = 20
     static let TopNavSessionNameMaxWidth: CGFloat = 150
+    static let TopNavSessionTitleA11yLabel = "Session title"
 
     // About
     static let AboutCloseTitle = "Close"
@@ -250,9 +210,10 @@ struct Config {
     static let AboutSlideshowInset = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
 
     // Grid
+    static let GridA11yLabel = "Grid"
+    static let GridCollectionViewCellA11yLabel = "Animation image"
     static let GridCollectionViewCellIdentifier = "cell"
     static let GridDefaultBackgroundColour = UIColor(colorLiteralRed: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
-    static let PadSelectionBorderColour = UIColor.green.cgColor
     static let PadSelectionBorderWidth: CGFloat = 1.0
     static let PadSelectionCornerRadiusRatio: CGFloat = 1 / 16.0
     static let PadSelectionOffsetRaio: CGFloat =  1 / 12.0
@@ -262,6 +223,7 @@ struct Config {
     static let PadAnimationIcon = "pad_animation.png"
     static let PadPlayLoopIcon = "pad_loop_indicator.png"
     static let PadIndicatorRatio: CGFloat = 3
+    static let RemoveButtonA11yLabel = "Remove Pad"
     static let RemoveButtonOffset: CGFloat = 10
     static let RemoveButtonWidth: CGFloat = 24
     static let PadCornerRadiusRatio: CGFloat = 1 / 24.0
@@ -283,12 +245,14 @@ struct Config {
     static let SidePaneTabBarAnimationIcon = "params.png"
 
     // Group table
+    static let GroupTableA11yLabel = "Group Table"
     static let GroupTableReuseIdentifier = "group"
     static let GroupAlertTitle = "Group name"
     static let GroupNameOkayTitle = "Okay"
     static let GroupNameCancelTitle = "Cancel"
 
     // Sample table
+    static let SampleTableA11yLabel = "Sample Table"
     static let SampleTableCellHeight: CGFloat = 60
     static let SampleTableTitle = "Samples"
     static let SampleTableReuseIdentifier = "sampleCell"
@@ -298,6 +262,7 @@ struct Config {
     static let SamplePlayButtonIcon = "play.png"
 
     // Animation table
+    static let AnimationTableA11YLabel = "Animation Table"
     static let AnimationTableReuseIdentifier = "animationCell"
     static let AnimationEditActionTitle = "Edit"
     static let AnimationRemoveActionTitle = "Remove"
@@ -344,6 +309,7 @@ struct Config {
     static let AnimationSaveCancelTitle = "Cancel"
 
     // Timeline
+    static let TimelineA11yLabel = "Timeline"
     static let TimelineMinNumFrames = 8
     static let TimelineReuseIdentifier = "timeline"
     static let TimelineInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -351,6 +317,7 @@ struct Config {
     static let TimelineUnselectedFrameRatio: CGFloat = 0.7
 
     // Colour picker
+    static let ColourPickerA11yLabel = "Colour Picker"
     static let ColourSelectionWidth: CGFloat = 3
     static let ColourSelectionOffset: CGFloat = 5
     static let ColourReuseIdentifier = "colour"
@@ -358,6 +325,7 @@ struct Config {
     static let ColourClearAnimImage = "clear_anim.png"
 
     // Session
+    static let SessionTableA11yLabel = "Session Table"
     static let SessionTableTitle = "Sessions"
     static let SessionEditActionTitle = "Edit"
     static let SessionRemoveActionTitle = "Remove"
@@ -372,11 +340,9 @@ struct Config {
 
     // About / Tutorial
     static let TutorialImages = [
-        "tutorial_1.png", "tutorial_2.png",
-        "tutorial_3.png", "tutorial_4.png",
-        "tutorial_5.png", "tutorial_6.png",
-        "tutorial_7.png", "tutorial_8.png",
-        "tutorial_9.png"
+        "tutorial_1.png", "tutorial_2.png", "tutorial_3.png",
+        "tutorial_4.png", "tutorial_5.png", "tutorial_6.png",
+        "tutorial_7.png", "tutorial_8.png", "tutorial_9.png"
     ]
 
     static let animationBitColourKey = "colour"
@@ -409,4 +375,12 @@ struct Config {
     static let cloudNotificationKey = "Cloud"
 
     static let defaultGroup = "Your samples"
+
+    static let colourPurpleImageName = "purpleButton"
+    static let colourLightBlueImageName = "lightBlueButton"
+    static let colourBlueImageName = "blueButton"
+    static let colourGreenImageName = "greenButton"
+    static let colourYellowImageName = "yellowButton"
+    static let colourPinkImageName = "pinkButton"
+    static let colourRedImageName = "redButton"
 }

@@ -123,11 +123,14 @@ class AudioManager {
     private func playLoop(audioDir: String, bpm: Int) {
         if loopDict[audioDir] == nil {
             let secondsPerBeat: Double = 60.0 / Double(bpm)
-            loopDict[audioDir] = Timer.scheduledTimer(timeInterval: secondsPerBeat,
-                                                      target: self,
-                                                      selector: #selector(self.runTimedCode(_:)),
-                                                      userInfo: audioDir,
-                                                      repeats: true)
+
+            let newTimer = Timer.scheduledTimer(timeInterval: secondsPerBeat,
+                                                  target: self,
+                                                  selector: #selector(self.runTimedCode(_:)),
+                                                  userInfo: audioDir,
+                                                  repeats: true)
+            RunLoop.main.add(newTimer, forMode: RunLoopMode.commonModes)
+            loopDict[audioDir] = newTimer
         } else {
             stop(audioDir: audioDir)
         }
