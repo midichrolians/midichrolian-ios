@@ -182,7 +182,7 @@ class SampleTableViewController: UITableViewController {
         guard let group = group else {
             return
         }
-        sampleList = DataManager.instance.getSamplesForGroup(group: group).sorted()
+        sampleList = DataManager.instance.getAudiosForGroup(group: group).sorted()
         tableView.reloadData()
     }
 

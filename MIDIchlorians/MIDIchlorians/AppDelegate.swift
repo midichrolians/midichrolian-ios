@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Copy samples from the bundle onto user's document directory.
     // A list of URLs of the copied samples.
-
     private func copyBundleSamples() {
         for (songName, _) in preloadedSampleSongs {
             preloadedSampleSongs[songName]?.forEach { sample in
@@ -29,12 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    //Add all samples to group
     private func savePreloadedSamplesToGroup() {
         for (groupName, samplesArray) in preloadedSampleSongs {
             samplesArray.forEach { sample in
                 let sampleName = "\(sample).\(Config.soundExt)"
-                _ = DataManager.instance.addSampleToGroup(group: groupName, sample: sampleName)
+                _ = DataManager.instance.addAudioToGroup(group: groupName, audio: sampleName)
             }
         }
     }
@@ -50,7 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func copyToUserStorage(_ sampleName: String) {
         // store the samples in the document directory
-        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask).last else {
             // if we cannot store, that's fine, the user just won't have any samples loaded
             return
         }
@@ -64,7 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     //Get all samples present in documents directory
     private func getAppSamples() -> [String] {
-        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask).last else {
+            // If this fails, there are no pre loaded samples, which is ok
             return []
         }
 
@@ -93,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func loadPreloadedSessions() {
-        guard let filePath = Bundle.main.path(forResource: Config.defaultSessionsName,
+        guard let filePath = Bundle.main.path(forResource: Config.preloadedSessionsFileName,
                                               ofType: Config.sessionExt) else {
             return
         }
@@ -114,7 +116,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = DataManager.instance.saveSession(sessionName, session)
 
         }
+    }
 
+    func removeDeletedSamples(samplesInDocDirectory: [String]) {
+        let samplesInDatabase = DataManager.instance.loadAllAudioStrings()
+        var setOfSamplesInDocDirectory = Set<String>()
+
+        samplesInDocDirectory.forEach({ sample in
+            setOfSamplesInDocDirectory.insert(sample)
+        })
+
+        for sample in samplesInDatabase where !setOfSamplesInDocDirectory.contains(sample) {
+            _ = DataManager.instance.removeAudio(sample)
+        }
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -132,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         //Create default group
-        _ = DataManager.instance.createGroup(group: Config.defaultGroup)
+        _ = DataManager.instance.createAudioGroup(group: Config.defaultGroup)
       
         //Load preloaded sessions
         loadPreloadedSessions()
@@ -146,12 +160,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Populate the samples in our database
         appSamples.forEach { sample in
-            // if saving fails, what are we gonna do?
             _ = DataManager.instance.saveAudio(sample)
-            _ = DataManager.instance.addSampleToGroup(group: Config.defaultGroup, sample: sample)
+            _ = DataManager.instance.addAudioToGroup(group: Config.defaultGroup, audio: sample)
         }
+
+        //Remove samples that exist in Realm but no longer exist in the docs directory
+        removeDeletedSamples(samplesInDocDirectory: appSamples)
         
-        // add all preloaded samples to group according to the songs they belong to, based on the information in Config
+        // add all preloaded samples to group according to the songs they belong to, 
+        // based on the information in Config
         savePreloadedSamplesToGroup()
 
         // Get preloaded animations from the app bundle
@@ -161,13 +178,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         preloadedAnimations.forEach { preloadedAnimation in
             _ = DataManager.instance.saveAnimation(preloadedAnimation)
         }
-
+        //To enable beta testing
         Fabric.with([Crashlytics.self])
         
         return true
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if let authResult = DropboxClientsManager.handleRedirectURL(url) {
             switch authResult {
             case .success:
@@ -202,7 +220,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

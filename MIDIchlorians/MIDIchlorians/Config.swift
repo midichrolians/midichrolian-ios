@@ -6,8 +6,6 @@
 //  Copyright © 2017 nus.cs3217.a0118897. All rights reserved.
 //
 
-import CoreGraphics
-import Foundation
 import UIKit
 
 struct Config {
@@ -17,10 +15,8 @@ struct Config {
     static let numberOfSecondsInMinute = 60
     static let defaultBPM = 120
     static let invalidBPM = 0
-    static let defaultAnimationValue = ""
-    static let defaultAudioValue = ""
+    static let numberOfItemsToSync = 3
     static let playBackAccuracy: TimeInterval = 1/60
-
     static let audioSetting = AudioPlayerSetting.audioServices
     static let sounds = [
         "Sail": [
@@ -32,14 +28,13 @@ struct Config {
             "AWOLNATION - Sail-10", "AWOLNATION - Sail-11",
             "AWOLNATION - Sail-12", "AWOLNATION - Sail-13",
             "AWOLNATION - Sail-14", "AWOLNATION - Sail-15",
-            "AWOLNATION - Sail-16", "AWOLNATION - Sail-9",
-            "AWOLNATION - Sail-10", "AWOLNATION - Sail-17",
+            "AWOLNATION - Sail-16", "AWOLNATION - Sail-17",
             "AWOLNATION - Sail-18", "AWOLNATION - Sail-19",
             "AWOLNATION - Sail-20", "AWOLNATION - Sail-21",
             "AWOLNATION - Sail-22", "AWOLNATION - Sail-23",
             "AWOLNATION - Sail-24", "AWOLNATION - Sail-25",
             "AWOLNATION - Sail-26", "AWOLNATION - Sail-27",
-            "AWOLNATION - Sail-28", "AWOLNATION - Sail"
+            "AWOLNATION - Sail-28"
         ],
         "Fur elise": [
             "All Leads - No Sidechain-1", "All Leads - No Sidechain-10",
@@ -128,6 +123,7 @@ struct Config {
     static let animationExt = "json"
     static let sessionExt = "json"
     static let defaultSessionsName = "DefaultSessions"
+    static let preloadedSessionsFileName = "DefaultSessions"
     static let fontPrimaryColor = UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1)
     static let backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
     static let secondaryBackgroundColor = UIColor.white
