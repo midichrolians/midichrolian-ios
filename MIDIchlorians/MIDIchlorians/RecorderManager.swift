@@ -8,6 +8,13 @@
 
 import Foundation
 
+/**
+ Recording singleton
+ access all recording from this class.
+ uses TimeTracker to track which buttons are pressed(via delegate)
+ and PlayBackRetriever to retrieve the next pads to be "tapped"
+ */
+
 class RecorderManager {
     static let instance = RecorderManager()
 
@@ -45,6 +52,7 @@ class RecorderManager {
         timeTracker.setTimePadPair(pageNum: pageNum, forIndex: indexPath)
     }
 
+    //creates a timer of 60fps to play back the recording
     func startPlay() {
         playingStarted = true
         playClock = 0
@@ -65,6 +73,9 @@ class RecorderManager {
         }
     }
 
+    //calls pads to be tapped
+    //every time a set of pads is being "tapped", it retrieves the next set of pads
+    //it then waits for the timer to be greater than or equals to the timer of those pads and taps those
     @objc func runTimedCode(_ timer: Timer) {
         playClock += Config.playBackAccuracy
         if toPlay.count <= 0 {
