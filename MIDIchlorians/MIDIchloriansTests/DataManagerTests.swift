@@ -21,27 +21,27 @@ class DataManagerTests: XCTestCase {
 
     func testSaveSession() {
         let session = Session(bpm: 120)
-        session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1")
+        session.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-1.wav")
         let animationSequence = AnimationManager.instance.getAnimationSequenceForAnimationType(
             animationTypeName: Config.animationTypeSparkName, indexPath: IndexPath(row: 0, section: 0))
         session.addAnimation(page: 0, row: 0, col: 0, animation: animationSequence!)
-        XCTAssertTrue(session.equals(dataManager.saveSession("test", session)!))
-        XCTAssertTrue(session.equals(dataManager.loadSession("test")!))
+        XCTAssertEqual(session, dataManager.saveSession("test", session)!)
+        XCTAssertEqual(session, dataManager.loadSession("test")!)
     }
 
     func testSaveSessionOverrwrite() {
         let session = Session(bpm: 120)
-        XCTAssertTrue(session.equals(dataManager.saveSession("test", session)!))
+        XCTAssertEqual(session, dataManager.saveSession("test", session)!)
         let newSession = Session(bpm: 140)
         let newSession1 = dataManager.saveSession("test", newSession)!
-        XCTAssertTrue(newSession.equals(newSession1))
-        XCTAssertTrue(newSession.equals(dataManager.loadSession("test")!))
+        XCTAssertEqual(newSession, newSession1)
+        XCTAssertEqual(newSession, dataManager.loadSession("test")!)
 
-        newSession1.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-2")
-        XCTAssertTrue(newSession1.equals(dataManager.saveSession("test", newSession1)!))
+        newSession1.addAudio(page: 0, row: 0, col: 0, audioFile: "AWOLNATION - Sail-2.wav")
+        XCTAssertEqual(newSession1, dataManager.saveSession("test", newSession1)!)
 
         newSession1.setSessionName(sessionName: "AD")
-        XCTAssertTrue(newSession1.equals(dataManager.saveSession(newSession1.getSessionName()!, newSession1)!))
+        XCTAssertEqual(newSession1, dataManager.saveSession(newSession1.getSessionName()!, newSession1)!)
 
     }
 
@@ -60,14 +60,14 @@ class DataManagerTests: XCTestCase {
         let session = Session(bpm: 120)
         _ = dataManager.saveSession("test", session)
         XCTAssertTrue(dataManager.removeSession("test"))
-        XCTAssertFalse(dataManager.removeSession("test"))
+        XCTAssertTrue(dataManager.removeSession("test"))
     }
 
     func testLoadSession() {
         let session = Session(bpm: 120)
         _ = dataManager.saveSession("test", session)
         let x = dataManager.loadSession("test")!
-        XCTAssertTrue(session.equals(x))
+        XCTAssertEqual(session, x)
     }
 
     func testLoadAllSessionNames() {
@@ -89,7 +89,7 @@ class DataManagerTests: XCTestCase {
         XCTAssertEqual("test3", dataManager.loadLastSession()!.getSessionName()!)
         let session1 = Session(bpm: 140)
         _ = dataManager.saveSession("test4", session1)
-        XCTAssertTrue(session1.equals(dataManager.loadLastSession()!))
+        XCTAssertEqual(session1, dataManager.loadLastSession()!)
     }
 
     func testSaveAnimation() {
@@ -116,7 +116,7 @@ class DataManagerTests: XCTestCase {
         let animationType = "Spread"
         _ = dataManager.saveAnimation(animationType)
         XCTAssertTrue(dataManager.removeAnimation(animationType))
-        XCTAssertFalse(dataManager.removeAnimation(animationType))
+        XCTAssertTrue(dataManager.removeAnimation(animationType))
     }
 
     func testLoadAllAnimations() {
@@ -153,7 +153,7 @@ class DataManagerTests: XCTestCase {
         let audio = "AWOLNATION - Sail-1"
         _ = dataManager.saveAudio(audio)
         XCTAssertTrue(dataManager.removeAudio(audio))
-        XCTAssertFalse(dataManager.removeAudio(audio))
+        XCTAssertTrue(dataManager.removeAudio(audio))
     }
 
     func testLoadAllAudioStrings() {
@@ -170,66 +170,79 @@ class DataManagerTests: XCTestCase {
         _ = dataManager.saveSession("test", session)
         XCTAssertFalse(dataManager.editSessionName(oldSessionName: "test1", newSessionName: "test12"))
         XCTAssertTrue(dataManager.editSessionName(oldSessionName: "test", newSessionName: "test12"))
-        XCTAssertTrue(session1.equals(dataManager.loadSession("test12")!))
+        XCTAssertEqual(session1, dataManager.loadSession("test12")!)
     }
 
-    func testGetSamplesForGroup() {
-        XCTAssertEqual([], dataManager.getSamplesForGroup(group: "sail"))
-        var audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
+    func testGetAudiosForGroup() {
+        XCTAssertEqual([], dataManager.getAudiosForGroup(group: "sail"))
+        var audios = ["AWOLNATION - Sail-1.wav", "AWOLNATION - Sail-2.wav", "AWOLNATION - Sail-3.wav"]
         audios.forEach({ sample in
             _ = dataManager.saveAudio(sample)
-            _ = dataManager.addSampleToGroup(group: "sail", sample: sample)
+            _ = dataManager.addAudioToGroup(group: "sail", audio: sample)
         })
-        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
-        _ = dataManager.addSampleToGroup(group: "sail1", sample: "AWOLNATION - Sail-4")
-        _ = dataManager.saveAudio("AWOLNATION - Sail-5")
-        _ = dataManager.addSampleToGroup(group: "sail", sample: "AWOLNATION - Sail-5")
-        _ = dataManager.addSampleToGroup(group: "sail", sample: "AWOLNATION - Sail-3")
-        audios.append("AWOLNATION - Sail-5")
-        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+        XCTAssertEqual(audios, dataManager.getAudiosForGroup(group: "sail").sorted())
+        _ = dataManager.addAudioToGroup(group: "sail1", audio: "AWOLNATION - Sail-4.wav")
+        _ = dataManager.saveAudio("AWOLNATION - Sail-5.wav")
+        _ = dataManager.addAudioToGroup(group: "sail", audio: "AWOLNATION - Sail-5.wav")
+        _ = dataManager.addAudioToGroup(group: "sail", audio: "AWOLNATION - Sail-3")
+        audios.append("AWOLNATION - Sail-5.wav")
+        XCTAssertEqual(audios, dataManager.getAudiosForGroup(group: "sail").sorted())
 
     }
 
-    func testAddSampleToGroup() {
-        var audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
+    func testAddAudiosToGroup() {
+        var audios = ["AWOLNATION - Sail-1.wav", "AWOLNATION - Sail-2.wav", "AWOLNATION - Sail-3.wav"]
         audios.forEach({ sample in
             _ = dataManager.saveAudio(sample)
-            XCTAssertTrue(dataManager.addSampleToGroup(group: "sail", sample: sample))
+            XCTAssertTrue(dataManager.addAudioToGroup(group: "sail", audio: sample))
         })
-        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+        XCTAssertEqual(audios, dataManager.getAudiosForGroup(group: "sail").sorted())
 
         //Test adding sample that does not exist
-        XCTAssertFalse(dataManager.addSampleToGroup(group: "sail", sample: "AWOLNATION - Sail-5"))
-        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+        XCTAssertFalse(dataManager.addAudioToGroup(group: "sail", audio: "AWOLNATION - Sail-5.wav"))
+        XCTAssertEqual(audios, dataManager.getAudiosForGroup(group: "sail").sorted())
 
         //Test adding sample to same group
-        _ = dataManager.saveAudio("AWOLNATION - Sail-5")
-        audios.append("AWOLNATION - Sail-5")
-        XCTAssertTrue(dataManager.addSampleToGroup(group: "sail", sample: "AWOLNATION - Sail-5"))
-        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
+        _ = dataManager.saveAudio("AWOLNATION - Sail-5.wav")
+        audios.append("AWOLNATION - Sail-5.wav")
+        XCTAssertTrue(dataManager.addAudioToGroup(group: "sail", audio: "AWOLNATION - Sail-5.wav"))
+        XCTAssertEqual(audios, dataManager.getAudiosForGroup(group: "sail").sorted())
 
         //Test adding sample to different group
-        _ = dataManager.saveAudio("AWOLNATION - Sail-4")
-        XCTAssertTrue(dataManager.addSampleToGroup(group: "sail1", sample: "AWOLNATION - Sail-4"))
-        XCTAssertEqual(["AWOLNATION - Sail-4"], dataManager.getSamplesForGroup(group: "sail1"))
+        _ = dataManager.saveAudio("AWOLNATION - Sail-4.wav")
+        XCTAssertTrue(dataManager.addAudioToGroup(group: "sail1", audio: "AWOLNATION - Sail-4.wav"))
+        XCTAssertEqual(["AWOLNATION - Sail-4.wav"], dataManager.getAudiosForGroup(group: "sail1"))
 
         //Test changing group
-        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
-        XCTAssertTrue(dataManager.addSampleToGroup(group: "sail1", sample: "AWOLNATION - Sail-5"))
+        XCTAssertEqual(audios, dataManager.getAudiosForGroup(group: "sail").sorted())
+        XCTAssertTrue(dataManager.addAudioToGroup(group: "sail1", audio: "AWOLNATION - Sail-5.wav"))
         let removedSample = audios.removeLast()
-        XCTAssertEqual(audios, dataManager.getSamplesForGroup(group: "sail").sorted())
-        XCTAssertEqual(["AWOLNATION - Sail-4", removedSample],
-                       dataManager.getSamplesForGroup(group: "sail1").sorted())
+        XCTAssertEqual(audios, dataManager.getAudiosForGroup(group: "sail").sorted())
+        XCTAssertEqual(["AWOLNATION - Sail-4.wav", removedSample],
+                       dataManager.getAudiosForGroup(group: "sail1").sorted())
 
     }
 
-    func testGetAllGroups() {
-        var audios = ["AWOLNATION - Sail-1", "AWOLNATION - Sail-2", "AWOLNATION - Sail-3"]
+    func testGetAllAudioGroups() {
+        let audios = ["AWOLNATION - Sail-1.wav", "AWOLNATION - Sail-2.wav", "AWOLNATION - Sail-3.wav"]
         audios.forEach({ sample in
             _ = dataManager.saveAudio(sample)
-            XCTAssertTrue(dataManager.addSampleToGroup(group: sample, sample: sample))
+            XCTAssertTrue(dataManager.addAudioToGroup(group: sample, audio: sample))
         })
-        XCTAssertEqual(audios, dataManager.getAllGroups().sorted())
+        XCTAssertEqual(audios, dataManager.getAllAudioGroups().sorted())
+    }
+
+    func testGetAudioGroup() {
+        let session = Session(bpm: 120)
+        let audioFile = "AWOLNATION - Sail-1.wav"
+        _ = dataManager.saveAudio(audioFile)
+        session.addAudio(page: 0, row: 0, col: 0, audioFile: audioFile)
+        let pad = session.getPad(page: 0, row: 0, col: 0)!
+        XCTAssertNil(dataManager.getAudioGroup(pad: pad))
+        _ = dataManager.addAudioToGroup(group: "sail", audio: audioFile)
+        XCTAssertEqual(dataManager.getAudioGroup(pad: pad)!, "sail")
+        _ = dataManager.addAudioToGroup(group: "sail1", audio: audioFile)
+        XCTAssertEqual(dataManager.getAudioGroup(pad: pad)!, "sail1")
     }
 
 }

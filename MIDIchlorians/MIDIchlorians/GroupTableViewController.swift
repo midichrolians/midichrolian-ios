@@ -11,7 +11,7 @@ import UIKit
 // Manages the groups (of samples) that the user has
 // A user might have a lot of samples, and this view allows users to browse all samples by groups
 class GroupTableViewController: UITableViewController {
-    var groups = DataManager.instance.getAllGroups().sorted()
+    var groups = DataManager.instance.getAllAudioGroups().sorted()
     private let reuseIdentifier = Config.GroupTableReuseIdentifier
     weak var delegate: SampleTableDelegate?
     var selectedSampleName: String?
@@ -68,7 +68,7 @@ class GroupTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sampleTableViewController = SampleTableViewController(style: .plain)
         let group = groups[indexPath.row]
-        sampleTableViewController.sampleList = DataManager.instance.getSamplesForGroup(group: group)
+        sampleTableViewController.sampleList = DataManager.instance.getAudiosForGroup(group: group)
         sampleTableViewController.delegate = delegate
         sampleTableViewController.selectedSampleName = selectedSampleName
         sampleTableViewController.group = group
