@@ -11,7 +11,7 @@ import RealmSwift
 /**
  This class represents a single Pad in a grid. A pad may have a track(audio file) and an animation
  assigned to it. A pad may also have a BPM value, indicating the number of 
- beats per minute at which the corresponding audio track plays.
+ beats per minute at which the corresponding audio track plays, in case the track assigned is a looping track.
  These properties are supported via optionals, since they may or may not exist. One exception
  is the BPM field, since Realm has it's own syntax for Integer optionals, which I did not want to 
  use as it causes a few issues. To someone calling the functions, the BPM property can be treated 

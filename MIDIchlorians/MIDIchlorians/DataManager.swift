@@ -24,7 +24,7 @@ import RealmSwift
 class DataManager {
 
     private let realm: Realm?
-    static let instance = DataManager()
+    static var instance = DataManager()
     private var sessionNames: Set<String>
     private var animationStrings: Set<String>
     private var audioStrings: Set<String>
@@ -32,7 +32,7 @@ class DataManager {
     //Stores the name of the last session accessed by the user
     private var lastSessionName: String?
 
-    init() {
+    private init() {
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
         //Syntax for getting realm instance
         realm = try? Realm()
@@ -49,6 +49,12 @@ class DataManager {
         initialiseAnimations()
         initialiseAudios()
         initialiseAudioGroups()
+    }
+
+    //For testing purposes only(as testing singletons is hard)
+    static func setTestDatabase(testDBName: String?) {
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = testDBName
+        DataManager.instance = DataManager()
     }
 
     private func initialiseSessionNames() {

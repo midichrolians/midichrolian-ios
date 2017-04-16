@@ -252,8 +252,17 @@ class Session: Object {
         }
     }
 
-    func getPadList() -> List<Pad> {
-        return padList
+    func getPadList() -> [Pad] {
+        var padArray = [Pad]()
+        for page in 0..<numPages {
+            for row in 0..<numRows {
+                for col in 0..<numCols {
+                    let pad = pads[page][row][col]
+                    padArray.append(pad)
+                }
+            }
+        }
+        return padArray
     }
 
     override func isEqual(_ object: Any?) -> Bool {
