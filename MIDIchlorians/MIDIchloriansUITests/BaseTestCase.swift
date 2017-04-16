@@ -40,7 +40,7 @@ class BaseTestCase: XCTestCase {
     }
 
     func enterEditMode() {
-        app.buttons[Config.TopNavExitLabel].tap()
+        app.buttons[Config.TopNavEditLabel].tap()
     }
 
     func selectAnimationsTab() {
