@@ -65,5 +65,5 @@ class AnimationSequenceTests: XCTestCase {
 
         XCTAssertNil(animationSequenceFromString)
     }
- 
+
 }

@@ -10,11 +10,15 @@ import Foundation
 import AVFoundation
 
 /**
- Singleton, access the audio players from here. Will take in an enum (audioPlayerSetting) to choose which audioplayer to use
+ Singleton, access the audio players from here. Will take in an 
+ enum (audioPlayerSetting) to choose which audioplayer to use
  AudioPlayerSetting = 
- gSAudio: newest setting, uses GS audio for all short clips, uses AudioTrackPlayer for Long clips and loops
- aVAudioPlayer: Uses AudioTrackPlayer for all audios,all lengths and loops. will have distortion when playing short clips
- audioServices: oldest setting, uses AudioClipPlayer (running on audio services) for short clips and loops, AudioTrackPlayer for long clips
+ gSAudio: newest setting, uses GS audio for all short clips, 
+ uses AudioTrackPlayer for Long clips and loops
+ aVAudioPlayer: Uses AudioTrackPlayer for all audios,all lengths and loops.
+ will have distortion when playing short clips
+ audioServices: oldest setting, uses AudioClipPlayer (running on audio services)
+ for short clips and loops, AudioTrackPlayer for long clips
  */
 class AudioManager {
     public static var instance = AudioManager(Config.audioSetting)
@@ -186,7 +190,8 @@ class AudioManager {
         return Double(CMTimeGetSeconds(asset.duration))
     }
 
-    //returns audio duration in X min X seconds format. not used in UI as of submission, but can be implemented if required
+    //returns audio duration in X min X seconds format. not used 
+    //in UI as of submission, but can be implemented if required
     func getDuration(for resource: String) -> String {
         let durNum = audioDuration(for: resource)
         if durNum < 0 {

@@ -11,7 +11,8 @@ import AVFoundation
 //perferbably 30 seconds or shorter only
 
 /**
- Plays using AudioServices, causes the issue of audios clips using the system sound settings instead of the usual media audio settings.
+ Plays using AudioServices, causes the issue of audios clips using the 
+ system sound settings instead of the usual media audio settings.
  */
 
 struct AudioClipPlayer {
