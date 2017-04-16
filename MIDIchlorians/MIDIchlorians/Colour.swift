@@ -13,12 +13,12 @@ import UIKit
 /// physical buttons underlaid with LED lights
 
 enum Colour: String, JSONable {
-    case violet
-    case indigo
+    case purple
+    case lightBlue
     case blue
     case green
     case yellow
-    case orange
+    case pink
     case red
 
     init(fromJSON: String) {
@@ -29,42 +29,23 @@ enum Colour: String, JSONable {
         self = colour
     }
 
-    var uiColor: UIColor {
-        switch self {
-            case .violet:
-                return UIColor.violet
-            case .indigo:
-                return UIColor.indigo
-            case .blue:
-                return UIColor.blue
-            case .green:
-                return UIColor.green
-            case .yellow:
-                return UIColor.yellow
-            case .orange:
-                return UIColor.orange
-            case .red:
-                return UIColor.red
-        }
-    }
-
     var image: UIImage {
         var image: UIImage?
         switch self {
-            case .violet:
-                image = UIImage(named: "cesiousButton")
-            case .indigo:
-                image = UIImage(named: "cyanButton")
+            case .purple:
+                image = UIImage(named: Config.colourPurpleImageName)
+            case .lightBlue:
+                image = UIImage(named: Config.colourLightBlueImageName)
             case .blue:
-                image = UIImage(named: "blueButton")
+                image = UIImage(named: Config.colourBlueImageName)
             case .green:
-                image = UIImage(named: "greenButton")
+                image = UIImage(named: Config.colourGreenImageName)
             case .yellow:
-                image = UIImage(named: "yellowButton")
-            case .orange:
-                image = UIImage(named: "pinkButton")
+                image = UIImage(named: Config.colourYellowImageName)
+            case .pink:
+                image = UIImage(named: Config.colourPinkImageName)
             case .red:
-                image = UIImage(named: "redButton")
+                image = UIImage(named: Config.colourRedImageName)
         }
         guard let imageToBeReturned = image else {
             return UIImage()
@@ -77,6 +58,6 @@ enum Colour: String, JSONable {
     }
 
     static var allColours: [Colour] {
-        return [.violet, .indigo, .blue, .green, .yellow, .orange, .red]
+        return [.purple, .lightBlue, .blue, .green, .yellow, .pink, .red]
     }
 }

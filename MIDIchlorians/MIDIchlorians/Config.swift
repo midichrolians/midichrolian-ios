@@ -62,18 +62,12 @@ struct Config {
             "VOX", "hit"
         ],
         "Mortal Kombat": [
-            "1", "10",
-            "11", "12",
-            "13", "14",
-            "15", "16",
-            "17", "18",
-            "19", "2",
-            "20", "21",
-            "22", "23",
-            "25", "3",
-            "4", "5",
-            "6", "7",
-            "8", "9"
+            "1", "10", "11", "12",
+            "13", "14", "15", "16",
+            "17", "18", "19", "2",
+            "20", "21", "22", "23",
+            "25", "3", "4", "5",
+            "6", "7", "8", "9"
         ],
         "Drums": [
             "clap-808", "clap-analog",
@@ -128,16 +122,14 @@ struct Config {
             "tom-short"
         ],
         "Cymatics": [
-            "808 1 F#",
-            "808 2 E", "Arp Loop 1 Em 140 BPM",
+            "808 1 F#", "808 2 E", "Arp Loop 1 Em 140 BPM",
             "Arp Loop 2 Em 140 BPM", "Brass Loop 1 Fm 160 BPM",
             "Brass Loop 2 Dm 145 BPM ", "Brass Stab F",
             "Build Up 1 160 BPM", "Build Up 2 150 BPM",
             "Downlifter F 140 BPM", "Drop Loop 1 Em 160 BPM",
             "Drop Loop 2 Fm 150 BPM", "Hihat Loop 1 160 BPM",
             "Hihat Loop 2 150 BPM", "Impact 1",
-            "Impact 2", "Kick 1",
-            "Kick 2", "Kick 3",
+            "Impact 2", "Kick 1", "Kick 2", "Kick 3",
             "Melody Loop - Fm 150 BPM", "Perc Drop Loop 1 - 140 BPM",
             "Perc Drop Loop 2 - 140 BPM", "Perc Drop Loop 3 - 160 BPM",
             "Perc Fill - 150 BPM", "Predrop Vocal 1",
@@ -152,27 +144,18 @@ struct Config {
             "Vocal Chop Loop 1 - Fm 150 BPM", "Vocal Chop Loop 2 - 150 BPM "
         ],
         "Vocal": [
-            "dj-snake-vocal",
-            "electro-vocal",
-            "vocal-drop",
-            "weazel-vocal",
-            "yeah"
+            "dj-snake-vocal", "electro-vocal", "vocal-drop",
+            "weazel-vocal", "yeah"
         ],
         "Intro": [
-            "avicii-waiting-for-love-1",
-            "avicii-waiting-for-love-2",
-            "calvin-intro",
-            "dubstep",
-            "ironman",
-            "titanium",
-            "tron-intro"
+            "avicii-waiting-for-love-1", "avicii-waiting-for-love-2",
+            "calvin-intro", "dubstep",
+            "ironman", "titanium", "tron-intro"
         ]
     ]
 
     static let preloadedAnimationTypes = [
-        "Spark",
-        "Rainbow",
-        "Spread"
+        "Spark", "Rainbow", "Spread"
     ]
     static let SoundExt = "wav"
     static let AnimationExt = "json"
@@ -372,11 +355,9 @@ struct Config {
 
     // About / Tutorial
     static let TutorialImages = [
-        "tutorial_1.png", "tutorial_2.png",
-        "tutorial_3.png", "tutorial_4.png",
-        "tutorial_5.png", "tutorial_6.png",
-        "tutorial_7.png", "tutorial_8.png",
-        "tutorial_9.png"
+        "tutorial_1.png", "tutorial_2.png", "tutorial_3.png",
+        "tutorial_4.png", "tutorial_5.png", "tutorial_6.png",
+        "tutorial_7.png", "tutorial_8.png", "tutorial_9.png"
     ]
 
     static let animationBitColourKey = "colour"
@@ -409,4 +390,12 @@ struct Config {
     static let cloudNotificationKey = "Cloud"
 
     static let defaultGroup = "Your samples"
+
+    static let colourPurpleImageName = "purpleButton"
+    static let colourLightBlueImageName = "lightBlueButton"
+    static let colourBlueImageName = "blueButton"
+    static let colourGreenImageName = "greenButton"
+    static let colourYellowImageName = "yellowButton"
+    static let colourPinkImageName = "pinkButton"
+    static let colourRedImageName = "redButton"
 }
