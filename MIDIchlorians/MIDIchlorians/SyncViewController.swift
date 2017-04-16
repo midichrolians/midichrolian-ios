@@ -42,21 +42,21 @@ class SyncViewController: UIViewController {
 
     func setUp() {
         if isLoggedIn {
-            loginout.setTitle(Config.TopNavLoginTitle, for: .normal)
+            loginout.setTitle(Config.topNavLoginTitle, for: .normal)
         } else {
-            loginout.setTitle(Config.TopNavLogoutTitle, for: .normal)
+            loginout.setTitle(Config.topNavLogoutTitle, for: .normal)
         }
 
-        upload.setTitle(Config.TopNavSyncUploadTitle, for: .normal)
+        upload.setTitle(Config.topNavSyncUploadTitle, for: .normal)
 
-        download.setTitle(Config.TopNavSyncDownloadTitle, for: .normal)
+        download.setTitle(Config.topNavSyncDownloadTitle, for: .normal)
 
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .center
 
-        self.preferredContentSize = CGSize(width: Config.TopNavSyncPreferredWidth,
-                                           height: Config.TopNavSyncPreferredHeight)
+        self.preferredContentSize = CGSize(width: Config.topNavSyncPreferredWidth,
+                                           height: Config.topNavSyncPreferredHeight)
 
         spinnerView.hidesWhenStopped = true
     }
@@ -70,12 +70,12 @@ class SyncViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isLoggedIn {
-            loginout.setTitle(Config.TopNavLogoutTitle, for: .normal)
+            loginout.setTitle(Config.topNavLogoutTitle, for: .normal)
             loginout.isEnabled = !spinnerView.isAnimating
             upload.isEnabled = !spinnerView.isAnimating
             download.isEnabled = !spinnerView.isAnimating
         } else {
-            loginout.setTitle(Config.TopNavLoginTitle, for: .normal)
+            loginout.setTitle(Config.topNavLoginTitle, for: .normal)
             upload.isEnabled = false
             download.isEnabled = false
         }
@@ -96,7 +96,7 @@ class SyncViewController: UIViewController {
         }
 
         spinnerView.snp.makeConstraints { make in
-            make.edges.equalTo(view).inset(Config.TopNavSyncSpinnerInset)
+            make.edges.equalTo(view).inset(Config.topNavSyncSpinnerInset)
         }
     }
 

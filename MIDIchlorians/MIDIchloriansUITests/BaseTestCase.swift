@@ -40,47 +40,47 @@ class BaseTestCase: XCTestCase {
     }
 
     func enterEditMode() {
-        app.buttons[Config.TopNavEditLabel].tap()
+        app.buttons[Config.topNavEditLabel].tap()
     }
 
     func selectAnimationsTab() {
-        app.tabBars.buttons[Config.AnimationTabTitle].tap()
+        app.tabBars.buttons[Config.animationTabTitle].tap()
     }
 
-    // Grid related
+    // MARK: - Grid related
     func selectFirstPadInGrid() {
-        let grid = app.collectionViews[Config.GridA11yLabel]
+        let grid = app.collectionViews[Config.gridA11yLabel]
         let pad1 = grid.cells.element(boundBy: 0)
         pad1.tap()
     }
 
     func dismissPopover() {
-        app.otherElements[Config.PopOverDismissLabel].tap()
+        app.otherElements[Config.popOverDismissLabel].tap()
     }
 
     // MARK: - Table view action related
 
     func editRow(_ table: XCUIElement) {
         table.cells.element(boundBy: 0).swipeLeft()
-        table.cells.element(boundBy: 0).buttons[Config.CommonEditActionTitle].tap()
+        table.cells.element(boundBy: 0).buttons[Config.commonEditActionTitle].tap()
     }
 
     func removeRow(_ table: XCUIElement) {
         table.cells.element(boundBy: 0).swipeLeft()
-        table.cells.element(boundBy: 0).buttons[Config.CommonRemoveActionTitle].tap()
+        table.cells.element(boundBy: 0).buttons[Config.commonRemoveActionTitle].tap()
     }
 
     // MARK: - Alerts related
 
     func cancel(_ alert: XCUIElement) {
-        alert.buttons[Config.CommonButtonCancelTitle].tap()
+        alert.buttons[Config.commonButtonCancelTitle].tap()
     }
 
     func okay(_ alert: XCUIElement) {
-        alert.buttons[Config.CommonButtonOkayTitle].tap()
+        alert.buttons[Config.commonButtonOkayTitle].tap()
     }
 
     func confirm(_ alert: XCUIElement) {
-        alert.buttons[Config.CommonButtonConfirmTitle].tap()
+        alert.buttons[Config.commonButtonConfirmTitle].tap()
     }
 }

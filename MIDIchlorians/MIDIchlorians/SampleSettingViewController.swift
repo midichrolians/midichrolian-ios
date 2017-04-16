@@ -29,8 +29,8 @@ class SampleSettingViewController: UIViewController {
 
     func setUp() {
         sampleSettingControl.selectedSegmentIndex = 0
-        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, Config.TopNavBPMDefaultBPM), for: .normal)
-        bpmVC.selectedBPM = Config.TopNavBPMDefaultBPM
+        bpmSelector.setTitle(String.init(format: Config.topNavBPMTitleFormat, Config.topNavBPMDefaultBPM), for: .normal)
+        bpmVC.selectedBPM = Config.topNavBPMDefaultBPM
     }
 
     func buildViewHierarchy() {
@@ -40,8 +40,8 @@ class SampleSettingViewController: UIViewController {
 
     func buildConstraints() {
         sampleSettingControl.snp.makeConstraints { make in
-            make.left.top.equalTo(view).offset(Config.AppLeftPadding)
-            make.height.equalTo(Config.TimelineHeight)
+            make.left.top.equalTo(view).offset(Config.appLeftPadding)
+            make.height.equalTo(Config.timelineHeight)
         }
 
         bpmSelector.snp.makeConstraints { make in
@@ -81,7 +81,7 @@ class SampleSettingViewController: UIViewController {
     }
 
     func bpmListener(bpm: Int) {
-        bpmSelector.setTitle(String.init(format: Config.TopNavBPMTitleFormat, bpm), for: .normal)
+        bpmSelector.setTitle(String.init(format: Config.topNavBPMTitleFormat, bpm), for: .normal)
         bpmSelectorDelegate?.bpm(selected: bpm)
     }
 

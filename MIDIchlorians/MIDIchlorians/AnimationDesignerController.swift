@@ -17,7 +17,7 @@ import SnapKit
 // The created animation can also be named and saved.
 class AnimationDesignerController: UIViewController {
     weak var delegate: AnimationDesignerDelegate?
-    private let offset: CGFloat = Config.AnimationDesignItemOffset
+    private let offset: CGFloat = Config.animationDesignItemOffset
 
     private var animationTypeSegmentedControl = UISegmentedControl(
         items: AnimationTypeCreationMode.allValues())
@@ -57,15 +57,15 @@ class AnimationDesignerController: UIViewController {
     }
 
     private func setUp() {
-        timelineLabel.text = Config.AnimationDesignTimelineLabel
+        timelineLabel.text = Config.animationDesignTimelineLabel
 
         timeline.timelineDelegate = self
         timeline.collectionView?.backgroundColor = UIColor.clear
 
         animationTypeSegmentedControl.selectedSegmentIndex = 0
-        animationTypeSegmentedControl.tintColor = Config.FontPrimaryColor
+        animationTypeSegmentedControl.tintColor = Config.fontPrimaryColor
 
-        colourLabel.text = Config.AnimationDesignColourLabel
+        colourLabel.text = Config.animationDesignColourLabel
 
         colourPicker.colourDelegate = self
         colourPicker.collectionView?.backgroundColor = UIColor.clear
@@ -73,15 +73,15 @@ class AnimationDesignerController: UIViewController {
         colourSelection.viewController = colourPicker
         colourSelection.position(at: nil)
 
-        saveButton.setTitle(Config.AnimationDesignSaveLabel, for: .normal)
+        saveButton.setTitle(Config.animationDesignSaveLabel, for: .normal)
     }
 
     private func setUpAlert() {
-        saveAlert = UIAlertController(title: Config.AnimationSaveAlertTitle, message: nil, preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: Config.AnimationSaveOkayTitle, style: .default, handler: saveActionDone)
+        saveAlert = UIAlertController(title: Config.animationSaveAlertTitle, message: nil, preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: Config.animationSaveOkayTitle, style: .default, handler: saveActionDone)
         saveAction.isEnabled = false
         saveAlert.addAction(saveAction)
-        saveAlert.addAction(UIAlertAction(title: Config.AnimationSaveCancelTitle, style: .cancel, handler: nil))
+        saveAlert.addAction(UIAlertAction(title: Config.animationSaveCancelTitle, style: .cancel, handler: nil))
         saveAlert.addTextField(configurationHandler: { $0.delegate = self })
     }
 
@@ -99,7 +99,7 @@ class AnimationDesignerController: UIViewController {
         timeline.view.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(timelineLabel.snp.right).offset(offset)
             make.right.equalTo(view)
-            make.height.equalTo(Config.TimelineHeight)
+            make.height.equalTo(Config.timelineHeight)
             make.top.equalTo(view.snp.top).offset(offset)
         }
 
@@ -112,14 +112,14 @@ class AnimationDesignerController: UIViewController {
         colourPicker.view.snp.makeConstraints { make in
             make.left.equalTo(timeline.view)
             make.right.equalTo(view)
-            make.height.equalTo(Config.ColourPickerHeight)
-            make.top.equalTo(timeline.view.snp.bottom).offset(Config.ColourPickerTopOffset)
+            make.height.equalTo(Config.colourPickerHeight)
+            make.top.equalTo(timeline.view.snp.bottom).offset(Config.colourPickerTopOffset)
         }
 
         animationTypeSegmentedControl.snp.makeConstraints { make in
             make.left.equalTo(colourLabel)
-            make.top.equalTo(colourPicker.view.snp.bottom).offset(Config.AnimationTypeControlTopOffset)
-            make.height.equalTo(Config.TimelineHeight)
+            make.top.equalTo(colourPicker.view.snp.bottom).offset(Config.animationTypeControlTopOffset)
+            make.height.equalTo(Config.timelineHeight)
         }
 
         saveButton.snp.makeConstraints { make in

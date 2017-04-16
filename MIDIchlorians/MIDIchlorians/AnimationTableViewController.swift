@@ -14,10 +14,10 @@ class AnimationTableViewController: UITableViewController {
 
     internal var animationTypeNames = AnimationManager.instance.getAllAnimationTypesNames().sorted()
 
-    private let reuseIdentifier = Config.AnimationTableReuseIdentifier
+    private let reuseIdentifier = Config.animationTableReuseIdentifier
     private let newAnimationButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
-    private var editAlert = UIAlertController(title: Config.AnimationEditAlertTitle,
+    private var editAlert = UIAlertController(title: Config.animationEditAlertTitle,
                                               message: nil,
                                               preferredStyle: .alert)
     internal var alertSaveAction: UIAlertAction!
@@ -41,14 +41,14 @@ class AnimationTableViewController: UITableViewController {
     }
 
     private func setUp() {
-        title = Config.AnimationTabTitle
-        tabBarItem = UITabBarItem(title: Config.AnimationTabTitle,
-                                       image: UIImage(named: Config.SidePaneTabBarAnimationIcon),
-                                       selectedImage: UIImage(named: Config.SidePaneTabBarAnimationIcon))
+        title = Config.animationTabTitle
+        tabBarItem = UITabBarItem(title: Config.animationTabTitle,
+                                       image: UIImage(named: Config.sidePaneTabBarAnimationIcon),
+                                       selectedImage: UIImage(named: Config.sidePaneTabBarAnimationIcon))
         tableView.separatorStyle = .none
-        tableView.separatorColor = Config.TableViewSeparatorColor
+        tableView.separatorColor = Config.tableViewSeparatorColor
         tableView.register(AnimationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.accessibilityLabel = Config.AnimationTableA11YLabel
+        tableView.accessibilityLabel = Config.animationTableA11YLabel
 
         navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.leftBarButtonItem = self.newAnimationButton
@@ -58,20 +58,20 @@ class AnimationTableViewController: UITableViewController {
 
     private func setUpAlert() {
         // Set up alert shown when editing a row
-        alertSaveAction = UIAlertAction(title: Config.AnimationEditOkayTitle,
+        alertSaveAction = UIAlertAction(title: Config.animationEditOkayTitle,
                                         style: .default,
                                         handler: saveActionDone)
-        alertCancelAction = UIAlertAction(title: Config.AnimationEditCancelTitle,
+        alertCancelAction = UIAlertAction(title: Config.animationEditCancelTitle,
                                           style: .cancel,
                                           handler: cancelActionDone)
         editAlert.addAction(alertCancelAction)
         editAlert.addAction(alertSaveAction)
 
         // Set up alert shown when removing a row
-        removeAlertConfirmAction = UIAlertAction(title: Config.AnimationRemoveConfirmTitle,
+        removeAlertConfirmAction = UIAlertAction(title: Config.animationRemoveConfirmTitle,
                                                  style: .destructive,
                                                  handler: confirmActionDone)
-        removeAlertCancelAction = UIAlertAction(title: Config.AnimationRemoveCancelTitle,
+        removeAlertCancelAction = UIAlertAction(title: Config.animationRemoveCancelTitle,
                                                 style: .cancel,
                                                 handler: cancelActionDone)
         removeAlert.addAction(removeAlertConfirmAction)
@@ -81,10 +81,10 @@ class AnimationTableViewController: UITableViewController {
 
     private func setUpEditActions() {
         rowEditAction = UITableViewRowAction(style: .normal,
-                                             title: Config.AnimationEditActionTitle,
+                                             title: Config.animationEditActionTitle,
                                              handler: editAction)
         rowRemoveAction = UITableViewRowAction(style: .destructive,
-                                               title: Config.AnimationRemoveActionTitle,
+                                               title: Config.animationRemoveActionTitle,
                                                handler: removeAction)
     }
 
@@ -129,7 +129,7 @@ class AnimationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
-        cell.textLabel?.textColor = Config.AnimationTableViewCellColor
+        cell.textLabel?.textColor = Config.animationTableViewCellColor
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -137,7 +137,7 @@ class AnimationTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Config.AnimationTableCellHeight
+        return Config.animationTableCellHeight
     }
 
     override func tableView(_ tableView: UITableView,
@@ -155,7 +155,7 @@ class AnimationTableViewController: UITableViewController {
     // Show alert to confirm deletion
     func removeAction(_: UITableViewRowAction, _ indexPath: IndexPath) {
         editingIndexPath = indexPath
-        let title = String(format: Config.AnimationRemoveTitleFormat, animationType(at: indexPath))
+        let title = String(format: Config.animationRemoveTitleFormat, animationType(at: indexPath))
         removeAlert.title = title
         present(removeAlert, animated: true, completion: nil)
     }

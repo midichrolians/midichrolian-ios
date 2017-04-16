@@ -77,13 +77,13 @@ class GridController: UIViewController {
 
     internal var colour: Colour?
     internal var animationSequence = AnimationSequence()
-    internal var animationName = Config.NewAnimationTypeDefaultName
+    internal var animationName = Config.newAnimationTypeDefaultName
     internal var animationTypeCreationMode = AnimationTypeCreationMode.relative
 
     internal var sampleSettingMode = SampleSettingMode.once
 
     private var alert = UIAlertController(
-        title: Config.RemoveButtonAlertTitle, message: nil, preferredStyle: .alert)
+        title: Config.removeButtonAlertTitle, message: nil, preferredStyle: .alert)
     private var removeSampleAction: UIAlertAction!
     private var removeAnimationAction: UIAlertAction!
     private var removeBothAction: UIAlertAction!
@@ -114,10 +114,10 @@ class GridController: UIViewController {
     private func setup() {
         // for some reason we must register this here, instead of in GridCollectionView.viewDidLoad
         gridCollectionView.register(GridCollectionViewCell.self,
-                                    forCellWithReuseIdentifier: Config.GridCollectionViewCellIdentifier)
+                                    forCellWithReuseIdentifier: Config.gridCollectionViewCellIdentifier)
         gridCollectionView.padDelegate = self
         gridCollectionView.backgroundColor = UIColor.clear
-        gridCollectionView.accessibilityLabel = Config.GridA11yLabel
+        gridCollectionView.accessibilityLabel = Config.gridA11yLabel
 
         grid.padGrid = currentSession.getGrid(page: currentPage)
         grid.gridDisplayDelegate = self
@@ -131,18 +131,18 @@ class GridController: UIViewController {
         RecorderManager.instance.delegate = self
 
         removeSampleAction = UIAlertAction(
-            title: Config.RemoveButtonSampleTitle, style: .destructive, handler: removeSample)
+            title: Config.removeButtonSampleTitle, style: .destructive, handler: removeSample)
         removeAnimationAction = UIAlertAction(
-            title: Config.RemoveButtonAnimationTitle, style: .destructive, handler: removeAnimation)
+            title: Config.removeButtonAnimationTitle, style: .destructive, handler: removeAnimation)
         removeBothAction = UIAlertAction(
-            title: Config.RemoveButtonBothTitle, style: .destructive, handler: removeBoth)
-        cancelAction = UIAlertAction(title: Config.RemoveButtonCancelTitle, style: .default, handler: nil)
+            title: Config.removeButtonBothTitle, style: .destructive, handler: removeBoth)
+        cancelAction = UIAlertAction(title: Config.removeButtonCancelTitle, style: .default, handler: nil)
     }
 
     private func buildConstraints() {
         page.view.snp.makeConstraints { make in
             make.top.right.bottom.equalTo(view)
-            make.width.equalTo(view).multipliedBy(1.0/9.0).offset(-Config.ItemInsets.right)
+            make.width.equalTo(view).multipliedBy(1.0/9.0).offset(-Config.itemInsets.right)
         }
         grid.view.snp.makeConstraints { make in
             make.top.left.bottom.equalTo(view)

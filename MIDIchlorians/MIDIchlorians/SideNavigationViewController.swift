@@ -17,10 +17,10 @@ class SideNavigationViewController: UINavigationController {
 
         self.navigationBar.barStyle = .default
         self.navigationBar.isTranslucent = false
-        self.navigationBar.barTintColor = Config.SecondaryBackgroundColor
-        self.navigationBar.tintColor = Config.FontSecondaryColor
+        self.navigationBar.barTintColor = Config.secondaryBackgroundColor
+        self.navigationBar.tintColor = Config.fontSecondaryColor
         self.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: Config.FontSecondaryColor
+            NSForegroundColorAttributeName: Config.fontSecondaryColor
         ]
     }
 

@@ -13,7 +13,7 @@ import ImageSlideshow
 // Shows the tutorial
 class TutorialViewController: UIViewController {
     var closeButton = UIButton(type: .system)
-    let images = Config.TutorialImages
+    let images = Config.tutorialImages
     var currentIndex = 0
     var slideshow = ImageSlideshow()
 
@@ -32,12 +32,12 @@ class TutorialViewController: UIViewController {
         slideshow.pageControl.currentPageIndicatorTintColor = UIColor.lightGray
         slideshow.pageControl.pageIndicatorTintColor = UIColor.black
         slideshow.contentScaleMode = UIViewContentMode.scaleAspectFit
-        let sources = Config.TutorialImages.map { ImageSource(imageString: $0)! }
+        let sources = Config.tutorialImages.map { ImageSource(imageString: $0)! }
         slideshow.setImageInputs(sources)
 
         view.backgroundColor = UIColor.white
 
-        closeButton.setTitle(Config.AboutCloseTitle, for: .normal)
+        closeButton.setTitle(Config.aboutCloseTitle, for: .normal)
         closeButton.setTitleColor(UIColor.black, for: .normal)
     }
 
@@ -52,12 +52,12 @@ class TutorialViewController: UIViewController {
 
     func buildConstraints() {
         slideshow.snp.makeConstraints { make in
-            make.edges.equalTo(view).inset(Config.AboutSlideshowInset)
+            make.edges.equalTo(view).inset(Config.aboutSlideshowInset)
         }
 
         closeButton.snp.makeConstraints { make in
-            make.top.right.equalTo(view).inset(Config.AboutCloseInset)
-            make.height.width.equalTo(Config.AboutCloseWidth)
+            make.top.right.equalTo(view).inset(Config.aboutCloseInset)
+            make.height.width.equalTo(Config.aboutCloseWidth)
         }
     }
 

@@ -17,7 +17,7 @@ class SampleTableViewController: UITableViewController {
         }
     }
 
-    private let reuseIdentifier = Config.SampleTableReuseIdentifier
+    private let reuseIdentifier = Config.sampleTableReuseIdentifier
 
     internal var sampleList: [String] = []
     var selectedSampleName: String?
@@ -38,14 +38,14 @@ class SampleTableViewController: UITableViewController {
     func setUp() {
         tableView.separatorStyle = .none
         tableView.register(SampleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.accessibilityLabel = Config.SampleTableA11yLabel
+        tableView.accessibilityLabel = Config.sampleTableA11yLabel
     }
 
     func setUpAlert() {
-        removeAlertConfirmAction = UIAlertAction(title: Config.SampleRemoveConfirmTitle,
+        removeAlertConfirmAction = UIAlertAction(title: Config.sampleRemoveConfirmTitle,
                                                  style: .destructive,
                                                  handler: confirmActionDone)
-        removeAlertCancelAction = UIAlertAction(title: Config.SampleRemoveCancelTitle,
+        removeAlertCancelAction = UIAlertAction(title: Config.sampleRemoveCancelTitle,
                                                 style: .cancel,
                                                 handler: cancelActionDone)
         removeAlert.addAction(removeAlertConfirmAction)
@@ -110,7 +110,7 @@ class SampleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
-        cell.textLabel?.textColor = Config.SampleTableViewCellColor
+        cell.textLabel?.textColor = Config.sampleTableViewCellColor
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,7 +128,7 @@ class SampleTableViewController: UITableViewController {
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             editingIndexPath = indexPath
-            let title = String(format: Config.SampleRemoveTitleFormat, sound(for: indexPath))
+            let title = String(format: Config.sampleRemoveTitleFormat, sound(for: indexPath))
             removeAlert.title = title
             present(removeAlert, animated: true, completion: nil)
         }
@@ -153,7 +153,7 @@ class SampleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Config.SampleTableCellHeight
+        return Config.sampleTableCellHeight
     }
 
     func unhighlight() {

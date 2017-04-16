@@ -12,16 +12,16 @@ import UIKit
 class ColourCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     weak var colourDelegate: ColourPickerDelegate?
 
-    private let reuseIdentifier = Config.ColourReuseIdentifier
-    private let inset = Config.ColourInsets
-    private let clearAnimImage = UIImage(named: Config.ColourClearAnimImage)!
+    private let reuseIdentifier = Config.colourReuseIdentifier
+    private let inset = Config.colourInsets
+    private let clearAnimImage = UIImage(named: Config.colourClearAnimImage)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView?.accessibilityLabel = Config.ColourPickerA11yLabel
+        collectionView?.accessibilityLabel = Config.colourPickerA11yLabel
     }
 
     // MARK: UICollectionViewDataSource

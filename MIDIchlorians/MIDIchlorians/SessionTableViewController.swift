@@ -16,7 +16,7 @@ class SessionTableViewController: UITableViewController {
     private var rowRemoveAction: UITableViewRowAction!
     private var editingIndexPath: IndexPath?
 
-    private var editAlert = UIAlertController(title: Config.SessionEditAlertTitle,
+    private var editAlert = UIAlertController(title: Config.sessionEditAlertTitle,
                                               message: nil,
                                               preferredStyle: .alert)
     internal var alertSaveAction: UIAlertAction!
@@ -31,7 +31,7 @@ class SessionTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    private let reuseIdentifier = Config.SessionTableReuseIdentifier
+    private let reuseIdentifier = Config.sessionTableReuseIdentifier
     private let newSessionButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     private var longPress: UILongPressGestureRecognizer!
     private var syncAction: AlertActionTextFieldSync!
@@ -46,12 +46,12 @@ class SessionTableViewController: UITableViewController {
     }
 
     func setUp() {
-        self.title = Config.SessionTableTitle
+        self.title = Config.sessionTableTitle
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.leftBarButtonItem = self.newSessionButton
         self.tableView.register(SessionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.separatorColor = Config.TableViewSeparatorColor
-        self.tableView.accessibilityLabel = Config.SessionTableA11yLabel
+        self.tableView.separatorColor = Config.tableViewSeparatorColor
+        self.tableView.accessibilityLabel = Config.sessionTableA11yLabel
     }
 
     func setUpTargetAction() {
@@ -61,19 +61,19 @@ class SessionTableViewController: UITableViewController {
 
     func setUpEditAction() {
         rowEditAction = UITableViewRowAction(style: .normal,
-                                             title: Config.SessionEditActionTitle,
+                                             title: Config.sessionEditActionTitle,
                                              handler: editAction)
         rowRemoveAction = UITableViewRowAction(style: .destructive,
-                                               title: Config.SessionRemoveActionTitle,
+                                               title: Config.sessionRemoveActionTitle,
                                                handler: removeAction)
     }
 
     func setUpAlert() {
         // Set up alert shown when editing a row
         alertSaveAction = UIAlertAction(
-            title: Config.SessionEditOkayTitle, style: .default, handler: saveActionDone)
+            title: Config.sessionEditOkayTitle, style: .default, handler: saveActionDone)
         alertCancelAction = UIAlertAction(
-            title: Config.SessionEditCancelTitle, style: .cancel, handler: cancelActionDone)
+            title: Config.sessionEditCancelTitle, style: .cancel, handler: cancelActionDone)
         editAlert.addAction(alertCancelAction)
         editAlert.addAction(alertSaveAction)
 
@@ -81,9 +81,9 @@ class SessionTableViewController: UITableViewController {
         editAlert.addTextField(configurationHandler: { $0.delegate = self.syncAction })
 
         removeAlertConfirmAction = UIAlertAction(
-            title: Config.SessionRemoveConfirmTitle, style: .destructive, handler: confirmActionDone)
+            title: Config.sessionRemoveConfirmTitle, style: .destructive, handler: confirmActionDone)
         removeAlertCancelAction = UIAlertAction(
-            title: Config.SessionEditCancelTitle, style: .cancel, handler: cancelActionDone)
+            title: Config.sessionEditCancelTitle, style: .cancel, handler: cancelActionDone)
 
         removeAlert.addAction(removeAlertConfirmAction)
         removeAlert.addAction(removeAlertCancelAction)
@@ -120,7 +120,7 @@ class SessionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
-        cell.textLabel?.textColor = Config.SessionTableViewCellColor
+        cell.textLabel?.textColor = Config.sessionTableViewCellColor
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -142,7 +142,7 @@ class SessionTableViewController: UITableViewController {
     // Show alert to confirm deletion
     func removeAction(_: UITableViewRowAction, _ indexPath: IndexPath) {
         editingIndexPath = indexPath
-        let title = String(format: Config.SessionRemoveTitleFormat, sessions[indexPath.row])
+        let title = String(format: Config.sessionRemoveTitleFormat, sessions[indexPath.row])
         removeAlert.title = title
         present(removeAlert, animated: true, completion: nil)
     }

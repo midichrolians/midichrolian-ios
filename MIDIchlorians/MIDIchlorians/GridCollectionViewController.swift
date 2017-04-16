@@ -16,7 +16,7 @@ protocol GridDisplayDelegate: class {
 // Provides the data source and layout information for the underying GridCollectionView
 // Events that happen on the collection view will be sent to the parent GridController, not this view controller.
 class GridCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    private let reuseIdentifier = Config.GridCollectionViewCellIdentifier
+    private let reuseIdentifier = Config.gridCollectionViewCellIdentifier
     weak var gridDisplayDelegate: GridDisplayDelegate?
     var mode: Mode {
         return gridDisplayDelegate?.mode ?? .playing
@@ -84,7 +84,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let totalLength = collectionView.frame.width
         let itemsPerRow = CGFloat(collectionView.numberOfItems(inSection: indexPath.section))
-        let insetLength = Config.ItemInsets.left * (itemsPerRow + 1)
+        let insetLength = Config.itemInsets.left * (itemsPerRow + 1)
         let availableLength = totalLength - insetLength
         let itemLength = availableLength / itemsPerRow
         return CGSize(width: itemLength, height: itemLength)
@@ -93,19 +93,19 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return Config.ItemInsets.left
+        return Config.itemInsets.left
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Config.ItemInsets.top
+        return Config.itemInsets.top
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return Config.SectionInsets
+        return Config.sectionInsets
     }
 
 }
