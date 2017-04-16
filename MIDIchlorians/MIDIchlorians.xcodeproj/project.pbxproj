@@ -290,6 +290,11 @@
 		8088778E1EA373A500408A3C /* AudioPlayerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088778B1EA373A500408A3C /* AudioPlayerSetting.swift */; };
 		8088778F1EA373A500408A3C /* AudioTrackPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088778C1EA373A500408A3C /* AudioTrackPlayer.swift */; };
 		808877901EA373A500408A3C /* GSAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088778D1EA373A500408A3C /* GSAudio.swift */; };
+		808877921EA3751000408A3C /* AudioClipPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877911EA3751000408A3C /* AudioClipPlayerTests.swift */; };
+		808877941EA3769500408A3C /* AudioTrackPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877931EA3769500408A3C /* AudioTrackPlayerTests.swift */; };
+		808877971EA3794E00408A3C /* RecorderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877961EA3794E00408A3C /* RecorderManagerTests.swift */; };
+		808877991EA385C000408A3C /* PlayBackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808877981EA385C000408A3C /* PlayBackerTests.swift */; };
+		8088779B1EA385DE00408A3C /* TimeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088779A1EA385DE00408A3C /* TimeTrackerTests.swift */; };
 		80A050BC1E98033C00091411 /* RecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050BB1E98033C00091411 /* RecorderManager.swift */; };
 		80A050C21E99302900091411 /* RecordPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */; };
 		855C6D1D3B704F2288A424F5 /* Pods_MIDIchloriansTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F030C3221080778960805DC2 /* Pods_MIDIchloriansTests.framework */; };
@@ -662,6 +667,11 @@
 		8088778B1EA373A500408A3C /* AudioPlayerSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayerSetting.swift; path = MIDIchlorians/AudioPlayerSetting.swift; sourceTree = "<group>"; };
 		8088778C1EA373A500408A3C /* AudioTrackPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioTrackPlayer.swift; path = MIDIchlorians/AudioTrackPlayer.swift; sourceTree = "<group>"; };
 		8088778D1EA373A500408A3C /* GSAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GSAudio.swift; path = MIDIchlorians/GSAudio.swift; sourceTree = "<group>"; };
+		808877911EA3751000408A3C /* AudioClipPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipPlayerTests.swift; sourceTree = "<group>"; };
+		808877931EA3769500408A3C /* AudioTrackPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrackPlayerTests.swift; sourceTree = "<group>"; };
+		808877961EA3794E00408A3C /* RecorderManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManagerTests.swift; sourceTree = "<group>"; };
+		808877981EA385C000408A3C /* PlayBackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayBackerTests.swift; sourceTree = "<group>"; };
+		8088779A1EA385DE00408A3C /* TimeTrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTrackerTests.swift; sourceTree = "<group>"; };
 		80A050BB1E98033C00091411 /* RecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderManager.swift; sourceTree = "<group>"; };
 		80A050C11E99302900091411 /* RecordPlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPlaybackDelegate.swift; sourceTree = "<group>"; };
 		A930F8946AA2BB25FBE6E119 /* Pods-MIDIchlorians.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIchlorians.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIchlorians/Pods-MIDIchlorians.release.xcconfig"; sourceTree = "<group>"; };
@@ -1022,6 +1032,8 @@
 			isa = PBXGroup;
 			children = (
 				808877871EA3149C00408A3C /* AudioManagerTests.swift */,
+				808877911EA3751000408A3C /* AudioClipPlayerTests.swift */,
+				808877931EA3769500408A3C /* AudioTrackPlayerTests.swift */,
 			);
 			name = AudioTests;
 			sourceTree = "<group>";
@@ -1143,6 +1155,16 @@
 				33A503DD1E9C9F0A00F20787 /* tom-short.wav */,
 			);
 			name = DrumSample;
+			sourceTree = "<group>";
+		};
+		808877951EA3793A00408A3C /* RecordingTests */ = {
+			isa = PBXGroup;
+			children = (
+				808877961EA3794E00408A3C /* RecorderManagerTests.swift */,
+				808877981EA385C000408A3C /* PlayBackerTests.swift */,
+				8088779A1EA385DE00408A3C /* TimeTrackerTests.swift */,
+			);
+			name = RecordingTests;
 			sourceTree = "<group>";
 		};
 		80A050C41E9937D400091411 /* MortalKombatSample */ = {
@@ -1341,6 +1363,7 @@
 		F3173AAE1E83B1550095F76A /* MIDIchloriansTests */ = {
 			isa = PBXGroup;
 			children = (
+				808877951EA3793A00408A3C /* RecordingTests */,
 				800362FB1E8F74E5007813EE /* AudioTests */,
 				F3173AB71E83B17F0095F76A /* ModelTests */,
 				F3173AB11E83B1550095F76A /* Info.plist */,
@@ -2034,10 +2057,15 @@
 				808877881EA3149C00408A3C /* AudioManagerTests.swift in Sources */,
 				334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */,
 				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
+				808877941EA3769500408A3C /* AudioTrackPlayerTests.swift in Sources */,
 				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
+				808877991EA385C000408A3C /* PlayBackerTests.swift in Sources */,
 				334113971E8E6CE900F998E9 /* AnimationManagerTests.swift in Sources */,
+				808877971EA3794E00408A3C /* RecorderManagerTests.swift in Sources */,
+				808877921EA3751000408A3C /* AudioClipPlayerTests.swift in Sources */,
 				F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */,
 				33DDEB021E8D1DA600380C30 /* AnimationBitTests.swift in Sources */,
+				8088779B1EA385DE00408A3C /* TimeTrackerTests.swift in Sources */,
 				F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

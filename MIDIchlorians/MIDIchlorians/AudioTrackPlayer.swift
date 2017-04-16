@@ -22,7 +22,6 @@ struct AudioTrackPlayer {
             return player
         } catch {
             print("AVAudioPlayer Error")
-            return nil
         }
         return nil
     }
