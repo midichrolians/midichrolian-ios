@@ -32,7 +32,7 @@ class DataManager {
     //Stores the name of the last session accessed by the user
     private var lastSessionName: String?
 
-    private init() {
+    init() {
         //Syntax for getting realm instance
         realm = try? Realm()
         guard realm != nil else {

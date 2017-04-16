@@ -340,8 +340,6 @@
 		F3173AA81E8306D20095F76A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AA71E8306D20095F76A /* Audio.swift */; };
 		F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AB81E83B1A10095F76A /* PadTests.swift */; };
 		F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABA1E83B2A90095F76A /* SessionTests.swift */; };
-		F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABC1E83B2B50095F76A /* AnimationTests.swift */; };
-		F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173ABE1E83B2D50095F76A /* AudioTests.swift */; };
 		F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */; };
 		F31DB0AC1E9B093C005DB81A /* SyncDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31DB0AB1E9B093C005DB81A /* SyncDelegate.swift */; };
 		F31E2B131E8FF1B000C23325 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E2B121E8FF1B000C23325 /* CloudManager.swift */; };
@@ -715,8 +713,6 @@
 		F3173AB11E83B1550095F76A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3173AB81E83B1A10095F76A /* PadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadTests.swift; sourceTree = SOURCE_ROOT; };
 		F3173ABA1E83B2A90095F76A /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
-		F3173ABC1E83B2B50095F76A /* AnimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
-		F3173ABE1E83B2D50095F76A /* AudioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTests.swift; sourceTree = "<group>"; };
 		F3173AC01E83B2EF0095F76A /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		F31DB0AB1E9B093C005DB81A /* SyncDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncDelegate.swift; sourceTree = "<group>"; };
 		F31E2B121E8FF1B000C23325 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
@@ -1349,8 +1345,6 @@
 			children = (
 				F3173AB81E83B1A10095F76A /* PadTests.swift */,
 				F3173ABA1E83B2A90095F76A /* SessionTests.swift */,
-				F3173ABC1E83B2B50095F76A /* AnimationTests.swift */,
-				F3173ABE1E83B2D50095F76A /* AudioTests.swift */,
 			);
 			name = ModelTests;
 			sourceTree = "<group>";
@@ -2026,9 +2020,7 @@
 				F3173ABB1E83B2A90095F76A /* SessionTests.swift in Sources */,
 				334113921E8E4DCE00F998E9 /* AnimationSequenceTests.swift in Sources */,
 				F3173AC11E83B2EF0095F76A /* DataManagerTests.swift in Sources */,
-				F3173ABF1E83B2D50095F76A /* AudioTests.swift in Sources */,
 				334113971E8E6CE900F998E9 /* AnimationManagerTests.swift in Sources */,
-				F3173ABD1E83B2B50095F76A /* AnimationTests.swift in Sources */,
 				33DDEB021E8D1DA600380C30 /* AnimationBitTests.swift in Sources */,
 				F3173AB91E83B1A10095F76A /* PadTests.swift in Sources */,
 			);

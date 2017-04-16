@@ -103,6 +103,7 @@ class Pad: Object {
             return false
         }
         return self.audioFile == pad.audioFile && self.animationString == pad.animationString
+        && self.BPM == pad.BPM
     }
 
     func toJSON() -> String? {
