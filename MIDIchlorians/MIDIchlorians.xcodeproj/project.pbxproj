@@ -29,39 +29,6 @@
 		334CE58C1E8A3ED00095E143 /* AnimationTypeCreationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */; };
 		338275391E924FA500C6B3B7 /* BeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338275381E924FA500C6B3B7 /* BeatFrequency.swift */; };
 		33A2754D1E7BEF56000B1B15 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2754C1E7BEF56000B1B15 /* Colour.swift */; };
-		33A503271E9C9E4B00F20787 /* All Leads - No Sidechain-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503031E9C9E4B00F20787 /* All Leads - No Sidechain-1.wav */; };
-		33A503281E9C9E4B00F20787 /* All Leads - No Sidechain-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503041E9C9E4B00F20787 /* All Leads - No Sidechain-2.wav */; };
-		33A503291E9C9E4B00F20787 /* All Leads - No Sidechain-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503051E9C9E4B00F20787 /* All Leads - No Sidechain-3.wav */; };
-		33A5032A1E9C9E4B00F20787 /* All Leads - No Sidechain-4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503061E9C9E4B00F20787 /* All Leads - No Sidechain-4.wav */; };
-		33A5032B1E9C9E4B00F20787 /* All Leads - No Sidechain-6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503071E9C9E4B00F20787 /* All Leads - No Sidechain-6.wav */; };
-		33A5032C1E9C9E4B00F20787 /* All Leads - No Sidechain-8.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503081E9C9E4B00F20787 /* All Leads - No Sidechain-8.wav */; };
-		33A5032D1E9C9E4B00F20787 /* All Leads - No Sidechain-10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503091E9C9E4B00F20787 /* All Leads - No Sidechain-10.wav */; };
-		33A5032E1E9C9E4B00F20787 /* All Leads - No Sidechain-12.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030A1E9C9E4B00F20787 /* All Leads - No Sidechain-12.wav */; };
-		33A5032F1E9C9E4B00F20787 /* All Leads - No Sidechain-13-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030B1E9C9E4B00F20787 /* All Leads - No Sidechain-13-1.wav */; };
-		33A503301E9C9E4B00F20787 /* All Leads - No Sidechain-14.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030C1E9C9E4B00F20787 /* All Leads - No Sidechain-14.wav */; };
-		33A503311E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030D1E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav */; };
-		33A503321E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030E1E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav */; };
-		33A503331E9C9E4B00F20787 /* All Leads - No Sidechain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5030F1E9C9E4B00F20787 /* All Leads - No Sidechain.wav */; };
-		33A503351E9C9E4B00F20787 /* Drop FX.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503111E9C9E4B00F20787 /* Drop FX.wav */; };
-		33A503361E9C9E4B00F20787 /* Fill Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503121E9C9E4B00F20787 /* Fill Kick.wav */; };
-		33A503371E9C9E4B00F20787 /* Fur Elise Cuts-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503131E9C9E4B00F20787 /* Fur Elise Cuts-1.wav */; };
-		33A503381E9C9E4B00F20787 /* Fur Elise Cuts-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503141E9C9E4B00F20787 /* Fur Elise Cuts-2.wav */; };
-		33A503391E9C9E4B00F20787 /* Fur Elise Cuts-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503151E9C9E4B00F20787 /* Fur Elise Cuts-3.wav */; };
-		33A5033A1E9C9E4B00F20787 /* Fur Elise Cuts.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503161E9C9E4B00F20787 /* Fur Elise Cuts.wav */; };
-		33A5033C1E9C9E4B00F20787 /* hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503181E9C9E4B00F20787 /* hit.wav */; };
-		33A5033D1E9C9E4B00F20787 /* Intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503191E9C9E4B00F20787 /* Intro.wav */; };
-		33A5033E1E9C9E4B00F20787 /* KICK HIT.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031A1E9C9E4B00F20787 /* KICK HIT.wav */; };
-		33A5033F1E9C9E4B00F20787 /* KICK.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031B1E9C9E4B00F20787 /* KICK.wav */; };
-		33A503401E9C9E4B00F20787 /* KickfeMain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031C1E9C9E4B00F20787 /* KickfeMain.wav */; };
-		33A503411E9C9E4B00F20787 /* Mel Bass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031D1E9C9E4B00F20787 /* Mel Bass.wav */; };
-		33A503421E9C9E4B00F20787 /* Mel Kick Bass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031E1E9C9E4B00F20787 /* Mel Kick Bass.wav */; };
-		33A503431E9C9E4B00F20787 /* Mel Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5031F1E9C9E4B00F20787 /* Mel Kick.wav */; };
-		33A503441E9C9E4B00F20787 /* Ride and Clap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503201E9C9E4B00F20787 /* Ride and Clap.wav */; };
-		33A503461E9C9E4B00F20787 /* SNARE HIT.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503221E9C9E4B00F20787 /* SNARE HIT.wav */; };
-		33A503471E9C9E4B00F20787 /* SNARE.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503231E9C9E4B00F20787 /* SNARE.wav */; };
-		33A503481E9C9E4B00F20787 /* SnarefurE.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503241E9C9E4B00F20787 /* SnarefurE.wav */; };
-		33A503491E9C9E4B00F20787 /* Start FX.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503251E9C9E4B00F20787 /* Start FX.wav */; };
-		33A5034A1E9C9E4B00F20787 /* VOX.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A503261E9C9E4B00F20787 /* VOX.wav */; };
 		33A503631E9C9EC600F20787 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5034B1E9C9EC600F20787 /* 1.wav */; };
 		33A503641E9C9EC600F20787 /* 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5034C1E9C9EC600F20787 /* 2.wav */; };
 		33A503651E9C9EC600F20787 /* 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33A5034D1E9C9EC600F20787 /* 3.wav */; };
@@ -189,35 +156,6 @@
 		33BCC5AA1E85064900D8489F /* AnimatableGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCC5A91E85064900D8489F /* AnimatableGrid.swift */; };
 		33BCC5AC1E85067A00D8489F /* AnimatablePad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */; };
 		33CC26C71E891E840077F0ED /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CC26C61E891E840077F0ED /* AnimationManager.swift */; };
-		33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */; };
-		33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */; };
-		33DAAAA71E72BEA300987E86 /* AWOLNATION - Sail-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */; };
-		33DAAAA81E72BEA300987E86 /* AWOLNATION - Sail-4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */; };
-		33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */; };
-		33DAAAAA1E72BEA300987E86 /* AWOLNATION - Sail-6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */; };
-		33DAAAAB1E72BEA300987E86 /* AWOLNATION - Sail-7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */; };
-		33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */; };
-		33DAAAAD1E72BEA300987E86 /* AWOLNATION - Sail-9.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */; };
-		33DAAAAE1E72BEA300987E86 /* AWOLNATION - Sail-10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */; };
-		33DAAAAF1E72BEA300987E86 /* AWOLNATION - Sail-11.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */; };
-		33DAAAB01E72BEA300987E86 /* AWOLNATION - Sail-12.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */; };
-		33DAAAB11E72BEA300987E86 /* AWOLNATION - Sail-13.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */; };
-		33DAAAB21E72BEA300987E86 /* AWOLNATION - Sail-14.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */; };
-		33DAAAB31E72BEA300987E86 /* AWOLNATION - Sail-15.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */; };
-		33DAAAB41E72BEA300987E86 /* AWOLNATION - Sail-16.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */; };
-		33DAAAB51E72BEA300987E86 /* AWOLNATION - Sail-17.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */; };
-		33DAAAB61E72BEA300987E86 /* AWOLNATION - Sail-18.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */; };
-		33DAAAB71E72BEA300987E86 /* AWOLNATION - Sail-19.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */; };
-		33DAAAB81E72BEA300987E86 /* AWOLNATION - Sail-20.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */; };
-		33DAAAB91E72BEA300987E86 /* AWOLNATION - Sail-21.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */; };
-		33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */; };
-		33DAAABB1E72BEA300987E86 /* AWOLNATION - Sail-23.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */; };
-		33DAAABC1E72BEA300987E86 /* AWOLNATION - Sail-24.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */; };
-		33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */; };
-		33DAAABE1E72BEA300987E86 /* AWOLNATION - Sail-26.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */; };
-		33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */; };
-		33DAAAC01E72BEA300987E86 /* AWOLNATION - Sail-28.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */; };
-		33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */ = {isa = PBXBuildFile; fileRef = 33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */; };
 		33DDEB021E8D1DA600380C30 /* AnimationBitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */; };
 		33EC0A3C1E6FD8C900229A92 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */; };
 		33EC0A3E1E6FD98800229A92 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */; };
@@ -350,39 +288,6 @@
 		334CE58B1E8A3ED00095E143 /* AnimationTypeCreationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeCreationMode.swift; sourceTree = "<group>"; };
 		338275381E924FA500C6B3B7 /* BeatFrequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatFrequency.swift; sourceTree = "<group>"; };
 		33A2754C1E7BEF56000B1B15 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
-		33A503031E9C9E4B00F20787 /* All Leads - No Sidechain-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-1.wav"; path = "Fur Elise/All Leads - No Sidechain-1.wav"; sourceTree = "<group>"; };
-		33A503041E9C9E4B00F20787 /* All Leads - No Sidechain-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-2.wav"; path = "Fur Elise/All Leads - No Sidechain-2.wav"; sourceTree = "<group>"; };
-		33A503051E9C9E4B00F20787 /* All Leads - No Sidechain-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-3.wav"; path = "Fur Elise/All Leads - No Sidechain-3.wav"; sourceTree = "<group>"; };
-		33A503061E9C9E4B00F20787 /* All Leads - No Sidechain-4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-4.wav"; path = "Fur Elise/All Leads - No Sidechain-4.wav"; sourceTree = "<group>"; };
-		33A503071E9C9E4B00F20787 /* All Leads - No Sidechain-6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-6.wav"; path = "Fur Elise/All Leads - No Sidechain-6.wav"; sourceTree = "<group>"; };
-		33A503081E9C9E4B00F20787 /* All Leads - No Sidechain-8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-8.wav"; path = "Fur Elise/All Leads - No Sidechain-8.wav"; sourceTree = "<group>"; };
-		33A503091E9C9E4B00F20787 /* All Leads - No Sidechain-10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-10.wav"; path = "Fur Elise/All Leads - No Sidechain-10.wav"; sourceTree = "<group>"; };
-		33A5030A1E9C9E4B00F20787 /* All Leads - No Sidechain-12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-12.wav"; path = "Fur Elise/All Leads - No Sidechain-12.wav"; sourceTree = "<group>"; };
-		33A5030B1E9C9E4B00F20787 /* All Leads - No Sidechain-13-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-13-1.wav"; path = "Fur Elise/All Leads - No Sidechain-13-1.wav"; sourceTree = "<group>"; };
-		33A5030C1E9C9E4B00F20787 /* All Leads - No Sidechain-14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-14.wav"; path = "Fur Elise/All Leads - No Sidechain-14.wav"; sourceTree = "<group>"; };
-		33A5030D1E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-15.wav"; path = "Fur Elise/All Leads - No Sidechain-15.wav"; sourceTree = "<group>"; };
-		33A5030E1E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain-16.wav"; path = "Fur Elise/All Leads - No Sidechain-16.wav"; sourceTree = "<group>"; };
-		33A5030F1E9C9E4B00F20787 /* All Leads - No Sidechain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "All Leads - No Sidechain.wav"; path = "Fur Elise/All Leads - No Sidechain.wav"; sourceTree = "<group>"; };
-		33A503111E9C9E4B00F20787 /* Drop FX.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Drop FX.wav"; path = "Fur Elise/Drop FX.wav"; sourceTree = "<group>"; };
-		33A503121E9C9E4B00F20787 /* Fill Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fill Kick.wav"; path = "Fur Elise/Fill Kick.wav"; sourceTree = "<group>"; };
-		33A503131E9C9E4B00F20787 /* Fur Elise Cuts-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Cuts-1.wav"; path = "Fur Elise/Fur Elise Cuts-1.wav"; sourceTree = "<group>"; };
-		33A503141E9C9E4B00F20787 /* Fur Elise Cuts-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Cuts-2.wav"; path = "Fur Elise/Fur Elise Cuts-2.wav"; sourceTree = "<group>"; };
-		33A503151E9C9E4B00F20787 /* Fur Elise Cuts-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Cuts-3.wav"; path = "Fur Elise/Fur Elise Cuts-3.wav"; sourceTree = "<group>"; };
-		33A503161E9C9E4B00F20787 /* Fur Elise Cuts.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Fur Elise Cuts.wav"; path = "Fur Elise/Fur Elise Cuts.wav"; sourceTree = "<group>"; };
-		33A503181E9C9E4B00F20787 /* hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hit.wav; path = "Fur Elise/hit.wav"; sourceTree = "<group>"; };
-		33A503191E9C9E4B00F20787 /* Intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Intro.wav; path = "Fur Elise/Intro.wav"; sourceTree = "<group>"; };
-		33A5031A1E9C9E4B00F20787 /* KICK HIT.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "KICK HIT.wav"; path = "Fur Elise/KICK HIT.wav"; sourceTree = "<group>"; };
-		33A5031B1E9C9E4B00F20787 /* KICK.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = KICK.wav; path = "Fur Elise/KICK.wav"; sourceTree = "<group>"; };
-		33A5031C1E9C9E4B00F20787 /* KickfeMain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = KickfeMain.wav; path = "Fur Elise/KickfeMain.wav"; sourceTree = "<group>"; };
-		33A5031D1E9C9E4B00F20787 /* Mel Bass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Mel Bass.wav"; path = "Fur Elise/Mel Bass.wav"; sourceTree = "<group>"; };
-		33A5031E1E9C9E4B00F20787 /* Mel Kick Bass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Mel Kick Bass.wav"; path = "Fur Elise/Mel Kick Bass.wav"; sourceTree = "<group>"; };
-		33A5031F1E9C9E4B00F20787 /* Mel Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Mel Kick.wav"; path = "Fur Elise/Mel Kick.wav"; sourceTree = "<group>"; };
-		33A503201E9C9E4B00F20787 /* Ride and Clap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Ride and Clap.wav"; path = "Fur Elise/Ride and Clap.wav"; sourceTree = "<group>"; };
-		33A503221E9C9E4B00F20787 /* SNARE HIT.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "SNARE HIT.wav"; path = "Fur Elise/SNARE HIT.wav"; sourceTree = "<group>"; };
-		33A503231E9C9E4B00F20787 /* SNARE.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = SNARE.wav; path = "Fur Elise/SNARE.wav"; sourceTree = "<group>"; };
-		33A503241E9C9E4B00F20787 /* SnarefurE.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = SnarefurE.wav; path = "Fur Elise/SnarefurE.wav"; sourceTree = "<group>"; };
-		33A503251E9C9E4B00F20787 /* Start FX.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Start FX.wav"; path = "Fur Elise/Start FX.wav"; sourceTree = "<group>"; };
-		33A503261E9C9E4B00F20787 /* VOX.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = VOX.wav; path = "Fur Elise/VOX.wav"; sourceTree = "<group>"; };
 		33A5034B1E9C9EC600F20787 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = 1.wav; path = "Mortal Kombat/1.wav"; sourceTree = "<group>"; };
 		33A5034C1E9C9EC600F20787 /* 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = 2.wav; path = "Mortal Kombat/2.wav"; sourceTree = "<group>"; };
 		33A5034D1E9C9EC600F20787 /* 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = 3.wav; path = "Mortal Kombat/3.wav"; sourceTree = "<group>"; };
@@ -510,35 +415,6 @@
 		33BCC5A91E85064900D8489F /* AnimatableGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableGrid.swift; sourceTree = "<group>"; };
 		33BCC5AB1E85067A00D8489F /* AnimatablePad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatablePad.swift; sourceTree = "<group>"; };
 		33CC26C61E891E840077F0ED /* AnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
-		33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-1.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-1.wav"; sourceTree = "<group>"; };
-		33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-2.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-2.wav"; sourceTree = "<group>"; };
-		33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-3.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-3.wav"; sourceTree = "<group>"; };
-		33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-4.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-4.wav"; sourceTree = "<group>"; };
-		33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-5.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-5.wav"; sourceTree = "<group>"; };
-		33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-6.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-6.wav"; sourceTree = "<group>"; };
-		33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-7.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-7.wav"; sourceTree = "<group>"; };
-		33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-8.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-8.wav"; sourceTree = "<group>"; };
-		33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-9.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-9.wav"; sourceTree = "<group>"; };
-		33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-10.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-10.wav"; sourceTree = "<group>"; };
-		33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-11.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-11.wav"; sourceTree = "<group>"; };
-		33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-12.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-12.wav"; sourceTree = "<group>"; };
-		33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-13.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-13.wav"; sourceTree = "<group>"; };
-		33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-14.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-14.wav"; sourceTree = "<group>"; };
-		33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-15.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-15.wav"; sourceTree = "<group>"; };
-		33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-16.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-16.wav"; sourceTree = "<group>"; };
-		33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-17.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-17.wav"; sourceTree = "<group>"; };
-		33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-18.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-18.wav"; sourceTree = "<group>"; };
-		33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-19.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-19.wav"; sourceTree = "<group>"; };
-		33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-20.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-20.wav"; sourceTree = "<group>"; };
-		33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-21.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-21.wav"; sourceTree = "<group>"; };
-		33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-22.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-22.wav"; sourceTree = "<group>"; };
-		33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-23.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-23.wav"; sourceTree = "<group>"; };
-		33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-24.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-24.wav"; sourceTree = "<group>"; };
-		33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-25.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-25.wav"; sourceTree = "<group>"; };
-		33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-26.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-26.wav"; sourceTree = "<group>"; };
-		33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-27.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-27.wav"; sourceTree = "<group>"; };
-		33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail-28.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail-28.wav"; sourceTree = "<group>"; };
-		33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "AWOLNATION - Sail.wav"; path = "MIDIchlorians/SailSample/AWOLNATION - Sail.wav"; sourceTree = "<group>"; };
 		33DDEB011E8D1DA600380C30 /* AnimationBitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationBitTests.swift; sourceTree = "<group>"; };
 		33EC0A3B1E6FD8C900229A92 /* GridCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
 		33EC0A3D1E6FD98800229A92 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -663,9 +539,7 @@
 			children = (
 				808876BE1E9BD35500408A3C /* DrumSample */,
 				332109FF1E94FBD2003E2DBF /* PredefinedAnimationTypes */,
-				33DAAAC21E72BEAE00987E86 /* SailSample */,
 				80A050C41E9937D400091411 /* MortalKombatSample */,
-				80A051021E99385200091411 /* FurEliseSample */,
 				33120E1C1E6FD30A007E7717 /* MIDIchlorians */,
 				33120E311E6FD30A007E7717 /* MIDIchloriansUITests */,
 				F3173AAE1E83B1550095F76A /* MIDIchloriansTests */,
@@ -748,42 +622,6 @@
 				334113961E8E6CE900F998E9 /* AnimationManagerTests.swift */,
 			);
 			name = AnimationTests;
-			sourceTree = "<group>";
-		};
-		33DAAAC21E72BEAE00987E86 /* SailSample */ = {
-			isa = PBXGroup;
-			children = (
-				33DAAA881E72BEA300987E86 /* AWOLNATION - Sail-1.wav */,
-				33DAAA891E72BEA300987E86 /* AWOLNATION - Sail-2.wav */,
-				33DAAA8A1E72BEA300987E86 /* AWOLNATION - Sail-3.wav */,
-				33DAAA8B1E72BEA300987E86 /* AWOLNATION - Sail-4.wav */,
-				33DAAA8C1E72BEA300987E86 /* AWOLNATION - Sail-5.wav */,
-				33DAAA8D1E72BEA300987E86 /* AWOLNATION - Sail-6.wav */,
-				33DAAA8E1E72BEA300987E86 /* AWOLNATION - Sail-7.wav */,
-				33DAAA8F1E72BEA300987E86 /* AWOLNATION - Sail-8.wav */,
-				33DAAA901E72BEA300987E86 /* AWOLNATION - Sail-9.wav */,
-				33DAAA911E72BEA300987E86 /* AWOLNATION - Sail-10.wav */,
-				33DAAA921E72BEA300987E86 /* AWOLNATION - Sail-11.wav */,
-				33DAAA931E72BEA300987E86 /* AWOLNATION - Sail-12.wav */,
-				33DAAA941E72BEA300987E86 /* AWOLNATION - Sail-13.wav */,
-				33DAAA951E72BEA300987E86 /* AWOLNATION - Sail-14.wav */,
-				33DAAA961E72BEA300987E86 /* AWOLNATION - Sail-15.wav */,
-				33DAAA971E72BEA300987E86 /* AWOLNATION - Sail-16.wav */,
-				33DAAA981E72BEA300987E86 /* AWOLNATION - Sail-17.wav */,
-				33DAAA991E72BEA300987E86 /* AWOLNATION - Sail-18.wav */,
-				33DAAA9A1E72BEA300987E86 /* AWOLNATION - Sail-19.wav */,
-				33DAAA9B1E72BEA300987E86 /* AWOLNATION - Sail-20.wav */,
-				33DAAA9C1E72BEA300987E86 /* AWOLNATION - Sail-21.wav */,
-				33DAAA9D1E72BEA300987E86 /* AWOLNATION - Sail-22.wav */,
-				33DAAA9E1E72BEA300987E86 /* AWOLNATION - Sail-23.wav */,
-				33DAAA9F1E72BEA300987E86 /* AWOLNATION - Sail-24.wav */,
-				33DAAAA01E72BEA300987E86 /* AWOLNATION - Sail-25.wav */,
-				33DAAAA11E72BEA300987E86 /* AWOLNATION - Sail-26.wav */,
-				33DAAAA21E72BEA300987E86 /* AWOLNATION - Sail-27.wav */,
-				33DAAAA31E72BEA300987E86 /* AWOLNATION - Sail-28.wav */,
-				33DAAAA41E72BEA300987E86 /* AWOLNATION - Sail.wav */,
-			);
-			name = SailSample;
 			sourceTree = "<group>";
 		};
 		33DAAAC31E72C38100987E86 /* Animation */ = {
@@ -1006,46 +844,6 @@
 				33A503621E9C9EC600F20787 /* 25.wav */,
 			);
 			name = MortalKombatSample;
-			sourceTree = "<group>";
-		};
-		80A051021E99385200091411 /* FurEliseSample */ = {
-			isa = PBXGroup;
-			children = (
-				33A503031E9C9E4B00F20787 /* All Leads - No Sidechain-1.wav */,
-				33A503041E9C9E4B00F20787 /* All Leads - No Sidechain-2.wav */,
-				33A503051E9C9E4B00F20787 /* All Leads - No Sidechain-3.wav */,
-				33A503061E9C9E4B00F20787 /* All Leads - No Sidechain-4.wav */,
-				33A503071E9C9E4B00F20787 /* All Leads - No Sidechain-6.wav */,
-				33A503081E9C9E4B00F20787 /* All Leads - No Sidechain-8.wav */,
-				33A503091E9C9E4B00F20787 /* All Leads - No Sidechain-10.wav */,
-				33A5030A1E9C9E4B00F20787 /* All Leads - No Sidechain-12.wav */,
-				33A5030B1E9C9E4B00F20787 /* All Leads - No Sidechain-13-1.wav */,
-				33A5030C1E9C9E4B00F20787 /* All Leads - No Sidechain-14.wav */,
-				33A5030D1E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav */,
-				33A5030E1E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav */,
-				33A5030F1E9C9E4B00F20787 /* All Leads - No Sidechain.wav */,
-				33A503111E9C9E4B00F20787 /* Drop FX.wav */,
-				33A503121E9C9E4B00F20787 /* Fill Kick.wav */,
-				33A503131E9C9E4B00F20787 /* Fur Elise Cuts-1.wav */,
-				33A503141E9C9E4B00F20787 /* Fur Elise Cuts-2.wav */,
-				33A503151E9C9E4B00F20787 /* Fur Elise Cuts-3.wav */,
-				33A503161E9C9E4B00F20787 /* Fur Elise Cuts.wav */,
-				33A503181E9C9E4B00F20787 /* hit.wav */,
-				33A503191E9C9E4B00F20787 /* Intro.wav */,
-				33A5031A1E9C9E4B00F20787 /* KICK HIT.wav */,
-				33A5031B1E9C9E4B00F20787 /* KICK.wav */,
-				33A5031C1E9C9E4B00F20787 /* KickfeMain.wav */,
-				33A5031D1E9C9E4B00F20787 /* Mel Bass.wav */,
-				33A5031E1E9C9E4B00F20787 /* Mel Kick Bass.wav */,
-				33A5031F1E9C9E4B00F20787 /* Mel Kick.wav */,
-				33A503201E9C9E4B00F20787 /* Ride and Clap.wav */,
-				33A503221E9C9E4B00F20787 /* SNARE HIT.wav */,
-				33A503231E9C9E4B00F20787 /* SNARE.wav */,
-				33A503241E9C9E4B00F20787 /* SnarefurE.wav */,
-				33A503251E9C9E4B00F20787 /* Start FX.wav */,
-				33A503261E9C9E4B00F20787 /* VOX.wav */,
-			);
-			name = FurEliseSample;
 			sourceTree = "<group>";
 		};
 		E9158EAE1E86155E00B7ADF9 /* Grid */ = {
@@ -1323,191 +1121,129 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A503721E9C9EC600F20787 /* 16.wav in Resources */,
-				33A5032C1E9C9E4B00F20787 /* All Leads - No Sidechain-8.wav in Resources */,
 				33A503E21E9C9F0A00F20787 /* clap-slapper.wav in Resources */,
 				33A5040B1E9C9F0A00F20787 /* kick-vinyl01.wav in Resources */,
 				33210A011E950132003E2DBF /* Spark in Resources */,
 				33A5040F1E9C9F0A00F20787 /* openhat-acoustic01.wav in Resources */,
 				33A503DE1E9C9F0A00F20787 /* clap-808.wav in Resources */,
-				33DAAAA81E72BEA300987E86 /* AWOLNATION - Sail-4.wav in Resources */,
-				33DAAAB31E72BEA300987E86 /* AWOLNATION - Sail-15.wav in Resources */,
 				33120E281E6FD30A007E7717 /* LaunchScreen.storyboard in Resources */,
 				33A503EB1E9C9F0A00F20787 /* hihat-acoustic02.wav in Resources */,
-				33A5032A1E9C9E4B00F20787 /* All Leads - No Sidechain-4.wav in Resources */,
 				33A503E31E9C9F0A00F20787 /* clap-tape.wav in Resources */,
 				33A5040A1E9C9F0A00F20787 /* kick-tron.wav in Resources */,
 				33A5036C1E9C9EC600F20787 /* 10.wav in Resources */,
-				33DAAAC11E72BEA300987E86 /* AWOLNATION - Sail.wav in Resources */,
 				33A5043F1E9C9F0A00F20787 /* tom-rototom.wav in Resources */,
 				33A504041E9C9F0A00F20787 /* kick-slapback.wav in Resources */,
 				33A504401E9C9F0A00F20787 /* tom-short.wav in Resources */,
 				33A504071E9C9F0A00F20787 /* kick-tape.wav in Resources */,
-				33A5032B1E9C9E4B00F20787 /* All Leads - No Sidechain-6.wav in Resources */,
 				33120E251E6FD30A007E7717 /* Assets.xcassets in Resources */,
 				33A503E81E9C9F0A00F20787 /* crash-tape.wav in Resources */,
 				33A503EA1E9C9F0A00F20787 /* hihat-acoustic01.wav in Resources */,
 				33A5041B1E9C9F0A00F20787 /* perc-tribal.wav in Resources */,
 				33A504301E9C9F0A00F20787 /* snare-noise.wav in Resources */,
-				33A503351E9C9E4B00F20787 /* Drop FX.wav in Resources */,
 				33A503F11E9C9F0A00F20787 /* hihat-plain.wav in Resources */,
-				33A503401E9C9E4B00F20787 /* KickfeMain.wav in Resources */,
-				33A503271E9C9E4B00F20787 /* All Leads - No Sidechain-1.wav in Resources */,
 				33A5043B1E9C9F0A00F20787 /* tom-analog.wav in Resources */,
-				33A503311E9C9E4B00F20787 /* All Leads - No Sidechain-15.wav in Resources */,
-				33DAAAAD1E72BEA300987E86 /* AWOLNATION - Sail-9.wav in Resources */,
 				33A504221E9C9F0A00F20787 /* snare-808.wav in Resources */,
 				33A504311E9C9F0A00F20787 /* snare-pinch.wav in Resources */,
 				33A5043A1E9C9F0A00F20787 /* tom-acoustic02.wav in Resources */,
-				33A503371E9C9E4B00F20787 /* Fur Elise Cuts-1.wav in Resources */,
-				33A503411E9C9E4B00F20787 /* Mel Bass.wav in Resources */,
-				33DAAAAA1E72BEA300987E86 /* AWOLNATION - Sail-6.wav in Resources */,
-				33A503421E9C9E4B00F20787 /* Mel Kick Bass.wav in Resources */,
 				33A504061E9C9F0A00F20787 /* kick-stomp.wav in Resources */,
 				33A504141E9C9F0A00F20787 /* perc-chirpy.wav in Resources */,
 				33120E231E6FD30A007E7717 /* Main.storyboard in Resources */,
 				33A503FB1E9C9F0A00F20787 /* kick-dry.wav in Resources */,
-				33DAAAB71E72BEA300987E86 /* AWOLNATION - Sail-19.wav in Resources */,
 				33A503671E9C9EC600F20787 /* 5.wav in Resources */,
 				33210A051E95054C003E2DBF /* Spread in Resources */,
 				33A503EE1E9C9F0A00F20787 /* hihat-dist01.wav in Resources */,
-				33A5033C1E9C9E4B00F20787 /* hit.wav in Resources */,
-				33DAAAB51E72BEA300987E86 /* AWOLNATION - Sail-17.wav in Resources */,
 				F36082C11E9BB2230054221A /* DefaultSessions.json in Resources */,
-				33DAAAA71E72BEA300987E86 /* AWOLNATION - Sail-3.wav in Resources */,
-				33DAAABC1E72BEA300987E86 /* AWOLNATION - Sail-24.wav in Resources */,
 				33A504101E9C9F0A00F20787 /* openhat-analog.wav in Resources */,
 				33A504001E9C9F0A00F20787 /* kick-heavy.wav in Resources */,
 				33A503F91E9C9F0A00F20787 /* kick-cultivator.wav in Resources */,
 				33A503F71E9C9F0A00F20787 /* kick-big.wav in Resources */,
 				33A503641E9C9EC600F20787 /* 2.wav in Resources */,
 				33A503E01E9C9F0A00F20787 /* clap-crushed.wav in Resources */,
-				33DAAAB41E72BEA300987E86 /* AWOLNATION - Sail-16.wav in Resources */,
 				33A503F31E9C9F0A00F20787 /* hihat-ring.wav in Resources */,
 				33A5040D1E9C9F0A00F20787 /* kick-zapper.wav in Resources */,
 				33A5041A1E9C9F0A00F20787 /* perc-tambo.wav in Resources */,
 				33A503FC1E9C9F0A00F20787 /* kick-electro01.wav in Resources */,
 				33A503651E9C9EC600F20787 /* 3.wav in Resources */,
-				33A503461E9C9E4B00F20787 /* SNARE HIT.wav in Resources */,
-				33A503291E9C9E4B00F20787 /* All Leads - No Sidechain-3.wav in Resources */,
 				33A504121E9C9F0A00F20787 /* openhat-tight.wav in Resources */,
 				33A503EC1E9C9F0A00F20787 /* hihat-analog.wav in Resources */,
-				33A503361E9C9E4B00F20787 /* Fill Kick.wav in Resources */,
-				33A503331E9C9E4B00F20787 /* All Leads - No Sidechain.wav in Resources */,
 				33A503741E9C9EC600F20787 /* 18.wav in Resources */,
 				33A503F81E9C9F0A00F20787 /* kick-classic.wav in Resources */,
-				33DAAAB11E72BEA300987E86 /* AWOLNATION - Sail-13.wav in Resources */,
-				33A503491E9C9E4B00F20787 /* Start FX.wav in Resources */,
-				33A503381E9C9E4B00F20787 /* Fur Elise Cuts-2.wav in Resources */,
 				33A503FD1E9C9F0A00F20787 /* kick-electro02.wav in Resources */,
 				33A504291E9C9F0A00F20787 /* snare-dist01.wav in Resources */,
-				33DAAAB01E72BEA300987E86 /* AWOLNATION - Sail-12.wav in Resources */,
-				33A5033F1E9C9E4B00F20787 /* KICK.wav in Resources */,
 				33A503ED1E9C9F0A00F20787 /* hihat-digital.wav in Resources */,
 				33A5037A1E9C9EC600F20787 /* 25.wav in Resources */,
 				33A504021E9C9F0A00F20787 /* kick-oldschool.wav in Resources */,
-				33DAAAB81E72BEA300987E86 /* AWOLNATION - Sail-20.wav in Resources */,
 				33A504111E9C9F0A00F20787 /* openhat-slick.wav in Resources */,
 				33A5036A1E9C9EC600F20787 /* 8.wav in Resources */,
 				33A5040E1E9C9F0A00F20787 /* openhat-808.wav in Resources */,
 				33A504131E9C9F0A00F20787 /* perc-808.wav in Resources */,
-				33A503431E9C9E4B00F20787 /* Mel Kick.wav in Resources */,
 				33A504231E9C9F0A00F20787 /* snare-acoustic01.wav in Resources */,
 				33A504241E9C9F0A00F20787 /* snare-acoustic02.wav in Resources */,
 				33A503E71E9C9F0A00F20787 /* crash-noise.wav in Resources */,
-				33A5034A1E9C9E4B00F20787 /* VOX.wav in Resources */,
 				33A5041E1E9C9F0A00F20787 /* ride-acoustic02.wav in Resources */,
-				33A5033E1E9C9E4B00F20787 /* KICK HIT.wav in Resources */,
 				33A503631E9C9EC600F20787 /* 1.wav in Resources */,
 				33A503E51E9C9F0A00F20787 /* crash-808.wav in Resources */,
 				33A504151E9C9F0A00F20787 /* perc-hollow.wav in Resources */,
 				33A5036B1E9C9EC600F20787 /* 9.wav in Resources */,
 				33A503681E9C9EC600F20787 /* 6.wav in Resources */,
 				33A503F51E9C9F0A00F20787 /* kick-acoustic01.wav in Resources */,
-				33A5032E1E9C9E4B00F20787 /* All Leads - No Sidechain-12.wav in Resources */,
 				33A504211E9C9F0A00F20787 /* shaker-suckup.wav in Resources */,
 				33A504091E9C9F0A00F20787 /* kick-tight.wav in Resources */,
-				33DAAAC01E72BEA300987E86 /* AWOLNATION - Sail-28.wav in Resources */,
 				33A504201E9C9F0A00F20787 /* shaker-shuffle.wav in Resources */,
 				33A503761E9C9EC600F20787 /* 20.wav in Resources */,
-				33A5033A1E9C9E4B00F20787 /* Fur Elise Cuts.wav in Resources */,
 				33A503731E9C9EC600F20787 /* 17.wav in Resources */,
-				33DAAABE1E72BEA300987E86 /* AWOLNATION - Sail-26.wav in Resources */,
-				33A503481E9C9E4B00F20787 /* SnarefurE.wav in Resources */,
 				33210A031E95041A003E2DBF /* Rainbow in Resources */,
 				33A503F21E9C9F0A00F20787 /* hihat-reso.wav in Resources */,
-				33DAAAA51E72BEA300987E86 /* AWOLNATION - Sail-1.wav in Resources */,
 				33A504031E9C9F0A00F20787 /* kick-plain.wav in Resources */,
 				33A504051E9C9F0A00F20787 /* kick-softy.wav in Resources */,
 				33A503691E9C9EC600F20787 /* 7.wav in Resources */,
 				33A503701E9C9EC600F20787 /* 14.wav in Resources */,
 				33A5042E1E9C9F0A00F20787 /* snare-lofi02.wav in Resources */,
 				33A5043E1E9C9F0A00F20787 /* tom-lofi.wav in Resources */,
-				33DAAAA61E72BEA300987E86 /* AWOLNATION - Sail-2.wav in Resources */,
-				33DAAAAF1E72BEA300987E86 /* AWOLNATION - Sail-11.wav in Resources */,
-				33A5032F1E9C9E4B00F20787 /* All Leads - No Sidechain-13-1.wav in Resources */,
 				33A6FF9B1E97517700E7E8B1 /* Keys.plist in Resources */,
 				33A503E11E9C9F0A00F20787 /* clap-fat.wav in Resources */,
 				33A504171E9C9F0A00F20787 /* perc-metal.wav in Resources */,
 				33A503E41E9C9F0A00F20787 /* cowbell-808.wav in Resources */,
 				33A5042A1E9C9F0A00F20787 /* snare-dist02.wav in Resources */,
 				33A504261E9C9F0A00F20787 /* snare-big.wav in Resources */,
-				33DAAABA1E72BEA300987E86 /* AWOLNATION - Sail-22.wav in Resources */,
 				33A503751E9C9EC600F20787 /* 19.wav in Resources */,
-				33A5032D1E9C9E4B00F20787 /* All Leads - No Sidechain-10.wav in Resources */,
 				33A504271E9C9F0A00F20787 /* snare-block.wav in Resources */,
 				33A504161E9C9F0A00F20787 /* perc-laser.wav in Resources */,
 				33A503791E9C9EC600F20787 /* 23.wav in Resources */,
 				33A5042C1E9C9F0A00F20787 /* snare-electro.wav in Resources */,
-				33A503441E9C9E4B00F20787 /* Ride and Clap.wav in Resources */,
 				33A503FF1E9C9F0A00F20787 /* kick-gritty.wav in Resources */,
 				33A504191E9C9F0A00F20787 /* perc-short.wav in Resources */,
-				33DAAAAC1E72BEA300987E86 /* AWOLNATION - Sail-8.wav in Resources */,
 				33A5036E1E9C9EC600F20787 /* 12.wav in Resources */,
 				33A503E61E9C9F0A00F20787 /* crash-acoustic.wav in Resources */,
-				33A503301E9C9E4B00F20787 /* All Leads - No Sidechain-14.wav in Resources */,
 				33A504391E9C9F0A00F20787 /* tom-acoustic01.wav in Resources */,
 				33A504331E9C9F0A00F20787 /* snare-smasher.wav in Resources */,
-				33A5033D1E9C9E4B00F20787 /* Intro.wav in Resources */,
 				33A5041D1E9C9F0A00F20787 /* ride-acoustic01.wav in Resources */,
 				33A503F61E9C9F0A00F20787 /* kick-acoustic02.wav in Resources */,
-				33DAAAB61E72BEA300987E86 /* AWOLNATION - Sail-18.wav in Resources */,
 				33A504281E9C9F0A00F20787 /* snare-brute.wav in Resources */,
 				33A504371E9C9F0A00F20787 /* snare-vinyl02.wav in Resources */,
 				33A5042D1E9C9F0A00F20787 /* snare-lofi01.wav in Resources */,
 				33A5036D1E9C9EC600F20787 /* 11.wav in Resources */,
 				33A503FE1E9C9F0A00F20787 /* kick-floppy.wav in Resources */,
-				33DAAABF1E72BEA300987E86 /* AWOLNATION - Sail-27.wav in Resources */,
-				33DAAAA91E72BEA300987E86 /* AWOLNATION - Sail-5.wav in Resources */,
-				33DAAABD1E72BEA300987E86 /* AWOLNATION - Sail-25.wav in Resources */,
-				33A503321E9C9E4B00F20787 /* All Leads - No Sidechain-16.wav in Resources */,
 				33A503711E9C9EC600F20787 /* 15.wav in Resources */,
 				33A504381E9C9F0A00F20787 /* tom-808.wav in Resources */,
 				33A503F41E9C9F0A00F20787 /* kick-808.wav in Resources */,
 				33A504321E9C9F0A00F20787 /* snare-punch.wav in Resources */,
-				33DAAAB21E72BEA300987E86 /* AWOLNATION - Sail-14.wav in Resources */,
 				33A503FA1E9C9F0A00F20787 /* kick-deep.wav in Resources */,
 				33A504251E9C9F0A00F20787 /* snare-analog.wav in Resources */,
 				33A5041C1E9C9F0A00F20787 /* perc-weirdo.wav in Resources */,
-				33A503281E9C9E4B00F20787 /* All Leads - No Sidechain-2.wav in Resources */,
 				33A503F01E9C9F0A00F20787 /* hihat-electro.wav in Resources */,
 				33A503781E9C9EC600F20787 /* 22.wav in Resources */,
 				33A5043C1E9C9F0A00F20787 /* tom-chiptune.wav in Resources */,
 				33A5043D1E9C9F0A00F20787 /* tom-fm.wav in Resources */,
 				33A504361E9C9F0A00F20787 /* snare-vinyl01.wav in Resources */,
 				33A504181E9C9F0A00F20787 /* perc-nasty.wav in Resources */,
-				33DAAAAE1E72BEA300987E86 /* AWOLNATION - Sail-10.wav in Resources */,
 				33A5041F1E9C9F0A00F20787 /* shaker-analog.wav in Resources */,
 				33A504081E9C9F0A00F20787 /* kick-thump.wav in Resources */,
 				33A5042F1E9C9F0A00F20787 /* snare-modular.wav in Resources */,
 				33A5036F1E9C9EC600F20787 /* 13.wav in Resources */,
-				33A503391E9C9E4B00F20787 /* Fur Elise Cuts-3.wav in Resources */,
-				33DAAAB91E72BEA300987E86 /* AWOLNATION - Sail-21.wav in Resources */,
 				33A504011E9C9F0A00F20787 /* kick-newwave.wav in Resources */,
 				33A503661E9C9EC600F20787 /* 4.wav in Resources */,
-				33A503471E9C9E4B00F20787 /* SNARE.wav in Resources */,
-				33DAAABB1E72BEA300987E86 /* AWOLNATION - Sail-23.wav in Resources */,
 				33A503DF1E9C9F0A00F20787 /* clap-analog.wav in Resources */,
-				33DAAAAB1E72BEA300987E86 /* AWOLNATION - Sail-7.wav in Resources */,
 				33A503E91E9C9F0A00F20787 /* hihat-808.wav in Resources */,
 				33A503EF1E9C9F0A00F20787 /* hihat-dist02.wav in Resources */,
 				33A504341E9C9F0A00F20787 /* snare-sumo.wav in Resources */,
