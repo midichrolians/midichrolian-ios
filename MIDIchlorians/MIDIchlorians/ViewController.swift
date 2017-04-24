@@ -43,6 +43,14 @@ class ViewController: UIViewController {
         assignDelegates()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if isFirstLaunch() {
+            topBarController.logoTapped()
+        }
+    }
+
     // Many things rely on a session being loaded, so make sure we have one
     private func ensureSessionLoaded() {
         currentSession = (loadFirstSessionIfExists() ?? Session(bpm: Config.defaultBPM))
@@ -246,6 +254,15 @@ class ViewController: UIViewController {
     // Update session table with new sessions after downloading
     func handle(notification: Notification) {
         sessionTableViewController.sessions = dataManager.loadAllSessionNames()
+    }
+
+    private func isFirstLaunch() -> Bool {
+        let isFirstLaunch = !UserDefaults.standard.bool(forKey: Config.hasBeenLaunchedBeforeFlag)
+        if isFirstLaunch {
+            UserDefaults.standard.set(true, forKey: Config.hasBeenLaunchedBeforeFlag)
+            UserDefaults.standard.synchronize()
+        }
+        return isFirstLaunch
     }
 }
 
