@@ -12,6 +12,6 @@ MIDIchlorians allows you to
 
 Be the DJ you've always wanted to be!
 
-You can check out our <a target="_blank" href="https://www.facebook.com/midichlorians.nus/videos/1039067459557528/"> facebook page </a> for more information! You can also try the app out on the <a target="_blank" href="https://itunes.apple.com/ca/app/midichlorians/id1229585861">App Store</a>.
+You can check out our <a href="https://www.facebook.com/midichlorians.nus"> facebook page </a> for more information! You can also try the app out on the <a href="https://itunes.apple.com/ca/app/midichlorians/id1229585861">App Store</a>.
 
-Here's a short <a href="https://www.facebook.com/midichlorians.nus/videos/1039067459557528/" target="_blank"> video </a> demonstrating what the app looks like.
+Here's a short <a href="https://www.facebook.com/midichlorians.nus/videos/1039067459557528/"> video </a> demonstrating what the app looks like.
